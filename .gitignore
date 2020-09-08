@@ -1,0 +1,8 @@
+*.pyc
+/*.egg-info/
+/.coverage
+/.env
+/.python-version
+/.tox
+/docs/htmlcov
+/poetry.toml

@@ -1,0 +1,49 @@
+---
+version: "3.2"
+services:
+  toolhub:
+    build: .
+    image: "toolhub:${DOCKER_TOOLHUB_TAG}"
+    command: python3 manage.py runserver 0.0.0.0:8000
+    environment:
+      - DJANGO_SECRET_KEY
+      - DJANGO_DEBUG
+      - DJANGO_ALLOWED_HOSTS
+      - LOGGING_HANDLERS
+      - LOGGING_LEVEL
+      - DB_ENGINE
+      - DB_NAME
+      - DB_USER
+      - DB_PASSWORD
+      - DB_HOST
+      - DB_PORT
+      - CACHE_BACKEND
+      - CACHE_LOCATION
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/src/app
+        consistency: cached
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - db
+  db:
+    image: mariadb:10.4
+    restart: always
+    command:
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_unicode_ci"
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DOCKER_DB_MYSQL_ROOT_PASSWORD}
+    volumes:
+      - type: volume
+        source: dbdata
+        target: /var/lib/mysql
+        consistency: consistent
+volumes:
+  dbdata:

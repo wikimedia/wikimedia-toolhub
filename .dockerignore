@@ -1,0 +1,14 @@
+*.py{cod}
+*.egg-info
+.cache
+.gitignore
+/.coverage
+/.coverage.*
+/.env
+/.git
+/.tox
+/COPYING
+/docker-compose.yaml
+/docs
+/poetry.toml
+__pycache__
