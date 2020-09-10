@@ -40,7 +40,7 @@ env.smart_cast = False
 # # like contacting an external server
 TEST_MODE = "test" in sys.argv
 
-# == Logging ==
+# == Logging & Tracing ==
 logging.captureWarnings(True)
 LOGGING_HANDLERS = env.list("LOGGING_HANDLERS", default=["console"])
 LOGGING_LEVEL = env.str("LOGGING_LEVEL", default="WARNING")
@@ -62,6 +62,7 @@ LOGGING = {
         "console": {
             "class": "logging.StreamHandler",
             "formatter": "line",
+            "filters": ["request_id"],
             "level": "DEBUG",
         },
         "file": {
@@ -100,6 +101,18 @@ LOGGING = {
     },
 }
 
+LOG_REQUEST_ID_HEADER = env.str(
+    "LOG_REQUEST_ID_HEADER", default="HTTP_X_REQUEST_ID"
+)
+GENERATE_REQUEST_ID_IF_NOT_IN_HEADER = True
+REQUEST_ID_RESPONSE_HEADER = env.str(
+    "REQUEST_ID_RESPONSE_HEADER", default="X-Request-ID"
+)
+NO_REQUEST_ID = "none"
+OUTGOING_REQUEST_ID_HEADER = env.str(
+    "OUTGOING_REQUEST_ID_HEADER", default="X-Request-ID"
+)
+
 # == Django settings ==
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
@@ -118,6 +131,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "log_request_id.middleware.RequestIDMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
