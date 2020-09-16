@@ -2,7 +2,9 @@
 name = "toolhub"
 version = "0.1.0"
 description = "An authoritative and well promoted catalog of Wikimedia tools"
-authors = ["Bryan Davis <bd808@wikimedia.org>"]
+authors = [
+  "Bryan Davis <bd808@wikimedia.org>"
+]
 license = "GPL-3.0-or-later"
 readme = "README.rst"
 include = [
@@ -108,6 +110,7 @@ setenv=
 commands=
   poetry check
   poetry install -v --no-root
+  poetry run pre-commit run --all-files
   poetry run flakehell lint
   poetry run black --check --diff .
   poetry run coverage erase
