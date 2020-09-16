@@ -7,6 +7,7 @@
 /.env
 /.git
 /.tox
+/bin
 /COPYING
 /docker-compose.yaml
 /docs

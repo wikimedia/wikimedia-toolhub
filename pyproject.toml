@@ -75,8 +75,10 @@ include_trailing_comma = true
 
 [tool.coverage.run]
 source = ["toolhub"]
+omit = ["*/migrations/*"]
 branch = true
 dynamic_context = "test_function"
+relative_files = true
 
 [tool.coverage.report]
 fail_under = 85
