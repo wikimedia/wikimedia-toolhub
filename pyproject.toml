@@ -37,9 +37,12 @@ flake8-isort = "^4.0.0"
 pytest-cov = "^2.10.1"
 django-coverage-plugin = "^1.8.0"
 bandit = "^1.6.2"
+sphinx = "^3.2.1"
+sphinxcontrib-django = "^0.5.1"
+sphinx_rtd_theme = "^0.5.0"
 
 [tool.flakehell]
-exclude = [".tox", "__pycache__", "manage.py"]
+exclude = [".tox", "__pycache__", "manage.py", "docs"]
 format = "grouped"
 max_line_length = 79
 show_source = true

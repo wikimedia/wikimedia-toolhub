@@ -4,5 +4,6 @@
 /.env
 /.python-version
 /.tox
+/docs/_build
 /docs/htmlcov
 /poetry.toml
