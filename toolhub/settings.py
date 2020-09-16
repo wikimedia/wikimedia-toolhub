@@ -167,7 +167,7 @@ WSGI_APPLICATION = "toolhub.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": env.str("DB_ENGINE", default="django.db.backends.sqlite3"),
-        "NAME": env.str("DB_NAME", default="db.sqlitee3"),
+        "NAME": env.str("DB_NAME", default="db.sqlite3"),
         "USER": env.str("DB_USER", default=""),
         "PASSWORD": env.str("DB_PASSWORD", default=""),
         "HOST": env.str("DB_HOST", default=""),
