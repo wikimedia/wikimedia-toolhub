@@ -1,0 +1,6 @@
+contentTypes: [json]
+logLevel: info
+schemaBasePath: ./jsonschema/
+shouldDereference: false
+shouldSymlinkExtensionless: true
+shouldSymlinkLatest: false

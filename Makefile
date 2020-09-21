@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 
+DEFAULT_CONTAINERS = web db
+
 help:
 	echo "Make targets:"
 	echo "============="
@@ -23,7 +25,7 @@ help:
 		awk 'BEGIN {FS = ":.*?## "}; {printf "%-20s %s\n", $$1, $$2}'
 
 start: .env  ## Start the docker-compose stack
-	docker-compose up --build --detach
+	docker-compose up --build --detach ${DEFAULT_CONTAINERS}
 
 stop:  ## Stop the docker-compose stack
 	docker-compose stop
@@ -35,6 +37,9 @@ status:  ## Show status of the docker-compose stack
 
 web-shell:  ## Get an interactive shell inside the web container
 	docker-compose exec web bash
+
+nodejs-shell:  ## Get an interactive shell inside the nodejs container
+	docker-compose run --rm nodejs bash
 
 tail:  ## Tail logs from the docker-compose stack
 	docker-compose logs -f

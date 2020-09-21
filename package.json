@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "mocha tests/jsonschema"
+  },
+  "devDependencies": {
+    "@wikimedia/jsonschema-tools": "latest",
+    "mocha": "^6.2.0"
+  }
+}

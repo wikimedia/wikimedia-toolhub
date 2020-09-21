@@ -50,5 +50,15 @@ services:
         target: /var/lib/mysql
         consistency: consistent
 
+  nodejs:
+    image: node:10-buster
+    user: node
+    working_dir: /home/node/app
+    volumes:
+      - type: bind
+        source: .
+        target: /home/node/app
+        consistency: cached
+
 volumes:
   dbdata:
