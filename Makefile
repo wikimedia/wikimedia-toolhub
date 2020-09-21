@@ -69,6 +69,9 @@ test:  ## Run tests inside the docker-compose stack
 	echo "== Building docs =="
 	docker-compose exec web poetry run sphinx-build -W -b html docs/ docs/_build/html
 
+docs:
+	docker-compose exec web poetry run sphinx-build -W -b html docs/ docs/_build/html
+
 build: Dockerfile  ## Build the Toolhub docker container
 	docker build -t 'toolhub:dev' .
 
@@ -82,5 +85,5 @@ destroy: clean  ## Clean up Docker images, containers, and volumes
 .env:  ## Generate a .env file for local development
 	./bin/make_env.sh ./.env
 
-.PHONY: help build clean start stop status restart shell tail migrate init test
+.PHONY: help build clean start stop status restart shell tail migrate init test docs
 .SILENT: ;

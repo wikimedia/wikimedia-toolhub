@@ -4,6 +4,7 @@
    :maxdepth: 2
    :caption: Contents:
 
-   CODE_OF_CONDUCT.rst
    CONTRIBUTING.rst
+   toolinfo.rst
    packages.rst
+   CODE_OF_CONDUCT.rst
