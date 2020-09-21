@@ -1,4 +1,4 @@
-contentTypes: [json]
+contentTypes: [json, yaml]
 logLevel: info
 schemaBasePath: ./jsonschema/
 shouldDereference: false
