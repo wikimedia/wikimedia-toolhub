@@ -4,3 +4,5 @@ schemaBasePath: ./jsonschema/
 shouldDereference: false
 shouldSymlinkExtensionless: true
 shouldSymlinkLatest: false
+ignoreSchemas:
+  - /toolinfo/1.1.1
