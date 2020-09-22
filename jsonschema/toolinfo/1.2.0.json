@@ -1,7 +1,7 @@
 {
   "title": "toolinfo",
   "description": "A tool is a piece of software that helps facilitate contribution toward, or consumption of, Wikimedia projects and associated data, not including the core MediaWiki software and its extensions.",
-  "$id": "/toolinfo/1.2.0-draft01",
+  "$id": "/toolinfo/1.2.0-draft02",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
     "tool": {
@@ -9,6 +9,7 @@
       "properties": {
         "name": {
           "type": "string",
+          "maxLength": 255,
           "description": "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes.",
           "examples": [
             "toolforge-admin",
@@ -17,38 +18,41 @@
         },
         "title": {
           "type": "string",
+          "maxLength": 255,
           "description": "Human readable tool name. Recommended limit of 25 characters."
         },
         "description": {
           "type": "string",
+          "maxLength": 65535,
           "description": "A longer description of the tool. The recommended length for a description is 3-5 sentences. Future versions of this schema will impose a character limit."
         },
         "url": {
-          "type": "string",
-          "format": "uri",
+          "$ref": "#/definitions/url",
           "description": "A direct link to the tool or to instructions on how to use or install the tool."
         },
         "keywords": {
           "type": "string",
+          "maxLength": 2047,
           "description": "[DEPRECATED] Comma-delineated list of keywords. This parameter is deprecated and will be removed in the next major version.",
           "$comment": "Remove in version 2."
         },
         "author": {
           "type": "string",
+          "maxLength": 255,
           "description": "The primary tool developer."
         },
         "repository": {
-          "type": "string",
-          "format": "uri",
+          "$ref": "#/definitions/url",
           "description": "A link to the repository where the tool code is hosted."
         },
         "subtitle": {
           "type": "string",
-          "maxLength": 250,
+          "maxLength": 255,
           "description": "Longer than the full title but shorter than the description. It should add some additional context to the title."
         },
         "openhub_id": {
           "type": "string",
+          "maxLength": 255,
           "description": "The project ID on OpenHub. Given a URL https://openhub.net/p/foo, the project ID is `foo`."
         },
         "url_alternates": {
@@ -60,6 +64,7 @@
         },
         "bot_username": {
           "type": "string",
+          "maxLength": 255,
           "description": "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
         },
         "deprecated": {
@@ -68,8 +73,7 @@
           "description": "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
         },
         "replaced_by": {
-          "type": "string",
-          "format": "uri",
+          "$ref": "#/definitions/url",
           "description": "If this tool is deprecated, this parameter should be used to link to the replacement tool."
         },
         "experimental": {
@@ -98,6 +102,7 @@
         },
         "license": {
           "type": "string",
+          "maxLength": 255,
           "description": "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'.",
           "examples": [
             "GPL-2.0-or-later",
@@ -121,6 +126,7 @@
             },
             {
               "type": "string",
+              "maxLength": 1,
               "enum": [
                 "*"
               ]
@@ -135,6 +141,7 @@
         },
         "tool_type": {
           "type": "string",
+          "maxLength": 255,
           "enum": [
             "web app",
             "desktop app",
@@ -148,88 +155,43 @@
           "description": "The manner in which the tool is used. Select one from the list of options."
         },
         "api_url": {
-          "type": "string",
-          "format": "uri",
+          "$ref": "#/definitions/url",
           "description": "A link to the tool's API, if available."
         },
         "developer_docs_url": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/url_multilingual"
-              }
-            },
-            {
-              "type": "string",
-              "format": "uri"
-            }
-          ],
+          "$ref": "#/definitions/url_multilingual_or_array",
           "description": "A link to the tool's developer documentation, if available."
         },
         "user_docs_url": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/url_multilingual"
-              }
-            },
-            {
-              "type": "string",
-              "format": "uri"
-            }
-          ],
+          "$ref": "#/definitions/url_multilingual_or_array",
           "description": "A link to the tool's user documentation, if available."
         },
         "feedback_url": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/url_multilingual"
-              }
-            },
-            {
-              "type": "string",
-              "format": "uri"
-            }
-          ],
+          "$ref": "#/definitions/url_multilingual_or_array",
           "description": "A link to the tool users can leave feedback."
         },
         "privacy_policy_url": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/url_multilingual"
-              }
-            },
-            {
-              "type": "string",
-              "format": "uri"
-            }
-          ],
+          "$ref": "#/definitions/url_multilingual_or_array",
           "description": "A link to the tool's privacy policy, if available."
         },
         "translate_url": {
-          "type": "string",
-          "format": "uri",
+          "$ref": "#/definitions/url",
           "description": "A link to the tool translation interface."
         },
         "bugtracker_url": {
-          "type": "string",
-          "format": "uri",
+          "$ref": "#/definitions/url",
           "description": "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
         },
-        "toolinfo_version": {
-          "type": "integer",
-          "default": 1,
-          "description": "The major version number of the Toolinfo schema used. The default value assumed is 1, referring to versions 1.0.0 and 1.1.0.",
-          "minimum": -9007199254740991,
-          "maximum": 9007199254740991
+        "$schema": {
+          "type": "string",
+          "format": "uri-reference",
+          "maxLength": 1024,
+          "description": "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path.",
+          "examples": [
+            "/toolinfo/1.2.0"
+          ]
         },
-        "toolinfo_language": {
+        "$language": {
           "$ref": "#/definitions/language",
           "default": "en",
           "description": "The language the toolinfo record is written if, if not the default value of English. Use ISO 639 language codes."
@@ -241,17 +203,23 @@
         "description",
         "url"
       ],
+      "url": {
+        "type": "string",
+        "maxLength": 2047,
+        "format": "uri"
+      },
       "wiki": {
         "type": "string",
+        "maxLength": 255,
         "pattern": "^(\\*|(.*)?\\.?(mediawiki|wiktionary|wiki(pedia|quote|books|source|news|versity|data|voyage|tech|media|mediafoundation))\\.org)$"
       },
       "commons_file": {
-        "type": "string",
-        "format": "uri",
+        "$ref": "#/definitions/url",
         "pattern": "^https://commons.wikimedia.org/wiki/File:.+\\..+$"
       },
       "language": {
         "type": "string",
+        "maxLength": 255,
         "pattern": "^(x-.*|[A-Za-z]{2,3}(-.*)?)$"
       },
       "url_multilingual": {
@@ -261,20 +229,34 @@
             "$ref": "#/definitions/language"
           },
           "url": {
-            "type": "string",
-            "pattern": "uri"
+            "$ref": "#/definitions/url"
           }
         }
+      },
+      "url_multilingual_or_array": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/url_multilingual"
+            }
+          },
+          {
+            "$ref": "#/definitions/url"
+          }
+        ]
       },
       "string_or_string_array": {
         "oneOf": [
           {
-            "type": "string"
+            "type": "string",
+            "maxLength": 255
           },
           {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 255
             }
           }
         ]
