@@ -5,4 +5,5 @@ shouldDereference: false
 shouldSymlinkExtensionless: true
 shouldSymlinkLatest: false
 ignoreSchemas:
+  - /toolinfo/1.0.0
   - /toolinfo/1.1.1
