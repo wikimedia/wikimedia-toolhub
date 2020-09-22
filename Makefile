@@ -66,6 +66,8 @@ test:  ## Run tests inside the docker-compose stack
 	docker-compose exec web poetry run coverage report
 	echo "== Bandit =="
 	docker-compose exec web poetry run bandit -ii -r toolhub/
+	echo "== JSON schema =="
+	docker-compose run --rm nodejs npm test
 	echo "== Building docs =="
 	docker-compose exec web poetry run sphinx-build -W -b html docs/ docs/_build/html
 
