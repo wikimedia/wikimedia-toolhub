@@ -1,0 +1,67 @@
+version: v4
+
+# FIXME: we need a non-dev Python3 buster base image
+base: docker-registry.wikimedia.org/python3-build-buster
+
+runs:
+  environment:
+    PYTHONBUFFERED: "1"
+    PYTHONDONTWRITEBYTECODE: "1"
+    PIP_NO_CACHE_DIR: "off"
+    PIP_DISABLE_PIP_VERSION_CHECK: "on"
+
+variants:
+  dockerize:
+    runs:
+      environment:
+        DOCKERIZE_VERSION: v0.6.1
+    lives:
+      in: /srv/dockerize/bin
+    apt:
+      packages:
+        - wget
+    builder:
+      command:
+        - /bin/bash
+        - -c
+        - >-
+          wget https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
+          && tar -C /srv/dockerize/bin -xzvf dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
+          && rm dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
+
+  build:
+    apt:
+      packages:
+        - build-essential
+        - default-libmysqlclient-dev
+        # The python3-venv package is needed to supply the `ensurepip`
+        # command. Having ensurepip available is a requirement of Poetry.
+        - python3-venv  # FIXME: should be in the base image OR added by Blubber
+    python:
+      version: python3
+      poetry:
+        version: ==1.0.10
+      requirements:
+        - pyproject.toml
+        - poetry.lock
+
+  development:
+    includes:
+      - build
+    python:
+      poetry:
+        devel: true
+    copies:
+      - from: dockerize
+        source: /srv/dockerize
+        destination: /srv/dockerize
+      - from: local
+        source: .
+        destination: .
+    entrypoint:
+      - poetry
+      - run
+      - python3
+      - manage.py
+      - runserver
+      - 0.0.0.0:8000
