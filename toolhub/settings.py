@@ -37,7 +37,7 @@ env = environ.Env()
 env.smart_cast = False
 
 # Hack so that we can guard things that will probably fail miserably in test
-# # like contacting an external server
+# like contacting an external server
 TEST_MODE = "test" in sys.argv
 
 # == Logging & Tracing ==
@@ -128,6 +128,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "social_django",
 ]
 
 MIDDLEWARE = [
@@ -139,6 +140,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "social_django.middleware.SocialAuthExceptionMiddleware",
 ]
 
 ROOT_URLCONF = "toolhub.urls"
@@ -157,6 +159,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                # "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
             ],
         },
     },
@@ -201,6 +205,11 @@ CACHES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    "toolhub.oauth.WikimediaOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
+]
+
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -217,6 +226,25 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SOCIAL_AUTH_WIKIMEDIA_BASE_URL = env.str(
+    "WIKIMEDIA_OAUTH2_URL", default="https://meta.wikimedia.org/w/rest.php"
+)
+SOCIAL_AUTH_WIKIMEDIA_KEY = env.str("WIKIMEDIA_OAUTH2_KEY")
+SOCIAL_AUTH_WIKIMEDIA_SECRET = env.str("WIKIMEDIA_OAUTH2_SECRET")
+
+SOCIAL_AUTH_PIPELINE = (
+    "social_core.pipeline.social_auth.social_details",
+    "social_core.pipeline.social_auth.social_uid",
+    "social_core.pipeline.social_auth.social_user",
+    "social_core.pipeline.user.get_username",
+    "social_core.pipeline.user.create_user",
+    "social_core.pipeline.social_auth.associate_user",
+    "social_core.pipeline.social_auth.load_extra_data",
+    "social_core.pipeline.user.user_details",
+)
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = False
+SOCIAL_AUTH_SLUGIFY_USERNAMES = False
+SOCIAL_AUTH_CLEAN_USERNAMES = False
 
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"

@@ -26,6 +26,9 @@ services:
       - DB_PORT
       - CACHE_BACKEND
       - CACHE_LOCATION
+      - WIKIMEDIA_OAUTH2_URL
+      - WIKIMEDIA_OAUTH2_KEY
+      - WIKIMEDIA_OAUTH2_SECRET
     volumes:
       - type: bind
         source: .
