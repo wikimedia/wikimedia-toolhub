@@ -5,7 +5,7 @@ services:
     build: .
     image: "toolhub:dev"
     command: >
-      dockerize -wait tcp://db:3306
+      /srv/dockerize/bin/dockerize -wait tcp://db:3306
       poetry run
       python3 manage.py runserver 0.0.0.0:8000
     environment:
@@ -25,7 +25,7 @@ services:
     volumes:
       - type: bind
         source: .
-        target: /usr/src/app
+        target: /srv/app
         consistency: cached
     ports:
       - "${TOOLHUB_HTTP_PORT:-8000}:8000"

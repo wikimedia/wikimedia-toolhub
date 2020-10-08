@@ -25,7 +25,7 @@ variants:
         - /bin/bash
         - -c
         - >-
-          wget https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
+          wget --no-verbose https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
           && tar -C /srv/dockerize/bin -xzvf dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
           && rm dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
 
@@ -40,7 +40,7 @@ variants:
     python:
       version: python3
       poetry:
-        version: ==1.0.10
+        version: ==1.1.2
       requirements:
         - pyproject.toml
         - poetry.lock
@@ -48,6 +48,11 @@ variants:
   development:
     includes:
       - build
+    runs:
+      # Mark as insecure so that the runtime user can modify content. This is
+      # needed so that we can use the container's runtime for our local
+      # development needs such as updating poetry.lock and running tox.
+      insecurely: true
     python:
       poetry:
         devel: true
@@ -58,10 +63,3 @@ variants:
       - from: local
         source: .
         destination: .
-    entrypoint:
-      - poetry
-      - run
-      - python3
-      - manage.py
-      - runserver
-      - 0.0.0.0:8000
