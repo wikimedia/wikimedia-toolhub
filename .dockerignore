@@ -1,15 +1,21 @@
-*.py{cod}
-*.egg-info
-.cache
-.gitignore
-/.coverage
-/.coverage.*
-/.env
-/.git
-/.tox
-/bin
-/COPYING
-/docker-compose.yaml
-/docs
-/poetry.toml
-__pycache__
+# Exclude everything by default
+*
+
+# Conditionally include things we know we want in the container
+!.jsonschema-tools.yaml
+!.pipeline
+!.pre-commit-config.yaml
+!COPYING
+!Dockerfile
+!docs
+# exclude generated docs
+docs/_build
+!jsonschema
+!manage.py
+!package-lock.json
+!package.json
+!poetry.lock
+!pyproject.toml
+!README.rst
+!tests
+!toolhub

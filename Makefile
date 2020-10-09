@@ -71,7 +71,7 @@ Dockerfile: $(PIPELINE_DIR)/blubber.yaml
 	curl -sH 'content-type: application/yaml' --data-binary @$^ \
 	$(BLUBBEROID)/v1/development >> $@
 
-build: Dockerfile  ## Build the Toolhub docker container
+build: Dockerfile .dockerignore ## Build the Toolhub docker container
 	docker build -t 'toolhub:dev' .
 .PHONY: build
 
