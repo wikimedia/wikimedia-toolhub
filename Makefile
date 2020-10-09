@@ -24,36 +24,46 @@ DOCKERIZE := /srv/dockerize/bin/dockerize
 DEFAULT_CONTAINERS := web db
 
 help:
-	echo "Make targets:"
-	echo "============="
-	grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+	@echo "Make targets:"
+	@echo "============="
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "%-20s %s\n", $$1, $$2}'
+.PHONY: help
 
 start: .env  ## Start the docker-compose stack
 	docker-compose up --build --detach ${DEFAULT_CONTAINERS}
+.PHONY: start
 
 stop:  ## Stop the docker-compose stack
 	docker-compose stop
+.PHONY: stop
 
 restart: stop start  ## Restart the docker-compose stack
+.PHONY: restart
 
 status:  ## Show status of the docker-compose stack
 	docker-compose ps
+.PHONY: status
 
 web-shell:  ## Get an interactive shell inside the web container
 	docker-compose exec web bash
+.PHONY: web-shell
 
 nodejs-shell:  ## Get an interactive shell inside the nodejs container
 	docker-compose run --rm nodejs bash
+.PHONY: nodejs-shell
 
 tail:  ## Tail logs from the docker-compose stack
 	docker-compose logs -f
+.PHONY: tail
 
 migrate: ## Run `manage.py migrate`
 	docker-compose exec web $(DOCKERIZE) -wait tcp://db:3306 \
 		poetry run python3 manage.py migrate
+.PHONY: migrate
 
 init: start migrate  ## Initialize docker-compose stack
+.PHONY: init
 
 Dockerfile: $(PIPELINE_DIR)/blubber.yaml
 	echo "# Dockerfile for *local development*." > $@
@@ -63,37 +73,42 @@ Dockerfile: $(PIPELINE_DIR)/blubber.yaml
 
 build: Dockerfile  ## Build the Toolhub docker container
 	docker build -t 'toolhub:dev' .
+.PHONY: build
 
 test: export DJANGO_SECRET_KEY = "this is not really a secret"
 test: export DB_ENGINE = django.db.backends.sqlite3
 test: export DB_NAME = /tmp/db.sqlite3
 test:  ## Run tests inside the docker-compose stack
-	echo "== Poetry =="
+	@echo "== Poetry =="
 	docker-compose exec web poetry check
-	echo "== Flake8 =="
+	@echo "== Flake8 =="
 	docker-compose exec web poetry run flakehell lint
-	echo "== Black =="
+	@echo "== Black =="
 	docker-compose exec web poetry run black --check --diff .
-	echo "== manage.py test =="
+	@echo "== manage.py test =="
 	docker-compose exec web poetry run coverage erase
 	docker-compose exec web poetry run coverage run --branch manage.py test
 	docker-compose exec web poetry run coverage report
-	echo "== Bandit =="
+	@echo "== Bandit =="
 	docker-compose exec web poetry run bandit -ii -r toolhub/
-	echo "== JSON schema =="
+	@echo "== JSON schema =="
 	docker-compose run --rm nodejs npm test
-	echo "== Building docs =="
+	@echo "== Building docs =="
 	docker-compose exec web poetry run sphinx-build -W -b html docs/ docs/_build/html
+.PHONY: test
 
 docs:
 	docker-compose exec web poetry run sphinx-build -W -b html docs/ docs/_build/html
+.PHONY: docs
 
 clean:  ## Clean up Docker images and containers
 	yes | docker image prune
 	yes | docker container prune
+.PHONY: clean
 
 destroy: clean  ## Clean up Docker images, containers, and volumes
 	yes | docker volume rm toolhub_dbdata
+.PHONY: destroy
 
 .env:  ## Generate a .env file for local development
 	./bin/make_env.sh ./.env
@@ -103,7 +118,3 @@ requirements.txt: poetry.lock
 
 requirements-dev.txt: requirements.txt poetry.lock
 	docker-compose exec web poetry export -f requirements.txt -o $@ --without-hashes --dev
-
-
-.PHONY: help build clean start stop status restart shell tail migrate init test docs
-.SILENT: ;
