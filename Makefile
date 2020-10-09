@@ -112,9 +112,3 @@ destroy: clean  ## Clean up Docker images, containers, and volumes
 
 .env:  ## Generate a .env file for local development
 	./bin/make_env.sh ./.env
-
-requirements.txt: poetry.lock
-	docker-compose exec web poetry export -f $@ -o $@ --without-hashes
-
-requirements-dev.txt: requirements.txt poetry.lock
-	docker-compose exec web poetry export -f requirements.txt -o $@ --without-hashes --dev
