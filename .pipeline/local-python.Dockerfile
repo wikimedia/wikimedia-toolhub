@@ -15,7 +15,7 @@ RUN /bin/bash "-c" "wget --no-verbose https://github.com/jwilder/dockerize/relea
 USER "runuser"
 ENV HOME="/home/runuser"
 
-FROM docker-registry.wikimedia.org/python3-build-buster AS development
+FROM docker-registry.wikimedia.org/python3-build-buster AS local-python
 USER "root"
 ENV HOME="/root"
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -32,7 +32,7 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1"
 COPY --chown=65533:65533 ["pyproject.toml", "poetry.lock", "./"]
 RUN mkdir -p "/opt/lib/poetry"
 RUN poetry "install" "--no-root"
-COPY --chown=65533:65533 --from=dockerize ["/srv/dockerize", "/srv/dockerize"]
 COPY --chown=65533:65533 [".", "."]
+COPY --chown=65533:65533 --from=dockerize ["/srv/dockerize", "/srv/dockerize"]
 
-LABEL blubber.variant="development" blubber.version="0.8.0+5718d4d"
+LABEL blubber.variant="local-python" blubber.version="0.8.0+5718d4d"

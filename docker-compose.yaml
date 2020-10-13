@@ -2,8 +2,12 @@
 version: "3.2"
 services:
   web:
-    build: .
-    image: "toolhub:dev"
+    build:
+      context: .
+      dockerfile: .pipeline/local-python.Dockerfile
+    image: "toolhub:dev-python"
+    user: somebody
+    working_dir: /srv/app
     command: >
       /srv/dockerize/bin/dockerize -wait tcp://db:3306
       poetry run
@@ -51,13 +55,16 @@ services:
         consistency: consistent
 
   nodejs:
-    image: node:10-buster
-    user: node
-    working_dir: /home/node/app
+    build:
+      context: .
+      dockerfile: .pipeline/dev-nodejs.Dockerfile
+    image: "toolhub:dev-nodejs"
+    user: somebody
+    working_dir: /srv/app
     volumes:
       - type: bind
         source: .
-        target: /home/node/app
+        target: /srv/app
         consistency: cached
 
 volumes:

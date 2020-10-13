@@ -11,6 +11,92 @@ runs:
     PIP_DISABLE_PIP_VERSION_CHECK: "on"
 
 variants:
+  build-python:
+    apt:
+      packages:
+        - build-essential
+        - default-libmysqlclient-dev
+        # The python3-venv package is needed to supply the `ensurepip`
+        # command. Having ensurepip available is a requirement of Poetry.
+        - python3-venv  # FIXME: should be in the base image OR added by Blubber
+    python:
+      version: python3
+      poetry:
+        version: ==1.1.2
+      requirements:
+        - pyproject.toml
+        - poetry.lock
+
+  dev-python:
+    includes:
+      - build-python
+    runs:
+      # Mark as insecure so that the runtime user can modify content. This is
+      # needed so that we can use the container's runtime for our local
+      # development needs such as updating poetry.lock and running tox.
+      insecurely: true
+    python:
+      poetry:
+        devel: true
+    copies:
+      - from: local
+        source: .
+        destination: .
+
+  lint-python:
+    includes:
+      - dev-python
+    entrypoint:
+      - sh
+      - -c
+      - >-
+        poetry check &&
+        poetry run flakehell lint &&
+        poetry run black --check --diff . &&
+        poetry run bandit -ii -r toolhub/
+
+  test-python:
+    includes:
+      - dev-python
+    entrypoint:
+      - sh
+      - -c
+      - >-
+        poetry run coverage erase &&
+        poetry run coverage run --branch manage.py test &&
+        poetry run coverage report
+
+  dev-nodejs:
+    base: docker-registry.wikimedia.org/nodejs10-devel
+    runs:
+      # Mark as insecure so that the runtime user can modify content. This is
+      # needed so that we can use the container's runtime for our local
+      # development needs such as updating package-lock.json
+      insecurely: true
+    node:
+      requirements:
+        - package.json
+      env: development
+    copies:
+      - from: local
+        source: .
+        destination: .
+
+  npm-run:
+    includes:
+      - dev-nodejs
+    entrypoint:
+      - npm
+      - run-script
+
+  local-python:
+    includes:
+      - dev-python
+    copies:
+      - from: dockerize
+        source: /srv/dockerize
+        destination: /srv/dockerize
+
   dockerize:
     runs:
       environment:
@@ -29,37 +115,3 @@ variants:
           && tar -C /srv/dockerize/bin -xzvf dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
           && rm dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
 
-  build:
-    apt:
-      packages:
-        - build-essential
-        - default-libmysqlclient-dev
-        # The python3-venv package is needed to supply the `ensurepip`
-        # command. Having ensurepip available is a requirement of Poetry.
-        - python3-venv  # FIXME: should be in the base image OR added by Blubber
-    python:
-      version: python3
-      poetry:
-        version: ==1.1.2
-      requirements:
-        - pyproject.toml
-        - poetry.lock
-
-  development:
-    includes:
-      - build
-    runs:
-      # Mark as insecure so that the runtime user can modify content. This is
-      # needed so that we can use the container's runtime for our local
-      # development needs such as updating poetry.lock and running tox.
-      insecurely: true
-    python:
-      poetry:
-        devel: true
-    copies:
-      - from: dockerize
-        source: /srv/dockerize
-        destination: /srv/dockerize
-      - from: local
-        source: .
-        destination: .
