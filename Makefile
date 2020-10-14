@@ -21,6 +21,7 @@ PROJECT_DIR := $(dir $(this))
 PIPELINE_DIR := $(PROJECT_DIR)/.pipeline
 BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
+DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile
 DEFAULT_CONTAINERS := web db
 
 help:
@@ -30,7 +31,7 @@ help:
 		awk 'BEGIN {FS = ":.*?## "}; {printf "%-20s %s\n", $$1, $$2}'
 .PHONY: help
 
-start: .env  ## Start the docker-compose stack
+start: .env $(DOCKERFILES) ## Start the docker-compose stack
 	docker-compose up --build --detach ${DEFAULT_CONTAINERS}
 .PHONY: start
 
