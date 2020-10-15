@@ -33,7 +33,7 @@ class WikimediaOAuth2(BaseOAuth2):
     AUTHORIZATION_URL = BASE_URL + "/oauth2/authorize"
     ACCESS_TOKEN_URL = BASE_URL + "/oauth2/access_token"
     REFRESH_TOKEN_URL = ACCESS_TOKEN_URL
-    ACCESS_TOKEN_METHOD = "POST"
+    ACCESS_TOKEN_METHOD = "POST"  # nosec (B105 hardcoded password)
     STATE_PARAMETER = "state"
     REDIRECT_STATE = False
     ID_KEY = "sub"
@@ -63,3 +63,7 @@ class WikimediaOAuth2(BaseOAuth2):
                 "Authorization": "Bearer {}".format(access_token),
             },
         )
+
+    def auth_html(self):
+        """Raise error if this method from the base class is called."""
+        raise RuntimeError("Expected auth_url() to be called instead.")
