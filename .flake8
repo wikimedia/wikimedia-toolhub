@@ -1,0 +1,5 @@
+# Flake8 does not support configuration via pyproject.toml
+# See <https://gitlab.com/pycqa/flake8/-/issues/428> for details
+
+[flake8]
+flake8-import-order = appnexus

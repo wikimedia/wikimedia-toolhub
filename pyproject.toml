@@ -34,7 +34,6 @@ flake8-import-order = "^0.18.1"
 flake8-logging-format = "^0.6.0"
 flake8-rst-docstrings = "^0.0.13"
 flake8-comprehensions = "^3.2.3"
-flake8-isort = "^4.0.0"
 pytest-cov = "^2.10.1"
 django-coverage-plugin = "^1.8.0"
 bandit = "^1.6.2"
@@ -50,7 +49,8 @@ max_line_length = 79
 show_source = true
 
 [tool.flakehell.plugins]
-"flake8-*" = ["+*", "-D100"]
+"flake8-*" = ["+*"]
+flake8-docstrings = ["+*", "-D100"]
 pycodestyle = ["+*", "-E501"]
 pyflakes = ["+*"]
 pylint = ["+*", "-C0114", "-W0511"]
