@@ -82,7 +82,10 @@ include_trailing_comma = true
 
 [tool.coverage.run]
 source = ["toolhub"]
-omit = ["*/migrations/*"]
+omit = [
+  "*/migrations/*",
+  "toolhub/wsgi.py",
+]
 branch = true
 dynamic_context = "test_function"
 relative_files = true
