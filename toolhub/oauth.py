@@ -64,6 +64,6 @@ class WikimediaOAuth2(BaseOAuth2):
             },
         )
 
-    def auth_html(self):
+    def auth_html(self):  # pragma: no cover
         """Raise error if this method from the base class is called."""
         raise RuntimeError("Expected auth_url() to be called instead.")
