@@ -4,7 +4,6 @@
 # Conditionally include things we know we want in the container
 !.jsonschema-tools.yaml
 !.pipeline
-!.pre-commit-config.yaml
 !COPYING
 !Dockerfile
 !docs
