@@ -64,7 +64,13 @@ migrate: ## Run `manage.py migrate`
 		poetry run python3 manage.py migrate
 .PHONY: migrate
 
-init: start migrate  ## Initialize docker-compose stack
+make-admin-user:
+	docker-compose exec web  $(DOCKERIZE) -wait tcp://db:3306 sh -c " \
+		poetry run python3 manage.py shell -c \"import os; from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'admin@localhost', os.environ['DJANGO_SUPERUSER_PASSWORD']);\" \
+	"
+.PHONY: make-admin-user
+
+init: start migrate make-admin-user  ## Initialize docker-compose stack
 .PHONY: init
 
 test: $(ALL_TESTS) ## Run tests inside the docker-compose stack
