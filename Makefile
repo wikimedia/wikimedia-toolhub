@@ -23,6 +23,7 @@ BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
 DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile
 DEFAULT_CONTAINERS := web db
+ALL_TESTS := test-python-lint test-python-unit test-nodejs-unit
 
 help:
 	@echo "Make targets:"
@@ -66,10 +67,10 @@ migrate: ## Run `manage.py migrate`
 init: start migrate  ## Initialize docker-compose stack
 .PHONY: init
 
-test: export DJANGO_SECRET_KEY = "this is not really a secret"
-test: export DB_ENGINE = django.db.backends.sqlite3
-test: export DB_NAME = :memory:
-test:  ## Run tests inside the docker-compose stack
+test: $(ALL_TESTS) ## Run tests inside the docker-compose stack
+.PHONY: test
+
+test-python-lint:  ## Run linter checks for Python code
 	@echo "== Lint Python =="
 	docker-compose exec web sh -c " \
 		poetry check \
@@ -77,19 +78,26 @@ test:  ## Run tests inside the docker-compose stack
 		&& poetry run black --check --diff . \
 		&& poetry run bandit -ii -r toolhub/ \
 	"
+.PHONY: test-python-lint
+
+test-python-unit: export DJANGO_SECRET_KEY = "this is not really a secret"
+test-python-unit: export DB_ENGINE = django.db.backends.sqlite3
+test-python-unit: export DB_NAME = :memory:
+test-python-unit:  ## Run unit tests for Python code
 	@echo "== Test Python =="
 	docker-compose exec web sh -c " \
 		poetry run coverage erase \
 		&& poetry run coverage run --branch manage.py test \
 		&& poetry run coverage report \
 	"
-	@echo "== Test Nodejs =="
-	docker-compose run --rm nodejs npm test
-	@echo "== Building docs =="
-	docker-compose exec web poetry run sphinx-build -W -b html docs/ docs/_build/html
-.PHONY: test
+.PHONY: test-python-unit
 
-docs:
+test-nodejs-unit:  ## Run unit tests for nodejs code
+	@echo "== Test Nodejs =="
+	docker-compose run --rm nodejs npm test || true
+.PHONY: test-nodejs-unit
+
+docs:  ## Build sphinx docs
 	docker-compose exec web poetry run sphinx-build -W -b html docs/ docs/_build/html
 .PHONY: docs
 
