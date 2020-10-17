@@ -100,7 +100,7 @@ test-python-unit:  ## Run unit tests for Python code
 
 test-nodejs-unit:  ## Run unit tests for nodejs code
 	@echo "== Test Nodejs =="
-	docker-compose run --rm nodejs npm test || true
+	docker-compose run --rm nodejs sh -c "npm install && npm test"
 .PHONY: test-nodejs-unit
 
 docs:  ## Build sphinx docs
