@@ -42,8 +42,6 @@ variants:
       - from: local
         source: .
         destination: .
-    entrypoint:
-      - /bin/bash
 
   lint-python:
     includes:
@@ -77,13 +75,12 @@ variants:
     node:
       requirements:
         - package.json
+        - package-lock.json
       env: development
     copies:
       - from: local
         source: .
         destination: .
-    entrypoint:
-      - /bin/bash
 
   lint-nodejs:
     includes:
@@ -126,4 +123,3 @@ variants:
           wget --no-verbose https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
           && tar -C /srv/dockerize/bin -xzvf dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
           && rm dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
-

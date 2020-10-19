@@ -31,7 +31,7 @@ import environ
 
 TOOLHUB_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(TOOLHUB_DIR)
-
+VUE_DIR = os.path.join(BASE_DIR, "vue")
 
 env = environ.Env()
 env.smart_cast = False
@@ -129,6 +129,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "social_django",
+    "webpack_loader",
+    "vue",
 ]
 
 MIDDLEWARE = [
@@ -286,3 +288,11 @@ SECURE_BROWSER_XSS_FILTER = True
 
 # TODO: CSP
 # TODO: Referrer-Policy
+
+WEBPACK_LOADER = {
+    "DEFAULT": {
+        "CACHE": not DEBUG,
+        "BUNDLE_DIR_NAME": "bundles/",
+        "STATS_FILE": os.path.join(VUE_DIR, "static/vue/webpack-stats.json"),
+    },
+}

@@ -1,0 +1,2 @@
+# Ignore the development mode webpack-stats.json file
+webpack-stats.json

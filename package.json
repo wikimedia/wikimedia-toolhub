@@ -1,9 +1,70 @@
 {
+  "name": "toolhub",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "mocha tests/jsonschema"
+    "build:vue": "vue-cli-service build",
+    "lint": "npm run lint:vue",
+    "lint:vue": "vue-cli-service lint",
+    "serve:vue": "vue-cli-service serve",
+    "test": "npm run test:jsonschema && npm run test:vue",
+    "test:jsonschema": "mocha tests/jsonschema",
+    "test:vue": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0",
+    "vuetify": "^2.2.11",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@mdi/font": "^5.7.55",
+    "@vue/cli": "^4.5.7",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "^4.5.8",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
     "@wikimedia/jsonschema-tools": "latest",
-    "mocha": "^6.2.0"
-  }
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "mocha": "^6.2.0",
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-vuetify": "~2.0.7",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.3.0",
+    "webpack-bundle-tracker": "^0.4.3"
+  },
+  "babel": {
+    "presets": [
+      "@vue/cli-plugin-babel/preset"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "ignorePatterns": [
+      "**/node_modules/*.js"
+    ],
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

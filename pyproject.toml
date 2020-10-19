@@ -20,6 +20,7 @@ django-environ = "^0.4.5"
 django-log-request-id = "^1.6.0"
 mysqlclient = "^2.0.1"
 social-auth-app-django = "^4.0.0"
+django-webpack-loader = "^0.7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -44,7 +45,7 @@ httpretty = "^1.0.2"
 unittest2 = "^1.1.0"
 
 [tool.flakehell]
-exclude = [".tox", "__pycache__", "manage.py", "docs"]
+exclude = [".git", "__pycache__", "manage.py", "docs", "node_modules",]
 format = "grouped"
 max_line_length = 79
 show_source = true

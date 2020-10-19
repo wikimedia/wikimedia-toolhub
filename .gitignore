@@ -1,9 +1,8 @@
+.DS_Store
 *.pyc
 /*.egg-info/
 /.coverage
 /.env
-/.python-version
-/.tox
 /docs/_build
 /docs/htmlcov
 /node_modules/

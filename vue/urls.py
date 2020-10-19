@@ -15,12 +15,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.contrib import admin
-from django.urls import include
 from django.urls import path
+from django.views.generic import TemplateView
 
+app_name = "vue"  # noqa: C0103
 urlpatterns = [
-    path("social/", include("social_django.urls", namespace="social")),
-    path("admin/", admin.site.urls),
-    path("", include("vue.urls", namespace="vue")),
+    path(
+        "",
+        TemplateView.as_view(template_name="vue/main.html"),
+        name="main",
+    ),
 ]

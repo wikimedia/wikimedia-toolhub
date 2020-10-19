@@ -1,0 +1,12 @@
+{% extends "vue/base.html" %}
+{% load render_bundle from webpack_loader %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Toolhub - a catalog of Wikimedia tools" %}
+{% endblock title %}
+
+{% block bundles %}
+{{ block.super }}
+{% render_bundle "main" %}
+{% endblock bundles %}

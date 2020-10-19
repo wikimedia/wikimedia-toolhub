@@ -238,6 +238,14 @@ python-versions = "*"
 django = ">=1.8"
 
 [[package]]
+name = "django-webpack-loader"
+version = "0.7.0"
+description = "Transparently use webpack with django"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "docutils"
 version = "0.16"
 description = "Docutils -- Python Documentation Utilities"
@@ -1082,7 +1090,7 @@ testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "9866ec642625032a3e4fee8ebc0bc58cfab91572fd82ec1f875c9e137e49ce54"
+content-hash = "2b226769fe42a26fd635fb6fbe59ae2c0165d3074811a11c4052ce21c704c8f6"
 
 [metadata.files]
 alabaster = [
@@ -1252,6 +1260,10 @@ django-environ = [
 django-log-request-id = [
     {file = "django-log-request-id-1.6.0.tar.gz", hash = "sha256:0126f5da0cacc62cf834efb3cf66e4606031d911ccff048da2f88fe2c0bbcbc9"},
     {file = "django_log_request_id-1.6.0-py3-none-any.whl", hash = "sha256:c3f7f53b1fc92f62269c247bee14d578daab000a2f7ae70b70ae288b603b5907"},
+]
+django-webpack-loader = [
+    {file = "django-webpack-loader-0.7.0.tar.gz", hash = "sha256:7a3c88201aa54481f9399465615cbe7b9aece8081496a6d0287b7cb8e232f447"},
+    {file = "django_webpack_loader-0.7.0-py2.py3-none-any.whl", hash = "sha256:d28a276ed3d89e97a313b74967e373693f8b86afe629f4c91eea91c5b4f2ec20"},
 ]
 docutils = [
     {file = "docutils-0.16-py2.py3-none-any.whl", hash = "sha256:0c5b78adfbf7762415433f5515cd5c9e762339e23369dbe8000d84a4bf4ab3af"},

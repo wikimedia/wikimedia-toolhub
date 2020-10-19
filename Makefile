@@ -22,8 +22,8 @@ PIPELINE_DIR := $(PROJECT_DIR)/.pipeline
 BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
 DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile
-DEFAULT_CONTAINERS := web db
-ALL_TESTS := test-python-lint test-python-unit test-nodejs-unit
+DEFAULT_CONTAINERS := web db nodejs
+ALL_TESTS := test-python-lint test-python-unit test-nodejs-lint test-nodejs-unit
 
 help:
 	@echo "Make targets:"
@@ -52,7 +52,7 @@ web-shell:  ## Get an interactive shell inside the web container
 .PHONY: web-shell
 
 nodejs-shell:  ## Get an interactive shell inside the nodejs container
-	docker-compose run --rm nodejs bash
+	docker-compose exec nodejs bash
 .PHONY: nodejs-shell
 
 tail:  ## Tail logs from the docker-compose stack
@@ -98,9 +98,14 @@ test-python-unit:  ## Run unit tests for Python code
 	"
 .PHONY: test-python-unit
 
+test-nodejs-lint:  ## Run linter checks for nodejs code
+	@echo "== Lint Nodejs =="
+	docker-compose exec nodejs npm run-script lint
+.PHONY: test-nodejs-lint
+
 test-nodejs-unit:  ## Run unit tests for nodejs code
 	@echo "== Test Nodejs =="
-	docker-compose run --rm nodejs sh -c "npm install && npm test"
+	docker-compose exec nodejs npm run-script test
 .PHONY: test-nodejs-unit
 
 docs:  ## Build sphinx docs

@@ -9,7 +9,7 @@ USER "somebody"
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
 ENV PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
-COPY --chown=65533:65533 ["package.json", "./"]
+COPY --chown=65533:65533 ["package.json", "package-lock.json", "./"]
 RUN npm install
 COPY --chown=65533:65533 [".", "."]
 ENV NODE_ENV="development"

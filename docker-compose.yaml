@@ -9,7 +9,7 @@ services:
     user: somebody
     working_dir: /srv/app
     command: >
-      /srv/dockerize/bin/dockerize -wait tcp://db:3306
+      /srv/dockerize/bin/dockerize -wait tcp://db:3306 -wait tcp://nodejs:8001
       poetry run
       python3 manage.py runserver 0.0.0.0:8000
     environment:
@@ -40,6 +40,7 @@ services:
     restart: always
     depends_on:
       - db
+      - nodejs
 
   db:
     image: mariadb:10.4
@@ -65,11 +66,19 @@ services:
     image: "toolhub:dev-nodejs"
     user: somebody
     working_dir: /srv/app
+    command:
+      - bash
+      - -c
+      - >-
+        npm install &&
+        npm run serve:vue
     volumes:
       - type: bind
         source: .
         target: /srv/app
         consistency: cached
+    ports:
+      - "${TOOLHUB_FRONTEND_PORT:-8001}:8001"
 
 volumes:
   dbdata:

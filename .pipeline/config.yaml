@@ -2,9 +2,6 @@ pipelines:
   test:
     blubberfile: blubber.yaml
     stages:
-      - name: built-python
-        build: dev-python
-
       - name: lint-python
         build: lint-python
 
@@ -18,11 +15,8 @@ pipelines:
             WIKIMEDIA_OAUTH2_KEY: NOTAREALOAUTHKEY
             WIKIMEDIA_OAUTH2_SECRET: NOTAREALOAUTHSECRET
 
-      - name: built-nodejs
-        build: dev-nodejs
-
-#     - name: lint-nodejs
-#       build: lint-nodejs
+      - name: lint-nodejs
+        build: lint-nodejs
 
       - name: test-nodejs
         build: test-nodejs
