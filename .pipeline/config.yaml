@@ -2,27 +2,27 @@ pipelines:
   test:
     blubberfile: blubber.yaml
     stages:
-      - name: build-python
+      - name: built-python
         build: dev-python
-        run: false
+
       - name: lint-python
+        build: lint-python
+
       - name: test-python
+        build: test-python
         run:
           env:
-            DJANGO_SECRET_KEY: dummy value for use in tests
+            DJANGO_SECRET_KEY: NOTAREALSECRET
             DB_ENGINE: django.db.backends.sqlite3
             DB_NAME: ":memory:"
+            WIKIMEDIA_OAUTH2_KEY: NOTAREALOAUTHKEY
+            WIKIMEDIA_OAUTH2_SECRET: NOTAREALOAUTHSECRET
 
-      - name: build-npm
-        build: npm-run
-        run: false
-      - name: test-npm
-        run:
-          image: '${build-npm.imageID}'
-          arguments:
-            - test
+      - name: built-nodejs
+        build: dev-nodejs
 
-    execution:
-      - [build-python, lint-python]
-      - [build-python, test-python]
-      - [build-npm, test-npm]
+#     - name: lint-nodejs
+#       build: lint-nodejs
+
+      - name: test-nodejs
+        build: test-nodejs

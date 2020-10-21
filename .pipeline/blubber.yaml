@@ -42,6 +42,8 @@ variants:
       - from: local
         source: .
         destination: .
+    entrypoint:
+      - /bin/bash
 
   lint-python:
     includes:
@@ -62,7 +64,6 @@ variants:
       - sh
       - -c
       - >-
-        poetry run coverage erase &&
         poetry run coverage run --branch manage.py test &&
         poetry run coverage report
 
@@ -81,13 +82,24 @@ variants:
       - from: local
         source: .
         destination: .
+    entrypoint:
+      - /bin/bash
 
-  npm-run:
+  lint-nodejs:
     includes:
       - dev-nodejs
     entrypoint:
       - npm
       - run-script
+      - lint
+
+  test-nodejs:
+    includes:
+      - dev-nodejs
+    entrypoint:
+      - npm
+      - run-script
+      - test
 
   local-python:
     includes:
