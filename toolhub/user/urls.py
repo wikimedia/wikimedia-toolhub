@@ -15,14 +15,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.contrib import admin
-from django.urls import include
 from django.urls import path
 
+from . import views
 
+app_name = "user"  # noqa: C0103
 urlpatterns = [
-    path("", include("vue.urls", namespace="vue")),
-    path("admin/", admin.site.urls),
-    path("social/", include("social_django.urls", namespace="social")),
-    path("user/", include("toolhub.user.urls", namespace="user")),
+    path("info/", views.info, name="info"),
+    path("login/", views.login, name="login"),
+    path("logout/", views.logout, name="logout"),
 ]

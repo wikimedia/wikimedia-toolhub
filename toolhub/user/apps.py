@@ -15,14 +15,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.contrib import admin
-from django.urls import include
-from django.urls import path
+from django.apps import AppConfig
 
 
-urlpatterns = [
-    path("", include("vue.urls", namespace="vue")),
-    path("admin/", admin.site.urls),
-    path("social/", include("social_django.urls", namespace="social")),
-    path("user/", include("toolhub.user.urls", namespace="user")),
-]
+class UserConfig(AppConfig):
+    """Metadata class for app."""
+
+    name = "user"

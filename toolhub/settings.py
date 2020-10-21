@@ -130,6 +130,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "social_django",
     "webpack_loader",
+    "toolhub.user",
     "vue",
 ]
 
@@ -247,6 +248,7 @@ SOCIAL_AUTH_PIPELINE = (
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = False
 SOCIAL_AUTH_SLUGIFY_USERNAMES = False
 SOCIAL_AUTH_CLEAN_USERNAMES = False
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/"
 
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
