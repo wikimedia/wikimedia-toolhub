@@ -26,4 +26,3 @@ class VueConfigTest(SimpleTestCase):
     def test_apps(self):
         """Assert the app has a name."""
         self.assertEqual(VueConfig.name, "vue")
-
