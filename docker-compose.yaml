@@ -9,7 +9,7 @@ services:
     user: somebody
     working_dir: /srv/app
     command: >
-      /srv/dockerize/bin/dockerize -wait tcp://db:3306 -wait tcp://nodejs:8001
+      /srv/dockerize/bin/dockerize -wait tcp://db:3306
       poetry run
       python3 manage.py runserver 0.0.0.0:8000
     environment:
