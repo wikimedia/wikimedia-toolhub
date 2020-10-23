@@ -23,7 +23,7 @@ BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
 DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile
 DEFAULT_CONTAINERS := web db nodejs
-ALL_TESTS := test-python-lint test-python-unit test-nodejs-lint test-nodejs-unit
+ALL_TESTS := test-python test-nodejs-lint test-nodejs-unit
 
 help:
 	@echo "Make targets:"
@@ -76,6 +76,9 @@ init: start migrate make-admin-user  ## Initialize docker-compose stack
 test: $(ALL_TESTS) ## Run tests inside the docker-compose stack
 .PHONY: test
 
+test-python: test-python-lint test-python-unit
+.PHONY: test-python
+
 test-python-lint:  ## Run linter checks for Python code
 	@echo "== Lint Python =="
 	docker-compose exec web sh -c " \
@@ -97,6 +100,9 @@ test-python-unit:  ## Run unit tests for Python code
 		&& poetry run coverage report \
 	"
 .PHONY: test-python-unit
+
+test-nodejs: test-nodejs-lint test-nodejs-unit
+.PHONY: test-nodejs
 
 test-nodejs-lint:  ## Run linter checks for nodejs code
 	@echo "== Lint Nodejs =="
