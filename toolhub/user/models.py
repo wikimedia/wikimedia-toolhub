@@ -15,12 +15,27 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.apps import AppConfig
+from django.contrib.auth.models import AbstractUser
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from .validators import MediaWikiUsernameValidator
 
-class UserConfig(AppConfig):
-    """Metadata class for app."""
 
-    name = "toolhub.user"
-    verbose_name = _("Toolhub user")
+class ToolhubUser(AbstractUser):
+    """Local user model for Toolhub."""
+
+    username_validator = MediaWikiUsernameValidator()
+
+    username = models.CharField(
+        _("username"),
+        max_length=255,
+        unique=True,
+        help_text=_("Required. 255 characters or fewer."),
+        validators=[username_validator],
+        error_messages={
+            "unique": _("A user with that username already exists."),
+        },
+    )
+    first_name = None
+    last_name = None

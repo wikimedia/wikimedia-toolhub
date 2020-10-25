@@ -15,12 +15,18 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.apps import AppConfig
+from django.core import validators
+from django.utils.deconstruct import deconstructible
 from django.utils.translation import gettext_lazy as _
 
 
-class UserConfig(AppConfig):
-    """Metadata class for app."""
+@deconstructible  # noqa: R0903 "Too few public methods"
+class MediaWikiUsernameValidator(validators.RegexValidator):
+    """Validate a MediaWiki style username."""
 
-    name = "toolhub.user"
-    verbose_name = _("Toolhub user")
+    regex = r"^[^@:]+$"
+    message = _(
+        "Enter a valid username. "
+        "The characters `@` and `:` are not permitted."
+    )
+    flags = 0

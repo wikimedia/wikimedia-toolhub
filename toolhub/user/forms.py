@@ -15,12 +15,27 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.apps import AppConfig
-from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
+
+from .models import ToolhubUser
 
 
-class UserConfig(AppConfig):
-    """Metadata class for app."""
+class ToolhubUserCreationForm(UserCreationForm):
+    """Form for creating a new ToolhubUser."""
 
-    name = "toolhub.user"
-    verbose_name = _("Toolhub user")
+    class Meta:
+        """Configure form."""
+
+        model = ToolhubUser
+        fields = ("username", "email")
+
+
+class ToolhubUserChangeForm(UserChangeForm):
+    """Form for updating an existing ToolhubUser."""
+
+    class Meta:
+        """Configure form."""
+
+        model = ToolhubUser
+        fields = "__all__"

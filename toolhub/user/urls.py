@@ -19,7 +19,7 @@ from django.urls import path
 
 from . import views
 
-app_name = "user"  # noqa: C0103
+app_name = "toolhub.user"
 urlpatterns = [
     path("info/", views.info, name="info"),
     path("login/", views.login, name="login"),
