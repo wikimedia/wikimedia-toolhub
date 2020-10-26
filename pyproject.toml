@@ -21,6 +21,9 @@ django-log-request-id = "^1.6.0"
 mysqlclient = "^2.0.1"
 social-auth-app-django = "^4.0.0"
 django-webpack-loader = "^0.7.0"
+djangorestframework = "^3.12.1"
+PyYAML = "^5.3.1"
+uritemplate = "^3.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -43,9 +46,17 @@ sphinx_rtd_theme = "^0.5.0"
 coverage = {extras = ["toml"], version = "^5.3"}
 httpretty = "^1.0.2"
 unittest2 = "^1.1.0"
+pylint-django = "^2.3.0"
 
 [tool.flakehell]
-exclude = [".git", "__pycache__", "manage.py", "docs", "node_modules",]
+exclude = [
+    ".git",
+    "__pycache__",
+    "docs",
+    "manage.py",
+    "migrations",
+    "node_modules",
+]
 format = "grouped"
 max_line_length = 79
 show_source = true
@@ -55,7 +66,12 @@ show_source = true
 flake8-docstrings = ["+*", "-D100"]
 pycodestyle = ["+*", "-E501"]
 pyflakes = ["+*"]
-pylint = ["+*", "-C0114", "-W0511"]
+pylint = ["+*", "-C0114", "-W0511", "-R0901"]
+
+[tool.pylint]
+
+[tool.pylint.master]
+load-plugins = "pylint_django"
 
 [tool.black]
 line-length = 79

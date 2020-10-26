@@ -15,15 +15,25 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.contrib import admin
-from django.urls import include
-from django.urls import path
+from rest_framework import routers as drf_routers
+
+from . import views
 
 
-urlpatterns = [
-    path("", include("vue.urls", namespace="vue")),
-    path("admin/", admin.site.urls),
-    path("api/", include("toolhub.api.urls", namespace="api")),
-    path("social/", include("social_django.urls", namespace="social")),
-    path("user/", include("toolhub.user.urls", namespace="user")),
-]
+class ToolhubApiRootView(drf_routers.APIRootView):
+    """Welcome to the API for Toolhub.
+
+    This API provides access to Toolhub content and data in machine-readable
+    formats.
+    """
+
+
+class Router(drf_routers.DefaultRouter):
+    """Custom router."""
+
+    APIRootView = ToolhubApiRootView
+
+
+v1_router = Router()
+v1_router.register("users", views.UserViewSet)
+v1_router.register("groups", views.GroupViewSet)

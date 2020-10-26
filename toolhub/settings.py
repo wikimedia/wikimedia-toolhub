@@ -128,8 +128,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # ==== Third-party apps ====
+    "rest_framework",
     "social_django",
     "webpack_loader",
+    # ==== Local apps ====
+    "toolhub.api",
     "toolhub.user",
     "vue",
 ]
@@ -303,4 +307,11 @@ WEBPACK_LOADER = {
         "BUNDLE_DIR_NAME": "bundles/",
         "STATS_FILE": os.path.join(VUE_DIR, "static/vue/webpack-stats.json"),
     },
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.NamespaceVersioning",
+    "ALLOWED_VERSIONS": ["v1"],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
 }

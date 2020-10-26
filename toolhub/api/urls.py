@@ -15,15 +15,15 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.contrib import admin
 from django.urls import include
 from django.urls import path
+from django.views.generic import RedirectView
+
+from . import routers
 
 
+app_name = "toolhub.api"
 urlpatterns = [
-    path("", include("vue.urls", namespace="vue")),
-    path("admin/", admin.site.urls),
-    path("api/", include("toolhub.api.urls", namespace="api")),
-    path("social/", include("social_django.urls", namespace="social")),
-    path("user/", include("toolhub.user.urls", namespace="user")),
+    path("", RedirectView.as_view(pattern_name="toolhub.api:v1:api-root")),
+    path("v1/", include((routers.v1_router.urls, app_name), namespace="v1")),
 ]
