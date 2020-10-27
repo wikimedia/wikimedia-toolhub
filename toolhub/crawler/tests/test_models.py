@@ -15,16 +15,20 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.urls import include
-from django.urls import path
+from django.contrib.auth import get_user_model
+from django.test import TestCase
 
-from drf_spectacular.views import SpectacularAPIView
-
-from .routers import router
+from ..models import CrawledUrl
 
 
-app_name = "toolhub.api"
-urlpatterns = [
-    path(".schema", SpectacularAPIView.as_view(), name="schema"),
-    path("", include(router.urls)),
-]
+class CrawledUrlTestCase(TestCase):
+    """CrawledUrl tests."""
+
+    def test_str(self):
+        """A CrawledUrl's string representation is the url."""
+        user = get_user_model().objects.create_user("testing")
+        url = CrawledUrl.objects.create(
+            url="https://example.org/toolinfo.json",
+            created_by=user,
+        )
+        self.assertEqual(str(url), url.url)

@@ -24,6 +24,8 @@ django-webpack-loader = "^0.7.0"
 djangorestframework = "^3.12.1"
 PyYAML = "^5.3.1"
 uritemplate = "^3.0.1"
+drf-spectacular = "^0.10.0"
+django-filter = "^2.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -63,7 +65,7 @@ show_source = true
 
 [tool.flakehell.plugins]
 "flake8-*" = ["+*"]
-flake8-docstrings = ["+*", "-D100"]
+flake8-docstrings = ["+*", "-D100", "-D105"]
 pycodestyle = ["+*", "-E501"]
 pyflakes = ["+*"]
 pylint = ["+*", "-C0114", "-W0511", "-R0901"]
@@ -85,6 +87,7 @@ exclude = '''
   | _build
   | build
   | dist
+  | migrations
 )/
 '''
 

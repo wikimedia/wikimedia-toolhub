@@ -55,6 +55,10 @@ nodejs-shell:  ## Get an interactive shell inside the nodejs container
 	docker-compose exec nodejs bash
 .PHONY: nodejs-shell
 
+db-shell:  ## Get an interactive shell inside the db container
+	docker-compose exec db bash
+.PHONY: db-shell
+
 tail:  ## Tail logs from the docker-compose stack
 	docker-compose logs -f
 .PHONY: tail
@@ -89,12 +93,12 @@ test-python-lint:  ## Run linter checks for Python code
 	"
 .PHONY: test-python-lint
 
-test-python-unit: export DJANGO_SECRET_KEY = "this is not really a secret"
-test-python-unit: export DB_ENGINE = django.db.backends.sqlite3
-test-python-unit: export DB_NAME = :memory:
 test-python-unit:  ## Run unit tests for Python code
 	@echo "== Test Python =="
 	docker-compose exec web sh -c " \
+		export DJANGO_SECRET_KEY='this is not really a secret'; \
+		export DB_ENGINE='django.db.backends.sqlite3'; \
+		export DB_NAME=':memory:'; \
 		poetry run coverage erase \
 		&& poetry run coverage run --branch manage.py test \
 		&& poetry run coverage report \

@@ -15,16 +15,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.urls import include
-from django.urls import path
-
-from drf_spectacular.views import SpectacularAPIView
-
-from .routers import router
+from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
 
-app_name = "toolhub.api"
-urlpatterns = [
-    path(".schema", SpectacularAPIView.as_view(), name="schema"),
-    path("", include(router.urls)),
-]
+class CrawlerConfig(AppConfig):
+    """Metadata class for app."""
+
+    name = "toolhub.crawler"
+    verbose_name = _("Toolinfo web crawler")

@@ -129,11 +129,14 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # ==== Third-party apps ====
+    "django_filters",
+    "drf_spectacular",
     "rest_framework",
     "social_django",
     "webpack_loader",
     # ==== Local apps ====
     "toolhub.api",
+    "toolhub.crawler",
     "toolhub.user",
     "vue",
 ]
@@ -310,8 +313,25 @@ WEBPACK_LOADER = {
 }
 
 REST_FRAMEWORK = {
-    "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.NamespaceVersioning",
-    "ALLOWED_VERSIONS": ["v1"],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.OrderingFilter",
+    ],
+}
+
+SPECTACULAR_SETTINGS = {
+    "SCHEMA_PATH_PREFIX": r"/api",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "TITLE": "Toolhub API",
+    "LICENSE": {
+        "name": "GPL-3.0-or-later",
+        "url": "https://www.gnu.org/licenses/gpl-3.0.html",
+    },
+    "VERSION": "0.0.1",
 }

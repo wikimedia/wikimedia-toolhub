@@ -15,16 +15,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.urls import include
-from django.urls import path
+from django.test import SimpleTestCase
 
-from drf_spectacular.views import SpectacularAPIView
-
-from .routers import router
+from ..apps import CrawlerConfig
 
 
-app_name = "toolhub.api"
-urlpatterns = [
-    path(".schema", SpectacularAPIView.as_view(), name="schema"),
-    path("", include(router.urls)),
-]
+class CrawlerConfigTest(SimpleTestCase):
+    """Test nothing much really."""
+
+    def test_apps(self):
+        """Assert the app has a name."""
+        self.assertEqual(CrawlerConfig.name, "toolhub.crawler")

@@ -15,16 +15,18 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.urls import include
-from django.urls import path
+import django.contrib.admin
 
-from drf_spectacular.views import SpectacularAPIView
-
-from .routers import router
+from . import models
 
 
-app_name = "toolhub.api"
-urlpatterns = [
-    path(".schema", SpectacularAPIView.as_view(), name="schema"),
-    path("", include(router.urls)),
-]
+@django.contrib.admin.register(models.CrawledUrl)
+class CrawledUrlAdmin(django.contrib.admin.ModelAdmin):
+    """Register with admin."""
+
+    list_display = (
+        "url",
+        "created_by",
+    )
+    list_filter = ("created_by",)
+    ordering = ("url",)

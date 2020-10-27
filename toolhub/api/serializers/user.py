@@ -17,6 +17,9 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth.models import Group
 
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import extend_schema_field
+
 from rest_framework import serializers
 
 from social_django.models import UserSocialAuth
@@ -42,16 +45,18 @@ class UserSocialAuthSerializer(serializers.ModelSerializer):
         """Get a value from extra_data."""
         return obj.extra_data.get(field, default)
 
+    @extend_schema_field(OpenApiTypes.BOOL)
     def get_blocked(self, obj):
         """Get user's blocked status."""
         return self._from_extra_data(obj, "blocked", False)
 
+    @extend_schema_field(OpenApiTypes.INT)
     def get_registered(self, obj):
         """Get user's registration date."""
         return self._from_extra_data(obj, "registered")
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserDetailSerializer(serializers.ModelSerializer):
     """Describe API output for a User."""
 
     social_auth = UserSocialAuthSerializer(many=True, read_only=True)
@@ -60,7 +65,18 @@ class UserSerializer(serializers.ModelSerializer):
         """Configure serializer."""
 
         model = ToolhubUser
-        fields = ["username", "groups", "date_joined", "social_auth"]
+        fields = ["id", "username", "groups", "date_joined", "social_auth"]
+        read_only_fields = fields
+
+
+class UserSerializer(serializers.ModelSerializer):
+    """Describe API output for a User."""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = ToolhubUser
+        fields = ["id", "username"]
         read_only_fields = fields
 
 

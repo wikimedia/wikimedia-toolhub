@@ -17,7 +17,8 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from rest_framework import routers as drf_routers
 
-from . import views
+from .views import crawler as crawler_views
+from .views import user as user_views
 
 
 class ToolhubApiRootView(drf_routers.APIRootView):
@@ -34,6 +35,7 @@ class Router(drf_routers.DefaultRouter):
     APIRootView = ToolhubApiRootView
 
 
-v1_router = Router()
-v1_router.register("users", views.UserViewSet)
-v1_router.register("groups", views.GroupViewSet)
+router = Router()
+router.register("users", user_views.UserViewSet)
+router.register("groups", user_views.GroupViewSet)
+router.register("crawler/urls", crawler_views.UrlViewSet)
