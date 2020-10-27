@@ -13,11 +13,10 @@
       <v-app-bar-nav-icon
         v-if="$vuetify.breakpoint.smAndDown"
         @click.stop="drawer = !drawer"
-      >
-      </v-app-bar-nav-icon>
+      />
       <v-toolbar-title>Toolhub</v-toolbar-title>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
@@ -27,11 +26,11 @@
     </v-app-bar>
 
     <v-navigation-drawer
+      v-model="drawer"
       app
       color="secondary"
       dark
       clipped
-      v-model="drawer"
       :permanent="$vuetify.breakpoint.mdAndUp"
       :expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer"
     >
@@ -46,10 +45,10 @@
           link
         >
           <v-list-item-icon>
-            <v-icon>{{route.meta.icon}}</v-icon>
+            <v-icon>{{ route.meta.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>{{route.title}}</v-list-item-title>
+            <v-list-item-title>{{ route.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -57,28 +56,27 @@
 
     <v-main>
       <v-container fluid>
-        <router-view/>
+        <router-view />
       </v-container>
     </v-main>
 
-    <v-footer app>
-    </v-footer>
+    <v-footer app />
   </v-app>
 </template>
 
 <script>
-import UserStatus from "@/components/user/Status"
+import UserStatus from '@/components/user/Status';
 export default {
-  components: {
-    UserStatus
-  },
-  created() {
-    this.$store.dispatch('getUserInfo');
-  },
-  data() {
-    return {
-      drawer: true
-    }
-  }
-}
+	components: {
+		UserStatus
+	},
+	data() {
+		return {
+			drawer: true
+		};
+	},
+	created() {
+		this.$store.dispatch( 'getUserInfo' );
+	}
+};
 </script>

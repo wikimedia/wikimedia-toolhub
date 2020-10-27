@@ -1,6 +1,7 @@
 <template>
-  <rapi-doc spec-url="/api/.schema"
+  <rapi-doc
     id="apidoc"
+    spec-url="/api/.schema"
     class="no-gutters flex-wrap flex-column fill-height"
     allow-api-list-style-selection="false"
     allow-authentication="false"
@@ -15,16 +16,15 @@
     show-header="false"
     theme="light"
     use-path-in-nav-bar="true"
-  >
-  </rapi-doc>
+  />
 </template>
 
 <script>
 import 'rapidoc';
 
 export default {
-  name: "ApiDocs"
-}
+	name: 'ApiDocs'
+};
 </script>
 
 <style>

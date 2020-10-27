@@ -19,6 +19,6 @@
 
 <script>
 export default {
-  name: "UserStatus",
+	name: 'UserStatus'
 };
 </script>
