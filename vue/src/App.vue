@@ -5,8 +5,16 @@
       color="primary"
       dark
       dense
+      flat
+      clipped-left
+      clipped-right
+      tile
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        v-if="$vuetify.breakpoint.smAndDown"
+        @click.stop="drawer = !drawer"
+      >
+      </v-app-bar-nav-icon>
       <v-toolbar-title>Toolhub</v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -16,24 +24,45 @@
       </v-btn>
 
       <UserStatus />
-
-      <template v-slot:extension>
-      <v-tabs
-        align-with-title
-      >
-        <v-tabs-slider color="secondary"></v-tabs-slider>
-        <v-tab to="/">Home</v-tab>
-        <v-tab to="/about">About</v-tab>
-        </v-tabs>
-      </template>
-
     </v-app-bar>
 
+    <v-navigation-drawer
+      app
+      color="secondary"
+      dark
+      clipped
+      v-model="drawer"
+      :permanent="$vuetify.breakpoint.mdAndUp"
+      :expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer"
+    >
+      <v-list
+        dense
+        nav
+      >
+        <v-list-item
+          v-for="route in this.$router.options.routes"
+          :key="route.name"
+          :to="route.path"
+          link
+        >
+          <v-list-item-icon>
+            <v-icon>{{route.meta.icon}}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>{{route.title}}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
     <v-main>
-      <v-container>
+      <v-container fluid>
         <router-view/>
       </v-container>
     </v-main>
+
+    <v-footer app>
+    </v-footer>
   </v-app>
 </template>
 
@@ -44,8 +73,12 @@ export default {
     UserStatus
   },
   created() {
-    console.log("App.vue created() called");
     this.$store.dispatch('getUserInfo');
+  },
+  data() {
+    return {
+      drawer: true
+    }
   }
 }
 </script>
