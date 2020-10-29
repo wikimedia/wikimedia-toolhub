@@ -25,6 +25,15 @@ const routes = [
     meta: {
       icon: 'mdi-information-outline'
     }
+  },
+  {
+    name: 'api-docs',
+    title: 'API docs',
+    path: '/api-docs',
+    component: () => import(/* webpackChunkName: "apidoc" */ '../views/ApiDocs.vue'),
+    meta: {
+      icon: 'mdi-api'
+    }
   }
 ]
 
