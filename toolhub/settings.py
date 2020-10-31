@@ -283,6 +283,10 @@ STATICFILES_STORAGE = (
     "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 )
 
+LOCALE_PATHS = [
+    os.path.join(TOOLHUB_DIR, "locale"),
+]
+
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_SSL_REDIRECT = env.bool("REQUIRE_HTTPS", default=False)

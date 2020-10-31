@@ -122,6 +122,14 @@ schemas:  ## Create/update versioned json schema documents
 	docker-compose exec nodejs npm run-script schemas:generate
 .PHONY: schemas
 
+messages:  ## Create/update translatable messages
+	@echo "== Make messages =="
+	docker-compose exec web sh -c " \
+		poetry run ./manage.py makemessages -l en -i node_modules \
+		&& poetry run ./manage.py compilemessages \
+	"
+.PHONY: messages
+
 docs:  ## Build sphinx docs
 	docker-compose exec web sh -c " \
 		poetry run sphinx-apidoc -f -o docs/source toolhub \
@@ -130,7 +138,7 @@ docs:  ## Build sphinx docs
 	"
 .PHONY: docs
 
-artifacts: schemas docs  ## Generate code & doc artifacts
+artifacts: schemas messages docs  ## Generate code & doc artifacts
 .PHONY: artifacts
 
 clean:  ## Clean up Docker images and containers

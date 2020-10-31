@@ -16,6 +16,7 @@ variants:
       packages:
         - build-essential
         - default-libmysqlclient-dev
+        - gettext
         # The python3-venv package is needed to supply the `ensurepip`
         # command. Having ensurepip available is a requirement of Poetry.
         - python3-venv  # FIXME: should be in the base image OR added by Blubber

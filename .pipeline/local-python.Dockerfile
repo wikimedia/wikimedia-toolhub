@@ -19,7 +19,7 @@ FROM docker-registry.wikimedia.org/python3-build-buster AS local-python
 USER "root"
 ENV HOME="/root"
 ENV DEBIAN_FRONTEND="noninteractive"
-RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "python3-venv" && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "python3-venv" && rm -rf /var/lib/apt/lists/*
 RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools" "wheel" "tox"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
 RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.2"

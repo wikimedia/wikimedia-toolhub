@@ -1,0 +1,119 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-01 03:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: toolhub/api/apps.py:26
+msgid "Toolhub API"
+msgstr ""
+
+#: toolhub/api/views/crawler.py:35
+msgid "Manage URLs to crawl."
+msgstr ""
+
+#: toolhub/api/views/crawler.py:64
+msgid "Get URLs created by the current user."
+msgstr ""
+
+#: toolhub/api/views/crawler.py:82
+msgid "Register a new URL for crawling."
+msgstr ""
+
+#: toolhub/api/views/crawler.py:89
+msgid "Info for a specific crawled URL."
+msgstr ""
+
+#: toolhub/api/views/crawler.py:96 toolhub/api/views/crawler.py:103
+msgid "Update a specific URL."
+msgstr ""
+
+#: toolhub/api/views/crawler.py:110
+msgid "Unregister an URL."
+msgstr ""
+
+#: toolhub/api/views/crawler.py:118
+msgid "List all crawled URLs."
+msgstr ""
+
+#: toolhub/api/views/user.py:33
+msgid "View users."
+msgstr ""
+
+#: toolhub/api/views/user.py:49
+msgid "List all active users."
+msgstr ""
+
+#: toolhub/api/views/user.py:56
+msgid "Info for a specific user."
+msgstr ""
+
+#: toolhub/api/views/user.py:63
+msgid "View user groups."
+msgstr ""
+
+#: toolhub/api/views/user.py:74
+msgid "List all user groups."
+msgstr ""
+
+#: toolhub/api/views/user.py:81
+msgid "Info for a user group."
+msgstr ""
+
+#: toolhub/crawler/apps.py:26
+msgid "Toolinfo web crawler"
+msgstr ""
+
+#: toolhub/user/admin.py:37
+msgid "Personal info"
+msgstr ""
+
+#: toolhub/user/admin.py:39
+msgid "Permissions"
+msgstr ""
+
+#: toolhub/user/admin.py:50
+msgid "Important dates"
+msgstr ""
+
+#: toolhub/user/apps.py:26
+msgid "Toolhub user"
+msgstr ""
+
+#: toolhub/user/models.py:31
+msgid "username"
+msgstr ""
+
+#: toolhub/user/models.py:34
+msgid "Required. 255 characters or fewer."
+msgstr ""
+
+#: toolhub/user/models.py:37
+msgid "A user with that username already exists."
+msgstr ""
+
+#: toolhub/user/validators.py:29
+msgid "Enter a valid username. The characters `@` and `:` are not permitted."
+msgstr ""
+
+#: vue/templates/vue/base.html:15
+msgid "Toolhub does not work properly without JavaScript enabled."
+msgstr ""
+
+#: vue/templates/vue/main.html:6
+msgid "Toolhub - a catalog of Wikimedia tools"
+msgstr ""
