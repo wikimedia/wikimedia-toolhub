@@ -21,12 +21,14 @@ import os
 import sys
 
 import django
+
 import sphinx_rtd_theme
 
 
-sys.path.insert(0, os.path.abspath("../"))
-sys.path.insert(0, os.path.abspath("../toolinfo"))
-os.environ["DJANGO_SETTINGS_MODULE"] = "toolhub.settings"
+DOC_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(DOC_DIR)
+sys.path.append(BASE_DIR)
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "toolhub.settings")
 django.setup()
 
 
@@ -34,6 +36,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
+    "sphinx.ext.napoleon",
     "sphinxcontrib_django",
 ]
 

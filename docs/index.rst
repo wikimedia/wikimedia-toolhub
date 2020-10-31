@@ -6,5 +6,5 @@
 
    CONTRIBUTING.rst
    toolinfo.rst
-   packages.rst
+   source/toolhub.rst
    CODE_OF_CONDUCT.rst
