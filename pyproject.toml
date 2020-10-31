@@ -68,7 +68,14 @@ show_source = true
 flake8-docstrings = ["+*", "-D100", "-D105"]
 pycodestyle = ["+*", "-E501"]
 pyflakes = ["+*"]
-pylint = ["+*", "-C0114", "-W0511", "-R0901"]
+pylint = [
+    "+*",
+    "-C*",
+    "-E1101",
+    "-R0901",
+    "-W0235",
+    "-W0511",
+]
 
 [tool.pylint]
 
