@@ -274,7 +274,11 @@ STATIC_URL = "/static/"
 STATIC_ROOT = env.str(
     "STATIC_ROOT", default=os.path.join(BASE_DIR, "staticfiles")
 )
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    ("jsonschema", os.path.join(BASE_DIR, "jsonschema")),
+    ("docs", os.path.join(BASE_DIR, "docs/_build/html")),
+)
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
