@@ -1,67 +1,67 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-      dense
-      flat
-      clipped-left
-      clipped-right
-      tile
-    >
-      <v-app-bar-nav-icon
-        v-if="$vuetify.breakpoint.smAndDown"
-        @click.stop="drawer = !drawer"
-      />
-      <v-toolbar-title>Toolhub</v-toolbar-title>
+	<v-app>
+		<v-app-bar
+			app
+			color="primary"
+			dark
+			dense
+			flat
+			clipped-left
+			clipped-right
+			tile
+		>
+			<v-app-bar-nav-icon
+				v-if="$vuetify.breakpoint.smAndDown"
+				@click.stop="drawer = !drawer"
+			/>
+			<v-toolbar-title>Toolhub</v-toolbar-title>
 
-      <v-spacer />
+			<v-spacer />
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+			<v-btn icon>
+				<v-icon>mdi-magnify</v-icon>
+			</v-btn>
 
-      <UserStatus />
-    </v-app-bar>
+			<UserStatus />
+		</v-app-bar>
 
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      color="secondary"
-      dark
-      clipped
-      :permanent="$vuetify.breakpoint.mdAndUp"
-      :expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer"
-    >
-      <v-list
-        dense
-        nav
-      >
-        <v-list-item
-          v-for="route in this.$router.options.routes"
-          :key="route.name"
-          :to="route.path"
-          link
-        >
-          <v-list-item-icon>
-            <v-icon>{{ route.meta.icon }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>{{ route.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+		<v-navigation-drawer
+			v-model="drawer"
+			app
+			color="secondary"
+			dark
+			clipped
+			:permanent="$vuetify.breakpoint.mdAndUp"
+			:expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer"
+		>
+			<v-list
+				dense
+				nav
+			>
+				<v-list-item
+					v-for="route in this.$router.options.routes"
+					:key="route.name"
+					:to="route.path"
+					link
+				>
+					<v-list-item-icon>
+						<v-icon>{{ route.meta.icon }}</v-icon>
+					</v-list-item-icon>
+					<v-list-item-content>
+						<v-list-item-title>{{ route.title }}</v-list-item-title>
+					</v-list-item-content>
+				</v-list-item>
+			</v-list>
+		</v-navigation-drawer>
 
-    <v-main>
-      <v-container fluid>
-        <router-view />
-      </v-container>
-    </v-main>
+		<v-main>
+			<v-container fluid>
+				<router-view />
+			</v-container>
+		</v-main>
 
-    <v-footer app />
-  </v-app>
+		<v-footer app />
+	</v-app>
 </template>
 
 <script>

@@ -27,7 +27,6 @@ export default new Vuex.Store( {
 	},
 	actions: {
 		getUserInfo( context ) {
-			console.log( 'store.index.actions.getUserInfo() called' );
 			fetch( '/user/info/', { credentials: 'same-origin' } )
 				.then( ( response ) => response.json() )
 				.then( ( data ) => ( context.commit( 'USER', data.user ) ) );

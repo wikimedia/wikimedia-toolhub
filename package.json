@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build:vue": "vue-cli-service build",
-    "lint": "eslint . & npm run lint:vue",
+    "lint": "npm run lint:eslint && npm run lint:vue",
+    "lint:eslint": "eslint .",
     "lint:vue": "vue-cli-service lint",
     "schemas:generate": "jsonschema-tools materialize-all",
     "serve:vue": "vue-cli-service serve",
@@ -53,32 +54,37 @@
   },
   "eslintConfig": {
     "root": true,
+    "extends": [ "wikimedia/client" ],
     "overrides": [
       {
-        "files": [
-          "*.js",
-          "*.vue"
-        ],
+        "files": [ "vue/src/**/*.{js,vue}" ],
         "extends": [
-          "wikimedia/client",
+          "wikimedia/vue-es6",
           "wikimedia/language/es6",
           "plugin:vue/recommended"
         ],
         "rules": {
-          "no-undef": "off"
+            "camelcase" : "off",
+            "no-undef" : "off"
         }
+      },
+      {
+        "files": [ "tests/jsonschema/**/*.js" ],
+        "extends": [
+            "wikimedia/server",
+            "wikimedia/mocha"
+        ]
+      },
+      {
+        "files": [ "vue.config.js" ],
+        "extends": [ "wikimedia/server" ]
       }
     ]
   },
   "eslintIgnore": [
-    ".eslintrc.js",
     "docs",
-    "toolhub",
     "bin",
-    "jsonschema",
-    ".pipeline",
-    "tests",
-    "vue.config.js"
+    ".pipeline"
   ],
   "browserslist": [
     "> 1%",
