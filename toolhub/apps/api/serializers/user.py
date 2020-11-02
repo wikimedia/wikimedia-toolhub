@@ -24,7 +24,7 @@ from rest_framework import serializers
 
 from social_django.models import UserSocialAuth
 
-from toolhub.user.models import ToolhubUser
+from toolhub.apps.user.models import ToolhubUser
 
 
 class UserSocialAuthSerializer(serializers.ModelSerializer):

@@ -15,12 +15,21 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.apps import AppConfig
-from django.utils.translation import gettext_lazy as _
+from rest_framework import serializers
+
+from toolhub.apps.crawler.models import CrawledUrl
+
+from .user import UserSerializer
 
 
-class UserConfig(AppConfig):
-    """Metadata class for app."""
+class CrawledUrlSerializer(serializers.ModelSerializer):
+    """Describe API output for a CrawledUrl."""
 
-    name = "toolhub.user"
-    verbose_name = _("Toolhub user")
+    created_by = UserSerializer(many=False, read_only=True)
+    modified_by = UserSerializer(many=False, read_only=True)
+
+    class Meta:
+        """Configure serializer."""
+
+        model = CrawledUrl
+        fields = "__all__"

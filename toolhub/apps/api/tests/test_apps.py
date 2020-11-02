@@ -25,4 +25,4 @@ class ApiConfigTest(SimpleTestCase):
 
     def test_apps(self):
         """Assert the app has a name."""
-        self.assertEqual(ApiConfig.name, "toolhub.api")
+        self.assertEqual(ApiConfig.name, "toolhub.apps.api")

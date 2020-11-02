@@ -3,7 +3,7 @@
 import django.contrib.auth.models
 from django.db import migrations, models
 import django.utils.timezone
-import toolhub.user.validators
+import toolhub.apps.user.validators
 
 
 class Migration(migrations.Migration):
@@ -86,7 +86,7 @@ class Migration(migrations.Migration):
                         max_length=255,
                         unique=True,
                         validators=[
-                            toolhub.user.validators.MediaWikiUsernameValidator()
+                            toolhub.apps.user.validators.MediaWikiUsernameValidator()
                         ],
                         verbose_name="username",
                     ),

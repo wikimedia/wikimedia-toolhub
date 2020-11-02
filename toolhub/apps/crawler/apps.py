@@ -15,14 +15,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.test import SimpleTestCase
+from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
-from .apps import UserConfig
 
+class CrawlerConfig(AppConfig):
+    """Metadata class for app."""
 
-class UserConfigTest(SimpleTestCase):
-    """Test nothing much really."""
-
-    def test_apps(self):
-        """Assert the app has a name."""
-        self.assertEqual(UserConfig.name, "toolhub.user")
+    name = "toolhub.apps.crawler"
+    verbose_name = _("Toolinfo web crawler")

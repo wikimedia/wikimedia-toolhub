@@ -23,7 +23,7 @@ from drf_spectacular.utils import extend_schema
 from rest_framework import permissions
 from rest_framework import viewsets
 
-from toolhub.user.models import ToolhubUser
+from toolhub.apps.user.models import ToolhubUser
 
 from ..decorators import doc
 from ..serializers.user import GroupSerializer

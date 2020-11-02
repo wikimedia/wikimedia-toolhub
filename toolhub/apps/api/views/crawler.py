@@ -23,7 +23,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from toolhub.crawler.models import CrawledUrl
+from toolhub.apps.crawler.models import CrawledUrl
 
 from ..decorators import doc
 from ..permissions import IsAdminOrIsSelf

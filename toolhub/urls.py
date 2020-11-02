@@ -24,9 +24,9 @@ from django.urls import path
 urlpatterns = [
     path("", include("vue.urls", namespace="vue")),
     path("admin/", admin.site.urls),
-    path("api/", include("toolhub.api.urls", namespace="api")),
+    path("api/", include("toolhub.apps.api.urls", namespace="api")),
     path("social/", include("social_django.urls", namespace="social")),
-    path("user/", include("toolhub.user.urls", namespace="user")),
+    path("user/", include("toolhub.apps.user.urls", namespace="user")),
 ]
 
 # Add development mode static files view

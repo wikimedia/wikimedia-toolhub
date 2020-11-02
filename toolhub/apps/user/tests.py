@@ -15,13 +15,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.urls import path
+from django.test import SimpleTestCase
 
-from . import views
+from .apps import UserConfig
 
-app_name = "toolhub.user"
-urlpatterns = [
-    path("info/", views.info, name="info"),
-    path("login/", views.login, name="login"),
-    path("logout/", views.logout, name="logout"),
-]
+
+class UserConfigTest(SimpleTestCase):
+    """Test nothing much really."""
+
+    def test_apps(self):
+        """Assert the app has a name."""
+        self.assertEqual(UserConfig.name, "toolhub.apps.user")

@@ -19,8 +19,8 @@ from django.apps import AppConfig
 from django.utils.translation import gettext_lazy as _
 
 
-class ApiConfig(AppConfig):
+class UserConfig(AppConfig):
     """Metadata class for app."""
 
-    name = "toolhub.api"
-    verbose_name = _("Toolhub API")
+    name = "toolhub.apps.user"
+    verbose_name = _("Toolhub user")

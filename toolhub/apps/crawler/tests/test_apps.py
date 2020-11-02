@@ -15,21 +15,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from rest_framework import serializers
+from django.test import SimpleTestCase
 
-from toolhub.crawler.models import CrawledUrl
-
-from .user import UserSerializer
+from ..apps import CrawlerConfig
 
 
-class CrawledUrlSerializer(serializers.ModelSerializer):
-    """Describe API output for a CrawledUrl."""
+class CrawlerConfigTest(SimpleTestCase):
+    """Test nothing much really."""
 
-    created_by = UserSerializer(many=False, read_only=True)
-    modified_by = UserSerializer(many=False, read_only=True)
-
-    class Meta:
-        """Configure serializer."""
-
-        model = CrawledUrl
-        fields = "__all__"
+    def test_apps(self):
+        """Assert the app has a name."""
+        self.assertEqual(CrawlerConfig.name, "toolhub.apps.crawler")

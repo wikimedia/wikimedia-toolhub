@@ -15,12 +15,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.apps import AppConfig
-from django.utils.translation import gettext_lazy as _
+from django.urls import path
 
+from . import views
 
-class CrawlerConfig(AppConfig):
-    """Metadata class for app."""
-
-    name = "toolhub.crawler"
-    verbose_name = _("Toolinfo web crawler")
+app_name = "toolhub.apps.user"
+urlpatterns = [
+    path("info/", views.info, name="info"),
+    path("login/", views.login, name="login"),
+    path("logout/", views.logout, name="logout"),
+]
