@@ -39,7 +39,7 @@
 							color="primary"
 							dark
 							width="100%"
-							@click="addToolFile(fileUrl)"
+							@click="registerUrl(fileUrl)"
 						>
 							{{ $vuetify.lang.t('$vuetify.add') }}
 							<v-icon
@@ -56,8 +56,18 @@
 						lg="10"
 						cols="12"
 					>
+						<v-alert
+							v-if="apiErrorMsg"
+							border="left"
+							type="error"
+							elevation="2"
+							width="100%"
+						>
+							{{ $vuetify.lang.t('$vuetify.apierror') }} {{ apiErrorMsg }}
+						</v-alert>
+
 						<v-simple-table
-							v-if="allToolFiles.length > 0"
+							v-if="userCreatedUrls.length > 0"
 							class="elevation-2"
 						>
 							<template #default>
@@ -73,21 +83,21 @@
 								</thead>
 								<tbody>
 									<tr
-										v-for="toolFileUrl in allToolFiles"
-										:key="toolFileUrl"
+										v-for="urlObj in userCreatedUrls"
+										:key="urlObj.url"
 									>
 										<td class="text-left">
 											<a
-												:href="toolFileUrl"
+												:href="urlObj.url"
 												target="_blank"
-											>{{ toolFileUrl }}</a>
+											>{{ urlObj.url }}</a>
 										</td>
 										<td class="text-right">
 											<v-btn
 												class="mt-2 mb-2"
 												color="error"
 												dark
-												@click="removeToolFile(toolFileUrl)"
+												@click="unregisterUrl(urlObj)"
 											>
 												<v-icon
 													dark
@@ -100,12 +110,14 @@
 								</tbody>
 							</template>
 						</v-simple-table>
+
 						<v-alert
 							v-if="$store.state.user.is_authenticated === true &&
-								allToolFiles.length === 0"
-							type="error"
+								userCreatedUrls.length === 0"
 							border="left"
+							type="info"
 							elevation="2"
+							color="primary"
 							width="100%"
 						>
 							{{ $vuetify.lang.t('$vuetify.nourlsfounderror') }}
@@ -159,7 +171,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
 	data() {
@@ -175,21 +187,25 @@ export default {
 		};
 	},
 	computed: {
-		...mapGetters( [ 'allToolFiles' ] )
+		...mapState( [ 'userCreatedUrls', 'apiErrorMsg' ] )
 	},
 	methods: {
-		addToolFile: function ( file ) {
+		registerUrl: function ( url ) {
 			if ( !this.fileUrl || !this.urlRegex.test( this.fileUrl ) ) {
 				this.$refs.url.validate( true );
 				return;
 			}
-			this.$store.dispatch( 'addToolFile', file );
+
+			this.$store.dispatch( 'registerUrl', url );
 			this.fileUrl = '';
 			this.$refs.url.reset();
 		},
-		removeToolFile: function ( file ) {
-			this.$store.dispatch( 'removeToolFile', file );
+		unregisterUrl: function ( urlObj ) {
+			this.$store.dispatch( 'unregisterUrl', urlObj );
 		}
+	},
+	mounted() {
+		this.$store.dispatch( 'getUrlsCreatedByUser' );
 	}
 };
 </script>
