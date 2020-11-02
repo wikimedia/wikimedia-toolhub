@@ -118,9 +118,16 @@ test-nodejs-unit:  ## Run unit tests for nodejs code
 	docker-compose exec nodejs npm run-script test
 .PHONY: test-nodejs-unit
 
+schemas:  ## Create/update versioned json schema documents
+	docker-compose exec nodejs npm run-script schemas:generate
+.PHONY: schemas
+
 docs:  ## Build sphinx docs
 	docker-compose exec web poetry run sphinx-build -W -b html docs/ docs/_build/html
 .PHONY: docs
+
+artifacts: schemas docs  ## Generate code & doc artifacts
+.PHONY: artifacts
 
 clean:  ## Clean up Docker images and containers
 	yes | docker image prune
