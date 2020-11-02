@@ -214,6 +214,7 @@ definitions:
   commons_file:
     $ref: "#/definitions/url"
     pattern: "^https://commons.wikimedia.org/wiki/File:.+\\..+$"
+    maxLength: 2047
   language:
     type: string
     maxLength: 255
