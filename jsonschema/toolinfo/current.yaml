@@ -203,42 +203,42 @@ definitions:
       - title
       - description
       - url
-    url:
-      type: string
-      maxLength: 2047
-      format: uri
-    wiki:
-      type: string
-      maxLength: 255
-      pattern: "^(\\*|(.*)?\\.?(mediawiki|wiktionary|wiki(pedia|quote|books|source|news|versity|data|voyage|tech|media|mediafoundation))\\.org)$"
-    commons_file:
-      $ref: "#/definitions/url"
-      pattern: "^https://commons.wikimedia.org/wiki/File:.+\\..+$"
-    language:
-      type: string
-      maxLength: 255
-      pattern: "^(x-.*|[A-Za-z]{2,3}(-.*)?)$"
-    url_multilingual:
-      type: object
-      properties:
-        language:
-          $ref: "#/definitions/language"
-        url:
-          $ref: "#/definitions/url"
-    url_multilingual_or_array:
-        oneOf:
-          - type: array
-            items:
-              $ref: "#/definitions/url_multilingual"
-          - $ref: "#/definitions/url"
-    string_or_string_array:
+  url:
+    type: string
+    maxLength: 2047
+    format: uri
+  wiki:
+    type: string
+    maxLength: 255
+    pattern: "^(\\*|(.*)?\\.?(mediawiki|wiktionary|wiki(pedia|quote|books|source|news|versity|data|voyage|tech|media|mediafoundation))\\.org)$"
+  commons_file:
+    $ref: "#/definitions/url"
+    pattern: "^https://commons.wikimedia.org/wiki/File:.+\\..+$"
+  language:
+    type: string
+    maxLength: 255
+    pattern: "^(x-.*|[A-Za-z]{2,3}(-.*)?)$"
+  url_multilingual:
+    type: object
+    properties:
+      language:
+        $ref: "#/definitions/language"
+      url:
+        $ref: "#/definitions/url"
+  url_multilingual_or_array:
       oneOf:
-        - type: string
-          maxLength: 255
         - type: array
           items:
-            type: string
-            maxLength: 255
+            $ref: "#/definitions/url_multilingual"
+        - $ref: "#/definitions/url"
+  string_or_string_array:
+    oneOf:
+      - type: string
+        maxLength: 255
+      - type: array
+        items:
+          type: string
+          maxLength: 255
 oneOf:
   - type: array
     items:

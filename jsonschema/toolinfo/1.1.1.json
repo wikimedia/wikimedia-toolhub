@@ -215,45 +215,45 @@
         "title",
         "description",
         "url"
-      ],
-      "wiki": {
-        "type": "string",
-        "pattern": "^(%5C*|(.*)?%5C.?(mediawiki|wiktionary|wiki(pedia|quote|books|source|news|versity|data|voyage|tech|media|mediafoundation))%5C.org)$"
-      },
-      "commons_file": {
-        "type": "string",
-        "format": "uri",
-        "pattern": "^https://commons.wikimedia.org/wiki/File:.+%5C..+$"
-      },
-      "language": {
-        "type": "string",
-        "pattern": "^(x-.*|[A-Za-z]{2,3}(-.*)?)$"
-      },
-      "url_multilingual": {
-        "type": "object",
-        "properties": {
-          "language": {
-            "$ref": "#/definitions/language"
-          },
-          "url": {
-            "type": "string",
-            "pattern": "uri"
+      ]
+    },
+    "wiki": {
+      "type": "string",
+      "pattern": "^(%5C*|(.*)?%5C.?(mediawiki|wiktionary|wiki(pedia|quote|books|source|news|versity|data|voyage|tech|media|mediafoundation))%5C.org)$"
+    },
+    "commons_file": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://commons.wikimedia.org/wiki/File:.+%5C..+$"
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^(x-.*|[A-Za-z]{2,3}(-.*)?)$"
+    },
+    "url_multilingual": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "$ref": "#/definitions/language"
+        },
+        "url": {
+          "type": "string",
+          "pattern": "uri"
+        }
+      }
+    },
+    "string_or_string_array": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
-      },
-      "string_or_string_array": {
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        ]
-      }
+      ]
     }
   },
   "oneOf": [
