@@ -21,10 +21,12 @@ from django.urls import path
 from drf_spectacular.views import SpectacularAPIView
 
 from .routers import router
+from .views.user import CurrentUserView
 
 
 app_name = "toolhub.api"
 urlpatterns = [
     path(".schema", SpectacularAPIView.as_view(), name="schema"),
+    path("user/", CurrentUserView.as_view(), name="user"),
     path("", include(router.urls)),
 ]

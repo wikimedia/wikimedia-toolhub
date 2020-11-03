@@ -16,6 +16,9 @@
 		show-header="false"
 		theme="light"
 		use-path-in-nav-bar="true"
+		api-key-name = "X-CSRFToken"
+		api-key-location = "header"
+		:api-key-value = "this.$store.state.user.csrf_token"
 	/>
 </template>
 

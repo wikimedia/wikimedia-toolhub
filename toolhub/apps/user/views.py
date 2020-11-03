@@ -16,7 +16,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth import logout as auth_logout
-from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 
@@ -30,18 +29,3 @@ def logout(request):
     """End the user's session."""
     auth_logout(request)
     return redirect(reverse("vue:main"))
-
-
-def info(request):
-    """Get information about the currently logged in user."""
-    user = request.user
-    user_info = {
-        "username": user.get_username(),
-        "email": getattr(user, "email", None),
-        "is_active": user.is_active,
-        "is_anonymous": user.is_anonymous,
-        "is_authenticated": user.is_authenticated,
-        "is_staff": user.is_staff,
-    }
-    # TODO: add social auth bits?
-    return JsonResponse({"user": user_info})

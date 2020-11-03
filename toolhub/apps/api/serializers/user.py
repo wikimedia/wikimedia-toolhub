@@ -27,6 +27,26 @@ from social_django.models import UserSocialAuth
 from toolhub.apps.user.models import ToolhubUser
 
 
+class CurrentUserSerializer(serializers.Serializer):
+    """Information about the current user."""
+
+    username = serializers.CharField(read_only=True)
+    email = serializers.CharField(read_only=True)
+    is_active = serializers.BooleanField(read_only=True)
+    is_anonymous = serializers.BooleanField(read_only=True)
+    is_authenticated = serializers.BooleanField(read_only=True)
+    is_staff = serializers.BooleanField(read_only=True)
+    csrf_token = serializers.CharField(read_only=True)
+
+    def create(self, validated_data):
+        """Operation not implemented."""
+        raise NotImplementedError("Data input only serializer.")
+
+    def upate(self, instance, validated_data):
+        """Operation not implemented."""
+        raise NotImplementedError("Data input only serializer.")
+
+
 class UserSocialAuthSerializer(serializers.ModelSerializer):
     """Describe API output for a UserSocialAuth."""
 

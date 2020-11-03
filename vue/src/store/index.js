@@ -6,7 +6,8 @@ Vue.use( Vuex );
 export default new Vuex.Store( {
 	state: {
 		user: {
-			is_authenticated: false
+			is_authenticated: false,
+			csrf_token: ''
 		},
 		toolFiles: []
 	},
@@ -27,9 +28,9 @@ export default new Vuex.Store( {
 	},
 	actions: {
 		getUserInfo( context ) {
-			fetch( '/user/info/', { credentials: 'same-origin' } )
+			fetch( '/api/user/', { credentials: 'same-origin' } )
 				.then( ( response ) => response.json() )
-				.then( ( data ) => ( context.commit( 'USER', data.user ) ) );
+				.then( ( data ) => ( context.commit( 'USER', data ) ) );
 		},
 		addToolFile( context, file ) {
 			context.commit( 'ADD_TOOL_FILE', file );

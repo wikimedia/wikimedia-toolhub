@@ -16,18 +16,47 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth.models import Group
+from django.middleware.csrf import get_token
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema
 
 from rest_framework import permissions
 from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from toolhub.apps.user.models import ToolhubUser
 
 from ..decorators import doc
+from ..serializers.user import CurrentUserSerializer
 from ..serializers.user import GroupSerializer
 from ..serializers.user import UserDetailSerializer
+
+
+class CurrentUserView(APIView):
+    """User info."""
+
+    @extend_schema(
+        description=_(
+            """Get information about the currently logged in user."""
+        ),
+        responses=CurrentUserSerializer,
+    )
+    def get(self, request):
+        """Get info."""
+        user = request.user
+        user_info = {
+            "username": user.get_username(),
+            "email": getattr(user, "email", None),
+            "is_active": user.is_active,
+            "is_anonymous": user.is_anonymous,
+            "is_authenticated": user.is_authenticated,
+            "is_staff": user.is_staff,
+            "csrf_token": get_token(request),
+        }
+        serializer = CurrentUserSerializer(user_info)
+        return Response(serializer.data)
 
 
 @doc(_("""View users."""))

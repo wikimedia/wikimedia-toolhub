@@ -21,7 +21,6 @@ from . import views
 
 app_name = "toolhub.apps.user"
 urlpatterns = [
-    path("info/", views.info, name="info"),
     path("login/", views.login, name="login"),
     path("logout/", views.logout, name="logout"),
 ]
