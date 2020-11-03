@@ -4,31 +4,13 @@
 			app
 			color="primary"
 			dark
-			dense
 			flat
-			clipped-left
-			clipped-right
 			tile
 		>
 			<v-app-bar-nav-icon
 				v-if="$vuetify.breakpoint.smAndDown"
 				@click.stop="drawer = !drawer"
 			/>
-			<v-app-bar-nav-icon
-				v-if="$vuetify.breakpoint.mdAndUp"
-			>
-				<v-img
-					src="/static/img/logo-solid-grey.svg"
-					alt="Toolforge logo"
-					aria-hidden="true"
-					class="ma-1"
-					aspect-ratio="1.0"
-					contain
-				/>
-			</v-app-bar-nav-icon>
-			<v-toolbar-title class="font-weight-bold">
-				Toolhub
-			</v-toolbar-title>
 
 			<v-spacer />
 			<SelectLocale />
@@ -40,10 +22,38 @@
 			app
 			color="secondary"
 			dark
-			clipped
+			:floating="true"
 			:permanent="$vuetify.breakpoint.mdAndUp"
 			:expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer"
 		>
+			<v-list-item class="ml-2 mt-1 pl-1">
+				<v-list-item-avatar
+					size="35"
+					class="mr-4"
+				>
+					<v-img
+						src="/static/img/logo-solid-white.svg"
+						alt="Toolforge logo"
+					/>
+				</v-list-item-avatar>
+
+				<v-list-item-content class="mt-1">
+					<v-list-item-title class="font-weight-bold">
+						Toolhub
+					</v-list-item-title>
+				</v-list-item-content>
+
+				<v-btn
+					v-if="$vuetify.breakpoint.smAndDown"
+					icon
+					@click.stop="drawer = !drawer"
+				>
+					<v-icon>mdi-chevron-left</v-icon>
+				</v-btn>
+			</v-list-item>
+
+			<v-divider class="mt-2" />
+
 			<v-list
 				dense
 				nav
