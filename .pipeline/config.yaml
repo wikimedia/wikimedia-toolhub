@@ -4,11 +4,15 @@ pipelines:
     stages:
       - name: lint-python
         build: lint-python
+        run:
+          env:
+            PIPELINE_RUNNING: 1
 
       - name: test-python
         build: test-python
         run:
           env:
+            PIPELINE_RUNNING: 1
             DJANGO_SECRET_KEY: NOTAREALSECRET
             DB_ENGINE: django.db.backends.sqlite3
             DB_NAME: ":memory:"
@@ -17,6 +21,12 @@ pipelines:
 
       - name: lint-nodejs
         build: lint-nodejs
+        run:
+          env:
+            PIPELINE_RUNNING: 1
 
       - name: test-nodejs
         build: test-nodejs
+        run:
+          env:
+            PIPELINE_RUNNING: 1
