@@ -3,6 +3,7 @@
 		v-if="$store.state.user.is_authenticated"
 		class="ml-2 text-none"
 		href="/user/logout/"
+		color="secondary"
 	>
 		{{ $store.state.user.username }}
 		<v-icon>mdi-logout</v-icon>
@@ -11,6 +12,7 @@
 		v-else
 		class="ml-2"
 		href="/user/login/"
+		color="secondary"
 	>
 		<v-icon>mdi-login</v-icon>
 		Login

@@ -14,13 +14,23 @@
 				v-if="$vuetify.breakpoint.smAndDown"
 				@click.stop="drawer = !drawer"
 			/>
-			<v-toolbar-title>Toolhub</v-toolbar-title>
+			<v-app-bar-nav-icon
+				v-if="$vuetify.breakpoint.mdAndUp"
+			>
+				<v-img
+					src="/static/img/logo-solid-grey.svg"
+					alt="Toolforge logo"
+					aria-hidden="true"
+					class="ma-1"
+					aspect-ratio="1.0"
+					contain
+				/>
+			</v-app-bar-nav-icon>
+			<v-toolbar-title class="font-weight-bold">
+				Toolhub
+			</v-toolbar-title>
 
 			<v-spacer />
-
-			<v-btn icon>
-				<v-icon>mdi-magnify</v-icon>
-			</v-btn>
 
 			<UserStatus />
 		</v-app-bar>
