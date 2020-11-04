@@ -15,14 +15,9 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.urls import path
+from django import shortcuts
 
-from .views import main
 
-app_name = "vue"  # noqa: C0103
-urlpatterns = [
-    path("", main, name="main"),
-    path("add-or-remove-tools", main, name="add-or-remove-tools"),
-    path("api-docs", main, name="api-docs"),
-    path("about", main, name="about"),
-]
+def main(request):
+    """Serve a page embedding the Vue frontend's main component."""
+    return shortcuts.render(request, "vue/main.html")
