@@ -10,6 +10,7 @@ export default new Vuex.Store( {
 			is_authenticated: false,
 			csrf_token: ''
 		},
+		numUserCreatedUrls: 0,
 		userCreatedUrls: [],
 		apiErrorMsg: ''
 	},
@@ -18,16 +19,19 @@ export default new Vuex.Store( {
 			state.user = user;
 		},
 		USER_CREATED_URLS( state, urls ) {
-			state.userCreatedUrls = urls;
+			state.userCreatedUrls = urls.results;
+			state.numUserCreatedUrls = urls.count;
 			state.apiErrorMsg = '';
 		},
 		REGISTER_URL( state, urlObj ) {
 			state.userCreatedUrls.push( urlObj );
+			state.numUserCreatedUrls += 1;
 			state.apiErrorMsg = '';
 		},
 		UNREGISTER_URL( state, url ) {
 			const index = state.userCreatedUrls.findIndex( ( obj ) => obj.url === url );
 			state.userCreatedUrls.splice( index, 1 );
+			state.numUserCreatedUrls -= 1;
 			state.apiErrorMsg = '';
 		},
 		ERROR( state, error ) {
@@ -78,13 +82,13 @@ export default new Vuex.Store( {
 			} )
 				.catch( ( err ) => context.commit( 'ERROR', err ) );
 		},
-		getUrlsCreatedByUser( context ) {
+		getUrlsCreatedByUser( context, page ) {
 			if ( !this.state.user.is_authenticated ) {
 				return;
 			}
 
 			const request = {
-				url: '/api/crawler/urls/self/',
+				url: '/api/crawler/urls/self/?page=' + page,
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
@@ -92,7 +96,7 @@ export default new Vuex.Store( {
 			};
 
 			SwaggerClient.http( request ).then( ( response ) => {
-				context.commit( 'USER_CREATED_URLS', response.body.results );
+				context.commit( 'USER_CREATED_URLS', response.body );
 			} )
 				.catch( ( err ) => context.commit( 'ERROR', err ) );
 		}

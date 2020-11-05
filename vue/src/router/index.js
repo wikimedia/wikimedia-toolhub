@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 
 Vue.use( VueRouter );
+Vue.use( require( 'vue-moment' ) );
 
 const routes = [
 		{

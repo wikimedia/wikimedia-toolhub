@@ -6,6 +6,7 @@
   "addremovetools-summary": "Tool developers submit a URL to a toolinfo.json file consisting of information about their tools in a JSON file format. This file is accessible on the web and adheres to a version 1.2.0 schema. We encourage tool developers to host their files in a git repository so that other volunteers can submit pull requests to it. Toolhub will then crawl the tool records from it and add them to the catalog. In the future, Toolhub will allow its users to submit their tools directly via the interface.",
   "addremovetools-summarytitle": "How this feature works",
   "jsonfileurl": "JSON File URL",
+  "lastmodified": "Last Modified",
   "nourlsfounderror": "No toolinfo.json file URL(s) found in the Toolhub system.",
   "removeurl": "Remove URL",
   "schemalink": "Schema link",

@@ -17,6 +17,7 @@
     "core-js": "^3.6.5",
     "swagger-client": "^3.12.0",
     "vue": "^2.6.11",
+    "vue-moment": "^4.1.0",
     "vue-router": "^3.2.0",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0"
@@ -55,30 +56,40 @@
   },
   "eslintConfig": {
     "root": true,
-    "extends": [ "wikimedia/client" ],
+    "extends": [
+      "wikimedia/client"
+    ],
     "overrides": [
       {
-        "files": [ "vue/src/**/*.{js,vue}" ],
+        "files": [
+          "vue/src/**/*.{js,vue}"
+        ],
         "extends": [
           "wikimedia/vue-es6",
           "wikimedia/language/es6",
           "plugin:vue/recommended"
         ],
         "rules": {
-            "camelcase" : "off",
-            "no-undef" : "off"
+          "camelcase": "off",
+          "no-undef": "off"
         }
       },
       {
-        "files": [ "tests/jsonschema/**/*.js" ],
+        "files": [
+          "tests/jsonschema/**/*.js"
+        ],
         "extends": [
-            "wikimedia/server",
-            "wikimedia/mocha"
+          "wikimedia/server",
+          "wikimedia/mocha"
         ]
       },
       {
-        "files": [ "vue.config.js" ],
-        "extends": [ "wikimedia/server" ]
+        "files": [
+          "vue.config.js"
+        ],
+        "extends": [
+          "wikimedia/server"
+        ]
       }
     ]
   },

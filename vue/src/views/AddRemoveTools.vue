@@ -66,54 +66,9 @@
 							{{ $vuetify.lang.t('$vuetify.apierror') }} {{ apiErrorMsg }}
 						</v-alert>
 
-						<v-simple-table
-							v-if="userCreatedUrls.length > 0"
-							class="elevation-2"
-						>
-							<template #default>
-								<thead>
-									<tr>
-										<th class="text-left">
-											{{ $vuetify.lang.t('$vuetify.jsonfileurl') }}
-										</th>
-										<th class="text-right">
-											{{ $vuetify.lang.t('$vuetify.removeurl') }}
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr
-										v-for="urlObj in userCreatedUrls"
-										:key="urlObj.url"
-									>
-										<td class="text-left">
-											<a
-												:href="urlObj.url"
-												target="_blank"
-											>{{ urlObj.url }}</a>
-										</td>
-										<td class="text-right">
-											<v-btn
-												class="mt-2 mb-2"
-												color="error"
-												dark
-												@click="unregisterUrl(urlObj)"
-											>
-												<v-icon
-													dark
-												>
-													mdi-delete-circle
-												</v-icon>
-											</v-btn>
-										</td>
-									</tr>
-								</tbody>
-							</template>
-						</v-simple-table>
-
 						<v-alert
 							v-if="$store.state.user.is_authenticated === true &&
-								userCreatedUrls.length === 0"
+								numUserCreatedUrls.length === 0"
 							border="left"
 							type="info"
 							elevation="2"
@@ -122,6 +77,50 @@
 						>
 							{{ $vuetify.lang.t('$vuetify.nourlsfounderror') }}
 						</v-alert>
+
+						<v-data-table
+							v-if="numUserCreatedUrls > 0"
+							:headers="headers"
+							:page="page"
+							:items-per-page="itemsPerPage"
+							:items="userCreatedUrls"
+							class="elevation-2"
+							hide-default-footer
+							mobile-breakpoint="0"
+							:custom-sort="sortByLastModifiedDate"
+						>
+							<template #[`item.jsonFileUrl`]="{ item }">
+								<a
+									:href="item.url"
+									target="_blank"
+								>{{ item.url }}</a>
+							</template>
+							<template #[`item.lastModified`]="{ item }">
+								{{ item.modified_date | moment( "MMM DD, YYYY" ) }}
+							</template>
+							<template #[`item.btnRemoveUrl`]="{ item }">
+								<v-btn
+									class="mt-2 mb-2"
+									color="error"
+									dark
+									@click="unregisterUrl(item)"
+								>
+									<v-icon
+										dark
+									>
+										mdi-delete-circle
+									</v-icon>
+								</v-btn>
+							</template>
+						</v-data-table>
+
+						<v-pagination
+							v-if="numUserCreatedUrls > 0"
+							v-model="page"
+							:length="Math.ceil( numUserCreatedUrls / itemsPerPage )"
+							class="ma-4"
+							@input="goToNextPage"
+						/>
 					</v-col>
 				</v-row>
 			</v-col> <!--end add or remove tools section-->
@@ -183,14 +182,37 @@ export default {
 			urlRules: [
 				( v ) => !!v || this.$vuetify.lang.t( '$vuetify.urlrequired' ),
 				( v ) => this.urlRegex.test( v ) || this.$vuetify.lang.t( '$vuetify.urlinvalid' )
+			],
+			page: 1,
+			itemsPerPage: 10,
+			headers: [
+				{
+					text: this.$vuetify.lang.t( '$vuetify.jsonfileurl' ),
+					value: 'jsonFileUrl',
+					sortable: false
+				},
+				{
+					text: this.$vuetify.lang.t( '$vuetify.lastmodified' ),
+					value: 'lastModified',
+					sortable: true
+				},
+				{
+					text: this.$vuetify.lang.t( '$vuetify.removeurl' ),
+					value: 'btnRemoveUrl',
+					sortable: false,
+					align: 'right'
+				}
 			]
 		};
 	},
 	computed: {
-		...mapState( [ 'userCreatedUrls', 'apiErrorMsg' ] )
+		...mapState( [ 'userCreatedUrls', 'apiErrorMsg', 'numUserCreatedUrls' ] ),
+		isUserAuthenticated() {
+			return this.$store.state.user.is_authenticated;
+		}
 	},
 	methods: {
-		registerUrl: function ( url ) {
+		registerUrl( url ) {
 			if ( !this.fileUrl || !this.urlRegex.test( this.fileUrl ) ) {
 				this.$refs.url.validate( true );
 				return;
@@ -200,12 +222,50 @@ export default {
 			this.fileUrl = '';
 			this.$refs.url.reset();
 		},
-		unregisterUrl: function ( urlObj ) {
+		unregisterUrl( urlObj ) {
 			this.$store.dispatch( 'unregisterUrl', urlObj );
+		},
+		goToNextPage( page ) {
+			this.page = page;
+			this.getUrlsCreatedByUser();
+		},
+		getUrlsCreatedByUser() {
+			this.$store.dispatch( 'getUrlsCreatedByUser', this.page );
+		},
+		sortByLastModifiedDate( items, index, isDesc ) {
+			items.sort( ( a, b ) => {
+				if ( index[ 0 ] === 'lastModified' ) {
+					if ( !isDesc[ 0 ] ) {
+						return new Date( b[ index ] ) - new Date( a[ index ] );
+					} else {
+						return new Date( a[ index ] ) - new Date( b[ index ] );
+					}
+				} else {
+					if ( typeof a[ index ] !== 'undefined' ) {
+						if ( !isDesc[ 0 ] ) {
+							return a[ index ].toLowerCase().localeCompare( b[ index ]
+								.toLowerCase() );
+						} else {
+							return b[ index ].toLowerCase().localeCompare( a[ index ]
+								.toLowerCase() );
+						}
+					}
+				}
+				return 0;
+			}
+			);
+			return items;
+		}
+	},
+	watch: {
+		isUserAuthenticated( value ) {
+			if ( value ) {
+				this.getUrlsCreatedByUser();
+			}
 		}
 	},
 	mounted() {
-		this.$store.dispatch( 'getUrlsCreatedByUser' );
+		this.getUrlsCreatedByUser();
 	}
 };
 </script>
