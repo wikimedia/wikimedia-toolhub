@@ -60,7 +60,7 @@ definitions:
         type: string
         maxLength: 255
         description: >-
-          The project ID on OpenHub. Given a URL https://openhub.net/p/foo,
+          The project ID on OpenHub. Given an URL of https://openhub.net/p/foo,
           the project ID is `foo`.
       url_alternates:
         type: array
@@ -144,7 +144,7 @@ definitions:
           languages, development frameworks, etc.) used in creating the tool.
       tool_type:
         type: string
-        maxLength: 255
+        maxLength: 32
         enum:
           - web app
           - desktop app
@@ -170,13 +170,14 @@ definitions:
           A link to the tool's user documentation, if available.
       feedback_url:
         $ref: "#/definitions/url_multilingual_or_array"
-        description: A link to the tool users can leave feedback.
+        description: >-
+          A link to location where the tool's user can leave feedback.
       privacy_policy_url:
         $ref: "#/definitions/url_multilingual_or_array"
         description: A link to the tool's privacy policy, if available.
       translate_url:
         $ref: "#/definitions/url"
-        description: A link to the tool translation interface.
+        description: A link to the tool's translation interface.
       bugtracker_url:
         $ref: "#/definitions/url"
         description: >-
@@ -185,7 +186,7 @@ definitions:
       $schema:
         type: string
         format: uri-reference
-        maxLength: 1024
+        maxLength: 32
         description: >-
           A URI identifying the jsonschema for this toolinfo.json record. This
           should be a short uri containing only the name and revision at the
@@ -196,7 +197,7 @@ definitions:
         $ref: "#/definitions/language"
         default: en
         description: >-
-          The language the toolinfo record is written if, if not the default
+          The language this toolinfo record is written if, if not the default
           value of English. Use ISO 639 language codes.
     required:
       - name
@@ -217,7 +218,7 @@ definitions:
     maxLength: 2047
   language:
     type: string
-    maxLength: 255
+    maxLength: 16
     pattern: "^(x-.*|[A-Za-z]{2,3}(-.*)?)$"
   url_multilingual:
     type: object

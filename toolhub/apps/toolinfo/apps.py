@@ -15,29 +15,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from rest_framework import routers as drf_routers
-
-import toolhub.apps.crawler.views as crawler_views
-import toolhub.apps.toolinfo.views as toolinfo_views
-import toolhub.apps.user.views as user_views
+from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
 
-class ToolhubApiRootView(drf_routers.APIRootView):
-    """Welcome to the API for Toolhub.
+class ToolinfoConfig(AppConfig):
+    """Metadata class for app."""
 
-    This API provides access to Toolhub content and data in machine-readable
-    formats.
-    """
-
-
-class Router(drf_routers.DefaultRouter):
-    """Custom router."""
-
-    APIRootView = ToolhubApiRootView
-
-
-router = Router()
-router.register("users", user_views.UserViewSet)
-router.register("groups", user_views.GroupViewSet)
-router.register("crawler/urls", crawler_views.UrlViewSet)
-router.register("tools", toolinfo_views.ToolViewSet)
+    name = "toolhub.apps.toolinfo"
+    verbose_name = _("Toolinfo")

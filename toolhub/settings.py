@@ -136,6 +136,7 @@ INSTALLED_APPS = [
     "webpack_loader",
     # ==== Local apps ====
     "toolhub.apps.crawler",
+    "toolhub.apps.toolinfo",
     "toolhub.apps.user",
     "vue",
 ]

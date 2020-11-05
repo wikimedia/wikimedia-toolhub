@@ -26,6 +26,7 @@ PyYAML = "^5.3.1"
 uritemplate = "^3.0.1"
 drf-spectacular = "^0.10.0"
 django-filter = "^2.4.0"
+jsonfield = "^3.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -111,6 +112,7 @@ source = ["toolhub", "vue"]
 omit = [
   "*/migrations/*",
   "toolhub/wsgi.py",
+  "toolhub/apps/toolinfo/schema2model.py",
 ]
 branch = true
 dynamic_context = "test_function"

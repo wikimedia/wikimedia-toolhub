@@ -15,29 +15,18 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from rest_framework import routers as drf_routers
+import django.contrib.admin
 
-import toolhub.apps.crawler.views as crawler_views
-import toolhub.apps.toolinfo.views as toolinfo_views
-import toolhub.apps.user.views as user_views
+from . import models
 
 
-class ToolhubApiRootView(drf_routers.APIRootView):
-    """Welcome to the API for Toolhub.
+@django.contrib.admin.register(models.Tool)
+class ToolAdmin(django.contrib.admin.ModelAdmin):
+    """Register with admin."""
 
-    This API provides access to Toolhub content and data in machine-readable
-    formats.
-    """
-
-
-class Router(drf_routers.DefaultRouter):
-    """Custom router."""
-
-    APIRootView = ToolhubApiRootView
-
-
-router = Router()
-router.register("users", user_views.UserViewSet)
-router.register("groups", user_views.GroupViewSet)
-router.register("crawler/urls", crawler_views.UrlViewSet)
-router.register("tools", toolinfo_views.ToolViewSet)
+    list_display = (
+        "name",
+        "created_by",
+    )
+    list_filter = ("created_by",)
+    ordering = ("name",)

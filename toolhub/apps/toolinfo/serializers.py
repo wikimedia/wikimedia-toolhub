@@ -15,29 +15,21 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from rest_framework import routers as drf_routers
+from rest_framework import serializers
 
-import toolhub.apps.crawler.views as crawler_views
-import toolhub.apps.toolinfo.views as toolinfo_views
-import toolhub.apps.user.views as user_views
+from toolhub.apps.user.serializers import UserSerializer
 
-
-class ToolhubApiRootView(drf_routers.APIRootView):
-    """Welcome to the API for Toolhub.
-
-    This API provides access to Toolhub content and data in machine-readable
-    formats.
-    """
+from .models import Tool
 
 
-class Router(drf_routers.DefaultRouter):
-    """Custom router."""
+class ToolSerializer(serializers.ModelSerializer):
+    """Description of a tool."""
 
-    APIRootView = ToolhubApiRootView
+    created_by = UserSerializer(many=False, read_only=True)
+    modified_by = UserSerializer(many=False, read_only=True)
 
+    class Meta:
+        """Configure serializer."""
 
-router = Router()
-router.register("users", user_views.UserViewSet)
-router.register("groups", user_views.GroupViewSet)
-router.register("crawler/urls", crawler_views.UrlViewSet)
-router.register("tools", toolinfo_views.ToolViewSet)
+        model = Tool
+        fields = "__all__"
