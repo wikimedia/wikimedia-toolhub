@@ -20,11 +20,23 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include
 from django.urls import path
 
+from drf_spectacular.views import SpectacularAPIView
+
+from toolhub.apps.user.views import CurrentUserView
+
+from .routers import router
+
+
+api_patterns = [
+    path(".schema", SpectacularAPIView.as_view(), name="schema"),
+    path("user/", CurrentUserView.as_view(), name="user"),
+    path("", include(router.urls)),
+]
 
 urlpatterns = [
     path("", include("vue.urls", namespace="vue")),
     path("admin/", admin.site.urls),
-    path("api/", include("toolhub.apps.api.urls", namespace="api")),
+    path("api/", include((api_patterns, "api"), namespace="api")),
     path("social/", include("social_django.urls", namespace="social")),
     path("user/", include("toolhub.apps.user.urls", namespace="user")),
 ]

@@ -135,7 +135,6 @@ INSTALLED_APPS = [
     "social_django",
     "webpack_loader",
     # ==== Local apps ====
-    "toolhub.apps.api",
     "toolhub.apps.crawler",
     "toolhub.apps.user",
     "vue",

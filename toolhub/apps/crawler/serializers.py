@@ -17,9 +17,9 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from rest_framework import serializers
 
-from toolhub.apps.crawler.models import CrawledUrl
+from toolhub.apps.user.serializers import UserSerializer
 
-from .user import UserSerializer
+from .models import CrawledUrl
 
 
 class CrawledUrlSerializer(serializers.ModelSerializer):

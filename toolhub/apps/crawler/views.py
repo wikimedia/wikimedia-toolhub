@@ -23,13 +23,13 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from toolhub.apps.crawler.models import CrawledUrl
+from toolhub.decorators import doc
+from toolhub.permissions import IsAdminOrIsSelf
+from toolhub.permissions import IsCreator
+from toolhub.permissions import IsReadOnly
 
-from ..decorators import doc
-from ..permissions import IsAdminOrIsSelf
-from ..permissions import IsCreator
-from ..permissions import IsReadOnly
-from ..serializers.crawler import CrawledUrlSerializer
+from .models import CrawledUrl
+from .serializers import CrawledUrlSerializer
 
 
 @doc(_("""Manage URLs to crawl."""))

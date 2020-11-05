@@ -24,7 +24,7 @@ from rest_framework import serializers
 
 from social_django.models import UserSocialAuth
 
-from toolhub.apps.user.models import ToolhubUser
+from .models import ToolhubUser
 
 
 class CurrentUserSerializer(serializers.Serializer):
@@ -40,11 +40,11 @@ class CurrentUserSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         """Operation not implemented."""
-        raise NotImplementedError("Data input only serializer.")
+        raise NotImplementedError("Data output only serializer.")
 
     def upate(self, instance, validated_data):
         """Operation not implemented."""
-        raise NotImplementedError("Data input only serializer.")
+        raise NotImplementedError("Data output only serializer.")
 
 
 class UserSocialAuthSerializer(serializers.ModelSerializer):

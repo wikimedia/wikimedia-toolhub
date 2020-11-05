@@ -15,18 +15,26 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.urls import include
-from django.urls import path
-
-from drf_spectacular.views import SpectacularAPIView
-
-from .routers import router
-from .views.user import CurrentUserView
 
 
-app_name = "toolhub.api"
-urlpatterns = [
-    path(".schema", SpectacularAPIView.as_view(), name="schema"),
-    path("user/", CurrentUserView.as_view(), name="user"),
-    path("", include(router.urls)),
-]
+def doc(docstring):
+    """Add a translatable docstring to the decorated class or function.
+
+    Because of the way that Django's `makemessages` finds translatable
+    strings, the docstring used in the call should be wrapped in `_()`.
+
+    .. code-block:: python
+
+        from django.utils.translation import gettext_lazy as _
+        from toolhub.decorators import doc
+
+        @doc(_("This is the docstring that will be translatable."))
+        def foo():
+            pass
+    """
+
+    def decorator(func):
+        func.__doc__ = docstring
+        return func
+
+    return decorator

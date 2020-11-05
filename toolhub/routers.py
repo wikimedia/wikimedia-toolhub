@@ -15,14 +15,27 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.test import SimpleTestCase
+from rest_framework import routers as drf_routers
 
-from ..apps import ApiConfig
+import toolhub.apps.crawler.views as crawler_views
+import toolhub.apps.user.views as user_views
 
 
-class ApiConfigTest(SimpleTestCase):
-    """Test nothing much really."""
+class ToolhubApiRootView(drf_routers.APIRootView):
+    """Welcome to the API for Toolhub.
 
-    def test_apps(self):
-        """Assert the app has a name."""
-        self.assertEqual(ApiConfig.name, "toolhub.apps.api")
+    This API provides access to Toolhub content and data in machine-readable
+    formats.
+    """
+
+
+class Router(drf_routers.DefaultRouter):
+    """Custom router."""
+
+    APIRootView = ToolhubApiRootView
+
+
+router = Router()
+router.register("users", user_views.UserViewSet)
+router.register("groups", user_views.GroupViewSet)
+router.register("crawler/urls", crawler_views.UrlViewSet)

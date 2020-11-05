@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-02 22:34+0000\n"
+"POT-Creation-Date: 2020-11-06 00:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,64 +18,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: toolhub/apps/api/apps.py:26
-msgid "Toolhub API"
+#: toolhub/apps/crawler/apps.py:26
+msgid "Toolinfo web crawler"
 msgstr ""
 
-#: toolhub/apps/api/views/crawler.py:35
+#: toolhub/apps/crawler/views.py:35
 msgid "Manage URLs to crawl."
 msgstr ""
 
-#: toolhub/apps/api/views/crawler.py:64
+#: toolhub/apps/crawler/views.py:64
 msgid "Get URLs created by the current user."
 msgstr ""
 
-#: toolhub/apps/api/views/crawler.py:82
+#: toolhub/apps/crawler/views.py:82
 msgid "Register a new URL for crawling."
 msgstr ""
 
-#: toolhub/apps/api/views/crawler.py:89
+#: toolhub/apps/crawler/views.py:89
 msgid "Info for a specific crawled URL."
 msgstr ""
 
-#: toolhub/apps/api/views/crawler.py:96 toolhub/apps/api/views/crawler.py:103
+#: toolhub/apps/crawler/views.py:96 toolhub/apps/crawler/views.py:103
 msgid "Update a specific URL."
 msgstr ""
 
-#: toolhub/apps/api/views/crawler.py:110
+#: toolhub/apps/crawler/views.py:110
 msgid "Unregister an URL."
 msgstr ""
 
-#: toolhub/apps/api/views/crawler.py:118
+#: toolhub/apps/crawler/views.py:118
 msgid "List all crawled URLs."
-msgstr ""
-
-#: toolhub/apps/api/views/user.py:33
-msgid "View users."
-msgstr ""
-
-#: toolhub/apps/api/views/user.py:49
-msgid "List all active users."
-msgstr ""
-
-#: toolhub/apps/api/views/user.py:56
-msgid "Info for a specific user."
-msgstr ""
-
-#: toolhub/apps/api/views/user.py:63
-msgid "View user groups."
-msgstr ""
-
-#: toolhub/apps/api/views/user.py:74
-msgid "List all user groups."
-msgstr ""
-
-#: toolhub/apps/api/views/user.py:81
-msgid "Info for a user group."
-msgstr ""
-
-#: toolhub/apps/crawler/apps.py:26
-msgid "Toolinfo web crawler"
 msgstr ""
 
 #: toolhub/apps/user/admin.py:37
@@ -108,6 +80,34 @@ msgstr ""
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
+msgstr ""
+
+#: toolhub/apps/user/views.py:45
+msgid "Get information about the currently logged in user."
+msgstr ""
+
+#: toolhub/apps/user/views.py:65
+msgid "View users."
+msgstr ""
+
+#: toolhub/apps/user/views.py:81
+msgid "List all active users."
+msgstr ""
+
+#: toolhub/apps/user/views.py:88
+msgid "Info for a specific user."
+msgstr ""
+
+#: toolhub/apps/user/views.py:95
+msgid "View user groups."
+msgstr ""
+
+#: toolhub/apps/user/views.py:106
+msgid "List all user groups."
+msgstr ""
+
+#: toolhub/apps/user/views.py:113
+msgid "Info for a user group."
 msgstr ""
 
 #: vue/templates/vue/base.html:18
