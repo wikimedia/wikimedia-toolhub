@@ -68,7 +68,7 @@
 
 						<v-alert
 							v-if="$store.state.user.is_authenticated === true &&
-								numUserCreatedUrls.length === 0"
+								numUserCreatedUrls === 0"
 							border="left"
 							type="info"
 							elevation="2"
@@ -89,16 +89,16 @@
 							mobile-breakpoint="0"
 							:custom-sort="sortByLastModifiedDate"
 						>
-							<template #[`item.jsonFileUrl`]="{ item }">
+							<template #[`item.json_file_url`]="{ item }">
 								<a
 									:href="item.url"
 									target="_blank"
 								>{{ item.url }}</a>
 							</template>
-							<template #[`item.lastModified`]="{ item }">
+							<template #[`item.modified_date`]="{ item }">
 								{{ item.modified_date | moment( "MMM DD, YYYY" ) }}
 							</template>
-							<template #[`item.btnRemoveUrl`]="{ item }">
+							<template #[`item.btn_remove_url`]="{ item }">
 								<v-btn
 									class="mt-2 mb-2"
 									color="error"
@@ -188,17 +188,17 @@ export default {
 			headers: [
 				{
 					text: this.$vuetify.lang.t( '$vuetify.jsonfileurl' ),
-					value: 'jsonFileUrl',
+					value: 'json_file_url',
 					sortable: false
 				},
 				{
 					text: this.$vuetify.lang.t( '$vuetify.lastmodified' ),
-					value: 'lastModified',
+					value: 'modified_date',
 					sortable: true
 				},
 				{
 					text: this.$vuetify.lang.t( '$vuetify.removeurl' ),
-					value: 'btnRemoveUrl',
+					value: 'btn_remove_url',
 					sortable: false,
 					align: 'right'
 				}
@@ -234,7 +234,7 @@ export default {
 		},
 		sortByLastModifiedDate( items, index, isDesc ) {
 			items.sort( ( a, b ) => {
-				if ( index[ 0 ] === 'lastModified' ) {
+				if ( index[ 0 ] === 'modified_date' ) {
 					if ( !isDesc[ 0 ] ) {
 						return new Date( b[ index ] ) - new Date( a[ index ] );
 					} else {
