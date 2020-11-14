@@ -18,12 +18,12 @@
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema
+from drf_spectacular.utils import extend_schema_view
 
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from toolhub.decorators import doc
 from toolhub.permissions import IsAdminOrIsSelf
 from toolhub.permissions import IsCreator
 from toolhub.permissions import IsReadOnly
@@ -32,7 +32,26 @@ from .models import CrawledUrl
 from .serializers import CrawledUrlSerializer
 
 
-@doc(_("""Manage URLs to crawl."""))
+@extend_schema_view(
+    create=extend_schema(
+        description=_("""Register a new URL for crawling."""),
+    ),
+    retrieve=extend_schema(
+        description=_("""Info for a specific crawled URL."""),
+    ),
+    update=extend_schema(
+        description=_("""Update a specific URL."""),
+    ),
+    partial_update=extend_schema(
+        description=_("""Update a specific URL."""),
+    ),
+    destroy=extend_schema(
+        description=_("""Unregister an URL."""),
+    ),
+    list=extend_schema(  # noqa: A003
+        description=_("""List all crawled URLs."""),
+    ),
+)
 class UrlViewSet(viewsets.ModelViewSet):
     """Toolinfo URLs."""
 
@@ -77,46 +96,3 @@ class UrlViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(qs, many=True)
         return Response(serializer.data)
-
-    @extend_schema(
-        description=_("""Register a new URL for crawling."""),
-    )
-    def create(self, request, *args, **kwargs):
-        """Create item."""
-        return super().create(request, *args, **kwargs)
-
-    @extend_schema(
-        description=_("""Info for a specific crawled URL."""),
-    )
-    def retrieve(self, request, *args, **kwargs):
-        """Item view."""
-        return super().retrieve(request, *args, **kwargs)
-
-    @extend_schema(
-        description=_("""Update a specific URL."""),
-    )
-    def update(self, request, *args, **kwargs):
-        """Put item."""
-        return super().update(request, *args, **kwargs)
-
-    @extend_schema(
-        description=_("""Update a specific URL."""),
-    )
-    def partial_update(self, request, *args, **kwargs):
-        """Patch item."""
-        return super().partial_update(request, *args, **kwargs)
-
-    @extend_schema(
-        description=_("""Unregister an URL."""),
-    )
-    def destroy(self, request, *args, **kwargs):
-        """Delete item."""
-        # TODO: archive rather than delete?
-        return super().destroy(request, *args, **kwargs)
-
-    @extend_schema(  # noqa: A003
-        description=_("""List all crawled URLs."""),
-    )
-    def list(self, request, *args, **kwargs):
-        """List view."""
-        return super().list(request, *args, **kwargs)

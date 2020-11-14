@@ -18,17 +18,23 @@
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema
+from drf_spectacular.utils import extend_schema_view
 
 from rest_framework import permissions
 from rest_framework import viewsets
-
-from toolhub.decorators import doc
 
 from .models import Tool
 from .serializers import ToolSerializer
 
 
-@doc(_("""View tools."""))
+@extend_schema_view(
+    list=extend_schema(
+        description=_("""List all tools."""),
+    ),
+    retrieve=extend_schema(
+        description=_("""Info for a specific tool."""),
+    ),
+)
 class ToolViewSet(viewsets.ReadOnlyModelViewSet):
     """Tools."""
 
@@ -40,17 +46,3 @@ class ToolViewSet(viewsets.ReadOnlyModelViewSet):
     }
     ordering_fields = ["id", "name"]
     ordering = ["-modified_date"]
-
-    @extend_schema(  # noqa: A003
-        description=_("""List all tools."""),
-    )
-    def list(self, request, *args, **kwargs):
-        """List view."""
-        return super().list(request, *args, **kwargs)
-
-    @extend_schema(
-        description=_("""Info for a specific tool."""),
-    )
-    def retrieve(self, request, *args, **kwargs):
-        """Item view."""
-        return super().retrieve(request, *args, **kwargs)

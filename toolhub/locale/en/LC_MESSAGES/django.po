@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-06 00:10+0000\n"
+"POT-Creation-Date: 2020-11-14 22:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,32 +22,28 @@ msgstr ""
 msgid "Toolinfo web crawler"
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:35
-msgid "Manage URLs to crawl."
-msgstr ""
-
-#: toolhub/apps/crawler/views.py:64
-msgid "Get URLs created by the current user."
-msgstr ""
-
-#: toolhub/apps/crawler/views.py:82
+#: toolhub/apps/crawler/views.py:37
 msgid "Register a new URL for crawling."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:89
+#: toolhub/apps/crawler/views.py:40
 msgid "Info for a specific crawled URL."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:96 toolhub/apps/crawler/views.py:103
+#: toolhub/apps/crawler/views.py:43 toolhub/apps/crawler/views.py:46
 msgid "Update a specific URL."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:110
+#: toolhub/apps/crawler/views.py:49
 msgid "Unregister an URL."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:118
+#: toolhub/apps/crawler/views.py:52
 msgid "List all crawled URLs."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:83
+msgid "Get URLs created by the current user."
 msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
@@ -108,19 +104,19 @@ msgid ""
 "'User:' or similar prefixes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:127
+#: toolhub/apps/toolinfo/models.py:125
 msgid ""
 "If true, the use of this tool is officially discouraged. The `replaced_by` "
 "parameter can be used to define a replacement."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:136
+#: toolhub/apps/toolinfo/models.py:134
 msgid ""
 "If this tool is deprecated, this parameter should be used to link to the "
 "replacement tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:143
+#: toolhub/apps/toolinfo/models.py:141
 msgid ""
 "If true, this tool is unstable and can change or go offline at any time."
 msgstr ""
@@ -145,79 +141,75 @@ msgid ""
 "license identifier like 'GPL-3.0-or-later'."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:183
+#: toolhub/apps/toolinfo/models.py:185
 msgid "Organization(s) that sponsored the tool's development."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:188
+#: toolhub/apps/toolinfo/models.py:192
 msgid ""
 "The language(s) the tool's interface has been translated into. Use ISO 639 "
 "language codes like `zh` and `scn`. If not defined it is assumed the tool is "
 "only available in English."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:196
+#: toolhub/apps/toolinfo/models.py:202
 msgid ""
 "A string or array of strings listing technologies (programming languages, "
 "development frameworks, etc.) used in creating the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:207
+#: toolhub/apps/toolinfo/models.py:213
 msgid ""
 "The manner in which the tool is used. Select one from the list of options."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:215
+#: toolhub/apps/toolinfo/models.py:221
 msgid "A link to the tool's API, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:220
+#: toolhub/apps/toolinfo/models.py:228
 msgid "A link to the tool's developer documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:225
+#: toolhub/apps/toolinfo/models.py:235
 msgid "A link to the tool's user documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:230
+#: toolhub/apps/toolinfo/models.py:242
 msgid "A link to location where the tool's user can leave feedback."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:235
+#: toolhub/apps/toolinfo/models.py:249
 msgid "A link to the tool's privacy policy, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:241
+#: toolhub/apps/toolinfo/models.py:255
 msgid "A link to the tool's translation interface."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:248
+#: toolhub/apps/toolinfo/models.py:262
 msgid ""
 "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:258
+#: toolhub/apps/toolinfo/models.py:272
 msgid ""
 "A URI identifying the jsonschema for this toolinfo.json record. This should "
 "be a short uri containing only the name and revision at the end of the URI "
 "path."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:271
+#: toolhub/apps/toolinfo/models.py:285
 msgid ""
 "The language this toolinfo record is written if, if not the default value of "
 "English. Use ISO 639 language codes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:31
-msgid "View tools."
-msgstr ""
-
-#: toolhub/apps/toolinfo/views.py:47
+#: toolhub/apps/toolinfo/views.py:32
 msgid "List all tools."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:54
+#: toolhub/apps/toolinfo/views.py:35
 msgid "Info for a specific tool."
 msgstr ""
 
@@ -257,27 +249,19 @@ msgstr ""
 msgid "Get information about the currently logged in user."
 msgstr ""
 
-#: toolhub/apps/user/views.py:65
-msgid "View users."
-msgstr ""
-
-#: toolhub/apps/user/views.py:81
+#: toolhub/apps/user/views.py:67
 msgid "List all active users."
 msgstr ""
 
-#: toolhub/apps/user/views.py:88
+#: toolhub/apps/user/views.py:70
 msgid "Info for a specific user."
 msgstr ""
 
-#: toolhub/apps/user/views.py:95
-msgid "View user groups."
-msgstr ""
-
-#: toolhub/apps/user/views.py:106
+#: toolhub/apps/user/views.py:90
 msgid "List all user groups."
 msgstr ""
 
-#: toolhub/apps/user/views.py:113
+#: toolhub/apps/user/views.py:93
 msgid "Info for a user group."
 msgstr ""
 

@@ -23,13 +23,13 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema
+from drf_spectacular.utils import extend_schema_view
 
 from rest_framework import permissions
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from toolhub.decorators import doc
 
 from .models import ToolhubUser
 from .serializers import CurrentUserSerializer
@@ -62,7 +62,14 @@ class CurrentUserView(APIView):
         return Response(serializer.data)
 
 
-@doc(_("""View users."""))
+@extend_schema_view(
+    list=extend_schema(  # noqa: A003
+        description=_("""List all active users."""),
+    ),
+    retrieve=extend_schema(
+        description=_("""Info for a specific user."""),
+    ),
+)
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     """Toolhub users."""
 
@@ -77,22 +84,15 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     ordering_fields = ["id", "username"]
     ordering = ["-date_joined"]
 
-    @extend_schema(  # noqa: A003
-        description=_("""List all active users."""),
-    )
-    def list(self, request, *args, **kwargs):
-        """List view."""
-        return super().list(request, *args, **kwargs)
 
-    @extend_schema(
-        description=_("""Info for a specific user."""),
-    )
-    def retrieve(self, request, *args, **kwargs):
-        """Item view."""
-        return super().retrieve(request, *args, **kwargs)
-
-
-@doc(_("""View user groups."""))
+@extend_schema_view(
+    list=extend_schema(
+        description=_("""List all user groups."""),
+    ),
+    retrieve=extend_schema(
+        description=_("""Info for a user group."""),
+    ),
+)
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     """Django user groups."""
 
@@ -101,20 +101,6 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     ordering_fields = ["id", "name"]
     ordering = ["id"]
-
-    @extend_schema(  # noqa: A003
-        description=_("""List all user groups."""),
-    )
-    def list(self, request, *args, **kwargs):
-        """List view."""
-        return super().list(request, *args, **kwargs)
-
-    @extend_schema(
-        description=_("""Info for a user group."""),
-    )
-    def retrieve(self, request, *args, **kwargs):
-        """Item view."""
-        return super().retrieve(request, *args, **kwargs)
 
 
 def login(request):  # noqa: W0613 unused argument
