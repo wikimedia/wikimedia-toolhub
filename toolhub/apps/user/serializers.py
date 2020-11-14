@@ -24,10 +24,13 @@ from rest_framework import serializers
 
 from social_django.models import UserSocialAuth
 
+from toolhub.serializers import ModelSerializer
+from toolhub.serializers import Serializer
+
 from .models import ToolhubUser
 
 
-class CurrentUserSerializer(serializers.Serializer):
+class CurrentUserSerializer(Serializer):
     """Information about the current user."""
 
     username = serializers.CharField(read_only=True)
@@ -47,8 +50,8 @@ class CurrentUserSerializer(serializers.Serializer):
         raise NotImplementedError("Data output only serializer.")
 
 
-class UserSocialAuthSerializer(serializers.ModelSerializer):
-    """Describe API output for a UserSocialAuth."""
+class UserSocialAuthSerializer(ModelSerializer):
+    """Social authentication information for a user."""
 
     blocked = serializers.SerializerMethodField()
     registered = serializers.SerializerMethodField()
@@ -76,8 +79,8 @@ class UserSocialAuthSerializer(serializers.ModelSerializer):
         return self._from_extra_data(obj, "registered")
 
 
-class UserDetailSerializer(serializers.ModelSerializer):
-    """Describe API output for a User."""
+class UserDetailSerializer(ModelSerializer):
+    """Detailed user information."""
 
     social_auth = UserSocialAuthSerializer(many=True, read_only=True)
 
@@ -89,8 +92,8 @@ class UserDetailSerializer(serializers.ModelSerializer):
         read_only_fields = fields
 
 
-class UserSerializer(serializers.ModelSerializer):
-    """Describe API output for a User."""
+class UserSerializer(ModelSerializer):
+    """User information."""
 
     class Meta:
         """Configure serializer."""
@@ -100,8 +103,8 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = fields
 
 
-class GroupSerializer(serializers.ModelSerializer):
-    """Describe API output for a Group."""
+class GroupSerializer(ModelSerializer):
+    """Group information."""
 
     class Meta:
         """Configure serializer."""

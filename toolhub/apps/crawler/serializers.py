@@ -15,15 +15,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from rest_framework import serializers
-
 from toolhub.apps.user.serializers import UserSerializer
+from toolhub.serializers import ModelSerializer
 
 from .models import CrawledUrl
 
 
-class CrawledUrlSerializer(serializers.ModelSerializer):
-    """Describe API output for a CrawledUrl."""
+class CrawledUrlSerializer(ModelSerializer):
+    """An URL that will be crawled."""
 
     created_by = UserSerializer(many=False, read_only=True)
     modified_by = UserSerializer(many=False, read_only=True)

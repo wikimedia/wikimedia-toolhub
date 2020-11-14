@@ -15,20 +15,16 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from toolhub.apps.user.serializers import UserSerializer
-from toolhub.serializers import ModelSerializer
+from rest_framework import serializers
 
-from .models import Tool
+from rest_framework_friendly_errors.mixins import FriendlyErrorMessagesMixin
 
 
-class ToolSerializer(ModelSerializer):
-    """Description of a tool."""
+class Serializer(  # noqa: W0223
+    FriendlyErrorMessagesMixin, serializers.Serializer
+):
+    """A Serializer with friendly error support."""
 
-    created_by = UserSerializer(many=False, read_only=True)
-    modified_by = UserSerializer(many=False, read_only=True)
 
-    class Meta:
-        """Configure serializer."""
-
-        model = Tool
-        fields = "__all__"
+class ModelSerializer(FriendlyErrorMessagesMixin, serializers.ModelSerializer):
+    """A ModelSerializer with friendly error support."""

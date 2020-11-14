@@ -334,6 +334,7 @@ REST_FRAMEWORK = {
         "drf_spectacular.contrib.django_filters.DjangoFilterBackend",
         "rest_framework.filters.OrderingFilter",
     ],
+    "EXCEPTION_HANDLER": "rest_framework_friendly_errors.handlers.friendly_exception_handler",
 }
 
 SPECTACULAR_SETTINGS = {

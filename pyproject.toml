@@ -27,6 +27,7 @@ uritemplate = "^3.0.1"
 drf-spectacular = "^0.10.0"
 django-filter = "^2.4.0"
 jsonfield = "^3.1.0"
+drf-friendly-errors = {git = "https://github.com/bd808/drf-friendly-errors.git", rev = "933eb5b"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

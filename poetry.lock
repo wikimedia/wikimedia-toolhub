@@ -276,6 +276,20 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "drf-friendly-errors"
+version = "0.14.3"
+description = "Extension for displaying serializer validation errors in Django Rest Framework"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.source]
+type = "git"
+url = "https://github.com/bd808/drf-friendly-errors.git"
+reference = "933eb5b"
+resolved_reference = "933eb5b11b8b78e754d7492089ec7d1693a47f69"
+
+[[package]]
 name = "drf-spectacular"
 version = "0.10.0"
 description = "Sane and flexible OpenAPI 3 schema generation for Django REST framework"
@@ -1208,7 +1222,7 @@ testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "e2fbfd3042716e43ebea51a0faa5a2a0f92cf8327024f23189f6062ae6bab9b6"
+content-hash = "724cc020cd064b8ad32114128b75cdd4df28cceedda9046ddaef4fb02c423ea1"
 
 [metadata.files]
 alabaster = [
@@ -1395,6 +1409,7 @@ docutils = [
     {file = "docutils-0.16-py2.py3-none-any.whl", hash = "sha256:0c5b78adfbf7762415433f5515cd5c9e762339e23369dbe8000d84a4bf4ab3af"},
     {file = "docutils-0.16.tar.gz", hash = "sha256:c2de3a60e9e7d07be26b7f2b00ca0309c207e06c100f9cc2a94931fc75a478fc"},
 ]
+drf-friendly-errors = []
 drf-spectacular = [
     {file = "drf-spectacular-0.10.0.tar.gz", hash = "sha256:41d39478fd9ae5a552c7e19c4d234c96ce2d2dccb18d00b0d4b4198c7f15d80f"},
     {file = "drf_spectacular-0.10.0-py2.py3-none-any.whl", hash = "sha256:afe644c893e1c35540e32ecb6bc1ce335516f581b5db60cb03837b78c12200ef"},
