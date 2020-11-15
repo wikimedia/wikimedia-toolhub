@@ -22,7 +22,7 @@ from .models import CrawledUrl
 
 
 class CrawledUrlSerializer(ModelSerializer):
-    """An URL that will be crawled."""
+    """Details of an URL that has been registered for crawling."""
 
     created_by = UserSerializer(many=False, read_only=True)
     modified_by = UserSerializer(many=False, read_only=True)
@@ -32,3 +32,13 @@ class CrawledUrlSerializer(ModelSerializer):
 
         model = CrawledUrl
         fields = "__all__"
+
+
+class EditCrawledUrlSerializer(ModelSerializer):
+    """An URL that will be crawled."""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = CrawledUrl
+        fields = ["url"]

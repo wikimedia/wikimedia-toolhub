@@ -30,20 +30,24 @@ from toolhub.permissions import IsReadOnly
 
 from .models import CrawledUrl
 from .serializers import CrawledUrlSerializer
+from .serializers import EditCrawledUrlSerializer
 
 
 @extend_schema_view(
     create=extend_schema(
         description=_("""Register a new URL for crawling."""),
+        request=EditCrawledUrlSerializer,
     ),
     retrieve=extend_schema(
         description=_("""Info for a specific crawled URL."""),
     ),
     update=extend_schema(
         description=_("""Update a specific URL."""),
+        request=EditCrawledUrlSerializer,
     ),
     partial_update=extend_schema(
         description=_("""Update a specific URL."""),
+        request=EditCrawledUrlSerializer,
     ),
     destroy=extend_schema(
         description=_("""Unregister an URL."""),
