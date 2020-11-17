@@ -19,11 +19,14 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
+from toolhub.apps.toolinfo.models import Tool
+
 
 class CrawledUrl(models.Model):
     """An URL that the crawler should fetch."""
 
     url = models.URLField(max_length=255, unique=True)
+
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="+",
@@ -46,3 +49,47 @@ class CrawledUrl(models.Model):
 
     def __str__(self):
         return self.url
+
+
+class CrawlerRun(models.Model):
+    """A run of the crawler."""
+
+    start_date = models.DateTimeField(auto_now_add=True)
+    end_date = models.DateTimeField(null=True, blank=True)
+    urls = models.ManyToManyField(CrawledUrl, through="CrawlerRunUrl")
+    new_tools = models.PositiveIntegerField(blank=True, default=0)
+
+    def __str__(self):
+        return "id={}; start={:%Y-%m-%d %H:%M}".format(
+            self.id,
+            self.start_date,
+        )
+
+
+class CrawlerRunUrl(models.Model):
+    """Information about an URL crawled during a CrawlerRun."""
+
+    run = models.ForeignKey(CrawlerRun, on_delete=models.CASCADE)
+    url = models.ForeignKey(
+        CrawledUrl,
+        related_name="crawls",
+        on_delete=models.CASCADE,
+    )
+    status_code = models.PositiveSmallIntegerField()
+    redirected = models.BooleanField(default=False)
+    elapsed_ms = models.PositiveIntegerField(default=0)
+    schema = models.CharField(blank=True, max_length=32, null=True)
+    valid = models.BooleanField(default=False)
+    tools = models.ManyToManyField(
+        Tool,
+        related_name="runs",
+    )
+
+    def __str__(self):
+        return "id={}; run: {}; url: {}; status_code: {}; valid: {}".format(
+            self.id,
+            self.run.id,
+            self.url.id,
+            self.status_code,
+            self.valid,
+        )

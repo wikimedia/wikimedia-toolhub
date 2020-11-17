@@ -28,6 +28,7 @@ django-filter = "^2.4.0"
 jsonfield = "^3.1.0"
 drf-friendly-errors = {git = "https://github.com/bd808/drf-friendly-errors.git", rev = "933eb5b"}
 drf-spectacular = "^0.11.0"
+requests = "^2.25.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -51,6 +52,7 @@ coverage = {extras = ["toml"], version = "^5.3"}
 httpretty = "^1.0.2"
 unittest2 = "^1.1.0"
 pylint-django = "^2.3.0"
+requests-mock = "^1.8.0"
 
 [tool.flakehell]
 exclude = [
@@ -74,6 +76,7 @@ pylint = [
     "+*",
     "-C*",
     "-E1101",
+    "-R0201",
     "-R0901",
     "-W0235",
     "-W0511",

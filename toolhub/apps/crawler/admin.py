@@ -22,7 +22,7 @@ from . import models
 
 @django.contrib.admin.register(models.CrawledUrl)
 class CrawledUrlAdmin(django.contrib.admin.ModelAdmin):
-    """Register with admin."""
+    """Admin view of CrawledUrl."""
 
     list_display = (
         "url",
@@ -30,3 +30,49 @@ class CrawledUrlAdmin(django.contrib.admin.ModelAdmin):
     )
     list_filter = ("created_by",)
     ordering = ("url",)
+
+
+class CrawlerRunUrlInline(django.contrib.admin.TabularInline):
+    """Inline admin view of CrawlerRunUrl."""
+
+    model = models.CrawlerRunUrl
+    fields = (
+        "url",
+        "status_code",
+        "valid",
+        "redirected",
+    )
+    readonly_fields = fields
+    can_delete = False
+    extra = 0
+
+
+@django.contrib.admin.register(models.CrawlerRun)
+class CrawlerRunAdmin(django.contrib.admin.ModelAdmin):
+    """Admin view of a CrawlerRun."""
+
+    list_display = ("start_date",)
+    ordering = ("start_date",)
+    inlines = (CrawlerRunUrlInline,)
+    readonly_fields = ("start_date",)
+
+    class Media:
+        """Media overrides."""
+
+        css = {"all": ("css/admin.css",)}
+
+
+@django.contrib.admin.register(models.CrawlerRunUrl)
+class CrawlerRunUrlAdmin(django.contrib.admin.ModelAdmin):
+    """Register with admin."""
+
+    list_display = (
+        "run",
+        "url",
+        "status_code",
+        "valid",
+    )
+    ordering = (
+        "run",
+        "url",
+    )

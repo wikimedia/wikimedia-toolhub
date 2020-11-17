@@ -1,0 +1,6 @@
+tr.dynamic-crawlerrunurl_set td.original p {
+  visibility: hidden
+}
+.inline-group .tabular tr.has_original.dynamic-crawlerrunurl_set td {
+  padding-top:inherit;
+}
