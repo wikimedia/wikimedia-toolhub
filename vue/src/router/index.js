@@ -8,7 +8,6 @@ Vue.use( require( 'vue-moment' ) );
 const routes = [
 		{
 			name: 'home',
-			title: 'Home',
 			path: '/',
 			component: Home,
 			meta: {
@@ -16,8 +15,7 @@ const routes = [
 			}
 		},
 		{
-			name: 'add-or-remove-tools',
-			title: 'Add or remove tools',
+			name: 'addremovetools',
 			path: '/add-or-remove-tools',
 			component: () => import( /* webpackChunkName: "addremovetools" */ '../views/AddRemoveTools.vue' ),
 			meta: {
@@ -25,8 +23,7 @@ const routes = [
 			}
 		},
 		{
-			name: 'api-docs',
-			title: 'API docs',
+			name: 'apidocs',
 			path: '/api-docs',
 			component: () => import( /* webpackChunkName: "apidoc" */ '../views/ApiDocs.vue' ),
 			meta: {
@@ -35,7 +32,6 @@ const routes = [
 		},
 		{
 			name: 'about',
-			title: 'About',
 			path: '/about',
 			// route level code-splitting
 			// this generates a separate chunk (about.[hash].js) for this route

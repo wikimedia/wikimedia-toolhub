@@ -31,7 +31,7 @@
 			</v-toolbar-title>
 
 			<v-spacer />
-
+			<SelectLocale />
 			<UserStatus />
 		</v-app-bar>
 
@@ -49,16 +49,17 @@
 				nav
 			>
 				<v-list-item
-					v-for="route in this.$router.options.routes"
+					v-for="route in $router.options.routes"
 					:key="route.name"
 					:to="route.path"
 					link
+					exact
 				>
 					<v-list-item-icon>
 						<v-icon>{{ route.meta.icon }}</v-icon>
 					</v-list-item-icon>
 					<v-list-item-content>
-						<v-list-item-title>{{ route.title }}</v-list-item-title>
+						<v-list-item-title>{{ $t( route.name ) }}</v-list-item-title>
 					</v-list-item-content>
 				</v-list-item>
 			</v-list>
@@ -76,13 +77,17 @@
 
 <script>
 import UserStatus from '@/components/user/Status';
+import SelectLocale from '@/components/locale/SelectLocale';
+
 export default {
 	components: {
-		UserStatus
+		UserStatus,
+		SelectLocale
 	},
 	data() {
 		return {
-			drawer: true
+			drawer: true,
+			routes: []
 		};
 	},
 	created() {

@@ -10,7 +10,7 @@
 				<!--start add or remove tools section-->
 				<v-row>
 					<h2 class="display-1">
-						{{ $vuetify.lang.t('$vuetify.addremovetools-pagetitle') }}
+						{{ $t( 'addremovetools-pagetitle' ) }}
 					</h2>
 				</v-row>
 				<v-row>
@@ -23,7 +23,7 @@
 						<v-text-field
 							ref="url"
 							v-model="fileUrl"
-							:label="$vuetify.lang.t('$vuetify.jsonfileurl')"
+							:label="$t( 'jsonfileurl' )"
 							prepend-icon="mdi-link-variant"
 							:rules="urlRules"
 							required
@@ -41,7 +41,7 @@
 							width="100%"
 							@click="registerUrl(fileUrl)"
 						>
-							{{ $vuetify.lang.t('$vuetify.add') }}
+							{{ $t( 'add' ) }}
 							<v-icon
 								dark
 								right
@@ -63,7 +63,7 @@
 							elevation="2"
 							width="100%"
 						>
-							{{ $vuetify.lang.t('$vuetify.apierror') }} {{ apiErrorMsg }}
+							{{ $t( 'apierror' ) }} {{ apiErrorMsg }}
 						</v-alert>
 
 						<v-alert
@@ -75,7 +75,7 @@
 							color="primary"
 							width="100%"
 						>
-							{{ $vuetify.lang.t('$vuetify.nourlsfounderror') }}
+							{{ $t( 'nourlsfounderror' ) }}
 						</v-alert>
 
 						<v-data-table
@@ -139,15 +139,15 @@
 						elevation="2"
 					>
 						<h3 class="headline">
-							{{ $vuetify.lang.t('$vuetify.addremovetools-summarytitle') }}
+							{{ $t( 'addremovetools-summarytitle' ) }}
 						</h3>
 						<v-divider class="pa-2" />
 						<p>
-							{{ $vuetify.lang.t('$vuetify.addremovetools-summary') }}
+							{{ $t( 'addremovetools-summary' ) }}
 							<a
 								href="https://meta.wikimedia.org/wiki/Toolhub/Data_model#Version_1.2.0"
 								target="_blank"
-							>{{ $vuetify.lang.t('$vuetify.schemalink') }}</a>.
+							>{{ $t( 'schemalink' ) }}</a>.
 						</p>
 					</v-alert>
 				</v-row>
@@ -161,7 +161,7 @@
 						type="info"
 						width="100%"
 					>
-						{{ $vuetify.lang.t('$vuetify.addremovetools-nologintext') }}
+						{{ $t( 'addremovetools-nologintext' ) }}
 					</v-alert>
 				</v-row>
 			</v-col> <!--end how this page works section-->
@@ -180,35 +180,37 @@ export default {
       '((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?' +
       '(\\#[-a-z\\d_]*)?$', 'i' ), // Taken from https://stackoverflow.com/a/5717133
 			urlRules: [
-				( v ) => !!v || this.$vuetify.lang.t( '$vuetify.urlrequired' ),
-				( v ) => this.urlRegex.test( v ) || this.$vuetify.lang.t( '$vuetify.urlinvalid' )
+				( v ) => !!v || this.$t( 'urlrequired' ),
+				( v ) => this.urlRegex.test( v ) || this.$t( 'urlinvalid' )
 			],
 			page: 1,
-			itemsPerPage: 10,
-			headers: [
-				{
-					text: this.$vuetify.lang.t( '$vuetify.jsonfileurl' ),
-					value: 'json_file_url',
-					sortable: false
-				},
-				{
-					text: this.$vuetify.lang.t( '$vuetify.lastmodified' ),
-					value: 'modified_date',
-					sortable: true
-				},
-				{
-					text: this.$vuetify.lang.t( '$vuetify.removeurl' ),
-					value: 'btn_remove_url',
-					sortable: false,
-					align: 'right'
-				}
-			]
+			itemsPerPage: 10
 		};
 	},
 	computed: {
 		...mapState( [ 'userCreatedUrls', 'apiErrorMsg', 'numUserCreatedUrls' ] ),
 		isUserAuthenticated() {
 			return this.$store.state.user.is_authenticated;
+		},
+		headers() {
+			return [
+				{
+					text: this.$t( 'jsonfileurl' ),
+					value: 'json_file_url',
+					sortable: false
+				},
+				{
+					text: this.$t( 'lastmodified' ),
+					value: 'modified_date',
+					sortable: true
+				},
+				{
+					text: this.$t( 'removeurl' ),
+					value: 'btn_remove_url',
+					sortable: false,
+					align: 'right'
+				}
+			];
 		}
 	},
 	methods: {

@@ -1,15 +1,22 @@
 {
+  "about": "About",
   "add": "Add",
-  "apierror": "Uh oh! Something went wrong.",
+  "addremovetools": "Add or remove tools",
   "addremovetools-nologintext": "You will need to log in to Toolhub to add or remove tools",
   "addremovetools-pagetitle": "Add or remove a toolinfo.json file URL",
   "addremovetools-summary": "Tool developers submit a URL to a toolinfo.json file consisting of information about their tools in a JSON file format. This file is accessible on the web and adheres to a version 1.2.0 schema. We encourage tool developers to host their files in a git repository so that other volunteers can submit pull requests to it. Toolhub will then crawl the tool records from it and add them to the catalog. In the future, Toolhub will allow its users to submit their tools directly via the interface.",
   "addremovetools-summarytitle": "How this feature works",
+  "apidocs": "API docs",
+  "apierror": "Uh oh! Something went wrong.",
+  "home": "Home",
   "jsonfileurl": "JSON File URL",
   "lastmodified": "Last Modified",
   "nourlsfounderror": "No toolinfo.json file URL(s) found in the Toolhub system.",
   "removeurl": "Remove URL",
   "schemalink": "Schema link",
+  "selectlanguage": "Select a language",
+  "tagline": "An authoritative and well promoted catalog of Wikimedia tools.",
   "urlinvalid": "URL must be valid",
-  "urlrequired": "URL is required"
+  "urlrequired": "URL is required",
+  "welcomemessage": "Welcome to Toolhub"
 }

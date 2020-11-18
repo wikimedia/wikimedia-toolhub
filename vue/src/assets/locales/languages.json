@@ -1,0 +1,12 @@
+[
+    {
+        "name": "English",
+        "code": "en",
+        "dir": "ltr"
+    },
+    {
+        "name": "Hindi",
+        "code": "hi",
+        "dir": "ltr"
+    }
+]

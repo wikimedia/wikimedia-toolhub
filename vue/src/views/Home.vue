@@ -8,10 +8,10 @@
 				<div class="d-flex flex-no-wrap justify-space-between">
 					<div>
 						<v-card-title class="headline">
-							Welcome to Toolhub
+							{{ $t( 'welcomemessage' ) }}
 						</v-card-title>
 						<v-card-subtitle>
-							An authoritative and well promoted catalog of Wikimedia tools.
+							{{ $t( 'tagline' ) }}
 						</v-card-subtitle>
 						<v-card-text>
 							More text would go here and tell people something
