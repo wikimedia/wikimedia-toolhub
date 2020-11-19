@@ -141,6 +141,10 @@ docs:  ## Build sphinx docs
 artifacts: schemas messages docs  ## Generate code & doc artifacts
 .PHONY: artifacts
 
+black:
+	docker-compose exec web poetry run black .
+.PHONY: black
+
 clean:  ## Clean up Docker images and containers
 	yes | docker image prune
 	yes | docker container prune
