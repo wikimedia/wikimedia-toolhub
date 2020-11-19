@@ -50,23 +50,22 @@ class CrawlerTestCase(TestCase):
 
         self.work_dir = os.path.dirname(os.path.abspath(__file__))
 
-    def assertRunResult(self, run, urls=0, new=0, crawled=0):
+    def assertRunResult(self, run, new=0, urls=0):
         """Given a CrawlerRun, check its properties."""
-        self.assertEqual(run.urls.count(), urls)
         self.assertEqual(run.new_tools, new)
-        self.assertEqual(run.crawlerrunurl_set.count(), crawled)
+        self.assertEqual(run.urls.count(), urls)
 
     def assertUrlStatus(
         self,
-        crawled,
+        urls,
         status_code=200,
         redirected=False,
         valid=True,
     ):
         """Given a CrawlerRunUrl, check its properties."""
-        self.assertEqual(crawled.status_code, status_code)
-        self.assertEqual(crawled.redirected, redirected)
-        self.assertEqual(crawled.valid, valid)
+        self.assertEqual(urls.status_code, status_code)
+        self.assertEqual(urls.redirected, redirected)
+        self.assertEqual(urls.valid, valid)
 
     def setup_url_fixture(
         self,
@@ -93,8 +92,8 @@ class CrawlerTestCase(TestCase):
         crawler = tasks.Crawler()
         run = crawler.crawl()
 
-        self.assertRunResult(run, urls=1, new=1, crawled=1)
-        self.assertUrlStatus(run.crawlerrunurl_set.all()[0])
+        self.assertRunResult(run, new=1, urls=1)
+        self.assertUrlStatus(run.urls.all()[0])
 
     def test_legacy_schema(self, rmock):
         """When we recieve a record built for Hay's Directory, it works."""
@@ -103,8 +102,8 @@ class CrawlerTestCase(TestCase):
         crawler = tasks.Crawler()
         run = crawler.crawl()
 
-        self.assertRunResult(run, urls=1, new=1, crawled=1)
-        self.assertUrlStatus(run.crawlerrunurl_set.all()[0])
+        self.assertRunResult(run, new=1, urls=1)
+        self.assertUrlStatus(run.urls.all()[0])
 
     def test_404(self, rmock):
         """When the remote returns a 404, we notice but don't fail."""
@@ -113,9 +112,9 @@ class CrawlerTestCase(TestCase):
         crawler = tasks.Crawler()
         run = crawler.crawl()
 
-        self.assertRunResult(run, urls=1, new=0, crawled=1)
+        self.assertRunResult(run, new=0, urls=1)
         self.assertUrlStatus(
-            run.crawlerrunurl_set.all()[0],
+            run.urls.all()[0],
             status_code=404,
             valid=False,
         )
@@ -138,8 +137,8 @@ class CrawlerTestCase(TestCase):
         crawler = tasks.Crawler()
         run = crawler.crawl()
 
-        self.assertRunResult(run, urls=1, new=1, crawled=1)
-        self.assertUrlStatus(run.crawlerrunurl_set.all()[0], redirected=True)
+        self.assertRunResult(run, new=1, urls=1)
+        self.assertUrlStatus(run.urls.all()[0], redirected=True)
 
     def test_malformed_json(self, rmock):
         """When the response is not valid json, we notice but don't fail."""
@@ -148,8 +147,8 @@ class CrawlerTestCase(TestCase):
         crawler = tasks.Crawler()
         run = crawler.crawl()
 
-        self.assertRunResult(run, urls=1, new=0, crawled=1)
-        self.assertUrlStatus(run.crawlerrunurl_set.all()[0], valid=False)
+        self.assertRunResult(run, new=0, urls=1)
+        self.assertUrlStatus(run.urls.all()[0], valid=False)
 
     def test_missing_name(self, rmock):
         """When a record is missing its name, we notice but don't fail."""
@@ -158,5 +157,5 @@ class CrawlerTestCase(TestCase):
         crawler = tasks.Crawler()
         run = crawler.crawl()
 
-        self.assertRunResult(run, urls=1, new=0, crawled=1)
-        self.assertUrlStatus(run.crawlerrunurl_set.all()[0], valid=False)
+        self.assertRunResult(run, new=0, urls=1)
+        self.assertUrlStatus(run.urls.all()[0], valid=False)

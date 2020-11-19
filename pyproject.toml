@@ -29,6 +29,7 @@ jsonfield = "^3.1.0"
 drf-friendly-errors = {git = "https://github.com/bd808/drf-friendly-errors.git", rev = "933eb5b"}
 drf-spectacular = "^0.11.0"
 requests = "^2.25.0"
+drf-nested-routers = "^0.92.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

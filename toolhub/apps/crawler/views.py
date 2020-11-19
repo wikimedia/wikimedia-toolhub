@@ -20,6 +20,7 @@ from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
+from rest_framework import permissions
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -29,7 +30,11 @@ from toolhub.permissions import IsCreator
 from toolhub.permissions import IsReadOnly
 
 from .models import CrawledUrl
+from .models import CrawlerRun
+from .models import CrawlerRunUrl
 from .serializers import CrawledUrlSerializer
+from .serializers import CrawlerRunSerializer
+from .serializers import CrawlerRunUrlSerializer
 from .serializers import EditCrawledUrlSerializer
 
 
@@ -100,3 +105,46 @@ class UrlViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(qs, many=True)
         return Response(serializer.data)
+
+
+@extend_schema_view(
+    list=extend_schema(  # noqa: A003
+        description=_("""List all historic crawler runs."""),
+    ),
+    retrieve=extend_schema(
+        description=_("""Info for a specific crawler run."""),
+    ),
+)
+class CrawlerRunViewSet(viewsets.ReadOnlyModelViewSet):
+    """Crawler runs."""
+
+    queryset = CrawlerRun.objects.all()
+    serializer_class = CrawlerRunSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    filterset_fields = {
+        "id": ["gt", "gte", "lt", "lte"],
+        "start_date": ["date__gt", "date__gte", "date__lt", "date__lte"],
+        "end_date": ["date__gt", "date__gte", "date__lt", "date__lte"],
+    }
+    ordering_fields = ["id", "start_date", "end_date"]
+    ordering = ["-start_date"]
+    lookup_field = "id"
+
+
+@extend_schema_view(
+    list=extend_schema(  # noqa: A003
+        description=_("""List all urls crawled in a run."""),
+    ),
+    retrieve=extend_schema(
+        description=_("""Info for a specific url crawled in a run."""),
+    ),
+)
+class CrawlerRunUrlViewSet(viewsets.ReadOnlyModelViewSet):
+    """Crawler run urls."""
+
+    serializer_class = CrawlerRunUrlSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        """Get a queryset filtered to the appropriate objects."""
+        return CrawlerRunUrl.objects.filter(run=self.kwargs["run_id"])

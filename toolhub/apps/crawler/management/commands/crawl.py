@@ -30,5 +30,5 @@ class Command(BaseCommand):
         spider = Crawler()
         run = spider.crawl()
         self.stdout.write(repr(run))
-        for url in run.crawlerrunurl_set.all():
+        for url in run.urls.all():
             self.stdout.write(repr(url))

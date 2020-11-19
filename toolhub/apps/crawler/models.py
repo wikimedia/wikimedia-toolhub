@@ -56,7 +56,6 @@ class CrawlerRun(models.Model):
 
     start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField(null=True, blank=True)
-    urls = models.ManyToManyField(CrawledUrl, through="CrawlerRunUrl")
     new_tools = models.PositiveIntegerField(blank=True, default=0)
 
     def __str__(self):
@@ -69,10 +68,14 @@ class CrawlerRun(models.Model):
 class CrawlerRunUrl(models.Model):
     """Information about an URL crawled during a CrawlerRun."""
 
-    run = models.ForeignKey(CrawlerRun, on_delete=models.CASCADE)
+    run = models.ForeignKey(
+        CrawlerRun,
+        related_name="urls",
+        on_delete=models.CASCADE,
+    )
     url = models.ForeignKey(
         CrawledUrl,
-        related_name="crawls",
+        related_name="crawler_runs",
         on_delete=models.CASCADE,
     )
     status_code = models.PositiveSmallIntegerField()
@@ -82,7 +85,7 @@ class CrawlerRunUrl(models.Model):
     valid = models.BooleanField(default=False)
     tools = models.ManyToManyField(
         Tool,
-        related_name="runs",
+        related_name="crawer_runs",
     )
 
     def __str__(self):

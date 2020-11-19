@@ -32,3 +32,13 @@ class ToolSerializer(ModelSerializer):
 
         model = Tool
         fields = "__all__"
+
+
+class SummaryToolSerializer(ModelSerializer):
+    """Summary of a tool."""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = Tool
+        fields = ["id", "name", "title", "url"]

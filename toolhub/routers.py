@@ -17,6 +17,8 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from rest_framework import routers as drf_routers
 
+from rest_framework_nested import routers as nested_routers
+
 import toolhub.apps.crawler.views as crawler_views
 import toolhub.apps.toolinfo.views as toolinfo_views
 import toolhub.apps.user.views as user_views
@@ -36,8 +38,20 @@ class Router(drf_routers.DefaultRouter):
     APIRootView = ToolhubApiRootView
 
 
-router = Router()
-router.register("users", user_views.UserViewSet)
-router.register("groups", user_views.GroupViewSet)
-router.register("crawler/urls", crawler_views.UrlViewSet)
-router.register("tools", toolinfo_views.ToolViewSet)
+root = Router()
+root.register("users", user_views.UserViewSet)
+root.register("groups", user_views.GroupViewSet)
+root.register("crawler/urls", crawler_views.UrlViewSet)
+root.register("crawler/runs", crawler_views.CrawlerRunViewSet)
+root.register("tools", toolinfo_views.ToolViewSet)
+
+crawler_runs = nested_routers.NestedSimpleRouter(
+    root,
+    "crawler/runs",
+    lookup="run",
+)
+crawler_runs.register(
+    "urls",
+    crawler_views.CrawlerRunUrlViewSet,
+    basename="run-urls",
+)

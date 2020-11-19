@@ -290,6 +290,18 @@ reference = "933eb5b"
 resolved_reference = "933eb5b11b8b78e754d7492089ec7d1693a47f69"
 
 [[package]]
+name = "drf-nested-routers"
+version = "0.92.1"
+description = "Nested resources for the Django Rest Framework"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+Django = ">=1.11"
+djangorestframework = ">=3.6.0"
+
+[[package]]
 name = "drf-spectacular"
 version = "0.11.0"
 description = "Sane and flexible OpenAPI 3 schema generation for Django REST framework"
@@ -1238,7 +1250,7 @@ testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "691be824339811113a5eb8fda05a9f446152575b0538e22c358b8701e9986299"
+content-hash = "eb94bab59f505de133221e0f4ed1749ed311d9d417f77dbc3acbefb7c9f6add3"
 
 [metadata.files]
 alabaster = [
@@ -1425,6 +1437,10 @@ docutils = [
     {file = "docutils-0.16.tar.gz", hash = "sha256:c2de3a60e9e7d07be26b7f2b00ca0309c207e06c100f9cc2a94931fc75a478fc"},
 ]
 drf-friendly-errors = []
+drf-nested-routers = [
+    {file = "drf-nested-routers-0.92.1.tar.gz", hash = "sha256:e043fc937f94ac462a92d2d9fc9a7e55710a67164b558442adfe9634fc519c3b"},
+    {file = "drf_nested_routers-0.92.1-py2.py3-none-any.whl", hash = "sha256:52be428b046078ed21e9137167035cc2eb8daad036900fd2235ce026306e143a"},
+]
 drf-spectacular = [
     {file = "drf-spectacular-0.11.0.tar.gz", hash = "sha256:6ec070ef690311607d2bdf52e5d7902cdd8f9e181ed42b1734fc485f5c211ea0"},
     {file = "drf_spectacular-0.11.0-py2.py3-none-any.whl", hash = "sha256:c192b2e5779db9ed8421ba8562a07ce63cb44d182786b907ce4a84db4e000697"},

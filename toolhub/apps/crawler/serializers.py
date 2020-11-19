@@ -19,6 +19,8 @@ from toolhub.apps.user.serializers import UserSerializer
 from toolhub.serializers import ModelSerializer
 
 from .models import CrawledUrl
+from .models import CrawlerRun
+from .models import CrawlerRunUrl
 
 
 class CrawledUrlSerializer(ModelSerializer):
@@ -42,3 +44,44 @@ class EditCrawledUrlSerializer(ModelSerializer):
 
         model = CrawledUrl
         fields = ["url"]
+
+
+class SummaryCrawledUrlSerializer(ModelSerializer):
+    """An URL that will be crawled."""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = CrawledUrl
+        fields = ["id", "url"]
+
+
+class CrawlerRunUrlSerializer(ModelSerializer):
+    """Information about a single URL processed during a crawler run."""
+
+    # url = SummaryCrawledUrlSerializer(read_only=True)
+
+    class Meta:
+        """Configure serializer."""
+
+        model = CrawlerRunUrl
+        fields = [
+            "id",
+            "run_id",
+            "url_id",
+            "status_code",
+            "redirected",
+            "elapsed_ms",
+            "schema",
+            "valid",
+        ]
+
+
+class CrawlerRunSerializer(ModelSerializer):
+    """Summary of a single run of the crawler."""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = CrawlerRun
+        fields = ["id", "start_date", "end_date", "new_tools"]
