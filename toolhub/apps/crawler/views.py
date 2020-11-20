@@ -20,6 +20,7 @@ from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
+from rest_framework import mixins
 from rest_framework import permissions
 from rest_framework import viewsets
 from rest_framework.decorators import action
@@ -46,14 +47,6 @@ from .serializers import UrlSerializer
     retrieve=extend_schema(
         description=_("""Info for a specific crawled URL."""),
     ),
-    update=extend_schema(
-        description=_("""Update a specific URL."""),
-        request=EditUrlSerializer,
-    ),
-    partial_update=extend_schema(
-        description=_("""Update a specific URL."""),
-        request=EditUrlSerializer,
-    ),
     destroy=extend_schema(
         description=_("""Unregister an URL."""),
     ),
@@ -61,7 +54,13 @@ from .serializers import UrlSerializer
         description=_("""List all crawled URLs."""),
     ),
 )
-class UrlViewSet(viewsets.ModelViewSet):
+class UrlViewSet(
+    mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet,
+):
     """Toolinfo URLs."""
 
     queryset = Url.objects.all()
@@ -83,10 +82,6 @@ class UrlViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         """Set created_by to current user."""
         serializer.save(created_by=self.request.user)
-
-    def perform_update(self, serializer):
-        """Set modified_by to current user."""
-        serializer.save(modified_by=self.request.user)
 
     @extend_schema(
         description=_("""Get URLs created by the current user."""),

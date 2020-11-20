@@ -36,16 +36,6 @@ class Url(models.Model):
     created_date = models.DateTimeField(
         default=timezone.now, blank=True, editable=False, db_index=True
     )
-    modified_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        related_name="+",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-    )
-    modified_date = models.DateTimeField(
-        default=timezone.now, blank=True, editable=False, db_index=True
-    )
 
     def __str__(self):
         return self.url
