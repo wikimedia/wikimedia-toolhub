@@ -14,11 +14,12 @@
     {% block css %}{% endblock css %}
   </head>
   <body>
-    <noscript>
-      {% trans "Toolhub does not work properly without JavaScript enabled." %}
-    </noscript>
     <div id="app">
-      <app></app>
+      <app>{% block app %}
+      <noscript>
+        <p>{% trans "Toolhub's user interface requires JavaScript to be enabled." %}</p>
+      </noscript>
+      {% endblock %}</app>
     </div>
     {% block bundles %}
     {% render_bundle "chunk-vendors" %}

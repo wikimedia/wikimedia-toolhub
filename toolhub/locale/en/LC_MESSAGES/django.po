@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-20 00:55+0000\n"
+"POT-Creation-Date: 2020-11-20 21:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -277,10 +277,14 @@ msgstr ""
 msgid "Info for a user group."
 msgstr ""
 
-#: vue/templates/vue/base.html:18
-msgid "Toolhub does not work properly without JavaScript enabled."
+#: vue/templates/vue/base.html:20
+msgid "Toolhub's user interface requires JavaScript to be enabled."
 msgstr ""
 
-#: vue/templates/vue/main.html:6
+#: vue/templates/vue/main.html:7
 msgid "Toolhub - a catalog of Wikimedia tools"
+msgstr ""
+
+#: vue/templates/vue/main.html:13
+msgid "LOADING"
 msgstr ""

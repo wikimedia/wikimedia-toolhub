@@ -1,10 +1,23 @@
 {% extends "vue/base.html" %}
 {% load render_bundle from webpack_loader %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}
 {% trans "Toolhub - a catalog of Wikimedia tools" %}
 {% endblock title %}
+
+{% block app %}
+{{ block.super }}
+<div id="loading-wrapper">
+  <div id="loading-text">{% trans "LOADING" %}</div>
+  <div id="loading-content"></div>
+</div>
+{% endblock app %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "vue/css/loading.css" %}">
+{% endblock css %}
 
 {% block bundles %}
 {{ block.super }}
