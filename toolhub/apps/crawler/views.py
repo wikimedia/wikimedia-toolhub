@@ -135,6 +135,7 @@ class RunViewSet(viewsets.ReadOnlyModelViewSet):
 class RunUrlViewSet(viewsets.ReadOnlyModelViewSet):
     """Crawler run urls."""
 
+    queryset = RunUrl.objects.none()
     serializer_class = RunUrlSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
