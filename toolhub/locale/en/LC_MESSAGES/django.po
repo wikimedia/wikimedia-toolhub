@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-14 22:03+0000\n"
+"POT-Creation-Date: 2020-11-20 00:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,28 +22,40 @@ msgstr ""
 msgid "Toolinfo web crawler"
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:37
+#: toolhub/apps/crawler/views.py:44
 msgid "Register a new URL for crawling."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:40
+#: toolhub/apps/crawler/views.py:48
 msgid "Info for a specific crawled URL."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:43 toolhub/apps/crawler/views.py:46
-msgid "Update a specific URL."
-msgstr ""
-
-#: toolhub/apps/crawler/views.py:49
+#: toolhub/apps/crawler/views.py:51
 msgid "Unregister an URL."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:52
+#: toolhub/apps/crawler/views.py:54
 msgid "List all crawled URLs."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:83
+#: toolhub/apps/crawler/views.py:87
 msgid "Get URLs created by the current user."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:105
+msgid "List all historic crawler runs."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:108
+msgid "Info for a specific crawler run."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:129
+msgid "List all urls crawled in a run."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:132
+msgid "Info for a specific url crawled in a run."
 msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
