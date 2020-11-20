@@ -24,7 +24,7 @@ import requests_mock
 from toolhub.apps.user.models import ToolhubUser
 
 from .. import tasks
-from ..models import CrawledUrl
+from ..models import Url
 
 
 @requests_mock.Mocker()
@@ -51,7 +51,7 @@ class CrawlerTestCase(TestCase):
         self.work_dir = os.path.dirname(os.path.abspath(__file__))
 
     def assertRunResult(self, run, new=0, urls=0):
-        """Given a CrawlerRun, check its properties."""
+        """Given a Run, check its properties."""
         self.assertEqual(run.new_tools, new)
         self.assertEqual(run.urls.count(), urls)
 
@@ -62,7 +62,7 @@ class CrawlerTestCase(TestCase):
         redirected=False,
         valid=True,
     ):
-        """Given a CrawlerRunUrl, check its properties."""
+        """Given a RunUrl, check its properties."""
         self.assertEqual(urls.status_code, status_code)
         self.assertEqual(urls.redirected, redirected)
         self.assertEqual(urls.valid, valid)
@@ -75,7 +75,7 @@ class CrawlerTestCase(TestCase):
         **kwargs,
     ):
         """Register a URL to crawl and its expected response."""
-        curl = CrawledUrl.objects.create(url=url, created_by=self.user)
+        curl = Url.objects.create(url=url, created_by=self.user)
 
         if fixture:
             fpath = os.path.join(self.work_dir, fixture)

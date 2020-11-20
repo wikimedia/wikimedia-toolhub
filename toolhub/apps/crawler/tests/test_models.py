@@ -18,16 +18,16 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from ..models import CrawledUrl
+from ..models import Url
 
 
-class CrawledUrlTestCase(TestCase):
-    """CrawledUrl tests."""
+class UrlTestCase(TestCase):
+    """Url tests."""
 
     def test_str(self):
-        """A CrawledUrl's string representation is the url."""
+        """A Url's string representation is the url."""
         user = get_user_model().objects.create_user("testing")
-        url = CrawledUrl.objects.create(
+        url = Url.objects.create(
             url="https://example.org/toolinfo.json",
             created_by=user,
         )

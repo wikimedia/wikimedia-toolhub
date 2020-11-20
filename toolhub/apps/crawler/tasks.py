@@ -25,9 +25,9 @@ import requests
 
 from toolhub.apps.toolinfo.models import Tool
 
-from .models import CrawledUrl
-from .models import CrawlerRun
-from .models import CrawlerRunUrl
+from .models import Run
+from .models import RunUrl
+from .models import Url
 
 
 logger = logging.getLogger(__name__)
@@ -43,24 +43,24 @@ class Crawler:
     def crawl(self):
         """Crawl all URLs and create/update tool records."""
         logger.info("Starting crawl")
-        run = CrawlerRun()
+        run = Run()
         run.save()
 
         for url in self.getActiveUrls():
             # FIXME: rate limiting for outbound requests?
             logger.info("Crawling %s", url)
-            crawl_url = CrawlerRunUrl(run=run, url=url)
-            tools = self.crawlUrl(crawl_url)
-            crawl_url.save()
+            run_url = RunUrl(run=run, url=url)
+            tools = self.crawlUrl(run_url)
+            run_url.save()
 
             for tool in tools:
                 # FIXME: do a more complete job of validating the record
                 for field in ["name", "title", "description", "url"]:
                     if field not in tool or not tool[field]:
                         logger.error("Toolinfo record missing %s.", field)
-                        crawl_url.valid = False
-                if not crawl_url.valid:
-                    crawl_url.save()
+                        run_url.valid = False
+                if not run_url.valid:
+                    run_url.save()
                     continue
 
                 logger.info("Found tool `%s`", tool["name"])
@@ -85,16 +85,16 @@ class Crawler:
                     )
                     if created:
                         run.new_tools += 1
-                    crawl_url.tools.add(obj)
+                    run_url.tools.add(obj)
 
                 except django.db.Error:
                     logger.exception(
                         "Failed to upsert `%s` from %s",
                         tool["name"],
-                        crawl_url.url.url,
+                        run_url.url.url,
                     )
-                    crawl_url.valid = False
-                    crawl_url.save()
+                    run_url.valid = False
+                    run_url.save()
 
         run.end_date = timezone.now()
         run.save()
@@ -103,7 +103,7 @@ class Crawler:
     def getActiveUrls(self):
         """Get all URLs ready for crawling."""
         # FIXME: filter out "failed" urls?
-        return CrawledUrl.objects.all()
+        return Url.objects.all()
 
     def crawlUrl(self, url):
         """Crawl an URL and return it's content."""

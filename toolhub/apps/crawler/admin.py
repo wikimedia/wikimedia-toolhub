@@ -20,9 +20,9 @@ import django.contrib.admin
 from . import models
 
 
-@django.contrib.admin.register(models.CrawledUrl)
-class CrawledUrlAdmin(django.contrib.admin.ModelAdmin):
-    """Admin view of CrawledUrl."""
+@django.contrib.admin.register(models.Url)
+class UrlAdmin(django.contrib.admin.ModelAdmin):
+    """Admin view of Url."""
 
     list_display = (
         "url",
@@ -32,10 +32,10 @@ class CrawledUrlAdmin(django.contrib.admin.ModelAdmin):
     ordering = ("url",)
 
 
-class CrawlerRunUrlInline(django.contrib.admin.TabularInline):
-    """Inline admin view of CrawlerRunUrl."""
+class RunUrlInline(django.contrib.admin.TabularInline):
+    """Inline admin view of RunUrl."""
 
-    model = models.CrawlerRunUrl
+    model = models.RunUrl
     fields = (
         "url",
         "status_code",
@@ -47,32 +47,16 @@ class CrawlerRunUrlInline(django.contrib.admin.TabularInline):
     extra = 0
 
 
-@django.contrib.admin.register(models.CrawlerRun)
-class CrawlerRunAdmin(django.contrib.admin.ModelAdmin):
-    """Admin view of a CrawlerRun."""
+@django.contrib.admin.register(models.Run)
+class RunAdmin(django.contrib.admin.ModelAdmin):
+    """Admin view of a Run."""
 
     list_display = ("start_date",)
     ordering = ("start_date",)
-    inlines = (CrawlerRunUrlInline,)
+    inlines = (RunUrlInline,)
     readonly_fields = ("start_date",)
 
     class Media:
         """Media overrides."""
 
         css = {"all": ("css/admin.css",)}
-
-
-@django.contrib.admin.register(models.CrawlerRunUrl)
-class CrawlerRunUrlAdmin(django.contrib.admin.ModelAdmin):
-    """Register with admin."""
-
-    list_display = (
-        "run",
-        "url",
-        "status_code",
-        "valid",
-    )
-    ordering = (
-        "run",
-        "url",
-    )

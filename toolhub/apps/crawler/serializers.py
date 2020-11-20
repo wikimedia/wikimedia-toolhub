@@ -18,12 +18,12 @@
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.serializers import ModelSerializer
 
-from .models import CrawledUrl
-from .models import CrawlerRun
-from .models import CrawlerRunUrl
+from .models import Run
+from .models import RunUrl
+from .models import Url
 
 
-class CrawledUrlSerializer(ModelSerializer):
+class UrlSerializer(ModelSerializer):
     """Details of an URL that has been registered for crawling."""
 
     created_by = UserSerializer(many=False, read_only=True)
@@ -32,39 +32,37 @@ class CrawledUrlSerializer(ModelSerializer):
     class Meta:
         """Configure serializer."""
 
-        model = CrawledUrl
+        model = Url
         fields = "__all__"
 
 
-class EditCrawledUrlSerializer(ModelSerializer):
+class EditUrlSerializer(ModelSerializer):
     """An URL that will be crawled."""
 
     class Meta:
         """Configure serializer."""
 
-        model = CrawledUrl
+        model = Url
         fields = ["url"]
 
 
-class SummaryCrawledUrlSerializer(ModelSerializer):
+class SummaryUrlSerializer(ModelSerializer):
     """An URL that will be crawled."""
 
     class Meta:
         """Configure serializer."""
 
-        model = CrawledUrl
+        model = Url
         fields = ["id", "url"]
 
 
-class CrawlerRunUrlSerializer(ModelSerializer):
+class RunUrlSerializer(ModelSerializer):
     """Information about a single URL processed during a crawler run."""
-
-    # url = SummaryCrawledUrlSerializer(read_only=True)
 
     class Meta:
         """Configure serializer."""
 
-        model = CrawlerRunUrl
+        model = RunUrl
         fields = [
             "id",
             "run_id",
@@ -77,11 +75,11 @@ class CrawlerRunUrlSerializer(ModelSerializer):
         ]
 
 
-class CrawlerRunSerializer(ModelSerializer):
+class RunSerializer(ModelSerializer):
     """Summary of a single run of the crawler."""
 
     class Meta:
         """Configure serializer."""
 
-        model = CrawlerRun
+        model = Run
         fields = ["id", "start_date", "end_date", "new_tools"]

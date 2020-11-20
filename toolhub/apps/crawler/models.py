@@ -22,7 +22,7 @@ from django.utils import timezone
 from toolhub.apps.toolinfo.models import Tool
 
 
-class CrawledUrl(models.Model):
+class Url(models.Model):
     """An URL that the crawler should fetch."""
 
     url = models.URLField(max_length=255, unique=True)
@@ -51,7 +51,7 @@ class CrawledUrl(models.Model):
         return self.url
 
 
-class CrawlerRun(models.Model):
+class Run(models.Model):
     """A run of the crawler."""
 
     start_date = models.DateTimeField(auto_now_add=True)
@@ -65,16 +65,16 @@ class CrawlerRun(models.Model):
         )
 
 
-class CrawlerRunUrl(models.Model):
-    """Information about an URL crawled during a CrawlerRun."""
+class RunUrl(models.Model):
+    """Information about an URL crawled during a Run."""
 
     run = models.ForeignKey(
-        CrawlerRun,
+        Run,
         related_name="urls",
         on_delete=models.CASCADE,
     )
     url = models.ForeignKey(
-        CrawledUrl,
+        Url,
         related_name="crawler_runs",
         on_delete=models.CASCADE,
     )

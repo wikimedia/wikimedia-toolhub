@@ -42,7 +42,7 @@ root = Router()
 root.register("users", user_views.UserViewSet)
 root.register("groups", user_views.GroupViewSet)
 root.register("crawler/urls", crawler_views.UrlViewSet)
-root.register("crawler/runs", crawler_views.CrawlerRunViewSet)
+root.register("crawler/runs", crawler_views.RunViewSet)
 root.register("tools", toolinfo_views.ToolViewSet)
 
 crawler_runs = nested_routers.NestedSimpleRouter(
@@ -52,6 +52,6 @@ crawler_runs = nested_routers.NestedSimpleRouter(
 )
 crawler_runs.register(
     "urls",
-    crawler_views.CrawlerRunUrlViewSet,
+    crawler_views.RunUrlViewSet,
     basename="run-urls",
 )

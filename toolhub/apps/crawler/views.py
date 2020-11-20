@@ -29,30 +29,30 @@ from toolhub.permissions import IsAdminOrIsSelf
 from toolhub.permissions import IsCreator
 from toolhub.permissions import IsReadOnly
 
-from .models import CrawledUrl
-from .models import CrawlerRun
-from .models import CrawlerRunUrl
-from .serializers import CrawledUrlSerializer
-from .serializers import CrawlerRunSerializer
-from .serializers import CrawlerRunUrlSerializer
-from .serializers import EditCrawledUrlSerializer
+from .models import Run
+from .models import RunUrl
+from .models import Url
+from .serializers import EditUrlSerializer
+from .serializers import RunSerializer
+from .serializers import RunUrlSerializer
+from .serializers import UrlSerializer
 
 
 @extend_schema_view(
     create=extend_schema(
         description=_("""Register a new URL for crawling."""),
-        request=EditCrawledUrlSerializer,
+        request=EditUrlSerializer,
     ),
     retrieve=extend_schema(
         description=_("""Info for a specific crawled URL."""),
     ),
     update=extend_schema(
         description=_("""Update a specific URL."""),
-        request=EditCrawledUrlSerializer,
+        request=EditUrlSerializer,
     ),
     partial_update=extend_schema(
         description=_("""Update a specific URL."""),
-        request=EditCrawledUrlSerializer,
+        request=EditUrlSerializer,
     ),
     destroy=extend_schema(
         description=_("""Unregister an URL."""),
@@ -64,8 +64,8 @@ from .serializers import EditCrawledUrlSerializer
 class UrlViewSet(viewsets.ModelViewSet):
     """Toolinfo URLs."""
 
-    queryset = CrawledUrl.objects.all()
-    serializer_class = CrawledUrlSerializer
+    queryset = Url.objects.all()
+    serializer_class = UrlSerializer
     permission_classes = [IsCreator | IsReadOnly]
     filterset_fields = {
         "id": ["gt", "gte", "lt", "lte"],
@@ -94,9 +94,7 @@ class UrlViewSet(viewsets.ModelViewSet):
     @action(detail=False, permission_classes=[IsAdminOrIsSelf])
     def self(self, request):
         """Owned item list."""
-        qs = self.filter_queryset(
-            CrawledUrl.objects.filter(created_by=request.user)
-        )
+        qs = self.filter_queryset(Url.objects.filter(created_by=request.user))
 
         page = self.paginate_queryset(qs)
         if page is not None:
@@ -115,11 +113,11 @@ class UrlViewSet(viewsets.ModelViewSet):
         description=_("""Info for a specific crawler run."""),
     ),
 )
-class CrawlerRunViewSet(viewsets.ReadOnlyModelViewSet):
+class RunViewSet(viewsets.ReadOnlyModelViewSet):
     """Crawler runs."""
 
-    queryset = CrawlerRun.objects.all()
-    serializer_class = CrawlerRunSerializer
+    queryset = Run.objects.all()
+    serializer_class = RunSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filterset_fields = {
         "id": ["gt", "gte", "lt", "lte"],
@@ -139,12 +137,12 @@ class CrawlerRunViewSet(viewsets.ReadOnlyModelViewSet):
         description=_("""Info for a specific url crawled in a run."""),
     ),
 )
-class CrawlerRunUrlViewSet(viewsets.ReadOnlyModelViewSet):
+class RunUrlViewSet(viewsets.ReadOnlyModelViewSet):
     """Crawler run urls."""
 
-    serializer_class = CrawlerRunUrlSerializer
+    serializer_class = RunUrlSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         """Get a queryset filtered to the appropriate objects."""
-        return CrawlerRunUrl.objects.filter(run=self.kwargs["run_id"])
+        return RunUrl.objects.filter(run=self.kwargs["run_id"])
