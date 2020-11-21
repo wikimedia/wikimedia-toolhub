@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-20 21:12+0000\n"
+"POT-Creation-Date: 2020-11-25 17:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -257,24 +257,36 @@ msgstr ""
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
 msgstr ""
 
-#: toolhub/apps/user/views.py:45
+#: toolhub/apps/user/views.py:46
 msgid "Get information about the currently logged in user."
 msgstr ""
 
-#: toolhub/apps/user/views.py:67
+#: toolhub/apps/user/views.py:70
+msgid "Get current locale."
+msgstr ""
+
+#: toolhub/apps/user/views.py:81
+msgid "Set locale."
+msgstr ""
+
+#: toolhub/apps/user/views.py:99
 msgid "List all active users."
 msgstr ""
 
-#: toolhub/apps/user/views.py:70
+#: toolhub/apps/user/views.py:102
 msgid "Info for a specific user."
 msgstr ""
 
-#: toolhub/apps/user/views.py:90
+#: toolhub/apps/user/views.py:122
 msgid "List all user groups."
 msgstr ""
 
-#: toolhub/apps/user/views.py:93
+#: toolhub/apps/user/views.py:125
 msgid "Info for a user group."
+msgstr ""
+
+#: toolhub/settings.py:346
+msgid "Toolhub API"
 msgstr ""
 
 #: vue/templates/vue/base.html:20

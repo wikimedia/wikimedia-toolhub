@@ -23,6 +23,7 @@ from django.urls import path
 from drf_spectacular.views import SpectacularAPIView
 
 from toolhub.apps.user.views import CurrentUserView
+from toolhub.apps.user.views import LocaleView
 
 from .routers import crawler_runs
 from .routers import root
@@ -31,6 +32,7 @@ from .routers import root
 api_patterns = [
     path(".schema", SpectacularAPIView.as_view(), name="schema"),
     path("user/", CurrentUserView.as_view(), name="user"),
+    path("user/locale/", LocaleView.as_view(), name="locale"),
     path("", include(root.urls)),
     path("", include(crawler_runs.urls)),
 ]

@@ -26,6 +26,8 @@ import logging
 import os
 import sys
 
+from django.utils.translation import gettext_lazy as _
+
 import environ
 
 
@@ -145,6 +147,7 @@ MIDDLEWARE = [
     "log_request_id.middleware.RequestIDMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -340,7 +343,7 @@ REST_FRAMEWORK = {
 SPECTACULAR_SETTINGS = {
     "SCHEMA_PATH_PREFIX": r"/api",
     "SERVE_INCLUDE_SCHEMA": False,
-    "TITLE": "Toolhub API",
+    "TITLE": _("Toolhub API"),
     "LICENSE": {
         "name": "GPL-3.0-or-later",
         "url": "https://www.gnu.org/licenses/gpl-3.0.html",

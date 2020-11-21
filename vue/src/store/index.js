@@ -99,6 +99,19 @@ export default new Vuex.Store( {
 				context.commit( 'USER_CREATED_URLS', response.body );
 			} )
 				.catch( ( err ) => context.commit( 'ERROR', err ) );
+		},
+		setLocale( context, locale ) {
+			const request = {
+				url: '/api/user/locale/',
+				method: 'POST',
+				mode: 'same-origin',
+				body: JSON.stringify( { language: locale } ),
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRFTOKEN': this.state.user.csrf_token
+				}
+			};
+			SwaggerClient.http( request );
 		}
 	},
 	modules: {

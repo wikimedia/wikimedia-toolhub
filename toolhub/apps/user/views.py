@@ -26,14 +26,15 @@ from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
 from rest_framework import permissions
+from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-
 from .models import ToolhubUser
 from .serializers import CurrentUserSerializer
 from .serializers import GroupSerializer
+from .serializers import LocaleSerializer
 from .serializers import UserDetailSerializer
 
 
@@ -60,6 +61,37 @@ class CurrentUserView(APIView):
         }
         serializer = CurrentUserSerializer(user_info)
         return Response(serializer.data)
+
+
+class LocaleView(APIView):
+    """User's locale."""
+
+    @extend_schema(
+        description=_("""Get current locale."""),
+        responses=LocaleSerializer,
+    )
+    def get(self, request):
+        """Get locale."""
+        locale = {
+            "language": request.LANGUAGE_CODE,
+        }
+        return Response(LocaleSerializer(locale).data)
+
+    @extend_schema(
+        description=_("""Set locale."""),
+        request=LocaleSerializer,
+        responses=LocaleSerializer,
+    )
+    def post(self, request):
+        """Set locale."""
+        serializer = LocaleSerializer(
+            data=request.data,
+            context={"request": request},
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @extend_schema_view(

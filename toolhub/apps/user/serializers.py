@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth.models import Group
+from django.utils.translation import LANGUAGE_SESSION_KEY
 
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import extend_schema_field
@@ -45,9 +46,25 @@ class CurrentUserSerializer(Serializer):
         """Operation not implemented."""
         raise NotImplementedError("Data output only serializer.")
 
-    def upate(self, instance, validated_data):
+    def update(self, instance, validated_data):
         """Operation not implemented."""
         raise NotImplementedError("Data output only serializer.")
+
+
+class LocaleSerializer(Serializer):
+    """Information about the current locale."""
+
+    language = serializers.CharField()
+
+    def create(self, validated_data):
+        """Save the locale."""
+        request = self.context["request"]
+        request.session[LANGUAGE_SESSION_KEY] = validated_data["language"]
+        return validated_data
+
+    def update(self, instance, validated_data):
+        """Save the locale."""
+        return self.create(validated_data)
 
 
 class UserSocialAuthSerializer(ModelSerializer):
