@@ -141,9 +141,10 @@ docs:  ## Build sphinx docs
 artifacts: schemas messages docs  ## Generate code & doc artifacts
 .PHONY: artifacts
 
-black:
+format-code:  ## Reformat Python and JS files
 	docker-compose exec web poetry run black .
-.PHONY: black
+	docker-compose exec nodejs npm run-script format
+.PHONY: format-code
 
 clean:  ## Clean up Docker images and containers
 	yes | docker image prune

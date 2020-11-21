@@ -6,6 +6,7 @@
     "build:vue": "vue-cli-service build",
     "lint": "npm run lint:eslint && npm run lint:vue",
     "lint:eslint": "eslint .",
+    "format": "eslint --fix .",
     "lint:vue": "vue-cli-service lint",
     "schemas:generate": "jsonschema-tools materialize-all",
     "serve:vue": "vue-cli-service serve",
