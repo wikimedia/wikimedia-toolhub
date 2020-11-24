@@ -137,6 +137,7 @@ INSTALLED_APPS = [
     "social_django",
     "webpack_loader",
     # ==== Local apps ====
+    "toolhub.apps.auditlog",
     "toolhub.apps.crawler",
     "toolhub.apps.toolinfo",
     "toolhub.apps.user",
@@ -154,6 +155,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "social_django.middleware.SocialAuthExceptionMiddleware",
+    "toolhub.apps.auditlog.middleware.LogEntryUserMiddleware",
 ]
 
 ROOT_URLCONF = "toolhub.urls"

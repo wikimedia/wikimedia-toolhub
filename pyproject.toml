@@ -70,8 +70,8 @@ show_source = true
 
 [tool.flakehell.plugins]
 "flake8-*" = ["+*"]
-flake8-docstrings = ["+*", "-D100", "-D105"]
-pycodestyle = ["+*", "-E501"]
+flake8-docstrings = ["+*", "-D100", "-D105", "-D400", "-D401"]
+pycodestyle = ["+*", "-E501", "-W503", "-W504"]
 pyflakes = ["+*"]
 pylint = [
     "+*",

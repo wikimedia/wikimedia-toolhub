@@ -5,14 +5,7 @@ pipelines:
       - name: lint-python
         build: lint-python
         run:
-          env:
-            DJANGO_SETTINGS_MODULE: "toolhub.settings"
-            PIPELINE_RUNNING: 1
-
-      - name: test-python
-        build: test-python
-        run:
-          env:
+          env: &python-env-settings
             PIPELINE_RUNNING: 1
             DJANGO_SETTINGS_MODULE: "toolhub.settings"
             DJANGO_SECRET_KEY: NOTAREALSECRET
@@ -21,14 +14,18 @@ pipelines:
             WIKIMEDIA_OAUTH2_KEY: NOTAREALOAUTHKEY
             WIKIMEDIA_OAUTH2_SECRET: NOTAREALOAUTHSECRET
 
+      - name: test-python
+        build: test-python
+        run:
+          env: *python-env-settings
+
       - name: lint-nodejs
         build: lint-nodejs
         run:
-          env:
+          env: &node-env-settings
             PIPELINE_RUNNING: 1
 
       - name: test-nodejs
         build: test-nodejs
         run:
-          env:
-            PIPELINE_RUNNING: 1
+          env: *node-env-settings
