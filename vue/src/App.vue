@@ -60,7 +60,7 @@
 				nav
 			>
 				<v-list-item
-					v-for="route in $router.options.routes"
+					v-for="route in routes"
 					:key="route.name"
 					:to="route.path"
 					link
@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import UserStatus from '@/components/user/Status';
 import SelectLocale from '@/components/locale/SelectLocale';
 import { getLangNameFromCode } from 'language-name-map';
@@ -98,9 +99,16 @@ export default {
 	},
 	data() {
 		return {
-			drawer: true,
-			routes: []
+			drawer: true
 		};
+	},
+	computed: {
+		...mapState( 'user', [] ),
+		routes() {
+			return this.$router.options.routes.filter(
+				( route ) => route.name !== 'tool'
+			);
+		}
 	},
 	methods: {
 		changeRTL() {
@@ -110,7 +118,7 @@ export default {
 		}
 	},
 	created() {
-		this.$store.dispatch( 'getUserInfo' );
+		this.$store.dispatch( 'user/getUserInfo' );
 		this.changeRTL();
 	}
 };

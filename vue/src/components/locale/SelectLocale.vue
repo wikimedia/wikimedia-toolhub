@@ -49,7 +49,7 @@ export default {
 			}
 
 			this.$i18n.locale = locale;
-			this.$store.dispatch( 'setLocale', locale );
+			this.$store.dispatch( 'user/setLocale', locale );
 			this.$router.push( {
 				query: { locale: locale }
 			} );

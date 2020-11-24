@@ -15,6 +15,11 @@ const routes = [
 			}
 		},
 		{
+			name: 'tool',
+			path: '/tool/:id/',
+			component: () => import( /* webpackChunkName: "tool" */ '../views/Tool.vue' )
+		},
+		{
 			name: 'addremovetools',
 			path: '/add-or-remove-tools',
 			component: () => import( /* webpackChunkName: "addremovetools" */ '../views/AddRemoveTools.vue' ),

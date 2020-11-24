@@ -77,7 +77,7 @@
           "plugin:vue/recommended"
         ],
         "plugins": [
-            "vuetify"
+          "vuetify"
         ],
         "rules": {
           "camelcase": "off",

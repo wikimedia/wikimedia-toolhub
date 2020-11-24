@@ -18,15 +18,19 @@
 		use-path-in-nav-bar="true"
 		api-key-name="X-CSRFToken"
 		api-key-location="header"
-		:api-key-value="this.$store.state.user.csrf_token"
+		:api-key-value="user.csrf_token"
 	/>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import 'rapidoc';
 
 export default {
-	name: 'ApiDocs'
+	name: 'ApiDocs',
+	computed: {
+		...mapState( 'user', [ 'user' ] )
+	}
 };
 </script>
 

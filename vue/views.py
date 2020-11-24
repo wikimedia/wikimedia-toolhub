@@ -18,6 +18,6 @@
 from django import shortcuts
 
 
-def main(request):
+def main(request, **kwargs):  # noqa: W0613
     """Serve a page embedding the Vue frontend's main component."""
     return shortcuts.render(request, "vue/main.html")

@@ -1,6 +1,6 @@
 <template>
 	<v-menu
-		v-if="$store.state.user.is_authenticated"
+		v-if="user.is_authenticated"
 		offset-y
 	>
 		<template #activator="{ on, attrs }">
@@ -30,7 +30,7 @@
 				</v-list-item-avatar>
 				<v-list-item-content>
 					<v-list-item-title>
-						{{ $store.state.user.username }}
+						{{ user.username }}
 					</v-list-item-title>
 				</v-list-item-content>
 			</v-list-item>
@@ -68,12 +68,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
 	name: 'UserStatus',
 	data() {
 		return {
 			loading: false
 		};
+	},
+	computed: {
+		...mapState( 'user', [ 'user' ] )
 	}
 };
 </script>

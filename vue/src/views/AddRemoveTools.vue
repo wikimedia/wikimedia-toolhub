@@ -67,7 +67,7 @@
 						</v-alert>
 
 						<v-alert
-							v-if="$store.state.user.is_authenticated === true &&
+							v-if="$store.state.user.user.is_authenticated === true &&
 								numUserCreatedUrls === 0"
 							border="left"
 							type="info"
@@ -153,7 +153,7 @@
 				</v-row>
 				<v-row>
 					<v-alert
-						v-if="$store.state.user.is_authenticated === false"
+						v-if="$store.state.user.user.is_authenticated === false"
 						border="left"
 						color="primary"
 						dark
@@ -188,10 +188,12 @@ export default {
 		};
 	},
 	computed: {
-		...mapState( [ 'userCreatedUrls', 'apiErrorMsg', 'numUserCreatedUrls' ] ),
+		...mapState( 'user', [ 'userCreatedUrls', 'apiErrorMsg', 'numUserCreatedUrls' ] ),
+
 		isUserAuthenticated() {
-			return this.$store.state.user.is_authenticated;
+			return this.$store.state.user.user.is_authenticated;
 		},
+
 		headers() {
 			return [
 				{
@@ -220,19 +222,19 @@ export default {
 				return;
 			}
 
-			this.$store.dispatch( 'registerUrl', url );
+			this.$store.dispatch( 'user/registerUrl', url );
 			this.fileUrl = '';
 			this.$refs.url.reset();
 		},
 		unregisterUrl( urlObj ) {
-			this.$store.dispatch( 'unregisterUrl', urlObj );
+			this.$store.dispatch( 'user/unregisterUrl', urlObj );
 		},
 		goToNextPage( page ) {
 			this.page = page;
 			this.getUrlsCreatedByUser();
 		},
 		getUrlsCreatedByUser() {
-			this.$store.dispatch( 'getUrlsCreatedByUser', this.page );
+			this.$store.dispatch( 'user/getUrlsCreatedByUser', this.page );
 		},
 		sortByLastModifiedDate( items, index, isDesc ) {
 			items.sort( ( a, b ) => {
