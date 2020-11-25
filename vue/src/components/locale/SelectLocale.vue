@@ -1,23 +1,35 @@
 <template>
-	<v-col ma-6
-		lg="2"
-		md="3"
-		sm="4"
-		cols="5"
-	>
-		<v-select
-			v-model="$i18n.locale"
-			:items="languages"
-			:item-text="item => item.name + ' (' + item.code + ') '"
-			:item-value="'code'"
-			prepend-icon="mdi-web"
-			menu-props="auto"
-			hide-details
-			:label="$t( 'selectlanguage' )"
-			single-line
-			@change="setLocale"
-		/>
-	</v-col>
+	<v-menu offset-y>
+		<template #activator="{ on, attrs }">
+			<p class="font-weight-bold mt-4 mr-3">
+				{{ $i18n.locale }}
+			</p>
+
+			<v-btn
+				icon
+				v-bind="attrs"
+				v-on="on"
+			>
+				<v-icon>
+					mdi-translate
+				</v-icon>
+			</v-btn>
+		</template>
+		<v-list>
+			<v-list-item
+				v-for="(language, index) in languages"
+				:key="index"
+				selectable
+				link
+			>
+				<v-list-item-title
+					@click="setLocale(language.code)"
+				>
+					{{ language.name }} ({{ language.code }})
+				</v-list-item-title>
+			</v-list-item>
+		</v-list>
+	</v-menu>
 </template>
 
 <script>
@@ -32,6 +44,10 @@ export default {
 	},
 	methods: {
 		setLocale( locale ) {
+			if ( this.$i18n.locale === locale ) {
+				return;
+			}
+
 			this.$i18n.locale = locale;
 			this.$router.push( {
 				query: { locale: locale }
