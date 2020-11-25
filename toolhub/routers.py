@@ -19,6 +19,7 @@ from rest_framework import routers as drf_routers
 
 from rest_framework_nested import routers as nested_routers
 
+import toolhub.apps.auditlog.views as auditlog_views
 import toolhub.apps.crawler.views as crawler_views
 import toolhub.apps.toolinfo.views as toolinfo_views
 import toolhub.apps.user.views as user_views
@@ -39,11 +40,12 @@ class Router(drf_routers.DefaultRouter):
 
 
 root = Router()
-root.register("users", user_views.UserViewSet)
-root.register("groups", user_views.GroupViewSet)
-root.register("crawler/urls", crawler_views.UrlViewSet)
+root.register("auditlogs", auditlog_views.LogEntryViewSet)
 root.register("crawler/runs", crawler_views.RunViewSet)
+root.register("crawler/urls", crawler_views.UrlViewSet)
+root.register("groups", user_views.GroupViewSet)
 root.register("tools", toolinfo_views.ToolViewSet)
+root.register("users", user_views.UserViewSet)
 
 crawler_runs = nested_routers.NestedSimpleRouter(
     root,

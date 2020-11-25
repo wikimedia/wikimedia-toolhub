@@ -81,9 +81,9 @@ class LogEntry(models.Model):
         (DELETE, _("delete")),
     )
 
-    action_time = models.DateTimeField(
+    timestamp = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("action time"),
+        verbose_name=_("timestamp"),
     )
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
@@ -136,3 +136,9 @@ class LogEntry(models.Model):
                 id=self.object_id
             )
         return self.content_type.get_object_for_this_type(pk=self.object_pk)
+
+    def get_target_id(self):
+        """Return the id value that is set for this log entry."""
+        if self.object_id is not None:
+            return self.object_id
+        return self.object_pk

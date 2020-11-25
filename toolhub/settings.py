@@ -351,7 +351,7 @@ SPECTACULAR_SETTINGS = {
         "url": "https://www.gnu.org/licenses/gpl-3.0.html",
     },
     "VERSION": "0.0.1",
-    "COMPONENT_NO_READ_ONLY_REQUIRED": False,
+    "COMPONENT_NO_READ_ONLY_REQUIRED": True,
     "COMPONENT_SPLIT_REQUEST": True,
     "ENUM_ADD_EXPLICIT_BLANK_NULL_CHOICE": False,
 }

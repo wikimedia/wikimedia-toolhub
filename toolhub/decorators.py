@@ -15,24 +15,26 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-import django.contrib.admin
-
-from toolhub.admin import ReadOnlyModelAdmin
-
-from . import models
 
 
-@django.contrib.admin.register(models.LogEntry)
-class LogEntryAdmin(ReadOnlyModelAdmin):
-    """Register with admin."""
+def doc(docstring):
+    """Add a translatable docstring to the decorated class or function.
 
-    list_display = (
-        "timestamp",
-        "user",
-        "content_type",
-        "object_id",
-        "object_pk",
-        "action",
-    )
-    list_filter = ("user", "content_type")
-    ordering = ("-timestamp",)
+    Because of the way that Django's `makemessages` finds translatable
+    strings, the docstring used in the call should be wrapped in `_()`.
+
+    .. code-block:: python
+
+        from django.utils.translation import gettext_lazy as _
+        from toolhub.decorators import doc
+
+        @doc(_("This is the docstring that will be translatable."))
+        def foo():
+            pass
+    """
+
+    def decorator(func):
+        func.__doc__ = docstring
+        return func
+
+    return decorator
