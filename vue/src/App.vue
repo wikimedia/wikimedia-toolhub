@@ -25,6 +25,7 @@
 			:floating="true"
 			:permanent="$vuetify.breakpoint.mdAndUp"
 			:expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer"
+			:right="$vuetify.rtl"
 		>
 			<v-list-item class="ml-2 mt-1 pl-1">
 				<v-list-item-avatar
@@ -88,6 +89,7 @@
 <script>
 import UserStatus from '@/components/user/Status';
 import SelectLocale from '@/components/locale/SelectLocale';
+import { getLangNameFromCode } from 'language-name-map';
 
 export default {
 	components: {
@@ -100,8 +102,16 @@ export default {
 			routes: []
 		};
 	},
+	methods: {
+		changeRTL() {
+			const curLocale = this.$i18n.locale,
+				curLocaleDir = getLangNameFromCode( curLocale ).dir;
+			this.$vuetify.rtl = ( curLocaleDir === 0 );
+		}
+	},
 	created() {
 		this.$store.dispatch( 'getUserInfo' );
+		this.changeRTL();
 	}
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<v-menu offset-y>
+	<v-menu max-height="250" offset-y>
 		<template #activator="{ on, attrs }">
 			<p class="font-weight-bold mt-4 mr-3">
 				{{ $i18n.locale }}
@@ -17,15 +17,15 @@
 		</template>
 		<v-list>
 			<v-list-item
-				v-for="(language, index) in languages"
-				:key="index"
+				v-for="(language, code) in languages"
+				:key="code"
 				selectable
 				link
 			>
 				<v-list-item-title
-					@click="setLocale(language.code)"
+					@click="setLocale(code, language.dir)"
 				>
-					{{ language.name }} ({{ language.code }})
+					{{ language.native }} ({{ code }})
 				</v-list-item-title>
 			</v-list-item>
 		</v-list>
@@ -33,17 +33,17 @@
 </template>
 
 <script>
-import languages_json from '@/assets/locales/languages.json';
+import languageNameMap from 'language-name-map/map';
 
 export default {
 	name: 'SelectLocale',
 	data() {
 		return {
-			languages: languages_json
+			languages: languageNameMap
 		};
 	},
 	methods: {
-		setLocale( locale ) {
+		setLocale( locale, dir ) {
 			if ( this.$i18n.locale === locale ) {
 				return;
 			}
@@ -53,6 +53,8 @@ export default {
 			this.$router.push( {
 				query: { locale: locale }
 			} );
+
+			this.$vuetify.rtl = ( dir === 0 );
 		}
 	}
 };
