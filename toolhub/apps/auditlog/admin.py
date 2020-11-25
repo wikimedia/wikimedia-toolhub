@@ -18,44 +18,21 @@
 import django.contrib.admin
 
 from toolhub.admin import ReadOnlyModelAdmin
-from toolhub.admin import ReadOnlyTabularInline
 
 from . import models
 
 
-@django.contrib.admin.register(models.Url)
-class UrlAdmin(django.contrib.admin.ModelAdmin):
-    """Admin view of Url."""
+@django.contrib.admin.register(models.LogEntry)
+class LogEntryAdmin(ReadOnlyModelAdmin):
+    """Register with admin."""
 
     list_display = (
-        "url",
-        "created_by",
+        "action_time",
+        "user",
+        "content_type",
+        "object_id",
+        "object_pk",
+        "action",
     )
-    list_filter = ("created_by",)
-    ordering = ("url",)
-
-
-class RunUrlInline(ReadOnlyTabularInline):
-    """Inline admin view of RunUrl."""
-
-    model = models.RunUrl
-    fields = (
-        "url",
-        "status_code",
-        "valid",
-        "redirected",
-    )
-
-
-@django.contrib.admin.register(models.Run)
-class RunAdmin(ReadOnlyModelAdmin):
-    """Admin view of a Run."""
-
-    list_display = ("start_date",)
-    ordering = ("start_date",)
-    inlines = (RunUrlInline,)
-
-    class Media:
-        """Media overrides."""
-
-        css = {"all": ("css/admin.css",)}
+    list_filter = ("user", "content_type")
+    ordering = ("-action_time",)
