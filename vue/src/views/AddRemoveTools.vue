@@ -95,8 +95,8 @@
 									target="_blank"
 								>{{ item.url }}</a>
 							</template>
-							<template #[`item.modified_date`]="{ item }">
-								{{ item.modified_date | moment( "MMM DD, YYYY" ) }}
+							<template #[`item.created_date`]="{ item }">
+								{{ item.created_date | moment( "MMM DD, YYYY" ) }}
 							</template>
 							<template #[`item.btn_remove_url`]="{ item }">
 								<v-btn
@@ -200,8 +200,8 @@ export default {
 					sortable: false
 				},
 				{
-					text: this.$t( 'lastmodified' ),
-					value: 'modified_date',
+					text: this.$t( 'datecreated' ),
+					value: 'created_date',
 					sortable: true
 				},
 				{
@@ -236,7 +236,7 @@ export default {
 		},
 		sortByLastModifiedDate( items, index, isDesc ) {
 			items.sort( ( a, b ) => {
-				if ( index[ 0 ] === 'modified_date' ) {
+				if ( index[ 0 ] === 'created_date' ) {
 					if ( !isDesc[ 0 ] ) {
 						return new Date( b[ index ] ) - new Date( a[ index ] );
 					} else {
