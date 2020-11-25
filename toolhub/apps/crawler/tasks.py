@@ -23,6 +23,7 @@ from django.utils import timezone
 
 import requests
 
+from toolhub.apps.auditlog.context import auditlog_user
 from toolhub.apps.toolinfo.models import Tool
 
 from .models import Run
@@ -102,17 +103,18 @@ class Crawler:
                     ]
 
                 try:
-                    # FIXME: what should we do if we get duplicates from
-                    # multiple source URLs? This can happen for example if
-                    # a Toolforge tool is registered independent of the
-                    # Striker managed toolinfo record.
-                    obj, created = Tool.objects.update_or_create(
-                        name=tool["name"],
-                        defaults=tool,
-                    )
-                    if created:
-                        run.new_tools += 1
-                    run_url.tools.add(obj)
+                    with auditlog_user(url.created_by):
+                        # FIXME: what should we do if we get duplicates from
+                        # multiple source URLs? This can happen for example if
+                        # a Toolforge tool is registered independent of the
+                        # Striker managed toolinfo record.
+                        obj, created = Tool.objects.update_or_create(
+                            name=tool["name"],
+                            defaults=tool,
+                        )
+                        if created:
+                            run.new_tools += 1
+                        run_url.tools.add(obj)
 
                 except django.db.Error:
                     logger.exception(

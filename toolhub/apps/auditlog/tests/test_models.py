@@ -57,5 +57,6 @@ class LogEntryTest(TestCase):
         self.assertEqual(obj.get_target(), self.user)
 
         qs = LogEntry.objects.get_for_object(self.user)
-        self.assertEqual(qs.count(), 1)
+        # Expect 2 log entries: 1 for create in setUp, 1 for the explict call
+        self.assertEqual(qs.count(), 2)
         self.assertEqual(qs.last(), obj)

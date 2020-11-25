@@ -19,9 +19,11 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
+from toolhub.apps.auditlog.signals import registry
 from toolhub.apps.toolinfo.models import Tool
 
 
+@registry.register()
 class Url(models.Model):
     """An URL that the crawler should fetch."""
 

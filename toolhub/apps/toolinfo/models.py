@@ -23,7 +23,10 @@ from django.utils.translation import gettext_lazy as _
 
 from jsonfield import JSONField
 
+from toolhub.apps.auditlog.signals import registry
 
+
+@registry.register()
 class Tool(models.Model):
     """Description of a tool."""
 
