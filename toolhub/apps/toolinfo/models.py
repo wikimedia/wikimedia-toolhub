@@ -50,7 +50,7 @@ class Tool(models.Model):
     title = models.CharField(
         max_length=255,
         help_text=_(
-            "Human readable tool name. " "Recommended limit of 25 characters."
+            "Human readable tool name. Recommended limit of 25 characters."
         ),
     )
     description = models.TextField(
