@@ -15,6 +15,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from jsonfield import JSONField
+
 from rest_framework import serializers
 
 from rest_framework_friendly_errors.mixins import FriendlyErrorMessagesMixin
@@ -28,3 +30,8 @@ class Serializer(  # noqa: W0223
 
 class ModelSerializer(FriendlyErrorMessagesMixin, serializers.ModelSerializer):
     """A ModelSerializer with friendly error support."""
+
+    def __init__(self, *args, **kwargs):
+        """Initialize instance."""
+        super().__init__(*args, **kwargs)
+        self.serializer_field_mapping[JSONField] = serializers.JSONField
