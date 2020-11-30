@@ -90,6 +90,12 @@ class Crawler:
                     if field in tool and not isinstance(tool[field], list):
                         tool[field] = [tool[field]]
 
+                if "keywords" in tool:
+                    # FIXME: probably belongs in a custom manager for the model
+                    tool["keywords"] = [
+                        s.strip() for s in tool["keywords"].split(",")
+                    ]
+
                 try:
                     # FIXME: what should we do if we get duplicates from
                     # multiple source URLs? This can happen for example if

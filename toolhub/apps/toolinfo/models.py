@@ -69,7 +69,11 @@ class Tool(models.Model):
     )
     # TODO: Do we even want to persist this info? Valid per spec and stored in
     # db can be separate things.
-    keywords = models.CharField(blank=True, max_length=2047, null=True)
+    keywords = JSONField(
+        blank=True,
+        default=list,
+        null=True,
+    )
     author = models.CharField(
         blank=True,
         max_length=255,
