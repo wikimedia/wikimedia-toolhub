@@ -40,7 +40,7 @@ class Crawler:
         """Initialize a new instance."""
         self.user_agent = "Toolhub toolinfo crawler"
 
-    def crawl(self):
+    def crawl(self):  # noqa: R0912
         """Crawl all URLs and create/update tool records."""
         logger.info("Starting crawl")
         run = Run()
@@ -54,13 +54,18 @@ class Crawler:
             run_url.save()
 
             for tool in tools:
+                tool_valid = True
                 # FIXME: do a more complete job of validating the record
                 for field in ["name", "title", "description", "url"]:
                     if field not in tool or not tool[field]:
                         logger.error("Toolinfo record missing %s.", field)
+                        tool_valid = False
+                if not tool_valid:
+                    if run_url.valid:
+                        # Mark URL as invalid if any of it's contained tools
+                        # is invalid in this run.
                         run_url.valid = False
-                if not run_url.valid:
-                    run_url.save()
+                        run_url.save()
                     continue
 
                 logger.info("Found tool `%s`", tool["name"])
