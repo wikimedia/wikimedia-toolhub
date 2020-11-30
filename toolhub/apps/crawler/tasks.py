@@ -74,6 +74,22 @@ class Crawler:
                 if "$language" in tool:
                     tool["_language"] = tool.pop("$language")
 
+                # Normalize 'oneOf' fields that could be an array of values or
+                # a bare value to always be stored as an array of values.
+                # FIXME: probably belongs in a custom manager for the model
+                for field in [
+                    "for_wikis",
+                    "sponsor",
+                    "available_ui_languages",
+                    "technology_used",
+                    "developer_docs_url",
+                    "user_docs_url",
+                    "feedback_url",
+                    "privacy_policy_url",
+                ]:
+                    if field in tool and not isinstance(tool[field], list):
+                        tool[field] = [tool[field]]
+
                 try:
                     # FIXME: what should we do if we get duplicates from
                     # multiple source URLs? This can happen for example if
