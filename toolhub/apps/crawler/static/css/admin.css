@@ -1,6 +1,7 @@
 .inline-group .tabular tr.has_original.dynamic-urls td.original p {
-  visibility:hidden;
+	visibility: hidden;
 }
+
 .inline-group .tabular tr.has_original.dynamic-urls td {
-  padding-top:inherit;
+	padding-top: inherit;
 }

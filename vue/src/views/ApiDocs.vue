@@ -32,7 +32,8 @@ export default {
 
 <style>
 #apidoc {
-  height:100vh;
-  width:100%;
+	/* stylelint-disable-next-line plugin/no-unsupported-browser-features -- vh */
+	height: 100vh;
+	width: 100%;
 }
 </style>

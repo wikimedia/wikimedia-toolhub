@@ -1,4 +1,4 @@
 /* wrap long lines in code blocks */
-.rst-content div[class^="highlight"] pre {
-    white-space: pre-wrap;
+.rst-content div[ class^='highlight' ] pre {
+	white-space: pre-wrap;
 }

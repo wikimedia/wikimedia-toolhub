@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "build:vue": "vue-cli-service build",
-    "lint": "npm run lint:eslint && npm run lint:vue",
+    "lint": "npm run lint:eslint && npm run lint:vue && npm run lint:stylelint",
     "lint:eslint": "eslint .",
+    "lint:stylelint": "stylelint -f verbose \"**/*.{css,scss,sass,vue}\"",
     "format": "eslint --fix .",
     "lint:vue": "vue-cli-service lint",
     "schemas:generate": "jsonschema-tools materialize-all",
@@ -47,6 +48,8 @@
     "rapidoc": "^8.3.0",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-wikimedia": "^0.10.3",
     "vue-cli-plugin-vuetify": "~2.0.7",
     "vue-template-compiler": "^2.6.11",
     "vuetify-loader": "^1.3.0",
@@ -101,6 +104,15 @@
     "bin",
     ".pipeline"
   ],
+  "stylelint": {
+    "extends": "stylelint-config-wikimedia/grade-a",
+    "ignoreFiles": [
+      "docs/_build/**/*.css"
+    ],
+    "rules": {
+      "selector-max-id": null
+    }
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
