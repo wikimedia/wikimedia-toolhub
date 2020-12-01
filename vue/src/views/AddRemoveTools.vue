@@ -151,7 +151,7 @@
 						</p>
 					</v-alert>
 				</v-row>
-				<v-row cols="12">
+				<v-row>
 					<v-alert
 						v-if="$store.state.user.is_authenticated === false"
 						border="left"
