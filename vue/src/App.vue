@@ -27,10 +27,10 @@
 			:expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer"
 			:right="$vuetify.rtl"
 		>
-			<v-list-item class="ml-2 mt-1 pl-1">
+			<v-list-item class="ms-2 mt-1 ps-1">
 				<v-list-item-avatar
 					size="35"
-					class="mr-4"
+					class="me-4"
 				>
 					<v-img
 						src="/static/img/logo-solid-white.svg"

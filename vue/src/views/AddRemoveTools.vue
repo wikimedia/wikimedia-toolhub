@@ -18,7 +18,7 @@
 						lg="8"
 						sm="10"
 						cols="9"
-						class="pl-0"
+						class="ps-0"
 					>
 						<v-text-field
 							ref="url"

@@ -1,7 +1,7 @@
 <template>
 	<v-menu max-height="250" offset-y>
 		<template #activator="{ on, attrs }">
-			<p class="font-weight-bold mt-4 mr-3">
+			<p class="font-weight-bold mt-4 me-3">
 				{{ $i18n.locale }}
 			</p>
 
