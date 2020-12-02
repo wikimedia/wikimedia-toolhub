@@ -49,14 +49,14 @@
 					>
 						<v-icon
 							v-if="!tool.icon"
-							class="mr-2"
+							class="me-2"
 							size="50"
 						>
 							mdi-tools
 						</v-icon>
 						<v-img
 							v-if="tool.icon"
-							class="mr-2"
+							class="me-2"
 							:src="tool.icon.img"
 							max-height="50"
 							max-width="50"
@@ -102,7 +102,7 @@
 					>
 						<v-row>
 							<v-btn
-								class="mt-4 ml-4 mr-2"
+								class="mt-4 ms-4 me-2"
 								color="primary"
 								dark
 								:to="`/tool/${tool.id}`"

@@ -3,7 +3,7 @@
 		<v-row dense>
 			<v-col md="7"
 				cols="12"
-				class="mr-8"
+				class="me-8"
 			>
 				<v-row>
 					<v-col lg="2"
@@ -63,7 +63,7 @@
 						<v-row>
 							<v-btn
 								v-if="toolInfo.repository"
-								class="mt-4 ml-3"
+								class="mt-4 ms-3"
 								color="primary"
 								dark
 								:href="`${toolInfo.repository}`"
@@ -79,7 +79,7 @@
 							</v-btn>
 
 							<v-btn
-								class="mt-4 ml-3"
+								class="mt-4 ms-3"
 								color="primary"
 								dark
 								:href="`${toolInfo.url}`"
