@@ -5,8 +5,9 @@
   "scripts": {
     "build:vue": "vue-cli-service build",
     "format": "eslint --fix .",
-    "lint": "npm run lint:eslint && npm run lint:vue && npm run lint:stylelint && npm run lint:banana",
+    "lint": "npm run lint:eslint && npm run lint:vue && npm run lint:stylelint && npm run lint:banana && npm run lint:css-rtl",
     "lint:banana": "banana-checker vue/src/assets/locales/i18n/",
+    "lint:css-rtl": "bash -c \"if grep -rnHIE --color '\\b[mp][lr]-(n?[0-9][0-6]?|auto)\\b' vue/src; then echo 'ERROR: Use S and E helper classes, not L and R. (T269056)'; echo; exit 1; fi\"",
     "lint:eslint": "eslint .",
     "lint:stylelint": "stylelint -f verbose \"**/*.{css,scss,sass,vue}\"",
     "lint:vue": "vue-cli-service lint",
