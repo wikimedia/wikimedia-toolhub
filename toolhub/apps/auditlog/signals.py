@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.contrib.auth import get_user_model
 from django.db.models import Model
 from django.db.models.signals import post_delete
 from django.db.models.signals import post_save
@@ -36,11 +37,14 @@ def log_create_callback(sender, instance, created, **kwargs):  # noqa: W0613
 def log_update_callback(sender, instance, **kwargs):  # noqa: W0613
     """Handle an instance update signal."""
     if instance.pk is not None:
-        LogEntry.objects.log_action(
-            user=None,
-            target=instance,
-            action=LogEntry.UPDATE,
-        )
+        user_model = get_user_model()
+        # Ignore updates to user models.
+        if not isinstance(instance, user_model):
+            LogEntry.objects.log_action(
+                user=None,
+                target=instance,
+                action=LogEntry.UPDATE,
+            )
 
 
 def log_delete_callback(sender, instance, **kwargs):  # noqa: W0613
