@@ -30,6 +30,7 @@ drf-friendly-errors = {git = "https://github.com/bd808/drf-friendly-errors.git",
 drf-spectacular = "^0.11.0"
 requests = "^2.25.0"
 drf-nested-routers = "^0.92.1"
+whitenoise = {extras = ["brotli"], version = "^5.2.0"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

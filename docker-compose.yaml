@@ -11,7 +11,7 @@ services:
     command: >
       /srv/dockerize/bin/dockerize -wait tcp://db:3306
       poetry run
-      python3 manage.py runserver 0.0.0.0:8000
+      python3 manage.py runserver --nostatic 0.0.0.0:8000
     environment:
       - DJANGO_SECRET_KEY
       - DJANGO_DEBUG
