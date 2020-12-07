@@ -22,7 +22,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "python3-venv" && rm -rf /var/lib/apt/lists/*
 RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools" "wheel" "tox"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
-RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.2"
+RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.4"
 RUN groupadd -o -g "65533" -r "somebody" && useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody" && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
 RUN groupadd -o -g "900" -r "runuser" && useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser"
 USER "somebody"
