@@ -7,20 +7,21 @@ const PORT = process.env.PORT || 8001;
 
 const pages = {
 	main: {
-		entry: './vue/src/main.js',
+		entry: path.resolve( __dirname, 'vue/src/main.js' ),
 		chunks: [
 			'chunk-vendors'
 		]
 	}
 };
 
+const buildDir = 'vue/dist';
+
 module.exports = {
 	pages: pages,
 	filenameHashing: false,
 	productionSourceMap: false,
-	publicPath: isProduction ? '' : `http://localhost:${PORT}/`,
-	// FIXME: what path should this be?
-	outputDir: path.resolve( __dirname, 'vue/static' ),
+	publicPath: isProduction ? '/static/' : `http://localhost:${PORT}/`,
+	outputDir: path.resolve( __dirname, buildDir ),
 	transpileDependencies: [
 		'vuetify'
 	],
@@ -31,7 +32,7 @@ module.exports = {
 			}
 		},
 		// Prevent webpack from puting `eval`s into generated files
-		devtool: 'inline-source-map'
+		devtool: isProduction ? false : 'cheap-source-map'
 	},
 	chainWebpack: ( config ) => {
 		// Separate vendored js into its own bundle
@@ -57,12 +58,11 @@ module.exports = {
 			config.plugins.delete( `prefetch-${page}` );
 		} );
 
-		// Generate an index for webpack generated files that will be consumed by
-		// Django's webpack_loader library.
-		// FIXME: make this track outputDir
+		// Generate an index for webpack generated files that will be consumed
+		// by Django's webpack_loader library.
 		config.plugin( 'BundleTracker' ).use(
 			BundleTracker, [ {
-				filename: 'vue/static/vue/webpack-stats.json'
+				filename: buildDir + '/webpack-stats.json'
 			} ]
 		);
 

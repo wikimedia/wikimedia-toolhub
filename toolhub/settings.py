@@ -282,8 +282,8 @@ STATIC_ROOT = env.str(
 )
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
+    os.path.join(VUE_DIR, "dist"),
     ("jsonschema", os.path.join(BASE_DIR, "jsonschema")),
-    ("docs", os.path.join(BASE_DIR, "docs/_build/html")),
 )
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -321,7 +321,7 @@ WEBPACK_LOADER = {
     "DEFAULT": {
         "CACHE": not DEBUG,
         "BUNDLE_DIR_NAME": "bundles/",
-        "STATS_FILE": os.path.join(VUE_DIR, "static/vue/webpack-stats.json"),
+        "STATS_FILE": os.path.join(VUE_DIR, "dist/webpack-stats.json"),
     },
 }
 

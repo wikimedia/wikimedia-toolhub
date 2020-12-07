@@ -19,3 +19,4 @@ docs/_build
 !tests
 !toolhub
 !vue
+!vue.config.js

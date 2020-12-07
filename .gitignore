@@ -6,3 +6,4 @@
 /docs/_build
 /docs/htmlcov
 /node_modules/
+/vue/dist/
