@@ -25,5 +25,6 @@ urlpatterns = [
     path("add-or-remove-tools", main, name="add-or-remove-tools"),
     path("api-docs", main, name="api-docs"),
     path("about", main, name="about"),
+    path("crawler-history", main, name="crawler-history"),
     path("tool/<path:path>", main, name="tool"),
 ]

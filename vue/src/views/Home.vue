@@ -12,13 +12,35 @@
 							<h2 class="display-1 ma-4">
 								{{ $t( 'welcomemessage' ) }}
 							</h2>
-							<v-card-subtitle>
+							<div class="me-4 ms-4">
 								{{ $t( 'tagline' ) }}
+							</div>
+
+							<v-card-subtitle
+								v-if="lastCrawlerRun"
+							>
+								<v-icon
+									size="15"
+									class="me-1"
+								>
+									mdi-tools
+								</v-icon>
+								{{ numTools }}
+								{{ $t( 'tools' ) }} {{ $t( 'found' ) }}
+								•
+								<v-icon
+									size="16"
+									class="me-2"
+								>
+									mdi-update
+								</v-icon>
+
+								<a href="/crawler-history">{{ $tc( 'newtoolsfound',
+									lastCrawlerRun.new_tools ) }}
+									{{ $t( 'tools-lastupdated', { date:
+										formatDate( lastCrawlerRun.end_date ) } ) }}
+								</a>
 							</v-card-subtitle>
-							<v-card-text>
-								More text would go here and tell people something
-								awesome about Toolhub or how to get started using it.
-							</v-card-text>
 						</div>
 						<v-avatar
 							class="ma-3"
@@ -151,6 +173,7 @@
 <script>
 import { mapState } from 'vuex';
 import '@/assets/styles/index.css';
+import moment from 'moment';
 
 export default {
 	data() {
@@ -160,11 +183,15 @@ export default {
 		};
 	},
 	computed: {
-		...mapState( 'tools', [ 'toolsList', 'numTools' ] )
+		...mapState( 'tools', [ 'toolsList', 'numTools' ] ),
+		...mapState( 'crawler', [ 'crawlerHistory', 'lastCrawlerRun', 'numCrawlerRuns' ] )
 	},
 	methods: {
 		listAllTools() {
 			this.$store.dispatch( 'tools/listAllTools', this.page );
+		},
+		fetchCrawlerHistory() {
+			this.$store.dispatch( 'crawler/fetchCrawlerHistory', 1 );
 		},
 		goToPage( num ) {
 			this.page = num;
@@ -173,16 +200,16 @@ export default {
 			this.$router.push( {
 				query: { page: this.page }
 			} ).catch( () => {} );
+		},
+		formatDate( date ) {
+			return moment( date ).format( 'lll' );
 		}
 	},
 	mounted() {
-		this.page = parseInt( this.$route.query.page );
-
-		if ( !this.page ) {
-			this.page = 1;
-		}
+		this.page = parseInt( this.$route.query.page ) || 1;
 
 		this.listAllTools();
+		this.fetchCrawlerHistory();
 
 		window.onpopstate = () => {
 			const params = ( new URL( document.location ) ).searchParams;

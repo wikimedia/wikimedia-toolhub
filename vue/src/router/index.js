@@ -36,6 +36,14 @@ const routes = [
 			}
 		},
 		{
+			name: 'crawlerhistory',
+			path: '/crawler-history',
+			component: () => import( /* webpackChunkName: "crawlerhistory" */ '../views/CrawlerHistory.vue' ),
+			meta: {
+				icon: 'mdi-bug'
+			}
+		},
+		{
 			name: 'about',
 			path: '/about',
 			// route level code-splitting
