@@ -142,7 +142,7 @@
 			v-model="page"
 			:length="Math.ceil( numTools / itemsPerPage )"
 			class="ma-4"
-			@input="goToNextPage"
+			@input="goToPage"
 		/>
 	</v-container>
 </template>
@@ -165,13 +165,34 @@ export default {
 		listAllTools() {
 			this.$store.dispatch( 'tools/listAllTools', this.page );
 		},
-		goToNextPage( page ) {
-			this.page = page;
+		goToPage( num ) {
+			this.page = num;
 			this.listAllTools();
+
+			this.$router.push( {
+				query: { page: this.page }
+			} ).catch( () => {} );
 		}
 	},
 	mounted() {
+		this.page = parseInt( this.$route.query.page );
+
+		if ( !this.page ) {
+			this.page = 1;
+		}
+
 		this.listAllTools();
+
+		window.onpopstate = () => {
+			const params = ( new URL( document.location ) ).searchParams;
+			let pageNum = parseInt( params.get( 'page' ) );
+
+			if ( !pageNum ) {
+				pageNum = 1;
+			}
+
+			this.goToPage( pageNum );
+		};
 	}
 };
 </script>
