@@ -142,6 +142,7 @@
 			v-model="page"
 			:length="Math.ceil( numTools / itemsPerPage )"
 			class="ma-4"
+			total-visible="10"
 			@input="goToPage"
 		/>
 	</v-container>

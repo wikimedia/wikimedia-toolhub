@@ -119,6 +119,7 @@
 							v-model="page"
 							:length="Math.ceil( numUserCreatedUrls / itemsPerPage )"
 							class="ma-4"
+							total-visible="5"
 							@input="goToNextPage"
 						/>
 					</v-col>
