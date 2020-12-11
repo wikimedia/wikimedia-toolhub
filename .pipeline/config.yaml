@@ -7,10 +7,7 @@ pipelines:
         run:
           env: &python-env-settings
             PIPELINE_RUNNING: 1
-            DJANGO_SETTINGS_MODULE: "toolhub.settings"
             DJANGO_SECRET_KEY: NOTAREALSECRET
-            DB_ENGINE: django.db.backends.sqlite3
-            DB_NAME: ":memory:"
             WIKIMEDIA_OAUTH2_KEY: NOTAREALOAUTHKEY
             WIKIMEDIA_OAUTH2_SECRET: NOTAREALOAUTHSECRET
 

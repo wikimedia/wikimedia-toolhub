@@ -16,6 +16,7 @@ docs/_build
 !poetry.lock
 !pyproject.toml
 !README.rst
+!static
 !tests
 !toolhub
 !vue

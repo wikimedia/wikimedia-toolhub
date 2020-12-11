@@ -8,10 +8,10 @@ RUN groupadd -o -g "900" -r "runuser" && useradd -l -o -m -d "/home/runuser" -r 
 USER "somebody"
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
-ENV PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
+ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
 COPY --chown=65533:65533 ["package.json", "package-lock.json", "./"]
 RUN npm install
 COPY --chown=65533:65533 [".", "."]
 ENV NODE_ENV="development"
 
-LABEL blubber.variant="dev-nodejs" blubber.version="0.8.0+5718d4d"
+LABEL blubber.variant="dev-nodejs" blubber.version="0.8.0+f063588"

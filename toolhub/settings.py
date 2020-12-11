@@ -91,6 +91,11 @@ LOGGING = {
             "level": LOGGING_LEVEL,
             "propagate": False,
         },
+        "django.utils.autoreload": {
+            "handlers": LOGGING_HANDLERS,
+            "level": "WARNING",
+            "propagate": False,
+        },
         "py.warnings": {
             "handlers": LOGGING_HANDLERS,
             "level": LOGGING_LEVEL,
@@ -118,9 +123,7 @@ OUTGOING_REQUEST_ID_HEADER = env.str(
 # == Django settings ==
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
-ALLOWED_HOSTS = env.list(
-    "DJANGO_ALLOWED_HOSTS", default=["toolhub.wikimedia.org"]
-)
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["*"])
 
 # Application definition
 INSTALLED_APPS = [
@@ -187,7 +190,7 @@ WSGI_APPLICATION = "toolhub.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": env.str("DB_ENGINE", default="django.db.backends.sqlite3"),
-        "NAME": env.str("DB_NAME", default="db.sqlite3"),
+        "NAME": env.str("DB_NAME", default=":memory:"),
         "USER": env.str("DB_USER", default=""),
         "PASSWORD": env.str("DB_PASSWORD", default=""),
         "HOST": env.str("DB_HOST", default=""),

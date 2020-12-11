@@ -10,7 +10,7 @@ RUN groupadd -o -g "900" -r "runuser" && useradd -l -o -m -d "/home/runuser" -r 
 USER "somebody"
 ENV HOME="/home/somebody"
 WORKDIR "/srv/dockerize/bin"
-ENV DOCKERIZE_VERSION="v0.6.1" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
+ENV DJANGO_SETTINGS_MODULE="toolhub.settings" DOCKERIZE_VERSION="v0.6.1" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
 RUN /bin/bash "-c" "wget --no-verbose https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz && tar -C /srv/dockerize/bin -xzvf dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz && rm dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz"
 USER "runuser"
 ENV HOME="/home/runuser"
@@ -28,11 +28,11 @@ RUN groupadd -o -g "900" -r "runuser" && useradd -l -o -m -d "/home/runuser" -r 
 USER "somebody"
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
-ENV PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
+ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
 COPY --chown=65533:65533 ["pyproject.toml", "poetry.lock", "./"]
 RUN mkdir -p "/opt/lib/poetry"
 RUN poetry "install" "--no-root"
 COPY --chown=65533:65533 [".", "."]
 COPY --chown=65533:65533 --from=dockerize ["/srv/dockerize", "/srv/dockerize"]
 
-LABEL blubber.variant="local-python" blubber.version="0.8.0+5718d4d"
+LABEL blubber.variant="local-python" blubber.version="0.8.0+f063588"

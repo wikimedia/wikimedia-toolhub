@@ -1,0 +1,33 @@
+- model: user.toolhubuser
+  fields:
+    is_superuser: false
+    email: bdavis+dunicorn@wikimedia.org
+    is_staff: false
+    is_active: true
+    username: Demo Unicorn
+    groups: []
+    user_permissions: []
+- model: crawler.url
+  pk: 1
+  fields:
+    url: https://hay.toolforge.org/directory/toolinfo.json
+    created_by:
+    - Demo Unicorn
+- model: crawler.url
+  pk: 2
+  fields:
+    url: https://wikitech.wikimedia.org/w/index.php?title=User:Magnus_Manske/hay_directory&action=raw
+    created_by:
+    - Demo Unicorn
+- model: crawler.url
+  pk: 3
+  fields:
+    url: https://toolsadmin.wikimedia.org/tools/toolinfo/v1/toolinfo.json
+    created_by:
+    - Demo Unicorn
+- model: crawler.url
+  pk: 4
+  fields:
+    url: https://toolhub.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn

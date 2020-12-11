@@ -9,9 +9,12 @@ runs:
     PYTHONDONTWRITEBYTECODE: "1"
     PIP_NO_CACHE_DIR: "off"
     PIP_DISABLE_PIP_VERSION_CHECK: "on"
+    DJANGO_SETTINGS_MODULE: "toolhub.settings"
 
 variants:
-  build-python:
+  base-python:
+    # Provides the basic foundation for all other python runtime containers
+    # needed to develop, test, and run Toolhub.
     apt:
       packages:
         - build-essential
@@ -29,8 +32,9 @@ variants:
         - poetry.lock
 
   dev-python:
+    # Development/testing shared base for python runtime containers
     includes:
-      - build-python
+      - base-python
     runs:
       # Mark as insecure so that the runtime user can modify content. This is
       # needed so that we can use the container's runtime for our local
@@ -45,6 +49,7 @@ variants:
         destination: .
 
   lint-python:
+    # CI container: runs lint checks on Python code
     includes:
       - dev-python
     entrypoint:
@@ -57,6 +62,7 @@ variants:
         poetry run bandit -ii -r toolhub/
 
   test-python:
+    # CI container: runs unit and integration tests on Python code
     includes:
       - dev-python
     entrypoint:
@@ -66,24 +72,32 @@ variants:
         poetry run coverage run --branch manage.py test &&
         poetry run coverage report
 
-  dev-nodejs:
+  base-nodejs:
+    # Provides the basic foundation for all other nodejs runtime containers
+    # needed to develop and test Toolhub.
     base: docker-registry.wikimedia.org/nodejs10-devel
-    runs:
-      # Mark as insecure so that the runtime user can modify content. This is
-      # needed so that we can use the container's runtime for our local
-      # development needs such as updating package-lock.json
-      insecurely: true
     node:
       requirements:
         - package.json
         - package-lock.json
       env: development
+
+  dev-nodejs:
+    # Development/testing shared base for nodejs runtime containers
+    includes:
+      - base-nodejs
+    runs:
+      # Mark as insecure so that the runtime user can modify content. This is
+      # needed so that we can use the container's runtime for our local
+      # development needs such as updating package-lock.json
+      insecurely: true
     copies:
       - from: local
         source: .
         destination: .
 
   lint-nodejs:
+    # CI container: runs lint checks on nodejs code
     includes:
       - dev-nodejs
     entrypoint:
@@ -92,6 +106,7 @@ variants:
       - lint
 
   test-nodejs:
+    # CI container: runs unit and integration tests on nodejs code
     includes:
       - dev-nodejs
     entrypoint:
@@ -100,6 +115,8 @@ variants:
       - test
 
   local-python:
+    # Local development Python runtime container including special support for
+    # use with docker-compose.
     includes:
       - dev-python
     copies:
@@ -108,6 +125,8 @@ variants:
         destination: /srv/dockerize
 
   dockerize:
+    # Bulder container: downloads and unpacks the dockerize utility from
+    # <https://github.com/jwilder/dockerize> to /srv/dockerize
     runs:
       environment:
         DOCKERIZE_VERSION: v0.6.1
@@ -124,3 +143,70 @@ variants:
           wget --no-verbose https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
           && tar -C /srv/dockerize/bin -xzvf dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
           && rm dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
+
+  prep-nodejs:
+    # Builder container: compiles Vue frontend code
+    includes:
+      - base-nodejs
+    builder:
+      requirements:
+        - from: local
+          source: vue.config.js
+          destination: ./
+        - from: local
+          source: vue/
+          destination: ./vue/
+      command:
+        - /bin/bash
+        - -c
+        - >-
+          ls -alh
+          && npm run-script build:vue
+
+  prep:
+    # Builder container: compiles Django static assets and gettext files
+    includes:
+      - base-python
+    runs:
+      environment:
+        DJANGO_SECRET_KEY: FAKE_SECRET_FOR_PREP_BUILD
+        WIKIMEDIA_OAUTH2_KEY: FAKE_KEY_FOR_PREP_BUILD
+        WIKIMEDIA_OAUTH2_SECRET: FAKE_TOKEN_FOR_PREP_BUILD
+    builder:
+      requirements:
+        - from: local
+          source: .
+          destination: .
+        - from: prep-nodejs
+          source: /srv/app/vue/dist
+          destination: ./vue/dist/
+      command:
+        - /bin/bash
+        - -c
+        - >-
+          ls -alh
+          && poetry run ./manage.py collectstatic -c --no-input
+          && poetry run python3 -mjson.tool staticfiles/staticfiles.json > /tmp/staticfiles.json
+          && mv /tmp/staticfiles.json staticfiles/staticfiles.json
+          && poetry run ./manage.py compilemessages
+
+  demo:
+    # Demonstration server: runs Toolhub in a single container with an
+    # ephemeral sqlite3 database.
+    includes:
+      - base-python
+    runs:
+      environment:
+        DB_NAME: /dev/shm/toolhub.sqlite3
+    copies:
+      - from: prep
+        source: /srv/app
+        destination: .
+    entrypoint:
+      - /bin/bash
+      - -c
+      - >-
+        poetry run python3 manage.py migrate
+        && poetry run python3 manage.py loaddata toolhub/fixtures/demo.yaml
+        && poetry run python3 manage.py crawl
+        && poetry run python3 manage.py runserver --noreload --nostatic 0.0.0.0:8000
