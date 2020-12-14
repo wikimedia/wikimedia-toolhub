@@ -138,6 +138,8 @@ class RunUrlViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = RunUrl.objects.none()
     serializer_class = RunUrlSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    ordering_fields = ["id", "url_id", "url__url", "status_code", "valid"]
+    ordering = ["valid", "status_code", "id"]
 
     def get_queryset(self):
         """Get a queryset filtered to the appropriate objects."""
