@@ -27,13 +27,12 @@ class UrlSerializer(ModelSerializer):
     """Details of an URL that has been registered for crawling."""
 
     created_by = UserSerializer(many=False, read_only=True)
-    modified_by = UserSerializer(many=False, read_only=True)
 
     class Meta:
         """Configure serializer."""
 
         model = Url
-        fields = "__all__"
+        fields = ["id", "url", "created_by", "created_date"]
 
 
 class EditUrlSerializer(ModelSerializer):
@@ -59,6 +58,8 @@ class SummaryUrlSerializer(ModelSerializer):
 class RunUrlSerializer(ModelSerializer):
     """Information about a single URL processed during a crawler run."""
 
+    url = UrlSerializer(many=False, read_only=True)
+
     class Meta:
         """Configure serializer."""
 
@@ -66,7 +67,7 @@ class RunUrlSerializer(ModelSerializer):
         fields = [
             "id",
             "run_id",
-            "url_id",
+            "url",
             "status_code",
             "redirected",
             "elapsed_ms",
