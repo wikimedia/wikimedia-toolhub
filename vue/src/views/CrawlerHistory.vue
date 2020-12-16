@@ -14,116 +14,126 @@
 			>
 				<p>{{ $t( 'crawlerhistory-pagesubtitle' ) }}</p>
 			</v-col>
+		</v-row>
 
-			<v-row
-				class="elevation-2 mt-2 ma-1 pa-2 table-crawler-history"
+		<v-row
+			class="elevation-2 mt-2 pa-2 table-crawler-history"
+		>
+			<v-col cols="12">
+				<h3 class="headline">
+					{{ $t( 'crawlerruns' ) }}
+				</h3>
+			</v-col>
+			<v-col
+				lg="6"
+				cols="12"
+				:class="{ active: firstRowActive }"
 			>
-				<v-col cols="12">
-					<h3 class="headline">
-						{{ $t( 'crawlerruns' ) }}
-					</h3>
-				</v-col>
-				<v-col
-					lg="6"
-					cols="12"
-					:class="{ active: firstRowActive }"
+				<v-data-table
+					:headers="crawlerRunsHeaders"
+					:page="runsPage"
+					:items-per-page="itemsPerPage"
+					:items="crawlerHistory"
+					class="elevation-0 mt-2 table-striped"
+					hide-default-footer
+					mobile-breakpoint="0"
+					:custom-sort="customSortHistory"
+					single-select
+					:loading="numCrawlerRuns > 0 || apiErrorMsg ? false : true"
+					@click:row="crawlerRunRowClicked"
 				>
-					<v-data-table
-						:headers="crawlerRunsHeaders"
-						:page="runsPage"
-						:items-per-page="itemsPerPage"
-						:items="crawlerHistory"
-						class="elevation-0 mt-2 table-striped"
-						hide-default-footer
-						mobile-breakpoint="0"
-						:custom-sort="customSortHistory"
-						single-select
-						:loading="numCrawlerRuns > 0 || apiErrorMsg ? false : true"
-						@click:row="crawlerRunRowClicked"
-					>
-						<template #[`item.end_date`]="{ item }">
-							{{ item.end_date | moment( "lll" ) }}
-						</template>
-					</v-data-table>
+					<template #[`item.end_date`]="{ item }">
+						{{ item.end_date | moment( "lll" ) }}
+					</template>
+				</v-data-table>
 
-					<v-pagination
-						v-if="numCrawlerRuns > 0"
-						v-model="runsPage"
-						:length="Math.ceil( numCrawlerRuns / itemsPerPage )"
-						class="ma-4"
-						@input="goToRunsPage"
-					/>
-				</v-col>
+				<v-pagination
+					v-if="numCrawlerRuns > 0"
+					v-model="runsPage"
+					:length="Math.ceil( numCrawlerRuns / itemsPerPage )"
+					class="ma-4"
+					@input="goToRunsPage"
+				/>
+			</v-col>
 
-				<v-col
-					lg="6"
-					cols="12"
-				>
-					<v-row>
-						<v-col cols="12"
-							sm="6"
-							md="6"
-							lg="12"
-						>
-							<chart :height="250" :chart-data="crawledUrlsChartData" />
-						</v-col>
-						<v-col cols="12"
-							sm="6"
-							md="6"
-							lg="12"
-						>
-							<chart :height="250" :chart-data="newToolsChartData" />
-						</v-col>
-					</v-row>
-				</v-col>
-			</v-row>
-
-			<v-row
-				class="elevation-2 mt-6 ma-1 pa-2"
+			<v-col
+				lg="6"
+				cols="12"
 			>
-				<v-col cols="12">
-					<h3 class="headline">
-						{{ $t( 'urlscrawledon', { date: crawlerRunEndDate } ) }}
-					</h3>
-				</v-col>
-				<v-col
-					cols="12"
-				>
-					<v-data-table
-						:headers="urlsCrawledHeaders"
-						:page="urlsPage"
-						:items-per-page="itemsPerPage"
-						:items="crawlerUrls"
-						class="elevation-0 mt-2 table-striped"
-						hide-default-footer
-						mobile-breakpoint="0"
-						:custom-sort="customSortHistory"
-						:loading="numCrawlerUrls > 0 || apiErrorMsg ? false : true"
+				<v-row>
+					<v-col cols="12"
+						sm="12"
+						md="6"
+						lg="12"
 					>
-						<template #[`item.valid`]="{ item }">
-							<p v-if="item.valid" class="success--text pa-0 ma-0">
-								{{ $t( 'valid' ) }}
-							</p>
+						<chart :height="250" :chart-data="crawledUrlsChartData" />
+					</v-col>
+					<v-col cols="12"
+						sm="12"
+						md="6"
+						lg="12"
+					>
+						<chart :height="250" :chart-data="newToolsChartData" />
+					</v-col>
+				</v-row>
+			</v-col>
+		</v-row>
 
-							<p v-if="!item.valid" class="error--text pa-0 ma-0">
-								{{ $t( 'invalid' ) }}
-							</p>
-						</template>
+		<v-row
+			class="elevation-2 mt-6 pa-2"
+		>
+			<v-col cols="12">
+				<h3 class="headline">
+					{{ $t( 'urlscrawledon', { date: crawlerRunEndDate } ) }}
+				</h3>
+			</v-col>
+			<v-col
+				cols="12"
+			>
+				<v-data-table
+					:headers="urlsCrawledHeaders"
+					:page="urlsPage"
+					:items-per-page="itemsPerPage"
+					:items="crawlerUrls"
+					class="elevation-0 mt-2 table-striped"
+					hide-default-footer
+					mobile-breakpoint="0"
+					:custom-sort="customSortHistory"
+					:loading="numCrawlerUrls > 0 || apiErrorMsg ? false : true"
+				>
+					<template #[`item.url.url`]="{ item }">
+						<a :href="`${item.url.url}`" target="_blank">{{ item.url.url }}</a>
+					</template>
 
-						<template #[`item.url.created_date`]="{ item }">
-							{{ item.url.created_date | moment( "lll" ) }}
-						</template>
-					</v-data-table>
+					<template #[`item.url.created_date`]="{ item }">
+						{{ item.url.created_date | moment( "lll" ) }}
+					</template>
 
-					<v-pagination
-						v-if="numCrawlerUrls > 0"
-						v-model="urlsPage"
-						:length="Math.ceil( numCrawlerUrls / itemsPerPage )"
-						class="ma-4"
-						@input="goToUrlsPage"
-					/>
-				</v-col>
-			</v-row>
+					<template #[`item.url.created_by.username`]="{ item }">
+						<a :href="`http://meta.wikimedia.org/wiki/User:${item.url.created_by.username}`"
+							target="_blank"
+						>{{ item.url.created_by.username }}</a>
+					</template>
+
+					<template #[`item.valid`]="{ item }">
+						<p v-if="item.valid" class="success--text pa-0 ma-0">
+							{{ $t( 'valid' ) }}
+						</p>
+
+						<p v-if="!item.valid" class="error--text pa-0 ma-0">
+							{{ $t( 'invalid' ) }}
+						</p>
+					</template>
+				</v-data-table>
+
+				<v-pagination
+					v-if="numCrawlerUrls > 0"
+					v-model="urlsPage"
+					:length="Math.ceil( numCrawlerUrls / itemsPerPage )"
+					class="ma-4"
+					@input="goToUrlsPage"
+				/>
+			</v-col>
 		</v-row>
 	</v-container>
 </template>
