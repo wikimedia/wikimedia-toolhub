@@ -22,8 +22,6 @@ PIPELINE_DIR := $(PROJECT_DIR)/.pipeline
 BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
 DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile
-DEMO_DOCKERFILE := $(PIPELINE_DIR)/local-python.Dockerfile
-DEMO_TAG := bd808/toolhub-beta:latest
 DEFAULT_CONTAINERS := web db nodejs
 ALL_TESTS := test-python test-nodejs-lint test-nodejs-unit
 
@@ -156,10 +154,6 @@ clean:  ## Clean up Docker images and containers
 destroy: clean  ## Clean up Docker images, containers, and volumes
 	yes | docker volume rm toolhub_dbdata
 .PHONY: destroy
-
-demo: $(DEMO_DOCKERFILE)
-	docker build --pull --force-rm=true --file $(DEMO_DOCKERFILE) . -t $(DEMO_TAG)
-	docker push $(DEMO_TAG)
 
 .env:  ## Generate a .env file for local development
 	./bin/make_env.sh ./.env
