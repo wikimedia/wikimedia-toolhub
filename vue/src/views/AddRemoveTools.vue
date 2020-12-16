@@ -87,7 +87,7 @@
 							class="elevation-2"
 							hide-default-footer
 							mobile-breakpoint="0"
-							:custom-sort="sortByLastModifiedDate"
+							:custom-sort="customSortUrls"
 						>
 							<template #[`item.json_file_url`]="{ item }">
 								<a
@@ -96,7 +96,7 @@
 								>{{ item.url }}</a>
 							</template>
 							<template #[`item.created_date`]="{ item }">
-								{{ item.created_date | moment( "MMM DD, YYYY" ) }}
+								{{ item.created_date | moment( 'lll' ) }}
 							</template>
 							<template #[`item.btn_remove_url`]="{ item }">
 								<v-btn
@@ -172,6 +172,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import customSort from '@/plugins/sort.js';
 
 export default {
 	data() {
@@ -237,29 +238,8 @@ export default {
 		getUrlsCreatedByUser() {
 			this.$store.dispatch( 'user/getUrlsCreatedByUser', this.page );
 		},
-		sortByLastModifiedDate( items, index, isDesc ) {
-			items.sort( ( a, b ) => {
-				if ( index[ 0 ] === 'created_date' ) {
-					if ( !isDesc[ 0 ] ) {
-						return new Date( b[ index ] ) - new Date( a[ index ] );
-					} else {
-						return new Date( a[ index ] ) - new Date( b[ index ] );
-					}
-				} else {
-					if ( typeof a[ index ] !== 'undefined' ) {
-						if ( !isDesc[ 0 ] ) {
-							return a[ index ].toLowerCase().localeCompare( b[ index ]
-								.toLowerCase() );
-						} else {
-							return b[ index ].toLowerCase().localeCompare( a[ index ]
-								.toLowerCase() );
-						}
-					}
-				}
-				return 0;
-			}
-			);
-			return items;
+		customSortUrls( items, index, isDesc ) {
+			return customSort( items, index, isDesc );
 		}
 	},
 	watch: {
