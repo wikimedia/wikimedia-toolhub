@@ -44,6 +44,14 @@ const routes = [
 			}
 		},
 		{
+			name: 'auditlogs',
+			path: '/audit-logs',
+			component: () => import( /* webpackChunkName: "auditlogs" */ '../views/AuditLogs.vue' ),
+			meta: {
+				icon: 'mdi-data-matrix'
+			}
+		},
+		{
 			name: 'about',
 			path: '/about',
 			// route level code-splitting
