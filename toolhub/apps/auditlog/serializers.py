@@ -41,13 +41,21 @@ class TargetSerializer(serializers.Serializer):
 
     type = serializers.CharField(max_length=255, read_only=True)  # noqa: A003
     id = serializers.CharField(max_length=255, read_only=True)  # noqa: A003
+    label = serializers.CharField(max_length=255, read_only=True)  # noqa: A003
 
     def to_representation(self, instance):
         """Convert a log entry target."""
         ret = {
             "type": instance.content_type.name,
             "id": instance.get_target_id(),
+            "label": "",
         }
+
+        try:
+            ret["label"] = instance.get_target().auditlog_label
+        except AttributeError:
+            pass
+
         return ret
 
 

@@ -42,3 +42,8 @@ class ToolhubUser(AbstractUser):
     )
     first_name = None
     last_name = None
+
+    @property
+    def auditlog_label(self):
+        """Get label for use in auditlog output."""
+        return self.username

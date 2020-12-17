@@ -42,6 +42,11 @@ class Url(models.Model):
     def __str__(self):
         return self.url
 
+    @property
+    def auditlog_label(self):
+        """Get label for use in auditlog output."""
+        return self.url
+
 
 class Run(models.Model):
     """A run of the crawler."""

@@ -313,3 +313,8 @@ class Tool(models.Model):
     modified_date = models.DateTimeField(
         default=timezone.now, blank=True, editable=False, db_index=True
     )
+
+    @property
+    def auditlog_label(self):
+        """Get label for use in auditlog output."""
+        return self.name
