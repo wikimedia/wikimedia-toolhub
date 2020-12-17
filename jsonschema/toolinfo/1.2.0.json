@@ -53,7 +53,7 @@
         "openhub_id": {
           "type": "string",
           "maxLength": 255,
-          "description": "The project ID on OpenHub. Given an URL of https://openhub.net/p/foo, the project ID is `foo`."
+          "description": "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
         },
         "url_alternates": {
           "type": "array",

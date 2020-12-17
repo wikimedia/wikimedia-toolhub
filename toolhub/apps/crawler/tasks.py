@@ -135,7 +135,7 @@ class Crawler:
         return Url.objects.all()
 
     def crawlUrl(self, url):
-        """Crawl an URL and return it's content."""
+        """Crawl a URL and return it's content."""
         raw_url = url.url.url
         r = requests.get(raw_url, headers={"user-agent": self.user_agent})
         url.status_code = r.status_code

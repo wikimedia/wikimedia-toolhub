@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('author', models.CharField(blank=True, help_text='The primary tool developer.', max_length=255, null=True)),
                 ('repository', models.CharField(blank=True, help_text='A link to the repository where the tool code is hosted.', max_length=2047, null=True)),
                 ('subtitle', models.CharField(blank=True, help_text='Longer than the full title but shorter than the description. It should add some additional context to the title.', max_length=255, null=True)),
-                ('openhub_id', models.CharField(blank=True, help_text='The project ID on OpenHub. Given an URL of https://openhub.net/p/foo, the project ID is `foo`.', max_length=255, null=True)),
+                ('openhub_id', models.CharField(blank=True, help_text='The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`.', max_length=255, null=True)),
                 ('url_alternates', jsonfield.fields.JSONField(blank=True, default=list, help_text='Alternate links to the tool or install documentation in different natural languages.', null=True)),
                 ('bot_username', models.CharField(blank=True, help_text="If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes.", max_length=255, null=True)),
                 ('deprecated', models.BooleanField(default=False, help_text='If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement.')),

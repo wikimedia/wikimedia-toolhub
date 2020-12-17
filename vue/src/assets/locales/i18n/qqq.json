@@ -7,7 +7,7 @@
 		"message-documentation": "qqq"
 	},
 	"about": "Navigation menu label, links to About page.\n{{Identical|About}}",
-	"add": "Button label, triggers saving an URL.\n{{Identical|Add}}",
+	"add": "Button label, triggers saving a URL.\n{{Identical|Add}}",
 	"addremovetools": "Navigation menu label, links to URL management page.",
 	"addremovetools-nologintext": "Info message for unauthenticated users.",
 	"addremovetools-pagetitle": "Page title.",

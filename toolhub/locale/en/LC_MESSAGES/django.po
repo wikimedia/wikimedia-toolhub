@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-17 23:12+0000\n"
+"POT-Creation-Date: 2020-12-17 23:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgid "Information about a specific crawled URL."
 msgstr ""
 
 #: toolhub/apps/crawler/views.py:51
-msgid "Unregister an URL."
+msgid "Unregister a URL."
 msgstr ""
 
 #: toolhub/apps/crawler/views.py:54
@@ -184,7 +184,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:106
 msgid ""
-"The project ID on OpenHub. Given an URL of https://openhub.net/p/foo, the "
+"The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the "
 "project ID is `foo`."
 msgstr ""
 

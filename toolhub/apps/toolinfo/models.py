@@ -104,7 +104,7 @@ class Tool(models.Model):
         null=True,
         help_text=_(
             "The project ID on OpenHub. "
-            "Given an URL of https://openhub.net/p/foo, "
+            "Given a URL of https://openhub.net/p/foo, "
             "the project ID is `foo`."
         ),
     )

@@ -25,7 +25,7 @@ from toolhub.apps.toolinfo.models import Tool
 
 @registry.register()
 class Url(models.Model):
-    """An URL that the crawler should fetch."""
+    """A URL that the crawler should fetch."""
 
     url = models.URLField(max_length=255, unique=True)
 
@@ -63,7 +63,7 @@ class Run(models.Model):
 
 
 class RunUrl(models.Model):
-    """Information about an URL crawled during a Run."""
+    """Information about a URL crawled during a Run."""
 
     run = models.ForeignKey(
         Run,
