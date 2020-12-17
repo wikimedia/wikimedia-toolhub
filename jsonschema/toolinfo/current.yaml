@@ -211,7 +211,7 @@ definitions:
   wiki:
     type: string
     maxLength: 255
-    pattern: "^(\\*|(.*)?\\.?(mediawiki|wiktionary|wiki(pedia|quote|books|source|news|versity|data|voyage|media|mediafoundation))\\.org)$"
+    pattern: "^(\\*|(.*)?\\.?(mediawiki|wiktionary|wiki(pedia|quote|books|source|news|versity|data|voyage|media))\\.org)$"
   commons_file:
     $ref: "#/definitions/url"
     pattern: "^https://commons.wikimedia.org/wiki/File:.+\\..+$"
