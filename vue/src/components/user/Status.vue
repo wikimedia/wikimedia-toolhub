@@ -7,7 +7,6 @@
 			<v-btn
 				class="ma-1 white-text"
 				color="secondary"
-				rounded
 				v-bind="attrs"
 				v-on="on"
 			>
@@ -54,7 +53,6 @@
 		v-else
 		class="ma-1 white-text"
 		color="secondary"
-		rounded
 		href="/user/login/"
 		:disabled="loading"
 		:loading="loading"
