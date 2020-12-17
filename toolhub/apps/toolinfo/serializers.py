@@ -17,6 +17,8 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 import re
 
+from django.utils.translation import gettext_lazy as _
+
 from rest_framework import serializers
 
 from toolhub.apps.user.serializers import UserSerializer
@@ -51,9 +53,43 @@ class CommonsFileSerializer(serializers.Serializer):  # noqa: W0223
         return ret
 
 
+class ForWikiSerializer(serializers.Serializer):  # noqa: W0223
+    """Supported wikis."""
+
+    TRANSLATIONS = {
+        "*": _("Any wiki"),
+        "commons.wikimedia.org": _("Wikimedia Commons"),
+        "mediawiki.org": _("MediaWiki wiki"),
+        "species.wikimedia.org": _("Wikispecies"),
+        "wikibooks.org": _("Any Wikibooks"),
+        "wikidata.org": _("Wikidata"),
+        "wikinews.org": _("Any Wikinews"),
+        "wikipedia.org": _("Any Wikipedia"),
+        "wikiquote.org": _("Any Wikiquote"),
+        "wikisource.org": _("Any Wikisource"),
+        "wikiversity.org": _("Any Wikiversity"),
+        "wikivoyage.org": _("Any Wikivoyage"),
+        "wiktionary.org": _("Any Wiktionary"),
+    }
+
+    def _localize_label(self, label):
+        """Localize a wiki label."""
+        parts = label.split(".")
+        if len(parts) == 3 and parts[0] in ["*", "www"]:
+            # Strip off "*." and "www." prefix before lookup
+            label = ".".join(parts[1:])
+
+        return self.TRANSLATIONS.get(label, label)
+
+    def to_representation(self, instance):
+        """Convert a list of wikis."""
+        return [self._localize_label(v) for v in instance]
+
+
 class ToolSerializer(ModelSerializer):
     """Description of a tool."""
 
+    for_wikis = ForWikiSerializer(many=False, read_only=True)
     icon = CommonsFileSerializer(many=False, read_only=True, required=False)
     created_by = UserSerializer(many=False, read_only=True)
     modified_by = UserSerializer(many=False, read_only=True)

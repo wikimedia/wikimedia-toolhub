@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-02 01:24+0000\n"
+"POT-Creation-Date: 2020-12-17 19:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -285,6 +285,59 @@ msgid ""
 "English. Use ISO 639 language codes."
 msgstr ""
 
+#: toolhub/apps/toolinfo/serializers.py:60
+msgid "Any wiki"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:61
+msgid "Wikimedia Commons"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:62
+msgid "MediaWiki wiki"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:63
+msgid "Wikispecies"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:64
+msgid "Any Wikibooks"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:65
+#: toolhub/apps/toolinfo/serializers.py:66
+msgid "Wikidata"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:67
+msgid "Any Wikinews"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:68
+msgid "Any Wikipedia"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:69
+msgid "Any Wikiquote"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:70
+msgid "Any Wikisource"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:71
+msgid "Any Wikiversity"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:72
+msgid "Any Wikivoyage"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:73
+msgid "Any Wiktionary"
+msgstr ""
+
 #: toolhub/apps/toolinfo/views.py:32
 msgid "List all tools."
 msgstr ""
@@ -353,7 +406,7 @@ msgstr ""
 msgid "Info for a user group."
 msgstr ""
 
-#: toolhub/settings.py:348
+#: toolhub/settings.py:351
 msgid "Toolhub API"
 msgstr ""
 
