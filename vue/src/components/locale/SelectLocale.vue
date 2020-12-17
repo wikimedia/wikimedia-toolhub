@@ -1,18 +1,15 @@
 <template>
 	<v-menu max-height="250" offset-y>
 		<template #activator="{ on, attrs }">
-			<p class="font-weight-bold mt-4 me-3">
-				{{ $i18n.locale }}
-			</p>
-
 			<v-btn
-				icon
+				class="ma-1 transparent elevation-0"
 				v-bind="attrs"
 				v-on="on"
 			>
-				<v-icon>
+				<v-icon class="me-2">
 					mdi-translate
 				</v-icon>
+				{{ curLocaleNative }}
 			</v-btn>
 		</template>
 		<v-list>
@@ -23,7 +20,7 @@
 				link
 			>
 				<v-list-item-title
-					@click="setLocale(code, language.dir)"
+					@click="setLocale( code, language )"
 				>
 					{{ language.native }} ({{ code }})
 				</v-list-item-title>
@@ -39,23 +36,45 @@ export default {
 	name: 'SelectLocale',
 	data() {
 		return {
-			languages: languageNameMap
+			curLocaleNative: ''
+
 		};
 	},
+	computed: {
+		languages() {
+			const popularLocales = [ 'en' ];
+			const filteredLocales = popularLocales.reduce( ( obj, key ) => {
+				obj[ key ] = languageNameMap[ key ];
+				return obj;
+			}, {} );
+
+			return {
+				...filteredLocales,
+				...languageNameMap
+			};
+		}
+	},
 	methods: {
-		setLocale( locale, dir ) {
-			if ( this.$i18n.locale === locale ) {
+		setLocale( code, locale ) {
+			if ( this.$i18n.locale === code ) {
 				return;
 			}
 
-			this.$i18n.locale = locale;
-			this.$store.dispatch( 'user/setLocale', locale );
+			this.$i18n.locale = code;
+			this.curLocaleNative = locale.native;
+			this.$store.dispatch( 'user/setLocale', code );
 			this.$router.push( {
-				query: { locale: locale }
+				query: { locale: code }
 			} );
 
-			this.$vuetify.rtl = ( dir === 0 );
+			this.$vuetify.rtl = ( locale.dir === 0 );
 		}
+	},
+	mounted() {
+		const curLocaleCode = this.$i18n.locale,
+			curLocale = this.languages && this.languages[ curLocaleCode ];
+
+		this.curLocaleNative = curLocale && curLocale.native;
 	}
 };
 </script>
