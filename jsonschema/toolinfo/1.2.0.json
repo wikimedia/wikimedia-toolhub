@@ -212,7 +212,7 @@
     "wiki": {
       "type": "string",
       "maxLength": 255,
-      "pattern": "^(\\*|(.*)?\\.?(mediawiki|wiktionary|wiki(pedia|quote|books|source|news|versity|data|voyage|tech|media|mediafoundation))\\.org)$"
+      "pattern": "^(\\*|(.*)?\\.?(mediawiki|wiktionary|wiki(pedia|quote|books|source|news|versity|data|voyage|media|mediafoundation))\\.org)$"
     },
     "commons_file": {
       "$ref": "#/definitions/url",
