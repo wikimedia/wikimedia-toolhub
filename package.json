@@ -112,6 +112,7 @@
     ]
   },
   "eslintIgnore": [
+    "dist",
     "docs",
     "bin",
     ".pipeline"
@@ -119,7 +120,8 @@
   "stylelint": {
     "extends": "stylelint-config-wikimedia/grade-a",
     "ignoreFiles": [
-      "docs/_build/**/*.css"
+      "docs/_build/**/*.css",
+      "vue/dist/**/*"
     ],
     "rules": {
       "selector-max-id": null,
