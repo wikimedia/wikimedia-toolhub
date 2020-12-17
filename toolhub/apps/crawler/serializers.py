@@ -15,7 +15,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.utils.translation import gettext_lazy as _
+
 from toolhub.apps.user.serializers import UserSerializer
+from toolhub.decorators import doc
 from toolhub.serializers import ModelSerializer
 
 from .models import Run
@@ -23,8 +26,9 @@ from .models import RunUrl
 from .models import Url
 
 
+@doc(_("""A URL that has been registered for crawling"""))
 class UrlSerializer(ModelSerializer):
-    """Details of an URL that has been registered for crawling."""
+    """Details of a URL that has been registered for crawling."""
 
     created_by = UserSerializer(many=False, read_only=True)
 
@@ -35,8 +39,9 @@ class UrlSerializer(ModelSerializer):
         fields = ["id", "url", "created_by", "created_date"]
 
 
+@doc(_("""A URL to crawl"""))
 class EditUrlSerializer(ModelSerializer):
-    """An URL that will be crawled."""
+    """A URL that will be crawled."""
 
     class Meta:
         """Configure serializer."""
@@ -45,16 +50,7 @@ class EditUrlSerializer(ModelSerializer):
         fields = ["url"]
 
 
-class SummaryUrlSerializer(ModelSerializer):
-    """An URL that will be crawled."""
-
-    class Meta:
-        """Configure serializer."""
-
-        model = Url
-        fields = ["id", "url"]
-
-
+@doc(_("""Information about a single URL processed during a crawler run"""))
 class RunUrlSerializer(ModelSerializer):
     """Information about a single URL processed during a crawler run."""
 
@@ -76,6 +72,7 @@ class RunUrlSerializer(ModelSerializer):
         ]
 
 
+@doc(_("""Summary of a single run of the crawler."""))
 class RunSerializer(ModelSerializer):
     """Summary of a single run of the crawler."""
 

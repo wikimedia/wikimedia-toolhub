@@ -17,6 +17,7 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth.models import Group
 from django.utils.translation import LANGUAGE_SESSION_KEY
+from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import extend_schema_field
@@ -25,12 +26,14 @@ from rest_framework import serializers
 
 from social_django.models import UserSocialAuth
 
+from toolhub.decorators import doc
 from toolhub.serializers import ModelSerializer
 from toolhub.serializers import Serializer
 
 from .models import ToolhubUser
 
 
+@doc(_("""Information about the current user"""))
 class CurrentUserSerializer(Serializer):
     """Information about the current user."""
 
@@ -51,6 +54,7 @@ class CurrentUserSerializer(Serializer):
         raise NotImplementedError("Data output only serializer.")
 
 
+@doc(_("""Information about the current locale"""))
 class LocaleSerializer(Serializer):
     """Information about the current locale."""
 
@@ -67,6 +71,7 @@ class LocaleSerializer(Serializer):
         return self.create(validated_data)
 
 
+@doc(_("""Social authentication information for a user"""))
 class UserSocialAuthSerializer(ModelSerializer):
     """Social authentication information for a user."""
 
@@ -96,6 +101,7 @@ class UserSocialAuthSerializer(ModelSerializer):
         return self._from_extra_data(obj, "registered")
 
 
+@doc(_("""Detailed user information"""))
 class UserDetailSerializer(ModelSerializer):
     """Detailed user information."""
 
@@ -109,6 +115,7 @@ class UserDetailSerializer(ModelSerializer):
         read_only_fields = fields
 
 
+@doc(_("""User information"""))
 class UserSerializer(ModelSerializer):
     """User information."""
 
@@ -120,6 +127,7 @@ class UserSerializer(ModelSerializer):
         read_only_fields = fields
 
 
+@doc(_("""Group information"""))
 class GroupSerializer(ModelSerializer):
     """Group information."""
 

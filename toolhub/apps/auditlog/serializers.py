@@ -26,7 +26,7 @@ from toolhub.serializers import ModelSerializer
 from .models import LogEntry
 
 
-@doc(_("""Event action."""))  # noqa: W0223
+@doc(_("""Event action"""))  # noqa: W0223
 class ActionField(serializers.ReadOnlyField):
     """Event action."""
 
@@ -35,7 +35,7 @@ class ActionField(serializers.ReadOnlyField):
         return LogEntry.ACTION_CHOICES[value][1]
 
 
-@doc(_("""Event target."""))  # noqa: W0223
+@doc(_("""Event target"""))  # noqa: W0223
 class TargetSerializer(serializers.Serializer):
     """Event target."""
 
@@ -59,7 +59,7 @@ class TargetSerializer(serializers.Serializer):
         return ret
 
 
-@doc(_("""Audit log entry."""))
+@doc(_("""Audit log entry"""))
 class LogEntrySerializer(ModelSerializer):
     """Details of an audit log entry."""
 

@@ -22,6 +22,7 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
 from toolhub.apps.user.serializers import UserSerializer
+from toolhub.decorators import doc
 from toolhub.serializers import ModelSerializer
 
 from .models import Tool
@@ -31,7 +32,8 @@ COMMONS_FILE_RE = re.compile(r"^https://commons.wikimedia.org/wiki/(File:.*)$")
 COMMONS_FILE_TMPL = "https://commons.wikimedia.org/wiki/Special:FilePath/{}"
 
 
-class CommonsFileSerializer(serializers.Serializer):  # noqa: W0223
+@doc(_("""A File: page on Commons"""))  # noqa: W0223
+class CommonsFileSerializer(serializers.Serializer):
     """A File: page on Commons."""
 
     page = serializers.CharField(
@@ -53,7 +55,8 @@ class CommonsFileSerializer(serializers.Serializer):  # noqa: W0223
         return ret
 
 
-class ForWikiSerializer(serializers.Serializer):  # noqa: W0223
+@doc(_("""Supported wikis"""))  # noqa: W0223
+class ForWikiSerializer(serializers.Serializer):
     """Supported wikis."""
 
     TRANSLATIONS = {
@@ -86,6 +89,7 @@ class ForWikiSerializer(serializers.Serializer):  # noqa: W0223
         return [self._localize_label(v) for v in instance]
 
 
+@doc(_("""Description of a tool"""))
 class ToolSerializer(ModelSerializer):
     """Description of a tool."""
 
@@ -137,6 +141,7 @@ class ToolSerializer(ModelSerializer):
         ]
 
 
+@doc(_("""Summary of a tool"""))
 class SummaryToolSerializer(ModelSerializer):
     """Summary of a tool."""
 

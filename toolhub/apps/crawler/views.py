@@ -45,7 +45,7 @@ from .serializers import UrlSerializer
         request=EditUrlSerializer,
     ),
     retrieve=extend_schema(
-        description=_("""Info for a specific crawled URL."""),
+        description=_("""Information about a specific crawled URL."""),
     ),
     destroy=extend_schema(
         description=_("""Unregister an URL."""),

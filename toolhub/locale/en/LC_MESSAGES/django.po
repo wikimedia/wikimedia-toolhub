@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-17 19:00+0000\n"
+"POT-Creation-Date: 2020-12-17 23:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,15 +67,15 @@ msgid "auditlog entries"
 msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:29
-msgid "Event action."
+msgid "Event action"
 msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:38
-msgid "Event target."
+msgid "Event target"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:54
-msgid "Audit log entry."
+#: toolhub/apps/auditlog/serializers.py:62
+msgid "Audit log entry"
 msgstr ""
 
 #: toolhub/apps/auditlog/views.py:32
@@ -90,12 +90,28 @@ msgstr ""
 msgid "Toolinfo web crawler"
 msgstr ""
 
+#: toolhub/apps/crawler/serializers.py:29
+msgid "A URL that has been registered for crawling"
+msgstr ""
+
+#: toolhub/apps/crawler/serializers.py:42
+msgid "A URL to crawl"
+msgstr ""
+
+#: toolhub/apps/crawler/serializers.py:53
+msgid "Information about a single URL processed during a crawler run"
+msgstr ""
+
+#: toolhub/apps/crawler/serializers.py:75
+msgid "Summary of a single run of the crawler."
+msgstr ""
+
 #: toolhub/apps/crawler/views.py:44
 msgid "Register a new URL for crawling."
 msgstr ""
 
 #: toolhub/apps/crawler/views.py:48
-msgid "Info for a specific crawled URL."
+msgid "Information about a specific crawled URL."
 msgstr ""
 
 #: toolhub/apps/crawler/views.py:51
@@ -285,57 +301,72 @@ msgid ""
 "English. Use ISO 639 language codes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:60
-msgid "Any wiki"
+#: toolhub/apps/toolinfo/serializers.py:35
+msgid "A File: page on Commons"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:61
-msgid "Wikimedia Commons"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:62
-msgid "MediaWiki wiki"
+#: toolhub/apps/toolinfo/serializers.py:58
+msgid "Supported wikis"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:63
-msgid "Wikispecies"
+msgid "Any wiki"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:64
-msgid "Any Wikibooks"
+msgid "Wikimedia Commons"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:65
+msgid "MediaWiki wiki"
+msgstr ""
+
 #: toolhub/apps/toolinfo/serializers.py:66
-msgid "Wikidata"
+msgid "Wikispecies"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:67
-msgid "Any Wikinews"
+msgid "Any Wikibooks"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:68
-msgid "Any Wikipedia"
+msgid "Wikidata"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:69
-msgid "Any Wikiquote"
+msgid "Any Wikinews"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:70
-msgid "Any Wikisource"
+msgid "Any Wikipedia"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:71
-msgid "Any Wikiversity"
+msgid "Any Wikiquote"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:72
-msgid "Any Wikivoyage"
+msgid "Any Wikisource"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:73
+msgid "Any Wikiversity"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:74
+msgid "Any Wikivoyage"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:75
 msgid "Any Wiktionary"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:92
+msgid "Description of a tool"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:144
+msgid "Summary of a tool"
 msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:32
@@ -372,6 +403,30 @@ msgstr ""
 
 #: toolhub/apps/user/models.py:40
 msgid "A user with that username already exists."
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:36
+msgid "Information about the current user"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:57
+msgid "Information about the current locale"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:74
+msgid "Social authentication information for a user"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:104
+msgid "Detailed user information"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:118
+msgid "User information"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:130
+msgid "Group information"
 msgstr ""
 
 #: toolhub/apps/user/validators.py:29
