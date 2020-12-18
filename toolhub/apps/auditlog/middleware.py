@@ -20,7 +20,7 @@ import contextlib
 from .context import auditlog_user
 
 
-class LogEntryUserMiddleware:  # noqa: R0903
+class LogEntryUserMiddleware:
     """Associate the request's user with LogEntry objects."""
 
     def __init__(self, get_response):

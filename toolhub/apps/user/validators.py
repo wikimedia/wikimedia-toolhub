@@ -20,7 +20,7 @@ from django.utils.deconstruct import deconstructible
 from django.utils.translation import gettext_lazy as _
 
 
-@deconstructible  # noqa: R0903 "Too few public methods"
+@deconstructible
 class MediaWikiUsernameValidator(validators.RegexValidator):
     """Validate a MediaWiki style username."""
 
