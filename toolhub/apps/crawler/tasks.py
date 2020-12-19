@@ -23,7 +23,6 @@ from django.utils import timezone
 
 import requests
 
-from toolhub.apps.auditlog.context import auditlog_user
 from toolhub.apps.toolinfo.models import Tool
 
 from .models import Run
@@ -71,50 +70,13 @@ class Crawler:
 
                 logger.info("Found tool `%s`", tool["name"])
 
-                tool["created_by"] = url.created_by
-                tool["modified_by"] = url.created_by
-
-                if "$schema" in tool:
-                    tool["_schema"] = tool.pop("$schema")
-
-                if "$language" in tool:
-                    tool["_language"] = tool.pop("$language")
-
-                # Normalize 'oneOf' fields that could be an array of values or
-                # a bare value to always be stored as an array of values.
-                # FIXME: probably belongs in a custom manager for the model
-                for field in [
-                    "for_wikis",
-                    "sponsor",
-                    "available_ui_languages",
-                    "technology_used",
-                    "developer_docs_url",
-                    "user_docs_url",
-                    "feedback_url",
-                    "privacy_policy_url",
-                ]:
-                    if field in tool and not isinstance(tool[field], list):
-                        tool[field] = [tool[field]]
-
-                if "keywords" in tool:
-                    # FIXME: probably belongs in a custom manager for the model
-                    tool["keywords"] = [
-                        s.strip() for s in tool["keywords"].split(",")
-                    ]
-
                 try:
-                    with auditlog_user(url.created_by):
-                        # FIXME: what should we do if we get duplicates from
-                        # multiple source URLs? This can happen for example if
-                        # a Toolforge tool is registered independent of the
-                        # Striker managed toolinfo record.
-                        obj, created = Tool.objects.update_or_create(
-                            name=tool["name"],
-                            defaults=tool,
-                        )
-                        if created:
-                            run.new_tools += 1
-                        run_url.tools.add(obj)
+                    obj, created = Tool.objects.from_toolinfo(
+                        tool, url.created_by
+                    )
+                    if created:
+                        run.new_tools += 1
+                    run_url.tools.add(obj)
 
                 except django.db.Error:
                     logger.exception(

@@ -15,15 +15,105 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+import logging
+
 from django.conf import settings
 from django.core import validators
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from jsonfield import JSONField
 
+from toolhub.apps.auditlog.context import auditlog_user
 from toolhub.apps.auditlog.signals import registry
+
+
+logger = logging.getLogger(__name__)
+
+
+class ToolManager(models.Manager):
+    """Custom manager for Tool models."""
+
+    ARRAY_FIELDS = [
+        "for_wikis",
+        "sponsor",
+        "available_ui_languages",
+        "technology_used",
+        "developer_docs_url",
+        "user_docs_url",
+        "feedback_url",
+        "privacy_policy_url",
+    ]
+
+    VARIANT_FIELDS = ["created_by", "modified_by"]
+
+    def from_toolinfo(self, record, creator):
+        """Create or update a Tool using data from a toolinfo record."""
+        if record["name"].startswith("toolforge."):
+            # Fixup tool names made by Striker to work as slugs
+            record["name"] = "toolforge-" + record["name"][10:]
+        record["name"] = slugify(record["name"], allow_unicode=True)
+
+        record["created_by"] = creator
+        record["modified_by"] = creator
+
+        if "$schema" in record:
+            record["_schema"] = record.pop("$schema")
+
+        if "$language" in record:
+            record["_language"] = record.pop("$language")
+
+        # Normalize 'oneOf' fields that could be an array of values or
+        # a bare value to always be stored as an array of values.
+        for field in self.ARRAY_FIELDS:
+            if field in record and not isinstance(record[field], list):
+                record[field] = [record[field]]
+
+        if "keywords" in record:
+            record["keywords"] = list(
+                filter(
+                    None, (s.strip() for s in record["keywords"].split(","))
+                )
+            )
+
+        with auditlog_user(creator):
+            tool, created = self.get_or_create(
+                name=record["name"], defaults=record
+            )
+        if created:
+            return tool, created
+
+        # Compare input to prior model and decide if anything of note has
+        # changed.
+        has_changes = False
+
+        for key, value in record.items():
+            if key in self.VARIANT_FIELDS:
+                continue
+
+            prior = getattr(tool, key)
+            if value != prior:
+                setattr(tool, key, value)
+                has_changes = True
+                logger.debug(
+                    "%s: Updating %s to %s (was %s)",
+                    record["name"],
+                    key,
+                    value,
+                    prior,
+                )
+        if has_changes:
+            with auditlog_user(creator):
+                tool.save()
+
+        # FIXME: what should we do if we get duplicates from
+        # multiple source URLs? This can happen for example if
+        # a Toolforge tool is registered independent of the
+        # Striker managed toolinfo record.
+
+        return tool, False
 
 
 @registry.register()
@@ -313,6 +403,8 @@ class Tool(models.Model):
     modified_date = models.DateTimeField(
         default=timezone.now, blank=True, editable=False, db_index=True
     )
+
+    objects = ToolManager()
 
     @property
     def auditlog_label(self):
