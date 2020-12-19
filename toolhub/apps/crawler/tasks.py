@@ -71,11 +71,14 @@ class Crawler:
                 logger.info("Found tool `%s`", tool["name"])
 
                 try:
-                    obj, created = Tool.objects.from_toolinfo(
+                    obj, created, updated = Tool.objects.from_toolinfo(
                         tool, url.created_by
                     )
                     if created:
                         run.new_tools += 1
+                    if updated:
+                        run.updated_tools += 1
+                    run.total_tools += 1
                     run_url.tools.add(obj)
 
                 except django.db.Error:

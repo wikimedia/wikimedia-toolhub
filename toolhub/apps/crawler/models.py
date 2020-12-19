@@ -54,6 +54,8 @@ class Run(models.Model):
     start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField(null=True, blank=True)
     new_tools = models.PositiveIntegerField(blank=True, default=0)
+    updated_tools = models.PositiveIntegerField(blank=True, default=0)
+    total_tools = models.PositiveIntegerField(blank=True, default=0)
 
     def __str__(self):
         return "id={}; start={:%Y-%m-%d %H:%M}".format(

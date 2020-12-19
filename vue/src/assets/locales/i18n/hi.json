@@ -39,7 +39,6 @@
 	"links": "लिंक",
 	"moreinfo": "अधिक जानकारी",
 	"mostrecentcrawledurls": "हाल ही में क्रॉल किए गए URL(s)",
-	"newtoolsadded": "नए उपकरण जोड़े गए",
 	"newtoolsfound": "1 टूल | {n} टूल्स",
 	"nourlsfounderror": "टूलहब प्रणाली में कोई toolinfo.json फ़ाइल URL नहीं मिला।",
 	"privacypolicy": "गोपनीयता नीति",

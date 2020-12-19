@@ -38,7 +38,8 @@
 								</v-icon>
 
 								<a href="/crawler-history">{{ $tc( 'newtoolsfound',
-									lastCrawlerRun.new_tools ) }}
+									lastCrawlerRun.new_tools +
+									lastCrawlerRun.updated_tools ) }}
 									{{ $t( 'tools-lastupdated', { date:
 										formatDate( lastCrawlerRun.end_date ) } ) }}
 								</a>

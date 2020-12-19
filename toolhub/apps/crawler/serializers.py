@@ -80,4 +80,11 @@ class RunSerializer(ModelSerializer):
         """Configure serializer."""
 
         model = Run
-        fields = ["id", "start_date", "end_date", "new_tools"]
+        fields = [
+            "id",
+            "start_date",
+            "end_date",
+            "new_tools",
+            "updated_tools",
+            "total_tools",
+        ]

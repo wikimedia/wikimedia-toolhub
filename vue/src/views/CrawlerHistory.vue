@@ -73,7 +73,7 @@
 						md="6"
 						lg="12"
 					>
-						<chart :height="250" :chart-data="newToolsChartData" />
+						<chart :height="250" :chart-data="totalToolsChartData" />
 					</v-col>
 				</v-row>
 			</v-col>
@@ -151,7 +151,7 @@ export default {
 			runsPage: 1,
 			urlsPage: 1,
 			itemsPerPage: 10,
-			newToolsChartData: null,
+			totalToolsChartData: null,
 			crawledUrlsChartData: null,
 			crawlerRunEndDate: null,
 			crawlerRunId: 0,
@@ -160,8 +160,13 @@ export default {
 		};
 	},
 	computed: {
-		...mapState( 'crawler', [ 'crawlerHistory', 'apiErrorMsg', 'numCrawlerRuns',
-			'crawlerUrls', 'numCrawlerUrls' ] ),
+		...mapState( 'crawler', [
+			'crawlerHistory',
+			'apiErrorMsg',
+			'numCrawlerRuns',
+			'crawlerUrls',
+			'numCrawlerUrls'
+		] ),
 
 		clonedHistory() {
 			return this.crawlerHistory;
@@ -180,8 +185,8 @@ export default {
 					sortable: true
 				},
 				{
-					text: this.$t( 'newtoolsadded' ),
-					value: 'new_tools',
+					text: this.$t( 'totaltools' ),
+					value: 'total_tools',
 					sortable: true
 				}
 			];
@@ -234,24 +239,24 @@ export default {
 			return sortedItems;
 		},
 		fillChartsData() {
-			this.newToolsChartData = {
-				labels: this.getEndDates(),
-				datasets: [
-					{
-						label: this.$t( 'newtoolsadded' ),
-						backgroundColor: this.$vuetify.theme.themes.light.accent,
-						data: this.getNewToolsAdded()
-					}
-				]
-			};
-
 			this.crawledUrlsChartData = {
 				labels: this.getEndDates(),
 				datasets: [
 					{
 						label: this.$t( 'urlscrawled' ),
-						backgroundColor: this.$vuetify.theme.themes.light.primary,
+						backgroundColor: this.$vuetify.theme.themes.light.accent,
 						data: this.getUrlsCrawled()
+					}
+				]
+			};
+
+			this.totalToolsChartData = {
+				labels: this.getEndDates(),
+				datasets: [
+					{
+						label: this.$t( 'totaltools' ),
+						backgroundColor: this.$vuetify.theme.themes.light.primary,
+						data: this.getTotalTools()
 					}
 				]
 			};
@@ -265,14 +270,14 @@ export default {
 
 			return endDates.reverse();
 		},
-		getNewToolsAdded() {
-			const newToolsAdded = [];
+		getTotalTools() {
+			const totalTools = [];
 
 			this.crawlerHistory.forEach( ( history ) => {
-				newToolsAdded.push( history.new_tools );
+				totalTools.push( history.total_tools );
 			} );
 
-			return newToolsAdded.reverse();
+			return totalTools.reverse();
 		},
 		getUrlsCrawled() {
 			const crawledUrls = [];

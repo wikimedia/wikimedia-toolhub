@@ -83,7 +83,7 @@ class ToolManager(models.Manager):
                 name=record["name"], defaults=record
             )
         if created:
-            return tool, created
+            return tool, created, False
 
         # Compare input to prior model and decide if anything of note has
         # changed.
@@ -113,7 +113,7 @@ class ToolManager(models.Manager):
         # a Toolforge tool is registered independent of the
         # Striker managed toolinfo record.
 
-        return tool, False
+        return tool, False, has_changes
 
 
 @registry.register()
