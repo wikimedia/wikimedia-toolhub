@@ -137,7 +137,12 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
 
 def login(request):  # noqa: W0613 unused argument
     """Start the login process."""
-    return redirect(reverse("social:begin", kwargs={"backend": "wikimedia"}))
+    return redirect(
+        "{}?next={}".format(
+            reverse("social:begin", kwargs={"backend": "wikimedia"}),
+            request.GET.get("next", "/"),
+        )
+    )
 
 
 def logout(request):

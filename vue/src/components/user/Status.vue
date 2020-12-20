@@ -53,7 +53,7 @@
 		v-else
 		class="ma-1 white-text"
 		color="secondary"
-		href="/user/login/"
+		:href="loginHref"
 		:disabled="loading"
 		:loading="loading"
 		v-bind="attrs"
@@ -71,11 +71,16 @@ export default {
 	name: 'UserStatus',
 	data() {
 		return {
-			loading: false
+			attrs: '',
+			loading: false,
+			on: ''
 		};
 	},
 	computed: {
-		...mapState( 'user', [ 'user' ] )
+		...mapState( 'user', [ 'user' ] ),
+		loginHref() {
+			return '/user/login/?next=' + this.$route.path;
+		}
 	}
 };
 </script>
