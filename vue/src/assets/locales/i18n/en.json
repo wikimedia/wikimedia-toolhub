@@ -6,7 +6,6 @@
 		"locale": "en",
 		"message-documentation": "qqq"
 	},
-	"about": "About",
 	"add": "Add",
 	"addremovetools": "Add or remove tools",
 	"addremovetools-nologintext": "You will need to log in to Toolhub to add or remove tools",
@@ -50,7 +49,8 @@
 	"sourcecode": "Source code",
 	"status": "Status",
 	"system-user": "System",
-	"tagline": "An authoritative and well promoted catalog of Wikimedia tools.",
+	"tagline-about": "An authoritative and well promoted catalog of Wikimedia tools.",
+	"tagline-learnmore": "Learn more about Toolhub on metawiki",
 	"talk": "talk",
 	"technologyused": "Technology used",
 	"tools": "tools",

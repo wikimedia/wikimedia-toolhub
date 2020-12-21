@@ -6,7 +6,6 @@
 		"locale": "qqq",
 		"message-documentation": "qqq"
 	},
-	"about": "Navigation menu label, links to About page.\n{{Identical|About}}",
 	"add": "Button label, triggers saving a URL.\n{{Identical|Add}}",
 	"addremovetools": "Navigation menu label, links to URL management page.",
 	"addremovetools-nologintext": "Info message for unauthenticated users.",
@@ -50,7 +49,8 @@
 	"sourcecode": "Link label, links to source code for a tool.",
 	"status": "Table column label.",
 	"system-user": "The username for the actions taken internally by the software",
-	"tagline": "Home page content.",
+	"tagline-about": "Home page content.",
+	"tagline-learnmore": "Home page content.",
 	"talk": "Audit log label",
 	"technologyused": "Tool information label.",
 	"tools": "Crawler run statistics label",

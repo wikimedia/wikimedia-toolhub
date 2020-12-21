@@ -13,7 +13,10 @@
 								{{ $t( 'welcomemessage' ) }}
 							</h2>
 							<div class="me-4 ms-4">
-								{{ $t( 'tagline' ) }}
+								{{ $t( 'tagline-about' ) }}
+								<a href="https://meta.wikimedia.org/wiki/Toolhub"
+									target="_blank"
+								>{{ $t( 'tagline-learnmore' ) }}</a>.
 							</div>
 
 							<v-card-subtitle
