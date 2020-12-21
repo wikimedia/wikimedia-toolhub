@@ -244,16 +244,16 @@ export default {
 		moreInfoItems() {
 			const items = [
 				{
-					name: this.$t( 'technologyused' ),
-					value: this.toolInfo.technology_used
+					name: this.$t( 'tooltype' ),
+					value: this.toolInfo.tool_type
 				},
 				{
 					name: this.$t( 'forwikis' ),
 					value: this.toolInfo.for_wikis
 				},
 				{
-					name: this.$t( 'tooltype' ),
-					value: this.toolInfo.tool_type
+					name: this.$t( 'technologyused' ),
+					value: this.toolInfo.technology_used
 				}
 			];
 
