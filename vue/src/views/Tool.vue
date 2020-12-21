@@ -34,10 +34,6 @@
 							{{ toolInfo.title }}
 						</h2>
 
-						<div class="subtitle-2 mt-4">
-							{{ $t( 'toolname' ) }}: {{ toolInfo.name }}
-						</div>
-
 						<div class="mt-4">
 							{{ toolInfo.description }}
 						</div>

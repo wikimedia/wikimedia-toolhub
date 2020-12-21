@@ -53,7 +53,6 @@
 	"tagline": "Home page content.",
 	"talk": "Audit log label",
 	"technologyused": "Tool information label.",
-	"toolname": "Output label, followed by a tool's name.",
 	"tools": "Crawler run statistics label",
 	"tooltype": "Tool information label.",
 	"tool-deprecated-error": "Warning message for a tool marked as deprecated.",

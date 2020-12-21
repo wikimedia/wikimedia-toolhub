@@ -64,7 +64,7 @@
 					class="my-8"
 					min-width="365"
 					max-width="365"
-					min-height="470"
+					min-height="450"
 				>
 					<v-card-title
 						class="flex-nowrap"
@@ -91,8 +91,6 @@
 					</v-card-title>
 
 					<v-card-text>
-						<p>{{ tool.name }}</p>
-
 						<div class="text--primary home-tool-desc line-clamp">
 							{{ tool.description }}
 						</div>
