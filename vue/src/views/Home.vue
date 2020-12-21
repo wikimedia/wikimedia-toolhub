@@ -28,8 +28,7 @@
 								>
 									mdi-tools
 								</v-icon>
-								{{ numTools }}
-								{{ $t( 'tools' ) }} {{ $t( 'found' ) }}
+								{{ $tc( 'toolsfound', numTools ) }}
 								•
 								<v-icon
 									size="16"
