@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
+import FallbackMap from './i18n-fallback';
 
 Vue.use( VueI18n );
 
@@ -46,7 +47,7 @@ VueI18n.prototype.getChoiceIndex = function ( choice, choicesLength ) {
 
 export default new VueI18n( {
 	locale: navigator.language.split( '-' )[ 0 ],
-	fallbackLocale: 'en',
+	fallbackLocale: FallbackMap,
 	messages: loadLocaleMessages(),
 	silentFallbackWarn: true
 } );
