@@ -9,7 +9,7 @@
 				<v-icon class="me-2">
 					mdi-translate
 				</v-icon>
-				{{ curLocaleNative }}
+				{{ currentLocaleNativeLabel }}
 			</v-btn>
 		</template>
 		<v-list>
@@ -32,12 +32,30 @@
 <script>
 import languageNameMap from 'language-name-map/map';
 
+/**
+ * Lookup a Locale model.
+ *
+ * @param {string} code - Locale name to lookup (e.g. en-US-southern)
+ * @return {Object} Locale
+ */
+function findLocaleForCode( code ) {
+	const tokens = code.toLowerCase().split( '-' );
+	while ( tokens.length ) {
+		const lookup = tokens.join( '-' );
+		if ( lookup in languageNameMap ) {
+			return languageNameMap[ lookup ];
+		}
+		tokens.splice( -1, 1 );
+	}
+	// Fallback to English as a last resort
+	return languageNameMap.en;
+}
+
 export default {
 	name: 'SelectLocale',
 	data() {
 		return {
-			curLocaleNative: ''
-
+			currentLocaleNativeLabel: ''
 		};
 	},
 	computed: {
@@ -60,21 +78,38 @@ export default {
 				return;
 			}
 
+			// Set the locale for the frontend
 			this.$i18n.locale = code;
-			this.curLocaleNative = locale.native;
-			this.$store.dispatch( 'user/setLocale', code );
-			this.$router.push( {
-				query: { locale: code }
-			} );
-
 			this.$vuetify.rtl = ( locale.dir === 0 );
+			// Set the locale for the backend
+			this.$store.dispatch( 'user/setLocale', code );
+			// Set the display label for the active locale
+			this.currentLocaleNativeLabel = locale.native;
+
+			// Show the locale in the query string if it changed
+			if ( this.$route.query.uselang !== code ) {
+				this.$router.push( {
+					query: { uselang: code }
+				} );
+			}
+		}
+	},
+	watch: {
+		'$route.query': {
+			immediate: true,
+			handler( qs ) {
+				if ( qs.uselang ) {
+					const locale = findLocaleForCode( qs.uselang );
+					this.setLocale( qs.uselang, locale );
+				}
+			}
 		}
 	},
 	mounted() {
-		const curLocaleCode = this.$i18n.locale,
-			curLocale = this.languages && this.languages[ curLocaleCode ];
-
-		this.curLocaleNative = curLocale && curLocale.native;
+		const locale = findLocaleForCode(
+			this.$route.query.uselang || this.$i18n.locale
+		);
+		this.currentLocaleNativeLabel = locale.native;
 	}
 };
 </script>

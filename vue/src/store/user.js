@@ -112,7 +112,17 @@ export default {
 					'X-CSRFToken': context.state.user.csrf_token
 				}
 			};
-			SwaggerClient.http( request );
+			SwaggerClient.http( request ).catch( ( err ) => {
+				if ( err.status === 403 ) {
+					// Forbidden response from API is always a missing CSRF
+					// problem. Fetch the user state and try again.
+					context.dispatch( 'getUserInfo' ).then( () => {
+						context.dispatch( 'setLocale', locale );
+					} );
+				} else {
+					throw err;
+				}
+			} );
 		}
 	},
 	// Strict mode in development/testing, but disabled for performance in prod
