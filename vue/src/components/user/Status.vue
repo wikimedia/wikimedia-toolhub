@@ -56,8 +56,6 @@
 		:href="loginHref"
 		:disabled="loading"
 		:loading="loading"
-		v-bind="attrs"
-		v-on="on"
 		@click="loading = true"
 	>
 		Login
@@ -71,9 +69,7 @@ export default {
 	name: 'UserStatus',
 	data() {
 		return {
-			attrs: '',
-			loading: false,
-			on: ''
+			loading: false
 		};
 	},
 	computed: {
