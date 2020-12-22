@@ -23,7 +23,7 @@
 	background-color: var( --v-accent-base );
 }
 
-.table-crawler-history tr.v-data-table__selected,
+.table-crawler-history .selected tr.v-data-table__selected,
 .table-crawler-history .active tbody tr:first-child {
 	background: var( --v-primary-base ) !important;
 	color: var( --v-bgtext-base );

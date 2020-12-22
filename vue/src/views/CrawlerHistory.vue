@@ -27,7 +27,7 @@
 			<v-col
 				lg="6"
 				cols="12"
-				:class="{ active: firstRowActive }"
+				:class="{ active: firstRowActive, selected: rowSelected }"
 			>
 				<v-data-table
 					:headers="crawlerRunsHeaders"
@@ -155,7 +155,8 @@ export default {
 			crawledUrlsChartData: null,
 			crawlerRunEndDate: null,
 			crawlerRunId: 0,
-			firstRowActive: true
+			firstRowActive: true,
+			rowSelected: false
 		};
 	},
 	computed: {
@@ -220,8 +221,9 @@ export default {
 		},
 		goToRunsPage( page ) {
 			this.runsPage = page;
-			this.firstRowActive = true;
 			this.fetchCrawlerHistory();
+			this.firstRowActive = true;
+			this.rowSelected = false;
 		},
 		goToUrlsPage( page ) {
 			this.urlsPage = page;
@@ -288,6 +290,7 @@ export default {
 		},
 		crawlerRunRowClicked( item, row ) {
 			row.select( true );
+			this.rowSelected = true;
 			this.firstRowActive = false;
 			this.urlsPage = 1;
 			this.changeUrlsCrawled( item );
