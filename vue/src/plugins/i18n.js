@@ -16,6 +16,13 @@ function loadLocaleMessages() {
 			messages[ locale ] = locales( key );
 		}
 	} );
+
+	// Generate a qqx locale based on the keys found in the en locale.
+	messages.qqx = Object.keys( messages.en ).reduce( ( out, val ) => {
+		out[ val ] = `(${val})`;
+		return out;
+	}, {} );
+
 	return messages;
 }
 

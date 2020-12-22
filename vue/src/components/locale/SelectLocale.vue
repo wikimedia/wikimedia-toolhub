@@ -32,6 +32,9 @@
 <script>
 import languageNameMap from 'language-name-map/map';
 
+// T269164: Add a qqx mapping to languageNameMap.
+languageNameMap.qqx = { name: 'QQX', dir: 1, native: 'QQX' };
+
 /**
  * Lookup a Locale model.
  *
