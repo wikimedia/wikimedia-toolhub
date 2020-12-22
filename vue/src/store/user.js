@@ -56,7 +56,7 @@ export default {
 				body: '{ "url": "' + url + '" }',
 				headers: {
 					'Content-Type': 'application/json',
-					'X-CSRFTOKEN': context.state.user.csrf_token
+					'X-CSRFToken': context.state.user.csrf_token
 				}
 			};
 
@@ -74,7 +74,7 @@ export default {
 				url: '/api/crawler/urls/' + urlObj.id + '/',
 				method: 'DELETE',
 				headers: {
-					'X-CSRFTOKEN': context.state.user.csrf_token
+					'X-CSRFToken': context.state.user.csrf_token
 				}
 			};
 
@@ -109,7 +109,7 @@ export default {
 				body: JSON.stringify( { language: locale } ),
 				headers: {
 					'Content-Type': 'application/json',
-					'X-CSRFTOKEN': this.state.user.csrf_token
+					'X-CSRFToken': context.state.user.csrf_token
 				}
 			};
 			SwaggerClient.http( request );
