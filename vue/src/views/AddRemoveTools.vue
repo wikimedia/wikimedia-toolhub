@@ -27,6 +27,7 @@
 							prepend-icon="mdi-link-variant"
 							:rules="urlRules"
 							required
+							:disabled="$store.state.user.user.is_authenticated === false"
 						/>
 					</v-col>
 					<v-col
@@ -37,8 +38,8 @@
 						<v-btn
 							class="mt-4"
 							color="primary"
-							dark
 							width="100%"
+							:disabled="$store.state.user.user.is_authenticated === false"
 							@click="registerUrl(fileUrl)"
 						>
 							{{ $t( 'add' ) }}
@@ -56,6 +57,18 @@
 						lg="10"
 						cols="12"
 					>
+						<v-alert
+							v-if="$store.state.user.user.is_authenticated === false"
+							border="left"
+							color="primary"
+							dark
+							elevation="2"
+							type="info"
+							width="100%"
+						>
+							{{ $t( 'addremovetools-nologintext' ) }}
+						</v-alert>
+
 						<v-alert
 							v-if="apiErrorMsg"
 							border="left"
@@ -150,19 +163,6 @@
 								target="_blank"
 							>{{ $t( 'schemalink' ) }}</a>.
 						</p>
-					</v-alert>
-				</v-row>
-				<v-row>
-					<v-alert
-						v-if="$store.state.user.user.is_authenticated === false"
-						border="left"
-						color="primary"
-						dark
-						elevation="2"
-						type="info"
-						width="100%"
-					>
-						{{ $t( 'addremovetools-nologintext' ) }}
 					</v-alert>
 				</v-row>
 			</v-col> <!--end how this page works section-->
