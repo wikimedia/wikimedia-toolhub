@@ -19,31 +19,41 @@
 								>{{ $t( 'tagline-learnmore' ) }}</a>.
 							</div>
 
-							<v-card-subtitle
+							<v-row
 								v-if="lastCrawlerRun"
+								class="mx-1 my-3 text--secondary subtitle-2"
 							>
-								<v-icon
-									size="15"
-									class="me-1"
+								<v-col lg="3"
+									cols="12"
+									class="py-0"
 								>
-									mdi-tools
-								</v-icon>
-								{{ $tc( 'toolsfound', numTools ) }}
-								•
-								<v-icon
-									size="16"
-									class="me-2"
+									<v-icon
+										size="15"
+									>
+										mdi-tools
+									</v-icon>
+									{{ $tc( 'toolsfound', numTools ) }}
+								</v-col>
+								<v-col
+									lg="9"
+									cols="12"
+									class="py-0"
 								>
-									mdi-update
-								</v-icon>
+									<v-icon
+										size="16"
+										class="me-1"
+									>
+										mdi-update
+									</v-icon>
 
-								<a href="/crawler-history">{{ $tc( 'newtoolsfound',
-									lastCrawlerRun.new_tools +
-									lastCrawlerRun.updated_tools ) }}
-									{{ $t( 'tools-lastupdated', { date:
-										formatDate( lastCrawlerRun.end_date ) } ) }}
-								</a>
-							</v-card-subtitle>
+									<a href="/crawler-history">{{ $tc( 'newtoolsfound',
+										lastCrawlerRun.new_tools +
+											lastCrawlerRun.updated_tools ) }}
+										{{ $t( 'tools-lastupdated', { date:
+											formatDate( lastCrawlerRun.end_date ) } ) }}
+									</a>
+								</v-col>
+							</v-row>
 						</div>
 						<v-avatar
 							class="ma-3"
