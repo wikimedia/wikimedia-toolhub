@@ -1,41 +1,44 @@
 <template>
 	<v-container>
-		<v-row dense>
+		<v-row>
 			<v-col cols="12">
 				<v-card
 					class="mx-auto"
 					outlined
 					elevation="1"
 				>
-					<div class="d-flex flex-no-wrap justify-space-between">
-						<div>
+					<v-row no-gutters>
+						<v-col>
 							<h2 class="display-1 ma-4">
 								{{ $t( 'welcomemessage' ) }}
 							</h2>
 							<div class="me-4 ms-4">
 								{{ $t( 'tagline-about' ) }}
+							</div>
+							<div class="me-4 ms-4">
 								<a href="https://meta.wikimedia.org/wiki/Toolhub"
 									target="_blank"
-								>{{ $t( 'tagline-learnmore' ) }}</a>.
+									>
+									{{ $t( 'tagline-learnmore' ) }}
+								</a>
 							</div>
 
 							<v-row
 								v-if="lastCrawlerRun"
 								class="mx-1 my-3 text--secondary subtitle-2"
 							>
-								<v-col lg="3"
+								<v-col
+									lg="6"
 									cols="12"
 									class="py-0"
 								>
-									<v-icon
-										size="15"
-									>
+									<v-icon size="15">
 										mdi-tools
 									</v-icon>
 									{{ $tc( 'toolsfound', numTools ) }}
 								</v-col>
 								<v-col
-									lg="9"
+									lg="6"
 									cols="12"
 									class="py-0"
 								>
@@ -54,15 +57,17 @@
 									</a>
 								</v-col>
 							</v-row>
-						</div>
-						<v-avatar
-							class="ma-3"
-							size="125"
-							tile
-						>
-							<v-img src="/static/img/logo-community.svg" />
-						</v-avatar>
-					</div>
+						</v-col>
+						<v-col cols="auto">
+							<v-avatar
+								class="ma-3"
+								size="125"
+								tile
+							>
+								<v-img src="/static/img/logo-community.svg" />
+							</v-avatar>
+						</v-col>
+					</v-row>
 				</v-card>
 			</v-col>
 		</v-row>
@@ -74,7 +79,7 @@
 				class="shrink"
 			>
 				<v-card
-					class="my-8"
+					class="mx-4 my-8"
 					min-width="365"
 					max-width="365"
 					min-height="450"

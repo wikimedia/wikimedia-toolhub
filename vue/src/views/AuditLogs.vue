@@ -1,26 +1,22 @@
 <template>
 	<v-container>
 		<v-row>
-			<v-col cols="12"
-				class="pa-0 mt-2"
-			>
+			<v-col cols="12">
 				<h2 class="display-1">
 					{{ $t( 'auditlogs' ) }}
 				</h2>
 			</v-col>
+		</v-row>
 
-			<v-col cols="12"
-				class="pa-0 mt-2"
-			>
+		<v-row>
+			<v-col cols="12" class="py-0">
 				<p>{{ $t( 'auditlogs-pagetitle' ) }}</p>
 			</v-col>
+		</v-row>
 
-			<v-col lg="6"
-				cols="12"
-				class="pa-0"
-			>
+		<v-row v-if="apiErrorMsg">
+			<v-col cols="12">
 				<v-alert
-					v-if="apiErrorMsg"
 					border="left"
 					type="error"
 					elevation="2"
@@ -29,11 +25,13 @@
 					{{ $t( 'apierror' ) }} {{ apiErrorMsg }}
 				</v-alert>
 			</v-col>
+		</v-row>
 
-			<v-col lg="8" cols="12">
+		<v-row>
+			<v-col cols="12">
 				<v-row v-for="log in auditLogs"
 					:key="log.id"
-					class="elevation-2 mt-2 pa-1"
+					class="elevation-2 ma-1 mb-2 pa-1"
 				>
 					<v-col>
 						<v-icon
@@ -117,8 +115,10 @@
 					</v-col>
 				</v-row>
 			</v-col>
+		</v-row>
 
-			<v-col lg="8" cols="12">
+		<v-row>
+			<v-col cols="12">
 				<v-pagination
 					v-if="numLogs > 0"
 					v-model="page"

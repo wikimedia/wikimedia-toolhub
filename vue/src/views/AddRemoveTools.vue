@@ -9,16 +9,18 @@
 			>
 				<!--start add or remove tools section-->
 				<v-row>
-					<h2 class="display-1">
-						{{ $t( 'addremovetools-pagetitle' ) }}
-					</h2>
+					<v-col
+						cols="12"
+					>
+						<h2 class="display-1">
+							{{ $t( 'addremovetools-pagetitle' ) }}
+						</h2>
+					</v-col>
 				</v-row>
 				<v-row>
 					<v-col
-						lg="8"
-						sm="10"
-						cols="9"
-						class="ps-0"
+						lg="10"
+						cols="8"
 					>
 						<v-text-field
 							ref="url"
@@ -32,8 +34,7 @@
 					</v-col>
 					<v-col
 						lg="2"
-						sm="2"
-						cols="3"
+						cols="4"
 					>
 						<v-btn
 							class="mt-4"
@@ -53,10 +54,7 @@
 					</v-col>
 				</v-row>
 				<v-row>
-					<v-col
-						lg="10"
-						cols="12"
-					>
+					<v-col cols="12">
 						<v-alert
 							v-if="$store.state.user.user.is_authenticated === false"
 							border="left"
@@ -146,24 +144,28 @@
 			>
 				<!--start how this page works section-->
 				<v-row>
-					<v-alert
-						color="primary"
-						border="top"
-						colored-border
-						elevation="2"
+					<v-col
+						cols="12"
 					>
-						<h3 class="headline">
-							{{ $t( 'addremovetools-summarytitle' ) }}
-						</h3>
-						<v-divider class="pa-2" />
-						<p>
-							{{ $t( 'addremovetools-summary' ) }}
-							<a
-								href="https://meta.wikimedia.org/wiki/Toolhub/Data_model#Version_1.2.0"
-								target="_blank"
-							>{{ $t( 'schemalink' ) }}</a>.
-						</p>
-					</v-alert>
+						<v-alert
+							color="primary"
+							border="top"
+							colored-border
+							elevation="2"
+						>
+							<h3 class="headline">
+								{{ $t( 'addremovetools-summarytitle' ) }}
+							</h3>
+							<v-divider class="pa-2" />
+							<p>
+								{{ $t( 'addremovetools-summary' ) }}
+								<a
+									href="https://meta.wikimedia.org/wiki/Toolhub/Data_model#Version_1.2.0"
+									target="_blank"
+								>{{ $t( 'schemalink' ) }}</a>.
+							</p>
+						</v-alert>
+					</v-col>
 				</v-row>
 			</v-col> <!--end how this page works section-->
 		</v-row>

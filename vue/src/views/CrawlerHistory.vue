@@ -1,23 +1,21 @@
 <template>
 	<v-container>
 		<v-row>
-			<v-col cols="12"
-				class="pa-0 mt-2"
-			>
+			<v-col cols="12">
 				<h2 class="display-1">
 					{{ $t( 'crawlerhistory' ) }}
 				</h2>
 			</v-col>
+		</v-row>
 
-			<v-col cols="12"
-				class="pa-0 mt-2"
-			>
+		<v-row>
+			<v-col cols="12" class="py-0">
 				<p>{{ $t( 'crawlerhistory-pagesubtitle' ) }}</p>
 			</v-col>
 		</v-row>
 
 		<v-row
-			class="elevation-2 mt-2 pa-2 table-crawler-history"
+			class="elevation-2 pa-2 mx-1 my-4 table-crawler-history"
 		>
 			<v-col cols="12">
 				<h3 class="headline">
@@ -62,14 +60,12 @@
 			>
 				<v-row>
 					<v-col cols="12"
-						sm="12"
 						md="6"
 						lg="12"
 					>
 						<chart :height="250" :chart-data="crawledUrlsChartData" />
 					</v-col>
 					<v-col cols="12"
-						sm="12"
 						md="6"
 						lg="12"
 					>
@@ -80,16 +76,14 @@
 		</v-row>
 
 		<v-row
-			class="elevation-2 mt-6 pa-2"
+			class="elevation-2 mx-1 my-4 pa-2"
 		>
 			<v-col cols="12">
 				<h3 class="headline">
 					{{ $t( 'urlscrawledon', { date: crawlerRunEndDate } ) }}
 				</h3>
 			</v-col>
-			<v-col
-				cols="12"
-			>
+			<v-col cols="12">
 				<v-data-table
 					:headers="urlsCrawledHeaders"
 					:page="urlsPage"
