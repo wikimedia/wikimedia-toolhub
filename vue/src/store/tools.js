@@ -29,7 +29,7 @@ export default {
 	actions: {
 		listAllTools( context, page ) {
 			const request = {
-				url: '/api/tools/?page=' + page,
+				url: '/api/tools/?page_size=12&page=' + page,
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'

@@ -195,7 +195,7 @@ export default {
 	data() {
 		return {
 			page: 1,
-			itemsPerPage: 10
+			itemsPerPage: 12
 		};
 	},
 	computed: {
