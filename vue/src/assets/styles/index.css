@@ -1,6 +1,24 @@
-.home-card-actions {
-	position: absolute;
-	bottom: 10px;
+div.home-tool-card {
+	display: flex;
+	flex-direction: column;
+}
+
+.home-tool-card > div {
+	flex: 1 1 auto;
+}
+
+.home-tool-card .v-card__title {
+	flex: 0 0 auto;
+	word-break: break-word;
+}
+
+.home-tool-card .v-card__actions {
+	flex: 0 0 auto;
+	flex-direction: column;
+}
+
+.home-tool-card .v-card__actions a {
+	margin-top: 0.25em;
 }
 
 .home-tool-desc {

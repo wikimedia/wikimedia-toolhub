@@ -18,7 +18,7 @@
 							<div class="me-4 ms-4">
 								<a href="https://meta.wikimedia.org/wiki/Toolhub"
 									target="_blank"
-									>
+								>
 									{{ $t( 'tagline-learnmore' ) }}
 								</a>
 							</div>
@@ -71,29 +71,21 @@
 				</v-card>
 			</v-col>
 		</v-row>
-		<v-row
-			justify="space-around"
-		>
-			<v-row v-for="tool in toolsList"
+		<v-row justify="space-around">
+			<v-col v-for="tool in toolsList"
 				:key="tool.id"
-				class="shrink"
+				sm="6"
+				md="4"
+				lg="3"
+				cols="12"
 			>
 				<v-card
-					class="mx-4 my-8"
-					min-width="365"
-					max-width="365"
-					min-height="450"
+					class="home-tool-card"
+					height="550px"
 				>
 					<v-card-title
 						class="flex-nowrap"
 					>
-						<v-icon
-							v-if="!tool.icon"
-							class="me-2"
-							size="50"
-						>
-							mdi-tools
-						</v-icon>
 						<v-img
 							v-if="tool.icon"
 							class="me-2"
@@ -101,6 +93,13 @@
 							max-height="50"
 							max-width="50"
 						/>
+						<v-icon
+							v-else
+							class="me-2"
+							size="50"
+						>
+							mdi-tools
+						</v-icon>
 						<div
 							class="home-tool-title line-clamp"
 						>
@@ -108,7 +107,9 @@
 						</div>
 					</v-card-title>
 
-					<v-card-text>
+					<v-card-text
+						class="py-0"
+					>
 						<div class="text--primary home-tool-desc line-clamp">
 							{{ tool.description }}
 						</div>
@@ -116,11 +117,13 @@
 						<div class="my-4 subtitle-1">
 							{{ $t( 'authors' ) }}: {{ tool.author }}
 						</div>
+
+						<v-divider />
 					</v-card-text>
 
-					<v-divider class="mx-4" />
-
-					<v-card-text>
+					<v-card-text
+						class="py-0"
+					>
 						<v-chip-group
 							v-if="tool.keywords"
 							active-class="primary--text"
@@ -135,44 +138,40 @@
 						</v-chip-group>
 					</v-card-text>
 
-					<v-card-actions
-						class="home-card-actions"
-					>
-						<v-row>
-							<v-btn
-								class="mt-4 ms-4 me-2"
-								color="primary"
+					<v-card-actions class="ma-2">
+						<v-btn
+							color="primary"
+							dark
+							block
+							:to="`/tool/${tool.id}`"
+						>
+							<v-icon
 								dark
-								:to="`/tool/${tool.id}`"
+								class="pe-1"
 							>
-								{{ $t( 'learnmore' ) }}
-								<v-icon
-									dark
-									right
-								>
-									mdi-information-outline
-								</v-icon>
-							</v-btn>
-
-							<v-btn
-								class="mt-4"
-								color="primary"
+								mdi-information-outline
+							</v-icon>
+							{{ $t( 'learnmore' ) }}
+						</v-btn>
+						<v-spacer />
+						<v-btn
+							color="primary"
+							dark
+							block
+							:href="`${tool.url}`"
+							target="_blank"
+						>
+							<v-icon
 								dark
-								:href="`${tool.url}`"
-								target="_blank"
+								class="pe-1"
 							>
-								{{ $t( 'browsetool' ) }}
-								<v-icon
-									dark
-									right
-								>
-									mdi-link-variant
-								</v-icon>
-							</v-btn>
-						</v-row>
+								mdi-link-variant
+							</v-icon>
+							{{ $t( 'browsetool' ) }}
+						</v-btn>
 					</v-card-actions>
 				</v-card>
-			</v-row>
+			</v-col>
 		</v-row>
 
 		<v-pagination
