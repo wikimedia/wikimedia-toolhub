@@ -38,9 +38,10 @@
 							{{ toolInfo.description }}
 						</div>
 
-						<div class="subtitle-2 mt-4">
-							{{ $t( 'authors' ) }}: {{ toolInfo.author }}
-						</div>
+						<dl class="row mx-0 mt-4 subtitle-2">
+							<dt class="me-1">{{ $t( 'authors' ) }}:</dt>
+							<dd>{{ toolInfo.author }}</dd>
+						</dl>
 
 						<v-chip-group
 							v-if="toolInfo.keywords"

@@ -114,9 +114,10 @@
 							{{ tool.description }}
 						</div>
 
-						<div class="my-4 subtitle-1">
-							{{ $t( 'authors' ) }}: {{ tool.author }}
-						</div>
+						<dl class="row mx-0 my-4 subtitle-1">
+							<dt class="me-1">{{ $t( 'authors' ) }}:</dt>
+							<dd>{{ tool.author }}</dd>
+						</dl>
 
 						<v-divider />
 					</v-card-text>
