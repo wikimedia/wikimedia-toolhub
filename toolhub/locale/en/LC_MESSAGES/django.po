@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 00:33+0000\n"
+"POT-Creation-Date: 2020-12-30 23:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -297,8 +297,8 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:382
 msgid ""
-"The language this toolinfo record is written if, if not the default value of "
-"English. Use ISO 639 language codes."
+"The language in which this toolinfo record is written. If not set, the "
+"default value is English. Use ISO 639 language codes."
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:35

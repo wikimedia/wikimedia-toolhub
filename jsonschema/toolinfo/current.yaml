@@ -197,8 +197,8 @@ definitions:
         $ref: "#/definitions/language"
         default: en
         description: >-
-          The language this toolinfo record is written if, if not the default
-          value of English. Use ISO 639 language codes.
+          The language in which this toolinfo record is written. If not set,
+          the default value is English. Use ISO 639 language codes.
     required:
       - name
       - title

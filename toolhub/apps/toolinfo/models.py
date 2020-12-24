@@ -379,8 +379,9 @@ class Tool(models.Model):
             validators.RegexValidator(regex=r"^(x-.*|[A-Za-z]{2,3}(-.*)?)$")
         ],
         help_text=_(
-            "The language this toolinfo record is written if, if not the "
-            "default value of English. Use ISO 639 language codes."
+            "The language in which this toolinfo record is written. "
+            "If not set, the default value is English. "
+            "Use ISO 639 language codes."
         ),
     )
 
