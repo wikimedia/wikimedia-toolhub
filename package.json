@@ -31,6 +31,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@intlify/eslint-plugin-vue-i18n": "^0.9.0",
     "@mdi/font": "^5.7.55",
     "@vue/cli": "^4.5.7",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -68,9 +69,14 @@
   },
   "eslintConfig": {
     "root": true,
+    "parserOptions": {
+      "parser": "babel-eslint",
+      "allowImportExportEverywhere": true
+    },
     "extends": [
       "wikimedia/client"
     ],
+    "reportUnusedDisableDirectives": true,
     "overrides": [
       {
         "files": [
@@ -79,7 +85,8 @@
         "extends": [
           "wikimedia/vue-es6",
           "wikimedia/language/es6",
-          "plugin:vue/recommended"
+          "plugin:vue/recommended",
+          "plugin:@intlify/vue-i18n/recommended"
         ],
         "plugins": [
           "vuetify"
@@ -90,7 +97,37 @@
           "vue/singleline-html-element-content-newline": "off",
           "vuetify/grid-unknown-attributes": "error",
           "vuetify/no-deprecated-classes": "error",
-          "vuetify/no-legacy-grid": "error"
+          "vuetify/no-legacy-grid": "error",
+          "@intlify/vue-i18n/no-dynamic-keys": "error",
+          "@intlify/vue-i18n/no-unused-keys": [
+            "error",
+            {
+              "extensions": [
+                ".js",
+                ".vue"
+              ]
+            }
+          ],
+          "@intlify/vue-i18n/no-raw-text": [
+            "error",
+            {
+              "ignoreNodes": [
+                "v-icon"
+              ],
+              "ignorePattern": "^\\s*[:()\"]+$",
+              "ignoreText": []
+            }
+          ],
+          "@intlify/vue-i18n/key-format-style": [
+            "error",
+            "kebab-case"
+          ]
+        },
+        "settings": {
+          "vue-i18n": {
+            "localeDir": "./vue/src/assets/locales/i18n/*.js",
+            "messageSyntaxVersion": "^8.22.1"
+          }
         }
       },
       {

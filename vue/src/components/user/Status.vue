@@ -11,7 +11,7 @@
 				v-on="on"
 			>
 				<v-icon
-					aria-label="My Account"
+					:aria-label="$t( 'my-account' )"
 					role="img"
 					aria-hidden="false"
 				>
@@ -43,7 +43,7 @@
 				</v-list-item-icon>
 				<v-list-item-content>
 					<v-list-item-title>
-						Logout
+						{{ $t( "logout" ) }}
 					</v-list-item-title>
 				</v-list-item-content>
 			</v-list-item>
@@ -58,7 +58,7 @@
 		:loading="loading"
 		@click="loading = true"
 	>
-		Login
+		{{ $t( "login" ) }}
 		<v-icon>mdi-login</v-icon>
 	</v-btn>
 </template>

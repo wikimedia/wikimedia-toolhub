@@ -58,10 +58,8 @@
 							mdi-delete-outline
 						</v-icon>
 
-						..
 						{{ log.timestamp | moment( "DD MMMM YYYY, h:mm" ) }}
 
-						..
 						<template
 							v-if="log.user"
 						>
@@ -76,7 +74,7 @@
 						>
 							{{ $t( 'system-user' ) }}
 						</template>
-						..
+
 						{{ $t( 'auditlog-summary',
 							{
 								action: log.action,
@@ -109,7 +107,6 @@
 						<template
 							v-if="log.message"
 						>
-							..
 							({{ log.message }})
 						</template>
 					</v-col>

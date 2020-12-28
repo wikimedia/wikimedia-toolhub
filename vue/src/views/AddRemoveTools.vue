@@ -162,7 +162,7 @@
 								<a
 									href="https://meta.wikimedia.org/wiki/Toolhub/Data_model#Version_1.2.0"
 									target="_blank"
-								>{{ $t( 'schemalink' ) }}</a>.
+								>{{ $t( 'schemalink' ) }}</a>
 							</p>
 						</v-alert>
 					</v-col>

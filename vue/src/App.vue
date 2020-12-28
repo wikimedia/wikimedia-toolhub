@@ -40,7 +40,7 @@
 
 				<v-list-item-content class="mt-1">
 					<v-list-item-title class="font-weight-bold">
-						Toolhub
+						{{ $t( 'toolhub' ) }}
 					</v-list-item-title>
 				</v-list-item-content>
 
