@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Veeven"
+		]
+	},
+	"addremovetools-summarytitle": "ఈ సౌలభ్యం ఎలా పనిచేస్తుంది",
+	"authors": "రచయిత(లు)",
+	"helptranslate": "అనువదించడానికి తోడ్పడండి",
+	"home": "ముంగిలి",
+	"howtouse": "ఎలా వాడాలి",
+	"invalid": "చెల్లనిది",
+	"learnmore": "మరింత తెలుసుకోండి",
+	"links": "లంకెలు",
+	"moreinfo": "మరింత సమాచారం",
+	"newtoolsfound": "1 పనిముట్టు | {n} పనిముట్లు",
+	"privacypolicy": "అంతరంగికతా విధానం",
+	"status": "స్థితి",
+	"system-user": "వ్యవస్థ",
+	"technologyused": "వాడిన సాంకేతికత",
+	"tools": "పనిముట్లు",
+	"totaltools": "మొత్తం పనిముట్లు",
+	"tooltype": "పనిముట్టు రకం",
+	"urlrequired": "చిరునామా తప్పనిసరి",
+	"viewmore": "ఇంకా చూడండి"
+}

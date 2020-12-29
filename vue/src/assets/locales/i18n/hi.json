@@ -1,12 +1,13 @@
 {
 	"@metadata": {
-		"authors": [
-			"Srishti Sethi"
-		],
 		"locale": "hi",
-		"message-documentation": "qqq"
+		"message-documentation": "qqq",
+		"authors": [
+			"Abijeet Patro",
+			"Srishti Sethi"
+		]
 	},
-	"add": "जोड़ो",
+	"add": "जोड़ो",
 	"addremovetools": "टूल्स जोड़ें या निकालें",
 	"addremovetools-nologintext": "उपकरण जोड़ने या हटाने के लिए आपको टूलहब में लॉग इन करना होगा",
 	"addremovetools-pagetitle": "कोई toolinfo.json फ़ाइल URL जोड़ें या निकालें",

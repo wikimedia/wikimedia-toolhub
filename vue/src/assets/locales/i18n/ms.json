@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tofeiku"
+		]
+	},
+	"add": "Tambah",
+	"authors": "Pengarang",
+	"createdby": "Dicipta Oleh",
+	"datecreated": "Tarikh Dicipta",
+	"helptranslate": "Bantu Terjemah",
+	"howtouse": "Cara guna",
+	"invalid": "tidak sah",
+	"schemalink": "Pautan skema",
+	"sourcecode": "Kod sumber",
+	"status": "Status",
+	"system-user": "Sistem",
+	"technologyused": "Teknologi digunakan",
+	"url": "Url",
+	"urlinvalid": "URL mesti sah",
+	"urlrequired": "URL diperlukan",
+	"valid": "sah"
+}

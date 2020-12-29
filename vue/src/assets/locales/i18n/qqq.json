@@ -1,10 +1,11 @@
 {
 	"@metadata": {
-		"authors": [
-			"Srishti Sethi"
-		],
 		"locale": "qqq",
-		"message-documentation": "qqq"
+		"message-documentation": "qqq",
+		"authors": [
+			"Robby",
+			"Srishti Sethi"
+		]
 	},
 	"add": "Button label, triggers saving a URL.\n{{Identical|Add}}",
 	"addremovetools": "Navigation menu label, links to URL management page.",
@@ -46,7 +47,7 @@
 	"schemalink": "Link label, links to JSON schema for toolinfo files.",
 	"sourcecode": "Link label, links to source code for a tool.",
 	"status": "Table column label.",
-	"system-user": "The username for the actions taken internally by the software",
+	"system-user": "The username for the actions taken internally by the software\n{{identical|System}}",
 	"tagline-about": "Home page content.",
 	"tagline-learnmore": "Home page content.",
 	"talk": "Audit log label",

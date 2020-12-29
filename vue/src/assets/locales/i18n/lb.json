@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"apidocumentation": "API-Dokumentatioun",
+	"authors": "Auteur(en)",
+	"forwikis": "Fir Wikien",
+	"helptranslate": "Hëlleft iwwersetzen",
+	"learnmore": "Fir méi ze wëssen",
+	"leavefeedback": "Réckmeldung ginn",
+	"links": "Linken",
+	"moreinfo": "Méi Informatiounen",
+	"privacypolicy": "Dateschutz",
+	"removeurl": "URL ewechhuelen",
+	"sourcecode": "Quellcode",
+	"system-user": "System",
+	"tagline-learnmore": "Fir méi iwwer Toolhub op metawiki gewuer ze gesinn",
+	"technologyused": "Benotzt Technologie",
+	"url": "URL",
+	"urlinvalid": "URL muss valabel sinn",
+	"urlrequired": "URL ass obligatoresch",
+	"viewmore": "Méi weisen",
+	"welcomemessage": "Wëllkomm op Toolhub"
+}

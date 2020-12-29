@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kunokuno"
+		]
+	},
+	"addremovetools-pagetitle": "Magdagdag o magkaag nin toolinfo.json file URL",
+	"addremovetools-summarytitle": "Pano nag-gagana an feature na ini",
+	"apierror": "Uh oh! Igwa nin salang pangyayari.",
+	"bugtracker": "Tracker nin Bug",
+	"crawlerhistory-pagesubtitle": "An pahinang ini naglilista kan gabos na historic crawler runs",
+	"crawlerrundate": "Petsa kan Crawler",
+	"crawlerruns": "Mga Crawler Runs",
+	"createdby": "Ginibo ni",
+	"datecreated": "Petsa kun suarin pighaman",
+	"developerdocumentation": "Dokumentasyon kan Developer",
+	"forwikis": "Para sa mga wiki",
+	"jsonfileurl": "JSON File URL",
+	"newtoolsfound": "1 gamit | {n} mga gamit",
+	"removeurl": "Halion an URL",
+	"schemalink": "Link kan Schema",
+	"sourcecode": "An Source code",
+	"system-user": "Sistema",
+	"tagline-learnmore": "Makanuod pa nin kadakol manungod sa Toolhub sa metawiki",
+	"technologyused": "An ginamit na teknolohiya",
+	"toolsfound": "1 gamit an nakua | {n} mga gamit an nakua",
+	"tools-lastupdated": "huring pig-update kan {date}",
+	"url": "Url",
+	"urlrequired": "Kinakaipuhan an URL"
+}

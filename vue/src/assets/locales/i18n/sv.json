@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga"
+		]
+	},
+	"add": "Lägg till",
+	"addremovetools-summarytitle": "Hur funktionen fungerar",
+	"apierror": "Oj då! Något gick snett.",
+	"auditlogs-pagetitle": "Den här sidan listar alla loggposter",
+	"bugtracker": "Felsökare",
+	"createdby": "Skapad av",
+	"datecreated": "Skapelsedatum",
+	"forwikis": "För wikier",
+	"helptranslate": "Hjälp till att översätta",
+	"home": "Hem",
+	"learnmore": "Ta reda på mer",
+	"leavefeedback": "Ge återkoppling",
+	"links": "Länkar",
+	"moreinfo": "Mer information",
+	"newtoolsfound": "1 verktyg | {n} verktyg",
+	"privacypolicy": "Integritetspolicy",
+	"removeurl": "Ta bort URL",
+	"schemalink": "Schemalänk",
+	"sourcecode": "Källkod",
+	"system-user": "System",
+	"tagline-learnmore": "Ta reda på mer om ToolHub på metawiki",
+	"technologyused": "Teknologi som använts",
+	"toolsfound": "1 verktyg hittades | {n} verktyg hittades",
+	"tooltype": "Verktygstyp",
+	"tools-lastupdated": "uppdaterades senast den {date}",
+	"url": "Webbadress",
+	"valid": "giltig",
+	"viewmore": "Fisa fler"
+}
