@@ -15,7 +15,7 @@
 	"apidocs": "API docs",
 	"apidocumentation": "API Documentation",
 	"apierror": "Uh oh! Something went wrong.",
-	"auditlog-summary": "{action}d a {target}", 
+	"auditlog-summary": "{action} a {target}",
 	"auditlogs": "Audit logs",
 	"auditlogs-pagetitle": "This page lists all log entries",
 	"authors": "Author(s)",

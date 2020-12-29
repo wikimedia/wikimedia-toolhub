@@ -76,9 +76,9 @@ class LogEntry(models.Model):
     DELETE = 2
 
     ACTION_CHOICES = (
-        (CREATE, _("create")),
-        (UPDATE, _("update")),
-        (DELETE, _("delete")),
+        (CREATE, _("created")),
+        (UPDATE, _("updated")),
+        (DELETE, _("deleted")),
     )
 
     timestamp = models.DateTimeField(
