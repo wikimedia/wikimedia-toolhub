@@ -89,10 +89,10 @@
 
 					<dd class="me-1">
 						{{ $t( 'auditlog-summary',
-							{
-								action: log.action,
-								target: log.target.type
-							}
+							[
+								log.action,
+								log.target.type
+							]
 						) }}
 					</dd>
 

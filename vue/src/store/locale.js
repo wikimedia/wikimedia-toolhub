@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import languageData from '@wikimedia/language-data';
+import BananaFormatter from '@/plugins/i18n-formatter';
 
 Vue.use( Vuex );
 
@@ -39,7 +40,7 @@ export function santizeLocale( locale ) {
 	return DEFAULT_LOCALE;
 }
 
-export const initalLocale = ( () => {
+export const initialLocale = ( () => {
 	return santizeLocale(
 		window.localStorage.getItem( LOCALE_KEY ) ||
 		window.navigator.language ||
@@ -89,7 +90,7 @@ export const actions = {
 	 */
 	initializeLocale( context, payload ) {
 		payload.initial = true;
-		payload.locale = initalLocale;
+		payload.locale = initialLocale;
 		const qs = payload.vm.$route.query;
 		if ( qs.uselang ) {
 			payload.locale = santizeLocale( qs.uselang );
@@ -119,6 +120,7 @@ export const actions = {
 
 			// Set the locale for the frontend
 			vm.$i18n.locale = locale;
+			vm.$i18n.formatter = new BananaFormatter( locale );
 			vm.$vuetify.rtl = languageData.isRtl( locale );
 			vm.$moment.locale( locale );
 
@@ -147,7 +149,7 @@ export const mutations = {
 export default {
 	namespaced: true,
 	state: {
-		locale: initalLocale,
+		locale: initialLocale,
 		localeMap: localeMap
 	},
 	getters: getters,

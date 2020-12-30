@@ -80,7 +80,7 @@
 		>
 			<v-col cols="12">
 				<h3 class="headline">
-					{{ $t( 'urlscrawledon', { date: crawlerRunEndDate } ) }}
+					{{ $t( 'urlscrawledon', [ crawlerRunEndDate ] ) }}
 				</h3>
 			</v-col>
 			<v-col cols="12">

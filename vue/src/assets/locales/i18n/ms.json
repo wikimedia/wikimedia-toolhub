@@ -29,7 +29,7 @@
 	"logout": "Log keluar",
 	"moreinfo": "Maklumat lanjut",
 	"my-account": "Akaun Saya",
-	"newtoolsfound": "1 alat | {n} alat",
+	"newtoolsfound": "{{PLURAL:$1|1 alat|$1 alat}}",
 	"privacypolicy": "Dasar Privasi",
 	"removeurl": "Buang URL",
 	"schemalink": "Pautan skema",
@@ -43,12 +43,12 @@
 	"totaltools": "Jumlah Alat",
 	"tooltype": "Jenis alat",
 	"tool-deprecated-error": "Alat ini tidak disyorkan untuk diguna.",
-	"tools-lastupdated": "kali terakhir dikemas kini pada {date}",
+	"tools-lastupdated": "kali terakhir dikemas kini pada $1",
 	"url": "Url",
 	"urlinvalid": "URL mesti sah",
 	"urlrequired": "URL diperlukan",
 	"urlscrawled": "Url dirangkak",
-	"urlscrawledon": "Url dirangkak pada {date}",
+	"urlscrawledon": "Url dirangkak pada $1",
 	"valid": "sah",
 	"welcomemessage": "Selamat datang ke Toolhub"
 }

@@ -35,7 +35,7 @@
 									<v-icon size="15">
 										mdi-tools
 									</v-icon>
-									{{ $tc( 'toolsfound', numTools ) }}
+									{{ $t( 'toolsfound', [ numTools ] ) }}
 								</v-col>
 								<v-col
 									lg="6"
@@ -49,11 +49,22 @@
 										mdi-update
 									</v-icon>
 
-									<a href="/crawler-history">{{ $tc( 'newtoolsfound',
-										lastCrawlerRun.new_tools +
-											lastCrawlerRun.updated_tools ) }}
-										{{ $t( 'tools-lastupdated', { date:
-											formatDate( lastCrawlerRun.end_date ) } ) }}
+									<a href="/crawler-history">
+										{{ $t(
+											'newtoolsfound',
+											[
+												lastCrawlerRun.new_tools +
+													lastCrawlerRun.updated_tools
+											]
+										) }}
+										{{ $t(
+											'tools-lastupdated',
+											[
+												formatDate(
+													lastCrawlerRun.end_date
+												)
+											]
+										) }}
 									</a>
 								</v-col>
 							</v-row>

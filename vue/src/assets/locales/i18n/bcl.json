@@ -16,15 +16,15 @@
 	"developerdocumentation": "Dokumentasyon kan Developer",
 	"forwikis": "Para sa mga wiki",
 	"jsonfileurl": "JSON File URL",
-	"newtoolsfound": "1 gamit | {n} mga gamit",
+	"newtoolsfound": "{{PLURAL:$1|1 gamit |$1 mga gamit}}",
 	"removeurl": "Halion an URL",
 	"schemalink": "Link kan Schema",
 	"sourcecode": "An Source code",
 	"system-user": "Sistema",
 	"tagline-learnmore": "Makanuod pa nin kadakol manungod sa Toolhub sa metawiki",
 	"technologyused": "An ginamit na teknolohiya",
-	"toolsfound": "1 gamit an nakua | {n} mga gamit an nakua",
-	"tools-lastupdated": "huring pig-update kan {date}",
+	"toolsfound": "{{PLURAL:$1|1 gamit an nakua|$1 mga gamit an nakua}}",
+	"tools-lastupdated": "huring pig-update kan $1",
 	"url": "Url",
 	"urlrequired": "Kinakaipuhan an URL"
 }

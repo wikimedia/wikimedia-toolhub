@@ -10,7 +10,7 @@ import {
 	DEFAULT_LOCALE,
 	LOCALE_KEY,
 	santizeLocale,
-	initalLocale,
+	initialLocale,
 	actions,
 	mutations
 } from './locale';
@@ -44,7 +44,7 @@ describe( 'store/locale', () => {
 
 	describe( 'actions', () => {
 		const stubVm = {
-			$i18n: { locale: null },
+			$i18n: { locale: null, formatter: null },
 			$route: { query: sinon.stub() },
 			$router: { push: sinon.stub() },
 			$vuetify: { rtl: null },
@@ -70,7 +70,7 @@ describe( 'store/locale', () => {
 			expect( dispatch ).to.have.been.calledOnce;
 			expect( dispatch ).to.have.been.calledWithExactly(
 				'setLocale',
-				{ vm: stubVm, initial: true, locale: initalLocale }
+				{ vm: stubVm, initial: true, locale: initialLocale }
 			);
 		} );
 
@@ -119,6 +119,7 @@ describe( 'store/locale', () => {
 			);
 
 			expect( stubVm.$i18n.locale ).to.equal( testLocale );
+			expect( stubVm.$i18n.formatter ).to.be.an( 'object' );
 			expect( stubVm.$vuetify.rtl ).to.equal( false );
 
 			expect( stubVm.$moment.locale ).to.have.been.calledOnce;
@@ -157,6 +158,7 @@ describe( 'store/locale', () => {
 			);
 
 			expect( stubVm.$i18n.locale ).to.equal( testLocale );
+			expect( stubVm.$i18n.formatter ).to.be.an( 'object' );
 			expect( stubVm.$vuetify.rtl ).to.equal( true );
 
 			expect( stubVm.$moment.locale ).to.have.been.calledOnce;

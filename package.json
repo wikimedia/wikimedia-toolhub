@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@wikimedia/language-data": "^1.0.0",
+    "banana-i18n": "^2.0.0",
     "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
     "swagger-client": "^3.12.0",
