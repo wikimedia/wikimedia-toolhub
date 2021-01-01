@@ -90,7 +90,7 @@
 import { mapState } from 'vuex';
 import UserStatus from '@/components/user/Status';
 import SelectLocale from '@/components/locale/SelectLocale';
-import { getLangNameFromCode } from 'language-name-map';
+import languageData from '@wikimedia/language-data';
 
 export default {
 	components: {
@@ -113,8 +113,8 @@ export default {
 	methods: {
 		changeRTL() {
 			const curLocale = this.$i18n.locale,
-				curLocaleDir = getLangNameFromCode( curLocale ).dir;
-			this.$vuetify.rtl = ( curLocaleDir === 0 );
+				curLocaleDir = languageData.getDir( curLocale );
+			this.$vuetify.rtl = ( curLocaleDir === 'rtl' );
 		}
 	},
 	created() {

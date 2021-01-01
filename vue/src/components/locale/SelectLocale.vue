@@ -14,15 +14,15 @@
 		</template>
 		<v-list>
 			<v-list-item
-				v-for="(language, code) in languages"
+				v-for="(label, code) in languages"
 				:key="code"
 				selectable
 				link
 			>
 				<v-list-item-title
-					@click="setLocale( code, language )"
+					@click="setLocale( code )"
 				>
-					{{ language.native }} ({{ code }})
+					{{ label }} ({{ code }})
 				</v-list-item-title>
 			</v-list-item>
 		</v-list>
@@ -30,29 +30,12 @@
 </template>
 
 <script>
-import languageNameMap from 'language-name-map/map';
+import languageData from '@wikimedia/language-data';
+
+const languageNameMap = languageData.getAutonyms();
 
 // T269164: Add a qqx mapping to languageNameMap.
-languageNameMap.qqx = { name: 'QQX', dir: 1, native: 'QQX' };
-
-/**
- * Lookup a Locale model.
- *
- * @param {string} code - Locale name to lookup (e.g. en-US-southern)
- * @return {Object} Locale
- */
-function findLocaleForCode( code ) {
-	const tokens = code.toLowerCase().split( '-' );
-	while ( tokens.length ) {
-		const lookup = tokens.join( '-' );
-		if ( lookup in languageNameMap ) {
-			return languageNameMap[ lookup ];
-		}
-		tokens.splice( -1, 1 );
-	}
-	// Fallback to English as a last resort
-	return languageNameMap.en;
-}
+languageNameMap.qqx = 'QQX';
 
 export default {
 	name: 'SelectLocale',
@@ -76,18 +59,26 @@ export default {
 		}
 	},
 	methods: {
-		setLocale( code, locale ) {
+		setLocale( code ) {
+			// TODO: move this logic into vuex?
 			if ( this.$i18n.locale === code ) {
 				return;
 			}
 
+			if ( !languageData.isKnown( code ) && code !== 'qqx' ) {
+				return;
+			}
+
+			const direction = languageData.getDir( code );
+			const autonym = languageData.getAutonym( code );
+
 			// Set the locale for the frontend
 			this.$i18n.locale = code;
-			this.$vuetify.rtl = ( locale.dir === 0 );
+			this.$vuetify.rtl = ( direction === 'rtl' );
 			// Set the locale for the backend
 			this.$store.dispatch( 'user/setLocale', code );
 			// Set the display label for the active locale
-			this.currentLocaleNativeLabel = locale.native;
+			this.currentLocaleNativeLabel = autonym;
 
 			// Show the locale in the query string if it changed
 			if ( this.$route.query.uselang !== code ) {
@@ -101,18 +92,16 @@ export default {
 		'$route.query': {
 			immediate: true,
 			handler( qs ) {
-				if ( qs.uselang ) {
-					const locale = findLocaleForCode( qs.uselang );
-					this.setLocale( qs.uselang, locale );
+				if ( qs.uselang !== this.$i18n.locale ) {
+					this.setLocale( qs.uselang );
 				}
 			}
 		}
 	},
 	mounted() {
-		const locale = findLocaleForCode(
-			this.$route.query.uselang || this.$i18n.locale
+		this.currentLocaleNativeLabel = languageData.getAutonym(
+			this.$i18n.locale
 		);
-		this.currentLocaleNativeLabel = locale.native;
 	}
 };
 </script>
