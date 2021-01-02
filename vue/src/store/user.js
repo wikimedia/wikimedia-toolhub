@@ -41,7 +41,7 @@ export default {
 	},
 	actions: {
 		getUserInfo( context ) {
-			fetch( '/api/user/', { credentials: 'same-origin' } )
+			return fetch( '/api/user/', { credentials: 'same-origin' } )
 				.then( ( response ) => response.json() )
 				.then( ( data ) => ( context.commit( 'USER', data ) ) );
 		},

@@ -90,7 +90,6 @@
 import { mapState } from 'vuex';
 import UserStatus from '@/components/user/Status';
 import SelectLocale from '@/components/locale/SelectLocale';
-import languageData from '@wikimedia/language-data';
 
 export default {
 	components: {
@@ -110,16 +109,10 @@ export default {
 			);
 		}
 	},
-	methods: {
-		changeRTL() {
-			const curLocale = this.$i18n.locale,
-				curLocaleDir = languageData.getDir( curLocale );
-			this.$vuetify.rtl = ( curLocaleDir === 'rtl' );
-		}
-	},
 	created() {
-		this.$store.dispatch( 'user/getUserInfo' );
-		this.changeRTL();
+		this.$store.dispatch( 'user/getUserInfo' ).then( () => {
+			this.$store.dispatch( 'locale/initializeLocale', { vm: this } );
+		} );
 	}
 };
 </script>
