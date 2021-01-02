@@ -15,7 +15,7 @@
     "serve:vue": "vue-cli-service serve",
     "test": "npm run test:jsonschema && npm run test:vue",
     "test:jsonschema": "mocha tests/jsonschema",
-    "test:vue": "vue-cli-service test:unit --colors vue/src/**/*.spec.js"
+    "test:vue": "nyc vue-cli-service test:unit --colors vue/src/**/*.spec.js"
   },
   "dependencies": {
     "@wikimedia/language-data": "^1.0.0",
@@ -42,6 +42,7 @@
     "@vue/cli-service": "~4.5.0",
     "@wikimedia/jsonschema-tools": "latest",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
     "eslint": "^7.12.1",
     "eslint-config-standard": "^16.0.0",
@@ -53,6 +54,7 @@
     "eslint-plugin-vuetify": "^1.0.0-beta.7",
     "grunt-banana-checker": "^0.9.0",
     "mocha": "^6.2.0",
+    "nyc": "^15.1.0",
     "rapidoc": "^8.3.0",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
@@ -68,7 +70,48 @@
   "babel": {
     "presets": [
       "@vue/cli-plugin-babel/preset"
-    ]
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          [
+            "istanbul",
+            {
+              "useInlineSourceMaps": false
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "all": true,
+    "extension": [
+      ".js",
+      ".vue"
+    ],
+    "include": [
+      "vue/src/**/*.js",
+      "vue/src/**/*.vue"
+    ],
+    "exclude": [
+      "vue/src/main.js",
+      "vue/src/**/*.spec.js",
+      "**/test/**"
+    ],
+    "sourceMap": false,
+    "reporter": [
+      "text",
+      "text-summary"
+    ],
+    "report-dir": "./.nyc_output/coverage",
+    "per-file": true,
+    "skip-full": true,
+    "lines": 85,
+    "functions": 85,
+    "branches": 85,
+    "statements": 85,
+    "check-coverage": false
   },
   "eslintConfig": {
     "root": true,

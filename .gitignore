@@ -3,6 +3,7 @@
 /*.egg-info/
 /.coverage
 /.env
+/.nyc_output/
 /docs/_build
 /docs/htmlcov
 /node_modules/
