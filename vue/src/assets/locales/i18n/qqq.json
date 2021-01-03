@@ -40,6 +40,7 @@
 	"learnmore": "Button label, links to detailed tool information.",
 	"leavefeedback": "Link label, links to feedback page for a tool.",
 	"links": "Section title.",
+	"locale-select": "Input label.",
 	"login": "Button label.\n{{Identical:Login}}",
 	"logout": "Button label.\n{{Identical|Logout}}",
 	"moreinfo": "Section title.",

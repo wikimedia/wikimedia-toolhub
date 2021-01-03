@@ -46,3 +46,13 @@ div.home-tool-card {
 	background: var( --v-primary-base ) !important;
 	color: var( --v-bgtext-base );
 }
+
+.selectlocale-body {
+	max-height: 250px;
+}
+
+.locale-select.v-dialog {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
