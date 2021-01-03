@@ -41,10 +41,12 @@ export const initalLocale = ( () => {
 } )();
 
 const localeMap = ( () => {
-	const popularLocales = [ 'en' ];
+	const preferedLocales = navigator.languages.map( ( x ) => {
+		return santizeLocale( x );
+	} );
 	const languageNameMap = languageData.getAutonyms();
 
-	const filteredLocales = popularLocales.reduce( ( obj, key ) => {
+	const filteredLocales = preferedLocales.reduce( ( obj, key ) => {
 		obj[ key ] = languageNameMap[ key ];
 		return obj;
 	}, {} );
