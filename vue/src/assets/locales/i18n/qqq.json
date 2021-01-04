@@ -3,6 +3,8 @@
 		"locale": "qqq",
 		"message-documentation": "qqq",
 		"authors": [
+			"Amire80",
+			"MuratTheTurkish",
 			"Robby",
 			"Srishti Sethi"
 		]
@@ -16,7 +18,7 @@
 	"apidocs": "Navigation menu label, links to API page.",
 	"apidocumentation": "Link label, links to API documentation for a tool.",
 	"apierror": "Error message for API failure.",
-	"auditlog-summary": "Audit log summary label. Parameters:\n* {action} - action taken\n* {target} - object action was taken on",
+	"auditlog-summary": "Audit log summary label. Parameters:\n* {action} - action taken, such as created, updated, deleted\n* {target} - object action was taken on",
 	"auditlogs": "Navigation menu label, links to Audit Logs page.",
 	"auditlogs-pagetitle": "Page title.",
 	"authors": "Tool information label.",
@@ -39,7 +41,7 @@
 	"leavefeedback": "Link label, links to feedback page for a tool.",
 	"links": "Section title.",
 	"login": "Button label.\n{{Identical:Login}}",
-	"logout": "Button label.\n{{Identical:Logout}}",
+	"logout": "Button label.\n{{Identical|Logout}}",
 	"moreinfo": "Section title.",
 	"mostrecentcrawledurls": "Table information label.",
 	"my-account": "Alt text for icon.",

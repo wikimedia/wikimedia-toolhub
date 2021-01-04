@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2020-12-29 08:06:22+0000\n"
-"X-POT-Import-Date: 2020-12-23 13:53:19+0000\n"
+"PO-Revision-Date: 2021-01-04 13:54:33+0000\n"
+"X-POT-Import-Date: 2020-12-31 07:16:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
@@ -18,16 +18,16 @@ msgid "Audit log"
 msgstr ""
 
 #: toolhub/apps/auditlog/models.py:79
-msgid "create"
+msgid "created"
 msgstr ""
 
 #: toolhub/apps/auditlog/models.py:80
-msgid "update"
-msgstr "업데이트"
+msgid "updated"
+msgstr ""
 
 #: toolhub/apps/auditlog/models.py:81
-msgid "delete"
-msgstr "삭제"
+msgid "deleted"
+msgstr ""
 
 #: toolhub/apps/auditlog/models.py:86
 msgid "timestamp"
@@ -141,120 +141,120 @@ msgstr ""
 msgid "Toolinfo"
 msgstr "툴인포"
 
-#: toolhub/apps/toolinfo/models.py:48
+#: toolhub/apps/toolinfo/models.py:138
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:56
+#: toolhub/apps/toolinfo/models.py:146
 msgid "Human readable tool name. Recommended limit of 25 characters."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:62
+#: toolhub/apps/toolinfo/models.py:152
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
 msgstr "도구에 대한 장문의 설명입니다. 설명을 위해 권장되는 길이는 3~5개 문장입니다."
 
-#: toolhub/apps/toolinfo/models.py:69
+#: toolhub/apps/toolinfo/models.py:159
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:84
+#: toolhub/apps/toolinfo/models.py:174
 msgid "The primary tool developer."
 msgstr "주 도구 개발자입니다."
 
-#: toolhub/apps/toolinfo/models.py:90
+#: toolhub/apps/toolinfo/models.py:180
 msgid "A link to the repository where the tool code is hosted."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:97
+#: toolhub/apps/toolinfo/models.py:187
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:106
+#: toolhub/apps/toolinfo/models.py:196
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:116
+#: toolhub/apps/toolinfo/models.py:206
 msgid "Alternate links to the tool or install documentation in different natural languages."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:125
+#: toolhub/apps/toolinfo/models.py:215
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:132
+#: toolhub/apps/toolinfo/models.py:222
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
 msgstr "참인 경우 이 도구의 사용은 공식적으로 권고되지 않습니다. `replaced_by` 변수를 사용하여 대안이 되는 도구를 정의할 수 있습니다."
 
-#: toolhub/apps/toolinfo/models.py:141
+#: toolhub/apps/toolinfo/models.py:231
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
 msgstr "이 도구가 구식인 경우 이 변수는 대체 도구를 링크하기 위해 사용하는 것이 좋습니다."
 
-#: toolhub/apps/toolinfo/models.py:148
+#: toolhub/apps/toolinfo/models.py:238
 msgid "If true, this tool is unstable and can change or go offline at any time."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:157
+#: toolhub/apps/toolinfo/models.py:247
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:174
+#: toolhub/apps/toolinfo/models.py:264
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:184
+#: toolhub/apps/toolinfo/models.py:274
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:192
+#: toolhub/apps/toolinfo/models.py:282
 msgid "Organization(s) that sponsored the tool's development."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:199
+#: toolhub/apps/toolinfo/models.py:289
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:209
+#: toolhub/apps/toolinfo/models.py:299
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:220
+#: toolhub/apps/toolinfo/models.py:310
 msgid "The manner in which the tool is used. Select one from the list of options."
 msgstr "도구가 사용되는 방식입니다. 옵션 목록에서 하나를 선택하십시오."
 
-#: toolhub/apps/toolinfo/models.py:228
+#: toolhub/apps/toolinfo/models.py:318
 msgid "A link to the tool's API, if available."
 msgstr "도구의 API 링크입니다. (사용 가능한 경우)"
 
-#: toolhub/apps/toolinfo/models.py:235
+#: toolhub/apps/toolinfo/models.py:325
 msgid "A link to the tool's developer documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:242
+#: toolhub/apps/toolinfo/models.py:332
 msgid "A link to the tool's user documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:249
+#: toolhub/apps/toolinfo/models.py:339
 msgid "A link to location where the tool's user can leave feedback."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:256
+#: toolhub/apps/toolinfo/models.py:346
 msgid "A link to the tool's privacy policy, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:262
+#: toolhub/apps/toolinfo/models.py:352
 msgid "A link to the tool's translation interface."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:269
+#: toolhub/apps/toolinfo/models.py:359
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:279
+#: toolhub/apps/toolinfo/models.py:369
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:292
-msgid "The language this toolinfo record is written if, if not the default value of English. Use ISO 639 language codes."
+#: toolhub/apps/toolinfo/models.py:382
+msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:35

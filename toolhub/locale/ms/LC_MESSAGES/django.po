@@ -1,7 +1,7 @@
-# Translation of Toolhub - Backend to Traditional Chinese (中文（繁體）‎)
+# Translation of Toolhub - Backend to Malay (Bahasa Melayu)
 # Exported from translatewiki.net
 #
-# Author: Kly
+# Author: Tofeiku
 msgid ""
 msgstr ""
 ""
@@ -9,89 +9,89 @@ msgstr ""
 "X-POT-Import-Date: 2020-12-31 07:16:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh-Hant\n"
+"Language: ms\n"
 "X-Generator: MediaWiki 1.36.0-alpha; Translate 2020-10-28\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr "審核日誌"
+msgstr "Log audit"
 
 #: toolhub/apps/auditlog/models.py:79
 msgid "created"
-msgstr "已建立"
+msgstr "dicipta"
 
 #: toolhub/apps/auditlog/models.py:80
 msgid "updated"
-msgstr "已更新"
+msgstr "dikemas kini"
 
 #: toolhub/apps/auditlog/models.py:81
 msgid "deleted"
-msgstr "已刪除"
+msgstr "dihapuskan"
 
 #: toolhub/apps/auditlog/models.py:86
 msgid "timestamp"
-msgstr "時間戳記"
+msgstr ""
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "user"
-msgstr "使用者"
+msgstr "pengguna"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "content type"
-msgstr "內容類型"
+msgstr "jenis kandungan"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "object id"
-msgstr "物件 ID"
+msgstr "id objek"
 
 #: toolhub/apps/auditlog/models.py:115
 msgid "object pk"
-msgstr "物件主鍵"
+msgstr ""
 
 #: toolhub/apps/auditlog/models.py:120
 msgid "action"
-msgstr "操作"
+msgstr "tindakan"
 
 #: toolhub/apps/auditlog/models.py:129
 msgid "auditlog entry"
-msgstr "審核日誌項目"
+msgstr ""
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "auditlog entries"
-msgstr "審核日誌項目"
+msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:29
 msgid "Event action"
-msgstr "事件操作"
+msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:38
 msgid "Event target"
-msgstr "事件目標"
+msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:62
 msgid "Audit log entry"
-msgstr "審核日誌項目"
+msgstr "Masukan log audit"
 
 #: toolhub/apps/auditlog/views.py:32
 msgid "List all log entries."
-msgstr "列出所有日誌項目。"
+msgstr ""
 
 #: toolhub/apps/auditlog/views.py:35
 msgid "Info for a specific log entry."
-msgstr "指定日誌項目的資訊。"
+msgstr ""
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr "Toolinfo 網路爬蟲"
+msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:29
 msgid "A URL that has been registered for crawling"
-msgstr ""
+msgstr "URL yang telah didaftar untuk merangkak"
 
 #: toolhub/apps/crawler/serializers.py:42
 msgid "A URL to crawl"
-msgstr "要爬取的 URL"
+msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:53
 msgid "Information about a single URL processed during a crawler run"
@@ -99,47 +99,47 @@ msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:75
 msgid "Summary of a single run of the crawler."
-msgstr "單一爬蟲運作摘要。"
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:44
 msgid "Register a new URL for crawling."
-msgstr "註冊一個爬取用的新 URL。"
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:48
 msgid "Information about a specific crawled URL."
-msgstr "關於指定的已爬取 URL 資訊。"
+msgstr "Maklumat tentang URL dirangkak yang khusus."
 
 #: toolhub/apps/crawler/views.py:51
 msgid "Unregister a URL."
-msgstr "取消註冊 URL。"
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:54
 msgid "List all crawled URLs."
-msgstr "列出所有爬取的 URL。"
+msgstr "Senaraikan semua URL dirangkak."
 
 #: toolhub/apps/crawler/views.py:87
 msgid "Get URLs created by the current user."
-msgstr "取得由目前使用者建立的 URL。"
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:105
 msgid "List all historic crawler runs."
-msgstr "列出所有爬蟲歷史運作。"
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:108
 msgid "Info for a specific crawler run."
-msgstr "指定的爬蟲運作資訊。"
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:129
 msgid "List all urls crawled in a run."
-msgstr "列出所有運中作的 Url 爬取。"
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:132
 msgid "Info for a specific url crawled in a run."
-msgstr "指定的運作中 URL 爬取。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr "工具資訊"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:138
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
@@ -147,11 +147,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:146
 msgid "Human readable tool name. Recommended limit of 25 characters."
-msgstr "人類看得懂的工具名稱。建議不要超過 25 字元。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:152
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr "工具的詳細描述。建議描述長度為 3 到 5 個句子。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:159
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
@@ -159,11 +159,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:174
 msgid "The primary tool developer."
-msgstr "主要工具開發者。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:180
 msgid "A link to the repository where the tool code is hosted."
-msgstr "代管工具程式碼的存儲庫連結。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:187
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
@@ -171,7 +171,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:196
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
-msgstr "在 OpenHub 的專案 ID。若給予的 URL 為 https://openhub.net/p/foo，其專案 ID 是 `foo`。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:206
 msgid "Alternate links to the tool or install documentation in different natural languages."
@@ -179,7 +179,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:215
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
-msgstr "如果工具是機器人，機器人維基媒體使用者名稱。不包含 'User:' 或是相似字首。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:222
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
@@ -191,7 +191,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:238
 msgid "If true, this tool is unstable and can change or go offline at any time."
-msgstr "若為 true，則此工具不穩定，並會隨時更改或離線。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:247
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
@@ -199,7 +199,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:264
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
-msgstr "用於表達出工具內容的圖標之維基共享資源檔案描述頁面的連結。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:274
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
@@ -207,7 +207,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:282
 msgid "Organization(s) that sponsored the tool's development."
-msgstr "贊助工具開發的組織。"
+msgstr "Pertubuhan yang menganjurkan pembangunan alat."
 
 #: toolhub/apps/toolinfo/models.py:289
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
@@ -223,31 +223,31 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:318
 msgid "A link to the tool's API, if available."
-msgstr "工具 API 的連結，如果可用。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:325
 msgid "A link to the tool's developer documentation, if available."
-msgstr "工具開發者文件的連結，如果可用。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:332
 msgid "A link to the tool's user documentation, if available."
-msgstr "工具使用者文件的連結，如果可用。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:339
 msgid "A link to location where the tool's user can leave feedback."
-msgstr "工具使用者可留下意見回饋的位置連結。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:346
 msgid "A link to the tool's privacy policy, if available."
-msgstr "工具隱私方針的連結，如果可用。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:352
 msgid "A link to the tool's translation interface."
-msgstr "工具翻譯的連結，如果可用。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:359
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
-msgstr "在 GitHub、Bitbucket、Phabricator、等等其它的工具程式錯誤追蹤器連結。"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:369
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
@@ -259,177 +259,177 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:35
 msgid "A File: page on Commons"
-msgstr ""
+msgstr "Laman File: di Commons"
 
 #: toolhub/apps/toolinfo/serializers.py:58
 msgid "Supported wikis"
-msgstr "支援的 wiki"
+msgstr "Wiki tersokong"
 
 #: toolhub/apps/toolinfo/serializers.py:63
 msgid "Any wiki"
-msgstr "任何 wiki"
+msgstr "Sebarang wiki"
 
 #: toolhub/apps/toolinfo/serializers.py:64
 msgid "Wikimedia Commons"
-msgstr "維基共享資源"
+msgstr "Wikimedia Commons"
 
 #: toolhub/apps/toolinfo/serializers.py:65
 msgid "MediaWiki wiki"
-msgstr "MediaWiki wiki"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:66
 msgid "Wikispecies"
-msgstr "維基物種"
+msgstr "Wikispesies"
 
 #: toolhub/apps/toolinfo/serializers.py:67
 msgid "Any Wikibooks"
-msgstr "任何維基教科書"
+msgstr "Sebarang Wikibuku"
 
 #: toolhub/apps/toolinfo/serializers.py:68
 msgid "Wikidata"
-msgstr "維基數據"
+msgstr "Wikidata"
 
 #: toolhub/apps/toolinfo/serializers.py:69
 msgid "Any Wikinews"
-msgstr "任何維基新聞"
+msgstr "Sebarang Wikiberita"
 
 #: toolhub/apps/toolinfo/serializers.py:70
 msgid "Any Wikipedia"
-msgstr "任何維基百科"
+msgstr "Sebarang Wikipedia"
 
 #: toolhub/apps/toolinfo/serializers.py:71
 msgid "Any Wikiquote"
-msgstr "任何維基語錄"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:72
 msgid "Any Wikisource"
-msgstr "任何維基文庫"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:73
 msgid "Any Wikiversity"
-msgstr "任何維基學院"
+msgstr "Sebarang Wikiversiti"
 
 #: toolhub/apps/toolinfo/serializers.py:74
 msgid "Any Wikivoyage"
-msgstr "任何維基導遊"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:75
 msgid "Any Wiktionary"
-msgstr "任何維基詞典"
+msgstr "Sebarang Wikikamus"
 
 #: toolhub/apps/toolinfo/serializers.py:92
 msgid "Description of a tool"
-msgstr "工具描述"
+msgstr "Huraian alat"
 
 #: toolhub/apps/toolinfo/serializers.py:144
 msgid "Summary of a tool"
-msgstr "工具摘要"
+msgstr "Ringkasan alat"
 
 #: toolhub/apps/toolinfo/views.py:32
 msgid "List all tools."
-msgstr "列出所有工具。"
+msgstr "Senaraikan semua alat."
 
 #: toolhub/apps/toolinfo/views.py:35
 msgid "Info for a specific tool."
-msgstr "指定工具的資訊。"
+msgstr ""
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
-msgstr "個人資訊"
+msgstr "Maklumat peribadi"
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr "權限"
+msgstr "Kebenaran"
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
-msgstr "重要日期"
+msgstr "Tarikh penting"
 
 #: toolhub/apps/user/apps.py:26
 msgid "Toolhub user"
-msgstr "Toolhub 使用者"
+msgstr "Pengguna Toolhub"
 
 #: toolhub/apps/user/models.py:34
 msgid "username"
-msgstr "使用者名稱"
+msgstr "nama pengguna"
 
 #: toolhub/apps/user/models.py:37
 msgid "Required. 255 characters or fewer."
-msgstr "必填。且不超過 255 個字元。"
+msgstr ""
 
 #: toolhub/apps/user/models.py:40
 msgid "A user with that username already exists."
-msgstr "已存在相同名稱的使用者。"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:36
 msgid "Information about the current user"
-msgstr "關於目前使用者的資訊"
+msgstr "Maklumat tentang pengguna terkini"
 
 #: toolhub/apps/user/serializers.py:57
 msgid "Information about the current locale"
-msgstr "關於目前地區的資訊"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:74
 msgid "Social authentication information for a user"
-msgstr "使用者的社交驗證資訊"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:104
 msgid "Detailed user information"
-msgstr "詳細使用者資訊"
+msgstr "Maklumat pengguna terperinci"
 
 #: toolhub/apps/user/serializers.py:118
 msgid "User information"
-msgstr "使用者資訊"
+msgstr "Maklumat pengguna"
 
 #: toolhub/apps/user/serializers.py:130
 msgid "Group information"
-msgstr "群組資訊"
+msgstr "Maklumat kumpulan"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
-msgstr "請輸入有效的使用者名稱。字元 `@` 與 `:` 不允許填入。"
+msgstr ""
 
 #: toolhub/apps/user/views.py:46
 msgid "Get information about the currently logged in user."
-msgstr "取得目前已登入使用者的資訊。"
+msgstr "Dapatkan maklumat tentang pengguna yang baru log masuk."
 
 #: toolhub/apps/user/views.py:70
 msgid "Get current locale."
-msgstr "取得目前地區。"
+msgstr ""
 
 #: toolhub/apps/user/views.py:81
 msgid "Set locale."
-msgstr "設定地區。"
+msgstr ""
 
 #: toolhub/apps/user/views.py:99
 msgid "List all active users."
-msgstr "列出所有活躍的使用者。"
+msgstr "Senaraikan semua pengguna aktif."
 
 #: toolhub/apps/user/views.py:102
 msgid "Info for a specific user."
-msgstr "指定使用者的資訊。"
+msgstr ""
 
 #: toolhub/apps/user/views.py:122
 msgid "List all user groups."
-msgstr "列出所有使用者群組。"
+msgstr "Senaraikan semua kumpulan pengguna."
 
 #: toolhub/apps/user/views.py:125
 msgid "Info for a user group."
-msgstr "使用者群組資訊。"
+msgstr "Maklumat untuk kumpulan pengguna."
 
 #: toolhub/settings.py:351
 msgid "Toolhub API"
-msgstr "Toolhub API"
+msgstr "API Toolhub"
 
 #: vue/templates/vue/base.html:20
 msgid "Toolhub's user interface requires JavaScript to be enabled."
-msgstr "Toolhub 的使用者介面需要啟用 JavaScript。"
+msgstr ""
 
 #: vue/templates/vue/main.html:7
 msgid "Toolhub - a catalog of Wikimedia tools"
-msgstr "Toolhub - 維基媒體工具目錄"
+msgstr ""
 
 #: vue/templates/vue/main.html:13
 msgid "LOADING"
-msgstr "載入中"
+msgstr "SEDANG MEMUAT"
 

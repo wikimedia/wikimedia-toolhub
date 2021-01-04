@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"YaronSh"
+			"YaronSh",
+			"ישראל קלר"
 		]
 	},
 	"add": "הוספה",
@@ -14,6 +15,7 @@
 	"apidocs": "תיעוד API",
 	"apidocumentation": "תיעוד API",
 	"apierror": "אוי. משהו השתבש!",
+	"auditlog-summary": "{action}: {target}",
 	"auditlogs": "יומני מבדק",
 	"auditlogs-pagetitle": "הדף הזה מציג את כל רשומות היומן",
 	"authors": "יוצר(ים)",
@@ -35,8 +37,11 @@
 	"learnmore": "מידע נוסף",
 	"leavefeedback": "שליחת משוב",
 	"links": "קישורים",
+	"login": "כניסה",
+	"logout": "יציאה",
 	"moreinfo": "מידע נוסף",
 	"mostrecentcrawledurls": "ה־URL־ים שהזחלן היה בהם לאחרונה",
+	"my-account": "החשבון שלי",
 	"newtoolsfound": "כלי אחד | {n} כלים",
 	"nourlsfounderror": "לא נמצאו כתובות URL של קובץ toolinfo.json במערכת Toolhub.",
 	"privacypolicy": "מדיניות פרטיות",
@@ -49,6 +54,7 @@
 	"tagline-learnmore": "מידע נוסף על Toolhub באתר מטא",
 	"talk": "שיחה",
 	"technologyused": "טכנולוגיות בשימוש",
+	"toolhub": "Toolhub",
 	"tools": "כלים",
 	"toolsfound": "נמצא כלי אחד | נמצאו {n} כלים",
 	"totaltools": "סך הכול כלים",
