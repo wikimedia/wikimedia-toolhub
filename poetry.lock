@@ -257,6 +257,19 @@ python-versions = "*"
 django = ">=1.8"
 
 [[package]]
+name = "django-oauth-toolkit"
+version = "1.3.3"
+description = "OAuth2 Provider for Django"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django = ">=2.1"
+oauthlib = ">=3.1.0"
+requests = ">=2.13.0"
+
+[[package]]
 name = "django-webpack-loader"
 version = "0.7.0"
 description = "Transparently use webpack with django"
@@ -1275,7 +1288,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "f1b6cf40fed09205f425fe5c6c2c33cd66393e52505297adebc928e04aac57fc"
+content-hash = "36119b85c2a975721ac36d072eabed60d8fc7740033cfc8872164bffd57c0259"
 
 [metadata.files]
 alabaster = [
@@ -1481,6 +1494,10 @@ django-filter = [
 django-log-request-id = [
     {file = "django-log-request-id-1.6.0.tar.gz", hash = "sha256:0126f5da0cacc62cf834efb3cf66e4606031d911ccff048da2f88fe2c0bbcbc9"},
     {file = "django_log_request_id-1.6.0-py3-none-any.whl", hash = "sha256:c3f7f53b1fc92f62269c247bee14d578daab000a2f7ae70b70ae288b603b5907"},
+]
+django-oauth-toolkit = [
+    {file = "django-oauth-toolkit-1.3.3.tar.gz", hash = "sha256:48a45d9ec23b50646b14b4b93988bd0d35ad5cf933edfcb833a8527f86329f28"},
+    {file = "django_oauth_toolkit-1.3.3-py2.py3-none-any.whl", hash = "sha256:a67ab96089b96540e34dc8d1ee6e6305a80ee01a36f7688108cd94b77406bdd3"},
 ]
 django-webpack-loader = [
     {file = "django-webpack-loader-0.7.0.tar.gz", hash = "sha256:7a3c88201aa54481f9399465615cbe7b9aece8081496a6d0287b7cb8e232f447"},

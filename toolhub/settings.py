@@ -136,6 +136,7 @@ INSTALLED_APPS = [
     # ==== Third-party apps ====
     "django_filters",
     "drf_spectacular",
+    "oauth2_provider",
     "rest_framework",
     "social_django",
     "webpack_loader",
@@ -226,6 +227,7 @@ CACHES = {
 
 # === Authentication ===
 AUTH_USER_MODEL = "user.ToolhubUser"
+LOGIN_URL = "/user/login/"
 LOGIN_REDIRECT_URL = "vue:main"
 LOGOUT_REDIRECT_URL = "vue:main"
 
@@ -328,8 +330,17 @@ WEBPACK_LOADER = {
     },
 }
 
+OAUTH2_PROVIDER = {
+    "SCOPES": {
+        "read": _("Read scope"),
+        "write": _("Write scope"),
+    },
+    "ERROR_RESPONSE_WITH_SCOPES": True,
+}
+
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
+        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
@@ -357,4 +368,7 @@ SPECTACULAR_SETTINGS = {
     "COMPONENT_NO_READ_ONLY_REQUIRED": True,
     "COMPONENT_SPLIT_REQUEST": True,
     "ENUM_ADD_EXPLICIT_BLANK_NULL_CHOICE": False,
+    "OAUTH2_FLOWS": ["authorizationCode"],
+    "OAUTH2_AUTHORIZATION_URL": "/o/authorize/",
+    "OAUTH2_TOKEN_URL": "/o/token/",
 }

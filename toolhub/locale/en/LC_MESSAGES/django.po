@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-30 23:48+0000\n"
+"POT-Creation-Date: 2021-01-04 21:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -140,6 +140,82 @@ msgstr ""
 
 #: toolhub/apps/crawler/views.py:132
 msgid "Info for a specific url crawled in a run."
+msgstr ""
+
+#: toolhub/apps/oauth2/apps.py:26
+msgid "OAuth 2.0 Authorization server API"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:30
+msgid "OAuth Client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:37
+msgid "Application name"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:38
+msgid "Something users will recognize and trust"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
+msgid "Authorization callback URL"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
+msgid "The application's callback URL."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:49
+msgid "Public identifier for this application"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:66
+msgid "OAuth Client application registration."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:74
+msgid "Secret known only to the application and the authorization server"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:92
+msgid "OAuth Client application update."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:117
+msgid "Authorized OAuth client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:39
+msgid "List all client applications."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:42
+msgid "Info for a client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:45
+msgid "Register a new client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:53
+msgid "Update a client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:57
+msgid "Delete a client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:94
+msgid "List applications authorized by the current user."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:97
+msgid "Info for an authorized application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:109
+msgid "Revoke an application authorization."
 msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
@@ -461,7 +537,15 @@ msgstr ""
 msgid "Info for a user group."
 msgstr ""
 
-#: toolhub/settings.py:351
+#: toolhub/settings.py:334
+msgid "Read scope"
+msgstr ""
+
+#: toolhub/settings.py:335
+msgid "Write scope"
+msgstr ""
+
+#: toolhub/settings.py:361
 msgid "Toolhub API"
 msgstr ""
 

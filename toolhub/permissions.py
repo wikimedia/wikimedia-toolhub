@@ -34,12 +34,27 @@ class IsCreator(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
         """Check permissions."""
+        if request.method in permissions.SAFE_METHODS:
+            return True
         return request.user.is_staff or obj.created_by == request.user
+
+
+class IsUser(permissions.BasePermission):
+    """Object-level permission to only allow creators of an object to edit it.
+
+    Assumes the model instance has a `user` attribute.
+    """
+
+    def has_object_permission(self, request, view, obj):
+        """Check permissions."""
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return request.user.is_staff or obj.user == request.user
 
 
 class IsReadOnly(permissions.BasePermission):
     """Allow read-only requests."""
 
-    def has_object_permission(self, request, view, obj):
+    def has_permission(self, request, view):
         """Check permissions."""
         return request.method in permissions.SAFE_METHODS

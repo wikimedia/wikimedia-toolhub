@@ -22,6 +22,8 @@ from django.urls import path
 
 from drf_spectacular.views import SpectacularAPIView
 
+from oauth2_provider.urls import base_urlpatterns as oauth2_patterns
+
 from toolhub.apps.user.views import CurrentUserView
 from toolhub.apps.user.views import LocaleView
 
@@ -41,6 +43,12 @@ urlpatterns = [
     path("", include("vue.urls", namespace="vue")),
     path("admin/", admin.site.urls),
     path("api/", include((api_patterns, "api"), namespace="api")),
+    path(
+        "o/",
+        include(
+            (oauth2_patterns, "oauth2_provider"), namespace="oauth2_provider"
+        ),
+    ),
     path("social/", include("social_django.urls", namespace="social")),
     path("user/", include("toolhub.apps.user.urls", namespace="user")),
 ]
