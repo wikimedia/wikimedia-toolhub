@@ -46,11 +46,3 @@ export default {
 	}
 };
 </script>
-
-<style>
-#apidoc {
-	/* stylelint-disable-next-line plugin/no-unsupported-browser-features -- vh */
-	height: 100vh;
-	width: 100%;
-}
-</style>
