@@ -29,13 +29,13 @@
 
 		<v-row>
 			<v-col cols="12">
-				<v-row v-for="log in auditLogs"
+				<dl v-for="log in auditLogs"
 					:key="log.id"
-					class="elevation-2 ma-1 mb-2 pa-1"
+					class="row elevation-2 ma-1 mb-2 pa-4"
 				>
-					<v-col>
+					<dd class="me-1">
 						<v-icon
-							v-if="log.action === 'create'"
+							v-if="log.action === 'created'"
 							size="20"
 							class="mb-1"
 						>
@@ -43,7 +43,7 @@
 						</v-icon>
 
 						<v-icon
-							v-if="log.action === 'update'"
+							v-if="log.action === 'updated'"
 							size="20"
 							class="mb-1"
 						>
@@ -51,37 +51,61 @@
 						</v-icon>
 
 						<v-icon
-							v-if="log.action === 'delete'"
+							v-if="log.action === 'deleted'"
 							size="20"
 							class="mb-1"
 						>
 							mdi-delete-outline
 						</v-icon>
+					</dd>
 
-						{{ log.timestamp | moment( "DD MMMM YYYY, h:mm" ) }}
+					<dd class="me-1">
+						<template
+							v-if="$vuetify.rtl"
+						>
+							{{ log.timestamp | moment( "h:mm, DD &#x202b;MMMM&#x202c; YYYY" ) }}
+						</template>
+						<template
+							v-else
+						>
+							{{ log.timestamp | moment( "h:mm, DD MMMM YYYY" ) }}
+						</template>
+					</dd>
 
+					<dd class="me-1">
 						<template
 							v-if="log.user"
 						>
 							<a :href="`http://meta.wikimedia.org/wiki/User:${log.user.username}`" target="_blank">{{ log.user.username
 							}}</a>
-							(<a :href="`http://meta.wikimedia.org/wiki/User_talk:${log.user.username}`"
-								target="_blank"
-							>{{ $t( 'talk' ) }}</a>)
 						</template>
 						<template
 							v-else
 						>
 							{{ $t( 'system-user' ) }}
 						</template>
+					</dd>
 
+					<dd class="me-1">
+						<template
+							v-if="log.user"
+						>
+							(<a :href="`http://meta.wikimedia.org/wiki/User_talk:${log.user.username}`"
+								target="_blank"
+							>{{ $t( 'talk' ) }}</a>)
+						</template>
+					</dd>
+
+					<dd class="me-1">
 						{{ $t( 'auditlog-summary',
 							{
 								action: log.action,
 								target: log.target.type
 							}
 						) }}
+					</dd>
 
+					<dd class="me-1">
 						<template
 							v-if="log.target.type === 'tool'"
 						>
@@ -90,6 +114,7 @@
 								target="_blank"
 							>{{ log.target.label }}</a>"
 						</template>
+
 						<template
 							v-else-if="log.target.type === 'url'"
 						>
@@ -98,19 +123,22 @@
 								target="_blank"
 							>{{ log.target.label }}</a>"
 						</template>
+
 						<template
 							v-else-if="log.target.type === 'user'"
 						>
 							"{{ log.target.label }}"
 						</template>
+					</dd>
 
+					<dd class="me-1">
 						<template
 							v-if="log.message"
 						>
 							({{ log.message }})
 						</template>
-					</v-col>
-				</v-row>
+					</dd>
+				</dl>
 			</v-col>
 		</v-row>
 
