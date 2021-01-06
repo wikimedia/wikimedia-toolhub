@@ -189,7 +189,6 @@
 <script>
 import { mapState } from 'vuex';
 import '@/assets/styles/index.css';
-import moment from 'moment';
 
 export default {
 	data() {
@@ -218,7 +217,7 @@ export default {
 			} ).catch( () => {} );
 		},
 		formatDate( date ) {
-			return moment( date ).format( 'lll' );
+			return this.$moment( date ).format( 'lll' );
 		}
 	},
 	mounted() {

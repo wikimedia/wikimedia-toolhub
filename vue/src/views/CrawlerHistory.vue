@@ -136,7 +136,6 @@
 import { mapState } from 'vuex';
 import Chart from '@/components/chart/LineChart.js';
 import customSort from '@/plugins/sort.js';
-import moment from 'moment';
 
 export default {
 	components: { Chart },
@@ -259,7 +258,7 @@ export default {
 			const endDates = [];
 
 			this.crawlerHistory.forEach( ( history ) => {
-				endDates.push( moment( history.end_date ).format( 'lll' ) );
+				endDates.push( this.$moment( history.end_date ).format( 'lll' ) );
 			} );
 
 			return endDates.reverse();
@@ -283,7 +282,7 @@ export default {
 			return crawledUrls.reverse();
 		},
 		changeUrlsCrawled( item ) {
-			this.crawlerRunEndDate = moment( item.end_date ).format( 'lll' );
+			this.crawlerRunEndDate = this.$moment( item.end_date ).format( 'lll' );
 			this.crawlerRunId = item.id;
 			this.fetchCrawlerUrls();
 		},

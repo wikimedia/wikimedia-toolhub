@@ -60,16 +60,7 @@
 					</dd>
 
 					<dd class="me-1">
-						<template
-							v-if="$vuetify.rtl"
-						>
-							{{ log.timestamp | moment( "h:mm, DD &#x202b;MMMM&#x202c; YYYY" ) }}
-						</template>
-						<template
-							v-else
-						>
-							{{ log.timestamp | moment( "h:mm, DD MMMM YYYY" ) }}
-						</template>
+						{{ log.timestamp | moment( "LT ll" ) }}
 					</dd>
 
 					<dd class="me-1">

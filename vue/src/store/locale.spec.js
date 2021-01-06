@@ -47,7 +47,8 @@ describe( 'store/locale', () => {
 			$i18n: { locale: null },
 			$route: { query: sinon.stub() },
 			$router: { push: sinon.stub() },
-			$vuetify: { rtl: null }
+			$vuetify: { rtl: null },
+			$moment: { locale: sinon.stub() }
 		};
 
 		beforeEach( () => {
@@ -120,6 +121,11 @@ describe( 'store/locale', () => {
 			expect( stubVm.$i18n.locale ).to.equal( testLocale );
 			expect( stubVm.$vuetify.rtl ).to.equal( false );
 
+			expect( stubVm.$moment.locale ).to.have.been.calledOnce;
+			expect( stubVm.$moment.locale ).to.have.been.calledWithExactly(
+				testLocale
+			);
+
 			expect( stubVm.$router.push ).to.have.been.calledOnce;
 			expect( stubVm.$router.push ).to.have.been.calledWithExactly(
 				{ query: { uselang: testLocale } }
@@ -152,6 +158,11 @@ describe( 'store/locale', () => {
 
 			expect( stubVm.$i18n.locale ).to.equal( testLocale );
 			expect( stubVm.$vuetify.rtl ).to.equal( true );
+
+			expect( stubVm.$moment.locale ).to.have.been.calledOnce;
+			expect( stubVm.$moment.locale ).to.have.been.calledWithExactly(
+				testLocale
+			);
 
 			expect( stubVm.$router.push ).to.not.have.been.called;
 		} );

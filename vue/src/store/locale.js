@@ -4,6 +4,13 @@ import languageData from '@wikimedia/language-data';
 
 Vue.use( Vuex );
 
+// T271217: Setup i18n for moment library
+const moment = require( 'moment' );
+require( 'moment/min/locales.min' );
+Vue.use( require( 'vue-moment' ), {
+	moment
+} );
+
 // T269164: Add a qqx mapping to languageNameMap.
 languageData.addLanguage(
 	'qqx',
@@ -113,6 +120,7 @@ export const actions = {
 			// Set the locale for the frontend
 			vm.$i18n.locale = locale;
 			vm.$vuetify.rtl = languageData.isRtl( locale );
+			vm.$moment.locale( locale );
 
 			// Show the locale in the query string if it changed
 			if ( !initial && vm.$route.query.uselang !== locale ) {
