@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-04 13:54:33+0000\n"
-"X-POT-Import-Date: 2020-12-31 07:16:48+0000\n"
+"PO-Revision-Date: 2021-01-07 14:28:53+0000\n"
+"X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
@@ -138,6 +138,82 @@ msgstr "Lister toutes les URL indexées durant une exécution."
 #: toolhub/apps/crawler/views.py:132
 msgid "Info for a specific url crawled in a run."
 msgstr "Infos pour une URL spécifique indexée dans une exécution."
+
+#: toolhub/apps/oauth2/apps.py:26
+msgid "OAuth 2.0 Authorization server API"
+msgstr "API du serveur d’autorisation OAuth 2.0"
+
+#: toolhub/apps/oauth2/serializers.py:30
+msgid "OAuth Client application."
+msgstr "Application cliente OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:37
+msgid "Application name"
+msgstr "Nom de l’application"
+
+#: toolhub/apps/oauth2/serializers.py:38
+msgid "Something users will recognize and trust"
+msgstr "Quelque chose que les utilisateurs reconnaitront et à laquelle ils auront confiance"
+
+#: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
+msgid "Authorization callback URL"
+msgstr "URL de rappel de l’autorisation"
+
+#: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
+msgid "The application's callback URL."
+msgstr "L’URL de rappel de l’application."
+
+#: toolhub/apps/oauth2/serializers.py:49
+msgid "Public identifier for this application"
+msgstr "Identifiant public pour cette application"
+
+#: toolhub/apps/oauth2/serializers.py:66
+msgid "OAuth Client application registration."
+msgstr "Inscription de l’application cliente OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:74
+msgid "Secret known only to the application and the authorization server"
+msgstr "Secret connu seulement de l’application et du serveur d’autorisation"
+
+#: toolhub/apps/oauth2/serializers.py:92
+msgid "OAuth Client application update."
+msgstr "Mise à jour de l’application cliente OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:117
+msgid "Authorized OAuth client application."
+msgstr "Application cliente OAuth autorisée."
+
+#: toolhub/apps/oauth2/views.py:39
+msgid "List all client applications."
+msgstr "Lister toutes les applications clientes."
+
+#: toolhub/apps/oauth2/views.py:42
+msgid "Info for a client application."
+msgstr "Infos pour une application cliente."
+
+#: toolhub/apps/oauth2/views.py:45
+msgid "Register a new client application."
+msgstr "Inscrire une nouvelle application cliente."
+
+#: toolhub/apps/oauth2/views.py:53
+msgid "Update a client application."
+msgstr "Mettre à jour une application cliente."
+
+#: toolhub/apps/oauth2/views.py:57
+msgid "Delete a client application."
+msgstr "Supprimer une applications cliente."
+
+#: toolhub/apps/oauth2/views.py:94
+msgid "List applications authorized by the current user."
+msgstr "Lister les applications autorisées par l’utilisateur actuel."
+
+#: toolhub/apps/oauth2/views.py:97
+msgid "Info for an authorized application."
+msgstr "Infos pour une application autorisée."
+
+#: toolhub/apps/oauth2/views.py:109
+msgid "Revoke an application authorization."
+msgstr "Révoquer une autorisation d’application."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -419,7 +495,15 @@ msgstr "Lister tous les groupes d’utilisateurs."
 msgid "Info for a user group."
 msgstr "Infos pour un groupe d’utilisateurs."
 
-#: toolhub/settings.py:351
+#: toolhub/settings.py:334
+msgid "Read scope"
+msgstr "Portée en lecture"
+
+#: toolhub/settings.py:335
+msgid "Write scope"
+msgstr "Portée en écriture"
+
+#: toolhub/settings.py:361
 msgid "Toolhub API"
 msgstr "API de Toolhub"
 

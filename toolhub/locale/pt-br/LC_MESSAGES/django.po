@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-04 13:54:33+0000\n"
-"X-POT-Import-Date: 2020-12-31 07:16:48+0000\n"
+"PO-Revision-Date: 2021-01-07 14:28:53+0000\n"
+"X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt-BR\n"
@@ -137,6 +137,82 @@ msgstr ""
 msgid "Info for a specific url crawled in a run."
 msgstr ""
 
+#: toolhub/apps/oauth2/apps.py:26
+msgid "OAuth 2.0 Authorization server API"
+msgstr "API do servidor de autorização OAuth 2.0"
+
+#: toolhub/apps/oauth2/serializers.py:30
+msgid "OAuth Client application."
+msgstr "Aplicativo cliente OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:37
+msgid "Application name"
+msgstr "Nome do aplicativo"
+
+#: toolhub/apps/oauth2/serializers.py:38
+msgid "Something users will recognize and trust"
+msgstr "Algo que os usuários reconhecerão e confiarão"
+
+#: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
+msgid "Authorization callback URL"
+msgstr "URL de retorno de autorização"
+
+#: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
+msgid "The application's callback URL."
+msgstr "O URL de retorno de chamada do aplicativo."
+
+#: toolhub/apps/oauth2/serializers.py:49
+msgid "Public identifier for this application"
+msgstr "Identificador público para este aplicativo"
+
+#: toolhub/apps/oauth2/serializers.py:66
+msgid "OAuth Client application registration."
+msgstr "Registro do aplicativo cliente OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:74
+msgid "Secret known only to the application and the authorization server"
+msgstr "Segredo conhecido apenas pelo aplicativo e pelo servidor de autorização"
+
+#: toolhub/apps/oauth2/serializers.py:92
+msgid "OAuth Client application update."
+msgstr "Atualização do aplicativo cliente OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:117
+msgid "Authorized OAuth client application."
+msgstr "Aplicativo cliente OAuth autorizado."
+
+#: toolhub/apps/oauth2/views.py:39
+msgid "List all client applications."
+msgstr "Liste todos os aplicativos cliente."
+
+#: toolhub/apps/oauth2/views.py:42
+msgid "Info for a client application."
+msgstr "Informações para um aplicativo cliente."
+
+#: toolhub/apps/oauth2/views.py:45
+msgid "Register a new client application."
+msgstr "Registre um novo aplicativo cliente."
+
+#: toolhub/apps/oauth2/views.py:53
+msgid "Update a client application."
+msgstr "Atualize um aplicativo cliente."
+
+#: toolhub/apps/oauth2/views.py:57
+msgid "Delete a client application."
+msgstr "Exclua um aplicativo cliente."
+
+#: toolhub/apps/oauth2/views.py:94
+msgid "List applications authorized by the current user."
+msgstr "Lista os aplicativos autorizados pelo usuário atual."
+
+#: toolhub/apps/oauth2/views.py:97
+msgid "Info for an authorized application."
+msgstr "Informações para um aplicativo autorizado."
+
+#: toolhub/apps/oauth2/views.py:109
+msgid "Revoke an application authorization."
+msgstr "Revogar a autorização de um aplicativo."
+
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
 msgstr "Toolinfo"
@@ -254,9 +330,8 @@ msgid "A URI identifying the jsonschema for this toolinfo.json record. This shou
 msgstr "Um URI que identifica o jsonschema para este registro toolinfo.json. Deve ser um uri curto contendo apenas o nome e a revisão no final do caminho do URI."
 
 #: toolhub/apps/toolinfo/models.py:382
-#, fuzzy
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
-msgstr "O idioma neste registro de informações da ferramenta é escrito, senão, o valor padrão Inglês. Use códigos de idioma ISO 639."
+msgstr "O idioma no qual este registro de informações da ferramenta foi escrito. Se não for definido, o valor padrão é Inglês. Use códigos de idioma ISO 639."
 
 #: toolhub/apps/toolinfo/serializers.py:35
 msgid "A File: page on Commons"
@@ -418,7 +493,15 @@ msgstr "Listar todos os grupos de usuários."
 msgid "Info for a user group."
 msgstr "Informações para um grupo de usuários."
 
-#: toolhub/settings.py:351
+#: toolhub/settings.py:334
+msgid "Read scope"
+msgstr "Leia o escopo"
+
+#: toolhub/settings.py:335
+msgid "Write scope"
+msgstr "Escopo de escrita"
+
+#: toolhub/settings.py:361
 msgid "Toolhub API"
 msgstr "API do Toolhub"
 

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-04 13:54:33+0000\n"
-"X-POT-Import-Date: 2020-12-31 07:16:48+0000\n"
+"PO-Revision-Date: 2021-01-07 14:28:53+0000\n"
+"X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr\n"
@@ -136,6 +136,82 @@ msgstr "Bir çalıştırmada taranan tüm url'leri listeleyin."
 #: toolhub/apps/crawler/views.py:132
 msgid "Info for a specific url crawled in a run."
 msgstr "Bir çalıştırmada taranan belirli bir url için bilgi."
+
+#: toolhub/apps/oauth2/apps.py:26
+msgid "OAuth 2.0 Authorization server API"
+msgstr "OAuth 2.0 Yetkilendirme sunucusu API'si"
+
+#: toolhub/apps/oauth2/serializers.py:30
+msgid "OAuth Client application."
+msgstr "OAuth İstemci uygulaması."
+
+#: toolhub/apps/oauth2/serializers.py:37
+msgid "Application name"
+msgstr "Uygulama adı"
+
+#: toolhub/apps/oauth2/serializers.py:38
+msgid "Something users will recognize and trust"
+msgstr "Kullanıcıların tanıyacağı ve güveneceği bir şey"
+
+#: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
+msgid "Authorization callback URL"
+msgstr "Yetkilendirme geri arama URL'si"
+
+#: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
+msgid "The application's callback URL."
+msgstr "Uygulamanın geri arama URL'si."
+
+#: toolhub/apps/oauth2/serializers.py:49
+msgid "Public identifier for this application"
+msgstr "Bu uygulama için genel tanımlayıcı"
+
+#: toolhub/apps/oauth2/serializers.py:66
+msgid "OAuth Client application registration."
+msgstr "OAuth İstemcisi uygulama kaydı."
+
+#: toolhub/apps/oauth2/serializers.py:74
+msgid "Secret known only to the application and the authorization server"
+msgstr "Yalnızca uygulama ve yetkilendirme sunucusu tarafından bilinen sır"
+
+#: toolhub/apps/oauth2/serializers.py:92
+msgid "OAuth Client application update."
+msgstr "OAuth İstemcisi uygulama güncellemesi."
+
+#: toolhub/apps/oauth2/serializers.py:117
+msgid "Authorized OAuth client application."
+msgstr "Yetkili OAuth istemci uygulaması."
+
+#: toolhub/apps/oauth2/views.py:39
+msgid "List all client applications."
+msgstr "Tüm istemci uygulamalarını listeleyin."
+
+#: toolhub/apps/oauth2/views.py:42
+msgid "Info for a client application."
+msgstr "Bir istemci uygulaması için bilgi."
+
+#: toolhub/apps/oauth2/views.py:45
+msgid "Register a new client application."
+msgstr "Yeni bir istemci uygulaması kaydedin."
+
+#: toolhub/apps/oauth2/views.py:53
+msgid "Update a client application."
+msgstr "Bir istemci uygulamasını güncelleyin."
+
+#: toolhub/apps/oauth2/views.py:57
+msgid "Delete a client application."
+msgstr "Bir istemci uygulamasını silin."
+
+#: toolhub/apps/oauth2/views.py:94
+msgid "List applications authorized by the current user."
+msgstr "Mevcut kullanıcı tarafından yetkilendirilmiş uygulamaları listeleyin."
+
+#: toolhub/apps/oauth2/views.py:97
+msgid "Info for an authorized application."
+msgstr "Yetkili bir uygulama için bilgi."
+
+#: toolhub/apps/oauth2/views.py:109
+msgid "Revoke an application authorization."
+msgstr "Bir uygulama yetkisini iptal edin."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -417,7 +493,15 @@ msgstr "Tüm kullanıcı gruplarını listeleyin."
 msgid "Info for a user group."
 msgstr "Bir kullanıcı grubu için bilgi."
 
-#: toolhub/settings.py:351
+#: toolhub/settings.py:334
+msgid "Read scope"
+msgstr "Kapsamı oku"
+
+#: toolhub/settings.py:335
+msgid "Write scope"
+msgstr "Kapsam yazın"
+
+#: toolhub/settings.py:361
 msgid "Toolhub API"
 msgstr "Toolhub API'si"
 

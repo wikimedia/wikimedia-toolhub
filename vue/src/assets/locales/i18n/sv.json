@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"WikiPhoenix"
 		]
 	},
 	"add": "Lägg till",
 	"addremovetools-summarytitle": "Hur funktionen fungerar",
 	"apierror": "Oj då! Något gick snett.",
+	"auditlog-summary": "{action} en/ett {target}",
 	"auditlogs-pagetitle": "Den här sidan listar alla loggposter",
 	"bugtracker": "Felsökare",
 	"createdby": "Skapad av",
@@ -17,7 +19,10 @@
 	"learnmore": "Ta reda på mer",
 	"leavefeedback": "Ge återkoppling",
 	"links": "Länkar",
+	"login": "Logga in",
+	"logout": "Logga ut",
 	"moreinfo": "Mer information",
+	"my-account": "Mitt konto",
 	"newtoolsfound": "1 verktyg | {n} verktyg",
 	"privacypolicy": "Integritetspolicy",
 	"removeurl": "Ta bort URL",
@@ -26,6 +31,7 @@
 	"system-user": "System",
 	"tagline-learnmore": "Ta reda på mer om ToolHub på metawiki",
 	"technologyused": "Teknologi som använts",
+	"toolhub": "Toolhub",
 	"toolsfound": "1 verktyg hittades | {n} verktyg hittades",
 	"tooltype": "Verktygstyp",
 	"tools-lastupdated": "uppdaterades senast den {date}",

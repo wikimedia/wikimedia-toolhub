@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-04 13:54:33+0000\n"
-"X-POT-Import-Date: 2020-12-31 07:16:48+0000\n"
+"PO-Revision-Date: 2021-01-07 14:28:54+0000\n"
+"X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: qqq\n"
@@ -20,15 +20,15 @@ msgstr "Label used in admin console."
 
 #: toolhub/apps/auditlog/models.py:79
 msgid "created"
-msgstr ""
+msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
 #: toolhub/apps/auditlog/models.py:80
 msgid "updated"
-msgstr ""
+msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
 #: toolhub/apps/auditlog/models.py:81
 msgid "deleted"
-msgstr ""
+msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
 #: toolhub/apps/auditlog/models.py:86
 msgid "timestamp"
@@ -136,6 +136,82 @@ msgstr "OpenAPI schema route summary."
 
 #: toolhub/apps/crawler/views.py:132
 msgid "Info for a specific url crawled in a run."
+msgstr "OpenAPI schema route summary."
+
+#: toolhub/apps/oauth2/apps.py:26
+msgid "OAuth 2.0 Authorization server API"
+msgstr "Label used in admin console."
+
+#: toolhub/apps/oauth2/serializers.py:30
+msgid "OAuth Client application."
+msgstr "OpenAPI schema object description."
+
+#: toolhub/apps/oauth2/serializers.py:37
+msgid "Application name"
+msgstr "Used as a field name in OpenAPI schema object description.\n{{Identical|Application name}}"
+
+#: toolhub/apps/oauth2/serializers.py:38
+msgid "Something users will recognize and trust"
+msgstr "Help text message for OpenAPI schema field description. Describes the field labeled by [[Wikimedia:Toolhub-2f16f8-Application name/qqq]]."
+
+#: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
+msgid "Authorization callback URL"
+msgstr "Used as a field name in OpenAPI schema object description."
+
+#: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
+msgid "The application's callback URL."
+msgstr "Help text message for OpenAPI schema field description. Describes the field labeled by [[Wikimedia:Toolhub-4f24dd-Authorization callback URL/qqq]]."
+
+#: toolhub/apps/oauth2/serializers.py:49
+msgid "Public identifier for this application"
+msgstr "Help text message for OpenAPI schema field description."
+
+#: toolhub/apps/oauth2/serializers.py:66
+msgid "OAuth Client application registration."
+msgstr "OpenAPI schema object description."
+
+#: toolhub/apps/oauth2/serializers.py:74
+msgid "Secret known only to the application and the authorization server"
+msgstr "Help text message for OpenAPI schema field description."
+
+#: toolhub/apps/oauth2/serializers.py:92
+msgid "OAuth Client application update."
+msgstr "OpenAPI schema object description."
+
+#: toolhub/apps/oauth2/serializers.py:117
+msgid "Authorized OAuth client application."
+msgstr "OpenAPI schema object description."
+
+#: toolhub/apps/oauth2/views.py:39
+msgid "List all client applications."
+msgstr "OpenAPI schema route summary."
+
+#: toolhub/apps/oauth2/views.py:42
+msgid "Info for a client application."
+msgstr "OpenAPI schema route summary."
+
+#: toolhub/apps/oauth2/views.py:45
+msgid "Register a new client application."
+msgstr "OpenAPI schema route summary."
+
+#: toolhub/apps/oauth2/views.py:53
+msgid "Update a client application."
+msgstr "OpenAPI schema route summary."
+
+#: toolhub/apps/oauth2/views.py:57
+msgid "Delete a client application."
+msgstr "OpenAPI schema route summary."
+
+#: toolhub/apps/oauth2/views.py:94
+msgid "List applications authorized by the current user."
+msgstr "OpenAPI schema route summary."
+
+#: toolhub/apps/oauth2/views.py:97
+msgid "Info for an authorized application."
+msgstr "OpenAPI schema route summary."
+
+#: toolhub/apps/oauth2/views.py:109
+msgid "Revoke an application authorization."
 msgstr "OpenAPI schema route summary."
 
 #: toolhub/apps/toolinfo/apps.py:26
@@ -418,7 +494,15 @@ msgstr "OpenAPI schema route summary."
 msgid "Info for a user group."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/settings.py:351
+#: toolhub/settings.py:334
+msgid "Read scope"
+msgstr "OAuth authorization scope label."
+
+#: toolhub/settings.py:335
+msgid "Write scope"
+msgstr "OAuth authorization scope label."
+
+#: toolhub/settings.py:361
 msgid "Toolhub API"
 msgstr "Section header."
 

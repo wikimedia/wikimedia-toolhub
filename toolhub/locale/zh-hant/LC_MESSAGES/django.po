@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-04 13:54:33+0000\n"
-"X-POT-Import-Date: 2020-12-31 07:16:48+0000\n"
+"PO-Revision-Date: 2021-01-07 14:28:53+0000\n"
+"X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh-Hant\n"
@@ -136,6 +136,82 @@ msgstr "列出所有運中作的 Url 爬取。"
 #: toolhub/apps/crawler/views.py:132
 msgid "Info for a specific url crawled in a run."
 msgstr "指定的運作中 URL 爬取。"
+
+#: toolhub/apps/oauth2/apps.py:26
+msgid "OAuth 2.0 Authorization server API"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:30
+msgid "OAuth Client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:37
+msgid "Application name"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:38
+msgid "Something users will recognize and trust"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
+msgid "Authorization callback URL"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
+msgid "The application's callback URL."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:49
+msgid "Public identifier for this application"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:66
+msgid "OAuth Client application registration."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:74
+msgid "Secret known only to the application and the authorization server"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:92
+msgid "OAuth Client application update."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:117
+msgid "Authorized OAuth client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:39
+msgid "List all client applications."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:42
+msgid "Info for a client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:45
+msgid "Register a new client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:53
+msgid "Update a client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:57
+msgid "Delete a client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:94
+msgid "List applications authorized by the current user."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:97
+msgid "Info for an authorized application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:109
+msgid "Revoke an application authorization."
+msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -417,7 +493,15 @@ msgstr "列出所有使用者群組。"
 msgid "Info for a user group."
 msgstr "使用者群組資訊。"
 
-#: toolhub/settings.py:351
+#: toolhub/settings.py:334
+msgid "Read scope"
+msgstr ""
+
+#: toolhub/settings.py:335
+msgid "Write scope"
+msgstr ""
+
+#: toolhub/settings.py:361
 msgid "Toolhub API"
 msgstr "Toolhub API"
 

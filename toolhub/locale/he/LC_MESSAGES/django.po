@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-04 13:54:33+0000\n"
-"X-POT-Import-Date: 2020-12-31 07:16:48+0000\n"
+"PO-Revision-Date: 2021-01-07 14:28:53+0000\n"
+"X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
@@ -137,6 +137,82 @@ msgstr "רשימת כל ה־URL־ים שהזחלן עבר בהם בהרצה."
 #: toolhub/apps/crawler/views.py:132
 msgid "Info for a specific url crawled in a run."
 msgstr "מידע על URL מסוים שהזחלן עבר בו בהרצה."
+
+#: toolhub/apps/oauth2/apps.py:26
+msgid "OAuth 2.0 Authorization server API"
+msgstr "API לשרת האישור OAuth 2.0"
+
+#: toolhub/apps/oauth2/serializers.py:30
+msgid "OAuth Client application."
+msgstr "יישום לקוח של OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:37
+msgid "Application name"
+msgstr "שם היישום"
+
+#: toolhub/apps/oauth2/serializers.py:38
+msgid "Something users will recognize and trust"
+msgstr "משהו שאנשים יזהו ויסמכו עליו"
+
+#: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
+msgid "Authorization callback URL"
+msgstr "כתובת URL לפונקציית מענה לאישור"
+
+#: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
+msgid "The application's callback URL."
+msgstr "כתובת URL לפונקציית מענה של היישום."
+
+#: toolhub/apps/oauth2/serializers.py:49
+msgid "Public identifier for this application"
+msgstr "מזהה ציבורי ליישום הזה"
+
+#: toolhub/apps/oauth2/serializers.py:66
+msgid "OAuth Client application registration."
+msgstr "רישום יישום לקוח OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:74
+msgid "Secret known only to the application and the authorization server"
+msgstr "סוד שידוע רק ליישום ולשרת האישור"
+
+#: toolhub/apps/oauth2/serializers.py:92
+msgid "OAuth Client application update."
+msgstr "עדכון יישום לקוח OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:117
+msgid "Authorized OAuth client application."
+msgstr "יישום לקוח OAuth מאושר."
+
+#: toolhub/apps/oauth2/views.py:39
+msgid "List all client applications."
+msgstr "רשימת כל יישומי הלקוח."
+
+#: toolhub/apps/oauth2/views.py:42
+msgid "Info for a client application."
+msgstr "מידע עבור יישום לקוח."
+
+#: toolhub/apps/oauth2/views.py:45
+msgid "Register a new client application."
+msgstr "רישום יישום לקוח חדש."
+
+#: toolhub/apps/oauth2/views.py:53
+msgid "Update a client application."
+msgstr "עדכון יישום לקוח."
+
+#: toolhub/apps/oauth2/views.py:57
+msgid "Delete a client application."
+msgstr "מחיקת יישום לקוח."
+
+#: toolhub/apps/oauth2/views.py:94
+msgid "List applications authorized by the current user."
+msgstr "רשימת יישומים שהמשתמש הנוכחי אישר."
+
+#: toolhub/apps/oauth2/views.py:97
+msgid "Info for an authorized application."
+msgstr "מידע ליישום המאושר."
+
+#: toolhub/apps/oauth2/views.py:109
+msgid "Revoke an application authorization."
+msgstr "שלילת אישור מיישום."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -418,7 +494,15 @@ msgstr "קבלת כל קבוצות המשתמשים."
 msgid "Info for a user group."
 msgstr "מידע על קבוצת משתמשים."
 
-#: toolhub/settings.py:351
+#: toolhub/settings.py:334
+msgid "Read scope"
+msgstr "טווח קריאה"
+
+#: toolhub/settings.py:335
+msgid "Write scope"
+msgstr "טווח כתיבה"
+
+#: toolhub/settings.py:361
 msgid "Toolhub API"
 msgstr "API של Toolhub"
 
