@@ -31,7 +31,7 @@ should make working with `docker-compose` easier.
 
 ::
 
-   $ git clone https://github.com/bd808/toolhub
+   $ git clone https://gerrit.wikimedia.org/r/wikimedia/toolhub
    $ cd toolhub
    $ make init
    $ make test
