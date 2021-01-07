@@ -40,9 +40,10 @@ class ToolViewSet(viewsets.ReadOnlyModelViewSet):
 
     queryset = Tool.objects.all()
     serializer_class = ToolSerializer
+    lookup_field = "name"
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filterset_fields = {
         "name": ["exact", "contains", "startswith", "endswith"],
     }
-    ordering_fields = ["id", "name"]
+    ordering_fields = ["name", "modified_date"]
     ordering = ["-modified_date"]

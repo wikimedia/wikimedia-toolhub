@@ -103,7 +103,6 @@ class ToolSerializer(ModelSerializer):
 
         model = Tool
         fields = [
-            "id",
             "name",
             "title",
             "description",

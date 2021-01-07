@@ -73,7 +73,7 @@
 		</v-row>
 		<v-row justify="space-around">
 			<v-col v-for="tool in toolsList"
-				:key="tool.id"
+				:key="tool.name"
 				sm="6"
 				md="4"
 				lg="3"
@@ -144,7 +144,7 @@
 							color="primary"
 							dark
 							block
-							:to="`/tool/${tool.id}`"
+							:to="`/tool/${tool.name}`"
 						>
 							<v-icon
 								dark

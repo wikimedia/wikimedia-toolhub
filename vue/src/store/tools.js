@@ -41,9 +41,9 @@ export default {
 			} )
 				.catch( ( err ) => context.commit( 'ERROR', err ) );
 		},
-		getToolInfo( context, id ) {
+		getToolInfo( context, name ) {
 			const request = {
-				url: '/api/tools/' + id,
+				url: '/api/tools/' + name,
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'

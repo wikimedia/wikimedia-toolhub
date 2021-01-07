@@ -199,7 +199,7 @@ export default {
 	name: 'Tool',
 	data() {
 		return {
-			toolId: this.$route.params.id
+			toolName: this.$route.params.name
 		};
 	},
 	computed: {
@@ -267,7 +267,7 @@ export default {
 	},
 	methods: {
 		getToolInfo() {
-			this.$store.dispatch( 'tools/getToolInfo', this.toolId );
+			this.$store.dispatch( 'tools/getToolInfo', this.toolName );
 		}
 	},
 	mounted() {
