@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-07 14:28:53+0000\n"
+"PO-Revision-Date: 2021-01-11 16:47:49+0000\n"
 "X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -83,19 +83,19 @@ msgstr "Informações para uma entrada de registro específica."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr ""
+msgstr "Rastreador de informações da ferramenta"
 
 #: toolhub/apps/crawler/serializers.py:29
 msgid "A URL that has been registered for crawling"
-msgstr ""
+msgstr "Um URL que foi registrado para rastreamento"
 
 #: toolhub/apps/crawler/serializers.py:42
 msgid "A URL to crawl"
-msgstr ""
+msgstr "Um URL para rastrear"
 
 #: toolhub/apps/crawler/serializers.py:53
 msgid "Information about a single URL processed during a crawler run"
-msgstr ""
+msgstr "Informações sobre um único URL processado durante a execução de um rastreador"
 
 #: toolhub/apps/crawler/serializers.py:75
 msgid "Summary of a single run of the crawler."
@@ -103,11 +103,11 @@ msgstr "Resumo de uma única execução do rastreador."
 
 #: toolhub/apps/crawler/views.py:44
 msgid "Register a new URL for crawling."
-msgstr ""
+msgstr "Registre um novo URL para rastreamento."
 
 #: toolhub/apps/crawler/views.py:48
 msgid "Information about a specific crawled URL."
-msgstr ""
+msgstr "Informações sobre um URL rastreado específico."
 
 #: toolhub/apps/crawler/views.py:51
 msgid "Unregister a URL."
@@ -115,27 +115,27 @@ msgstr "Cancele o registro de um URL."
 
 #: toolhub/apps/crawler/views.py:54
 msgid "List all crawled URLs."
-msgstr ""
+msgstr "Liste todos os URLs rastreados."
 
 #: toolhub/apps/crawler/views.py:87
 msgid "Get URLs created by the current user."
-msgstr ""
+msgstr "Obtenha URLs criados pelo usuário atual."
 
 #: toolhub/apps/crawler/views.py:105
 msgid "List all historic crawler runs."
-msgstr ""
+msgstr "Liste todas as execuções históricas do rastreador."
 
 #: toolhub/apps/crawler/views.py:108
 msgid "Info for a specific crawler run."
-msgstr ""
+msgstr "Informações para uma execução específica do rastreador."
 
 #: toolhub/apps/crawler/views.py:129
 msgid "List all urls crawled in a run."
-msgstr ""
+msgstr "Liste todos os urls rastreados em uma execução."
 
 #: toolhub/apps/crawler/views.py:132
 msgid "Info for a specific url crawled in a run."
-msgstr ""
+msgstr "Informações para um url específico rastreado em uma execução."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
@@ -271,7 +271,7 @@ msgstr "Se true, esta ferramenta é instável e pode mudar ou ficar offline a qu
 
 #: toolhub/apps/toolinfo/models.py:247
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
-msgstr ""
+msgstr "Uma string ou matriz de strings descrevendo a(s) wiki(s) em que esta ferramenta pode ser usada. Use nomes de host como `zh.wiktionary.org`. Use asterisks como curingas. Por exemplo, `*.wikisource.org` significa 'esta ferramenta funciona em todos os wikis do Wikisource.' `*` significa 'isso funciona em todos os wikis, incluindo os wikis da Wikimedia.'"
 
 #: toolhub/apps/toolinfo/models.py:264
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
@@ -279,7 +279,7 @@ msgstr "Um link para uma página de descrição de arquivo do Wikimedia Commons 
 
 #: toolhub/apps/toolinfo/models.py:274
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
-msgstr ""
+msgstr "A licença do software sob a qual o código da ferramenta está disponível. Use um identificador de licença SPDX padrão como 'GPL-3.0-or-later'."
 
 #: toolhub/apps/toolinfo/models.py:282
 msgid "Organization(s) that sponsored the tool's development."

@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saederup92"
+		]
+	},
+	"add": "Tilføj",
+	"addremovetools": "Tilføj eller fjern værktøjer",
+	"createdby": "Oprettet af",
+	"developerdocumentation": "Udviklerdokumentation",
+	"helptranslate": "Hjælp til med at oversætte",
+	"home": "Hjem",
+	"learnmore": "Lær mere",
+	"locale-select": "Vælg sprog",
+	"moreinfo": "Flere oplysninger",
+	"my-account": "Min konto",
+	"sourcecode": "Kildekode",
+	"status": "Status",
+	"system-user": "System",
+	"technologyused": "Teknologi brugt",
+	"tools": "værktøjer",
+	"tooltype": "Værktøjstype",
+	"tools-lastupdated": "sidst opdateret den $1",
+	"viewmore": "Vis mere"
+}

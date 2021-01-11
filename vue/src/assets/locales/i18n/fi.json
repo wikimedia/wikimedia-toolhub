@@ -14,6 +14,7 @@
 	"apidocs": "API-asiakirjat.",
 	"apidocumentation": "API-ohjeistus.",
 	"apierror": "Ah ah! Jokin meni pieleen.",
+	"auditlog-summary": "{action}d a {target}",
 	"auditlogs": "Tarkastuslokit",
 	"auditlogs-pagetitle": "Tällä sivulla on luettelo kaikista lokimerkinnöistä",
 	"authors": "Tekijä(t)",

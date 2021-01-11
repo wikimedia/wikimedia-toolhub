@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Wkandek",
 			"Zauberzunge2000"
 		]
 	},
@@ -34,6 +35,8 @@
 	"sourcecode": "Quellcode",
 	"status": "Status",
 	"system-user": "System",
+	"tagline-about": "Der komplette Katalog für Wikimedia Tools",
+	"tagline-learnmore": "Mehr Informationen über Toolhub gibt es bei metawiki",
 	"talk": "Diskussion",
 	"technologyused": "Verwendete Technik",
 	"tools": "Werkzeuge",
