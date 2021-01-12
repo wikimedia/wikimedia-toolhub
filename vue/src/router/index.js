@@ -49,6 +49,11 @@ const routes = [
 			meta: {
 				icon: 'mdi-data-matrix'
 			}
+		},
+		{
+			name: 'developersettings',
+			path: '/developer-settings',
+			component: () => import( /* webpackChunkName: "developersettings" */ '../views/DeveloperSettings.vue' )
 		}
 	],
 

@@ -26,5 +26,6 @@ urlpatterns = [
     path("api-docs", main, name="api-docs"),
     path("audit-logs", main, name="audit-logs"),
     path("crawler-history", main, name="crawler-history"),
+    path("developer-settings", main, name="developer-settings"),
     path("tool/<path:path>", main, name="tool"),
 ]

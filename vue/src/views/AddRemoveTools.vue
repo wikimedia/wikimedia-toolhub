@@ -55,39 +55,15 @@
 				</v-row>
 				<v-row>
 					<v-col cols="12">
-						<v-alert
-							v-if="$store.state.user.user.is_authenticated === false"
-							border="left"
-							color="primary"
-							dark
-							elevation="2"
-							type="info"
-							width="100%"
+						<v-row v-if="$store.state.user.user.is_authenticated === true &&
+							numUserCreatedUrls === 0"
 						>
-							{{ $t( 'addremovetools-nologintext' ) }}
-						</v-alert>
-
-						<v-alert
-							v-if="apiErrorMsg"
-							border="left"
-							type="error"
-							elevation="2"
-							width="100%"
-						>
-							{{ $t( 'apierror' ) }} {{ apiErrorMsg }}
-						</v-alert>
-
-						<v-alert
-							v-if="$store.state.user.user.is_authenticated === true &&
-								numUserCreatedUrls === 0"
-							border="left"
-							type="info"
-							elevation="2"
-							color="primary"
-							width="100%"
-						>
-							{{ $t( 'nourlsfounderror' ) }}
-						</v-alert>
+							<v-col cols="12">
+								<p class="title text--secondary">
+									{{ $t( 'nourlsfounderror' ) }}
+								</p>
+							</v-col>
+						</v-row>
 
 						<v-data-table
 							v-if="numUserCreatedUrls > 0"
@@ -192,7 +168,7 @@ export default {
 		};
 	},
 	computed: {
-		...mapState( 'user', [ 'userCreatedUrls', 'apiErrorMsg', 'numUserCreatedUrls' ] ),
+		...mapState( 'user', [ 'userCreatedUrls', 'numUserCreatedUrls' ] ),
 
 		isUserAuthenticated() {
 			return this.$store.state.user.user.is_authenticated;
@@ -250,9 +226,6 @@ export default {
 				this.getUrlsCreatedByUser();
 			}
 		}
-	},
-	mounted() {
-		this.getUrlsCreatedByUser();
 	}
 };
 </script>

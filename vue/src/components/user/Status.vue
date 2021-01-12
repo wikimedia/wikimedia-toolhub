@@ -24,19 +24,30 @@
 			nav
 		>
 			<v-list-item>
-				<v-list-item-avatar>
+				<v-list-item-icon>
 					<v-icon>mdi-account-circle</v-icon>
-				</v-list-item-avatar>
+				</v-list-item-icon>
 				<v-list-item-content>
 					<v-list-item-title>
 						{{ user.username }}
 					</v-list-item-title>
 				</v-list-item-content>
 			</v-list-item>
+			<v-list-item
+				href="/developer-settings"
+			>
+				<v-list-item-icon>
+					<v-icon>mdi-file-code</v-icon>
+				</v-list-item-icon>
+				<v-list-item-content>
+					<v-list-item-title>
+						{{ $t( 'developersettings' ) }}
+					</v-list-item-title>
+				</v-list-item-content>
+			</v-list-item>
 			<v-divider />
 			<v-list-item
 				href="/user/logout/"
-				link
 			>
 				<v-list-item-icon>
 					<v-icon>mdi-logout</v-icon>

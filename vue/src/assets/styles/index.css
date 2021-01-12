@@ -81,3 +81,12 @@ div.home-tool-card {
 #notifications .v-alert {
 	border: thin solid currentColor !important;
 }
+
+.v-tabs:not( .v-tabs--vertical ):not( .v-tabs--right ) > .v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not( .v-slide-group--has-affixes ) .v-slide-group__prev {
+	display: none !important;
+}
+
+.app-client-id,
+.app-client-secret {
+	word-break: break-all;
+}
