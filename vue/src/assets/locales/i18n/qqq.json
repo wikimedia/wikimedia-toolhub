@@ -46,7 +46,7 @@
 	"moreinfo": "Section title.",
 	"mostrecentcrawledurls": "Table information label.",
 	"my-account": "Alt text for icon.",
-	"newtoolsfound": "Crawler run statistics label. Uses vue-i18n plural syntax. Parameters:\n* $1 - number of tools found",
+	"newtoolsfound": "Crawler run statistics label. Parameters:\n* $1 - number of tools found",
 	"nourlsfounderror": "Info message, shown when the user has no registered URLs.",
 	"privacypolicy": "Link label, links to privacy policy for a tool.",
 	"removeurl": "Table column label.",
