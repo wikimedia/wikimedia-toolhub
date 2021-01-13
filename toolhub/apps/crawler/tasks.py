@@ -72,7 +72,7 @@ class Crawler:
 
                 try:
                     obj, created, updated = Tool.objects.from_toolinfo(
-                        tool, url.created_by
+                        tool, url.created_by, Tool.ORIGIN_CRAWLER
                     )
                     if created:
                         run.new_tools += 1

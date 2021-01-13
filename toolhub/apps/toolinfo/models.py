@@ -19,6 +19,7 @@ import logging
 
 from django.conf import settings
 from django.core import validators
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
@@ -33,9 +34,16 @@ from toolhub.apps.auditlog.signals import registry
 logger = logging.getLogger(__name__)
 
 
+def name_to_slug(name):
+    """Convert a tool name into a slug value."""
+    return slugify(name, allow_unicode=True)
+
+
 class ToolManager(models.Manager):
     """Custom manager for Tool models."""
 
+    # 'oneOf' fields that will always be normalized as an array of values
+    # when calling `from_toolinfo`.
     ARRAY_FIELDS = [
         "for_wikis",
         "sponsor",
@@ -47,14 +55,33 @@ class ToolManager(models.Manager):
         "privacy_policy_url",
     ]
 
+    # Fields allowed to change without considering the record to be "dirty"
+    # and in need of persiting to the backing database when calling
+    # `from_toolinfo`.
     VARIANT_FIELDS = ["created_by", "modified_by"]
 
-    def from_toolinfo(self, record, creator):
-        """Create or update a Tool using data from a toolinfo record."""
+    # Fields which are not allowed to change value once they have been set
+    # initially.
+    INVARIANT_FIELDS = ["origin"]
+
+    def from_toolinfo(self, record, creator, origin):
+        """Create or update a Tool using data from a toolinfo record.
+
+        :param self: This manager
+        :type self: ToolManager
+        :param record: Toolinfo record. May be mutated as a side effect.
+        :type record: dict
+        :param creator: User creating/updating the record
+        :type creator: settings.AUTH_USER_MODEL
+        :param origin: Origin of this submission
+        :type origin: str
+        :returns: (tool (Tool), was_created (boolean), has_changes (boolean))
+        :rtype: tuple
+        """
         if record["name"].startswith("toolforge."):
             # Fixup tool names made by Striker to work as slugs
             record["name"] = "toolforge-" + record["name"][10:]
-        record["name"] = slugify(record["name"], allow_unicode=True)
+        record["name"] = name_to_slug(record["name"])
 
         record["created_by"] = creator
         record["modified_by"] = creator
@@ -64,6 +91,8 @@ class ToolManager(models.Manager):
 
         if "$language" in record:
             record["_language"] = record.pop("$language")
+
+        record["origin"] = origin
 
         # Normalize 'oneOf' fields that could be an array of values or
         # a bare value to always be stored as an array of values.
@@ -94,7 +123,18 @@ class ToolManager(models.Manager):
                 continue
 
             prior = getattr(tool, key)
+
             if value != prior:
+                if key in self.INVARIANT_FIELDS:
+                    raise ValidationError(
+                        _(
+                            "Changing %(key)s after initial object creation "
+                            "is not allowed"
+                        ),
+                        code="invariant",
+                        params={"key": key},
+                    )
+
                 setattr(tool, key, value)
                 has_changes = True
                 logger.debug(
@@ -121,14 +161,21 @@ class Tool(models.Model):
     """Description of a tool."""
 
     TOOL_TYPE_CHOICES = (
-        ("web app", "web app"),
-        ("desktop app", "desktop app"),
-        ("bot", "bot"),
-        ("gadget", "gadget"),
-        ("user script", "user script"),
-        ("command line tool", "command line tool"),
-        ("coding framework", "coding framework"),
-        ("other", "other"),
+        ("web app", _("web app")),
+        ("desktop app", _("desktop app")),
+        ("bot", _("bot")),
+        ("gadget", _("gadget")),
+        ("user script", _("user script")),
+        ("command line tool", _("command line tool")),
+        ("coding framework", _("coding framework")),
+        ("other", _("other")),
+    )
+
+    ORIGIN_CRAWLER = "crawler"
+    ORIGIN_API = "api"
+    ORIGIN_CHOICES = (
+        (ORIGIN_CRAWLER, _("crawler")),
+        (ORIGIN_API, _("api")),
     )
 
     name = models.CharField(
@@ -360,7 +407,6 @@ class Tool(models.Model):
             "Phabricator, etc."
         ),
     )
-    # TODO: does this need to be stored?
     _schema = models.CharField(
         blank=True,
         max_length=32,
@@ -383,6 +429,13 @@ class Tool(models.Model):
             "If not set, the default value is English. "
             "Use ISO 639 language codes."
         ),
+    )
+
+    origin = models.CharField(
+        choices=ORIGIN_CHOICES,
+        max_length=32,
+        default=ORIGIN_CRAWLER,
+        help_text=_("Origin of this tool record."),
     )
 
     created_by = models.ForeignKey(
