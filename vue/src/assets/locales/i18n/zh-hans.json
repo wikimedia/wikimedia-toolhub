@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			")8",
-			"Wuqianye"
+			"Wuqianye",
+			"列维劳德"
 		]
 	},
 	"add": "添加",
@@ -26,7 +27,7 @@
 	"logout": "登出",
 	"moreinfo": "更多信息",
 	"my-account": "我的账户",
-	"newtoolsfound": "{{PLURAL:$1|1个工具|$1工具}}",
+	"newtoolsfound": "{{PLURAL:$1|1 个工具|$1 个工具}}",
 	"privacypolicy": "隐私政策",
 	"removeurl": "删除URL",
 	"sourcecode": "源代码",
@@ -37,7 +38,7 @@
 	"tools": "工具",
 	"tooltype": "工具类型",
 	"tool-deprecated-error": "不建议使用此工具",
-	"tools-lastupdated": "最后更新于$1",
+	"tools-lastupdated": "最后更新于 $1",
 	"url": "链接",
 	"urlinvalid": "链接必须有效",
 	"urlrequired": "网址为必填项",
