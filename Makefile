@@ -22,7 +22,7 @@ PIPELINE_DIR := $(PROJECT_DIR)/.pipeline
 BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
 DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile
-DEFAULT_CONTAINERS := web db nodejs
+DEFAULT_CONTAINERS := web db nodejs search
 ALL_TESTS := test-python test-nodejs-lint test-nodejs-unit
 
 help:
@@ -58,6 +58,10 @@ nodejs-shell:  ## Get an interactive shell inside the nodejs container
 db-shell:  ## Get an interactive shell inside the db container
 	docker-compose exec db bash
 .PHONY: db-shell
+
+search-shell:  ## Get an interactive shell inside the search container
+	docker-compose exec search bash
+.PHONY: search-shell
 
 tail:  ## Tail logs from the docker-compose stack
 	docker-compose logs -f
