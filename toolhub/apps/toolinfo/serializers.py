@@ -56,7 +56,7 @@ class CommonsFileSerializer(serializers.Serializer):
 
 
 @doc(_("""Supported wikis"""))  # noqa: W0223
-class ForWikiSerializer(serializers.Serializer):
+class ForWikiField(serializers.JSONField):
     """Supported wikis."""
 
     TRANSLATIONS = {
@@ -84,16 +84,16 @@ class ForWikiSerializer(serializers.Serializer):
 
         return self.TRANSLATIONS.get(label, label)
 
-    def to_representation(self, instance):
+    def to_representation(self, value):
         """Convert a list of wikis."""
-        return [self._localize_label(v) for v in instance]
+        return [self._localize_label(v) for v in value]
 
 
 @doc(_("""Description of a tool"""))
 class ToolSerializer(ModelSerializer):
     """Description of a tool."""
 
-    for_wikis = ForWikiSerializer(many=False, read_only=True)
+    for_wikis = ForWikiField(required=False)
     icon = CommonsFileSerializer(many=False, read_only=True, required=False)
     created_by = UserSerializer(many=False, read_only=True)
     modified_by = UserSerializer(many=False, read_only=True)
