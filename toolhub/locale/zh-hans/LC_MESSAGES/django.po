@@ -1,7 +1,9 @@
-# Translation of Toolhub - Backend to Korean (한국어)
+# Translation of Toolhub - Backend to Simplified Chinese (中文（简体）‎)
 # Exported from translatewiki.net
 #
-# Author: Ykhwong
+# Author: )8
+# Author: Wuqianye
+# Author: Yfdyh000
 msgid ""
 msgstr ""
 ""
@@ -9,7 +11,7 @@ msgstr ""
 "X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ko\n"
+"Language: zh-Hans\n"
 "X-Generator: MediaWiki 1.36.0-alpha; Translate 2020-10-28\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
@@ -19,31 +21,31 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:79
 msgid "created"
-msgstr "만들어짐"
+msgstr "已创建"
 
 #: toolhub/apps/auditlog/models.py:80
 msgid "updated"
-msgstr "수정됨"
+msgstr "已更新"
 
 #: toolhub/apps/auditlog/models.py:81
 msgid "deleted"
-msgstr "삭제됨"
+msgstr "已删除"
 
 #: toolhub/apps/auditlog/models.py:86
 msgid "timestamp"
-msgstr "타임스탬프"
+msgstr "时间戳记"
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "user"
-msgstr "사용자"
+msgstr "用户"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "content type"
-msgstr "콘텐츠 유형"
+msgstr "内容类型"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "object id"
-msgstr ""
+msgstr "对象id"
 
 #: toolhub/apps/auditlog/models.py:115
 msgid "object pk"
@@ -51,7 +53,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:120
 msgid "action"
-msgstr ""
+msgstr "操作"
 
 #: toolhub/apps/auditlog/models.py:129
 msgid "auditlog entry"
@@ -67,7 +69,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:38
 msgid "Event target"
-msgstr "이벤트 대상"
+msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:62
 msgid "Audit log entry"
@@ -75,7 +77,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/views.py:32
 msgid "List all log entries."
-msgstr ""
+msgstr "列举所有日志记录"
 
 #: toolhub/apps/auditlog/views.py:35
 msgid "Info for a specific log entry."
@@ -83,15 +85,15 @@ msgstr ""
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr "툴인포 웹 크롤러"
+msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:29
 msgid "A URL that has been registered for crawling"
-msgstr "크롤링을 위해 등록된 URL"
+msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:42
 msgid "A URL to crawl"
-msgstr "크롤링할 URL"
+msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:53
 msgid "Information about a single URL processed during a crawler run"
@@ -103,23 +105,23 @@ msgstr ""
 
 #: toolhub/apps/crawler/views.py:44
 msgid "Register a new URL for crawling."
-msgstr "크롤링을 위해 새 URL을 등록합니다."
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:48
 msgid "Information about a specific crawled URL."
-msgstr "크롤링되는 특정 URL에 관한 정보입니다."
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:51
 msgid "Unregister a URL."
-msgstr "URL의 등록을 해제합니다."
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:54
 msgid "List all crawled URLs."
-msgstr "크롤한 모든 URL을 나열합니다."
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:87
 msgid "Get URLs created by the current user."
-msgstr "현재 사용자가 만든 URL을 가져옵니다."
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:105
 msgid "List all historic crawler runs."
@@ -139,35 +141,35 @@ msgstr ""
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
-msgstr "OAuth 2.0 인가 서버 API"
+msgstr "OAuth 2.0身份验证的服务器API"
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
-msgstr "OAuth 클라이언트 애플리케이션입니다."
+msgstr "OAuth客户端应用程序。"
 
 #: toolhub/apps/oauth2/serializers.py:37
 msgid "Application name"
-msgstr "애플리케이션 이름"
+msgstr "应用程序名称"
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
-msgstr ""
+msgstr "用户能识别和信任的东西"
 
 #: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
 msgid "Authorization callback URL"
-msgstr "인가 콜백 URL"
+msgstr "授权回调网址"
 
 #: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
 msgid "The application's callback URL."
-msgstr "애플리케이션의 콜백 URL"
+msgstr "该应用程序的回调网址。"
 
 #: toolhub/apps/oauth2/serializers.py:49
 msgid "Public identifier for this application"
-msgstr "이 애플리케이션의 공개 식별자"
+msgstr "此应用程序的公共标识符"
 
 #: toolhub/apps/oauth2/serializers.py:66
 msgid "OAuth Client application registration."
-msgstr "OAuth 클라이언트 애플리케이션 등록입니다."
+msgstr "OAuth客户端应用程序注册。"
 
 #: toolhub/apps/oauth2/serializers.py:74
 msgid "Secret known only to the application and the authorization server"
@@ -175,47 +177,47 @@ msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:92
 msgid "OAuth Client application update."
-msgstr "OAuth 클라이언트 애플리케이션 업데이트입니다."
+msgstr "OAuth客户端应用程序更新。"
 
 #: toolhub/apps/oauth2/serializers.py:117
 msgid "Authorized OAuth client application."
-msgstr "인가된 OAuth 클라이언트 애플리케이션입니다."
+msgstr "已授权的OAuth客户端应用程序。"
 
 #: toolhub/apps/oauth2/views.py:39
 msgid "List all client applications."
-msgstr "모든 클라이언트 애플리케이션을 나열합니다."
+msgstr "列出所有客户端应用程序。"
 
 #: toolhub/apps/oauth2/views.py:42
 msgid "Info for a client application."
-msgstr "클라이언트 애플리케이션의 정보입니다."
+msgstr "客户端应用程序的信息。"
 
 #: toolhub/apps/oauth2/views.py:45
 msgid "Register a new client application."
-msgstr "새 클라이언트 애플리케이션을 등록합니다."
+msgstr "注册新的客户端应用程序。"
 
 #: toolhub/apps/oauth2/views.py:53
 msgid "Update a client application."
-msgstr "클라이언트 애플리케이션을 업데이트합니다."
+msgstr "更新一个客户端应用程序。"
 
 #: toolhub/apps/oauth2/views.py:57
 msgid "Delete a client application."
-msgstr "클라이언트 애플리케이션을 삭제합니다."
+msgstr "删除一个客户端应用程序。"
 
 #: toolhub/apps/oauth2/views.py:94
 msgid "List applications authorized by the current user."
-msgstr "현재 사용자가 인가한 애플리케이션을 나열합니다."
+msgstr "列出当前用户已授权的应用程序。"
 
 #: toolhub/apps/oauth2/views.py:97
 msgid "Info for an authorized application."
-msgstr "인가된 애플리케이션의 정보입니다."
+msgstr "已授权应用程序的信息。"
 
 #: toolhub/apps/oauth2/views.py:109
 msgid "Revoke an application authorization."
-msgstr "애플리케이션 인가를 철회합니다."
+msgstr "废止一个应用程序授权。"
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr "툴인포"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:138
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
@@ -223,11 +225,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:146
 msgid "Human readable tool name. Recommended limit of 25 characters."
-msgstr ""
+msgstr "人类可读的工具名.建议限制25个字"
 
 #: toolhub/apps/toolinfo/models.py:152
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr "도구에 대한 장문의 설명입니다. 설명을 위해 권장되는 길이는 3~5개 문장입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:159
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
@@ -235,7 +237,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:174
 msgid "The primary tool developer."
-msgstr "주 도구 개발자입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:180
 msgid "A link to the repository where the tool code is hosted."
@@ -259,11 +261,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:222
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
-msgstr "참인 경우 이 도구의 사용은 공식적으로 권고되지 않습니다. `replaced_by` 변수를 사용하여 대안이 되는 도구를 정의할 수 있습니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:231
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
-msgstr "이 도구가 구식인 경우 이 변수는 대체 도구를 링크하기 위해 사용하는 것이 좋습니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:238
 msgid "If true, this tool is unstable and can change or go offline at any time."
@@ -295,11 +297,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:310
 msgid "The manner in which the tool is used. Select one from the list of options."
-msgstr "도구가 사용되는 방식입니다. 옵션 목록에서 하나를 선택하십시오."
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:318
 msgid "A link to the tool's API, if available."
-msgstr "도구의 API 링크입니다. (사용 가능한 경우)"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:325
 msgid "A link to the tool's developer documentation, if available."
@@ -339,111 +341,111 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:58
 msgid "Supported wikis"
-msgstr "지원되는 위키"
+msgstr "支持的wikis"
 
 #: toolhub/apps/toolinfo/serializers.py:63
 msgid "Any wiki"
-msgstr "모든 위키"
+msgstr "如何wiki"
 
 #: toolhub/apps/toolinfo/serializers.py:64
 msgid "Wikimedia Commons"
-msgstr "위키미디어 공용"
+msgstr "维基共享资源"
 
 #: toolhub/apps/toolinfo/serializers.py:65
 msgid "MediaWiki wiki"
-msgstr "미디어위키 위키"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:66
 msgid "Wikispecies"
-msgstr "위키생물종"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:67
 msgid "Any Wikibooks"
-msgstr "모든 위키책"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:68
 msgid "Wikidata"
-msgstr "위키데이터"
+msgstr "维基数据"
 
 #: toolhub/apps/toolinfo/serializers.py:69
 msgid "Any Wikinews"
-msgstr "모든 위키뉴스"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:70
 msgid "Any Wikipedia"
-msgstr "모든 위키백과"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:71
 msgid "Any Wikiquote"
-msgstr "모든 위키인용집"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:72
 msgid "Any Wikisource"
-msgstr "모든 위키문헌"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:73
 msgid "Any Wikiversity"
-msgstr "모든 위키배움터"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:74
 msgid "Any Wikivoyage"
-msgstr "모든 위키여행"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:75
 msgid "Any Wiktionary"
-msgstr "모든 위키사전"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:92
 msgid "Description of a tool"
-msgstr "도구 설명"
+msgstr "工具描述"
 
 #: toolhub/apps/toolinfo/serializers.py:144
 msgid "Summary of a tool"
-msgstr "도구 요약"
+msgstr "工具概要"
 
 #: toolhub/apps/toolinfo/views.py:32
 msgid "List all tools."
-msgstr "모든 도구를 나열합니다."
+msgstr "列举所有工具"
 
 #: toolhub/apps/toolinfo/views.py:35
 msgid "Info for a specific tool."
-msgstr "특정 도구의 정보입니다."
+msgstr ""
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
-msgstr "개인 정보"
+msgstr "个人信息"
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr "권한"
+msgstr "许可"
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
-msgstr "중요 날짜"
+msgstr "重要日期"
 
 #: toolhub/apps/user/apps.py:26
 msgid "Toolhub user"
-msgstr "툴허브 사용자"
+msgstr ""
 
 #: toolhub/apps/user/models.py:34
 msgid "username"
-msgstr "사용자 이름"
+msgstr "用户名"
 
 #: toolhub/apps/user/models.py:37
 msgid "Required. 255 characters or fewer."
-msgstr "필수입니다. 255자 이하."
+msgstr "必填.不得多于255个字"
 
 #: toolhub/apps/user/models.py:40
 msgid "A user with that username already exists."
-msgstr "해당 사용자 이름의 사용자가 이미 존재합니다."
+msgstr "用户名已占用"
 
 #: toolhub/apps/user/serializers.py:36
 msgid "Information about the current user"
-msgstr "현재 사용자에 관한 정보"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:57
 msgid "Information about the current locale"
-msgstr "현재 로케일에 관한 정보"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:74
 msgid "Social authentication information for a user"
@@ -451,15 +453,15 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:104
 msgid "Detailed user information"
-msgstr "상세 사용자 정보"
+msgstr "用户信息细节"
 
 #: toolhub/apps/user/serializers.py:118
 msgid "User information"
-msgstr "사용자 정보"
+msgstr "基本信息"
 
 #: toolhub/apps/user/serializers.py:130
 msgid "Group information"
-msgstr "그룹 정보"
+msgstr "小组信息"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
@@ -467,43 +469,43 @@ msgstr ""
 
 #: toolhub/apps/user/views.py:46
 msgid "Get information about the currently logged in user."
-msgstr "현재 로그인한 사용자에 관한 정보를 가져옵니다."
+msgstr ""
 
 #: toolhub/apps/user/views.py:70
 msgid "Get current locale."
-msgstr "현재 로케일을 가져옵니다."
+msgstr ""
 
 #: toolhub/apps/user/views.py:81
 msgid "Set locale."
-msgstr "로케일을 설정합니다."
+msgstr ""
 
 #: toolhub/apps/user/views.py:99
 msgid "List all active users."
-msgstr "활동 중인 모든 사용자를 나열합니다."
+msgstr "列举所有活跃用户"
 
 #: toolhub/apps/user/views.py:102
 msgid "Info for a specific user."
-msgstr "특정 사용자의 정보입니다."
+msgstr "特定用户的信息"
 
 #: toolhub/apps/user/views.py:122
 msgid "List all user groups."
-msgstr "모든 사용자 그룹을 나열합니다."
+msgstr "列举所有用户组"
 
 #: toolhub/apps/user/views.py:125
 msgid "Info for a user group."
-msgstr "사용자 그룹의 정보입니다."
+msgstr ""
 
 #: toolhub/settings.py:334
 msgid "Read scope"
-msgstr "읽기 범위"
+msgstr "读取范围"
 
 #: toolhub/settings.py:335
 msgid "Write scope"
-msgstr "쓰기 범위"
+msgstr "写入范围"
 
 #: toolhub/settings.py:361
 msgid "Toolhub API"
-msgstr "툴허브 API"
+msgstr ""
 
 #: vue/templates/vue/base.html:20
 msgid "Toolhub's user interface requires JavaScript to be enabled."
@@ -511,9 +513,9 @@ msgstr ""
 
 #: vue/templates/vue/main.html:7
 msgid "Toolhub - a catalog of Wikimedia tools"
-msgstr "툴허브 - 위키미디어 도구의 카탈로그"
+msgstr ""
 
 #: vue/templates/vue/main.html:13
 msgid "LOADING"
-msgstr "불러오는 중"
+msgstr "加载"
 

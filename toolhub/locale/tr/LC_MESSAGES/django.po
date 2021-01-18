@@ -1,11 +1,12 @@
 # Translation of Toolhub - Backend to Turkish (Türkçe)
 # Exported from translatewiki.net
 #
+# Author: Hedda
 # Author: MuratTheTurkish
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-07 14:28:53+0000\n"
+"PO-Revision-Date: 2021-01-18 15:59:00+0000\n"
 "X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -47,7 +48,7 @@ msgstr "nesne kimliği"
 
 #: toolhub/apps/auditlog/models.py:115
 msgid "object pk"
-msgstr "nesne pk"
+msgstr "nesne birincil anahtarı"
 
 #: toolhub/apps/auditlog/models.py:120
 msgid "action"
@@ -55,11 +56,11 @@ msgstr "eylem"
 
 #: toolhub/apps/auditlog/models.py:129
 msgid "auditlog entry"
-msgstr "denetim günlüğü girişi"
+msgstr "denetim günlüğü girdisi"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "auditlog entries"
-msgstr "denetim günlüğü girişleri"
+msgstr "denetim günlüğü girdileri"
 
 #: toolhub/apps/auditlog/serializers.py:29
 msgid "Event action"
@@ -71,15 +72,15 @@ msgstr "Etkinlik hedefi"
 
 #: toolhub/apps/auditlog/serializers.py:62
 msgid "Audit log entry"
-msgstr "Denetim günlüğü girişi"
+msgstr "Denetim günlüğü girdisi"
 
 #: toolhub/apps/auditlog/views.py:32
 msgid "List all log entries."
-msgstr "Tüm günlük girişlerini listeleyin."
+msgstr "Tüm günlük girdileri listeleyin."
 
 #: toolhub/apps/auditlog/views.py:35
 msgid "Info for a specific log entry."
-msgstr "Belirli bir günlük girişi için bilgi."
+msgstr "Belirli bir günlük girdisi için bilgi."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"

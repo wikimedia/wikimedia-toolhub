@@ -2,11 +2,12 @@
 # Exported from translatewiki.net
 #
 # Author: BryanDavis
+# Author: Eleassar
 # Author: Nike
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-07 14:28:54+0000\n"
+"PO-Revision-Date: 2021-01-18 15:59:00+0000\n"
 "X-POT-Import-Date: 2021-01-05 17:31:55+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
