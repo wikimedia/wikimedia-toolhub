@@ -56,3 +56,28 @@ div.home-tool-card {
 	top: 0;
 	right: 0;
 }
+
+#notifications {
+	/* z-index just below the level of our nav menu */
+	z-index: 5;
+	position: fixed;
+	bottom: 0%;
+}
+
+@media only screen and ( min-width: 960px ) {
+	.v-application--is-ltr #notifications {
+		margin-left: 28px;
+		left: 50%;
+		transform: translateX( -50% );
+	}
+
+	.v-application--is-rtl #notifications {
+		margin-right: 28px;
+		right: 50%;
+		transform: translateX( 50% );
+	}
+}
+
+#notifications .v-alert {
+	border: thin solid currentColor !important;
+}

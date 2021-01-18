@@ -8,3 +8,4 @@
 /docs/htmlcov
 /node_modules/
 /vue/dist/
+/vue/dist-tests/

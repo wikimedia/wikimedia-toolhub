@@ -3,6 +3,7 @@ const path = require( 'path' );
 const BundleTracker = require( 'webpack-bundle-tracker' );
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isTest = process.env.NODE_ENV === 'test';
 const PORT = process.env.PORT || 8001;
 
 const pages = {
@@ -14,7 +15,11 @@ const pages = {
 	}
 };
 
-const buildDir = 'vue/dist';
+// Keep bundles built for running test separate from bundles for the dev/prod
+// server. Test bundles skip building somethings and do not split into the
+// same chunks as dev/prod bundles. Why? Good question. Webpack gets angry is
+// the best answer I have at the moment. :/
+const buildDir = isTest ? 'vue/dist-tests' : 'vue/dist';
 
 module.exports = {
 	pages: pages,
@@ -35,20 +40,22 @@ module.exports = {
 		devtool: isProduction ? false : 'cheap-source-map'
 	},
 	chainWebpack: ( config ) => {
-		// Separate vendored js into its own bundle
-		config.optimization.splitChunks(
-			{
-				cacheGroups: {
-					vendor: {
-						test: /[\\/]node_modules[\\/]/,
-						name: 'chunk-vendors',
-						chunks: 'all',
-						priority: 1,
-						enforce: true
+		if ( !isTest ) {
+			// Separate vendored js into its own bundle
+			config.optimization.splitChunks(
+				{
+					cacheGroups: {
+						vendor: {
+							test: /[\\/]node_modules[\\/]/,
+							name: 'chunk-vendors',
+							chunks: 'all',
+							priority: 1,
+							enforce: true
+						}
 					}
 				}
-			}
-		);
+			);
+		}
 
 		// We are not serving pages directly, so remove plugins that generate
 		// stubs for pages and including js/css.

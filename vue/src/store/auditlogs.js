@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import SwaggerClient from 'swagger-client';
+import i18n from '@/plugins/i18n';
 
 Vue.use( Vuex );
 
@@ -8,17 +9,12 @@ export default {
 	namespaced: true,
 	state: {
 		auditLogs: [],
-		numLogs: 0,
-		apiErrorMsg: ''
+		numLogs: 0
 	},
 	mutations: {
 		AUDIT_LOGS( state, logs ) {
 			state.auditLogs = logs.results;
 			state.numLogs = logs.count;
-			state.apiErrorMsg = '';
-		},
-		ERROR( state, error ) {
-			state.apiErrorMsg = error;
 		}
 	},
 	actions: {
@@ -45,7 +41,9 @@ export default {
 			const resp = await context.dispatch( 'makeApiCall', url );
 
 			if ( resp.error ) {
-				context.commit( 'ERROR', resp.error );
+				this._vm.$notify.error(
+					i18n.t( 'auditlogs-apierror', [ page, resp.error ] )
+				);
 				return;
 			}
 

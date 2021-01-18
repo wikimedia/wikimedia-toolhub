@@ -76,13 +76,12 @@
 				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
-
 		<v-main>
 			<v-container fluid>
 				<router-view />
 			</v-container>
+			<Notifications />
 		</v-main>
-
 		<v-footer app />
 	</v-app>
 </template>

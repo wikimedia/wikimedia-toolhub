@@ -14,19 +14,6 @@
 			</v-col>
 		</v-row>
 
-		<v-row v-if="apiErrorMsg">
-			<v-col cols="12">
-				<v-alert
-					border="left"
-					type="error"
-					elevation="2"
-					width="100%"
-				>
-					{{ $t( 'apierror' ) }} {{ apiErrorMsg }}
-				</v-alert>
-			</v-col>
-		</v-row>
-
 		<v-row>
 			<v-col cols="12">
 				<dl v-for="log in auditLogs"
@@ -159,7 +146,7 @@ export default {
 		};
 	},
 	computed: {
-		...mapState( 'auditlogs', [ 'auditLogs', 'apiErrorMsg', 'numLogs' ] )
+		...mapState( 'auditlogs', [ 'auditLogs', 'numLogs' ] )
 	},
 	methods: {
 		fetchAuditLogs() {

@@ -9,13 +9,13 @@
     "lint:banana": "banana-checker vue/src/assets/locales/i18n/",
     "lint:css-rtl": "bash -c \"if grep -rnHIE --color '\\b[mp][lr]-(n?[0-9][0-6]?|auto)\\b' vue/src; then echo 'ERROR: Use S and E helper classes, not L and R. (T269056)'; echo; exit 1; fi\"",
     "lint:eslint": "eslint .",
-    "lint:stylelint": "stylelint -f verbose \"**/*.{css,scss,sass,vue}\"",
+    "lint:stylelint": "stylelint -f verbose '**/*.{css,scss,sass,vue}'",
     "lint:vue": "vue-cli-service lint",
     "schemas:generate": "jsonschema-tools materialize-all",
     "serve:vue": "vue-cli-service serve",
     "test": "npm run test:jsonschema && npm run test:vue",
     "test:jsonschema": "mocha tests/jsonschema",
-    "test:vue": "nyc vue-cli-service test:unit --colors vue/src/**/*.spec.js"
+    "test:vue": "NODE_ENV=test nyc vue-cli-service test:unit --colors 'vue/src/**/*.spec.js'"
   },
   "dependencies": {
     "@wikimedia/language-data": "^1.0.0",
@@ -141,6 +141,7 @@
         "rules": {
           "camelcase": "off",
           "no-undef": "off",
+          "no-underscore-dangle": [ "error", { "allowAfterThis": true } ],
           "vue/singleline-html-element-content-newline": "off",
           "vuetify/grid-unknown-attributes": "error",
           "vuetify/no-deprecated-classes": "error",
