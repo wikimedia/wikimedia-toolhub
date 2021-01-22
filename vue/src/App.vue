@@ -70,6 +70,7 @@
 						<v-icon>{{ route.meta.icon }}</v-icon>
 					</v-list-item-icon>
 					<v-list-item-content>
+						<!-- eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys -->
 						<v-list-item-title>{{ $t( route.name ) }}</v-list-item-title>
 					</v-list-item-content>
 				</v-list-item>
