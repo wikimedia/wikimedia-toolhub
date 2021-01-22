@@ -183,7 +183,7 @@ definitions:
         description: >-
           A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator,
           etc.
-      $schema:
+      _schema:
         type: string
         format: uri-reference
         maxLength: 32
@@ -193,7 +193,7 @@ definitions:
           end of the URI path.
         examples:
           - /toolinfo/1.2.0
-      $language:
+      _language:
         $ref: "#/definitions/language"
         default: en
         description: >-
