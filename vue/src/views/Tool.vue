@@ -34,7 +34,7 @@
 							{{ toolInfo.title }}
 						</h2>
 
-						<div class="mt-4">
+						<div class="mt-4" dir="auto">
 							{{ toolInfo.description }}
 						</div>
 

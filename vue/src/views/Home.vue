@@ -121,7 +121,7 @@
 					<v-card-text
 						class="py-0"
 					>
-						<div class="text--primary home-tool-desc line-clamp">
+						<div class="text--primary home-tool-desc line-clamp" dir="auto">
 							{{ tool.description }}
 						</div>
 
