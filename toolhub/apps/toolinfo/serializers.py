@@ -33,7 +33,7 @@ COMMONS_FILE_TMPL = "https://commons.wikimedia.org/wiki/Special:FilePath/{}"
 
 
 @doc(_("""A File: page on Commons"""))  # noqa: W0223
-class CommonsFileSerializer(serializers.Serializer):
+class CommonsFileOutputSerializer(serializers.Serializer):
     """A File: page on Commons."""
 
     page = serializers.CharField(
@@ -93,8 +93,10 @@ class ForWikiField(serializers.JSONField):
 class ToolSerializer(ModelSerializer):
     """Description of a tool."""
 
-    for_wikis = ForWikiField(required=False)
-    icon = CommonsFileSerializer(many=False, read_only=True, required=False)
+    for_wikis = ForWikiField(read_only=True, required=False)
+    icon = CommonsFileOutputSerializer(
+        many=False, read_only=True, required=False
+    )
     created_by = UserSerializer(many=False, read_only=True)
     modified_by = UserSerializer(many=False, read_only=True)
 
@@ -148,4 +150,111 @@ class SummaryToolSerializer(ModelSerializer):
         """Configure serializer."""
 
         model = Tool
-        fields = ["id", "name", "title", "url"]
+        fields = ["name", "title", "url"]
+        read_only_fields = fields
+
+
+@doc(_("""Create a tool"""))
+class CreateToolSerializer(ModelSerializer):
+    """Create a tool"""
+
+    def create(self, validated_data):
+        """Create a new tool record."""
+        obj, _, _ = Tool.objects.from_toolinfo(
+            validated_data, self.context["request"].user, Tool.ORIGIN_API
+        )
+        return obj
+
+    def to_representation(self, instance):
+        """Proxy to ToolSerializer for output."""
+        serializer = ToolSerializer(instance)
+        return serializer.data
+
+    class Meta:
+        """Configure serializer."""
+
+        model = Tool
+        fields = [
+            "name",
+            "title",
+            "description",
+            "url",
+            "keywords",
+            "author",
+            "repository",
+            "subtitle",
+            "openhub_id",
+            "url_alternates",
+            "bot_username",
+            "deprecated",
+            "replaced_by",
+            "experimental",
+            "for_wikis",
+            "icon",
+            "license",
+            "sponsor",
+            "available_ui_languages",
+            "technology_used",
+            "tool_type",
+            "api_url",
+            "developer_docs_url",
+            "user_docs_url",
+            "feedback_url",
+            "privacy_policy_url",
+            "translate_url",
+            "bugtracker_url",
+            "_language",
+        ]
+
+
+@doc(_("""Update a tool"""))
+class UpdateToolSerializer(ModelSerializer):
+    """Update a tool"""
+
+    def update(self, instance, validated_data):
+        """Update a tool record."""
+        validated_data["name"] = instance.name
+        obj, _, _ = Tool.objects.from_toolinfo(
+            validated_data, self.context["request"].user, Tool.ORIGIN_API
+        )
+        return obj
+
+    def to_representation(self, instance):
+        """Proxy to ToolSerializer for output."""
+        serializer = ToolSerializer(instance)
+        return serializer.data
+
+    class Meta:
+        """Configure serializer."""
+
+        model = Tool
+        fields = [
+            "title",
+            "description",
+            "url",
+            "keywords",
+            "author",
+            "repository",
+            "subtitle",
+            "openhub_id",
+            "url_alternates",
+            "bot_username",
+            "deprecated",
+            "replaced_by",
+            "experimental",
+            "for_wikis",
+            "icon",
+            "license",
+            "sponsor",
+            "available_ui_languages",
+            "technology_used",
+            "tool_type",
+            "api_url",
+            "developer_docs_url",
+            "user_docs_url",
+            "feedback_url",
+            "privacy_policy_url",
+            "translate_url",
+            "bugtracker_url",
+            "_language",
+        ]

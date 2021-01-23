@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-13 22:25+0000\n"
+"POT-Creation-Date: 2021-01-23 00:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -490,16 +490,36 @@ msgstr ""
 msgid "Description of a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:143
+#: toolhub/apps/toolinfo/serializers.py:145
 msgid "Summary of a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:32
-msgid "List all tools."
+#: toolhub/apps/toolinfo/serializers.py:157
+msgid "Create a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:35
+#: toolhub/apps/toolinfo/serializers.py:210
+msgid "Update a tool"
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:34
+msgid "Create a new tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:39
 msgid "Info for a specific tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:42
+msgid "Update info for a specific tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:50
+msgid "Delete a tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:53
+msgid "List all tools."
 msgstr ""
 
 #: toolhub/apps/user/admin.py:37

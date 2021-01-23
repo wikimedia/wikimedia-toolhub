@@ -51,7 +51,7 @@ root.register(
     oauth_views.AuthorizationViewSet,
     basename="accesstoken",
 )
-root.register("tools", toolinfo_views.ToolViewSet)
+root.register("tools", toolinfo_views.ToolViewSet, basename="tool")
 root.register("users", user_views.UserViewSet)
 
 crawler_runs = nested_routers.NestedSimpleRouter(

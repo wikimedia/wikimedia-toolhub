@@ -24,22 +24,38 @@ from rest_framework import permissions
 from rest_framework import viewsets
 
 from .models import Tool
+from .serializers import CreateToolSerializer
 from .serializers import ToolSerializer
+from .serializers import UpdateToolSerializer
 
 
 @extend_schema_view(
-    list=extend_schema(
-        description=_("""List all tools."""),
+    create=extend_schema(
+        description=_("""Create a new tool."""),
+        request=CreateToolSerializer,
+        responses=ToolSerializer,
     ),
     retrieve=extend_schema(
         description=_("""Info for a specific tool."""),
     ),
+    update=extend_schema(
+        description=_("""Update info for a specific tool."""),
+        request=UpdateToolSerializer,
+        responses=ToolSerializer,
+    ),
+    partial_update=extend_schema(
+        exclude=True,
+    ),
+    destroy=extend_schema(
+        description=_("""Delete a tool."""),
+    ),
+    list=extend_schema(
+        description=_("""List all tools."""),
+    ),
 )
-class ToolViewSet(viewsets.ReadOnlyModelViewSet):
+class ToolViewSet(viewsets.ModelViewSet):
     """Tools."""
 
-    queryset = Tool.objects.all()
-    serializer_class = ToolSerializer
     lookup_field = "name"
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filterset_fields = {
@@ -47,3 +63,17 @@ class ToolViewSet(viewsets.ReadOnlyModelViewSet):
     }
     ordering_fields = ["name", "modified_date"]
     ordering = ["-modified_date"]
+
+    def get_queryset(self):
+        """Filter qs by current user when editing."""
+        if self.request.method in ["DELETE", "PUT"]:
+            return Tool.objects.filter(created_by=self.request.user)
+        return Tool.objects.all()
+
+    def get_serializer_class(self):
+        """Use different serializers for input vs output."""
+        if self.request.method == "POST":
+            return CreateToolSerializer
+        if self.request.method == "PUT":
+            return UpdateToolSerializer
+        return ToolSerializer
