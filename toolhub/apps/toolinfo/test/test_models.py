@@ -46,9 +46,9 @@ class ToolManagerTest(TestCase):
 
     def assertTool(self, obj, toolinfo, origin=None, user=None):
         """Assert that a Tool model matches the given input record."""
-        if not origin:
+        if not origin:  # pragma: no cover
             origin = models.Tool.ORIGIN_CRAWLER
-        if not user:
+        if not user:  # pragma: no cover
             user = self.user
 
         self.assertIsInstance(obj, models.Tool)
@@ -86,4 +86,6 @@ class ToolManagerTest(TestCase):
             self.assertEqual(e.code, "invariant")
 
         else:
-            self.fail(msg="Expected changing origin to raise ValidationError")
+            self.fail(  # pragma: no cover
+                msg="Expected changing origin to raise ValidationError"
+            )

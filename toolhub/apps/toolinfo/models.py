@@ -25,10 +25,11 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
-from jsonfield import JSONField
-
 from toolhub.apps.auditlog.context import auditlog_user
 from toolhub.apps.auditlog.signals import registry
+from toolhub.fields import JSONSchemaField
+
+from . import schema
 
 
 logger = logging.getLogger(__name__)
@@ -178,9 +179,10 @@ class Tool(models.Model):
         (ORIGIN_API, _("api")),
     )
 
-    name = models.CharField(
+    name = models.SlugField(
         unique=True,
         max_length=255,
+        allow_unicode=True,
         help_text=_(
             "Unique identifier for this tool. Must be unique for every tool. "
             "It is recommended you prefix your tool names to reduce the risk "
@@ -209,10 +211,11 @@ class Tool(models.Model):
     )
     # TODO: Do we even want to persist this info? Valid per spec and stored in
     # db can be separate things.
-    keywords = JSONField(
+    keywords = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
+        schema=schema.KEYWORDS,
     )
     author = models.CharField(
         blank=True,
@@ -245,7 +248,7 @@ class Tool(models.Model):
             "the project ID is `foo`."
         ),
     )
-    url_alternates = JSONField(
+    url_alternates = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
@@ -253,6 +256,7 @@ class Tool(models.Model):
             "Alternate links to the tool or install documentation in "
             "different natural languages."
         ),
+        schema=schema.schema_for("url_alternates"),
     )
     bot_username = models.CharField(
         blank=True,
@@ -286,7 +290,7 @@ class Tool(models.Model):
             "go offline at any time."
         ),
     )
-    for_wikis = JSONField(
+    for_wikis = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
@@ -297,6 +301,7 @@ class Tool(models.Model):
             "'this tool works on all Wikisource wikis.' `*` means "
             "'this works on all wikis, including Wikimedia wikis.'"
         ),
+        schema=schema.schema_for("for_wikis", oneof=0),
     )
     icon = models.CharField(
         blank=True,
@@ -322,13 +327,14 @@ class Tool(models.Model):
             "Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
         ),
     )
-    sponsor = JSONField(
+    sponsor = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
         help_text=_("Organization(s) that sponsored the tool's development."),
+        schema=schema.schema_for("sponsor", oneof=1),
     )
-    available_ui_languages = JSONField(
+    available_ui_languages = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
@@ -337,8 +343,9 @@ class Tool(models.Model):
             "Use ISO 639 language codes like `zh` and `scn`. If not defined "
             "it is assumed the tool is only available in English."
         ),
+        schema=schema.schema_for("available_ui_languages", oneof=0),
     )
-    technology_used = JSONField(
+    technology_used = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
@@ -347,6 +354,7 @@ class Tool(models.Model):
             "(programming languages, development frameworks, etc.) used in "
             "creating the tool."
         ),
+        schema=schema.schema_for("technology_used", oneof=1),
     )
     tool_type = models.CharField(
         choices=TOOL_TYPE_CHOICES,
@@ -364,33 +372,37 @@ class Tool(models.Model):
         null=True,
         help_text=_("A link to the tool's API, if available."),
     )
-    developer_docs_url = JSONField(
+    developer_docs_url = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
         help_text=_(
             "A link to the tool's developer documentation, if available."
         ),
+        schema=schema.schema_for("developer_docs_url", oneof=0),
     )
-    user_docs_url = JSONField(
+    user_docs_url = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
         help_text=_("A link to the tool's user documentation, if available."),
+        schema=schema.schema_for("user_docs_url", oneof=0),
     )
-    feedback_url = JSONField(
+    feedback_url = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
         help_text=_(
             "A link to location where the tool's user can leave feedback."
         ),
+        schema=schema.schema_for("feedback_url", oneof=0),
     )
-    privacy_policy_url = JSONField(
+    privacy_policy_url = JSONSchemaField(
         blank=True,
         default=list,
         null=True,
         help_text=_("A link to the tool's privacy policy, if available."),
+        schema=schema.schema_for("privacy_policy_url", oneof=0),
     )
     translate_url = models.TextField(
         blank=True,
