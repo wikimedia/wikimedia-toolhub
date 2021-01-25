@@ -56,6 +56,13 @@ class ToolManager(models.Manager):
         "privacy_policy_url",
     ]
 
+    URL_MULTILINGUAL_FIELDS = [
+        "developer_docs_url",
+        "user_docs_url",
+        "feedback_url",
+        "privacy_policy_url",
+    ]
+
     # Fields allowed to change without considering the record to be "dirty"
     # and in need of persiting to the backing database when calling
     # `from_toolinfo`.
@@ -64,6 +71,54 @@ class ToolManager(models.Manager):
     # Fields which are not allowed to change value once they have been set
     # initially.
     INVARIANT_FIELDS = ["origin"]
+
+    def _normalize_record(self, record):
+        """Normalize incoming record formatting."""
+        if record["name"].startswith("toolforge."):
+            # Fixup tool names made by Striker to work as slugs
+            record["name"] = "toolforge-" + record["name"][10:]
+        record["name"] = name_to_slug(record["name"])
+
+        if "$schema" in record:
+            record["_schema"] = record.pop("$schema")
+
+        if "$language" in record:
+            record["_language"] = record.pop("$language")
+
+        if "_language" not in record:
+            record["_language"] = "en"
+
+        # Normalize 'oneOf' fields that could be an array of values or
+        # a bare value to always be stored as an array of values.
+        for field in self.ARRAY_FIELDS:
+            if field in record and not isinstance(record[field], list):
+                record[field] = [record[field]]
+
+        # Normalize 'url_multilingual_or_array' fields that could contain bare
+        # urls to always be stored as 'url_multilingual' objects.
+        for field in self.URL_MULTILINGUAL_FIELDS:
+            if field in record:
+                fixed = []
+                for value in record[field]:
+                    if isinstance(value, str):
+                        fixed.append(
+                            {
+                                "language": record["_language"],
+                                "url": value,
+                            }
+                        )
+                    else:
+                        fixed.append(value)
+                record[field] = fixed
+
+        if "keywords" in record:
+            record["keywords"] = list(
+                filter(
+                    None, (s.strip() for s in record["keywords"].split(","))
+                )
+            )
+
+        return record
 
     def from_toolinfo(self, record, creator, origin):
         """Create or update a Tool using data from a toolinfo record.
@@ -79,34 +134,11 @@ class ToolManager(models.Manager):
         :returns: (tool (Tool), was_created (boolean), has_changes (boolean))
         :rtype: tuple
         """
-        if record["name"].startswith("toolforge."):
-            # Fixup tool names made by Striker to work as slugs
-            record["name"] = "toolforge-" + record["name"][10:]
-        record["name"] = name_to_slug(record["name"])
-
         record["created_by"] = creator
         record["modified_by"] = creator
-
-        if "$schema" in record:
-            record["_schema"] = record.pop("$schema")
-
-        if "$language" in record:
-            record["_language"] = record.pop("$language")
-
         record["origin"] = origin
 
-        # Normalize 'oneOf' fields that could be an array of values or
-        # a bare value to always be stored as an array of values.
-        for field in self.ARRAY_FIELDS:
-            if field in record and not isinstance(record[field], list):
-                record[field] = [record[field]]
-
-        if "keywords" in record:
-            record["keywords"] = list(
-                filter(
-                    None, (s.strip() for s in record["keywords"].split(","))
-                )
-            )
+        record = self._normalize_record(record)
 
         with auditlog_user(creator):
             tool, created = self.get_or_create(
