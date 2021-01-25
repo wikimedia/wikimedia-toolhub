@@ -195,6 +195,8 @@
 
 <script>
 import { mapState } from 'vuex';
+import i18n from '@/plugins/i18n';
+
 export default {
 	name: 'Tool',
 	data() {
@@ -237,10 +239,32 @@ export default {
 			];
 
 			const filteredLinks = links.filter( function ( link ) {
-				return ( link.url && link.url.length !== 0 ) && link.url !== null;
+				return link.url && link.url.length !== 0;
 			} );
 
-			return filteredLinks;
+			const localizedLinks = filteredLinks.map( ( link ) => {
+				if ( Array.isArray( link.url ) ) {
+					const urls = link.url.reduce( ( out, value ) => {
+						return {
+							...out,
+							[ value.language ]: value.url
+						};
+					}, {} );
+					// eslint-disable-next-line no-underscore-dangle
+					const fallbackChain = i18n._getLocaleChain(
+						i18n.locale, i18n.fallbackLocale
+					);
+					for ( const value of fallbackChain ) {
+						if ( urls[ value ] ) {
+							link.url = urls[ value ];
+							break;
+						}
+					}
+				}
+				return link;
+			} );
+
+			return localizedLinks;
 		},
 		moreInfoItems() {
 			const items = [
