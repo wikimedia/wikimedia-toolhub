@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-21 14:20:11+0000\n"
+"PO-Revision-Date: 2021-01-25 17:15:39+0000\n"
 "X-POT-Import-Date: 2021-01-20 23:31:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -221,47 +221,47 @@ msgstr "Toolinfo"
 #: toolhub/apps/toolinfo/models.py:131
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
-msgstr ""
+msgstr "שינוי %(key)s אחרי היצירה ההתחלתית של העצם אסורה"
 
 #: toolhub/apps/toolinfo/models.py:164
 msgid "web app"
-msgstr ""
+msgstr "יישום וב"
 
 #: toolhub/apps/toolinfo/models.py:165
 msgid "desktop app"
-msgstr ""
+msgstr "יישום למחשבים"
 
 #: toolhub/apps/toolinfo/models.py:166
 msgid "bot"
-msgstr ""
+msgstr "בוט"
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "gadget"
-msgstr ""
+msgstr "גאדג'ט"
 
 #: toolhub/apps/toolinfo/models.py:168
 msgid "user script"
-msgstr ""
+msgstr "סקריפט משתמש"
 
 #: toolhub/apps/toolinfo/models.py:169
 msgid "command line tool"
-msgstr ""
+msgstr "כלי שורת פקודה"
 
 #: toolhub/apps/toolinfo/models.py:170
 msgid "coding framework"
-msgstr ""
+msgstr "מסגרות קידוד"
 
 #: toolhub/apps/toolinfo/models.py:171
 msgid "other"
-msgstr ""
+msgstr "אחר"
 
 #: toolhub/apps/toolinfo/models.py:177
 msgid "crawler"
-msgstr ""
+msgstr "זחלן"
 
 #: toolhub/apps/toolinfo/models.py:178
 msgid "api"
-msgstr ""
+msgstr "API"
 
 #: toolhub/apps/toolinfo/models.py:185
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
@@ -381,7 +381,7 @@ msgstr "השפה שרשומת ה־toolinfo הזאת כתובה בה. אם זה �
 
 #: toolhub/apps/toolinfo/models.py:438
 msgid "Origin of this tool record."
-msgstr ""
+msgstr "מקור רשומת הכלי הזה."
 
 #: toolhub/apps/toolinfo/serializers.py:35
 msgid "A File: page on Commons"

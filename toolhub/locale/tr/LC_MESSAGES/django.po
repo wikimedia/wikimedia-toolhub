@@ -1,12 +1,13 @@
 # Translation of Toolhub - Backend to Turkish (Türkçe)
 # Exported from translatewiki.net
 #
+# Author: Agaafd
 # Author: Hedda
 # Author: MuratTheTurkish
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-21 14:20:12+0000\n"
+"PO-Revision-Date: 2021-01-25 17:15:40+0000\n"
 "X-POT-Import-Date: 2021-01-20 23:31:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -225,15 +226,15 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:164
 msgid "web app"
-msgstr ""
+msgstr "web uygulaması"
 
 #: toolhub/apps/toolinfo/models.py:165
 msgid "desktop app"
-msgstr ""
+msgstr "Masaüstü uygulaması"
 
 #: toolhub/apps/toolinfo/models.py:166
 msgid "bot"
-msgstr ""
+msgstr "bot"
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "gadget"
@@ -253,7 +254,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:171
 msgid "other"
-msgstr ""
+msgstr "diğer"
 
 #: toolhub/apps/toolinfo/models.py:177
 msgid "crawler"

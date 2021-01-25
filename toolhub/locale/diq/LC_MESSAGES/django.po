@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-21 14:20:11+0000\n"
+"PO-Revision-Date: 2021-01-25 17:15:39+0000\n"
 "X-POT-Import-Date: 2021-01-20 23:31:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,15 +19,15 @@ msgstr "Roceka Weynayışi"
 
 #: toolhub/apps/auditlog/models.py:79
 msgid "created"
-msgstr ""
+msgstr "vıraziya"
 
 #: toolhub/apps/auditlog/models.py:80
 msgid "updated"
-msgstr ""
+msgstr "Biyo rocane"
 
 #: toolhub/apps/auditlog/models.py:81
 msgid "deleted"
-msgstr ""
+msgstr "Esteriya"
 
 #: toolhub/apps/auditlog/models.py:86
 msgid "timestamp"
@@ -79,15 +79,15 @@ msgstr "Lista qeydê dekerdeka pêroyın"
 
 #: toolhub/apps/auditlog/views.py:35
 msgid "Info for a specific log entry."
-msgstr ""
+msgstr "Spesifik qeydê roceki rê melumat"
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr ""
+msgstr "Toolinfo mısnegerê webi"
 
 #: toolhub/apps/crawler/serializers.py:29
 msgid "A URL that has been registered for crawling"
-msgstr ""
+msgstr "Qandê mısnegeri qeyd bıyaye jew gıre"
 
 #: toolhub/apps/crawler/serializers.py:42
 msgid "A URL to crawl"
@@ -143,11 +143,11 @@ msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
-msgstr ""
+msgstr "OAuth aplikasyona mışteri."
 
 #: toolhub/apps/oauth2/serializers.py:37
 msgid "Application name"
-msgstr ""
+msgstr "Namey aplikasyoni"
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
@@ -183,11 +183,11 @@ msgstr ""
 
 #: toolhub/apps/oauth2/views.py:39
 msgid "List all client applications."
-msgstr ""
+msgstr "Listey aplikasyona mışteriya pêro"
 
 #: toolhub/apps/oauth2/views.py:42
 msgid "Info for a client application."
-msgstr ""
+msgstr "Qandê jew aplikasyona mışteri melumat"
 
 #: toolhub/apps/oauth2/views.py:45
 msgid "Register a new client application."
@@ -224,23 +224,23 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:164
 msgid "web app"
-msgstr ""
+msgstr "web app"
 
 #: toolhub/apps/toolinfo/models.py:165
 msgid "desktop app"
-msgstr ""
+msgstr "destseri app"
 
 #: toolhub/apps/toolinfo/models.py:166
 msgid "bot"
-msgstr ""
+msgstr "bot"
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "gadget"
-msgstr ""
+msgstr "etiket"
 
 #: toolhub/apps/toolinfo/models.py:168
 msgid "user script"
-msgstr ""
+msgstr "Skriptê karberi"
 
 #: toolhub/apps/toolinfo/models.py:169
 msgid "command line tool"
@@ -252,15 +252,15 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:171
 msgid "other"
-msgstr ""
+msgstr "zewbi"
 
 #: toolhub/apps/toolinfo/models.py:177
 msgid "crawler"
-msgstr ""
+msgstr "mısneger"
 
 #: toolhub/apps/toolinfo/models.py:178
 msgid "api"
-msgstr ""
+msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:185
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."

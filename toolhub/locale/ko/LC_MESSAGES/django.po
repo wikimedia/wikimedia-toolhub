@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-21 14:20:12+0000\n"
+"PO-Revision-Date: 2021-01-25 17:15:39+0000\n"
 "X-POT-Import-Date: 2021-01-20 23:31:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -224,43 +224,43 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:164
 msgid "web app"
-msgstr ""
+msgstr "웹 앱"
 
 #: toolhub/apps/toolinfo/models.py:165
 msgid "desktop app"
-msgstr ""
+msgstr "데스크톱 앱"
 
 #: toolhub/apps/toolinfo/models.py:166
 msgid "bot"
-msgstr ""
+msgstr "봇"
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "gadget"
-msgstr ""
+msgstr "소도구"
 
 #: toolhub/apps/toolinfo/models.py:168
 msgid "user script"
-msgstr ""
+msgstr "사용자 스크립트"
 
 #: toolhub/apps/toolinfo/models.py:169
 msgid "command line tool"
-msgstr ""
+msgstr "명령 줄 도구"
 
 #: toolhub/apps/toolinfo/models.py:170
 msgid "coding framework"
-msgstr ""
+msgstr "코딩 프레임워크"
 
 #: toolhub/apps/toolinfo/models.py:171
 msgid "other"
-msgstr ""
+msgstr "기타"
 
 #: toolhub/apps/toolinfo/models.py:177
 msgid "crawler"
-msgstr ""
+msgstr "크롤러"
 
 #: toolhub/apps/toolinfo/models.py:178
 msgid "api"
-msgstr ""
+msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:185
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."

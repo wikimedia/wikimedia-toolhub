@@ -2,12 +2,13 @@
 # Exported from translatewiki.net
 #
 # Author: )8
+# Author: Colathewikian
 # Author: Wuqianye
 # Author: Yfdyh000
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-21 14:20:13+0000\n"
+"PO-Revision-Date: 2021-01-25 17:15:40+0000\n"
 "X-POT-Import-Date: 2021-01-20 23:31:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -230,11 +231,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:165
 msgid "desktop app"
-msgstr ""
+msgstr "桌面应用程式"
 
 #: toolhub/apps/toolinfo/models.py:166
 msgid "bot"
-msgstr ""
+msgstr "机器人"
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "gadget"
@@ -254,7 +255,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:171
 msgid "other"
-msgstr ""
+msgstr "其他"
 
 #: toolhub/apps/toolinfo/models.py:177
 msgid "crawler"

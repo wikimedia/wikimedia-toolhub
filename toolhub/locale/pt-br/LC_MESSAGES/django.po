@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-21 14:20:12+0000\n"
+"PO-Revision-Date: 2021-01-25 17:15:40+0000\n"
 "X-POT-Import-Date: 2021-01-20 23:31:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -220,11 +220,11 @@ msgstr "Toolinfo"
 #: toolhub/apps/toolinfo/models.py:131
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
-msgstr ""
+msgstr "Alterar %(key)s após a criação inicial do objeto não é permitido"
 
 #: toolhub/apps/toolinfo/models.py:164
 msgid "web app"
-msgstr ""
+msgstr "aplicativo web"
 
 #: toolhub/apps/toolinfo/models.py:165
 msgid "desktop app"
@@ -232,15 +232,15 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:166
 msgid "bot"
-msgstr ""
+msgstr "robô"
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "gadget"
-msgstr ""
+msgstr "gadget"
 
 #: toolhub/apps/toolinfo/models.py:168
 msgid "user script"
-msgstr ""
+msgstr "script do usuário"
 
 #: toolhub/apps/toolinfo/models.py:169
 msgid "command line tool"
@@ -248,11 +248,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:170
 msgid "coding framework"
-msgstr ""
+msgstr "estrutura de codificação"
 
 #: toolhub/apps/toolinfo/models.py:171
 msgid "other"
-msgstr ""
+msgstr "outros"
 
 #: toolhub/apps/toolinfo/models.py:177
 msgid "crawler"
@@ -260,7 +260,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:178
 msgid "api"
-msgstr ""
+msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:185
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
@@ -380,7 +380,7 @@ msgstr "O idioma no qual este registro de informações da ferramenta foi escrit
 
 #: toolhub/apps/toolinfo/models.py:438
 msgid "Origin of this tool record."
-msgstr ""
+msgstr "Origem deste registro de ferramenta."
 
 #: toolhub/apps/toolinfo/serializers.py:35
 msgid "A File: page on Commons"

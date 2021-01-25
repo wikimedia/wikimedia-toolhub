@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-21 14:20:13+0000\n"
+"PO-Revision-Date: 2021-01-25 17:15:40+0000\n"
 "X-POT-Import-Date: 2021-01-20 23:31:48+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -222,47 +222,47 @@ msgstr "Label used in admin console."
 #: toolhub/apps/toolinfo/models.py:131
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
-msgstr ""
+msgstr "Error message shown when an edit attempts to change a read-only field. This message uses python replacement parameter formatting. Parameters:\n* %(key)s - name of read-only field"
 
 #: toolhub/apps/toolinfo/models.py:164
 msgid "web app"
-msgstr ""
+msgstr "Name of a toolinfo record type."
 
 #: toolhub/apps/toolinfo/models.py:165
 msgid "desktop app"
-msgstr ""
+msgstr "Name of a toolinfo record type."
 
 #: toolhub/apps/toolinfo/models.py:166
 msgid "bot"
-msgstr ""
+msgstr "Name of a toolinfo record type."
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "gadget"
-msgstr ""
+msgstr "Name of a toolinfo record type."
 
 #: toolhub/apps/toolinfo/models.py:168
 msgid "user script"
-msgstr ""
+msgstr "Name of a toolinfo record type."
 
 #: toolhub/apps/toolinfo/models.py:169
 msgid "command line tool"
-msgstr ""
+msgstr "Name of a toolinfo record type."
 
 #: toolhub/apps/toolinfo/models.py:170
 msgid "coding framework"
-msgstr ""
+msgstr "Name of a toolinfo record type."
 
 #: toolhub/apps/toolinfo/models.py:171
 msgid "other"
-msgstr ""
+msgstr "Name of a toolinfo record type."
 
 #: toolhub/apps/toolinfo/models.py:177
 msgid "crawler"
-msgstr ""
+msgstr "Name of a toolinfo record origin."
 
 #: toolhub/apps/toolinfo/models.py:178
 msgid "api"
-msgstr ""
+msgstr "Name of a toolinfo record origin."
 
 #: toolhub/apps/toolinfo/models.py:185
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
@@ -382,7 +382,7 @@ msgstr "OpenAPI schema help text."
 
 #: toolhub/apps/toolinfo/models.py:438
 msgid "Origin of this tool record."
-msgstr ""
+msgstr "Label for name of a toolinfo record origin."
 
 #: toolhub/apps/toolinfo/serializers.py:35
 msgid "A File: page on Commons"
