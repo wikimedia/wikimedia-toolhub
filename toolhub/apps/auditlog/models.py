@@ -17,6 +17,7 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -131,11 +132,16 @@ class LogEntry(models.Model):
 
     def get_target(self):
         """Return the target object represented by this log entry."""
-        if self.object_id is not None:
+        try:
+            if self.object_id is not None:
+                return self.content_type.get_object_for_this_type(
+                    id=self.object_id
+                )
             return self.content_type.get_object_for_this_type(
-                id=self.object_id
+                pk=self.object_pk
             )
-        return self.content_type.get_object_for_this_type(pk=self.object_pk)
+        except ObjectDoesNotExist:
+            return None
 
     def get_target_id(self):
         """Return the id value that is set for this log entry."""
