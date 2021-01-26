@@ -19,35 +19,83 @@ import json
 
 from django.contrib.staticfiles import finders
 from django.core import exceptions
+from django.utils.deconstruct import deconstructible
+from django.utils.functional import cached_property
+from django.utils.translation import gettext_lazy as _
 
 from jsonfield import JSONField
 
 import jsonschema
 import jsonschema.exceptions
+import jsonschema.validators
+
+
+@deconstructible
+class JSONSchemaValidator:
+    """Validate against a JSON schema."""
+
+    schema = None
+    message = _("""Enter a valid JSON value.""")
+    code = "invalid"
+
+    def __init__(self, schema, message=None, code=None):
+        """Initialize instance.
+
+        :param schema: JSON schema to validate against
+        :type schema: Union[str, Mapping]
+        """
+        self.schema = schema
+        if message is not None:
+            self.message = message
+        if code is not None:
+            self.code = code
+
+    @cached_property
+    def _schema_validator(self):
+        """Get a compiled validator for our schema."""
+        if isinstance(self.schema, str):
+            with open(finders.find(self.schema), "r") as f:
+                self.schema = json.loads(f.read())
+        clazz = jsonschema.validators.validator_for(self.schema)
+        clazz.check_schema(self.schema)
+        return clazz(self.schema)
+
+    def __call__(self, value):
+        """Validate that the input matches the JSON schema."""
+        try:
+            return self._schema_validator.validate(value)
+
+        except jsonschema.exceptions.ValidationError as e:
+            raise exceptions.ValidationError(
+                self.message, code=self.code
+            ) from e
+
+    def __eq__(self, other):
+        return (
+            isinstance(other, JSONSchemaValidator)
+            and (self.schema == other.schema)
+            and (self.message == other.message)
+            and (self.code == other.code)
+        )
 
 
 class JSONSchemaField(JSONField):
     """JSONField with support for jsonschema validation."""
 
-    schema_data = None
+    _schema = None
 
     def __init__(self, *args, **kwargs):
         """Initialize object."""
-        self.schema_data = kwargs.pop("schema", None)
+        schema = kwargs.pop("schema", None)
         super().__init__(*args, **kwargs)
+        if schema is not None:
+            self._schema = schema
+            self.validators.append(JSONSchemaValidator(schema))
 
     @property
     def schema(self):
-        """Get the validaation schema."""
-        if isinstance(self.schema_data, str):
-            with open(finders.find(self.schema_data), "r") as f:
-                self.schema_data = json.loads(f.read())
-        return self.schema_data
-
-    def validate(self, value, model_instance):
-        """Validate value and raise ValidationError when invalid."""
-        super().validate(value, model_instance)
-        try:
-            return jsonschema.validate(value, self.schema)
-        except jsonschema.exceptions.ValidationError as e:
-            raise exceptions.ValidationError(str(e), code="invalid")
+        """Get the validation schema."""
+        if isinstance(self._schema, str):
+            with open(finders.find(self._schema), "r") as f:
+                self._schema = json.loads(f.read())
+        return self._schema

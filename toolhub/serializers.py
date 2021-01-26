@@ -39,7 +39,6 @@ class JSONSchemaField(serializers.ModelField):
         schema = model_field.schema
         if schema:
             set_override(self, "field", schema)
-            # TODO: add validator for jsonschema
 
     def get_attribute(self, obj):
         """Get the primitive value for an outgoing instance."""
