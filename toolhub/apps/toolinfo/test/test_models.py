@@ -71,6 +71,67 @@ class ToolManagerTest(TestCase):
         self.assertFalse(updated)
         self.assertTool(obj, self.toolinfo)
 
+    def test_legacy_toolforge_name_fix(self):
+        """Names starting with 'toolforge.' are slugified."""
+        fixture = self.toolinfo.copy()
+        fixture["name"] = "toolforge.some-tool"
+        obj, created, updated = models.Tool.objects.from_toolinfo(
+            fixture, self.user, models.Tool.ORIGIN_CRAWLER
+        )
+
+        self.assertTrue(created)
+        self.assertFalse(updated)
+        self.assertTool(
+            obj, {**self.toolinfo, **{"name": "toolforge-some-tool"}}
+        )
+        self.assertEqual(obj.name, "toolforge-some-tool")
+
+    def test_url_multilingual_fixups(self):
+        """url_multilingual fields should be normalized."""
+        fixture = self.toolinfo.copy()
+        obj, created, updated = models.Tool.objects.from_toolinfo(
+            fixture, self.user, models.Tool.ORIGIN_CRAWLER
+        )
+
+        self.assertTrue(created)
+        self.assertFalse(updated)
+        self.assertTool(
+            obj,
+            {
+                **self.toolinfo,
+                **{
+                    "developer_docs_url": {
+                        "language": "en",
+                        "url": "https://toolhub.wikimedia.org/static/docs/index.html",
+                    }
+                },
+            },
+        )
+
+    def test_keywords_string_to_array(self):
+        """Keywords as a string will convert to an array."""
+        fixture = self.toolinfo.copy()
+        fixture["keywords"] = "a, b"
+        obj, created, updated = models.Tool.objects.from_toolinfo(
+            fixture, self.user, models.Tool.ORIGIN_CRAWLER
+        )
+
+        self.assertTrue(created)
+        self.assertFalse(updated)
+        self.assertTool(obj, {**self.toolinfo, **{"keywords": ["a", "b"]}})
+
+    def test_allow_keywords_as_array(self):
+        """Keywords can be an array in the input."""
+        fixture = self.toolinfo.copy()
+        fixture["keywords"] = ["a", "b"]
+        obj, created, updated = models.Tool.objects.from_toolinfo(
+            fixture, self.user, models.Tool.ORIGIN_CRAWLER
+        )
+
+        self.assertTrue(created)
+        self.assertFalse(updated)
+        self.assertTool(obj, {**self.toolinfo, **{"keywords": ["a", "b"]}})
+
     def test_from_toolinfo_origin_change(self):
         """Expect a validation error when changing a Tool's origin."""
         models.Tool.objects.from_toolinfo(

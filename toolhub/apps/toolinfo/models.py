@@ -111,7 +111,7 @@ class ToolManager(models.Manager):
                         fixed.append(value)
                 record[field] = fixed
 
-        if "keywords" in record:
+        if "keywords" in record and isinstance(record["keywords"], str):
             record["keywords"] = list(
                 filter(
                     None, (s.strip() for s in record["keywords"].split(","))
