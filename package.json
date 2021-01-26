@@ -41,7 +41,7 @@
     "@vue/cli-plugin-unit-mocha": "^4.5.10",
     "@vue/cli-plugin-vuex": "^4.5.10",
     "@vue/cli-service": "^4.5.10",
-    "@wikimedia/jsonschema-tools": "latest",
+    "@wikimedia/jsonschema-tools": "^0.9.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",

@@ -1,3 +1,4 @@
+currentName: current.yaml
 contentTypes: [json, yaml]
 logLevel: info
 schemaBasePath: ./jsonschema/
