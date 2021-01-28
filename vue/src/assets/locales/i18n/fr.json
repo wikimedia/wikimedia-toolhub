@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Thibaut120094",
 			"Verdy p"
 		]
@@ -17,6 +18,7 @@
 	"auditlog-summary": "$1 un(e) $2",
 	"auditlogs": "Journaux d’audit",
 	"auditlogs-pagetitle": "Cette page liste toutes les entrées du journal",
+	"auditlogs-apierror": "Erreur en récupérant la page $1 : $2",
 	"authors": "Auteur(s)",
 	"bugtracker": "Suivi des anomalies",
 	"browsetool": "Parcourir les outils",
@@ -39,6 +41,7 @@
 	"locale-select": "Choisir la langue",
 	"login": "Connexion",
 	"logout": "Déconnexion",
+	"message-close": "Fermer le message",
 	"moreinfo": "Plus d’informations",
 	"mostrecentcrawledurls": "URL indexées les plus récentes",
 	"my-account": "Mon compte",

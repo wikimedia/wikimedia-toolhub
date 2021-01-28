@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Maantietäjä",
+			"Majavah",
 			"Stryn"
 		]
 	},
@@ -62,5 +63,5 @@
 	"urlscrawledon": "URL-osoitteet indeksoitiin $1",
 	"valid": "pätevä",
 	"viewmore": "Katso lisää",
-	"welcomemessage": "Tervetuloa Toolhubiin."
+	"welcomemessage": "Tervetuloa Toolhubiin"
 }
