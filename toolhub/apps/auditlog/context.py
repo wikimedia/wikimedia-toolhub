@@ -30,14 +30,15 @@ threadlocal = threading.local()
 
 
 @contextlib.contextmanager
-def auditlog_user(user):
-    """Context manager for setting user for LogEntry creation."""
+def auditlog_context(user, comment=None):
+    """Context manager for setting user and comment for LogEntry creation."""
     threadlocal.auditlog = {
         "dispatch_uid": ("auditlog_user", time.time()),
     }
     pre_save_callback = partial(
-        _on_log_entry_save,
+        _on_logentry_save,
         user=user,
+        comment=comment,
         duid=threadlocal.auditlog["dispatch_uid"],
     )
     pre_save.connect(
@@ -63,8 +64,10 @@ def auditlog_user(user):
             del threadlocal.auditlog
 
 
-def _on_log_entry_save(user, duid, sender, instance, **kwargs):  # noqa: W0613
-    """Set user on LogEntry before saving."""
+def _on_logentry_save(
+    user, comment, duid, sender, instance, **kwargs  # noqa: W0613
+):
+    """Set user and comment on LogEntry before saving."""
     try:
         auditlog = threadlocal.auditlog
     except AttributeError:
@@ -81,3 +84,5 @@ def _on_log_entry_save(user, duid, sender, instance, **kwargs):  # noqa: W0613
             and instance.user is None
         ):
             instance.user = user
+        if comment is not None:
+            instance.change_message = comment

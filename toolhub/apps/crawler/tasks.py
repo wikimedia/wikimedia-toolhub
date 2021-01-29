@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Wikimedia Foundation and contributors.
+# Copyright (c) 2021 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -72,7 +72,10 @@ class Crawler:
 
                 try:
                     obj, created, updated = Tool.objects.from_toolinfo(
-                        tool, url.created_by, Tool.ORIGIN_CRAWLER
+                        tool,
+                        url.created_by,
+                        Tool.ORIGIN_CRAWLER,
+                        "Import from {}".format(url),
                     )
                     if created:
                         run.new_tools += 1

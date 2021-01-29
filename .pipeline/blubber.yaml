@@ -207,6 +207,7 @@ variants:
       - -c
       - >-
         poetry run python3 manage.py migrate
+        && poetry run python3 manage.py createinitialrevisions
         && poetry run python3 manage.py loaddata toolhub/fixtures/demo.yaml
         && poetry run python3 manage.py crawl
         && poetry run python3 manage.py runserver --noreload --nostatic 0.0.0.0:8000

@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Wikimedia Foundation and contributors.
+# Copyright (c) 2021 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -138,6 +138,8 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "oauth2_provider",
     "rest_framework",
+    "reversion",
+    "reversion_compare",
     "social_django",
     "webpack_loader",
     # ==== Local apps ====

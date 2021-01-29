@@ -19,7 +19,7 @@ from django.test import TestCase
 
 from toolhub.apps.user.models import ToolhubUser
 
-from ..context import auditlog_user
+from ..context import auditlog_context
 from ..context import threadlocal
 
 
@@ -33,14 +33,14 @@ class ContextTest(TestCase):
             email="tester@example.org",
         )
 
-    def test_auditlog_user(self):
+    def test_auditlog_context(self):
         """Assert threadlocal state while using."""
         self.assertEqual(
             getattr(threadlocal, "auditlog", None),
             None,
             msg="No threadlocal value before contextmanager.",
         )
-        with auditlog_user(self.user):
+        with auditlog_context(self.user, "some comment"):
             self.assertIsInstance(getattr(threadlocal, "auditlog", None), dict)
             self.assertIn("dispatch_uid", threadlocal.auditlog)
             self.assertIsInstance(threadlocal.auditlog["dispatch_uid"], tuple)

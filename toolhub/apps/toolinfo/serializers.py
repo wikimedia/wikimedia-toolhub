@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Wikimedia Foundation and contributors.
+# Copyright (c) 2021 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -154,14 +154,39 @@ class SummaryToolSerializer(ModelSerializer):
         read_only_fields = fields
 
 
+class EditCommentFieldMixin(metaclass=serializers.SerializerMetaclass):
+    """Reversion comment.
+
+    When using you must add "comment" to the meta.fields collection manually.
+    """
+
+    comment = serializers.CharField(
+        label=_("""Edit summary"""),
+        help_text=_(
+            """Description of the changes you are making """
+            """to this toolinfo record."""
+        ),
+        write_only=True,
+        required=False,
+    )
+
+    def get_comment(self, instance):  # noqa: W0613
+        """Placeholder method needed for comment field."""
+        return ""
+
+
 @doc(_("""Create a tool"""))
-class CreateToolSerializer(ModelSerializer):
+class CreateToolSerializer(ModelSerializer, EditCommentFieldMixin):
     """Create a tool"""
 
     def create(self, validated_data):
         """Create a new tool record."""
+        comment = validated_data.pop("comment", None)
         obj, _, _ = Tool.objects.from_toolinfo(
-            validated_data, self.context["request"].user, Tool.ORIGIN_API
+            validated_data,
+            self.context["request"].user,
+            Tool.ORIGIN_API,
+            comment,
         )
         return obj
 
@@ -204,18 +229,23 @@ class CreateToolSerializer(ModelSerializer):
             "translate_url",
             "bugtracker_url",
             "_language",
+            "comment",
         ]
 
 
 @doc(_("""Update a tool"""))
-class UpdateToolSerializer(ModelSerializer):
+class UpdateToolSerializer(ModelSerializer, EditCommentFieldMixin):
     """Update a tool"""
 
     def update(self, instance, validated_data):
         """Update a tool record."""
         validated_data["name"] = instance.name
+        comment = validated_data.pop("comment", None)
         obj, _, _ = Tool.objects.from_toolinfo(
-            validated_data, self.context["request"].user, Tool.ORIGIN_API
+            validated_data,
+            self.context["request"].user,
+            Tool.ORIGIN_API,
+            comment,
         )
         return obj
 
@@ -257,4 +287,5 @@ class UpdateToolSerializer(ModelSerializer):
             "translate_url",
             "bugtracker_url",
             "_language",
+            "comment",
         ]

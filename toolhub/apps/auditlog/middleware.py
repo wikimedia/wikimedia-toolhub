@@ -17,7 +17,7 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 import contextlib
 
-from .context import auditlog_user
+from .context import auditlog_context
 
 
 class LogEntryUserMiddleware:
@@ -32,6 +32,6 @@ class LogEntryUserMiddleware:
         context = contextlib.nullcontext()
         if hasattr(request, "user"):
             if getattr(request.user, "is_authenticated", False):
-                context = auditlog_user(request.user)
+                context = auditlog_context(request.user)
         with context:
             return self.get_response(request)

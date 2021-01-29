@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Wikimedia Foundation and contributors.
+# Copyright (c) 2021 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -25,11 +25,23 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
-from toolhub.apps.auditlog.context import auditlog_user
+import reversion
+
+from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.auditlog.signals import registry
 from toolhub.fields import JSONSchemaField
 
 from . import schema
+
+
+# Inspiration from https://stackoverflow.com/a/24668215/8171
+#
+# Add a 'suppressed' field to the reversion Version model.
+# This this will be used to allow suppression of malicious changes by an
+# admin.
+reversion.models.Version.add_to_class(
+    "suppressed", models.BooleanField(blank=True, default=False, db_index=True)
+)
 
 
 logger = logging.getLogger(__name__)
@@ -120,7 +132,7 @@ class ToolManager(models.Manager):
 
         return record
 
-    def from_toolinfo(self, record, creator, origin):
+    def from_toolinfo(self, record, creator, origin, comment=None):
         """Create or update a Tool using data from a toolinfo record.
 
         :param self: This manager
@@ -131,6 +143,8 @@ class ToolManager(models.Manager):
         :type creator: settings.AUTH_USER_MODEL
         :param origin: Origin of this submission
         :type origin: str
+        :param comment: User provided comment for this change
+        :type comment: str
         :returns: (tool (Tool), was_created (boolean), has_changes (boolean))
         :rtype: tuple
         """
@@ -140,46 +154,51 @@ class ToolManager(models.Manager):
 
         record = self._normalize_record(record)
 
-        with auditlog_user(creator):
-            tool, created = self.get_or_create(
-                name=record["name"], defaults=record
-            )
-        if created:
-            return tool, created, False
+        with reversion.create_revision():
+            reversion.set_user(creator)
+            if comment is not None:
+                reversion.set_comment(comment)
 
-        # Compare input to prior model and decide if anything of note has
-        # changed.
-        has_changes = False
-
-        for key, value in record.items():
-            if key in self.VARIANT_FIELDS:
-                continue
-
-            prior = getattr(tool, key)
-
-            if value != prior:
-                if key in self.INVARIANT_FIELDS:
-                    raise ValidationError(
-                        _(
-                            "Changing %(key)s after initial object creation "
-                            "is not allowed"
-                        ),
-                        code="invariant",
-                        params={"key": key},
-                    )
-
-                setattr(tool, key, value)
-                has_changes = True
-                logger.debug(
-                    "%s: Updating %s to %s (was %s)",
-                    record["name"],
-                    key,
-                    value,
-                    prior,
+            with auditlog_context(creator, comment):
+                tool, created = self.get_or_create(
+                    name=record["name"], defaults=record
                 )
-        if has_changes:
-            with auditlog_user(creator):
-                tool.save()
+            if created:
+                return tool, created, False
+
+            # Compare input to prior model and decide if anything of note has
+            # changed.
+            has_changes = False
+
+            for key, value in record.items():
+                if key in self.VARIANT_FIELDS:
+                    continue
+
+                prior = getattr(tool, key)
+
+                if value != prior:
+                    if key in self.INVARIANT_FIELDS:
+                        raise ValidationError(
+                            _(
+                                "Changing %(key)s after initial "
+                                "object creation is not allowed"
+                            ),
+                            code="invariant",
+                            params={"key": key},
+                        )
+
+                    setattr(tool, key, value)
+                    has_changes = True
+                    logger.debug(
+                        "%s: Updating %s to %s (was %s)",
+                        record["name"],
+                        key,
+                        value,
+                        prior,
+                    )
+            if has_changes:
+                with auditlog_context(creator, comment):
+                    tool.save()
 
         # FIXME: what should we do if we get duplicates from
         # multiple source URLs? This can happen for example if
@@ -189,6 +208,7 @@ class ToolManager(models.Manager):
         return tool, False, has_changes
 
 
+@reversion.register()
 @registry.register()
 class Tool(models.Model):
     """Description of a tool."""

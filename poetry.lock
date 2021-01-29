@@ -199,6 +199,14 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "diff-match-patch"
+version = "20200713"
+description = "Repackaging of Google's Diff Match and Patch libraries. Offers robust algorithms to perform the operations required for synchronizing plain text."
+category = "main"
+optional = false
+python-versions = ">=2.7"
+
+[[package]]
 name = "django"
 version = "2.2.17"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
@@ -268,6 +276,29 @@ python-versions = "*"
 django = ">=2.1"
 oauthlib = ">=3.1.0"
 requests = ">=2.13.0"
+
+[[package]]
+name = "django-reversion"
+version = "3.0.9"
+description = "An extension to the Django web framework that provides version control for model instances."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+django = ">=1.11"
+
+[[package]]
+name = "django-reversion-compare"
+version = "0.13.0"
+description = "history compare for django-reversion"
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0.0"
+
+[package.dependencies]
+diff-match-patch = "*"
+django-reversion = "*"
 
 [[package]]
 name = "django-webpack-loader"
@@ -1288,7 +1319,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "947721e467cc22895d3b437b4772b57fe3e3aa8f21a75cce87cde2ebc679b336"
+content-hash = "d676a0ff00b47bac0dac2131ec45d2e2ee3dcdc39d110fe61f0415f4005e80d7"
 
 [metadata.files]
 alabaster = [
@@ -1478,6 +1509,10 @@ defusedxml = [
     {file = "defusedxml-0.7.0rc1-py2.py3-none-any.whl", hash = "sha256:8ede8ba04cf5bf7999e1492fa77df545db83717f52c5eab625f97228ebd539bf"},
     {file = "defusedxml-0.7.0rc1.tar.gz", hash = "sha256:aa621655d72cdd30f57073893b96cd0c3831a85b08b8e4954531bdac47e3e8c8"},
 ]
+diff-match-patch = [
+    {file = "diff-match-patch-20200713.tar.gz", hash = "sha256:da6f5a01aa586df23dfc89f3827e1cafbb5420be9d87769eeb079ddfd9477a18"},
+    {file = "diff_match_patch-20200713-py3-none-any.whl", hash = "sha256:8bf9d9c4e059d917b5c6312bac0c137971a32815ddbda9c682b949f2986b4d34"},
+]
 django = [
     {file = "Django-2.2.17-py3-none-any.whl", hash = "sha256:558cb27930defd9a6042133258caf797b2d1dee233959f537e3dc475cb49bd7c"},
     {file = "Django-2.2.17.tar.gz", hash = "sha256:cf5370a4d7765a9dd6d42a7b96b53c74f9446cd38209211304b210fe0404b861"},
@@ -1500,6 +1535,14 @@ django-log-request-id = [
 django-oauth-toolkit = [
     {file = "django-oauth-toolkit-1.3.3.tar.gz", hash = "sha256:48a45d9ec23b50646b14b4b93988bd0d35ad5cf933edfcb833a8527f86329f28"},
     {file = "django_oauth_toolkit-1.3.3-py2.py3-none-any.whl", hash = "sha256:a67ab96089b96540e34dc8d1ee6e6305a80ee01a36f7688108cd94b77406bdd3"},
+]
+django-reversion = [
+    {file = "django-reversion-3.0.9.tar.gz", hash = "sha256:a5af55f086a3f9c38be2f049c251e06005b9ed48ba7a109473736b1fc95a066f"},
+    {file = "django_reversion-3.0.9-py3-none-any.whl", hash = "sha256:1b57127a136b969f4b843a915c72af271febe7f336469db6c27121f8adcad35c"},
+]
+django-reversion-compare = [
+    {file = "django-reversion-compare-0.13.0.tar.gz", hash = "sha256:db7c82ade287e172a9e84d6666b1df0b673eb97ab8a81a8cb52212f359e17f9b"},
+    {file = "django_reversion_compare-0.13.0-py3-none-any.whl", hash = "sha256:087d6951462692e0a477a84e5460d606661be6ea2224e40dc9eded193ab7b928"},
 ]
 django-webpack-loader = [
     {file = "django-webpack-loader-0.7.0.tar.gz", hash = "sha256:7a3c88201aa54481f9399465615cbe7b9aece8081496a6d0287b7cb8e232f447"},

@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Wikimedia Foundation and contributors.
+# Copyright (c) 2021 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -17,11 +17,13 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 import django.contrib.admin
 
+import reversion_compare.admin
+
 from . import models
 
 
 @django.contrib.admin.register(models.Tool)
-class ToolAdmin(django.contrib.admin.ModelAdmin):
+class ToolAdmin(reversion_compare.admin.CompareVersionAdmin):
     """Register with admin."""
 
     list_display = (
