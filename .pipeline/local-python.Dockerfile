@@ -35,4 +35,4 @@ RUN poetry "install" "--no-root"
 COPY --chown=65533:65533 [".", "."]
 COPY --chown=65533:65533 --from=dockerize ["/srv/dockerize", "/srv/dockerize"]
 
-LABEL blubber.variant="local-python" blubber.version="0.8.0+f063588"
+LABEL blubber.variant="local-python" blubber.version="0.8.0+cb55e3b"
