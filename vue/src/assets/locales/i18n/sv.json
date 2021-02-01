@@ -22,6 +22,7 @@
 	"locale-select": "Välj språk",
 	"login": "Logga in",
 	"logout": "Logga ut",
+	"message-close": "Stäng meddelande",
 	"moreinfo": "Mer information",
 	"my-account": "Mitt konto",
 	"newtoolsfound": "{{PLURAL:$1|1 verktyg|$1 verktyg}}",

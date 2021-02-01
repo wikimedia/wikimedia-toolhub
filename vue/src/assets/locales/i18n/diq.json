@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"1917 Ekim Devrimi"
+			"1917 Ekim Devrimi",
+			"Mirzali"
 		]
 	},
 	"add": "Dekerê",
@@ -37,7 +38,7 @@
 	"sourcecode": "Kodê çımeyi",
 	"status": "Weziyet",
 	"system-user": "Sistem",
-	"talk": "vaten",
+	"talk": "werênayış",
 	"technologyused": "Gureyniyaye teknoloci",
 	"toolhub": "Toolhub",
 	"tools": "Haceti",

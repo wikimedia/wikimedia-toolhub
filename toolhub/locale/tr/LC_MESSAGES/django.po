@@ -3,11 +3,12 @@
 #
 # Author: Agaafd
 # Author: Hedda
+# Author: Joseph
 # Author: MuratTheTurkish
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-28 17:58:19+0000\n"
+"PO-Revision-Date: 2021-02-01 14:34:46+0000\n"
 "X-POT-Import-Date: 2021-01-26 19:31:43+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -222,7 +223,7 @@ msgstr "Araç bilgisi"
 #: toolhub/apps/toolinfo/models.py:164
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
-msgstr ""
+msgstr "İlk nesne yaratımından sonra %(key)s değiştirmeye izin verilmez"
 
 #: toolhub/apps/toolinfo/models.py:197
 msgid "web app"
@@ -238,19 +239,19 @@ msgstr "bot"
 
 #: toolhub/apps/toolinfo/models.py:200
 msgid "gadget"
-msgstr ""
+msgstr "küçük araç"
 
 #: toolhub/apps/toolinfo/models.py:201
 msgid "user script"
-msgstr ""
+msgstr "kullanıcı betiği"
 
 #: toolhub/apps/toolinfo/models.py:202
 msgid "command line tool"
-msgstr ""
+msgstr "komut satırı aracı"
 
 #: toolhub/apps/toolinfo/models.py:203
 msgid "coding framework"
-msgstr ""
+msgstr "kodlama çerçevesi"
 
 #: toolhub/apps/toolinfo/models.py:204
 msgid "other"
@@ -258,11 +259,11 @@ msgstr "diğer"
 
 #: toolhub/apps/toolinfo/models.py:210
 msgid "crawler"
-msgstr ""
+msgstr "web robotu"
 
 #: toolhub/apps/toolinfo/models.py:211
 msgid "api"
-msgstr ""
+msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:219
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
@@ -382,7 +383,7 @@ msgstr "Bu araç bilgisi kaydının yazıldığı dil. Ayarlanmazsa, varsayılan
 
 #: toolhub/apps/toolinfo/models.py:482
 msgid "Origin of this tool record."
-msgstr ""
+msgstr "Bu araç kaydının kökeni."
 
 #: toolhub/apps/toolinfo/serializers.py:35
 msgid "A File: page on Commons"
@@ -454,15 +455,15 @@ msgstr "Bir aracın özeti"
 
 #: toolhub/apps/toolinfo/serializers.py:157
 msgid "Create a tool"
-msgstr ""
+msgstr "Bir araç oluşturun"
 
 #: toolhub/apps/toolinfo/serializers.py:210
 msgid "Update a tool"
-msgstr ""
+msgstr "Bir aracı güncelleyin"
 
 #: toolhub/apps/toolinfo/views.py:34
 msgid "Create a new tool."
-msgstr ""
+msgstr "Yeni bir araç oluşturun."
 
 #: toolhub/apps/toolinfo/views.py:39
 msgid "Info for a specific tool."
@@ -470,11 +471,11 @@ msgstr "Belirli bir araç için bilgi."
 
 #: toolhub/apps/toolinfo/views.py:42
 msgid "Update info for a specific tool."
-msgstr ""
+msgstr "Belirli bir araç için güncelleme bilgisi."
 
 #: toolhub/apps/toolinfo/views.py:50
 msgid "Delete a tool."
-msgstr ""
+msgstr "Bir aracı silin."
 
 #: toolhub/apps/toolinfo/views.py:53
 msgid "List all tools."
@@ -566,7 +567,7 @@ msgstr "Bir kullanıcı grubu için bilgi."
 
 #: toolhub/fields.py:38
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Geçerli bir JSON değeri girin."
 
 #: toolhub/settings.py:335
 msgid "Read scope"

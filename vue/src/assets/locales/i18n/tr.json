@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Joseph",
 			"MuratTheTurkish"
 		]
 	},
@@ -16,6 +17,7 @@
 	"auditlog-summary": "$2 $1",
 	"auditlogs": "Denetim günlükleri",
 	"auditlogs-pagetitle": "Bu sayfa tüm günlük girişlerini listeler",
+	"auditlogs-apierror": "$1 sayfasını alırken hata: $2",
 	"authors": "Yazar",
 	"bugtracker": "Hata İzleyici",
 	"browsetool": "Aracı göz at",
@@ -38,6 +40,7 @@
 	"locale-select": "Dil seç",
 	"login": "Oturum aç",
 	"logout": "Oturumu kapat",
+	"message-close": "İletiyi kapat",
 	"moreinfo": "Daha fazla bilgi",
 	"mostrecentcrawledurls": "En son taranan URL'ler",
 	"my-account": "Hesabım",
