@@ -141,7 +141,12 @@
         "rules": {
           "camelcase": "off",
           "no-undef": "off",
-          "no-underscore-dangle": [ "error", { "allowAfterThis": true } ],
+          "no-underscore-dangle": [
+            "error",
+            {
+              "allowAfterThis": true
+            }
+          ],
           "vue/singleline-html-element-content-newline": "off",
           "vuetify/grid-unknown-attributes": "error",
           "vuetify/no-deprecated-classes": "error",
