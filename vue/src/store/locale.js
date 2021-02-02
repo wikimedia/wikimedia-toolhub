@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import languageData from '@wikimedia/language-data';
-import BananaFormatter from '@/plugins/i18n-formatter';
+import BananaFormatter from '@/plugins/i18n/formatter';
 
 Vue.use( Vuex );
 

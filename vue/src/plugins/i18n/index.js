@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import FallbackMap from './i18n-fallback';
-import BananaFormatter from './i18n-formatter';
+import FallbackMap from './fallback';
+import BananaFormatter from './formatter';
 import { initialLocale } from '@/store/locale';
 
 Vue.use( VueI18n );
