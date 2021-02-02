@@ -11,7 +11,7 @@
 			<v-col cols="12">
 				<rapi-doc
 					id="apidoc"
-					spec-url="/api/.schema"
+					spec-url="/api/schema/"
 					class="no-gutters flex-wrap flex-column fill-height elevation-1 py-6"
 					allow-api-list-style-selection="false"
 					allow-authentication="false"

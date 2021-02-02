@@ -32,7 +32,7 @@ from .routers import root
 
 
 api_patterns = [
-    path(".schema", SpectacularAPIView.as_view(), name="schema"),
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
     path("user/", CurrentUserView.as_view(), name="user"),
     path("user/locale/", LocaleView.as_view(), name="locale"),
     path("", include(root.urls)),
