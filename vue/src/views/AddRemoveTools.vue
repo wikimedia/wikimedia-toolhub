@@ -226,6 +226,9 @@ export default {
 				this.getUrlsCreatedByUser();
 			}
 		}
+	},
+	mounted() {
+		this.getUrlsCreatedByUser();
 	}
 };
 </script>
