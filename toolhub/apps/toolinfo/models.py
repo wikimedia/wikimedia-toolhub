@@ -32,6 +32,7 @@ from toolhub.apps.auditlog.signals import registry
 from toolhub.fields import JSONSchemaField
 
 from . import schema
+from .validators import validate_spdx
 
 
 # Inspiration from https://stackoverflow.com/a/24668215/8171
@@ -369,7 +370,6 @@ class Tool(models.Model):
             "that depicts the tool."
         ),
     )
-    # TODO: pick list/validation of SPDX identifiers
     license = models.CharField(  # noqa: A003
         blank=True,
         max_length=255,
@@ -378,6 +378,7 @@ class Tool(models.Model):
             "The software license the tool code is available under. "
             "Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
         ),
+        validators=[validate_spdx],
     )
     sponsor = JSONSchemaField(
         blank=True,

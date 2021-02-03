@@ -89,6 +89,38 @@ class ForWikiField(serializers.JSONField):
         return [self._localize_label(v) for v in value]
 
 
+@doc(_("""SPDX license information"""))  # noqa: W0223
+class SpdxLicenseSerializer(serializers.Serializer):
+    """SPDX license information."""
+
+    id = serializers.CharField(  # noqa: A003
+        source="licenseId",
+        max_length=255,
+        read_only=True,
+        help_text=_("SPDX license ID"),
+    )
+    name = serializers.CharField(
+        max_length=255,
+        read_only=True,
+        help_text=_("Full name of this license"),
+    )
+    osi_approved = serializers.BooleanField(
+        source="isOsiApproved",
+        read_only=True,
+        help_text=_("Is this license approved as 'open source' by the OSI?"),
+    )
+    fsf_approved = serializers.BooleanField(
+        source="isFsfLibre",
+        read_only=True,
+        help_text=_("Is this license approved as 'free software' by the FSF?"),
+    )
+    deprecated = serializers.BooleanField(
+        source="isDeprecatedLicenseId",
+        read_only=True,
+        help_text=_("Is this license considered to be outdated?"),
+    )
+
+
 @doc(_("""Description of a tool"""))
 class ToolSerializer(ModelSerializer):
     """Description of a tool."""
