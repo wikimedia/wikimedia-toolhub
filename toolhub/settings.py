@@ -373,4 +373,8 @@ SPECTACULAR_SETTINGS = {
     "OAUTH2_FLOWS": ["authorizationCode"],
     "OAUTH2_AUTHORIZATION_URL": "/o/authorize/",
     "OAUTH2_TOKEN_URL": "/o/token/",
+    "POSTPROCESSING_HOOKS": [
+        "toolhub.openapi.postprocess_schema_responses",
+        "drf_spectacular.hooks.postprocess_schema_enums",
+    ],
 }
