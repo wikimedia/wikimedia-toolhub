@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Joseph",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"SaldırganSincap"
 		]
 	},
 	"add": "Ekle",
@@ -13,7 +14,7 @@
 	"addremovetools-summarytitle": "Bu özellik nasıl çalışır",
 	"apidocs": "API belgeleri",
 	"apidocumentation": "API Belgelendirmesi",
-	"apierror": "Eyvah! Bir şeyler yanlış gitti.",
+	"apierror": "Eyvah! Bir hata oluştu: $1",
 	"auditlog-summary": "$2 $1",
 	"auditlogs": "Denetim günlükleri",
 	"auditlogs-pagetitle": "Bu sayfa tüm günlük girişlerini listeler",

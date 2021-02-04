@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-28 17:58:18+0000\n"
-"X-POT-Import-Date: 2021-01-26 19:31:43+0000\n"
+"PO-Revision-Date: 2021-02-04 07:49:20+0000\n"
+"X-POT-Import-Date: 2021-02-03 23:31:41+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
@@ -217,168 +217,168 @@ msgstr "애플리케이션 인가를 철회합니다."
 msgid "Toolinfo"
 msgstr "툴인포"
 
-#: toolhub/apps/toolinfo/models.py:164
+#: toolhub/apps/toolinfo/models.py:184
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:197
+#: toolhub/apps/toolinfo/models.py:218
 msgid "web app"
 msgstr "웹 앱"
 
-#: toolhub/apps/toolinfo/models.py:198
+#: toolhub/apps/toolinfo/models.py:219
 msgid "desktop app"
 msgstr "데스크톱 앱"
 
-#: toolhub/apps/toolinfo/models.py:199
+#: toolhub/apps/toolinfo/models.py:220
 msgid "bot"
 msgstr "봇"
 
-#: toolhub/apps/toolinfo/models.py:200
+#: toolhub/apps/toolinfo/models.py:221
 msgid "gadget"
 msgstr "소도구"
 
-#: toolhub/apps/toolinfo/models.py:201
+#: toolhub/apps/toolinfo/models.py:222
 msgid "user script"
 msgstr "사용자 스크립트"
 
-#: toolhub/apps/toolinfo/models.py:202
+#: toolhub/apps/toolinfo/models.py:223
 msgid "command line tool"
 msgstr "명령 줄 도구"
 
-#: toolhub/apps/toolinfo/models.py:203
+#: toolhub/apps/toolinfo/models.py:224
 msgid "coding framework"
 msgstr "코딩 프레임워크"
 
-#: toolhub/apps/toolinfo/models.py:204
+#: toolhub/apps/toolinfo/models.py:225
 msgid "other"
 msgstr "기타"
 
-#: toolhub/apps/toolinfo/models.py:210
+#: toolhub/apps/toolinfo/models.py:231
 msgid "crawler"
 msgstr "크롤러"
 
-#: toolhub/apps/toolinfo/models.py:211
+#: toolhub/apps/toolinfo/models.py:232
 msgid "api"
 msgstr "api"
 
-#: toolhub/apps/toolinfo/models.py:219
+#: toolhub/apps/toolinfo/models.py:240
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:227
+#: toolhub/apps/toolinfo/models.py:248
 msgid "Human readable tool name. Recommended limit of 25 characters."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:233
+#: toolhub/apps/toolinfo/models.py:254
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
 msgstr "도구에 대한 장문의 설명입니다. 설명을 위해 권장되는 길이는 3~5개 문장입니다."
 
-#: toolhub/apps/toolinfo/models.py:240
+#: toolhub/apps/toolinfo/models.py:261
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:256
+#: toolhub/apps/toolinfo/models.py:277
 msgid "The primary tool developer."
 msgstr "주 도구 개발자입니다."
 
-#: toolhub/apps/toolinfo/models.py:262
+#: toolhub/apps/toolinfo/models.py:283
 msgid "A link to the repository where the tool code is hosted."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:269
+#: toolhub/apps/toolinfo/models.py:290
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:278
+#: toolhub/apps/toolinfo/models.py:299
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:288
+#: toolhub/apps/toolinfo/models.py:309
 msgid "Alternate links to the tool or install documentation in different natural languages."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:298
+#: toolhub/apps/toolinfo/models.py:319
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:305
+#: toolhub/apps/toolinfo/models.py:326
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
 msgstr "참인 경우 이 도구의 사용은 공식적으로 권고되지 않습니다. `replaced_by` 변수를 사용하여 대안이 되는 도구를 정의할 수 있습니다."
 
-#: toolhub/apps/toolinfo/models.py:314
+#: toolhub/apps/toolinfo/models.py:335
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
 msgstr "이 도구가 구식인 경우 이 변수는 대체 도구를 링크하기 위해 사용하는 것이 좋습니다."
 
-#: toolhub/apps/toolinfo/models.py:321
+#: toolhub/apps/toolinfo/models.py:342
 msgid "If true, this tool is unstable and can change or go offline at any time."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:330
+#: toolhub/apps/toolinfo/models.py:351
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:348
+#: toolhub/apps/toolinfo/models.py:369
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:358
+#: toolhub/apps/toolinfo/models.py:378
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:366
+#: toolhub/apps/toolinfo/models.py:387
 msgid "Organization(s) that sponsored the tool's development."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:374
+#: toolhub/apps/toolinfo/models.py:395
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:385
+#: toolhub/apps/toolinfo/models.py:406
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:397
+#: toolhub/apps/toolinfo/models.py:418
 msgid "The manner in which the tool is used. Select one from the list of options."
 msgstr "도구가 사용되는 방식입니다. 옵션 목록에서 하나를 선택하십시오."
 
-#: toolhub/apps/toolinfo/models.py:405
+#: toolhub/apps/toolinfo/models.py:426
 msgid "A link to the tool's API, if available."
 msgstr "도구의 API 링크입니다. (사용 가능한 경우)"
 
-#: toolhub/apps/toolinfo/models.py:412
+#: toolhub/apps/toolinfo/models.py:433
 msgid "A link to the tool's developer documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:420
+#: toolhub/apps/toolinfo/models.py:441
 msgid "A link to the tool's user documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:428
+#: toolhub/apps/toolinfo/models.py:449
 msgid "A link to location where the tool's user can leave feedback."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:436
+#: toolhub/apps/toolinfo/models.py:457
 msgid "A link to the tool's privacy policy, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:443
+#: toolhub/apps/toolinfo/models.py:464
 msgid "A link to the tool's translation interface."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:450
+#: toolhub/apps/toolinfo/models.py:471
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:459
+#: toolhub/apps/toolinfo/models.py:480
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:472
+#: toolhub/apps/toolinfo/models.py:493
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:482
+#: toolhub/apps/toolinfo/models.py:503
 msgid "Origin of this tool record."
 msgstr ""
 
@@ -443,40 +443,85 @@ msgid "Any Wiktionary"
 msgstr "모든 위키사전"
 
 #: toolhub/apps/toolinfo/serializers.py:92
+msgid "SPDX license information"
+msgstr "SPDX 라이선스 정보"
+
+#: toolhub/apps/toolinfo/serializers.py:100
+msgid "SPDX license ID"
+msgstr "SPDX 라이선스 ID"
+
+#: toolhub/apps/toolinfo/serializers.py:105
+msgid "Full name of this license"
+msgstr "이 라이선스의 정식 명칭"
+
+#: toolhub/apps/toolinfo/serializers.py:110
+msgid "Is this license approved as 'open source' by the OSI?"
+msgstr "이 라이선스가 OSI에 의해 '오픈 소스'로 승인된 것입니까?"
+
+#: toolhub/apps/toolinfo/serializers.py:115
+msgid "Is this license approved as 'free software' by the FSF?"
+msgstr "이 라이선스가 FSF에 의해 '자유 소프트웨어'로 승인된 것입니까?"
+
+#: toolhub/apps/toolinfo/serializers.py:120
+msgid "Is this license considered to be outdated?"
+msgstr "이 라이선스의 기간이 만료된 것으로 간주됩니까?"
+
+#: toolhub/apps/toolinfo/serializers.py:124
 msgid "Description of a tool"
 msgstr "도구 설명"
 
-#: toolhub/apps/toolinfo/serializers.py:145
+#: toolhub/apps/toolinfo/serializers.py:177
 msgid "Summary of a tool"
 msgstr "도구 요약"
 
-#: toolhub/apps/toolinfo/serializers.py:157
+#: toolhub/apps/toolinfo/serializers.py:196
+msgid "Edit summary"
+msgstr "편집 요약"
+
+#: toolhub/apps/toolinfo/serializers.py:198
+msgid "Description of the changes you are making to this toolinfo record."
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:210
 msgid "Create a tool"
 msgstr "도구 만들기"
 
-#: toolhub/apps/toolinfo/serializers.py:210
+#: toolhub/apps/toolinfo/serializers.py:268
 msgid "Update a tool"
 msgstr "도구 업데이트"
 
-#: toolhub/apps/toolinfo/views.py:34
+#: toolhub/apps/toolinfo/validators.py:28
+#, python-format
+msgid "%(value)s is not a known SPDX license identifier."
+msgstr "%(value)s 값은(는) 알려진 SPDX 라이선스 식별자가 아닙니다."
+
+#: toolhub/apps/toolinfo/views.py:41
 msgid "Create a new tool."
 msgstr "새 도구를 만듭니다."
 
-#: toolhub/apps/toolinfo/views.py:39
+#: toolhub/apps/toolinfo/views.py:46
 msgid "Info for a specific tool."
 msgstr "특정 도구의 정보입니다."
 
-#: toolhub/apps/toolinfo/views.py:42
+#: toolhub/apps/toolinfo/views.py:49
 msgid "Update info for a specific tool."
 msgstr "특정 도구의 정보를 업데이트합니다."
 
-#: toolhub/apps/toolinfo/views.py:50
+#: toolhub/apps/toolinfo/views.py:57
 msgid "Delete a tool."
 msgstr "도구를 삭제합니다."
 
-#: toolhub/apps/toolinfo/views.py:53
+#: toolhub/apps/toolinfo/views.py:60
 msgid "List all tools."
 msgstr "모든 도구를 나열합니다."
+
+#: toolhub/apps/toolinfo/views.py:91
+msgid "Info for a specific SPDX license."
+msgstr "특정 SPDX 라이선스의 정보입니다."
+
+#: toolhub/apps/toolinfo/views.py:96
+msgid "List all SPDX licenses."
+msgstr "모든 SPDX 라이선스를 나열합니다."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
@@ -566,15 +611,15 @@ msgstr "사용자 그룹의 정보입니다."
 msgid "Enter a valid JSON value."
 msgstr "유효한 JSON 값을 입력하십시오."
 
-#: toolhub/settings.py:335
+#: toolhub/settings.py:337
 msgid "Read scope"
 msgstr "읽기 범위"
 
-#: toolhub/settings.py:336
+#: toolhub/settings.py:338
 msgid "Write scope"
 msgstr "쓰기 범위"
 
-#: toolhub/settings.py:362
+#: toolhub/settings.py:364
 msgid "Toolhub API"
 msgstr "툴허브 API"
 

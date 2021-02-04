@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-01-28 17:58:18+0000\n"
-"X-POT-Import-Date: 2021-01-26 19:31:43+0000\n"
+"PO-Revision-Date: 2021-02-04 07:49:20+0000\n"
+"X-POT-Import-Date: 2021-02-03 23:31:41+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
@@ -218,168 +218,168 @@ msgstr "שלילת אישור מיישום."
 msgid "Toolinfo"
 msgstr "Toolinfo"
 
-#: toolhub/apps/toolinfo/models.py:164
+#: toolhub/apps/toolinfo/models.py:184
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
 msgstr "שינוי %(key)s אחרי היצירה ההתחלתית של העצם אסורה"
 
-#: toolhub/apps/toolinfo/models.py:197
+#: toolhub/apps/toolinfo/models.py:218
 msgid "web app"
 msgstr "יישום וב"
 
-#: toolhub/apps/toolinfo/models.py:198
+#: toolhub/apps/toolinfo/models.py:219
 msgid "desktop app"
 msgstr "יישום למחשבים"
 
-#: toolhub/apps/toolinfo/models.py:199
+#: toolhub/apps/toolinfo/models.py:220
 msgid "bot"
 msgstr "בוט"
 
-#: toolhub/apps/toolinfo/models.py:200
+#: toolhub/apps/toolinfo/models.py:221
 msgid "gadget"
 msgstr "גאדג'ט"
 
-#: toolhub/apps/toolinfo/models.py:201
+#: toolhub/apps/toolinfo/models.py:222
 msgid "user script"
 msgstr "סקריפט משתמש"
 
-#: toolhub/apps/toolinfo/models.py:202
+#: toolhub/apps/toolinfo/models.py:223
 msgid "command line tool"
 msgstr "כלי שורת פקודה"
 
-#: toolhub/apps/toolinfo/models.py:203
+#: toolhub/apps/toolinfo/models.py:224
 msgid "coding framework"
 msgstr "מסגרות קידוד"
 
-#: toolhub/apps/toolinfo/models.py:204
+#: toolhub/apps/toolinfo/models.py:225
 msgid "other"
 msgstr "אחר"
 
-#: toolhub/apps/toolinfo/models.py:210
+#: toolhub/apps/toolinfo/models.py:231
 msgid "crawler"
 msgstr "זחלן"
 
-#: toolhub/apps/toolinfo/models.py:211
+#: toolhub/apps/toolinfo/models.py:232
 msgid "api"
 msgstr "API"
 
-#: toolhub/apps/toolinfo/models.py:219
+#: toolhub/apps/toolinfo/models.py:240
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
 msgstr "מזהה ייחודי עבור הכלי הזה. חייב להיות ייחודי לכל כלי. מומלץ לתת תחילית לכלים שלך כדי להקטין את הסיכון להתנגשויות."
 
-#: toolhub/apps/toolinfo/models.py:227
+#: toolhub/apps/toolinfo/models.py:248
 msgid "Human readable tool name. Recommended limit of 25 characters."
 msgstr "שם קריא לבני־אדם לכלי שלך. מומלץ להגביל ל־25 תווים."
 
-#: toolhub/apps/toolinfo/models.py:233
+#: toolhub/apps/toolinfo/models.py:254
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
 msgstr "תיאור ארוך יותר של הכלי. האורך המומלץלתיאור הוא 3–5 משפטים."
 
-#: toolhub/apps/toolinfo/models.py:240
+#: toolhub/apps/toolinfo/models.py:261
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
 msgstr "קישור ישיר לכלי או להוראות על איך להשתמש בכלי או להתקין אותו."
 
-#: toolhub/apps/toolinfo/models.py:256
+#: toolhub/apps/toolinfo/models.py:277
 msgid "The primary tool developer."
 msgstr "המפתח העיקרי של הכלי."
 
-#: toolhub/apps/toolinfo/models.py:262
+#: toolhub/apps/toolinfo/models.py:283
 msgid "A link to the repository where the tool code is hosted."
 msgstr "קישור למאגר שבו מתארח הקוד של הכלי."
 
-#: toolhub/apps/toolinfo/models.py:269
+#: toolhub/apps/toolinfo/models.py:290
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
 msgstr "ארוך יותר מהכותרת המלאה, אבל קצר יותר מהתיאור. זה צריך להוסיף קצת הקשר לכותרת."
 
-#: toolhub/apps/toolinfo/models.py:278
+#: toolhub/apps/toolinfo/models.py:299
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
 msgstr "מזהה הפרויקט ב־OpenHub. בהינתן URL של https://openhub.net/p/foo, מזהה הפרויקט הוא `foo`."
 
-#: toolhub/apps/toolinfo/models.py:288
+#: toolhub/apps/toolinfo/models.py:309
 msgid "Alternate links to the tool or install documentation in different natural languages."
 msgstr "קישורים חלופיים לתיעוד הכלי או ההתקנה בשפות טבעיות שונות."
 
-#: toolhub/apps/toolinfo/models.py:298
+#: toolhub/apps/toolinfo/models.py:319
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
 msgstr "אם הכלי הוא בוט, שם המשתמש של הבוט בוויקימדיה. אין לכלול \"משתמש:\" או תחיליות דומות."
 
-#: toolhub/apps/toolinfo/models.py:305
+#: toolhub/apps/toolinfo/models.py:326
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
 msgstr "אם כן, השימוש בכלי הזה רשמית אינו מומלץ. הפרמטר `replaced_by` יכול לשמש להגדרת החלופה."
 
-#: toolhub/apps/toolinfo/models.py:314
+#: toolhub/apps/toolinfo/models.py:335
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
 msgstr "אם הכלי הזה מוכרז בתור מיושן, כדאי להשתמש בפרמטר הזה כדי לקשר לכלי המחליף."
 
-#: toolhub/apps/toolinfo/models.py:321
+#: toolhub/apps/toolinfo/models.py:342
 msgid "If true, this tool is unstable and can change or go offline at any time."
 msgstr "אם כן, הכלי הזה אינו יציב ויכול להשתנות או להיעלם בכל זמן."
 
-#: toolhub/apps/toolinfo/models.py:330
+#: toolhub/apps/toolinfo/models.py:351
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr "מחרוזת או מערך של מחרוזות שמתארים את אתרי הוויקי (אחד או רבים) שאפשר להשתמש בהם בכל הזה. יש להשתמש בשמות שרת כגון `zh.wiktionary.org`. יש להשתמש בכוכביות בתור תווים כלליים. למשל, הפירוש של <span dir=\"ltr\">`*.wikisource.org`</span> אומר ש\"הכלי הזה יכול לעבוד בכל אתר ויקיטקסט\" (Wikisource). הפירוש של `*` הוא \"זה עובד בכל אתרי הוויקי, כולל אתרי ויקי של ויקימדיה\"."
 
-#: toolhub/apps/toolinfo/models.py:348
+#: toolhub/apps/toolinfo/models.py:369
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr "קישור לדף תיאור קובץ בוויקישיתוף לסמל שמייצג את הכלי."
 
-#: toolhub/apps/toolinfo/models.py:358
+#: toolhub/apps/toolinfo/models.py:378
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
 msgstr "רישיון התוכנה שהכלי זמין תחתיו. השתמשי במזהה רישיון תקני לפי SPDX כגון \"GPL-3.0-or-later\"."
 
-#: toolhub/apps/toolinfo/models.py:366
+#: toolhub/apps/toolinfo/models.py:387
 msgid "Organization(s) that sponsored the tool's development."
 msgstr "ארגון (אחד או יותר) שתמכו בפיתוח של הכלי."
 
-#: toolhub/apps/toolinfo/models.py:374
+#: toolhub/apps/toolinfo/models.py:395
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
 msgstr "השפות שממשק המשתמש של הכלי תורגם אליהן. יש להשתמש בקוד שפה לפי תקן ISO 639 כגון `zh` ו־`scn`. אם זה לא מוגדר, ההנחה היא שהכלי זמין רק באנגלית."
 
-#: toolhub/apps/toolinfo/models.py:385
+#: toolhub/apps/toolinfo/models.py:406
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
 msgstr "מחרוזת או מערך של מחרוזות עם רשימת טכנולוגיות (שפות תכנות, מסגרות פיתוח, וכו') ששימשו ליצירת הכלי."
 
-#: toolhub/apps/toolinfo/models.py:397
+#: toolhub/apps/toolinfo/models.py:418
 msgid "The manner in which the tool is used. Select one from the list of options."
 msgstr "האופן שבו משתמשים בכלי. נא לבחור אפשר אחת מתוך הרשימה."
 
-#: toolhub/apps/toolinfo/models.py:405
+#: toolhub/apps/toolinfo/models.py:426
 msgid "A link to the tool's API, if available."
 msgstr "קישור ל־API של הכלי, אם זמין."
 
-#: toolhub/apps/toolinfo/models.py:412
+#: toolhub/apps/toolinfo/models.py:433
 msgid "A link to the tool's developer documentation, if available."
 msgstr "קישור לתיעוד הכלי למפתחים, אם זמין."
 
-#: toolhub/apps/toolinfo/models.py:420
+#: toolhub/apps/toolinfo/models.py:441
 msgid "A link to the tool's user documentation, if available."
 msgstr "קישור לתיעוד הכלי למשתמשים, אם זמין."
 
-#: toolhub/apps/toolinfo/models.py:428
+#: toolhub/apps/toolinfo/models.py:449
 msgid "A link to location where the tool's user can leave feedback."
 msgstr "קישור למקום שבו משתמש הכלי יכול להשאיר משוב."
 
-#: toolhub/apps/toolinfo/models.py:436
+#: toolhub/apps/toolinfo/models.py:457
 msgid "A link to the tool's privacy policy, if available."
 msgstr "קישור למדיניות הפרטיות של הכלי, אם זמין."
 
-#: toolhub/apps/toolinfo/models.py:443
+#: toolhub/apps/toolinfo/models.py:464
 msgid "A link to the tool's translation interface."
 msgstr "קישור לממשק התרגום של הכלי."
 
-#: toolhub/apps/toolinfo/models.py:450
+#: toolhub/apps/toolinfo/models.py:471
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
 msgstr "קישור לכלי מעקב באגים של הכלי בגיטהאב, ביבטאקט, פבריקטור, וכו'."
 
-#: toolhub/apps/toolinfo/models.py:459
+#: toolhub/apps/toolinfo/models.py:480
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
 msgstr "URI שמזהה את ה־jsonschema של רשומת ה־toolinfo.json הזאת. זה אמור להיות URI קצר שמכיל רק את השם ואת הגרסה בסוף נתיב ה־URI."
 
-#: toolhub/apps/toolinfo/models.py:472
+#: toolhub/apps/toolinfo/models.py:493
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
 msgstr "השפה שרשומת ה־toolinfo הזאת כתובה בה. אם זה לא מוגדר, אז ברירת המחדל היא אנגלית. יש להשתמש בקוד שפה לפי ISO 639."
 
-#: toolhub/apps/toolinfo/models.py:482
+#: toolhub/apps/toolinfo/models.py:503
 msgid "Origin of this tool record."
 msgstr "מקור רשומת הכלי הזה."
 
@@ -444,40 +444,85 @@ msgid "Any Wiktionary"
 msgstr "כל אתר ויקימילון"
 
 #: toolhub/apps/toolinfo/serializers.py:92
+msgid "SPDX license information"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:100
+msgid "SPDX license ID"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:105
+msgid "Full name of this license"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:110
+msgid "Is this license approved as 'open source' by the OSI?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:115
+msgid "Is this license approved as 'free software' by the FSF?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:120
+msgid "Is this license considered to be outdated?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:124
 msgid "Description of a tool"
 msgstr "תיאור כלי"
 
-#: toolhub/apps/toolinfo/serializers.py:145
+#: toolhub/apps/toolinfo/serializers.py:177
 msgid "Summary of a tool"
 msgstr "תקציר כלי"
 
-#: toolhub/apps/toolinfo/serializers.py:157
+#: toolhub/apps/toolinfo/serializers.py:196
+msgid "Edit summary"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:198
+msgid "Description of the changes you are making to this toolinfo record."
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:210
 msgid "Create a tool"
 msgstr "יצירת כלי"
 
-#: toolhub/apps/toolinfo/serializers.py:210
+#: toolhub/apps/toolinfo/serializers.py:268
 msgid "Update a tool"
 msgstr "עדכון כלי"
 
-#: toolhub/apps/toolinfo/views.py:34
+#: toolhub/apps/toolinfo/validators.py:28
+#, python-format
+msgid "%(value)s is not a known SPDX license identifier."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:41
 msgid "Create a new tool."
 msgstr "יצירת כלי חדש."
 
-#: toolhub/apps/toolinfo/views.py:39
+#: toolhub/apps/toolinfo/views.py:46
 msgid "Info for a specific tool."
 msgstr "מידע עבור כלי מסוים."
 
-#: toolhub/apps/toolinfo/views.py:42
+#: toolhub/apps/toolinfo/views.py:49
 msgid "Update info for a specific tool."
 msgstr "עדכון מידע על כלי מסוים."
 
-#: toolhub/apps/toolinfo/views.py:50
+#: toolhub/apps/toolinfo/views.py:57
 msgid "Delete a tool."
 msgstr "מחיקת כלי."
 
-#: toolhub/apps/toolinfo/views.py:53
+#: toolhub/apps/toolinfo/views.py:60
 msgid "List all tools."
 msgstr "רשימת כלים."
+
+#: toolhub/apps/toolinfo/views.py:91
+msgid "Info for a specific SPDX license."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:96
+msgid "List all SPDX licenses."
+msgstr ""
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
@@ -567,15 +612,15 @@ msgstr "מידע על קבוצת משתמשים."
 msgid "Enter a valid JSON value."
 msgstr "נא להזין ערך JSON תקין."
 
-#: toolhub/settings.py:335
+#: toolhub/settings.py:337
 msgid "Read scope"
 msgstr "טווח קריאה"
 
-#: toolhub/settings.py:336
+#: toolhub/settings.py:338
 msgid "Write scope"
 msgstr "טווח כתיבה"
 
-#: toolhub/settings.py:362
+#: toolhub/settings.py:364
 msgid "Toolhub API"
 msgstr "API של Toolhub"
 
