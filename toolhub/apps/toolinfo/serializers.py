@@ -37,10 +37,19 @@ class CommonsFileOutputSerializer(serializers.Serializer):
     """A File: page on Commons."""
 
     page = serializers.CharField(
-        max_length=2047, read_only=True, required=False
+        max_length=2047,
+        read_only=True,
+        required=False,
+        help_text=_(
+            "A link to a Wikimedia Commons file description page for an icon "
+            "that depicts the tool."
+        ),
     )
     img = serializers.CharField(
-        max_length=2047, read_only=True, required=False
+        max_length=2047,
+        read_only=True,
+        required=False,
+        help_text=_("URL to image."),
     )
 
     def to_representation(self, instance):

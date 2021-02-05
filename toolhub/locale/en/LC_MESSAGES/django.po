@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-03 01:50+0000\n"
+"POT-Creation-Date: 2021-02-05 21:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -346,7 +346,7 @@ msgid ""
 "wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:369
+#: toolhub/apps/toolinfo/models.py:369 toolhub/apps/toolinfo/serializers.py:44
 msgid ""
 "A link to a Wikimedia Commons file description page for an icon that depicts "
 "the tool."
@@ -430,107 +430,111 @@ msgstr ""
 msgid "A File: page on Commons"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:58
-msgid "Supported wikis"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:63
-msgid "Any wiki"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:64
-msgid "Wikimedia Commons"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:65
-msgid "MediaWiki wiki"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:66
-msgid "Wikispecies"
+#: toolhub/apps/toolinfo/serializers.py:52
+msgid "URL to image."
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:67
-msgid "Any Wikibooks"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:68
-msgid "Wikidata"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:69
-msgid "Any Wikinews"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:70
-msgid "Any Wikipedia"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:71
-msgid "Any Wikiquote"
+msgid "Supported wikis"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:72
-msgid "Any Wikisource"
+msgid "Any wiki"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:73
-msgid "Any Wikiversity"
+msgid "Wikimedia Commons"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:74
-msgid "Any Wikivoyage"
+msgid "MediaWiki wiki"
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:75
+msgid "Wikispecies"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:76
+msgid "Any Wikibooks"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:77
+msgid "Wikidata"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:78
+msgid "Any Wikinews"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:79
+msgid "Any Wikipedia"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:80
+msgid "Any Wikiquote"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:81
+msgid "Any Wikisource"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:82
+msgid "Any Wikiversity"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:83
+msgid "Any Wikivoyage"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:84
 msgid "Any Wiktionary"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:92
+#: toolhub/apps/toolinfo/serializers.py:101
 msgid "SPDX license information"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:100
+#: toolhub/apps/toolinfo/serializers.py:109
 msgid "SPDX license ID"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:105
+#: toolhub/apps/toolinfo/serializers.py:114
 msgid "Full name of this license"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:110
+#: toolhub/apps/toolinfo/serializers.py:119
 msgid "Is this license approved as 'open source' by the OSI?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:115
+#: toolhub/apps/toolinfo/serializers.py:124
 msgid "Is this license approved as 'free software' by the FSF?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:120
+#: toolhub/apps/toolinfo/serializers.py:129
 msgid "Is this license considered to be outdated?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:124
+#: toolhub/apps/toolinfo/serializers.py:133
 msgid "Description of a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:177
+#: toolhub/apps/toolinfo/serializers.py:186
 msgid "Summary of a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:196
+#: toolhub/apps/toolinfo/serializers.py:205
 msgid "Edit summary"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:198
+#: toolhub/apps/toolinfo/serializers.py:207
 msgid "Description of the changes you are making to this toolinfo record."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:210
+#: toolhub/apps/toolinfo/serializers.py:219
 msgid "Create a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:268
+#: toolhub/apps/toolinfo/serializers.py:277
 msgid "Update a tool"
 msgstr ""
 
@@ -653,6 +657,10 @@ msgstr ""
 
 #: toolhub/fields.py:38
 msgid "Enter a valid JSON value."
+msgstr ""
+
+#: toolhub/openapi.py:36
+msgid "API error"
 msgstr ""
 
 #: toolhub/settings.py:337
