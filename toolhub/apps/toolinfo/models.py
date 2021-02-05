@@ -362,7 +362,7 @@ class Tool(models.Model):
         null=True,
         validators=[
             validators.RegexValidator(
-                regex=r"^https://commons.wikimedia.org/wiki/File:.+\\..+$"
+                regex=r"^https://commons\.wikimedia\.org/wiki/File:.+\..+$"
             ),
         ],
         help_text=_(
