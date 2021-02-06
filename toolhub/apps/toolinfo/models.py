@@ -21,7 +21,6 @@ from django.conf import settings
 from django.core import validators
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
@@ -510,7 +509,7 @@ class Tool(models.Model):
         on_delete=models.CASCADE,
     )
     created_date = models.DateTimeField(
-        default=timezone.now, blank=True, editable=False, db_index=True
+        auto_now_add=True, editable=False, db_index=True
     )
     modified_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -520,7 +519,7 @@ class Tool(models.Model):
         on_delete=models.SET_NULL,
     )
     modified_date = models.DateTimeField(
-        default=timezone.now, blank=True, editable=False, db_index=True
+        auto_now=True, editable=False, db_index=True
     )
 
     objects = ToolManager()

@@ -17,7 +17,6 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.conf import settings
 from django.db import models
-from django.utils import timezone
 
 from toolhub.apps.auditlog.signals import registry
 from toolhub.apps.toolinfo.models import Tool
@@ -36,7 +35,7 @@ class Url(models.Model):
         on_delete=models.CASCADE,
     )
     created_date = models.DateTimeField(
-        default=timezone.now, blank=True, editable=False, db_index=True
+        auto_now_add=True, blank=True, editable=False, db_index=True
     )
 
     def __str__(self):
