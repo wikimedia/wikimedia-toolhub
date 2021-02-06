@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Wikimedia Foundation and contributors.
+# Copyright (c) 2021 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -64,4 +64,15 @@ crawler_runs.register(
     "urls",
     crawler_views.RunUrlViewSet,
     basename="run-urls",
+)
+
+tool_revisions = nested_routers.NestedSimpleRouter(
+    root,
+    "tools",
+    lookup="tool",
+)
+tool_revisions.register(
+    "revisions",
+    toolinfo_views.ToolRevisionViewSet,
+    basename="tool-revisions",
 )

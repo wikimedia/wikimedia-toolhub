@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Wikimedia Foundation and contributors.
+# Copyright (c) 2021 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -29,6 +29,7 @@ from toolhub.apps.user.views import LocaleView
 
 from .routers import crawler_runs
 from .routers import root
+from .routers import tool_revisions
 
 
 api_patterns = [
@@ -37,6 +38,7 @@ api_patterns = [
     path("user/locale/", LocaleView.as_view(), name="locale"),
     path("", include(root.urls)),
     path("", include(crawler_runs.urls)),
+    path("", include(tool_revisions.urls)),
 ]
 
 urlpatterns = [

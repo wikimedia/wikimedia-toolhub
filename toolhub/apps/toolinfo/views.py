@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Wikimedia Foundation and contributors.
+# Copyright (c) 2021 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.types import OpenApiTypes
@@ -22,16 +23,24 @@ from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
+import jsonpatch
+
 from rest_framework import permissions
 from rest_framework import response
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.decorators import action
+
+from reversion.models import Version
 
 import spdx_license_list
 
 from .models import Tool
 from .serializers import CreateToolSerializer
 from .serializers import SpdxLicenseSerializer
+from .serializers import ToolRevisionDetailSerializer
+from .serializers import ToolRevisionDiffSerializer
+from .serializers import ToolRevisionSerializer
 from .serializers import ToolSerializer
 from .serializers import UpdateToolSerializer
 
@@ -86,11 +95,100 @@ class ToolViewSet(viewsets.ModelViewSet):
         return ToolSerializer
 
 
+path_param_tool_name = OpenApiParameter(
+    "tool_name",
+    type=OpenApiTypes.STR,
+    location=OpenApiParameter.PATH,
+    description=_("""Unique identifier for this tool."""),
+)
+
+
+@extend_schema_view(
+    retrieve=extend_schema(
+        description=_("""Get revision information."""),
+        parameters=[path_param_tool_name],
+        responses=ToolRevisionDetailSerializer,
+    ),
+    list=extend_schema(
+        description=_("""List revisions."""),
+        parameters=[path_param_tool_name],
+        responses=ToolRevisionSerializer,
+    ),
+    diff=extend_schema(
+        description=_("""Compare two revisions to find difference."""),
+        parameters=[
+            path_param_tool_name,
+            OpenApiParameter(
+                "other_id",
+                type=OpenApiTypes.NUMBER,
+                location=OpenApiParameter.PATH,
+                description=_(
+                    "A unique integer value identifying version "
+                    "to diff against."
+                ),
+            ),
+        ],
+        responses=ToolRevisionDiffSerializer,
+    ),
+)
+class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
+    """Historical revisions of a tool."""
+
+    queryset = Version.objects.none()
+    serializer_class = ToolRevisionSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        """Filter queryset by Tool using path param."""
+        tool = get_object_or_404(Tool, name=self.kwargs["tool_name"])
+        qs = Version.objects.select_related("revision", "revision__user")
+        qs = qs.get_for_object(tool)
+        return qs
+
+    def get_serializer_class(self):
+        """Use different serializers for list vs retrieve."""
+        if self.action == "retrieve":
+            return ToolRevisionDetailSerializer
+        return ToolRevisionSerializer
+
+    @action(
+        detail=True,
+        methods=["get"],
+        url_path=r"diff/(?P<other_id>\d+)",
+    )
+    def diff(self, request, **kwargs):
+        """Diff."""
+        id_left = kwargs["pk"]
+        id_right = kwargs["other_id"]
+        qs = self.get_queryset()
+
+        version_left = get_object_or_404(qs, pk=id_left)
+        version_right = get_object_or_404(qs, pk=id_right)
+
+        data_left = ToolSerializer(version_left.field_dict).data
+        data_right = ToolSerializer(version_right.field_dict).data
+
+        patch = jsonpatch.make_patch(data_left, data_right)
+
+        diff = ToolRevisionDiffSerializer(
+            {
+                "original": version_left,
+                "operations": patch,
+                "result": version_right,
+            }
+        )
+
+        return response.Response(diff.data)
+
+
 @extend_schema_view(
     retrieve=extend_schema(
         description=_("""Info for a specific SPDX license."""),
         request=SpdxLicenseSerializer,
         responses=SpdxLicenseSerializer,
+        parameters=[
+            OpenApiParameter("id", OpenApiTypes.STR, OpenApiParameter.PATH),
+        ],
     ),
     list=extend_schema(
         description=_("""List all SPDX licenses."""),

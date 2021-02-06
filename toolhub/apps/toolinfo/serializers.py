@@ -19,12 +19,17 @@ import re
 
 from django.utils.translation import gettext_lazy as _
 
+from drf_spectacular.utils import extend_schema_field
+
 from rest_framework import serializers
+
+from reversion.models import Version
 
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.decorators import doc
 from toolhub.serializers import ModelSerializer
 
+from . import schema
 from .models import Tool
 
 
@@ -295,3 +300,62 @@ class UpdateToolSerializer(CreateToolSerializer):
 
         # Remove "name" from parent's fields list
         fields = CreateToolSerializer.Meta.fields[1:]
+
+
+@doc(_("""Tool revision."""))
+class ToolRevisionSerializer(ModelSerializer):
+    """Tool revision."""
+
+    id = serializers.IntegerField(  # noqa: A003
+        source="pk",
+        help_text=_("A unique integer value identifying this revision."),
+    )
+    timestamp = serializers.DateTimeField(
+        source="revision.date_created",
+        read_only=True,
+        help_text=("The timestamp of the revision."),
+    )
+    user = UserSerializer(source="revision.user", many=False, read_only=True)
+    comment = serializers.CharField(
+        source="revision.comment",
+        read_only=True,
+        default="",
+        help_text=_("Comment by the user for the revision."),
+    )
+
+    class Meta:
+        """Configure serializer."""
+
+        model = Version
+        fields = ["id", "timestamp", "user", "comment"]
+
+
+@doc(_("""Tool revision detail."""))
+class ToolRevisionDetailSerializer(ToolRevisionSerializer):
+    """Tool revision details."""
+
+    toolinfo = ToolSerializer(source="field_dict", many=False)
+
+    class Meta(ToolRevisionSerializer.Meta):
+        """Configure serializer."""
+
+        fields = list(ToolRevisionSerializer.Meta.fields)
+        fields.append("toolinfo")
+
+
+@extend_schema_field(schema.JSONPATCH)
+class JSONPatchField(serializers.JSONField):
+    """JSONField with schema."""
+
+
+@doc(_("""Tool revision difference."""))  # noqa: W0223
+class ToolRevisionDiffSerializer(serializers.Serializer):
+    """Tool revision difference."""
+
+    original = ToolRevisionSerializer(
+        help_text=_("Revision to apply changes to."),
+    )
+    operations = JSONPatchField()
+    result = ToolRevisionSerializer(
+        help_text=_("Revision after applying changes."),
+    )
