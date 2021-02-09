@@ -1,7 +1,8 @@
 version: v4
 
 # FIXME: we need a non-dev Python3 buster base image
-base: docker-registry.wikimedia.org/python3-build-buster
+# HACK!! T274310: use older base image with newer pip
+base: docker-registry.wikimedia.org/python3-build-buster:0.0.2-s1
 
 runs:
   environment:
