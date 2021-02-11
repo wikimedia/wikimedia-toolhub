@@ -14,4 +14,4 @@ RUN npm install
 COPY --chown=65533:65533 [".", "."]
 ENV NODE_ENV="development"
 
-LABEL blubber.variant="dev-nodejs" blubber.version="0.8.0+d91393a"
+LABEL blubber.variant="dev-nodejs" blubber.version="0.8.0+007009e"

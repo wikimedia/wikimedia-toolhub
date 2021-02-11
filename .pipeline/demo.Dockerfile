@@ -18,12 +18,12 @@ USER 900
 ENV HOME="/home/runuser"
 ENV NODE_ENV="development"
 
-FROM docker-registry.wikimedia.org/python3-build-buster:0.0.2-s1 AS prep
+FROM docker-registry.wikimedia.org/python3-buster:latest AS prep
 USER 0
 ENV HOME="/root"
 ENV DEBIAN_FRONTEND="noninteractive"
-RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "python3-venv" && rm -rf /var/lib/apt/lists/*
-RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools" "wheel" "tox"
+RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "git" "python3-dev" "python3-venv" && rm -rf /var/lib/apt/lists/*
+RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
 RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.4"
 RUN groupadd -o -g "65533" -r "somebody" && useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody" && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
@@ -41,12 +41,12 @@ RUN /bin/bash "-c" "ls -alh && poetry run ./manage.py collectstatic -c --no-inpu
 USER 900
 ENV HOME="/home/runuser"
 
-FROM docker-registry.wikimedia.org/python3-build-buster:0.0.2-s1 AS demo
+FROM docker-registry.wikimedia.org/python3-buster:latest AS demo
 USER 0
 ENV HOME="/root"
 ENV DEBIAN_FRONTEND="noninteractive"
-RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "python3-venv" && rm -rf /var/lib/apt/lists/*
-RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools" "wheel" "tox"
+RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "git" "python3-dev" "python3-venv" && rm -rf /var/lib/apt/lists/*
+RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
 RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.4"
 RUN groupadd -o -g "65533" -r "somebody" && useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody" && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
@@ -63,4 +63,4 @@ USER 900
 ENV HOME="/home/runuser"
 ENTRYPOINT ["/bin/bash", "-c", "poetry run python3 manage.py migrate && poetry run python3 manage.py createinitialrevisions && poetry run python3 manage.py loaddata toolhub/fixtures/demo.yaml && poetry run python3 manage.py crawl && poetry run python3 manage.py runserver --noreload --nostatic 0.0.0.0:8000"]
 
-LABEL blubber.variant="demo" blubber.version="0.8.0+d91393a"
+LABEL blubber.variant="demo" blubber.version="0.8.0+007009e"

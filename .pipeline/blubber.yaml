@@ -1,8 +1,6 @@
 version: v4
 
-# FIXME: we need a non-dev Python3 buster base image
-# HACK!! T274310: use older base image with newer pip
-base: docker-registry.wikimedia.org/python3-build-buster:0.0.2-s1
+base: docker-registry.wikimedia.org/python3-buster:latest
 
 runs:
   environment:
@@ -21,6 +19,8 @@ variants:
         - build-essential
         - default-libmysqlclient-dev
         - gettext
+        - git
+        - python3-dev
         # The python3-venv package is needed to supply the `ensurepip`
         # command. Having ensurepip available is a requirement of Poetry.
         - python3-venv  # FIXME: should be in the base image OR added by Blubber
@@ -135,6 +135,7 @@ variants:
       in: /srv/dockerize/bin
     apt:
       packages:
+        - ca-certificates
         - wget
     builder:
       command:
