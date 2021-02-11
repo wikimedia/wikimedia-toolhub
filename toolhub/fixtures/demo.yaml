@@ -13,21 +13,25 @@
     url: https://hay.toolforge.org/directory/toolinfo.json
     created_by:
     - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
 - model: crawler.url
   pk: 2
   fields:
     url: https://wikitech.wikimedia.org/w/index.php?title=User:Magnus_Manske/hay_directory&action=raw
     created_by:
     - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
 - model: crawler.url
   pk: 3
   fields:
     url: https://toolsadmin.wikimedia.org/tools/toolinfo/v1/toolinfo.json
     created_by:
     - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
 - model: crawler.url
   pk: 4
   fields:
     url: https://toolhub.toolforge.org/toolinfo.json
     created_by:
     - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
