@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Wkandek",
+			"Wolfdietmann",
 			"Zauberzunge2000"
 		]
 	},
@@ -9,7 +10,7 @@
 	"addremovetools": "Tools hinzufügen oder entfernen",
 	"apidocs": "Schnittstellendokumentation",
 	"apidocumentation": "Schnittstellendokumentation",
-	"apierror": "Huch! Etwas ist schiefgelaufen.",
+	"apierror": "Huch! Es ist ein Fehler aufgetreten: $1",
 	"auditlogs": "Revisionslogs",
 	"auditlogs-pagetitle": "Diese Seite listet alle Log-Einträge auf",
 	"authors": "Autor(en)",

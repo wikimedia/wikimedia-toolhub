@@ -7,11 +7,13 @@
 	"add": "Tilføj",
 	"addremovetools": "Tilføj eller fjern værktøjer",
 	"createdby": "Oprettet af",
+	"delete": "Slet",
 	"developerdocumentation": "Udviklerdokumentation",
 	"helptranslate": "Hjælp til med at oversætte",
 	"home": "Hjem",
 	"learnmore": "Lær mere",
 	"locale-select": "Vælg sprog",
+	"message-close": "Luk besked",
 	"moreinfo": "Flere oplysninger",
 	"my-account": "Min konto",
 	"sourcecode": "Kildekode",
@@ -21,5 +23,6 @@
 	"tools": "værktøjer",
 	"tooltype": "Værktøjstype",
 	"tools-lastupdated": "sidst opdateret den $1",
+	"update": "Opdatér",
 	"viewmore": "Vis mere"
 }
