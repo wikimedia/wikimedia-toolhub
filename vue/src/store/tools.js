@@ -10,7 +10,8 @@ export default {
 		toolsList: [],
 		toolInfo: [],
 		numTools: 0,
-		apiErrorMsg: ''
+		apiErrorMsg: '',
+		spdxLicenses: []
 	},
 	mutations: {
 		TOOLS_LIST( state, tools ) {
@@ -21,6 +22,9 @@ export default {
 		TOOL_INFO( state, tool ) {
 			state.toolInfo = tool;
 			state.apiErrorMsg = '';
+		},
+		SPDX_LICENSES( state, data ) {
+			state.spdxLicenses = data;
 		},
 		ERROR( state, error ) {
 			state.apiErrorMsg = error;
@@ -52,6 +56,20 @@ export default {
 
 			SwaggerClient.http( request ).then( ( response ) => {
 				context.commit( 'TOOL_INFO', response.body );
+			} )
+				.catch( ( err ) => context.commit( 'ERROR', err ) );
+		},
+		getSpdxLicenses( context ) {
+			const request = {
+				url: '/api/spdx/',
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			};
+
+			SwaggerClient.http( request ).then( ( response ) => {
+				context.commit( 'SPDX_LICENSES', response.body );
 			} )
 				.catch( ( err ) => context.commit( 'ERROR', err ) );
 		}
