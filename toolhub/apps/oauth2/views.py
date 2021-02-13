@@ -112,6 +112,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 class AuthorizationViewSet(viewsets.ModelViewSet):
     """Client authorizations."""
 
+    queryset = AccessToken.objects.none()
     serializer_class = AuthorizationSerializer
     permission_classes = [
         permissions.IsAuthenticated,
