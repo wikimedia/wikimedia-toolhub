@@ -17,11 +17,13 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 import re
 
+from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema_field
 
 from rest_framework import serializers
+from rest_framework.exceptions import PermissionDenied
 
 from reversion.models import Version
 
@@ -228,12 +230,15 @@ class CreateToolSerializer(ModelSerializer, EditCommentFieldMixin):
     def create(self, validated_data):
         """Create a new tool record."""
         comment = validated_data.pop("comment", None)
-        obj, _, _ = Tool.objects.from_toolinfo(
-            validated_data,
-            self.context["request"].user,
-            Tool.ORIGIN_API,
-            comment,
-        )
+        try:
+            obj, _, _ = Tool.objects.from_toolinfo(
+                validated_data,
+                self.context["request"].user,
+                Tool.ORIGIN_API,
+                comment,
+            )
+        except ValidationError as e:
+            raise PermissionDenied(e.messages[0], e.code) from e
         return obj
 
     def to_representation(self, instance):
@@ -287,12 +292,15 @@ class UpdateToolSerializer(CreateToolSerializer):
         """Update a tool record."""
         validated_data["name"] = instance.name
         comment = validated_data.pop("comment", None)
-        obj, _, _ = Tool.objects.from_toolinfo(
-            validated_data,
-            self.context["request"].user,
-            Tool.ORIGIN_API,
-            comment,
-        )
+        try:
+            obj, _, _ = Tool.objects.from_toolinfo(
+                validated_data,
+                self.context["request"].user,
+                Tool.ORIGIN_API,
+                comment,
+            )
+        except ValidationError as e:
+            raise PermissionDenied(e.messages[0], e.code) from e
         return obj
 
     class Meta(CreateToolSerializer.Meta):
