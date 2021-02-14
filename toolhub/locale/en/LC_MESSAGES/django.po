@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-10 18:35+0000\n"
+"POT-Creation-Date: 2021-02-14 02:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,15 +66,15 @@ msgstr ""
 msgid "auditlog entries"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:29
+#: toolhub/apps/auditlog/serializers.py:30
 msgid "Event action"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:38
+#: toolhub/apps/auditlog/serializers.py:39
 msgid "Event target"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:62
+#: toolhub/apps/auditlog/serializers.py:67
 msgid "Audit log entry"
 msgstr ""
 
@@ -729,7 +729,7 @@ msgid "Info for a user group."
 msgstr ""
 
 #: toolhub/fields.py:38
-msgid "Enter a valid JSON value."
+msgid "Enter a valid value conforming to the JSON Schema."
 msgstr ""
 
 #: toolhub/openapi.py:36

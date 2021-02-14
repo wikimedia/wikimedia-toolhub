@@ -31,6 +31,10 @@ from . import fields
 class JSONSchemaField(serializers.ModelField):
     """Serializer for schema validated JSON data."""
 
+    default_error_messages = {
+        fields.JSONSchemaValidator.code: fields.JSONSchemaValidator.message,
+    }
+
     def __init__(self, **kwargs):
         """Initialize object."""
         model_field = kwargs["model_field"]
@@ -55,7 +59,7 @@ class JSONSchemaField(serializers.ModelField):
                 return json.loads(data)
             json.dumps(data)
         except (TypeError, ValueError):
-            self.fail("invalid")
+            self.fail(fields.JSONSchemaValidator.code)
         return data
 
     def to_representation(self, obj):

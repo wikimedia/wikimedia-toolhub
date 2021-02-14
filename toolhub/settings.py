@@ -378,3 +378,9 @@ SPECTACULAR_SETTINGS = {
         "drf_spectacular.hooks.postprocess_schema_enums",
     ],
 }
+
+FRIENDLY_ERRORS = {
+    "VALIDATOR_ERRORS": {
+        "JSONSchemaValidator": 3101,
+    },
+}

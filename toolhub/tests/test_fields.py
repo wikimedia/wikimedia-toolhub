@@ -52,5 +52,8 @@ class JSONSchemaValidatorTest(SimpleTestCase):
         for schema, value in fixture:
             validator = fields.JSONSchemaValidator(schema)
             self.assertRaisesMessage(
-                ValidationError, "Enter a valid JSON value.", validator, value
+                ValidationError,
+                str(fields.JSONSchemaValidator.message),
+                validator,
+                value,
             )

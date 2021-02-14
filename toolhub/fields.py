@@ -35,8 +35,8 @@ class JSONSchemaValidator:
     """Validate against a JSON schema."""
 
     schema = None
-    message = _("""Enter a valid JSON value.""")
-    code = "invalid"
+    message = _("Enter a valid value conforming to the JSON Schema.")
+    code = 3101
 
     def __init__(self, schema, message=None, code=None):
         """Initialize instance.
