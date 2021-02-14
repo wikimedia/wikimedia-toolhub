@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Wikimedia Foundation and contributors.
+# Copyright (c) 2021 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -19,6 +19,7 @@ from django.utils.translation import gettext_lazy as _
 
 from rest_framework import serializers
 
+from toolhub.apps.toolinfo.models import Tool
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.decorators import doc
 from toolhub.serializers import ModelSerializer
@@ -51,8 +52,12 @@ class TargetSerializer(serializers.Serializer):
             "label": "",
         }
 
+        target = instance.get_target()
         try:
-            ret["label"] = instance.get_target().auditlog_label
+            ret["label"] = target.auditlog_label
+            if isinstance(target, Tool):
+                # T274020: Replace Tool id with name for API usage
+                ret["id"] = target.auditlog_label
         except AttributeError:
             pass
 
