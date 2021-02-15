@@ -383,4 +383,7 @@ FRIENDLY_ERRORS = {
     "VALIDATOR_ERRORS": {
         "JSONSchemaValidator": 3101,
     },
+    "EXCEPTION_DICT": {
+        "ConflictingState": 4090,
+    },
 }

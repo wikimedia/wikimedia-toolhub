@@ -30,6 +30,7 @@ from rest_framework import response
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.decorators import action
+from rest_framework.exceptions import APIException
 
 from reversion.models import Version
 
@@ -43,6 +44,13 @@ from .serializers import ToolRevisionDiffSerializer
 from .serializers import ToolRevisionSerializer
 from .serializers import ToolSerializer
 from .serializers import UpdateToolSerializer
+
+
+class ConflictingState(APIException):
+    """Patch failed due to conflicting state."""
+
+    status_code = status.HTTP_409_CONFLICT
+    default_detail = _("Failed to apply patch.")
 
 
 @extend_schema_view(
@@ -130,6 +138,29 @@ path_param_tool_name = OpenApiParameter(
         ],
         responses=ToolRevisionDiffSerializer,
     ),
+    revert=extend_schema(
+        description=_("""Restore the tool to this revision."""),
+        parameters=[
+            path_param_tool_name,
+        ],
+        responses=ToolSerializer,
+    ),
+    undo=extend_schema(
+        description=_("""Undo all changes made between two revisions."""),
+        parameters=[
+            path_param_tool_name,
+            OpenApiParameter(
+                "other_id",
+                type=OpenApiTypes.NUMBER,
+                location=OpenApiParameter.PATH,
+                description=_(
+                    "A unique integer value identifying version "
+                    "to undo until."
+                ),
+            ),
+        ],
+        responses=ToolSerializer,
+    ),
 )
 class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
     """Historical revisions of a tool."""
@@ -151,6 +182,22 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
             return ToolRevisionDetailSerializer
         return ToolRevisionSerializer
 
+    def _get_patch(self, left, right):
+        """Compute the JSON Patch between revisions."""
+        data_left = ToolSerializer(left.field_dict).data
+        data_right = ToolSerializer(right.field_dict).data
+        return jsonpatch.make_patch(data_left, data_right)
+
+    def _update_tool(self, data, request):
+        """Update our toolinfo record."""
+        tool = get_object_or_404(Tool, name=self.kwargs["tool_name"])
+        serializer = UpdateToolSerializer(
+            tool, data=data, context={"request": request}
+        )
+        serializer.is_valid(raise_exception=True)
+        tool = serializer.save()
+        return response.Response(ToolSerializer(tool).data)
+
     @action(
         detail=True,
         methods=["get"],
@@ -164,11 +211,7 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
         version_left = get_object_or_404(qs, pk=id_left)
         version_right = get_object_or_404(qs, pk=id_right)
-
-        data_left = ToolSerializer(version_left.field_dict).data
-        data_right = ToolSerializer(version_right.field_dict).data
-
-        patch = jsonpatch.make_patch(data_left, data_right)
+        patch = self._get_patch(version_left, version_right)
 
         diff = ToolRevisionDiffSerializer(
             {
@@ -179,6 +222,59 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         )
 
         return response.Response(diff.data)
+
+    @action(
+        detail=True,
+        methods=["post"],
+        url_path=r"revert",
+    )
+    def revert(self, request, **kwargs):
+        """Revert."""
+        rev_id = kwargs["pk"]
+        qs = self.get_queryset()
+        rev = get_object_or_404(qs, pk=rev_id)
+        data = rev.field_dict
+        data["comment"] = _(
+            "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
+        ) % {
+            "rev_id": rev_id,
+            "datetime": rev.revision.date_created.strftime(
+                "%Y-%m-%dT%H:%M:%S.%f%z"
+            ),
+            "user": rev.revision.user.username,
+        }
+        return self._update_tool(data, request)
+
+    @action(
+        detail=True,
+        methods=["post"],
+        url_path=r"undo/(?P<other_id>\d+)",
+    )
+    def undo(self, request, **kwargs):
+        """Undo."""
+        id_left = kwargs["pk"]
+        id_right = kwargs["other_id"]
+        qs = self.get_queryset()
+
+        version_left = get_object_or_404(qs, pk=id_left)
+        version_right = get_object_or_404(qs, pk=id_right)
+        patch = self._get_patch(version_left, version_right)
+
+        head = qs.first()
+        data = head.field_dict
+
+        try:
+            jsonpatch.apply_patch(data, patch, in_place=True)
+        except jsonpatch.JsonPatchException as e:
+            raise ConflictingState() from e
+
+        data["comment"] = _(
+            "Undo revisions from %(first_id)s to %(last_id)s"
+        ) % {
+            "first_id": id_left,
+            "last_id": id_right,
+        }
+        return self._update_tool(data, request)
 
 
 @extend_schema_view(
