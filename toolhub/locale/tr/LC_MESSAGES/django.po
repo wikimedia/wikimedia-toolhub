@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-11 18:01:18+0000\n"
-"X-POT-Import-Date: 2021-02-10 21:31:48+0000\n"
+"PO-Revision-Date: 2021-02-15 13:55:00+0000\n"
+"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr\n"
@@ -64,15 +64,15 @@ msgstr "denetim günlüğü girdisi"
 msgid "auditlog entries"
 msgstr "denetim günlüğü girdileri"
 
-#: toolhub/apps/auditlog/serializers.py:29
+#: toolhub/apps/auditlog/serializers.py:30
 msgid "Event action"
 msgstr "Etkinlik eylemi"
 
-#: toolhub/apps/auditlog/serializers.py:38
+#: toolhub/apps/auditlog/serializers.py:39
 msgid "Event target"
 msgstr "Etkinlik hedefi"
 
-#: toolhub/apps/auditlog/serializers.py:62
+#: toolhub/apps/auditlog/serializers.py:67
 msgid "Audit log entry"
 msgstr "Denetim günlüğü girdisi"
 
@@ -387,27 +387,27 @@ msgstr "Bu araç kaydının kökeni."
 
 #: toolhub/apps/toolinfo/schema.py:43
 msgid "RFC 6902 application/json-patch+json data"
-msgstr ""
+msgstr "RFC 6902 application/json-patch+json verisi"
 
 #: toolhub/apps/toolinfo/schema.py:46
 msgid "RFC 6902 JSON patch operation"
-msgstr ""
+msgstr "RFC 6902 JSON yama işlemi"
 
 #: toolhub/apps/toolinfo/schema.py:51
 msgid "The operation to be performed"
-msgstr ""
+msgstr "Yapılacak işlem"
 
 #: toolhub/apps/toolinfo/schema.py:57
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "JSON-Belgenin içinde işlemin yapılacağı yere işaretçi."
 
 #: toolhub/apps/toolinfo/schema.py:63
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "Eklenecek, değiştirilecek, ya da denenecek değer."
 
 #: toolhub/apps/toolinfo/schema.py:69
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "JSON-Belgenin içinde değerin taşınacağı ya da kopyalanacağı yere işaretçi."
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "A File: page on Commons"
@@ -523,31 +523,31 @@ msgstr "Bir aracı güncelleyin"
 
 #: toolhub/apps/toolinfo/serializers.py:305
 msgid "Tool revision."
-msgstr ""
+msgstr "Araç sürümü."
 
 #: toolhub/apps/toolinfo/serializers.py:311
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "Bu sürümü tanımlayan benzersiz bir tamsayı değeri."
 
 #: toolhub/apps/toolinfo/serializers.py:323
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "Sürüm için kullanıcı yorumu."
 
 #: toolhub/apps/toolinfo/serializers.py:333
 msgid "Tool revision detail."
-msgstr ""
+msgstr "Araç sürüm ayrıntısı."
 
 #: toolhub/apps/toolinfo/serializers.py:351
 msgid "Tool revision difference."
-msgstr ""
+msgstr "Araç sürümü farkı."
 
 #: toolhub/apps/toolinfo/serializers.py:356
 msgid "Revision to apply changes to."
-msgstr ""
+msgstr "Değişikliğin uygulanacağı sürüm."
 
 #: toolhub/apps/toolinfo/serializers.py:360
 msgid "Revision after applying changes."
-msgstr ""
+msgstr "Değişiklikleri uyguladıktan sonraki sürüm."
 
 #: toolhub/apps/toolinfo/validators.py:28
 #, python-format
@@ -576,23 +576,23 @@ msgstr "Tüm araçları listeleyin."
 
 #: toolhub/apps/toolinfo/views.py:102
 msgid "Unique identifier for this tool."
-msgstr ""
+msgstr "Bu araç için benzersiz tanımlayıcı."
 
 #: toolhub/apps/toolinfo/views.py:108
 msgid "Get revision information."
-msgstr ""
+msgstr "Sürüm bilgisini al."
 
 #: toolhub/apps/toolinfo/views.py:113
 msgid "List revisions."
-msgstr ""
+msgstr "Sürümleri listele."
 
 #: toolhub/apps/toolinfo/views.py:118
 msgid "Compare two revisions to find difference."
-msgstr ""
+msgstr "Farkları bulmak için iki sürümü karşılaştır."
 
 #: toolhub/apps/toolinfo/views.py:126
 msgid "A unique integer value identifying version to diff against."
-msgstr ""
+msgstr "Farkın çıkarılacağı sürümü tanımlayan benzersiz bir tamsayı değeri."
 
 #: toolhub/apps/toolinfo/views.py:186
 msgid "Info for a specific SPDX license."
@@ -687,8 +687,8 @@ msgid "Info for a user group."
 msgstr "Bir kullanıcı grubu için bilgi."
 
 #: toolhub/fields.py:38
-msgid "Enter a valid JSON value."
-msgstr "Geçerli bir JSON değeri girin."
+msgid "Enter a valid value conforming to the JSON Schema."
+msgstr ""
 
 #: toolhub/openapi.py:36
 msgid "API error"

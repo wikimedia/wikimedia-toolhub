@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-11 18:01:18+0000\n"
-"X-POT-Import-Date: 2021-02-10 21:31:48+0000\n"
+"PO-Revision-Date: 2021-02-15 13:54:59+0000\n"
+"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
@@ -64,15 +64,15 @@ msgstr "entrée du journal d’audit"
 msgid "auditlog entries"
 msgstr "entrées du journal d’audit"
 
-#: toolhub/apps/auditlog/serializers.py:29
+#: toolhub/apps/auditlog/serializers.py:30
 msgid "Event action"
 msgstr "Action déclenchée par évènement"
 
-#: toolhub/apps/auditlog/serializers.py:38
+#: toolhub/apps/auditlog/serializers.py:39
 msgid "Event target"
 msgstr "Cible d’évènement"
 
-#: toolhub/apps/auditlog/serializers.py:62
+#: toolhub/apps/auditlog/serializers.py:67
 msgid "Audit log entry"
 msgstr "Entrée du journal d’audit"
 
@@ -387,27 +387,27 @@ msgstr "Origine de l’enregistrement de cet outil."
 
 #: toolhub/apps/toolinfo/schema.py:43
 msgid "RFC 6902 application/json-patch+json data"
-msgstr ""
+msgstr "données application/json-patch+json RFC 6902"
 
 #: toolhub/apps/toolinfo/schema.py:46
 msgid "RFC 6902 JSON patch operation"
-msgstr ""
+msgstr "opération patch RFC 6902"
 
 #: toolhub/apps/toolinfo/schema.py:51
 msgid "The operation to be performed"
-msgstr ""
+msgstr "L’opération à effectuer"
 
 #: toolhub/apps/toolinfo/schema.py:57
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "Pointeur-JSON vers l’emplacement dans le document où l’opération est effectuée."
 
 #: toolhub/apps/toolinfo/schema.py:63
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "La valeur à ajouter, remplacer ou tester."
 
 #: toolhub/apps/toolinfo/schema.py:69
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "Pointeur JSON vers l’emplacement dans le document pour déplacer ou copier la valeur depuis."
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "A File: page on Commons"
@@ -523,31 +523,31 @@ msgstr "Mettre à jour un outil"
 
 #: toolhub/apps/toolinfo/serializers.py:305
 msgid "Tool revision."
-msgstr ""
+msgstr "Révision de l’outil."
 
 #: toolhub/apps/toolinfo/serializers.py:311
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "Une valeur d’entier unique identifiant cette révision."
 
 #: toolhub/apps/toolinfo/serializers.py:323
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "Commentaire par l’utilisateur de la révision."
 
 #: toolhub/apps/toolinfo/serializers.py:333
 msgid "Tool revision detail."
-msgstr ""
+msgstr "Détail de la révision de l’outil."
 
 #: toolhub/apps/toolinfo/serializers.py:351
 msgid "Tool revision difference."
-msgstr ""
+msgstr "Différence de révision de l’outil."
 
 #: toolhub/apps/toolinfo/serializers.py:356
 msgid "Revision to apply changes to."
-msgstr ""
+msgstr "Révision sur laquelle appliquer les modifications."
 
 #: toolhub/apps/toolinfo/serializers.py:360
 msgid "Revision after applying changes."
-msgstr ""
+msgstr "Révision après application des modifications."
 
 #: toolhub/apps/toolinfo/validators.py:28
 #, python-format
@@ -576,23 +576,23 @@ msgstr "Lister tous les outils."
 
 #: toolhub/apps/toolinfo/views.py:102
 msgid "Unique identifier for this tool."
-msgstr ""
+msgstr "Identifiant unique pour cet outil."
 
 #: toolhub/apps/toolinfo/views.py:108
 msgid "Get revision information."
-msgstr ""
+msgstr "Obtenir l’information de révision."
 
 #: toolhub/apps/toolinfo/views.py:113
 msgid "List revisions."
-msgstr ""
+msgstr "Liste des révisions."
 
 #: toolhub/apps/toolinfo/views.py:118
 msgid "Compare two revisions to find difference."
-msgstr ""
+msgstr "Comparer deux révisions pour trouver la différence."
 
 #: toolhub/apps/toolinfo/views.py:126
 msgid "A unique integer value identifying version to diff against."
-msgstr ""
+msgstr "Une valeur d’entier unique identifiant les versions à comparer."
 
 #: toolhub/apps/toolinfo/views.py:186
 msgid "Info for a specific SPDX license."
@@ -687,8 +687,8 @@ msgid "Info for a user group."
 msgstr "Infos pour un groupe d’utilisateurs."
 
 #: toolhub/fields.py:38
-msgid "Enter a valid JSON value."
-msgstr "Saisir une valeur JSON valide."
+msgid "Enter a valid value conforming to the JSON Schema."
+msgstr ""
 
 #: toolhub/openapi.py:36
 msgid "API error"

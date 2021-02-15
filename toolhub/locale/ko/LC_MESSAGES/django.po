@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-11 18:01:18+0000\n"
-"X-POT-Import-Date: 2021-02-10 21:31:48+0000\n"
+"PO-Revision-Date: 2021-02-15 13:55:00+0000\n"
+"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
@@ -61,15 +61,15 @@ msgstr ""
 msgid "auditlog entries"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:29
+#: toolhub/apps/auditlog/serializers.py:30
 msgid "Event action"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:38
+#: toolhub/apps/auditlog/serializers.py:39
 msgid "Event target"
 msgstr "이벤트 대상"
 
-#: toolhub/apps/auditlog/serializers.py:62
+#: toolhub/apps/auditlog/serializers.py:67
 msgid "Audit log entry"
 msgstr ""
 
@@ -400,7 +400,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/schema.py:63
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "추가, 치환, 테스트할 값입니다."
 
 #: toolhub/apps/toolinfo/schema.py:69
 msgid "JSON-Pointer to location within document to move or copy the value from."
@@ -684,8 +684,8 @@ msgid "Info for a user group."
 msgstr "사용자 그룹의 정보입니다."
 
 #: toolhub/fields.py:38
-msgid "Enter a valid JSON value."
-msgstr "유효한 JSON 값을 입력하십시오."
+msgid "Enter a valid value conforming to the JSON Schema."
+msgstr ""
 
 #: toolhub/openapi.py:36
 msgid "API error"

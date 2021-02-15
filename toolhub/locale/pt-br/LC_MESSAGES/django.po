@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-11 18:01:18+0000\n"
-"X-POT-Import-Date: 2021-02-10 21:31:48+0000\n"
+"PO-Revision-Date: 2021-02-15 13:55:00+0000\n"
+"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt-BR\n"
@@ -62,15 +62,15 @@ msgstr "entrada da auditoria"
 msgid "auditlog entries"
 msgstr "entradas da auditoria"
 
-#: toolhub/apps/auditlog/serializers.py:29
+#: toolhub/apps/auditlog/serializers.py:30
 msgid "Event action"
 msgstr "Ação do evento"
 
-#: toolhub/apps/auditlog/serializers.py:38
+#: toolhub/apps/auditlog/serializers.py:39
 msgid "Event target"
 msgstr "Alvo do evento"
 
-#: toolhub/apps/auditlog/serializers.py:62
+#: toolhub/apps/auditlog/serializers.py:67
 msgid "Audit log entry"
 msgstr "Entrada de registro de auditoria"
 
@@ -229,7 +229,7 @@ msgstr "aplicativo web"
 
 #: toolhub/apps/toolinfo/models.py:218
 msgid "desktop app"
-msgstr ""
+msgstr "aplicativo para computador"
 
 #: toolhub/apps/toolinfo/models.py:219
 msgid "bot"
@@ -245,7 +245,7 @@ msgstr "script do usuário"
 
 #: toolhub/apps/toolinfo/models.py:222
 msgid "command line tool"
-msgstr ""
+msgstr "ferramenta de linha de comando"
 
 #: toolhub/apps/toolinfo/models.py:223
 msgid "coding framework"
@@ -393,7 +393,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/schema.py:51
 msgid "The operation to be performed"
-msgstr ""
+msgstr "A operação a ser realizada"
 
 #: toolhub/apps/toolinfo/schema.py:57
 msgid "JSON-Pointer to location within document where operation is performed."
@@ -401,7 +401,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/schema.py:63
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "O valor a adicionar, substituir ou testar."
 
 #: toolhub/apps/toolinfo/schema.py:69
 msgid "JSON-Pointer to location within document to move or copy the value from."
@@ -473,23 +473,23 @@ msgstr "Qualquer Wikcionário"
 
 #: toolhub/apps/toolinfo/serializers.py:106
 msgid "SPDX license information"
-msgstr ""
+msgstr "Informações de licença SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:114
 msgid "SPDX license ID"
-msgstr ""
+msgstr "ID de licença SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:119
 msgid "Full name of this license"
-msgstr ""
+msgstr "Nome completo desta licença"
 
 #: toolhub/apps/toolinfo/serializers.py:124
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr ""
+msgstr "Esta licença foi aprovada como 'código aberto' pelo OSI?"
 
 #: toolhub/apps/toolinfo/serializers.py:129
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr ""
+msgstr "Esta licença foi aprovada como 'software livre' pela FSF?"
 
 #: toolhub/apps/toolinfo/serializers.py:134
 msgid "Is this license considered to be outdated?"
@@ -509,7 +509,7 @@ msgstr "Resumo da edição"
 
 #: toolhub/apps/toolinfo/serializers.py:212
 msgid "Description of the changes you are making to this toolinfo record."
-msgstr ""
+msgstr "Descrição das alterações que você está fazendo neste registro de informações da ferramenta."
 
 #: toolhub/apps/toolinfo/serializers.py:224
 msgid "Create a tool"
@@ -521,36 +521,36 @@ msgstr "Atualizar uma ferramenta"
 
 #: toolhub/apps/toolinfo/serializers.py:305
 msgid "Tool revision."
-msgstr ""
+msgstr "Revisão da ferramenta."
 
 #: toolhub/apps/toolinfo/serializers.py:311
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "Um valor inteiro único que identifica esta revisão."
 
 #: toolhub/apps/toolinfo/serializers.py:323
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "Comentário do usuário para a revisão."
 
 #: toolhub/apps/toolinfo/serializers.py:333
 msgid "Tool revision detail."
-msgstr ""
+msgstr "Detalhe da revisão da ferramenta."
 
 #: toolhub/apps/toolinfo/serializers.py:351
 msgid "Tool revision difference."
-msgstr ""
+msgstr "Diferença na revisão da ferramenta."
 
 #: toolhub/apps/toolinfo/serializers.py:356
 msgid "Revision to apply changes to."
-msgstr ""
+msgstr "Revisão para aplicar as alterações."
 
 #: toolhub/apps/toolinfo/serializers.py:360
 msgid "Revision after applying changes."
-msgstr ""
+msgstr "Revisão após aplicar alterações."
 
 #: toolhub/apps/toolinfo/validators.py:28
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr ""
+msgstr "%(value)s não é um identificador de licença SPDX conhecido."
 
 #: toolhub/apps/toolinfo/views.py:50
 msgid "Create a new tool."
@@ -574,31 +574,31 @@ msgstr "Listar todas as ferramentas."
 
 #: toolhub/apps/toolinfo/views.py:102
 msgid "Unique identifier for this tool."
-msgstr ""
+msgstr "Identificador único para esta ferramenta."
 
 #: toolhub/apps/toolinfo/views.py:108
 msgid "Get revision information."
-msgstr ""
+msgstr "Obter informações de revisão."
 
 #: toolhub/apps/toolinfo/views.py:113
 msgid "List revisions."
-msgstr ""
+msgstr "Listar revisões."
 
 #: toolhub/apps/toolinfo/views.py:118
 msgid "Compare two revisions to find difference."
-msgstr ""
+msgstr "Compare duas revisões para encontrar a diferença."
 
 #: toolhub/apps/toolinfo/views.py:126
 msgid "A unique integer value identifying version to diff against."
-msgstr ""
+msgstr "Um valor inteiro único que identifica a versão contra a qual comparar."
 
 #: toolhub/apps/toolinfo/views.py:186
 msgid "Info for a specific SPDX license."
-msgstr ""
+msgstr "Informações para uma licença SPDX específica."
 
 #: toolhub/apps/toolinfo/views.py:194
 msgid "List all SPDX licenses."
-msgstr ""
+msgstr "Listar todas as licenças SPDX."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
@@ -685,8 +685,8 @@ msgid "Info for a user group."
 msgstr "Informações para um grupo de usuários."
 
 #: toolhub/fields.py:38
-msgid "Enter a valid JSON value."
-msgstr "Insira um valor JSON válido."
+msgid "Enter a valid value conforming to the JSON Schema."
+msgstr ""
 
 #: toolhub/openapi.py:36
 msgid "API error"

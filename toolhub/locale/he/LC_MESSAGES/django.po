@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-11 18:01:18+0000\n"
-"X-POT-Import-Date: 2021-02-10 21:31:48+0000\n"
+"PO-Revision-Date: 2021-02-15 13:54:59+0000\n"
+"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
@@ -62,15 +62,15 @@ msgstr "רשומת יומן מבדק"
 msgid "auditlog entries"
 msgstr "רשומות יומן מבדק"
 
-#: toolhub/apps/auditlog/serializers.py:29
+#: toolhub/apps/auditlog/serializers.py:30
 msgid "Event action"
 msgstr "פעולת אירוע"
 
-#: toolhub/apps/auditlog/serializers.py:38
+#: toolhub/apps/auditlog/serializers.py:39
 msgid "Event target"
 msgstr "יעד אירוע"
 
-#: toolhub/apps/auditlog/serializers.py:62
+#: toolhub/apps/auditlog/serializers.py:67
 msgid "Audit log entry"
 msgstr "רשומת יומן אבטחה"
 
@@ -385,27 +385,27 @@ msgstr "מקור רשומת הכלי הזה."
 
 #: toolhub/apps/toolinfo/schema.py:43
 msgid "RFC 6902 application/json-patch+json data"
-msgstr ""
+msgstr "נתוני application/json-patch+json לפי RFC 6902"
 
 #: toolhub/apps/toolinfo/schema.py:46
 msgid "RFC 6902 JSON patch operation"
-msgstr ""
+msgstr "פעולת JSON patch לפי RFC 6902"
 
 #: toolhub/apps/toolinfo/schema.py:51
 msgid "The operation to be performed"
-msgstr ""
+msgstr "הפעולה שצריך לבצע"
 
 #: toolhub/apps/toolinfo/schema.py:57
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "JSON-Pointer למיקום בתוך המסמך שהפעולה מתבצעת בו."
 
 #: toolhub/apps/toolinfo/schema.py:63
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "הערך להוסיף, להחליף, או לבדוק."
 
 #: toolhub/apps/toolinfo/schema.py:69
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "JSON-Pointer למיקום בתוך המסמך שהערך יועבר או יועתק ממנו."
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "A File: page on Commons"
@@ -521,31 +521,31 @@ msgstr "עדכון כלי"
 
 #: toolhub/apps/toolinfo/serializers.py:305
 msgid "Tool revision."
-msgstr ""
+msgstr "גרסת הכלי."
 
 #: toolhub/apps/toolinfo/serializers.py:311
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "ערך שלם ייחודי שמזהה את הגרסה הזאת."
 
 #: toolhub/apps/toolinfo/serializers.py:323
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "הערה של המשתמש עבור הגרסה."
 
 #: toolhub/apps/toolinfo/serializers.py:333
 msgid "Tool revision detail."
-msgstr ""
+msgstr "פרטי גרסת הכלי."
 
 #: toolhub/apps/toolinfo/serializers.py:351
 msgid "Tool revision difference."
-msgstr ""
+msgstr "השוואת גרסאות הכלי."
 
 #: toolhub/apps/toolinfo/serializers.py:356
 msgid "Revision to apply changes to."
-msgstr ""
+msgstr "הגרסה שהשינויים יחולו עליה."
 
 #: toolhub/apps/toolinfo/serializers.py:360
 msgid "Revision after applying changes."
-msgstr ""
+msgstr "הגרסה אחרי החלת השינויים."
 
 #: toolhub/apps/toolinfo/validators.py:28
 #, python-format
@@ -574,23 +574,23 @@ msgstr "רשימת כלים."
 
 #: toolhub/apps/toolinfo/views.py:102
 msgid "Unique identifier for this tool."
-msgstr ""
+msgstr "מזהה ייחודי לכלי הזה."
 
 #: toolhub/apps/toolinfo/views.py:108
 msgid "Get revision information."
-msgstr ""
+msgstr "קבלת מידע על הגרסה."
 
 #: toolhub/apps/toolinfo/views.py:113
 msgid "List revisions."
-msgstr ""
+msgstr "רשימת גרסאות."
 
 #: toolhub/apps/toolinfo/views.py:118
 msgid "Compare two revisions to find difference."
-msgstr ""
+msgstr "השוואת שתי גרסאות לשם  מציאת הבדל."
 
 #: toolhub/apps/toolinfo/views.py:126
 msgid "A unique integer value identifying version to diff against."
-msgstr ""
+msgstr "ערך שלם ייחודי שמזהה את הגרסה שמולה תיעשה ההשוואה."
 
 #: toolhub/apps/toolinfo/views.py:186
 msgid "Info for a specific SPDX license."
@@ -685,8 +685,8 @@ msgid "Info for a user group."
 msgstr "מידע על קבוצת משתמשים."
 
 #: toolhub/fields.py:38
-msgid "Enter a valid JSON value."
-msgstr "נא להזין ערך JSON תקין."
+msgid "Enter a valid value conforming to the JSON Schema."
+msgstr ""
 
 #: toolhub/openapi.py:36
 msgid "API error"

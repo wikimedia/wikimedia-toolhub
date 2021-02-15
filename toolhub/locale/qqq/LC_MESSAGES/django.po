@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-11 18:01:19+0000\n"
-"X-POT-Import-Date: 2021-02-10 21:31:48+0000\n"
+"PO-Revision-Date: 2021-02-15 13:55:01+0000\n"
+"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: qqq\n"
@@ -63,15 +63,15 @@ msgstr "Label used in admin console."
 msgid "auditlog entries"
 msgstr "Label used in admin console."
 
-#: toolhub/apps/auditlog/serializers.py:29
+#: toolhub/apps/auditlog/serializers.py:30
 msgid "Event action"
 msgstr "Label used in OpenAPI schema."
 
-#: toolhub/apps/auditlog/serializers.py:38
+#: toolhub/apps/auditlog/serializers.py:39
 msgid "Event target"
 msgstr "Label used in OpenAPI schema."
 
-#: toolhub/apps/auditlog/serializers.py:62
+#: toolhub/apps/auditlog/serializers.py:67
 msgid "Audit log entry"
 msgstr "OpenAPI schema object description."
 
@@ -686,7 +686,7 @@ msgid "Info for a user group."
 msgstr "OpenAPI schema route summary."
 
 #: toolhub/fields.py:38
-msgid "Enter a valid JSON value."
+msgid "Enter a valid value conforming to the JSON Schema."
 msgstr ""
 
 #: toolhub/openapi.py:36

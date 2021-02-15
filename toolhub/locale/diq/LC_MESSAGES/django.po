@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-11 18:01:18+0000\n"
-"X-POT-Import-Date: 2021-02-10 21:31:48+0000\n"
+"PO-Revision-Date: 2021-02-15 13:54:59+0000\n"
+"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: diq\n"
@@ -61,15 +61,15 @@ msgstr "dekerdekê auditlog"
 msgid "auditlog entries"
 msgstr "dekerdekanê auditlog"
 
-#: toolhub/apps/auditlog/serializers.py:29
+#: toolhub/apps/auditlog/serializers.py:30
 msgid "Event action"
 msgstr "kerdışê weqay"
 
-#: toolhub/apps/auditlog/serializers.py:38
+#: toolhub/apps/auditlog/serializers.py:39
 msgid "Event target"
 msgstr "Etiketê Weqay"
 
-#: toolhub/apps/auditlog/serializers.py:62
+#: toolhub/apps/auditlog/serializers.py:67
 msgid "Audit log entry"
 msgstr "Dekerdekê qeydê Auditi"
 
@@ -684,7 +684,7 @@ msgid "Info for a user group."
 msgstr ""
 
 #: toolhub/fields.py:38
-msgid "Enter a valid JSON value."
+msgid "Enter a valid value conforming to the JSON Schema."
 msgstr ""
 
 #: toolhub/openapi.py:36

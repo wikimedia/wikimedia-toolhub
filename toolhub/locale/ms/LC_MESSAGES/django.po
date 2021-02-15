@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-11 18:01:18+0000\n"
-"X-POT-Import-Date: 2021-02-10 21:31:48+0000\n"
+"PO-Revision-Date: 2021-02-15 13:55:00+0000\n"
+"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ms\n"
@@ -61,15 +61,15 @@ msgstr ""
 msgid "auditlog entries"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:29
+#: toolhub/apps/auditlog/serializers.py:30
 msgid "Event action"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:38
+#: toolhub/apps/auditlog/serializers.py:39
 msgid "Event target"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:62
+#: toolhub/apps/auditlog/serializers.py:67
 msgid "Audit log entry"
 msgstr "Masukan log audit"
 
@@ -412,7 +412,7 @@ msgstr "Laman File: di Commons"
 
 #: toolhub/apps/toolinfo/serializers.py:57
 msgid "URL to image."
-msgstr ""
+msgstr "URL ke imej."
 
 #: toolhub/apps/toolinfo/serializers.py:72
 msgid "Supported wikis"
@@ -476,11 +476,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:114
 msgid "SPDX license ID"
-msgstr ""
+msgstr "ID lesen SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:119
 msgid "Full name of this license"
-msgstr ""
+msgstr "Nama penuh lesen ini"
 
 #: toolhub/apps/toolinfo/serializers.py:124
 msgid "Is this license approved as 'open source' by the OSI?"
@@ -597,7 +597,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:194
 msgid "List all SPDX licenses."
-msgstr ""
+msgstr "Senaraikan semua lesen SPDX."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
@@ -684,7 +684,7 @@ msgid "Info for a user group."
 msgstr "Maklumat untuk kumpulan pengguna."
 
 #: toolhub/fields.py:38
-msgid "Enter a valid JSON value."
+msgid "Enter a valid value conforming to the JSON Schema."
 msgstr ""
 
 #: toolhub/openapi.py:36
