@@ -235,6 +235,34 @@ coverage = "*"
 six = ">=1.4.0"
 
 [[package]]
+name = "django-elasticsearch-dsl"
+version = "6.5.0"
+description = "Wrapper around elasticsearch-dsl-py for django models"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+elasticsearch-dsl = ">=6.4.0"
+six = "*"
+
+[[package]]
+name = "django-elasticsearch-dsl-drf"
+version = "0.21"
+description = "Integrate Elasticsearch DSL with Django REST framework."
+category = "main"
+optional = false
+python-versions = ">=2.7"
+
+[package.dependencies]
+django-elasticsearch-dsl = ">=6.4.1"
+django-nine = ">=0.2"
+djangorestframework = "*"
+elasticsearch = "*"
+elasticsearch-dsl = "*"
+six = ">=1.9"
+
+[[package]]
 name = "django-environ"
 version = "0.4.5"
 description = "Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application."
@@ -263,6 +291,17 @@ python-versions = "*"
 
 [package.dependencies]
 django = ">=1.8"
+
+[[package]]
+name = "django-nine"
+version = "0.2.4"
+description = "Version checking library."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = "*"
 
 [[package]]
 name = "django-oauth-toolkit"
@@ -369,6 +408,37 @@ inflection = ">=0.3.1"
 jsonschema = ">=2.6.0"
 PyYAML = ">=5.1"
 uritemplate = ">=2.0.0"
+
+[[package]]
+name = "elasticsearch"
+version = "6.8.1"
+description = "Python client for Elasticsearch"
+category = "main"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*, <4"
+
+[package.dependencies]
+urllib3 = ">=1.21.1"
+
+[package.extras]
+develop = ["requests (>=2.0.0,<3.0.0)", "nose", "coverage", "mock", "pyyaml", "nosexcover", "numpy", "pandas", "sphinx (<1.7)", "sphinx-rtd-theme"]
+requests = ["requests (>=2.4.0,<3.0.0)"]
+
+[[package]]
+name = "elasticsearch-dsl"
+version = "6.4.0"
+description = "Python client for Elasticsearch"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+elasticsearch = ">=6.0.0,<7.0.0"
+python-dateutil = "*"
+six = "*"
+
+[package.extras]
+develop = ["mock", "pytest (>=3.0.0)", "pytest-cov", "pytz", "coverage (<5.0.0)", "sphinx", "sphinx-rtd-theme"]
 
 [[package]]
 name = "entrypoints"
@@ -920,6 +990,17 @@ pytest = ">=4.6"
 testing = ["fields", "hunter", "process-tests (==2.0.2)", "six", "pytest-xdist", "virtualenv"]
 
 [[package]]
+name = "python-dateutil"
+version = "2.8.1"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
 name = "python3-openid"
 version = "3.2.0"
 description = "OpenID support for modern servers and consumers."
@@ -1346,7 +1427,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "f84bf4ff812028679add854c448a74a3a195d0766c7ce95bf1b80ed1a3634c59"
+content-hash = "411b2b0cf0742ef08eff0e9e6408830a59d07ac66fd473e8f8a63f9ca61e4c9b"
 
 [metadata.files]
 alabaster = [
@@ -1548,6 +1629,14 @@ django = [
 django-coverage-plugin = [
     {file = "django_coverage_plugin-1.8.0.tar.gz", hash = "sha256:d53cbf3828fd83d6b89ff7292c6805de5274e36411711692043e67bcde25ae0c"},
 ]
+django-elasticsearch-dsl = [
+    {file = "django-elasticsearch-dsl-6.5.0.tar.gz", hash = "sha256:367c8d8c2ca5916247f1abd86a5df46f646fa48eef88316a02f640edba727ebc"},
+    {file = "django_elasticsearch_dsl-6.5.0-py2.py3-none-any.whl", hash = "sha256:87f1af8ea0930b93d0448317ee3fa5d1289f622932a9bbbafdba60df25df982a"},
+]
+django-elasticsearch-dsl-drf = [
+    {file = "django-elasticsearch-dsl-drf-0.21.tar.gz", hash = "sha256:a3064638f77e1f535755e8b4ca661a08e834cc78dd122944d85634f17580e261"},
+    {file = "django_elasticsearch_dsl_drf-0.21-py2.py3-none-any.whl", hash = "sha256:c213a80f73c5a67d51e18c608b15733da3a892b5db84662b3307a72286983979"},
+]
 django-environ = [
     {file = "django-environ-0.4.5.tar.gz", hash = "sha256:6c9d87660142608f63ec7d5ce5564c49b603ea8ff25da595fd6098f6dc82afde"},
     {file = "django_environ-0.4.5-py2.py3-none-any.whl", hash = "sha256:c57b3c11ec1f319d9474e3e5a79134f40174b17c7cc024bbb2fad84646b120c4"},
@@ -1559,6 +1648,10 @@ django-filter = [
 django-log-request-id = [
     {file = "django-log-request-id-1.6.0.tar.gz", hash = "sha256:0126f5da0cacc62cf834efb3cf66e4606031d911ccff048da2f88fe2c0bbcbc9"},
     {file = "django_log_request_id-1.6.0-py3-none-any.whl", hash = "sha256:c3f7f53b1fc92f62269c247bee14d578daab000a2f7ae70b70ae288b603b5907"},
+]
+django-nine = [
+    {file = "django-nine-0.2.4.tar.gz", hash = "sha256:27cb253eea230d0c792b815125c58f69bb1a3f32265c3b8585ab891f7855c0cd"},
+    {file = "django_nine-0.2.4-py2.py3-none-any.whl", hash = "sha256:296718cc75eec8fc5a4a35aa4b689ab782f4fc9d59f12515ad70abbea49a7c27"},
 ]
 django-oauth-toolkit = [
     {file = "django-oauth-toolkit-1.3.3.tar.gz", hash = "sha256:48a45d9ec23b50646b14b4b93988bd0d35ad5cf933edfcb833a8527f86329f28"},
@@ -1592,6 +1685,14 @@ drf-nested-routers = [
 drf-spectacular = [
     {file = "drf-spectacular-0.13.1.tar.gz", hash = "sha256:53701a1fcd0fb8ad4132b6f893ed60bfac992e7897554dd11f692d55b04ec38a"},
     {file = "drf_spectacular-0.13.1-py2.py3-none-any.whl", hash = "sha256:b7e45fd6d6755a442459a965a8f4d595a69c0317e0385331d7b9f09b306c68f6"},
+]
+elasticsearch = [
+    {file = "elasticsearch-6.8.1-py2.py3-none-any.whl", hash = "sha256:540d633afcc0a32972e4b489c4559c9a96e294850853238f7a18b1cbd267c2ed"},
+    {file = "elasticsearch-6.8.1.tar.gz", hash = "sha256:a8062a00b61bc7babeea028530667583a68ecb1a9f59ab0b22ff7feaf70d3564"},
+]
+elasticsearch-dsl = [
+    {file = "elasticsearch-dsl-6.4.0.tar.gz", hash = "sha256:26416f4dd46ceca43d62ef74970d9de4bdd6f4b0f163316f0b432c9e61a08bec"},
+    {file = "elasticsearch_dsl-6.4.0-py2.py3-none-any.whl", hash = "sha256:f60aea7fd756ac1fbe7ce114bbf4949aefbf495dfe8896640e787c67344f12f6"},
 ]
 entrypoints = [
     {file = "entrypoints-0.3-py2.py3-none-any.whl", hash = "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19"},
@@ -1859,6 +1960,10 @@ pytest = [
 pytest-cov = [
     {file = "pytest-cov-2.10.1.tar.gz", hash = "sha256:47bd0ce14056fdd79f93e1713f88fad7bdcc583dcd7783da86ef2f085a0bb88e"},
     {file = "pytest_cov-2.10.1-py2.py3-none-any.whl", hash = "sha256:45ec2d5182f89a81fc3eb29e3d1ed3113b9e9a873bcddb2a71faaab066110191"},
+]
+python-dateutil = [
+    {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
+    {file = "python_dateutil-2.8.1-py2.py3-none-any.whl", hash = "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"},
 ]
 python3-openid = [
     {file = "python3-openid-3.2.0.tar.gz", hash = "sha256:33fbf6928f401e0b790151ed2b5290b02545e8775f982485205a066f874aaeaf"},

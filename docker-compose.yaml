@@ -31,6 +31,7 @@ services:
       - WIKIMEDIA_OAUTH2_URL
       - WIKIMEDIA_OAUTH2_KEY
       - WIKIMEDIA_OAUTH2_SECRET
+      - "ES_HOSTS=${ES_HOSTS:-search:9200}"
     volumes:
       - type: bind
         source: .
@@ -42,6 +43,7 @@ services:
     depends_on:
       - db
       - nodejs
+      - search
 
   db:
     image: mariadb:10.4

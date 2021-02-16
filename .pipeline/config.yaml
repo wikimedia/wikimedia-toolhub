@@ -10,6 +10,7 @@ pipelines:
             DJANGO_SECRET_KEY: NOTAREALSECRET
             WIKIMEDIA_OAUTH2_KEY: NOTAREALOAUTHKEY
             WIKIMEDIA_OAUTH2_SECRET: NOTAREALOAUTHSECRET
+            ES_DSL_AUTOSYNC: 0
 
       - name: test-python
         build: test-python

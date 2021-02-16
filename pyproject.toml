@@ -37,6 +37,9 @@ django-reversion = "^3.0.9"
 spdx-license-list = "^0.5.2"
 jsonpatch = "^1.28"
 django-reversion-compare = "^0.13.1"
+elasticsearch-dsl = ">=6.0.0,<7.0.0"
+django-elasticsearch-dsl = ">=6.0.0,<7.0.0"
+django-elasticsearch-dsl-drf = "^0.21"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

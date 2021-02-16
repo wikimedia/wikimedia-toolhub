@@ -77,6 +77,12 @@ createinitialrevisions: ## Run `manage.py createinitialrevisions`
 		poetry run python3 manage.py createinitialrevisions
 .PHONY: createinitialrevisions
 
+index: ## Create and populate search index
+	docker-compose exec web $(DOCKERIZE) \
+		-wait tcp://db:3306 -wait tcp://search:9200 \
+		poetry run python3 manage.py search_index --rebuild -f
+.PHONY: index
+
 make-admin-user:
 	docker-compose exec web  $(DOCKERIZE) -wait tcp://db:3306 sh -c " \
 		poetry run python3 manage.py shell -c \"import os; from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'admin@localhost', os.environ['DJANGO_SUPERUSER_PASSWORD']);\" \
@@ -108,6 +114,7 @@ test-python-unit:  ## Run unit tests for Python code
 		export DJANGO_SECRET_KEY='this is not really a secret'; \
 		export DB_ENGINE='django.db.backends.sqlite3'; \
 		export DB_NAME=':memory:'; \
+		export ES_DSL_AUTOSYNC=0; \
 		poetry run coverage erase \
 		&& poetry run coverage run --branch manage.py test \
 		&& poetry run coverage report \
