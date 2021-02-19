@@ -19,9 +19,8 @@ from django_elasticsearch_dsl import Document
 from django_elasticsearch_dsl import fields
 from django_elasticsearch_dsl.registries import registry
 
+from toolhub.apps.toolinfo.models import Tool
 from toolhub.fields import JSONSchemaField
-
-from .models import Tool
 
 
 class JSONSchemaDocument(Document):

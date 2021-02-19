@@ -147,6 +147,7 @@ INSTALLED_APPS = [
     # ==== Local apps ====
     "toolhub.apps.auditlog",
     "toolhub.apps.crawler",
+    "toolhub.apps.search",
     "toolhub.apps.toolinfo",
     "toolhub.apps.user",
     "vue",
