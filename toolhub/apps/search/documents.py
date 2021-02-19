@@ -15,42 +15,72 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.db.models import CharField
+from django.db.models import TextField
+
 from django_elasticsearch_dsl import Document
 from django_elasticsearch_dsl import fields
 from django_elasticsearch_dsl.registries import registry
 
+from drf_spectacular.drainage import set_override
+
 from toolhub.apps.toolinfo.models import Tool
 from toolhub.fields import JSONSchemaField
 
+from . import schema
 
-class JSONSchemaDocument(Document):
+
+class SearchDocument(Document):
     """Extension of django_elasticsearch_dsl.Document.
 
     Adds support for converting JSONSchemaField members of mapped model into
-    typed Elasticsearch fields.
+    typed Elasticsearch fields. Also adds useful Elasticsearch schema
+    customizations to typed fields.
     """
 
     JSONSCHEMA_TYPE_TO_DSL = {
         "boolean": fields.BooleanField,
         "integer": fields.LongField,
         "number": fields.DoubleField,
-        "string": fields.TextField,
     }
 
     @classmethod
-    def field_from_schema(cls, schema, attr):
+    def build_string_field(cls, **kwargs):
+        """Add Elasticsearch schema customizations to strings."""
+        if "fields" not in kwargs:
+            kwargs["fields"] = {
+                "keyword": fields.KeywordField(ignore_above=256),
+            }
+        return fields.TextField(**kwargs)
+
+    @classmethod
+    def add_schema_to_field(cls, obj, schema_):
+        """Attach a JSON Schema to a field."""
+        if schema_:
+            set_override(obj, "field", schema_)
+        return obj
+
+    @classmethod
+    def field_from_schema(cls, schema_, attr):
         """Generate a document field mapping from a JSONSchema description."""
-        type_ = schema["type"]
+        type_ = schema_["type"]
         if type_ == "object":
             properties = {}
-            for key, value in schema["properties"].items():
+            for key, value in schema_["properties"].items():
                 properties[key] = cls.field_from_schema(value, None)
-            return fields.ObjectField(properties=properties, attr=attr)
+            obj = fields.ObjectField(properties=properties, attr=attr)
+            cls.add_schema_to_field(obj, schema_)
+            return obj
 
         if type_ == "array":
-            return fields.ListField(
-                cls.field_from_schema(schema["items"], attr=attr)
+            arr = fields.ListField(
+                cls.field_from_schema(schema_["items"], attr=attr)
             )
+            cls.add_schema_to_field(arr, schema_)
+            return arr
+
+        if type_ == "string":
+            return cls.build_string_field(attr=attr)
 
         return cls.JSONSCHEMA_TYPE_TO_DSL[type_](attr=attr)
 
@@ -61,11 +91,15 @@ class JSONSchemaDocument(Document):
             return cls.field_from_schema(
                 model_field._schema, field_name  # noqa: W0212
             )
+
+        if isinstance(model_field, (CharField, TextField)):
+            return cls.build_string_field(attr=field_name)
+
         return super().to_field(field_name, model_field)
 
 
 @registry.register_document
-class ToolDocument(JSONSchemaDocument):
+class ToolDocument(SearchDocument):
     """Tool Elasticsearch document."""
 
     created_by = fields.ObjectField(
@@ -74,6 +108,7 @@ class ToolDocument(JSONSchemaDocument):
             "username": fields.TextField(),
         }
     )
+    set_override(created_by, "field", schema.USER)
 
     class Index:
         """Configure index."""
@@ -115,7 +150,7 @@ class ToolDocument(JSONSchemaDocument):
             "bugtracker_url",
             "_schema",
             "_language",
-            #  "created_by",
+            # "created_by",
             "created_date",
             # "modified_by",
             "modified_date",

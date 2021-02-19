@@ -372,6 +372,7 @@ REST_FRAMEWORK = {
         "rest_framework.filters.OrderingFilter",
     ],
     "EXCEPTION_HANDLER": "rest_framework_friendly_errors.handlers.friendly_exception_handler",
+    "SEARCH_PARAM": "q",
 }
 
 SPECTACULAR_SETTINGS = {

@@ -22,6 +22,7 @@ from rest_framework_nested import routers as nested_routers
 import toolhub.apps.auditlog.views as auditlog_views
 import toolhub.apps.crawler.views as crawler_views
 import toolhub.apps.oauth2.views as oauth_views
+import toolhub.apps.search.views as search_views
 import toolhub.apps.toolinfo.views as toolinfo_views
 import toolhub.apps.user.views as user_views
 
@@ -50,6 +51,9 @@ root.register(
     "oauth/authorized",
     oauth_views.AuthorizationViewSet,
     basename="accesstoken",
+)
+root.register(
+    "search/tools", search_views.ToolDocumentViewSet, basename="search-tools"
 )
 root.register("spdx", toolinfo_views.SpdxViewSet, basename="spdx")
 root.register("tools", toolinfo_views.ToolViewSet, basename="tool")
