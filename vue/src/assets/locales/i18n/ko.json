@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gustmd7410",
 			"Ykhwong"
 		]
 	},
@@ -35,7 +36,7 @@
 	"developerdocumentation": "개발자 문서",
 	"developersettings": "개발자 설정",
 	"developersettings-appupdatesuccess": "클라이언트 ID '$1'의 앱이 업데이트되었습니다!",
-	"developersettings-appupdateerror": "'$1' 클라이언트 ID의 앱을 업데이트하는 동안 오류가 발생했습니다",
+	"developersettings-appupdateerror": "클라이언트 ID '$1'의 앱을 업데이트하는 동안 오류가 발생했습니다",
 	"developersettings-noauthorizedappsfoundtext": "계정 사용을 위해 클라이언트 앱에 권한을 부여하지 않았습니다",
 	"developersettings-noclientappsfoundtext": "클라이언트 앱이 없습니다",
 	"forwikis": "위키의 경우",
@@ -57,7 +58,7 @@
 	"newtoolsfound": "{{PLURAL:$1|1개 도구|$1개 도구}}",
 	"nourlsfounderror": "툴허브 시스템에서 toolinfo.json 파일 URL을 찾지 못했습니다.",
 	"privacypolicy": "개인정보처리방침",
-	"redirecturl": "리다이렉트 URL",
+	"redirecturl": "넘겨주기 URL",
 	"registerapps": "앱 등록",
 	"registeroauthapp": "새 OAuth 애플리케이션 등록",
 	"removeurl": "URL 제거",

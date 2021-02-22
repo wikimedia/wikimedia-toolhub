@@ -2,12 +2,13 @@
 # Exported from translatewiki.net
 #
 # Author: Amire80
+# Author: YaronSh
 # Author: ישראל קלר
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-15 13:54:59+0000\n"
-"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
+"PO-Revision-Date: 2021-02-22 15:51:40+0000\n"
+"X-POT-Import-Date: 2021-02-16 21:31:47+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
@@ -319,7 +320,7 @@ msgstr "אם כן, הכלי הזה אינו יציב ויכול להשתנות �
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr "מחרוזת או מערך של מחרוזות שמתארים את אתרי הוויקי (אחד או רבים) שאפשר להשתמש בהם בכל הזה. יש להשתמש בשמות שרת כגון `zh.wiktionary.org`. יש להשתמש בכוכביות בתור תווים כלליים. למשל, הפירוש של <span dir=\"ltr\">`*.wikisource.org`</span> אומר ש\"הכלי הזה יכול לעבוד בכל אתר ויקיטקסט\" (Wikisource). הפירוש של `*` הוא \"זה עובד בכל אתרי הוויקי, כולל אתרי ויקי של ויקימדיה\"."
 
-#: toolhub/apps/toolinfo/models.py:368 toolhub/apps/toolinfo/serializers.py:49
+#: toolhub/apps/toolinfo/models.py:368 toolhub/apps/toolinfo/serializers.py:51
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr "קישור לדף תיאור קובץ בוויקישיתוף לסמל שמייצג את הכלי."
 
@@ -407,143 +408,143 @@ msgstr "הערך להוסיף, להחליף, או לבדוק."
 msgid "JSON-Pointer to location within document to move or copy the value from."
 msgstr "JSON-Pointer למיקום בתוך המסמך שהערך יועבר או יועתק ממנו."
 
-#: toolhub/apps/toolinfo/serializers.py:40
+#: toolhub/apps/toolinfo/serializers.py:42
 msgid "A File: page on Commons"
 msgstr "דף File:‎ בוויקישיתוף"
 
-#: toolhub/apps/toolinfo/serializers.py:57
+#: toolhub/apps/toolinfo/serializers.py:59
 msgid "URL to image."
 msgstr "כתובת URL לתמונה."
 
-#: toolhub/apps/toolinfo/serializers.py:72
+#: toolhub/apps/toolinfo/serializers.py:74
 msgid "Supported wikis"
 msgstr "אתרי ויקי נתמכים"
 
-#: toolhub/apps/toolinfo/serializers.py:77
+#: toolhub/apps/toolinfo/serializers.py:79
 msgid "Any wiki"
 msgstr "כל ויקי"
 
-#: toolhub/apps/toolinfo/serializers.py:78
+#: toolhub/apps/toolinfo/serializers.py:80
 msgid "Wikimedia Commons"
 msgstr "ויקישיתוף"
 
-#: toolhub/apps/toolinfo/serializers.py:79
+#: toolhub/apps/toolinfo/serializers.py:81
 msgid "MediaWiki wiki"
 msgstr "mediawiki.org"
 
-#: toolhub/apps/toolinfo/serializers.py:80
+#: toolhub/apps/toolinfo/serializers.py:82
 msgid "Wikispecies"
 msgstr "ויקימינים"
 
-#: toolhub/apps/toolinfo/serializers.py:81
+#: toolhub/apps/toolinfo/serializers.py:83
 msgid "Any Wikibooks"
 msgstr "כל אתר ויקיספר"
 
-#: toolhub/apps/toolinfo/serializers.py:82
+#: toolhub/apps/toolinfo/serializers.py:84
 msgid "Wikidata"
 msgstr "ויקינתונים"
 
-#: toolhub/apps/toolinfo/serializers.py:83
+#: toolhub/apps/toolinfo/serializers.py:85
 msgid "Any Wikinews"
 msgstr "כל אתר ויקיחדשות"
 
-#: toolhub/apps/toolinfo/serializers.py:84
+#: toolhub/apps/toolinfo/serializers.py:86
 msgid "Any Wikipedia"
 msgstr "כל אתר ויקיפדיה"
 
-#: toolhub/apps/toolinfo/serializers.py:85
+#: toolhub/apps/toolinfo/serializers.py:87
 msgid "Any Wikiquote"
 msgstr "כל אתר ויקיציטוט"
 
-#: toolhub/apps/toolinfo/serializers.py:86
+#: toolhub/apps/toolinfo/serializers.py:88
 msgid "Any Wikisource"
 msgstr "כל אתר ויקיטקסט"
 
-#: toolhub/apps/toolinfo/serializers.py:87
+#: toolhub/apps/toolinfo/serializers.py:89
 msgid "Any Wikiversity"
 msgstr "כל אתר ויקיברסיטה"
 
-#: toolhub/apps/toolinfo/serializers.py:88
+#: toolhub/apps/toolinfo/serializers.py:90
 msgid "Any Wikivoyage"
 msgstr "כל אתר ויקימסע"
 
-#: toolhub/apps/toolinfo/serializers.py:89
+#: toolhub/apps/toolinfo/serializers.py:91
 msgid "Any Wiktionary"
 msgstr "כל אתר ויקימילון"
 
-#: toolhub/apps/toolinfo/serializers.py:106
+#: toolhub/apps/toolinfo/serializers.py:108
 msgid "SPDX license information"
 msgstr "מידע SPDX על הרישיון"
 
-#: toolhub/apps/toolinfo/serializers.py:114
+#: toolhub/apps/toolinfo/serializers.py:116
 msgid "SPDX license ID"
 msgstr "מזהה SPDX של הרישיון"
 
-#: toolhub/apps/toolinfo/serializers.py:119
+#: toolhub/apps/toolinfo/serializers.py:121
 msgid "Full name of this license"
 msgstr "השם המלא של הרישיון"
 
-#: toolhub/apps/toolinfo/serializers.py:124
+#: toolhub/apps/toolinfo/serializers.py:126
 msgid "Is this license approved as 'open source' by the OSI?"
 msgstr "האם הרישיון הזה מאושר בתור \"קוד פתוח\" על־ידי יוזמת הקוד הפתוח (OSI)?"
 
-#: toolhub/apps/toolinfo/serializers.py:129
+#: toolhub/apps/toolinfo/serializers.py:131
 msgid "Is this license approved as 'free software' by the FSF?"
 msgstr "האם הרישיון הזה מאושר בתור \"תוכנה חופשית\" על־ידי המוסד לתוכנה חופשית (FSF)?"
 
-#: toolhub/apps/toolinfo/serializers.py:134
+#: toolhub/apps/toolinfo/serializers.py:136
 msgid "Is this license considered to be outdated?"
 msgstr "האם הרישיון הזה נחשב מיושן?"
 
-#: toolhub/apps/toolinfo/serializers.py:138
+#: toolhub/apps/toolinfo/serializers.py:140
 msgid "Description of a tool"
 msgstr "תיאור כלי"
 
-#: toolhub/apps/toolinfo/serializers.py:191
+#: toolhub/apps/toolinfo/serializers.py:193
 msgid "Summary of a tool"
 msgstr "תקציר כלי"
 
-#: toolhub/apps/toolinfo/serializers.py:210
+#: toolhub/apps/toolinfo/serializers.py:212
 msgid "Edit summary"
 msgstr "תקציר העריכה"
 
-#: toolhub/apps/toolinfo/serializers.py:212
+#: toolhub/apps/toolinfo/serializers.py:214
 msgid "Description of the changes you are making to this toolinfo record."
 msgstr "תיאור השינויים שאתה עושה לרשומת ה־toolinfo הזאת."
 
-#: toolhub/apps/toolinfo/serializers.py:224
+#: toolhub/apps/toolinfo/serializers.py:226
 msgid "Create a tool"
 msgstr "יצירת כלי"
 
-#: toolhub/apps/toolinfo/serializers.py:282
+#: toolhub/apps/toolinfo/serializers.py:287
 msgid "Update a tool"
 msgstr "עדכון כלי"
 
-#: toolhub/apps/toolinfo/serializers.py:305
+#: toolhub/apps/toolinfo/serializers.py:313
 msgid "Tool revision."
 msgstr "גרסת הכלי."
 
-#: toolhub/apps/toolinfo/serializers.py:311
+#: toolhub/apps/toolinfo/serializers.py:319
 msgid "A unique integer value identifying this revision."
 msgstr "ערך שלם ייחודי שמזהה את הגרסה הזאת."
 
-#: toolhub/apps/toolinfo/serializers.py:323
+#: toolhub/apps/toolinfo/serializers.py:331
 msgid "Comment by the user for the revision."
 msgstr "הערה של המשתמש עבור הגרסה."
 
-#: toolhub/apps/toolinfo/serializers.py:333
+#: toolhub/apps/toolinfo/serializers.py:341
 msgid "Tool revision detail."
 msgstr "פרטי גרסת הכלי."
 
-#: toolhub/apps/toolinfo/serializers.py:351
+#: toolhub/apps/toolinfo/serializers.py:359
 msgid "Tool revision difference."
 msgstr "השוואת גרסאות הכלי."
 
-#: toolhub/apps/toolinfo/serializers.py:356
+#: toolhub/apps/toolinfo/serializers.py:364
 msgid "Revision to apply changes to."
 msgstr "הגרסה שהשינויים יחולו עליה."
 
-#: toolhub/apps/toolinfo/serializers.py:360
+#: toolhub/apps/toolinfo/serializers.py:368
 msgid "Revision after applying changes."
 msgstr "הגרסה אחרי החלת השינויים."
 
@@ -552,51 +553,77 @@ msgstr "הגרסה אחרי החלת השינויים."
 msgid "%(value)s is not a known SPDX license identifier."
 msgstr "%(value)s אינו מזהה SPDX ידוע עבור רישיון."
 
-#: toolhub/apps/toolinfo/views.py:50
+#: toolhub/apps/toolinfo/views.py:52
+msgid "Failed to apply patch."
+msgstr "החלת הטלאי נכשלה."
+
+#: toolhub/apps/toolinfo/views.py:57
 msgid "Create a new tool."
 msgstr "יצירת כלי חדש."
 
-#: toolhub/apps/toolinfo/views.py:55
+#: toolhub/apps/toolinfo/views.py:62
 msgid "Info for a specific tool."
 msgstr "מידע עבור כלי מסוים."
 
-#: toolhub/apps/toolinfo/views.py:58
+#: toolhub/apps/toolinfo/views.py:65
 msgid "Update info for a specific tool."
 msgstr "עדכון מידע על כלי מסוים."
 
-#: toolhub/apps/toolinfo/views.py:66
+#: toolhub/apps/toolinfo/views.py:73
 msgid "Delete a tool."
 msgstr "מחיקת כלי."
 
-#: toolhub/apps/toolinfo/views.py:69
+#: toolhub/apps/toolinfo/views.py:76
 msgid "List all tools."
 msgstr "רשימת כלים."
 
-#: toolhub/apps/toolinfo/views.py:102
+#: toolhub/apps/toolinfo/views.py:109
 msgid "Unique identifier for this tool."
 msgstr "מזהה ייחודי לכלי הזה."
 
-#: toolhub/apps/toolinfo/views.py:108
+#: toolhub/apps/toolinfo/views.py:115
 msgid "Get revision information."
 msgstr "קבלת מידע על הגרסה."
 
-#: toolhub/apps/toolinfo/views.py:113
+#: toolhub/apps/toolinfo/views.py:120
 msgid "List revisions."
 msgstr "רשימת גרסאות."
 
-#: toolhub/apps/toolinfo/views.py:118
+#: toolhub/apps/toolinfo/views.py:125
 msgid "Compare two revisions to find difference."
 msgstr "השוואת שתי גרסאות לשם  מציאת הבדל."
 
-#: toolhub/apps/toolinfo/views.py:126
+#: toolhub/apps/toolinfo/views.py:133
 msgid "A unique integer value identifying version to diff against."
 msgstr "ערך שלם ייחודי שמזהה את הגרסה שמולה תיעשה ההשוואה."
 
-#: toolhub/apps/toolinfo/views.py:186
+#: toolhub/apps/toolinfo/views.py:141
+msgid "Restore the tool to this revision."
+msgstr "שחזור הכלי לגרסה הזאת."
+
+#: toolhub/apps/toolinfo/views.py:148
+msgid "Undo all changes made between two revisions."
+msgstr "ביטול כל השינויים שנעשו אין שתי גרסאות."
+
+#: toolhub/apps/toolinfo/views.py:156
+msgid "A unique integer value identifying version to undo until."
+msgstr "ערך שלם ייחודי שמזהה את הגרסה שצריך לשחזר אליה."
+
+#: toolhub/apps/toolinfo/views.py:237
+#, python-format
+msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
+msgstr "שחזור לגרסה %(rev_id)s מתאריך %(datetime)s מאת by %(user)s"
+
+#: toolhub/apps/toolinfo/views.py:271
+#, python-format
+msgid "Undo revisions from %(first_id)s to %(last_id)s"
+msgstr "ביטול גרסאות מ־%(first_id)s עד %(last_id)s"
+
+#: toolhub/apps/toolinfo/views.py:281
 msgid "Info for a specific SPDX license."
 msgstr "מידע על רישיון SPDX מסוים."
 
-#: toolhub/apps/toolinfo/views.py:194
+#: toolhub/apps/toolinfo/views.py:289
 msgid "List all SPDX licenses."
 msgstr "רשימת כל רישיונות SPDX."
 
@@ -686,7 +713,7 @@ msgstr "מידע על קבוצת משתמשים."
 
 #: toolhub/fields.py:38
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr ""
+msgstr "נא למלא ערך שתואם לסכמת ה־JSON."
 
 #: toolhub/openapi.py:36
 msgid "API error"

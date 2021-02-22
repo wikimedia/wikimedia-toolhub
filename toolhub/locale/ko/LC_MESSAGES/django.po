@@ -1,12 +1,13 @@
 # Translation of Toolhub - Backend to Korean (한국어)
 # Exported from translatewiki.net
 #
+# Author: Gustmd7410
 # Author: Ykhwong
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-15 13:55:00+0000\n"
-"X-POT-Import-Date: 2021-02-15 13:32:08+0000\n"
+"PO-Revision-Date: 2021-02-22 15:51:40+0000\n"
+"X-POT-Import-Date: 2021-02-16 21:31:47+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
@@ -318,7 +319,7 @@ msgstr ""
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:368 toolhub/apps/toolinfo/serializers.py:49
+#: toolhub/apps/toolinfo/models.py:368 toolhub/apps/toolinfo/serializers.py:51
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr ""
 
@@ -392,7 +393,7 @@ msgstr "RFC 6902 JSON 패치 작업"
 
 #: toolhub/apps/toolinfo/schema.py:51
 msgid "The operation to be performed"
-msgstr ""
+msgstr "수행될 작업"
 
 #: toolhub/apps/toolinfo/schema.py:57
 msgid "JSON-Pointer to location within document where operation is performed."
@@ -406,143 +407,143 @@ msgstr "추가, 치환, 테스트할 값입니다."
 msgid "JSON-Pointer to location within document to move or copy the value from."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:40
+#: toolhub/apps/toolinfo/serializers.py:42
 msgid "A File: page on Commons"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:57
+#: toolhub/apps/toolinfo/serializers.py:59
 msgid "URL to image."
 msgstr "이미지의 URL입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:72
+#: toolhub/apps/toolinfo/serializers.py:74
 msgid "Supported wikis"
 msgstr "지원되는 위키"
 
-#: toolhub/apps/toolinfo/serializers.py:77
+#: toolhub/apps/toolinfo/serializers.py:79
 msgid "Any wiki"
 msgstr "모든 위키"
 
-#: toolhub/apps/toolinfo/serializers.py:78
+#: toolhub/apps/toolinfo/serializers.py:80
 msgid "Wikimedia Commons"
 msgstr "위키미디어 공용"
 
-#: toolhub/apps/toolinfo/serializers.py:79
+#: toolhub/apps/toolinfo/serializers.py:81
 msgid "MediaWiki wiki"
 msgstr "미디어위키 위키"
 
-#: toolhub/apps/toolinfo/serializers.py:80
+#: toolhub/apps/toolinfo/serializers.py:82
 msgid "Wikispecies"
 msgstr "위키생물종"
 
-#: toolhub/apps/toolinfo/serializers.py:81
+#: toolhub/apps/toolinfo/serializers.py:83
 msgid "Any Wikibooks"
 msgstr "모든 위키책"
 
-#: toolhub/apps/toolinfo/serializers.py:82
+#: toolhub/apps/toolinfo/serializers.py:84
 msgid "Wikidata"
 msgstr "위키데이터"
 
-#: toolhub/apps/toolinfo/serializers.py:83
+#: toolhub/apps/toolinfo/serializers.py:85
 msgid "Any Wikinews"
 msgstr "모든 위키뉴스"
 
-#: toolhub/apps/toolinfo/serializers.py:84
+#: toolhub/apps/toolinfo/serializers.py:86
 msgid "Any Wikipedia"
 msgstr "모든 위키백과"
 
-#: toolhub/apps/toolinfo/serializers.py:85
+#: toolhub/apps/toolinfo/serializers.py:87
 msgid "Any Wikiquote"
 msgstr "모든 위키인용집"
 
-#: toolhub/apps/toolinfo/serializers.py:86
+#: toolhub/apps/toolinfo/serializers.py:88
 msgid "Any Wikisource"
 msgstr "모든 위키문헌"
 
-#: toolhub/apps/toolinfo/serializers.py:87
+#: toolhub/apps/toolinfo/serializers.py:89
 msgid "Any Wikiversity"
 msgstr "모든 위키배움터"
 
-#: toolhub/apps/toolinfo/serializers.py:88
+#: toolhub/apps/toolinfo/serializers.py:90
 msgid "Any Wikivoyage"
 msgstr "모든 위키여행"
 
-#: toolhub/apps/toolinfo/serializers.py:89
+#: toolhub/apps/toolinfo/serializers.py:91
 msgid "Any Wiktionary"
 msgstr "모든 위키사전"
 
-#: toolhub/apps/toolinfo/serializers.py:106
+#: toolhub/apps/toolinfo/serializers.py:108
 msgid "SPDX license information"
 msgstr "SPDX 라이선스 정보"
 
-#: toolhub/apps/toolinfo/serializers.py:114
+#: toolhub/apps/toolinfo/serializers.py:116
 msgid "SPDX license ID"
 msgstr "SPDX 라이선스 ID"
 
-#: toolhub/apps/toolinfo/serializers.py:119
+#: toolhub/apps/toolinfo/serializers.py:121
 msgid "Full name of this license"
 msgstr "이 라이선스의 정식 명칭"
 
-#: toolhub/apps/toolinfo/serializers.py:124
+#: toolhub/apps/toolinfo/serializers.py:126
 msgid "Is this license approved as 'open source' by the OSI?"
 msgstr "이 라이선스가 OSI에 의해 '오픈 소스'로 승인된 것입니까?"
 
-#: toolhub/apps/toolinfo/serializers.py:129
+#: toolhub/apps/toolinfo/serializers.py:131
 msgid "Is this license approved as 'free software' by the FSF?"
 msgstr "이 라이선스가 FSF에 의해 '자유 소프트웨어'로 승인된 것입니까?"
 
-#: toolhub/apps/toolinfo/serializers.py:134
+#: toolhub/apps/toolinfo/serializers.py:136
 msgid "Is this license considered to be outdated?"
 msgstr "이 라이선스의 기간이 만료된 것으로 간주됩니까?"
 
-#: toolhub/apps/toolinfo/serializers.py:138
+#: toolhub/apps/toolinfo/serializers.py:140
 msgid "Description of a tool"
 msgstr "도구 설명"
 
-#: toolhub/apps/toolinfo/serializers.py:191
+#: toolhub/apps/toolinfo/serializers.py:193
 msgid "Summary of a tool"
 msgstr "도구 요약"
 
-#: toolhub/apps/toolinfo/serializers.py:210
+#: toolhub/apps/toolinfo/serializers.py:212
 msgid "Edit summary"
 msgstr "편집 요약"
 
-#: toolhub/apps/toolinfo/serializers.py:212
+#: toolhub/apps/toolinfo/serializers.py:214
 msgid "Description of the changes you are making to this toolinfo record."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:224
+#: toolhub/apps/toolinfo/serializers.py:226
 msgid "Create a tool"
 msgstr "도구 만들기"
 
-#: toolhub/apps/toolinfo/serializers.py:282
+#: toolhub/apps/toolinfo/serializers.py:287
 msgid "Update a tool"
 msgstr "도구 업데이트"
 
-#: toolhub/apps/toolinfo/serializers.py:305
+#: toolhub/apps/toolinfo/serializers.py:313
 msgid "Tool revision."
 msgstr "도구 버전입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:311
+#: toolhub/apps/toolinfo/serializers.py:319
 msgid "A unique integer value identifying this revision."
 msgstr "이 판을 식별하는 고유 정수값입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:323
+#: toolhub/apps/toolinfo/serializers.py:331
 msgid "Comment by the user for the revision."
 msgstr "판에 대한 사용자의 의견입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:333
+#: toolhub/apps/toolinfo/serializers.py:341
 msgid "Tool revision detail."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:351
+#: toolhub/apps/toolinfo/serializers.py:359
 msgid "Tool revision difference."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:356
+#: toolhub/apps/toolinfo/serializers.py:364
 msgid "Revision to apply changes to."
 msgstr "변경을 적용할 판입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:360
+#: toolhub/apps/toolinfo/serializers.py:368
 msgid "Revision after applying changes."
 msgstr "변경사항 적용 후의 판입니다."
 
@@ -551,51 +552,77 @@ msgstr "변경사항 적용 후의 판입니다."
 msgid "%(value)s is not a known SPDX license identifier."
 msgstr "%(value)s 값은(는) 알려진 SPDX 라이선스 식별자가 아닙니다."
 
-#: toolhub/apps/toolinfo/views.py:50
+#: toolhub/apps/toolinfo/views.py:52
+msgid "Failed to apply patch."
+msgstr "패치 적용을 실패했습니다."
+
+#: toolhub/apps/toolinfo/views.py:57
 msgid "Create a new tool."
 msgstr "새 도구를 만듭니다."
 
-#: toolhub/apps/toolinfo/views.py:55
+#: toolhub/apps/toolinfo/views.py:62
 msgid "Info for a specific tool."
 msgstr "특정 도구의 정보입니다."
 
-#: toolhub/apps/toolinfo/views.py:58
+#: toolhub/apps/toolinfo/views.py:65
 msgid "Update info for a specific tool."
 msgstr "특정 도구의 정보를 업데이트합니다."
 
-#: toolhub/apps/toolinfo/views.py:66
+#: toolhub/apps/toolinfo/views.py:73
 msgid "Delete a tool."
 msgstr "도구를 삭제합니다."
 
-#: toolhub/apps/toolinfo/views.py:69
+#: toolhub/apps/toolinfo/views.py:76
 msgid "List all tools."
 msgstr "모든 도구를 나열합니다."
 
-#: toolhub/apps/toolinfo/views.py:102
+#: toolhub/apps/toolinfo/views.py:109
 msgid "Unique identifier for this tool."
 msgstr "이 도구의 고유 식별자입니다."
 
-#: toolhub/apps/toolinfo/views.py:108
+#: toolhub/apps/toolinfo/views.py:115
 msgid "Get revision information."
-msgstr ""
+msgstr "판 정보를 가져옵니다."
 
-#: toolhub/apps/toolinfo/views.py:113
+#: toolhub/apps/toolinfo/views.py:120
 msgid "List revisions."
 msgstr "판을 나열합니다."
 
-#: toolhub/apps/toolinfo/views.py:118
+#: toolhub/apps/toolinfo/views.py:125
 msgid "Compare two revisions to find difference."
 msgstr "차이 확인을 위해 두 판을 비교합니다."
 
-#: toolhub/apps/toolinfo/views.py:126
+#: toolhub/apps/toolinfo/views.py:133
 msgid "A unique integer value identifying version to diff against."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:186
+#: toolhub/apps/toolinfo/views.py:141
+msgid "Restore the tool to this revision."
+msgstr "도구를 이 판으로 복원합니다."
+
+#: toolhub/apps/toolinfo/views.py:148
+msgid "Undo all changes made between two revisions."
+msgstr "두 판 사이의 모든 변경사항을 취소합니다."
+
+#: toolhub/apps/toolinfo/views.py:156
+msgid "A unique integer value identifying version to undo until."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:237
+#, python-format
+msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:271
+#, python-format
+msgid "Undo revisions from %(first_id)s to %(last_id)s"
+msgstr "%(first_id)s 판에서 %(last_id)s 판으로 편집 취소"
+
+#: toolhub/apps/toolinfo/views.py:281
 msgid "Info for a specific SPDX license."
 msgstr "특정 SPDX 라이선스의 정보입니다."
 
-#: toolhub/apps/toolinfo/views.py:194
+#: toolhub/apps/toolinfo/views.py:289
 msgid "List all SPDX licenses."
 msgstr "모든 SPDX 라이선스를 나열합니다."
 
@@ -685,7 +712,7 @@ msgstr "사용자 그룹의 정보입니다."
 
 #: toolhub/fields.py:38
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr ""
+msgstr "JSON 스키마를 준수하는 유효한 값을 입력하십시오."
 
 #: toolhub/openapi.py:36
 msgid "API error"
