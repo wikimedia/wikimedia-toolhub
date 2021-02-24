@@ -10,22 +10,84 @@ export const client = new SwaggerClient( {
 } );
 
 /**
- * Makes an API call.
+ * Add common default values to a Request.
  *
- * @param {Object} context - Provides access to state
  * @param {Object} request - API request details
- * @return {Object} API response
+ * @param {Object} context - Vuex context
+ * @param {Object} context.state - State data
+ * @return {Object}
+ */
+export function addRequestDefaults( request, context ) {
+	request.method = request.method || 'GET';
+	request.headers = request.headers || {};
+	if ( !( 'Content-Type' in request.headers ) ) {
+		request.headers[ 'Content-Type' ] = 'application/json';
+	}
+	if ( request.method.toUpperCase() !== 'GET' ) {
+		const ctx = context.rootState.user || context.state;
+		request.headers[ 'X-CSRFToken' ] = ctx.user.csrf_token;
+	}
+	return request;
+}
+
+/**
+ * Extract a failure payload from a rejected API call Promise.
+ *
+ * If the provided error contains a 'response' member, attempt to parse and
+ * return it's body. On failure or any other input, return the provided input
+ * error.
+ *
+ * @param {*} err - rejected Promise return value
+ * @return {Object} Parsed JSON error body or raw Error data
+ */
+export function getFailurePayload( err ) {
+	if ( 'response' in err ) {
+		try {
+			return JSON.parse( err.response.data );
+		} catch ( ex ) {}
+	}
+	return err;
+}
+
+/**
+ * @typedef SwaggerResponse
+ * @property {boolean} ok - was response successful (200-299) or not
+ * @property {number} status - status code
+ * @property {string} statusText - status message
+ * @property {string} url - request url
+ * @property {Object} headers - response headers
+ * @property {string} text - unparsed response body
+ * @property {Object|undefined} body - JSON object or undefined
+ * @property {Error|undefined} parseError - Serialization error
  */
 
-export function makeApiCall( context, request ) {
-	request.headers = request.headers || {};
-	request.headers[ 'Content-Type' ] = 'application/json';
-	if ( request.method !== 'GET' ) {
-		request.headers[ 'X-CSRFToken' ] = context.rootState.user.user.csrf_token ||
-			context.state.user.csrf_token;
-	}
+/**
+ * @typedef StatusError
+ * @property {string} message - status message
+ * @property {number} statusCode - status code
+ * @property {SwaggerResponse} response - original response object
+ */
 
-	return SwaggerClient.http( request );
+/**
+ * @typedef InterceptorError
+ * @property {string} message - status message
+ * @property {number} statusCode - status code
+ * @property {Error} responseError - Error thrown in responseInterceptor
+ */
+
+/**
+ * Make an API call.
+ *
+ * @async
+ * @param {Object} context - Vuex context
+ * @param {Object} request - API request details
+ * @return {Promise<SwaggerResponse>} A promise for the API call
+ * @throws {Error} Network problem or CORS misconfiguration
+ * @throws {Error<StatusError>} Status or serialization failure
+ * @throws {Error<InterceptorError>} ResponseInterceptor error
+ */
+export function makeApiCall( context, request ) {
+	return SwaggerClient.http( addRequestDefaults( request, context ) );
 }
 
 export default makeApiCall;

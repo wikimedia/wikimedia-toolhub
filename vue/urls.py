@@ -28,4 +28,5 @@ urlpatterns = [
     path("crawler-history", main, name="crawler-history"),
     path("developer-settings", main, name="developer-settings"),
     path("tool/<path:path>", main, name="tool"),
+    path("search", main, name="search"),
 ]

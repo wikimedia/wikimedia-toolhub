@@ -1,22 +1,26 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import UserModule from './user';
-import ToolsModule from './tools';
-import CrawlerModule from './crawler';
-import AuditLogsModule from './auditlogs';
-import LocaleModule from './locale';
-import ApiModule from './api';
 
+import ApiModule from './api';
+import AuditLogsModule from './auditlogs';
+import CrawlerModule from './crawler';
+import LocaleModule from './locale';
+import SearchModule from './search';
+import ToolsModule from './tools';
+import UserModule from './user';
+
+/* istanbul ignore next: upstream tested */
 Vue.use( Vuex );
 
 export default new Vuex.Store( {
 	modules: {
-		user: UserModule,
-		tools: ToolsModule,
-		crawler: CrawlerModule,
+		api: ApiModule,
 		auditlogs: AuditLogsModule,
+		crawler: CrawlerModule,
 		locale: LocaleModule,
-		api: ApiModule
+		search: SearchModule,
+		tools: ToolsModule,
+		user: UserModule
 	},
 	// Strict mode in development/testing, but disabled for performance in prod
 	strict: process.env.NODE_ENV !== 'production'

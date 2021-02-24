@@ -54,13 +54,27 @@ const routes = [
 			name: 'developersettings',
 			path: '/developer-settings',
 			component: () => import( /* webpackChunkName: "developersettings" */ '../views/DeveloperSettings.vue' )
+		},
+		{
+			name: 'search',
+			path: '/search',
+			component: () => import( /* webpackChunkName: "search" */ '../views/Search.vue' )
 		}
 	],
 
 	router = new VueRouter( {
 		mode: 'history',
 		base: '/',
-		routes
+		routes,
+		scrollBehavior( to, from, savedPosition ) {
+			if ( savedPosition ) {
+				return savedPosition;
+			}
+			if ( to.hash ) {
+				return { selector: to.hash };
+			}
+			return { x: 0, y: 0 };
+		}
 	} );
 
 export default router;
