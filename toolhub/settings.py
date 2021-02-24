@@ -96,6 +96,16 @@ LOGGING = {
             "level": "WARNING",
             "propagate": False,
         },
+        "elasticsearch": {
+            "handlers": LOGGING_HANDLERS,
+            "level": LOGGING_LEVEL,
+            "propagate": False,
+        },
+        "elasticsearch.trace": {
+            "handlers": LOGGING_HANDLERS,
+            "level": LOGGING_LEVEL,
+            "propagate": False,
+        },
         "py.warnings": {
             "handlers": LOGGING_HANDLERS,
             "level": LOGGING_LEVEL,

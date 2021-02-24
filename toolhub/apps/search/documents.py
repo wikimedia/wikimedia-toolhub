@@ -24,6 +24,8 @@ from django_elasticsearch_dsl.registries import registry
 
 from drf_spectacular.drainage import set_override
 
+from elasticsearch_dsl import analyzer
+
 from toolhub.apps.toolinfo.models import Tool
 from toolhub.fields import JSONSchemaField
 
@@ -44,11 +46,18 @@ class SearchDocument(Document):
         "number": fields.DoubleField,
     }
 
+    exact_analyzer = analyzer(
+        "exact",
+        tokenizer="standard",
+        filter=["standard", "lowercase"],
+    )
+
     @classmethod
     def build_string_field(cls, **kwargs):
         """Add Elasticsearch schema customizations to strings."""
         if "fields" not in kwargs:
             kwargs["fields"] = {
+                "exact": fields.TextField(analyzer=cls.exact_analyzer),
                 "keyword": fields.KeywordField(ignore_above=256),
             }
         return fields.TextField(**kwargs)

@@ -18,6 +18,9 @@
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.extensions import OpenApiFilterExtension
+from drf_spectacular.plumbing import build_array_type
+from drf_spectacular.plumbing import build_basic_type
+from drf_spectacular.plumbing import build_object_type
 from drf_spectacular.plumbing import build_parameter_type
 
 
@@ -29,6 +32,54 @@ USER = {
         "username": {"type": "string"},
     },
 }
+
+FACET_RESPONSE = build_object_type(
+    description=_("Faceted classification"),
+    additionalProperties=build_object_type(
+        properties={
+            "doc_count": build_basic_type(int),
+        },
+        additionalProperties=build_object_type(
+            properties={
+                "meta": build_object_type(
+                    properties={
+                        "param": build_basic_type(str),
+                        "missing": build_basic_type(str),
+                        "missing_param": build_basic_type(str),
+                    }
+                ),
+                "doc_count_error_upper_bound": build_basic_type(int),
+                "sum_other_doc_count": build_basic_type(int),
+                "buckets": build_array_type(
+                    build_object_type(
+                        properties={
+                            "key": build_basic_type(str),
+                            "doc_count": build_basic_type(int),
+                        },
+                    ),
+                ),
+            },
+        ),
+    ),
+)
+
+
+class ToolhubFilterExtension(OpenApiFilterExtension):
+    """Describe django_elasticsearch_dsl_drf filters."""
+
+    target_class = "toolhub.apps.search.views.QueryStringFilterBackend"
+
+    def get_schema_operation_parameters(self, auto_schema, *args, **kwargs):
+        """Describe query parameters."""
+        return [
+            build_parameter_type(
+                name=self.target.search_param,
+                required=False,
+                location="query",
+                description=_("Query string search"),
+                schema={"type": "string"},
+            )
+        ]
 
 
 class BaseSearchFilterExtension(OpenApiFilterExtension):
