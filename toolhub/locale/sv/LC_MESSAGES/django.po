@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-22 15:51:40+0000\n"
+"PO-Revision-Date: 2021-02-25 15:27:40+0000\n"
 "X-POT-Import-Date: 2021-02-16 21:31:47+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -413,7 +413,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:59
 msgid "URL to image."
-msgstr ""
+msgstr "URL till bild."
 
 #: toolhub/apps/toolinfo/serializers.py:74
 msgid "Supported wikis"
@@ -473,27 +473,27 @@ msgstr "Alla Wiktionary-versioner"
 
 #: toolhub/apps/toolinfo/serializers.py:108
 msgid "SPDX license information"
-msgstr ""
+msgstr "SPDX-licensinformation"
 
 #: toolhub/apps/toolinfo/serializers.py:116
 msgid "SPDX license ID"
-msgstr ""
+msgstr "SPDX-licens-ID"
 
 #: toolhub/apps/toolinfo/serializers.py:121
 msgid "Full name of this license"
-msgstr ""
+msgstr "Licensens fullständiga namn"
 
 #: toolhub/apps/toolinfo/serializers.py:126
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr ""
+msgstr "Är denna licens godkänd som \"fri programvara\" av OSI?"
 
 #: toolhub/apps/toolinfo/serializers.py:131
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr ""
+msgstr "Är denna licens godkänd som \"fri programvara\" av FSF?"
 
 #: toolhub/apps/toolinfo/serializers.py:136
 msgid "Is this license considered to be outdated?"
-msgstr ""
+msgstr "Anses denna licens vara föråldrad?"
 
 #: toolhub/apps/toolinfo/serializers.py:140
 msgid "Description of a tool"
@@ -505,11 +505,11 @@ msgstr "Sammanfattning av ett verktyg"
 
 #: toolhub/apps/toolinfo/serializers.py:212
 msgid "Edit summary"
-msgstr ""
+msgstr "Redigeringssammanfattning"
 
 #: toolhub/apps/toolinfo/serializers.py:214
 msgid "Description of the changes you are making to this toolinfo record."
-msgstr ""
+msgstr "Beskrivning av ändringarna du utför på denna toolinfo-uppteckning."
 
 #: toolhub/apps/toolinfo/serializers.py:226
 msgid "Create a tool"
@@ -550,7 +550,7 @@ msgstr ""
 #: toolhub/apps/toolinfo/validators.py:28
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr ""
+msgstr "%(value)s är inte en känd SPDX-licensidentifierare"
 
 #: toolhub/apps/toolinfo/views.py:52
 msgid "Failed to apply patch."
@@ -620,11 +620,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:281
 msgid "Info for a specific SPDX license."
-msgstr ""
+msgstr "Info för en specifik SPDX-licens."
 
 #: toolhub/apps/toolinfo/views.py:289
 msgid "List all SPDX licenses."
-msgstr ""
+msgstr "Lista alla SPDX-licenser."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
@@ -716,7 +716,7 @@ msgstr ""
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr ""
+msgstr "API-fel"
 
 #: toolhub/settings.py:337
 msgid "Read scope"

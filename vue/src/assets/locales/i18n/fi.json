@@ -4,6 +4,7 @@
 			"Maantietäjä",
 			"Majavah",
 			"Nike",
+			"Pyscowicz",
 			"Stryn"
 		]
 	},
@@ -44,6 +45,7 @@
 	"learnmore": "Lue lisää",
 	"leavefeedback": "Jätä palautetta",
 	"links": "Linkit",
+	"locale-select": "Valitse kieli",
 	"message-close": "Sulje viesti",
 	"moreinfo": "Lisää tietoa",
 	"mostrecentcrawledurls": "Viimeisimmät indeksoidut URL-osoitteet",
