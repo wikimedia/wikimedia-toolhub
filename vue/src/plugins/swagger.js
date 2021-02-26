@@ -1,5 +1,14 @@
 import SwaggerClient from 'swagger-client';
 
+export const OPENAPI_SCHEMA_URL = '/api/schema/';
+
+/**
+ * @type {Promise<SwaggerClient>}
+ */
+export const client = new SwaggerClient( {
+	url: OPENAPI_SCHEMA_URL
+} );
+
 /**
  * Makes an API call.
  *
@@ -8,7 +17,7 @@ import SwaggerClient from 'swagger-client';
  * @return {Object} API response
  */
 
-function makeApiCall( context, request ) {
+export function makeApiCall( context, request ) {
 	request.headers = request.headers || {};
 	request.headers[ 'Content-Type' ] = 'application/json';
 	if ( request.method !== 'GET' ) {

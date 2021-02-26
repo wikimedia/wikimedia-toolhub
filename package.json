@@ -24,6 +24,7 @@
     "core-js": "^3.8.3",
     "swagger-client": "^3.12.2",
     "vue": "^2.6.11",
+    "vue-async-computed": "^3.9.0",
     "vue-chartjs": "^3.5.1",
     "vue-clipboard2": "^0.3.1",
     "vue-i18n": "^8.22.4",

@@ -5,6 +5,7 @@ import ToolsModule from './tools';
 import CrawlerModule from './crawler';
 import AuditLogsModule from './auditlogs';
 import LocaleModule from './locale';
+import ApiModule from './api';
 
 Vue.use( Vuex );
 
@@ -14,7 +15,8 @@ export default new Vuex.Store( {
 		tools: ToolsModule,
 		crawler: CrawlerModule,
 		auditlogs: AuditLogsModule,
-		locale: LocaleModule
+		locale: LocaleModule,
+		api: ApiModule
 	},
 	// Strict mode in development/testing, but disabled for performance in prod
 	strict: process.env.NODE_ENV !== 'production'

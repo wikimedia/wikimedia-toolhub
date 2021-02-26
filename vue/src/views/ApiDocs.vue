@@ -11,7 +11,7 @@
 			<v-col cols="12">
 				<rapi-doc
 					id="apidoc"
-					spec-url="/api/schema/"
+					:spec-url="specUrl"
 					class="no-gutters flex-wrap flex-column fill-height elevation-1 py-6"
 					allow-api-list-style-selection="false"
 					allow-authentication="false"
@@ -39,9 +39,13 @@
 <script>
 import { mapState } from 'vuex';
 import 'rapidoc';
+import { OPENAPI_SCHEMA_URL } from '@/plugins/swagger';
 
 export default {
 	name: 'ApiDocs',
+	data: () => ( {
+		specUrl: OPENAPI_SCHEMA_URL
+	} ),
 	computed: {
 		...mapState( 'user', [ 'user' ] )
 	}
