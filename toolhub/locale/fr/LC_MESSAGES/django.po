@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-22 15:51:39+0000\n"
-"X-POT-Import-Date: 2021-02-16 21:31:47+0000\n"
+"PO-Revision-Date: 2021-03-01 13:52:42+0000\n"
+"X-POT-Import-Date: 2021-02-26 19:31:50+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
@@ -215,6 +215,35 @@ msgstr "Infos pour une application autorisée."
 #: toolhub/apps/oauth2/views.py:109
 msgid "Revoke an application authorization."
 msgstr "Révoquer une autorisation d’application."
+
+#: toolhub/apps/search/apps.py:26
+msgid "Search"
+msgstr "Rechercher"
+
+#: toolhub/apps/search/schema.py:26 toolhub/apps/user/serializers.py:118
+msgid "User information"
+msgstr "Informations de l’utilisateur"
+
+#: toolhub/apps/search/schema.py:53
+#, python-format
+msgid "Search in %(fields)s"
+msgstr "Rechercher dans %(fields)s"
+
+#: toolhub/apps/search/schema.py:55
+msgid ", "
+msgstr ", "
+
+#: toolhub/apps/search/schema.py:140
+msgid "Field to use when ordering results."
+msgstr "Champ à utiliser pour ordonner les résultats."
+
+#: toolhub/apps/search/serializers.py:27
+msgid "Tool search results"
+msgstr "Résultats de la recherche d’outil"
+
+#: toolhub/apps/search/views.py:37
+msgid "Faceted search for tools."
+msgstr "Recherche à facettes pour les outils."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -554,77 +583,77 @@ msgstr "Révision après application des modifications."
 msgid "%(value)s is not a known SPDX license identifier."
 msgstr "%(value)s n’est pas un identifiant de licence SPDX connu."
 
-#: toolhub/apps/toolinfo/views.py:52
+#: toolhub/apps/toolinfo/views.py:53
 msgid "Failed to apply patch."
 msgstr "Échec de l’application du correctif."
 
-#: toolhub/apps/toolinfo/views.py:57
+#: toolhub/apps/toolinfo/views.py:58
 msgid "Create a new tool."
 msgstr "Créer un nouvel outil."
 
-#: toolhub/apps/toolinfo/views.py:62
+#: toolhub/apps/toolinfo/views.py:63
 msgid "Info for a specific tool."
 msgstr "Infos pour un outil spécifique."
 
-#: toolhub/apps/toolinfo/views.py:65
+#: toolhub/apps/toolinfo/views.py:66
 msgid "Update info for a specific tool."
 msgstr "Mettre à jour les informations pour un outil spécifique."
 
-#: toolhub/apps/toolinfo/views.py:73
+#: toolhub/apps/toolinfo/views.py:74
 msgid "Delete a tool."
 msgstr "Supprimer un outil."
 
-#: toolhub/apps/toolinfo/views.py:76
+#: toolhub/apps/toolinfo/views.py:77
 msgid "List all tools."
 msgstr "Lister tous les outils."
 
-#: toolhub/apps/toolinfo/views.py:109
+#: toolhub/apps/toolinfo/views.py:110
 msgid "Unique identifier for this tool."
 msgstr "Identifiant unique pour cet outil."
 
-#: toolhub/apps/toolinfo/views.py:115
+#: toolhub/apps/toolinfo/views.py:116
 msgid "Get revision information."
 msgstr "Obtenir les informations de révision."
 
-#: toolhub/apps/toolinfo/views.py:120
+#: toolhub/apps/toolinfo/views.py:121
 msgid "List revisions."
 msgstr "Liste des révisions."
 
-#: toolhub/apps/toolinfo/views.py:125
+#: toolhub/apps/toolinfo/views.py:126
 msgid "Compare two revisions to find difference."
 msgstr "Comparer deux révisions pour trouver la différence."
 
-#: toolhub/apps/toolinfo/views.py:133
+#: toolhub/apps/toolinfo/views.py:134
 msgid "A unique integer value identifying version to diff against."
 msgstr "Une valeur d’entier unique identifiant les versions à comparer."
 
-#: toolhub/apps/toolinfo/views.py:141
+#: toolhub/apps/toolinfo/views.py:142
 msgid "Restore the tool to this revision."
 msgstr "Restaurer l’outil à cette révision."
 
-#: toolhub/apps/toolinfo/views.py:148
+#: toolhub/apps/toolinfo/views.py:149
 msgid "Undo all changes made between two revisions."
 msgstr "Annuler tous les changements réalisés entre deux révisions."
 
-#: toolhub/apps/toolinfo/views.py:156
+#: toolhub/apps/toolinfo/views.py:157
 msgid "A unique integer value identifying version to undo until."
 msgstr "Une valeur entière unique identifiant les versions à défaire pour revenir à la version donnée."
 
-#: toolhub/apps/toolinfo/views.py:237
+#: toolhub/apps/toolinfo/views.py:238
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr "Revenir à la révision %(rev_id)s datée du %(datetime)s par %(user)s"
 
-#: toolhub/apps/toolinfo/views.py:271
+#: toolhub/apps/toolinfo/views.py:272
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "Annuler les révisions de %(first_id)s à %(last_id)s"
 
-#: toolhub/apps/toolinfo/views.py:281
+#: toolhub/apps/toolinfo/views.py:282
 msgid "Info for a specific SPDX license."
 msgstr "Info sur une licence SPDX particulière."
 
-#: toolhub/apps/toolinfo/views.py:289
+#: toolhub/apps/toolinfo/views.py:290
 msgid "List all SPDX licenses."
 msgstr "Lister toutes les licences SPDX."
 
@@ -672,10 +701,6 @@ msgstr "Informations d’identification sociale pour un utilisateur"
 msgid "Detailed user information"
 msgstr "Informations détaillées de l’utilisateur"
 
-#: toolhub/apps/user/serializers.py:118
-msgid "User information"
-msgstr "Informations de l’utilisateur"
-
 #: toolhub/apps/user/serializers.py:130
 msgid "Group information"
 msgstr "Informations du groupe"
@@ -720,15 +745,15 @@ msgstr "Saisir une valeur valide et conforme au schéma JSON."
 msgid "API error"
 msgstr "Erreur de l’API"
 
-#: toolhub/settings.py:337
+#: toolhub/settings.py:353
 msgid "Read scope"
 msgstr "Portée en lecture"
 
-#: toolhub/settings.py:338
+#: toolhub/settings.py:354
 msgid "Write scope"
 msgstr "Portée en écriture"
 
-#: toolhub/settings.py:364
+#: toolhub/settings.py:381
 msgid "Toolhub API"
 msgstr "API de Toolhub"
 

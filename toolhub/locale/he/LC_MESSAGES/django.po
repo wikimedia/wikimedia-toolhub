@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-22 15:51:40+0000\n"
-"X-POT-Import-Date: 2021-02-16 21:31:47+0000\n"
+"PO-Revision-Date: 2021-03-01 13:52:42+0000\n"
+"X-POT-Import-Date: 2021-02-26 19:31:50+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
@@ -214,6 +214,35 @@ msgstr "מידע ליישום המאושר."
 #: toolhub/apps/oauth2/views.py:109
 msgid "Revoke an application authorization."
 msgstr "שלילת אישור מיישום."
+
+#: toolhub/apps/search/apps.py:26
+msgid "Search"
+msgstr ""
+
+#: toolhub/apps/search/schema.py:26 toolhub/apps/user/serializers.py:118
+msgid "User information"
+msgstr "מידע על משתמש"
+
+#: toolhub/apps/search/schema.py:53
+#, python-format
+msgid "Search in %(fields)s"
+msgstr ""
+
+#: toolhub/apps/search/schema.py:55
+msgid ", "
+msgstr ""
+
+#: toolhub/apps/search/schema.py:140
+msgid "Field to use when ordering results."
+msgstr ""
+
+#: toolhub/apps/search/serializers.py:27
+msgid "Tool search results"
+msgstr ""
+
+#: toolhub/apps/search/views.py:37
+msgid "Faceted search for tools."
+msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -553,77 +582,77 @@ msgstr "הגרסה אחרי החלת השינויים."
 msgid "%(value)s is not a known SPDX license identifier."
 msgstr "%(value)s אינו מזהה SPDX ידוע עבור רישיון."
 
-#: toolhub/apps/toolinfo/views.py:52
+#: toolhub/apps/toolinfo/views.py:53
 msgid "Failed to apply patch."
 msgstr "החלת הטלאי נכשלה."
 
-#: toolhub/apps/toolinfo/views.py:57
+#: toolhub/apps/toolinfo/views.py:58
 msgid "Create a new tool."
 msgstr "יצירת כלי חדש."
 
-#: toolhub/apps/toolinfo/views.py:62
+#: toolhub/apps/toolinfo/views.py:63
 msgid "Info for a specific tool."
 msgstr "מידע עבור כלי מסוים."
 
-#: toolhub/apps/toolinfo/views.py:65
+#: toolhub/apps/toolinfo/views.py:66
 msgid "Update info for a specific tool."
 msgstr "עדכון מידע על כלי מסוים."
 
-#: toolhub/apps/toolinfo/views.py:73
+#: toolhub/apps/toolinfo/views.py:74
 msgid "Delete a tool."
 msgstr "מחיקת כלי."
 
-#: toolhub/apps/toolinfo/views.py:76
+#: toolhub/apps/toolinfo/views.py:77
 msgid "List all tools."
 msgstr "רשימת כלים."
 
-#: toolhub/apps/toolinfo/views.py:109
+#: toolhub/apps/toolinfo/views.py:110
 msgid "Unique identifier for this tool."
 msgstr "מזהה ייחודי לכלי הזה."
 
-#: toolhub/apps/toolinfo/views.py:115
+#: toolhub/apps/toolinfo/views.py:116
 msgid "Get revision information."
 msgstr "קבלת מידע על הגרסה."
 
-#: toolhub/apps/toolinfo/views.py:120
+#: toolhub/apps/toolinfo/views.py:121
 msgid "List revisions."
 msgstr "רשימת גרסאות."
 
-#: toolhub/apps/toolinfo/views.py:125
+#: toolhub/apps/toolinfo/views.py:126
 msgid "Compare two revisions to find difference."
 msgstr "השוואת שתי גרסאות לשם  מציאת הבדל."
 
-#: toolhub/apps/toolinfo/views.py:133
+#: toolhub/apps/toolinfo/views.py:134
 msgid "A unique integer value identifying version to diff against."
 msgstr "ערך שלם ייחודי שמזהה את הגרסה שמולה תיעשה ההשוואה."
 
-#: toolhub/apps/toolinfo/views.py:141
+#: toolhub/apps/toolinfo/views.py:142
 msgid "Restore the tool to this revision."
 msgstr "שחזור הכלי לגרסה הזאת."
 
-#: toolhub/apps/toolinfo/views.py:148
+#: toolhub/apps/toolinfo/views.py:149
 msgid "Undo all changes made between two revisions."
 msgstr "ביטול כל השינויים שנעשו אין שתי גרסאות."
 
-#: toolhub/apps/toolinfo/views.py:156
+#: toolhub/apps/toolinfo/views.py:157
 msgid "A unique integer value identifying version to undo until."
 msgstr "ערך שלם ייחודי שמזהה את הגרסה שצריך לשחזר אליה."
 
-#: toolhub/apps/toolinfo/views.py:237
+#: toolhub/apps/toolinfo/views.py:238
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr "שחזור לגרסה %(rev_id)s מתאריך %(datetime)s מאת by %(user)s"
 
-#: toolhub/apps/toolinfo/views.py:271
+#: toolhub/apps/toolinfo/views.py:272
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "ביטול גרסאות מ־%(first_id)s עד %(last_id)s"
 
-#: toolhub/apps/toolinfo/views.py:281
+#: toolhub/apps/toolinfo/views.py:282
 msgid "Info for a specific SPDX license."
 msgstr "מידע על רישיון SPDX מסוים."
 
-#: toolhub/apps/toolinfo/views.py:289
+#: toolhub/apps/toolinfo/views.py:290
 msgid "List all SPDX licenses."
 msgstr "רשימת כל רישיונות SPDX."
 
@@ -671,10 +700,6 @@ msgstr "מידע על הזדהות משתמש באמצעות רשתות חברת
 msgid "Detailed user information"
 msgstr "מידע מפורט על משתמש"
 
-#: toolhub/apps/user/serializers.py:118
-msgid "User information"
-msgstr "מידע על משתמש"
-
 #: toolhub/apps/user/serializers.py:130
 msgid "Group information"
 msgstr "מידע על קבוצה"
@@ -719,15 +744,15 @@ msgstr "נא למלא ערך שתואם לסכמת ה־JSON."
 msgid "API error"
 msgstr "שגיאת API"
 
-#: toolhub/settings.py:337
+#: toolhub/settings.py:353
 msgid "Read scope"
 msgstr "טווח קריאה"
 
-#: toolhub/settings.py:338
+#: toolhub/settings.py:354
 msgid "Write scope"
 msgstr "טווח כתיבה"
 
-#: toolhub/settings.py:364
+#: toolhub/settings.py:381
 msgid "Toolhub API"
 msgstr "API של Toolhub"
 

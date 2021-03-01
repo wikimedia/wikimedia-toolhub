@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-02-22 15:51:40+0000\n"
-"X-POT-Import-Date: 2021-02-16 21:31:47+0000\n"
+"PO-Revision-Date: 2021-03-01 13:52:42+0000\n"
+"X-POT-Import-Date: 2021-02-26 19:31:50+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
@@ -213,6 +213,35 @@ msgstr "인가된 애플리케이션의 정보입니다."
 #: toolhub/apps/oauth2/views.py:109
 msgid "Revoke an application authorization."
 msgstr "애플리케이션 인가를 철회합니다."
+
+#: toolhub/apps/search/apps.py:26
+msgid "Search"
+msgstr "검색"
+
+#: toolhub/apps/search/schema.py:26 toolhub/apps/user/serializers.py:118
+msgid "User information"
+msgstr "사용자 정보"
+
+#: toolhub/apps/search/schema.py:53
+#, python-format
+msgid "Search in %(fields)s"
+msgstr ""
+
+#: toolhub/apps/search/schema.py:55
+msgid ", "
+msgstr ", "
+
+#: toolhub/apps/search/schema.py:140
+msgid "Field to use when ordering results."
+msgstr ""
+
+#: toolhub/apps/search/serializers.py:27
+msgid "Tool search results"
+msgstr "도구 검색 결과"
+
+#: toolhub/apps/search/views.py:37
+msgid "Faceted search for tools."
+msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -552,77 +581,77 @@ msgstr "변경사항 적용 후의 판입니다."
 msgid "%(value)s is not a known SPDX license identifier."
 msgstr "%(value)s 값은(는) 알려진 SPDX 라이선스 식별자가 아닙니다."
 
-#: toolhub/apps/toolinfo/views.py:52
+#: toolhub/apps/toolinfo/views.py:53
 msgid "Failed to apply patch."
 msgstr "패치 적용을 실패했습니다."
 
-#: toolhub/apps/toolinfo/views.py:57
+#: toolhub/apps/toolinfo/views.py:58
 msgid "Create a new tool."
 msgstr "새 도구를 만듭니다."
 
-#: toolhub/apps/toolinfo/views.py:62
+#: toolhub/apps/toolinfo/views.py:63
 msgid "Info for a specific tool."
 msgstr "특정 도구의 정보입니다."
 
-#: toolhub/apps/toolinfo/views.py:65
+#: toolhub/apps/toolinfo/views.py:66
 msgid "Update info for a specific tool."
 msgstr "특정 도구의 정보를 업데이트합니다."
 
-#: toolhub/apps/toolinfo/views.py:73
+#: toolhub/apps/toolinfo/views.py:74
 msgid "Delete a tool."
 msgstr "도구를 삭제합니다."
 
-#: toolhub/apps/toolinfo/views.py:76
+#: toolhub/apps/toolinfo/views.py:77
 msgid "List all tools."
 msgstr "모든 도구를 나열합니다."
 
-#: toolhub/apps/toolinfo/views.py:109
+#: toolhub/apps/toolinfo/views.py:110
 msgid "Unique identifier for this tool."
 msgstr "이 도구의 고유 식별자입니다."
 
-#: toolhub/apps/toolinfo/views.py:115
+#: toolhub/apps/toolinfo/views.py:116
 msgid "Get revision information."
 msgstr "판 정보를 가져옵니다."
 
-#: toolhub/apps/toolinfo/views.py:120
+#: toolhub/apps/toolinfo/views.py:121
 msgid "List revisions."
 msgstr "판을 나열합니다."
 
-#: toolhub/apps/toolinfo/views.py:125
+#: toolhub/apps/toolinfo/views.py:126
 msgid "Compare two revisions to find difference."
 msgstr "차이 확인을 위해 두 판을 비교합니다."
 
-#: toolhub/apps/toolinfo/views.py:133
+#: toolhub/apps/toolinfo/views.py:134
 msgid "A unique integer value identifying version to diff against."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:141
+#: toolhub/apps/toolinfo/views.py:142
 msgid "Restore the tool to this revision."
 msgstr "도구를 이 판으로 복원합니다."
 
-#: toolhub/apps/toolinfo/views.py:148
+#: toolhub/apps/toolinfo/views.py:149
 msgid "Undo all changes made between two revisions."
 msgstr "두 판 사이의 모든 변경사항을 취소합니다."
 
-#: toolhub/apps/toolinfo/views.py:156
+#: toolhub/apps/toolinfo/views.py:157
 msgid "A unique integer value identifying version to undo until."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:237
+#: toolhub/apps/toolinfo/views.py:238
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:271
+#: toolhub/apps/toolinfo/views.py:272
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "%(first_id)s 판에서 %(last_id)s 판으로 편집 취소"
 
-#: toolhub/apps/toolinfo/views.py:281
+#: toolhub/apps/toolinfo/views.py:282
 msgid "Info for a specific SPDX license."
 msgstr "특정 SPDX 라이선스의 정보입니다."
 
-#: toolhub/apps/toolinfo/views.py:289
+#: toolhub/apps/toolinfo/views.py:290
 msgid "List all SPDX licenses."
 msgstr "모든 SPDX 라이선스를 나열합니다."
 
@@ -670,10 +699,6 @@ msgstr ""
 msgid "Detailed user information"
 msgstr "상세 사용자 정보"
 
-#: toolhub/apps/user/serializers.py:118
-msgid "User information"
-msgstr "사용자 정보"
-
 #: toolhub/apps/user/serializers.py:130
 msgid "Group information"
 msgstr "그룹 정보"
@@ -718,15 +743,15 @@ msgstr "JSON 스키마를 준수하는 유효한 값을 입력하십시오."
 msgid "API error"
 msgstr "API 오류"
 
-#: toolhub/settings.py:337
+#: toolhub/settings.py:353
 msgid "Read scope"
 msgstr "읽기 범위"
 
-#: toolhub/settings.py:338
+#: toolhub/settings.py:354
 msgid "Write scope"
 msgstr "쓰기 범위"
 
-#: toolhub/settings.py:364
+#: toolhub/settings.py:381
 msgid "Toolhub API"
 msgstr "툴허브 API"
 
