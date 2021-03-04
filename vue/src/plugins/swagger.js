@@ -21,7 +21,8 @@ export function makeApiCall( context, request ) {
 	request.headers = request.headers || {};
 	request.headers[ 'Content-Type' ] = 'application/json';
 	if ( request.method !== 'GET' ) {
-		request.headers[ 'X-CSRFToken' ] = context.state.user.csrf_token;
+		request.headers[ 'X-CSRFToken' ] = context.rootState.user.user.csrf_token ||
+			context.state.user.csrf_token;
 	}
 
 	return SwaggerClient.http( request );

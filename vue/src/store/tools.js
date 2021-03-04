@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import SwaggerClient from 'swagger-client';
+import i18n from '@/plugins/i18n';
+import router from '@/router';
+import makeApiCall from '@/plugins/swagger.js';
 
 Vue.use( Vuex );
 
@@ -11,7 +14,8 @@ export default {
 		toolInfo: [],
 		numTools: 0,
 		apiErrorMsg: '',
-		spdxLicenses: []
+		spdxLicenses: [],
+		toolCreated: {}
 	},
 	mutations: {
 		TOOLS_LIST( state, tools ) {
@@ -25,6 +29,9 @@ export default {
 		},
 		SPDX_LICENSES( state, data ) {
 			state.spdxLicenses = data;
+		},
+		CREATE_TOOL( state, tool ) {
+			state.toolCreated = tool;
 		},
 		ERROR( state, error ) {
 			state.apiErrorMsg = error;
@@ -72,6 +79,33 @@ export default {
 				context.commit( 'SPDX_LICENSES', response.body );
 			} )
 				.catch( ( err ) => context.commit( 'ERROR', err ) );
+		},
+		createTool( context, toolInfo ) {
+			const request = {
+				url: '/api/tools/',
+				method: 'POST',
+				body: JSON.stringify( toolInfo )
+			};
+
+			makeApiCall( context, request ).then(
+				( success ) => {
+					const data = success.body;
+					context.commit( 'CREATE_TOOL', data );
+					router.push( { path: '/tool/' + data.name } );
+
+					this._vm.$notify.success(
+						i18n.t( 'addremovetools-toolcreationsuccess', [ data.name ] ), 30000
+					);
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
+
+					this._vm.$notify.error(
+						i18n.t( 'apierror', [ explanation ] )
+					);
+				}
+			);
 		}
 	},
 	// Strict mode in development/testing, but disabled for performance in prod

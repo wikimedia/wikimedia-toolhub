@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import makeApiCall from '@/plugins/swagger.js';
 import i18n from '@/plugins/i18n';
-import router from '@/router';
 
 Vue.use( Vuex );
 
@@ -19,8 +18,7 @@ export default {
 		numClientApps: 0,
 		authorizedApps: [],
 		numAuthorizedApps: 0,
-		clientAppCreated: {},
-		toolCreated: {}
+		clientAppCreated: {}
 	},
 	mutations: {
 		USER( state, user ) {
@@ -61,9 +59,6 @@ export default {
 			const index = state.authorizedApps.findIndex( ( obj ) => obj.id === id );
 			state.authorizedApps.splice( index, 1 );
 			state.numAuthorizedApps -= 1;
-		},
-		CREATE_TOOL( state, tool ) {
-			state.toolCreated = tool;
 		}
 	},
 	actions: {
@@ -296,33 +291,6 @@ export default {
 					const explanation = ( 'statusCode' in failure ) ?
 						JSON.parse( failure.response.data ) :
 						failure;
-
-					this._vm.$notify.error(
-						i18n.t( 'apierror', [ explanation ] )
-					);
-				}
-			);
-		},
-		createTool( context, toolInfo ) {
-			const request = {
-				url: '/api/tools/',
-				method: 'POST',
-				body: JSON.stringify( toolInfo )
-			};
-
-			makeApiCall( context, request ).then(
-				( success ) => {
-					const data = success.body;
-					context.commit( 'CREATE_TOOL', data );
-					router.push( { path: '/tool/' + data.name } );
-
-					this._vm.$notify.success(
-						i18n.t( 'addremovetools-toolcreationsuccess', [ data.name ] ), 30000
-					);
-				},
-				( failure ) => {
-					const explanation = ( 'statusCode' in failure ) ?
-						failure.response.statusText : failure;
 
 					this._vm.$notify.error(
 						i18n.t( 'apierror', [ explanation ] )

@@ -279,7 +279,7 @@ export default {
 			}
 
 			toolInfo.comment = this.$t( 'toolcreationcomment', [ refs.title.value ] );
-			this.$store.dispatch( 'user/createTool', toolInfo );
+			this.$store.dispatch( 'tools/createTool', toolInfo );
 		},
 		patternRule( exp ) {
 			const expRgx = new RegExp( exp );
