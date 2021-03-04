@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-03-01 13:52:42+0000\n"
+"PO-Revision-Date: 2021-03-04 13:07:15+0000\n"
 "X-POT-Import-Date: 2021-02-26 19:31:50+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -217,7 +217,7 @@ msgstr "שלילת אישור מיישום."
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr ""
+msgstr "חיפוש"
 
 #: toolhub/apps/search/schema.py:26 toolhub/apps/user/serializers.py:118
 msgid "User information"
@@ -226,7 +226,7 @@ msgstr "מידע על משתמש"
 #: toolhub/apps/search/schema.py:53
 #, python-format
 msgid "Search in %(fields)s"
-msgstr ""
+msgstr "חיפוש בשדות %(fields)s"
 
 #: toolhub/apps/search/schema.py:55
 msgid ", "
@@ -234,15 +234,15 @@ msgstr ""
 
 #: toolhub/apps/search/schema.py:140
 msgid "Field to use when ordering results."
-msgstr ""
+msgstr "באיזה שדה לחפש בעת מיון התוצאות."
 
 #: toolhub/apps/search/serializers.py:27
 msgid "Tool search results"
-msgstr ""
+msgstr "תוצאות חיפוש כלים"
 
 #: toolhub/apps/search/views.py:37
 msgid "Faceted search for tools."
-msgstr ""
+msgstr "חיפוש רב־פנים של כלים."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"

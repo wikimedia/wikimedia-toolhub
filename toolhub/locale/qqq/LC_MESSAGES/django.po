@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-03-01 13:52:43+0000\n"
+"PO-Revision-Date: 2021-03-04 13:07:16+0000\n"
 "X-POT-Import-Date: 2021-02-26 19:31:50+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -217,7 +217,7 @@ msgstr "OpenAPI schema route summary."
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr ""
+msgstr "Label used in admin console. {{Identical|Search}}"
 
 #: toolhub/apps/search/schema.py:26 toolhub/apps/user/serializers.py:118
 msgid "User information"
@@ -226,23 +226,23 @@ msgstr "OpenAPI schema object description."
 #: toolhub/apps/search/schema.py:53
 #, python-format
 msgid "Search in %(fields)s"
-msgstr ""
+msgstr "OpenAPI schema parameter description. Parameters:\n* %(fields)s - list of field names (names are not localized)"
 
 #: toolhub/apps/search/schema.py:55
 msgid ", "
-msgstr ""
+msgstr "Word list joining token."
 
 #: toolhub/apps/search/schema.py:140
 msgid "Field to use when ordering results."
-msgstr ""
+msgstr "OpenAPI description for sort order parameter."
 
 #: toolhub/apps/search/serializers.py:27
 msgid "Tool search results"
-msgstr ""
+msgstr "OpenAPI response description."
 
 #: toolhub/apps/search/views.py:37
 msgid "Faceted search for tools."
-msgstr ""
+msgstr "OpenAPI action description."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -415,27 +415,27 @@ msgstr "Label for name of a toolinfo record origin."
 
 #: toolhub/apps/toolinfo/schema.py:43
 msgid "RFC 6902 application/json-patch+json data"
-msgstr ""
+msgstr "OpenAPI response description."
 
 #: toolhub/apps/toolinfo/schema.py:46
 msgid "RFC 6902 JSON patch operation"
-msgstr ""
+msgstr "OpenAPI response item description."
 
 #: toolhub/apps/toolinfo/schema.py:51
 msgid "The operation to be performed"
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/schema.py:57
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/schema.py:63
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/schema.py:69
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/serializers.py:42
 msgid "A File: page on Commons"
@@ -443,7 +443,7 @@ msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/toolinfo/serializers.py:59
 msgid "URL to image."
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/serializers.py:74
 msgid "Supported wikis"
@@ -503,27 +503,27 @@ msgstr "Supported wiki option indicating that the tool can be used with any lang
 
 #: toolhub/apps/toolinfo/serializers.py:108
 msgid "SPDX license information"
-msgstr ""
+msgstr "OpenAPI response item description."
 
 #: toolhub/apps/toolinfo/serializers.py:116
 msgid "SPDX license ID"
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/serializers.py:121
 msgid "Full name of this license"
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/serializers.py:126
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/serializers.py:131
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/serializers.py:136
 msgid "Is this license considered to be outdated?"
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/serializers.py:140
 msgid "Description of a tool"
@@ -535,11 +535,11 @@ msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/toolinfo/serializers.py:212
 msgid "Edit summary"
-msgstr ""
+msgstr "OpenAPI request property description."
 
 #: toolhub/apps/toolinfo/serializers.py:214
 msgid "Description of the changes you are making to this toolinfo record."
-msgstr ""
+msgstr "OpenAPI request property help text."
 
 #: toolhub/apps/toolinfo/serializers.py:226
 msgid "Create a tool"
@@ -551,40 +551,40 @@ msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/toolinfo/serializers.py:313
 msgid "Tool revision."
-msgstr ""
+msgstr "OpenAPI response description."
 
 #: toolhub/apps/toolinfo/serializers.py:319
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/serializers.py:331
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "OpenAPI response property description."
 
 #: toolhub/apps/toolinfo/serializers.py:341
 msgid "Tool revision detail."
-msgstr ""
+msgstr "OpenAPI response description."
 
 #: toolhub/apps/toolinfo/serializers.py:359
 msgid "Tool revision difference."
-msgstr ""
+msgstr "OpenAPI response description."
 
 #: toolhub/apps/toolinfo/serializers.py:364
 msgid "Revision to apply changes to."
-msgstr ""
+msgstr "OpenAPI response property help text."
 
 #: toolhub/apps/toolinfo/serializers.py:368
 msgid "Revision after applying changes."
-msgstr ""
+msgstr "OpenAPI response property help text."
 
 #: toolhub/apps/toolinfo/validators.py:28
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr ""
+msgstr "Error message show when SPDX license identifier validation fails. Parameters:\n* %(value)s - Invalid SPDX license identifier"
 
 #: toolhub/apps/toolinfo/views.py:53
 msgid "Failed to apply patch."
-msgstr ""
+msgstr "Error message shown when undo fails."
 
 #: toolhub/apps/toolinfo/views.py:58
 msgid "Create a new tool."
@@ -608,53 +608,53 @@ msgstr "OpenAPI schema route summary."
 
 #: toolhub/apps/toolinfo/views.py:110
 msgid "Unique identifier for this tool."
-msgstr ""
+msgstr "OpenAPI path parameter description."
 
 #: toolhub/apps/toolinfo/views.py:116
 msgid "Get revision information."
-msgstr ""
+msgstr "OpenAPI action description."
 
 #: toolhub/apps/toolinfo/views.py:121
 msgid "List revisions."
-msgstr ""
+msgstr "OpenAPI action description."
 
 #: toolhub/apps/toolinfo/views.py:126
 msgid "Compare two revisions to find difference."
-msgstr ""
+msgstr "OpenAPI action description."
 
 #: toolhub/apps/toolinfo/views.py:134
 msgid "A unique integer value identifying version to diff against."
-msgstr ""
+msgstr "OpenAPI path parameter description."
 
 #: toolhub/apps/toolinfo/views.py:142
 msgid "Restore the tool to this revision."
-msgstr ""
+msgstr "OpenAPI action description."
 
 #: toolhub/apps/toolinfo/views.py:149
 msgid "Undo all changes made between two revisions."
-msgstr ""
+msgstr "OpenAPI action description."
 
 #: toolhub/apps/toolinfo/views.py:157
 msgid "A unique integer value identifying version to undo until."
-msgstr ""
+msgstr "OpenAPI path parameter description."
 
 #: toolhub/apps/toolinfo/views.py:238
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
-msgstr ""
+msgstr "System generated comment for a revert action. Parameters:\n* %(rev_id)s - numeric revision id\n* %(datetime)s - ISO 8601 date and time\n* %(user)s - username"
 
 #: toolhub/apps/toolinfo/views.py:272
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
-msgstr ""
+msgstr "System generated comment for an undo action. Parameters:\n* %(first_id)s - numeric revision id\n* %(last_id)s - numeric revision id"
 
 #: toolhub/apps/toolinfo/views.py:282
 msgid "Info for a specific SPDX license."
-msgstr ""
+msgstr "OpenAPI action description."
 
 #: toolhub/apps/toolinfo/views.py:290
 msgid "List all SPDX licenses."
-msgstr ""
+msgstr "OpenAPI action description."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
@@ -738,11 +738,11 @@ msgstr "OpenAPI schema route summary."
 
 #: toolhub/fields.py:38
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr ""
+msgstr "Error message shown when JSON schema validation fails."
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr ""
+msgstr "OpenAPI error response description."
 
 #: toolhub/settings.py:353
 msgid "Read scope"
