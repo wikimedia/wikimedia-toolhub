@@ -23,7 +23,7 @@
 	"auditlog-summary": "$1 a $2",
 	"auditlogs": "Audit logs",
 	"auditlogs-pagetitle": "This page lists all log entries",
-    "auditlogs-apierror": "Error fetching page $1: $2",
+	"auditlogs-apierror": "Error fetching page $1: $2",
 	"authcallbackurl": "Authorization Callback URL",
 	"authorizedapps": "Authorized apps",
 	"author": "Author",
