@@ -84,6 +84,15 @@ class ToolManager(models.Manager):
     # initially.
     INVARIANT_FIELDS = ["origin"]
 
+    # Lazily populated list of all field names.
+    ALL_FIELDS = None
+
+    def _valid_field_names(self):
+        """List of all valid Tool model field names."""
+        if self.ALL_FIELDS is None:
+            self.ALL_FIELDS = [field.name for field in Tool._meta.fields]
+        return self.ALL_FIELDS
+
     def _normalize_record(self, record):
         """Normalize incoming record formatting."""
         if record["name"].startswith("toolforge."):
@@ -123,12 +132,21 @@ class ToolManager(models.Manager):
                         fixed.append(value)
                 record[field] = fixed
 
+        # Normalize keywords to lowercase and store as array of values
         if "keywords" in record and isinstance(record["keywords"], str):
             record["keywords"] = list(
                 filter(
-                    None, (s.strip() for s in record["keywords"].split(","))
+                    None,
+                    (s.strip().lower() for s in record["keywords"].split(",")),
                 )
             )
+
+        # Strip out any unknown fields. We are trying really, really hard to
+        # keep any data that we can salvage even if the input is messed up.
+        for field in list(record):
+            if field not in self._valid_field_names():
+                logger.debug("Deleting unexpected field '%s'", field)
+                del record[field]
 
         return record
 
