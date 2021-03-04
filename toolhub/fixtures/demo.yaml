@@ -31,6 +31,979 @@
 - model: crawler.url
   pk: 4
   fields:
+    url: http://anagrimes.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 5
+  fields:
+    url: http://dicompte.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 6
+  fields:
+    url: http://translate.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 7
+  fields:
+    url: http://hay.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 8
+  fields:
+    url: http://wikidata-todo.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 9
+  fields:
+    url: http://magnustools.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 10
+  fields:
+    url: http://magnustools.toolforge.org/js_toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 11
+  fields:
+    url: https://gist.githubusercontent.com/Krinkle/081662d4d2fb390a9716/raw/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 12
+  fields:
+    url: https://raun.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 13
+  fields:
+    url: https://raw.githubusercontent.com/MusikAnimal/wiki-tools/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 14
+  fields:
+    url: https://raw.githubusercontent.com/WPCleaner/wpcleaner/master/WikipediaCleaner/resources/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 15
+  fields:
+    url: https://dna.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 16
+  fields:
+    url: http://meta.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 17
+  fields:
+    url: http://meta.toolforge.org/scripts/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 18
+  fields:
+    url: http://intersect-contribs.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 19
+  fields:
+    url: http://section-links.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 20
+  fields:
+    url: http://itwikinews-rss.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 21
+  fields:
+    url: http://dewkin.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 22
+  fields:
+    url: http://ptable.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 23
+  fields:
+    url: http://translatemplate.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 24
+  fields:
+    url: http://wikidipendenza.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 25
+  fields:
+    url: https://citationhunt.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 26
+  fields:
+    url: http://fengtools.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 27
+  fields:
+    url: http://refill.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 28
+  fields:
+    url: https://raw.githubusercontent.com/nichtich/wikidata-taxonomy/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 29
+  fields:
+    url: https://heritage.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 30
+  fields:
+    url: https://integraality.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 31
+  fields:
+    url: https://mirador.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 32
+  fields:
+    url: https://universalviewer.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 33
+  fields:
+    url: https://wikiloves.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 34
+  fields:
+    url: https://wm-metrics.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 35
+  fields:
+    url: https://tools-static.wmflabs.org/wudele/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 36
+  fields:
+    url: http://asurabot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 37
+  fields:
+    url: http://bsaut.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 38
+  fields:
+    url: http://cluestuff.toolforge.org/cgi-bin/toolinfo.cgi
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 39
+  fields:
+    url: http://commonsarchive.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 40
+  fields:
+    url: http://copyvios.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 41
+  fields:
+    url: http://croptool.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 42
+  fields:
+    url: http://crosswatch.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 43
+  fields:
+    url: http://extreg-wos.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 44
+  fields:
+    url: http://gerrit-patch-uploader.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 45
+  fields:
+    url: http://gerrit-reviewer-bot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 46
+  fields:
+    url: http://icalendar.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 47
+  fields:
+    url: http://inkowik.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 48
+  fields:
+    url: http://jembot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 49
+  fields:
+    url: http://jury.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 50
+  fields:
+    url: http://languagetool.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 51
+  fields:
+    url: http://lists.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 52
+  fields:
+    url: http://lp-tools.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 53
+  fields:
+    url: http://maintgraph.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 54
+  fields:
+    url: http://mapillary-commons.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 55
+  fields:
+    url: http://mc8.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 56
+  fields:
+    url: http://mormegil.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 57
+  fields:
+    url: http://pltools.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 58
+  fields:
+    url: http://ppp-sparql.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 59
+  fields:
+    url: http://ptools.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 60
+  fields:
+    url: http://ptwikis.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 61
+  fields:
+    url: http://relgen.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 62
+  fields:
+    url: http://searchsbl.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 63
+  fields:
+    url: http://templatetransclusioncheck.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 64
+  fields:
+    url: http://tools-info.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 65
+  fields:
+    url: http://tsreports.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 66
+  fields:
+    url: http://url-converter.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 67
+  fields:
+    url: http://video2commons.toolforge.org/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 68
+  fields:
+    url: http://wdq2sparql.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 69
+  fields:
+    url: http://whois.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 70
+  fields:
+    url: http://wikilinkbot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 71
+  fields:
+    url: http://wikiviewstats.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 72
+  fields:
+    url: http://wsexport.toolforge.org/tool/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 73
+  fields:
+    url: http://xtools.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 74
+  fields:
+    url: https://raw.githubusercontent.com/simon04/locator-tool/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 75
+  fields:
+    url: http://sqid.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 76
+  fields:
+    url: https://raw.githubusercontent.com/abartov/glamify/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 77
+  fields:
+    url: https://raw.githubusercontent.com/abartov/erex_yomi/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 78
+  fields:
+    url: https://raw.githubusercontent.com/abartov/pronuncify/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 79
+  fields:
+    url: https://raw.githubusercontent.com/abartov/pronuncify.net/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 80
+  fields:
+    url: https://raw.githubusercontent.com/abartov/wikimedia_tools/master/pileviews/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 81
+  fields:
+    url: https://raw.githubusercontent.com/Toollabs/info/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 82
+  fields:
+    url: https://mediawiki-feeds.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 83
+  fields:
+    url: https://ia-upload.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 84
+  fields:
+    url: https://ws-google-ocr.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 85
+  fields:
+    url: https://ws-cat-browser.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 86
+  fields:
+    url: https://kasparbot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 87
+  fields:
+    url: https://wikidata-timeline.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 88
+  fields:
+    url: https://www.schemaapp.com/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 89
+  fields:
+    url: http://fannon.de/p/mediawiki-benchmark/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 90
+  fields:
+    url: https://raw.githubusercontent.com/Fannon/mobo/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 91
+  fields:
+    url: https://wikiradio.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 92
+  fields:
+    url: https://plaintexteditcounter.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 93
+  fields:
+    url: https://mstools.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 94
+  fields:
+    url: https://wikilaeum.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 95
+  fields:
+    url: https://afdstats.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 96
+  fields:
+    url: https://apersonbot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 97
+  fields:
+    url: https://xfd-stats.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 98
+  fields:
+    url: https://rm-stats.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 99
+  fields:
+    url: http://wakt.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 100
+  fields:
+    url: https://pageviews.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 101
+  fields:
+    url: https://parliamentdiagram.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 102
+  fields:
+    url: http://wikimediacroatia.hr/hrwiki/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 103
+  fields:
+    url: http://abbe98tools.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 104
+  fields:
+    url: https://raw.githubusercontent.com/yuvipanda/paws/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 105
+  fields:
+    url: https://raw.githubusercontent.com/abartov/wikimedia_tools/master/videoconvert/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 106
+  fields:
+    url: http://cluebot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 107
+  fields:
+    url: http://cluebot3.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 108
+  fields:
+    url: http://wikicomment.ut.ee/toolinfo/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 109
+  fields:
+    url: http://zppixbot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 110
+  fields:
+    url: http://wnews.ist.hokudai.ac.jp/wc3/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 111
+  fields:
+    url: http://remarkup2wikitext.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 112
+  fields:
+    url: http://ipinfo.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 113
+  fields:
+    url: http://superyetkin.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 114
+  fields:
+    url: https://wikimap.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 115
+  fields:
+    url: https://wikitools.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 116
+  fields:
+    url: https://douglasbot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 117
+  fields:
+    url: http://grlc.io/static/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 118
+  fields:
+    url: https://wdprop.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 119
+  fields:
+    url: https://wikiprovenance.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 120
+  fields:
+    url: https://dataviz.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 121
+  fields:
+    url: https://prop-explorer.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 122
+  fields:
+    url: https://depicts.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 123
+  fields:
+    url: http://grafa.dcc.uchile.cl/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 124
+  fields:
+    url: https://iabot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 125
+  fields:
+    url: https://matsubot.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 126
+  fields:
+    url: https://abcgames.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 127
+  fields:
+    url: https://wikiedudashboard.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 128
+  fields:
+    url: https://raw.githubusercontent.com/lovasoa/wikipedia-externallinks-fast-extraction/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 129
+  fields:
+    url: https://bambots.brucemyers.com/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 130
+  fields:
+    url: http://noa.wp.hs-hannover.de/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 131
+  fields:
+    url: https://raw.githubusercontent.com/wikimedia/InteractionTimeline/master/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 132
+  fields:
+    url: https://art.wikidata.link/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 133
+  fields:
+    url: https://tools-static.wmflabs.org/digero/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 134
+  fields:
+    url: http://apps.neechalkaran.com/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 135
+  fields:
+    url: http://wikidigraph.com/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 136
+  fields:
+    url: https://nominatim.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 137
+  fields:
+    url: https://moedata.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 138
+  fields:
+    url: https://deno.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 139
+  fields:
+    url: https://muekoeff.gitlab.io/rsolver/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 140
+  fields:
+    url: https://zonestamp.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 141
+  fields:
+    url: https://twitter-to-commons.toolforge.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 142
+  fields:
+    url: https://wikidatawalkabout.org/toolinfo.json
+    created_by:
+    - Demo Unicorn
+    created_date: 2021-01-01T00:00:00+00:00
+- model: crawler.url
+  pk: 143
+  fields:
     url: https://toolhub.toolforge.org/toolinfo.json
     created_by:
     - Demo Unicorn
