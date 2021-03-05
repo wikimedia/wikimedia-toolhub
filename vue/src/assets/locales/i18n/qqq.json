@@ -12,7 +12,6 @@
 	"add": "Button label, triggers saving a URL.\n{{Identical|Add}}",
 	"addremovetools": "Navigation menu label, links to URL management page.",
 	"addremovetools-nologintext": "Info message for unauthenticated users.",
-	"addremovetools-pagetitle": "Page title.",
 	"addremovetools-summary": "Usage instructions.",
 	"addremovetools-summarytitle": "Title for usage instructions.",
 	"addremovetools-toolcreationsuccess": "Success message for tool creation. Parameters:\n* $1 - tool name",

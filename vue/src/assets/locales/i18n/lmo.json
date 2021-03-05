@@ -7,7 +7,6 @@
 	"add": "Sgionta",
 	"addremovetools": "Giontegh o tra via di istrument",
 	"addremovetools-nologintext": "Te gh'hee de andà dent in del Toolhub per sgiontà o trà via di istrument",
-	"addremovetools-pagetitle": "Giontegh o trà via on fail URL toolinfo.json",
 	"addremovetools-summary": "I svilupador di istrument ghe dan on URL a 'n fail toolinfo.json fad su de informazzion sora i so istrument in un formad de fail JSON. Quell fail l'è facil de andagh dent in su l'internet e l'è fad second conforma a un schema de la version 1.2.0. Invidom i svilupador di istrument a ospità i so fail in un repositori de manera che di alter volontari poden inviagh di ciamade de tipo pull. Chichinscì el Toolhub el tovarà in esam i register di istrument record del istrument e je giontarà al catalogh. In del futur, el Toolhub el permeterà ai so utent de mandagh i propi istrument diretament per mezz de l'interfacia.",
 	"addremovetools-summarytitle": "Come a l'è che la fonziona quella carateristica chì",
 	"apidocs": "Document API",

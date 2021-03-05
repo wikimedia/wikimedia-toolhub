@@ -9,7 +9,6 @@
 	"add": "Ekle",
 	"addremovetools": "Araç ekleyin veya kaldırın",
 	"addremovetools-nologintext": "Araç eklemek veya kaldırmak için Toolhub'da oturum açmanız gerekecek",
-	"addremovetools-pagetitle": "toolinfo.json dosyası URL'si ekleyin veya kaldırın",
 	"addremovetools-summary": "Araç geliştiricileri, araçları hakkındaki bilgileri JSON dosya biçiminde içeren toolinfo.json dosyasına bir URL gönderir. Bu dosyaya web üzerinden erişilebilir ve sürüm 1.2.0 şemasına uygundur. Araç geliştiricilerinin dosyalarını bir git deposunda barındırmalarını teşvik ediyoruz, böylece diğer gönüllüler de çekme istekleri gönderebilir. Toolhub daha sonra araç kayıtlarını tarayacak ve bunları kataloğa ekleyecektir. Gelecekte Toolhub, kullanıcılarının araçlarını doğrudan arayüz üzerinden göndermelerine izin verecek.",
 	"addremovetools-summarytitle": "Bu özellik nasıl çalışır",
 	"addremovetools-toolcreationsuccess": "Başarılı! '$1' aracı oluşturuldu.",

@@ -9,7 +9,6 @@
 	"add": "Ajouter",
 	"addremovetools": "Ajouter ou retirer des outils",
 	"addremovetools-nologintext": "Vous devez vous connecter sur Toolhub pour ajouter ou retirer des outils.",
-	"addremovetools-pagetitle": "Ajouter ou retirer une URL de fichier toolinfo.json",
 	"addremovetools-summary": "Les développeur d’outils soumettent une URL vers un fichier « toolinfo.json » qui contient les informations concernant leurs outils dans un format de fichier JSON. Ce fichier est accessible depuis le web et se conforme à un schéma en version 1.2.0. Nous encourageons les développeurs d’outils à héberger leurs fichiers dans un dépôt Git afin que d’autres bénévoles puissent y soumettre des demandes de modification. Toolhub indexera alors les enregistrements d’outil depuis celui-ci pour les ajouter au catalogue. À l’avenir, Toolhub permttra à ses utilisateurs de soumettre leurs outils directement via l’interface.",
 	"addremovetools-summarytitle": "Comment fonctionne cette fonctionnalité",
 	"addremovetools-toolcreationsuccess": "Succès ! L’outil « $1 » a été créé.",

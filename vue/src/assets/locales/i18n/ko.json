@@ -8,7 +8,6 @@
 	"add": "추가",
 	"addremovetools": "도구 추가 또는 제거",
 	"addremovetools-nologintext": "도구를 추가하거나 제거하려면 툴허브에 로그인해야 합니다",
-	"addremovetools-pagetitle": "toolinfo.json 파일 URL 추가 또는 제거",
 	"addremovetools-summarytitle": "이 기능의 작동 원리",
 	"addremovetools-toolcreationsuccess": "성공했습니다! '$1' 도구가 만들어졌습니다.",
 	"apidocs": "API 문서",

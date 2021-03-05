@@ -9,7 +9,6 @@
 	"add": "הוספה",
 	"addremovetools": "הוספה או הסרה של כלים",
 	"addremovetools-nologintext": "יש להיכנס ל־Toolhub כדי להוסיף או להסיר כלים",
-	"addremovetools-pagetitle": "הוספה או הסרה של URL של קובץ toolinfo.json",
 	"addremovetools-summary": "מפתחי הכלים שולחים URL לקובץ toolinfo.json שמורכב ממידע על הכלים שלהם בקובץ בקובץ בתסדיר JSON. הקובץ הזה נגיש בווב ומתאים לסכמה בגרסה 1.2.0. אנחנו ממליצים לכל מפתחי הכלים לארח את הקבצים שלהם במאגר גיט כדי שהמתנדבים שלנו יוכלו לשלוח אליהם בקשות משיכה (pull requests). כלי Toolhub יזחל ברשומות הכלים ויוסיף אותם לקטלוג. בעתיד Toolhub יאפשר למשתמשים לשלוח את הכלים שלהם ישירות דרך הממשק.",
 	"addremovetools-summarytitle": "איך האפשרות הזאת עובדת",
 	"addremovetools-toolcreationsuccess": "זה עבד!  הכלי \"$1\" נוצר.",

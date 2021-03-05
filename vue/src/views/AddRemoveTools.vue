@@ -5,7 +5,7 @@
 				cols="12"
 			>
 				<h2 class="display-1">
-					{{ $t( 'addremovetools-pagetitle' ) }}
+					{{ $t( 'addremovetools' ) }}
 				</h2>
 			</v-col>
 		</v-row>

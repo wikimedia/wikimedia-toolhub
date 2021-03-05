@@ -11,7 +11,6 @@
 	"add": "Lisää",
 	"addremovetools": "Lisää tai poista työkaluja",
 	"addremovetools-nologintext": "Sinun on kirjauduttava sisään Toolhubiin lisätäksesi tai poistaaksesi työkaluja.",
-	"addremovetools-pagetitle": "Lisää tai poista toolinfo.json -tiedoston URL-osoite",
 	"addremovetools-summary": "Työkalujen kehittäjät lähettävät URL-osoitteen toolinfo.json-tiedostoon, joka sisältää työkalujensa tiedot JSON-tiedostomuodossa. Tähän tiedostoon pääsee verkossa ja se noudattaa version 1.2.0 kaavaa. Kannustamme työkalujen kehittäjiä isännöimään tiedostojaan git-arkistoon, jotta muut vapaaehtoiset voivat lähettää siihen vetopyyntöjä. Toolhub indeksoi sitten työkalutiedot siitä ja lisää ne luetteloon. Tulevaisuudessa Toolhub antaa käyttäjilleen mahdollisuuden lähettää työkalunsa suoraan käyttöliittymän kautta.",
 	"addremovetools-summarytitle": "Kuinka tämä ominaisuus toimii",
 	"apidocs": "API-asiakirjat.",
