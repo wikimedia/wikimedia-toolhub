@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-03-01 13:52:42+0000\n"
+"PO-Revision-Date: 2021-03-08 14:59:38+0000\n"
 "X-POT-Import-Date: 2021-02-26 19:31:50+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -227,6 +227,7 @@ msgid "Search in %(fields)s"
 msgstr ""
 
 #: toolhub/apps/search/schema.py:55
+#, optional
 msgid ", "
 msgstr ""
 

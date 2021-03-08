@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dimitri Nakashidze",
 			"Kareyac",
 			"Okras"
 		]
@@ -14,7 +15,9 @@
 	"developerdocumentation": "Документация для разработчиков",
 	"helptranslate": "Помочь с переводом",
 	"howtouse": "Как пользоваться",
+	"language": "Язык",
 	"learnmore": "Узнать больше",
+	"license": "Лицензия",
 	"links": "Ссылки",
 	"locale-select": "Выберите язык",
 	"login": "Войти",
@@ -22,6 +25,7 @@
 	"message-close": "Закрыть сообщение",
 	"moreinfo": "Подробнее",
 	"my-account": "Моя учётная запись",
+	"name": "Имя",
 	"newtoolsfound": "{{PLURAL:$1|инструмент|инструмента|инструментов}}",
 	"privacypolicy": "Политика конфиденциальности",
 	"sourcecode": "Исходный код",
