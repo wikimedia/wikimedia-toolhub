@@ -1,12 +1,31 @@
 <template>
 	<v-container>
+		<v-app-bar
+			v-if="tool"
+			color="bgtext"
+			dense
+			flat
+		>
+			<v-spacer />
+			<v-btn
+				v-if="tool.created_by.username === $store.state.user.user.username"
+				:to="`/tool/${tool.name}/edit`"
+				color="primary"
+			>
+				<v-icon class="me-2">
+					mdi-pencil
+				</v-icon>
+				{{ $t( 'edittool' ) }}
+			</v-btn>
+		</v-app-bar>
+
 		<v-row
 			v-if="tool"
 			dense
 		>
 			<v-col md="7"
 				cols="12"
-				class="me-8"
+				class="pe-4 mt-4"
 			>
 				<v-row>
 					<v-col lg="2"
@@ -29,7 +48,7 @@
 							{{ tool.description }}
 						</div>
 
-						<dl class="row mx-0 mt-4 subtitle-2">
+						<dl class="row mx-0 mt-4 subtitle-1">
 							<dt class="me-1">{{ $t( 'authors' ) }}:</dt>
 							<dd>{{ tool.author }}</dd>
 						</dl>
@@ -97,19 +116,56 @@
 								v-for="link in links"
 								:key="link.title"
 								class="pa-0"
+								dense
 							>
-								<a
-									:href="`${link.url}`"
-									target="_blank"
-								>
-									{{ link.title }}
-								</a>
+								<v-list-item-content>
+									<v-list-item-title
+										v-if="link.url"
+										class="mb-2"
+									>
+										{{ link.title }}
+									</v-list-item-title>
+
+									<template
+										v-if="Array.isArray(link.url)"
+									>
+										<v-list-item
+											v-for="(url, idx) in link.url"
+											:key="idx"
+											class="pa-0 tool-links"
+										>
+											<v-list-item-subtitle>
+												<a :href="url.url"
+													target="_blank"
+												>
+													{{ url.url }}</a>
+												<template
+													v-if="url.language && url.language
+														!== $i18n.locale"
+												>
+													({{ url.language }})
+												</template>
+											</v-list-item-subtitle>
+										</v-list-item>
+									</template>
+									<template
+										v-else
+									>
+										<v-list-item-subtitle>
+											<a :href="link.url"
+												target="_blank"
+											>
+												{{ link.url }}
+											</a>
+										</v-list-item-subtitle>
+									</template>
+								</v-list-item-content>
 							</v-list-item>
 						</v-list>
 					</v-col>
 				</v-row>
 			</v-col>
-			<v-col md="4" cols="12">
+			<v-col md="5" cols="12">
 				<v-divider
 					v-if="$vuetify.breakpoint.smAndDown"
 				/>
@@ -158,7 +214,24 @@
 				</v-card>
 
 				<v-alert
-					v-if="tool.experimental"
+					v-if="tool.experimental || tool.deprecated"
+					border="left"
+					type="error"
+					elevation="2"
+					width="100%"
+					class="mt-4"
+				>
+					<template v-if="tool.experimental">
+						{{ $t( 'tool-experimental-error' ) }}
+					</template>
+
+					<template v-if="tool.deprecated">
+						{{ $t( 'tool-deprecated-error' ) }}
+					</template>
+				</v-alert>
+
+				<v-alert
+					v-if="tool.replaced_by"
 					border="left"
 					color="primary"
 					dark
@@ -167,18 +240,14 @@
 					width="100%"
 					class="mt-4"
 				>
-					{{ $t( 'tool-experimental-error' ) }}
+					{{ $t( 'tool-replacement-link', [ tool.replaced_by ] ) }}
 				</v-alert>
+			</v-col>
+		</v-row>
 
-				<v-alert
-					v-if="tool.deprecated"
-					border="left"
-					type="error"
-					elevation="2"
-					width="100%"
-				>
-					{{ $t( 'tool-deprecated-error' ) }}
-				</v-alert>
+		<v-row>
+			<v-col cols="12">
+				<ScrollTop />
 			</v-col>
 		</v-row>
 	</v-container>
@@ -186,13 +255,14 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex';
-import i18n from '@/plugins/i18n';
 import CommonsImage from '@/components/tools/CommonsImage';
+import ScrollTop from '@/components/tools/ScrollTop';
 
 export default {
 	name: 'Tool',
 	components: {
-		CommonsImage
+		CommonsImage,
+		ScrollTop
 	},
 	data() {
 		return {
@@ -204,14 +274,6 @@ export default {
 		links() {
 			const links = [
 				{
-					title: this.$t( 'howtouse' ),
-					url: this.tool.user_docs_url
-				},
-				{
-					title: this.$t( 'developerdocumentation' ),
-					url: this.tool.developer_docs_url
-				},
-				{
 					title: this.$t( 'apidocumentation' ),
 					url: this.tool.api_url
 				},
@@ -220,16 +282,28 @@ export default {
 					url: this.tool.translate_url
 				},
 				{
-					title: this.$t( 'privacypolicy' ),
-					url: this.tool.privacy_policy_url
+					title: this.$t( 'bugtracker' ),
+					url: this.tool.bugtracker_url
+				},
+				{
+					title: this.$t( 'howtouse' ),
+					url: this.tool.user_docs_url
+				},
+				{
+					title: this.$t( 'developerdocumentation' ),
+					url: this.tool.developer_docs_url
 				},
 				{
 					title: this.$t( 'leavefeedback' ),
 					url: this.tool.feedback_url
 				},
 				{
-					title: this.$t( 'bugtracker' ),
-					url: this.tool.bugtracker_url
+					title: this.$t( 'privacypolicy' ),
+					url: this.tool.privacy_policy_url
+				},
+				{
+					title: this.$t( 'urlalternates' ),
+					url: this.tool.url_alternates
 				}
 			];
 
@@ -238,35 +312,7 @@ export default {
 				return link.url && link.url.length !== 0;
 			} );
 
-			// Select "best" langauge match link for localized collections
-			const localizedLinks = filteredLinks.map( ( link ) => {
-				if ( Array.isArray( link.url ) ) {
-					const urls = link.url.reduce( ( out, value ) => {
-						return {
-							...out,
-							[ value.language ]: value.url
-						};
-					}, {} );
-					// eslint-disable-next-line no-underscore-dangle
-					const fallbackChain = i18n._getLocaleChain(
-						i18n.locale, i18n.fallbackLocale
-					);
-					for ( const value of fallbackChain ) {
-						if ( urls[ value ] ) {
-							link.url = urls[ value ];
-							break;
-						}
-					}
-					if ( Array.isArray( link.url ) ) {
-						// T277260: No locale in the fallback chain was found.
-						// Pick the first link in the list as the default.
-						link.url = link.url[ 0 ].url;
-					}
-				}
-				return link;
-			} );
-
-			return localizedLinks;
+			return filteredLinks;
 		},
 		moreInfoItems() {
 			const items = [
@@ -275,12 +321,24 @@ export default {
 					value: this.tool.tool_type
 				},
 				{
-					name: this.$t( 'forwikis' ),
-					value: this.tool.for_wikis
+					name: this.$t( 'license' ),
+					value: this.tool.license
+				},
+				{
+					name: this.$t( 'availableuilanguages' ),
+					value: this.tool.available_ui_languages
 				},
 				{
 					name: this.$t( 'technologyused' ),
 					value: this.tool.technology_used
+				},
+				{
+					name: this.$t( 'sponsor' ),
+					value: this.tool.sponsor
+				},
+				{
+					name: this.$t( 'forwikis' ),
+					value: this.tool.for_wikis
 				}
 			];
 

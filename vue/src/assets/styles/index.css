@@ -95,3 +95,7 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 .app-client-secret {
 	word-break: break-all;
 }
+
+.tool-links.v-list-item {
+	min-height: 25px;
+}

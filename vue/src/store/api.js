@@ -52,16 +52,15 @@ export const actions = {
 				resolve( context.state.apispec );
 			} else {
 				context.dispatch( 'fetchOpenAPISchema' ).then(
-					( apispec ) => resolve( apispec )
-				).catch(
+					( apispec ) => resolve( apispec ),
 					( err ) => reject( err )
 				);
 			}
 		} );
 
 		return loader.then( ( api ) => {
-			for ( const pathName in api.spec.paths ) {
-				const path = api.spec.paths[ pathName ];
+			for ( const pathName in api.paths ) {
+				const path = api.paths[ pathName ];
 				for ( const method in path ) {
 					const operation = path[ method ];
 					if ( operation.operationId === opId ) {

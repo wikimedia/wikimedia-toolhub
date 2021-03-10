@@ -1,5 +1,5 @@
 <template>
-	<fragment>
+	<div v-frag>
 		<v-text-field
 			v-if="widget === 'text'"
 			v-model="model"
@@ -32,29 +32,90 @@
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
 			:items="ui.select.items()"
-			clearable
+			:multiple="ui.multiple || false"
+			:deletable-chips="ui.multiple || false"
+			:small-chips="ui.multiple || false"
+			:clearable="ui.multiple ? false : true"
+		/>
+		<v-combobox
+			v-else-if="widget === 'multi-select'"
+			v-model="model"
+			:label="ui.label"
+			:rules="validationRules"
+			:prepend-icon="ui.icon"
+			:hint="schema.description"
+			multiple
+			deletable-chips
+			small-chips
+		/>
+		<v-checkbox
+			v-else-if="widget === 'checkbox'"
+			v-model="model"
+			:label="ui.label"
 		/>
 		<template v-else-if="widget === 'array'">
 			<v-row
 				v-for="( obj, idx ) in value"
 				:key="idx"
 			>
-				<InputWidget
-					v-model="model[ idx ]"
-					:schema="schema.items"
-					:ui-schema="ui.items"
-				/>
+				<v-col sm="11"
+					cols="10"
+				>
+					<InputWidget
+						v-model="model[ idx ]"
+						:schema="schema.items"
+						:ui-schema="ui.items"
+					/>
+				</v-col>
+
+				<template
+					v-if="ui.items.widget === 'url-multilingual'"
+				>
+					<v-col v-if="idx === 0"
+						sm="1"
+						cols="2"
+					>
+						<v-btn
+							elevation="2"
+							icon
+							class="mt-2"
+							color="primary"
+							@click="alterArray( 'add', value )"
+						>
+							<v-icon>
+								mdi-plus
+							</v-icon>
+						</v-btn>
+					</v-col>
+
+					<v-col v-else
+						sm="1"
+						cols="2"
+					>
+						<v-btn
+							elevation="2"
+							icon
+							class="mt-2"
+							color="error"
+							@click="alterArray( 'remove', value, idx )"
+						>
+							<v-icon>
+								mdi-minus
+							</v-icon>
+						</v-btn>
+					</v-col>
+				</template>
 			</v-row>
 		</template>
 		<template v-else-if="widget === 'url-multilingual'">
-			<v-col cols="8">
+			<v-col cols="12">
 				<InputWidget
 					v-model="model.url"
 					:schema="schema.properties.url"
 					:ui-schema="ui.url"
 				/>
 			</v-col>
-			<v-col cols="4">
+			<v-col cols="12">
 				<InputWidget
 					v-model="model.language"
 					:schema="schema.properties.language"
@@ -65,7 +126,7 @@
 		<pre v-else>
 			{{ schema }}
 		</pre>
-	</fragment>
+	</div>
 </template>
 
 <script>
@@ -120,6 +181,24 @@ export const methods = {
 				return null;
 			default:
 				return '';
+		}
+	},
+
+	/**
+	 * Grow/shrink an array type.
+	 *
+	 * @param {string} op - operation to perform ('add' or 'remove')
+	 * @param {Array} data - Array to modify
+	 * @param {number?} index - Index of item to remove
+	 */
+	alterArray( op, data, index ) {
+		if ( op === 'remove' ) {
+			if ( data.length > 1 ) {
+				data.splice( index, 1 );
+			}
+		} else if ( op === 'add' ) {
+			// TODO: make this configurable
+			data.push( { url: '', language: 'en' } );
 		}
 	}
 };

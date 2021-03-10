@@ -124,6 +124,37 @@ export default {
 					);
 				}
 			);
+		},
+		editTool( context, tool ) {
+			const request = {
+				url: '/api/tools/' + tool.name + '/',
+				method: 'PUT',
+				body: JSON.stringify( tool.info )
+			};
+
+			makeApiCall( context, request ).then(
+				( success ) => {
+					const data = success.body;
+					router.push( { path: '/tool/' + data.name } );
+
+					this._vm.$notify.success(
+						i18n.t( 'tooleditingsuccess', [ data.name ] ), 30000
+					);
+				},
+				( failure ) => {
+					const data = getFailurePayload( failure );
+
+					for ( const err in data.errors ) {
+						this._vm.$notify.error(
+							i18n.t( 'editformerror', [
+								data.message,
+								data.errors[ err ].field,
+								data.errors[ err ].message
+							] )
+						);
+					}
+				}
+			);
 		}
 	},
 	// Strict mode in development/testing, but disabled for performance in prod

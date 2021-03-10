@@ -65,6 +65,15 @@ const localeMap = ( () => {
 	};
 } )();
 
+const localeSelect = ( () => {
+	return Object.keys( localeMap ).map( ( key ) => {
+		return {
+			text: `${localeMap[ key ]} (${key})`,
+			value: key
+		};
+	} );
+} )();
+
 export const getters = {
 	/**
 	 * Get autonym of active locale.
@@ -158,7 +167,8 @@ export default {
 	namespaced: true,
 	state: {
 		locale: initialLocale,
-		localeMap: localeMap
+		localeMap: localeMap,
+		localeSelect: localeSelect
 	},
 	getters: getters,
 	actions: actions,

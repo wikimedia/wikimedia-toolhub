@@ -19,6 +19,11 @@ const routes = [
 			component: () => import( /* webpackChunkName: "tool" */ '../views/Tool.vue' )
 		},
 		{
+			name: 'edittool',
+			path: '/tool/:name([\\w-]{1,255})/edit',
+			component: () => import( /* webpackChunkName: "edittool" */ '../views/EditTool.vue' )
+		},
+		{
 			name: 'addremovetools',
 			path: '/add-or-remove-tools',
 			component: () => import( /* webpackChunkName: "addremovetools" */ '../views/AddRemoveTools.vue' ),
