@@ -29,6 +29,8 @@
 	"bugtracker": "Rastreador de erros",
 	"bugtrackerurl": "URL do rastreador de bugs",
 	"browsetool": "Página da ferramenta",
+	"charslimit": "Os caracteres devem ter menos de $1 caracteres",
+	"charsrange": "Os caracteres precisam estar no intervalo: $1",
 	"clicktocopy": "Clique para copiar",
 	"clientapps": "Clientes de aplicativos",
 	"clientid": "ID do cliente",
