@@ -274,6 +274,7 @@ class Tool(models.Model):
     )
     url = models.CharField(
         max_length=2047,
+        validators=[validators.URLValidator(schemes=["http", "https"])],
         help_text=_(
             "A direct link to the tool or to instructions on how to use or "
             "install the tool."
@@ -348,6 +349,7 @@ class Tool(models.Model):
         blank=True,
         max_length=2047,
         null=True,
+        validators=[validators.URLValidator(schemes=["http", "https"])],
         help_text=_(
             "If this tool is deprecated, this parameter should be used to "
             "link to the replacement tool."
@@ -440,6 +442,7 @@ class Tool(models.Model):
         blank=True,
         max_length=2047,
         null=True,
+        validators=[validators.URLValidator(schemes=["http", "https"])],
         help_text=_("A link to the tool's API, if available."),
     )
     developer_docs_url = JSONSchemaField(
@@ -478,12 +481,14 @@ class Tool(models.Model):
         blank=True,
         max_length=2047,
         null=True,
+        validators=[validators.URLValidator(schemes=["http", "https"])],
         help_text=_("A link to the tool's translation interface."),
     )
     bugtracker_url = models.TextField(
         blank=True,
         max_length=2047,
         null=True,
+        validators=[validators.URLValidator(schemes=["http", "https"])],
         help_text=_(
             "A link to the tool's bug tracker on GitHub, Bitbucket, "
             "Phabricator, etc."

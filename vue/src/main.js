@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import AsyncComputed from 'vue-async-computed';
 import clipboard from 'vue-clipboard2';
+import Fragment from 'vue-fragment';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -11,6 +12,7 @@ import notify from './plugins/notify';
 Vue.config.productionTip = false;
 Vue.use( AsyncComputed );
 Vue.use( clipboard );
+Vue.use( Fragment.Plugin );
 Vue.use( notify, { store: store } );
 
 new Vue( {

@@ -69,8 +69,24 @@ export const actions = {
 					}
 				}
 			}
-			return undefined;
+			throw new Error( `Operation ${opId} not found` );
 		} );
+	},
+
+	/**
+	 * Get the schema for the request body of an operation.
+	 *
+	 * @param {Object} context - Vuex state
+	 * @param {string} opId - Operation id (e.g. 'tools_create')
+	 * @return {Promise<Object|undefined>}
+	 */
+	getRequestSchema( context, opId ) {
+		return context.dispatch( 'getOperationSchema', opId ).then(
+			( data ) => {
+				const body = data.requestBody.content[ 'application/json' ];
+				return { ...body.schema };
+			}
+		);
 	}
 };
 
