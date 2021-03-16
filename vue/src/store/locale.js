@@ -128,6 +128,14 @@ export const actions = {
 			if ( !initial && vm.$route.query.uselang !== locale ) {
 				vm.$router.push( { query: { uselang: locale } } );
 			}
+
+			// Update our OpenAPI schema using the new locale, but only if the
+			// schema has been fetched previously.
+			if ( context.rootState.api.specLoaded ) {
+				context.dispatch(
+					'api/fetchOpenAPISchema', null, { root: true }
+				);
+			}
 		} );
 	}
 };

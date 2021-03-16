@@ -97,6 +97,9 @@ describe( 'store/search', () => {
 
 	describe( 'actions', () => {
 		const commit = sinon.spy();
+		const state = {};
+		const rootState = { locale: { locale: 'en' } };
+		const context = { commit, state, rootState };
 		const http = sinon.stub( SwaggerClient, 'http' );
 
 		afterEach( () => sinon.reset() );
@@ -114,10 +117,10 @@ describe( 'store/search', () => {
 			it( 'should accept empty payload', async () => {
 				const expectRequest = addRequestDefaults( {
 					url: '/api/search/tools/?'
-				} );
+				}, context );
 				http.resolves( response );
 
-				await actions.findTools( { commit }, {} );
+				await actions.findTools( context, {} );
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
@@ -127,10 +130,10 @@ describe( 'store/search', () => {
 			it( 'should build query string', async () => {
 				const expectRequest = addRequestDefaults( {
 					url: '/api/search/tools/?q=q&filter=term'
-				} );
+				}, context );
 				http.resolves( response );
 
-				await actions.findTools( { commit }, {
+				await actions.findTools( context, {
 					query: 'q',
 					filters: [ [ 'filter', 'term' ] ]
 				} );
@@ -149,7 +152,7 @@ describe( 'store/search', () => {
 				http.rejects( { response: { data: 'Boom' } } );
 				const findTools = actions.findTools.bind( stubThis );
 
-				await findTools( { commit }, {} );
+				await findTools( context, {} );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;

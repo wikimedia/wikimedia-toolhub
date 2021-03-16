@@ -98,12 +98,13 @@ describe( 'store/locale', () => {
 			const commit = sinon.spy();
 			const dispatch = sinon.stub();
 			const state = {};
+			const rootState = { api: { specLoaded: false } };
 
 			dispatch.onFirstCall().returns( { then: sinon.stub().yields() } );
 			const testLocale = 'en';
 
 			actions.setLocale(
-				{ commit, dispatch, state },
+				{ commit, dispatch, state, rootState },
 				{ locale: testLocale, vm: stubVm }
 			);
 
@@ -137,12 +138,13 @@ describe( 'store/locale', () => {
 			const commit = sinon.spy();
 			const dispatch = sinon.stub();
 			const state = {};
+			const rootState = { api: { specLoaded: false } };
 
 			dispatch.onFirstCall().returns( { then: sinon.stub().yields() } );
 			const testLocale = 'ar';
 
 			actions.setLocale(
-				{ commit, dispatch, state },
+				{ commit, dispatch, state, rootState },
 				{ locale: testLocale, vm: stubVm, initial: true }
 			);
 

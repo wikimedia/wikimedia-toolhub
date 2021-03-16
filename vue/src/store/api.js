@@ -1,6 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { client } from '@/plugins/swagger';
+import SwaggerClient from 'swagger-client';
+
+import i18n from '@/plugins/i18n';
+import {
+	OPENAPI_SCHEMA_URL,
+	getFailurePayload,
+	makeApiCall
+} from '@/plugins/swagger';
 
 Vue.use( Vuex );
 
@@ -14,10 +21,21 @@ export const actions = {
 	 * @return {Promise<Object>}
 	 */
 	fetchOpenAPISchema( context ) {
-		return client.then( ( api ) => {
-			context.commit( 'onSpecChanged', { spec: api.spec } );
-			return api.spec;
-		} );
+		return makeApiCall( context, { url: OPENAPI_SCHEMA_URL } ).then(
+			( response ) => {
+				const spec = response.body;
+				return SwaggerClient.resolve( { spec } );
+			},
+			( failure ) => {
+				const data = getFailurePayload( failure );
+				this._vm.$notify.error( i18n.t( 'apierror', [ data ] ) );
+			}
+		).then(
+			( { spec } ) => {
+				context.commit( 'onSpecChanged', { spec } );
+				return spec;
+			}
+		);
 	},
 
 	/**
@@ -28,7 +46,20 @@ export const actions = {
 	 * @return {Promise<Object|undefined>}
 	 */
 	getOperationSchema( context, opId ) {
-		return client.then( ( api ) => {
+		// Avoid loading the raw schema if we already have it in cache
+		const loader = new Promise( ( resolve, reject ) => {
+			if ( context.state.specLoaded ) {
+				resolve( context.state.apispec );
+			} else {
+				context.dispatch( 'fetchOpenAPISchema' ).then(
+					( apispec ) => resolve( apispec )
+				).catch(
+					( err ) => reject( err )
+				);
+			}
+		} );
+
+		return loader.then( ( api ) => {
 			for ( const pathName in api.spec.paths ) {
 				const path = api.spec.paths[ pathName ];
 				for ( const method in path ) {
@@ -53,13 +84,15 @@ export const mutations = {
 	 */
 	onSpecChanged( state, { spec } ) {
 		state.apispec = spec;
+		state.specLoaded = true;
 	}
 };
 
 export default {
 	namespaced: true,
 	state: {
-		apispec: {}
+		apispec: {},
+		specLoaded: false
 	},
 	getters: getters,
 	actions: actions,

@@ -14,17 +14,25 @@ export const client = new SwaggerClient( {
  *
  * @param {Object} request - API request details
  * @param {Object} context - Vuex context
- * @param {Object} context.state - State data
+ * @param {Object} context.rootState - Cross module state data
  * @return {Object}
  */
 export function addRequestDefaults( request, context ) {
 	request.method = request.method || 'GET';
 	request.headers = request.headers || {};
+	if ( !( 'Accept' in request.headers ) ) {
+		// eslint-disable-next-line dot-notation
+		request.headers[ 'Accept' ] = 'application/json';
+	}
+	if ( !( 'Accept-Language' in request.headers ) ) {
+		const ctx = context.rootState.locale;
+		request.headers[ 'Accept-Language' ] = ctx.locale;
+	}
 	if ( !( 'Content-Type' in request.headers ) ) {
 		request.headers[ 'Content-Type' ] = 'application/json';
 	}
 	if ( request.method.toUpperCase() !== 'GET' ) {
-		const ctx = context.rootState.user || context.state;
+		const ctx = context.rootState.user;
 		request.headers[ 'X-CSRFToken' ] = ctx.user.csrf_token;
 	}
 	return request;
