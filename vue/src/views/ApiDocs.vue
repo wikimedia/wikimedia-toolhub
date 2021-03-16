@@ -10,8 +10,8 @@
 		<v-row>
 			<v-col cols="12">
 				<rapi-doc
-					id="apidoc"
-					:spec-url="specUrl"
+					v-if="specLoaded"
+					ref="rapidoc"
 					class="no-gutters flex-wrap flex-column fill-height elevation-1 py-6"
 					allow-api-list-style-selection="false"
 					allow-authentication="false"
@@ -23,7 +23,6 @@
 					render-style="view"
 					schema-description-expanded="true"
 					schema-style="tree"
-					show-components="true"
 					show-header="false"
 					theme="light"
 					use-path-in-nav-bar="true"
@@ -37,17 +36,43 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import 'rapidoc';
-import { OPENAPI_SCHEMA_URL } from '@/plugins/swagger';
 
 export default {
 	name: 'ApiDocs',
-	data: () => ( {
-		specUrl: OPENAPI_SCHEMA_URL
-	} ),
 	computed: {
+		...mapState( 'api', [ 'apispec', 'specLoaded' ] ),
 		...mapState( 'user', [ 'user' ] )
+	},
+	methods: {
+		...mapActions( 'api', [ 'fetchOpenAPISchema' ] ),
+
+		/**
+		 * Load an OpenAPI spec into the display component.
+		 *
+		 * @param {Object|string} spec - OpenAPI spec or URL to fetch from
+		 */
+		loadSpec( spec ) {
+			this.$nextTick( () => this.$refs.rapidoc.loadSpec( spec ) );
+		}
+	},
+	watch: {
+		apispec: {
+			handler( newVal ) {
+				if ( Object.keys( newVal ).length > 0 ) {
+					this.loadSpec( newVal );
+				}
+			},
+			deep: true
+		}
+	},
+	mounted() {
+		if ( this.specLoaded ) {
+			this.loadSpec( this.apispec );
+		} else {
+			this.fetchOpenAPISchema();
+		}
 	}
 };
 </script>
