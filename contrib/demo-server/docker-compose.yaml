@@ -1,0 +1,93 @@
+---
+version: "3.2"
+services:
+  web:
+    image: "bd808/toolhub-beta:search"
+    user: somebody
+    working_dir: /srv/app
+    # Comment out entry point override if attempting to rebuild from scratch.
+    # The default entrypoint assumes an ephemeral db and loads initial
+    # fixtures which we do not want when using a volume backed mysql.
+    entrypoint:
+      - /bin/bash
+      - -c
+      - >-
+        poetry run python3 manage.py migrate
+        && poetry run python3 manage.py createinitialrevisions
+        && poetry run python3 manage.py search_index --rebuild -f
+        && poetry run python3 manage.py runserver --noreload --nostatic 0.0.0.0:8000
+    environment:
+      - DJANGO_SECRET_KEY
+      - DJANGO_DEBUG
+      - DJANGO_ALLOWED_HOSTS
+      - DJANGO_SETTINGS_MODULE=toolhub.settings
+      - DJANGO_SUPERUSER_PASSWORD
+      - LOGGING_HANDLERS
+      - LOGGING_LEVEL
+      - DB_ENGINE
+      - DB_NAME
+      - DB_USER
+      - DB_PASSWORD
+      - DB_HOST
+      - DB_PORT
+      - CACHE_BACKEND
+      - CACHE_LOCATION
+      - WIKIMEDIA_OAUTH2_URL
+      - WIKIMEDIA_OAUTH2_KEY
+      - WIKIMEDIA_OAUTH2_SECRET
+      - ES_HOSTS
+    ports:
+      - "8000:8000"
+    volumes:
+      - /dev/log:/dev/log
+    restart: always
+    depends_on:
+      - db
+      - search
+
+  db:
+    image: mariadb:10.4
+    restart: always
+    command:
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_unicode_ci"
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DOCKER_DB_MYSQL_ROOT_PASSWORD}
+    volumes:
+      - type: volume
+        source: dbdata
+        target: /var/lib/mysql
+        consistency: consistent
+      - /dev/log:/dev/log
+
+  search:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.14
+    restart: always
+    environment:
+      node.name: es01
+      cluster.name: es-toolhub
+      discovery.type: single-node
+      bootstrap.memory_lock: "true"
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    ports:
+      - "9200:9200"
+    volumes:
+      - type: volume
+        source: esdata
+        target: /usr/share/elasticsearch/data
+        consistency: cached
+      - /dev/log:/dev/log
+
+volumes:
+  dbdata:
+  esdata:

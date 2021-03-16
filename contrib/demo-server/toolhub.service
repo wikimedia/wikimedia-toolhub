@@ -1,0 +1,15 @@
+[Unit]
+Description=Toolhub service with docker-compose
+After=docker.service
+Wants=network-online.target docker.socket
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/srv/toolhub/demo
+ExecStart=/usr/local/bin/docker-compose up -d
+ExecStop=/usr/local/bin/docker-compose down
+
+[Install]
+WantedBy=local.target
