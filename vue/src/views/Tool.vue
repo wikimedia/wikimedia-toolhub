@@ -11,19 +11,7 @@
 						sm="2"
 						cols="12"
 					>
-						<v-icon
-							v-if="!toolInfo.icon"
-							size="100"
-						>
-							mdi-tools
-						</v-icon>
-
-						<v-img
-							v-if="toolInfo.icon"
-							:src="toolInfo.icon.img"
-							max-height="100"
-							max-width="100"
-						/>
+						<CommonsImage :commons-url="toolInfo.icon" />
 					</v-col>
 					<v-col lg="10"
 						md="9"
@@ -196,9 +184,13 @@
 <script>
 import { mapState } from 'vuex';
 import i18n from '@/plugins/i18n';
+import CommonsImage from '@/components/tools/CommonsImage';
 
 export default {
 	name: 'Tool',
+	components: {
+		CommonsImage
+	},
 	data() {
 		return {
 			toolName: this.$route.params.name

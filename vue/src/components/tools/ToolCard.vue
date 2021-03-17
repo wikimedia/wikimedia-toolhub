@@ -4,20 +4,11 @@
 		height="550px"
 	>
 		<v-card-title class="flex-nowrap">
-			<v-img
-				v-if="tool.icon"
+			<CommonsImage
 				class="me-2"
-				:src="tool.icon.img"
-				max-height="50"
-				max-width="50"
+				:commons-url="tool.icon"
+				:size="50"
 			/>
-			<v-icon
-				v-else
-				class="me-2"
-				size="50"
-			>
-				mdi-tools
-			</v-icon>
 			<div class="tool-card__title line-clamp">
 				{{ tool.title }}
 			</div>
@@ -82,8 +73,13 @@
 </template>
 
 <script>
+import CommonsImage from '@/components/tools/CommonsImage';
+
 export default {
 	name: 'ToolCard',
+	components: {
+		CommonsImage
+	},
 	props: {
 		tool: {
 			type: Object,

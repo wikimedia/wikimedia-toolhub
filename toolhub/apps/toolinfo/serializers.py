@@ -15,8 +15,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-import re
-
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
@@ -33,42 +31,6 @@ from toolhub.serializers import ModelSerializer
 
 from . import schema
 from .models import Tool
-
-
-COMMONS_FILE_RE = re.compile(r"^https://commons.wikimedia.org/wiki/(File:.*)$")
-COMMONS_FILE_TMPL = "https://commons.wikimedia.org/wiki/Special:FilePath/{}"
-
-
-@doc(_("""A File: page on Commons"""))  # noqa: W0223
-class CommonsFileOutputSerializer(serializers.Serializer):
-    """A File: page on Commons."""
-
-    page = serializers.CharField(
-        max_length=2047,
-        read_only=True,
-        required=False,
-        help_text=_(
-            "A link to a Wikimedia Commons file description page for an icon "
-            "that depicts the tool."
-        ),
-    )
-    img = serializers.CharField(
-        max_length=2047,
-        read_only=True,
-        required=False,
-        help_text=_("URL to image."),
-    )
-
-    def to_representation(self, instance):
-        """Convert a commons File: url."""
-        ret = {
-            "page": instance,
-            "img": None,
-        }
-        m = COMMONS_FILE_RE.match(instance)
-        if m is not None:
-            ret["img"] = COMMONS_FILE_TMPL.format(m[1])
-        return ret
 
 
 @doc(_("""Supported wikis"""))  # noqa: W0223
@@ -142,9 +104,6 @@ class ToolSerializer(ModelSerializer):
     """Description of a tool."""
 
     for_wikis = ForWikiField(read_only=True, required=False)
-    icon = CommonsFileOutputSerializer(
-        many=False, read_only=True, required=False
-    )
     created_by = UserSerializer(many=False, read_only=True)
     modified_by = UserSerializer(many=False, read_only=True)
 
