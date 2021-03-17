@@ -230,10 +230,12 @@ export default {
 				}
 			];
 
+			// Remove empty links from the list
 			const filteredLinks = links.filter( function ( link ) {
 				return link.url && link.url.length !== 0;
 			} );
 
+			// Select "best" langauge match link for localized collections
 			const localizedLinks = filteredLinks.map( ( link ) => {
 				if ( Array.isArray( link.url ) ) {
 					const urls = link.url.reduce( ( out, value ) => {
@@ -251,6 +253,11 @@ export default {
 							link.url = urls[ value ];
 							break;
 						}
+					}
+					if ( Array.isArray( link.url ) ) {
+						// T277260: No locale in the fallback chain was found.
+						// Pick the first link in the list as the default.
+						link.url = link.url[ 0 ].url;
 					}
 				}
 				return link;
