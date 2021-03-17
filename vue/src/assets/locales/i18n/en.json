@@ -144,6 +144,7 @@
 	"tool-deprecated-error": "This tool is not recommended to be used.",
 	"tool-experimental-error": "This tool is experimental! It is unstable and can change or become unavailable at any time.",
 	"tools-lastupdated": "last updated on $1",
+	"tool-not-found": "No tool named '$1' found.",
 	"update": "Update",
 	"url": "Url",
 	"urlcharslimit": "URL must be less than 255 characters",

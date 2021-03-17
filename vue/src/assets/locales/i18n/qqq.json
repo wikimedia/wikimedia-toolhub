@@ -148,6 +148,7 @@
 	"tool-deprecated-error": "Warning message for a tool marked as deprecated.",
 	"tool-experimental-error": "Warning message for a tool marked as experimental.",
 	"tools-lastupdated": "Crawler run statistics label. Parameters:\n* $1 - calendar date",
+	"tool-not-found": "Error message shown when a tool is not found. Parameters:\n* $1 - tool name requested",
 	"update": "Update, triggers deleting of an oauth app",
 	"url": "Table column label.",
 	"urlcharslimit": "Error message for URL submission request",

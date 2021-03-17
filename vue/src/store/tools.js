@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+
 import SwaggerClient from 'swagger-client';
+
 import i18n from '@/plugins/i18n';
 import router from '@/router';
-import makeApiCall from '@/plugins/swagger.js';
+import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
 
 Vue.use( Vuex );
 
@@ -11,7 +13,7 @@ export default {
 	namespaced: true,
 	state: {
 		toolsList: [],
-		toolInfo: [],
+		tool: null,
 		numTools: 0,
 		apiErrorMsg: '',
 		spdxLicenses: [],
@@ -23,9 +25,8 @@ export default {
 			state.numTools = tools.count;
 			state.apiErrorMsg = '';
 		},
-		TOOL_INFO( state, tool ) {
-			state.toolInfo = tool;
-			state.apiErrorMsg = '';
+		TOOL( state, tool ) {
+			state.tool = tool;
 		},
 		SPDX_LICENSES( state, data ) {
 			state.spdxLicenses = data;
@@ -52,19 +53,36 @@ export default {
 			} )
 				.catch( ( err ) => context.commit( 'ERROR', err ) );
 		},
-		getToolInfo( context, name ) {
+
+		/**
+		 * Fetch information for a single tool from the API.
+		 *
+		 * @param {Object} context - vuex context
+		 * @param {string} name - tool name
+		 * @return {Promise}
+		 */
+		getToolByName( context, name ) {
 			const request = {
-				url: '/api/tools/' + name,
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				}
+				url: '/api/tools/' + encodeURI( name )
 			};
 
-			SwaggerClient.http( request ).then( ( response ) => {
-				context.commit( 'TOOL_INFO', response.body );
-			} )
-				.catch( ( err ) => context.commit( 'ERROR', err ) );
+			return makeApiCall( context, request ).then(
+				( response ) => {
+					context.commit( 'TOOL', response.body );
+				},
+				( failure ) => {
+					const data = getFailurePayload( failure );
+					if ( data.status_code === 404 ) {
+						this._vm.$notify.warning(
+							i18n.t( 'tool-not-found', [ name ] )
+						);
+					} else {
+						this._vm.$notify.error(
+							i18n.t( 'apierror', [ data.message ] )
+						);
+					}
+				}
+			);
 		},
 		getSpdxLicenses( context ) {
 			const request = {

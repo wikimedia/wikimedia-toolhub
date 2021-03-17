@@ -1,6 +1,9 @@
 <template>
 	<v-container>
-		<v-row dense>
+		<v-row
+			v-if="tool"
+			dense
+		>
 			<v-col md="7"
 				cols="12"
 				class="me-8"
@@ -11,7 +14,7 @@
 						sm="2"
 						cols="12"
 					>
-						<CommonsImage :commons-url="toolInfo.icon" />
+						<CommonsImage :commons-url="tool.icon" />
 					</v-col>
 					<v-col lg="10"
 						md="9"
@@ -19,26 +22,26 @@
 						cols="12"
 					>
 						<h2 class="display-1">
-							{{ toolInfo.title }}
+							{{ tool.title }}
 						</h2>
 
 						<div class="mt-4" dir="auto">
-							{{ toolInfo.description }}
+							{{ tool.description }}
 						</div>
 
 						<dl class="row mx-0 mt-4 subtitle-2">
 							<dt class="me-1">{{ $t( 'authors' ) }}:</dt>
-							<dd>{{ toolInfo.author }}</dd>
+							<dd>{{ tool.author }}</dd>
 						</dl>
 
 						<v-chip-group
-							v-if="toolInfo.keywords"
+							v-if="tool.keywords"
 							active-class="primary--text"
 							class="mt-4"
 							column
 						>
 							<v-chip
-								v-for="tt in toolInfo.keywords.filter(e => e)"
+								v-for="tt in tool.keywords.filter(e => e)"
 								:key="tt"
 							>
 								{{ tt }}
@@ -47,11 +50,11 @@
 
 						<v-row>
 							<v-btn
-								v-if="toolInfo.repository"
+								v-if="tool.repository"
 								class="mt-4 ms-3"
 								color="primary"
 								dark
-								:href="`${toolInfo.repository}`"
+								:href="`${tool.repository}`"
 								target="_blank"
 							>
 								{{ $t( 'sourcecode' ) }}
@@ -67,7 +70,7 @@
 								class="mt-4 ms-3"
 								color="primary"
 								dark
-								:href="`${toolInfo.url}`"
+								:href="`${tool.url}`"
 								target="_blank"
 							>
 								{{ $t( 'browsetool' ) }}
@@ -155,7 +158,7 @@
 				</v-card>
 
 				<v-alert
-					v-if="toolInfo.experimental"
+					v-if="tool.experimental"
 					border="left"
 					color="primary"
 					dark
@@ -168,7 +171,7 @@
 				</v-alert>
 
 				<v-alert
-					v-if="toolInfo.deprecated"
+					v-if="tool.deprecated"
 					border="left"
 					type="error"
 					elevation="2"
@@ -182,7 +185,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapMutations, mapState } from 'vuex';
 import i18n from '@/plugins/i18n';
 import CommonsImage from '@/components/tools/CommonsImage';
 
@@ -193,40 +196,40 @@ export default {
 	},
 	data() {
 		return {
-			toolName: this.$route.params.name
+			name: this.$route.params.name
 		};
 	},
 	computed: {
-		...mapState( 'tools', [ 'toolInfo' ] ),
+		...mapState( 'tools', [ 'tool' ] ),
 		links() {
 			const links = [
 				{
 					title: this.$t( 'howtouse' ),
-					url: this.toolInfo.user_docs_url
+					url: this.tool.user_docs_url
 				},
 				{
 					title: this.$t( 'developerdocumentation' ),
-					url: this.toolInfo.developer_docs_url
+					url: this.tool.developer_docs_url
 				},
 				{
 					title: this.$t( 'apidocumentation' ),
-					url: this.toolInfo.api_url
+					url: this.tool.api_url
 				},
 				{
 					title: this.$t( 'helptranslate' ),
-					url: this.toolInfo.translate_url
+					url: this.tool.translate_url
 				},
 				{
 					title: this.$t( 'privacypolicy' ),
-					url: this.toolInfo.privacy_policy_url
+					url: this.tool.privacy_policy_url
 				},
 				{
 					title: this.$t( 'leavefeedback' ),
-					url: this.toolInfo.feedback_url
+					url: this.tool.feedback_url
 				},
 				{
 					title: this.$t( 'bugtracker' ),
-					url: this.toolInfo.bugtracker_url
+					url: this.tool.bugtracker_url
 				}
 			];
 
@@ -269,32 +272,35 @@ export default {
 			const items = [
 				{
 					name: this.$t( 'tooltype' ),
-					value: this.toolInfo.tool_type
+					value: this.tool.tool_type
 				},
 				{
 					name: this.$t( 'forwikis' ),
-					value: this.toolInfo.for_wikis
+					value: this.tool.for_wikis
 				},
 				{
 					name: this.$t( 'technologyused' ),
-					value: this.toolInfo.technology_used
+					value: this.tool.technology_used
 				}
 			];
 
-			const filteredItems = items.filter( function ( item ) {
-				return ( item.value && item.value.length !== 0 ) && item.value !== null;
+			const filteredItems = items.filter( ( item ) => {
+				return item.value &&
+					item.value !== null &&
+					item.value.length !== 0;
 			} );
 
 			return filteredItems;
 		}
 	},
 	methods: {
-		getToolInfo() {
-			this.$store.dispatch( 'tools/getToolInfo', this.toolName );
-		}
+		...mapActions( 'tools', [ 'getToolByName' ] ),
+		...mapMutations( 'tools', [ 'TOOL' ] )
 	},
 	mounted() {
-		this.getToolInfo();
+		// Clear any data from a prior view
+		this.TOOL( null );
+		this.getToolByName( this.name );
 	}
 };
 </script>
