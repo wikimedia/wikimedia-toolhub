@@ -21,6 +21,9 @@ from django.db.models.signals import post_delete
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 
+from safedelete.models import SafeDeleteModel
+from safedelete.signals import post_softdelete
+
 from .models import LogEntry
 
 
@@ -37,14 +40,20 @@ def log_create_callback(sender, instance, created, **kwargs):  # noqa: W0613
 def log_update_callback(sender, instance, **kwargs):  # noqa: W0613
     """Handle an instance update signal."""
     if instance.pk is not None:
-        user_model = get_user_model()
-        # Ignore updates to user models.
-        if not isinstance(instance, user_model):
-            LogEntry.objects.log_action(
-                user=None,
-                target=instance,
-                action=LogEntry.UPDATE,
-            )
+        if isinstance(instance, get_user_model()):
+            # Ignore updates to user models.
+            return
+
+        if isinstance(instance, SafeDeleteModel):
+            if instance.deleted is not None:
+                # Ignore if instance is soft deleted
+                return
+
+        LogEntry.objects.log_action(
+            user=None,
+            target=instance,
+            action=LogEntry.UPDATE,
+        )
 
 
 def log_delete_callback(sender, instance, **kwargs):  # noqa: W0613
@@ -67,6 +76,7 @@ class ModelRegistry:
             post_save: log_create_callback,
             pre_save: log_update_callback,
             post_delete: log_delete_callback,
+            post_softdelete: log_delete_callback,
         }
 
     def register(self, model=None):

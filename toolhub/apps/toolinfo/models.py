@@ -26,6 +26,9 @@ from django.utils.translation import gettext_lazy as _
 
 import reversion
 
+from safedelete.managers import SafeDeleteManager
+from safedelete.models import SafeDeleteModel
+
 from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.auditlog.signals import registry
 from toolhub.fields import JSONSchemaField
@@ -52,7 +55,7 @@ def name_to_slug(name):
     return slugify(name, allow_unicode=True)
 
 
-class ToolManager(models.Manager):
+class ToolManager(SafeDeleteManager):
     """Custom manager for Tool models."""
 
     # 'oneOf' fields that will always be normalized as an array of values
@@ -228,7 +231,7 @@ class ToolManager(models.Manager):
 
 @reversion.register()
 @registry.register()
-class Tool(models.Model):
+class Tool(SafeDeleteModel):
     """Description of a tool."""
 
     TOOL_TYPE_CHOICES = (

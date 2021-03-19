@@ -17,18 +17,22 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 import django.contrib.admin
 
-import reversion_compare.admin
+from reversion_compare.admin import CompareVersionAdmin
+
+from safedelete.admin import SafeDeleteAdmin
+from safedelete.admin import highlight_deleted
 
 from . import models
 
 
 @django.contrib.admin.register(models.Tool)
-class ToolAdmin(reversion_compare.admin.CompareVersionAdmin):
+class ToolAdmin(CompareVersionAdmin, SafeDeleteAdmin):
     """Register with admin."""
 
     list_display = (
+        highlight_deleted,
         "name",
         "created_by",
     )
-    list_filter = ("created_by",)
+    list_filter = ("created_by",) + SafeDeleteAdmin.list_filter
     ordering = ("name",)

@@ -40,6 +40,7 @@ django-reversion-compare = "^0.13.1"
 elasticsearch-dsl = ">=6.0.0,<7.0.0"
 django-elasticsearch-dsl = ">=6.0.0,<7.0.0"
 django-elasticsearch-dsl-drf = "^0.21"
+django-safedelete = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

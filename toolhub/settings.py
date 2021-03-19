@@ -150,6 +150,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "reversion",
     "reversion_compare",
+    "safedelete",
     "social_django",
     "webpack_loader",
     "django_elasticsearch_dsl",
@@ -250,6 +251,9 @@ ELASTICSEARCH_DSL_INDEX_SETTINGS = {
     "number_of_replicas": env.int("ES_INDEX_REPLICAS", default=0),
     "number_of_shards": env.int("ES_INDEX_SHARDS", default=1),
 }
+ELASTICSEARCH_DSL_SIGNAL_PROCESSOR = (
+    "toolhub.apps.search.signals.SignalProcessor"
+)
 ELASTICSEARCH_DSL_AUTOSYNC = env.bool("ES_DSL_AUTOSYNC", default=True)
 ELASTICSEARCH_DSL_PARALLEL = env.bool("ES_DSL_PARALLEL", default=True)
 

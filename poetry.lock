@@ -340,6 +340,17 @@ diff-match-patch = "*"
 django-reversion = "*"
 
 [[package]]
+name = "django-safedelete"
+version = "1.0.0"
+description = "Mask your objects instead of deleting them from your database."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = "*"
+
+[[package]]
 name = "django-webpack-loader"
 version = "0.7.0"
 description = "Transparently use webpack with django"
@@ -1427,7 +1438,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "411b2b0cf0742ef08eff0e9e6408830a59d07ac66fd473e8f8a63f9ca61e4c9b"
+content-hash = "83071433110a0aa3e5b622430d082f59391943ac6cacc534923d5e5390ddbb6d"
 
 [metadata.files]
 alabaster = [
@@ -1664,6 +1675,10 @@ django-reversion = [
 django-reversion-compare = [
     {file = "django-reversion-compare-0.13.1.tar.gz", hash = "sha256:3966e4e353c02a0a26646df01b5ce62806c3db9f7642142dc03efe3af0783901"},
     {file = "django_reversion_compare-0.13.1-py3-none-any.whl", hash = "sha256:ffc684be41b90021d6b59fe302e20c1999196c4dc80f06e51e59123c4a2109a5"},
+]
+django-safedelete = [
+    {file = "django-safedelete-1.0.0.tar.gz", hash = "sha256:194470a379d41685298105b2dd6d9d9e6b17cec63fdfc52b225010140a85e28b"},
+    {file = "django_safedelete-1.0.0-py3-none-any.whl", hash = "sha256:1c847de679dc6aaac2af6c05647898e43dc0775611d86c1975703f29c793e1a4"},
 ]
 django-webpack-loader = [
     {file = "django-webpack-loader-0.7.0.tar.gz", hash = "sha256:7a3c88201aa54481f9399465615cbe7b9aece8081496a6d0287b7cb8e232f447"},
