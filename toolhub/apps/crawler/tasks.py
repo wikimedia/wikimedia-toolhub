@@ -23,6 +23,7 @@ from django.utils import timezone
 
 import requests
 
+from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.toolinfo.models import Tool
 
 from .models import Run
@@ -49,18 +50,19 @@ class Crawler:
         for url in self.getActiveUrls():
             # FIXME: rate limiting for outbound requests?
             logger.info("Crawling %s", url)
+            expected_names = self.toolinfo_in_last_run(url)
             run_url = RunUrl(run=run, url=url)
-            tools = self.crawlUrl(run_url)
+            toolinfo_list = self.crawlUrl(run_url)
             run_url.save()
 
-            for tool in tools:
-                tool_valid = True
+            for toolinfo in toolinfo_list:
+                is_valid = True
                 # FIXME: do a more complete job of validating the record
                 for field in ["name", "title", "description", "url"]:
-                    if field not in tool or not tool[field]:
+                    if field not in toolinfo or not toolinfo[field]:
                         logger.error("Toolinfo record missing %s.", field)
-                        tool_valid = False
-                if not tool_valid:
+                        is_valid = False
+                if not is_valid:
                     if run_url.valid:
                         # Mark URL as invalid if any of it's contained tools
                         # is invalid in this run.
@@ -68,11 +70,11 @@ class Crawler:
                         run_url.save()
                     continue
 
-                logger.info("Found tool `%s`", tool["name"])
+                logger.info("Found toolinfo `%s`", toolinfo["name"])
 
                 try:
                     obj, created, updated = Tool.objects.from_toolinfo(
-                        tool,
+                        toolinfo,
                         url.created_by,
                         Tool.ORIGIN_CRAWLER,
                         "Import from {}".format(url),
@@ -83,19 +85,54 @@ class Crawler:
                         run.updated_tools += 1
                     run.total_tools += 1
                     run_url.tools.add(obj)
+                    expected_names.discard(obj.name)
 
                 except django.db.Error:
                     logger.exception(
                         "Failed to upsert `%s` from %s",
-                        tool["name"],
+                        toolinfo["name"],
                         run_url.url.url,
                     )
                     run_url.valid = False
                     run_url.save()
 
+            if len(expected_names) > 0:
+                logger.info(
+                    "Expected but did not find toolinfo: %s", expected_names
+                )
+                if (
+                    200 <= run_url.status_code <= 299
+                    or run_url.status_code == 404
+                ):
+                    # T271128: delete missing tools
+                    reason = "Toolinfo removed from {}"
+                    if run_url.status_code == 404:
+                        reason = "Url {} not found during crawl"
+                    try:
+                        with auditlog_context(
+                            url.created_by, reason.format(url)
+                        ):
+                            Tool.objects.filter(
+                                name__in=expected_names
+                            ).delete()
+                    except django.db.Error:
+                        logger.exception(
+                            "Failed to delete missing tools: %s",
+                            expected_names,
+                        )
+
         run.end_date = timezone.now()
         run.save()
         return run
+
+    def toolinfo_in_last_run(self, url):
+        """Find the toolinfo records in the most recent run for a url."""
+        expected = set()
+        last_run = url.crawler_runs.order_by("-id").first()
+        if last_run:
+            qs = last_run.tools.filter(deleted__isnull=True).distinct()
+            expected.update(qs.values_list("name", flat=True))
+        return expected
 
     def getActiveUrls(self):
         """Get all URLs ready for crawling."""
