@@ -4,7 +4,7 @@ import chai from 'chai';
 const expect = chai.expect;
 /* eslint-disable no-unused-expressions */
 
-import { ensureArray } from './utils';
+import { ensureArray } from './array';
 
 describe( 'utils', () => {
 	describe( 'ensureArray', () => {

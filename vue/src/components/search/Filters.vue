@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import { ensureArray } from '@/utils';
+import { ensureArray } from '@/helpers/array';
 import FilterList from '@/components/search/FilterList';
 
 export const methods = {

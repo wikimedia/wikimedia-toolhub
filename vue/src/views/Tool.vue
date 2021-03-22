@@ -255,6 +255,8 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex';
+import { ensureArray } from '@/helpers/array';
+import { forWikiLabel } from '@/helpers/tools';
 import CommonsImage from '@/components/tools/CommonsImage';
 import ScrollTop from '@/components/tools/ScrollTop';
 
@@ -338,7 +340,8 @@ export default {
 				},
 				{
 					name: this.$t( 'forwikis' ),
-					value: this.tool.for_wikis
+					value: ensureArray(
+						this.tool.for_wikis ).map( forWikiLabel )
 				}
 			];
 

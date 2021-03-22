@@ -51,7 +51,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import { ensureArray } from '@/utils';
+import { ensureArray } from '@/helpers/array';
+import { forWikiLabel } from '@/helpers/tools';
 
 export const methods = {
 	/**
@@ -71,36 +72,7 @@ export const methods = {
 			] );
 		}
 		if ( this.facet.name === 'wiki' ) {
-			let lookup = value;
-			const parts = value.split( '.' );
-			if (
-				parts.length === 3 &&
-				( parts[ 0 ] === '*' || parts[ 0 ] === 'www' )
-			) {
-				lookup = parts.slice( 1 ).join( '.' );
-			}
-			switch ( lookup ) {
-				case '*':
-					return this.$i18n.t( 'search-filter-wiki-any' );
-				case 'commons.wikimedia.org':
-				case 'species.wikimedia.org':
-					// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
-					return this.$i18n.t( 'search-filter-wiki-' + parts[ 0 ] );
-				case 'mediawiki.org':
-				case 'wikibooks.org':
-				case 'wikidata.org':
-				case 'wikinews.org':
-				case 'wikipedia.org':
-				case 'wikiquote.org':
-				case 'wikisource.org':
-				case 'wikiversity.org':
-				case 'wikivoyage.org':
-				case 'wiktionary.org':
-					// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
-					return this.$i18n.t( 'search-filter-wiki-' + parts[ 1 ] );
-				default:
-					return lookup;
-			}
+			return forWikiLabel( value );
 		}
 		if ( this.facet.name === 'tool_type' ) {
 			// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys

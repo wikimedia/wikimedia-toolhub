@@ -33,40 +33,6 @@ from . import schema
 from .models import Tool
 
 
-@doc(_("""Supported wikis"""))  # noqa: W0223
-class ForWikiField(serializers.JSONField):
-    """Supported wikis."""
-
-    TRANSLATIONS = {
-        "*": _("Any wiki"),
-        "commons.wikimedia.org": _("Wikimedia Commons"),
-        "mediawiki.org": _("MediaWiki wiki"),
-        "species.wikimedia.org": _("Wikispecies"),
-        "wikibooks.org": _("Any Wikibooks"),
-        "wikidata.org": _("Wikidata"),
-        "wikinews.org": _("Any Wikinews"),
-        "wikipedia.org": _("Any Wikipedia"),
-        "wikiquote.org": _("Any Wikiquote"),
-        "wikisource.org": _("Any Wikisource"),
-        "wikiversity.org": _("Any Wikiversity"),
-        "wikivoyage.org": _("Any Wikivoyage"),
-        "wiktionary.org": _("Any Wiktionary"),
-    }
-
-    def _localize_label(self, label):
-        """Localize a wiki label."""
-        parts = label.split(".")
-        if len(parts) == 3 and parts[0] in ["*", "www"]:
-            # Strip off "*." and "www." prefix before lookup
-            label = ".".join(parts[1:])
-
-        return self.TRANSLATIONS.get(label, label)
-
-    def to_representation(self, value):
-        """Convert a list of wikis."""
-        return [self._localize_label(v) for v in value]
-
-
 @doc(_("""SPDX license information"""))  # noqa: W0223
 class SpdxLicenseSerializer(serializers.Serializer):
     """SPDX license information."""
@@ -103,7 +69,6 @@ class SpdxLicenseSerializer(serializers.Serializer):
 class ToolSerializer(ModelSerializer):
     """Description of a tool."""
 
-    for_wikis = ForWikiField(read_only=True, required=False)
     created_by = UserSerializer(many=False, read_only=True)
     modified_by = UserSerializer(many=False, read_only=True)
 

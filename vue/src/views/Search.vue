@@ -73,7 +73,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { ensureArray } from '@/utils';
+import { ensureArray } from '@/helpers/array';
 import Filters from '@/components/search/Filters';
 import SearchBar from '@/components/search/SearchBar';
 import Sort from '@/components/search/Sort';
