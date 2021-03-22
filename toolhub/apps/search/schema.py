@@ -76,7 +76,7 @@ class ToolhubFilterExtension(OpenApiFilterExtension):
                 name=self.target.search_param,
                 required=False,
                 location="query",
-                description=_("Query string search"),
+                description=_("Search string"),
                 schema={"type": "string"},
             )
         ]
