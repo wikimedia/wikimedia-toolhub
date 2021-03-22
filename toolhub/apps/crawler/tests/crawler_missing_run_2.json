@@ -1,0 +1,16 @@
+[
+    {
+        "name": "test-delete-1",
+        "title": "Test delete 1",
+        "description": "Test delete 1",
+        "url": "https://example.net/1",
+        "author": "tester"
+    },
+    {
+        "name": "test-delete-3",
+        "title": "Test delete 3",
+        "description": "Test delete 3",
+        "url": "https://example.net/3",
+        "author": "tester"
+    }
+]

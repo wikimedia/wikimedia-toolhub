@@ -46,23 +46,18 @@ class Crawler:
         logger.info("Starting crawl")
         run = Run()
         run.save()
+        names_seen_in_run = {}
 
-        for url in self.getActiveUrls():
+        for url in self.get_active_urls():
             # FIXME: rate limiting for outbound requests?
             logger.info("Crawling %s", url)
             expected_names = self.toolinfo_in_last_run(url)
             run_url = RunUrl(run=run, url=url)
-            toolinfo_list = self.crawlUrl(run_url)
+            toolinfo_list = self.crawl_url(run_url)
             run_url.save()
 
             for toolinfo in toolinfo_list:
-                is_valid = True
-                # FIXME: do a more complete job of validating the record
-                for field in ["name", "title", "description", "url"]:
-                    if field not in toolinfo or not toolinfo[field]:
-                        logger.error("Toolinfo record missing %s.", field)
-                        is_valid = False
-                if not is_valid:
+                if not self.validate_toolinfo(toolinfo):
                     if run_url.valid:
                         # Mark URL as invalid if any of it's contained tools
                         # is invalid in this run.
@@ -70,7 +65,21 @@ class Crawler:
                         run_url.save()
                     continue
 
-                logger.info("Found toolinfo `%s`", toolinfo["name"])
+                logger.info(
+                    "Found toolinfo %s at %s",
+                    toolinfo["name"],
+                    url.url,
+                )
+                if toolinfo["name"] in names_seen_in_run:
+                    # T278065: Reject updates from multiple urls in same run
+                    logger.error(
+                        "Toolinfo %s already seen at %s",
+                        toolinfo["name"],
+                        names_seen_in_run[toolinfo["name"]],
+                    )
+                    expected_names.discard(toolinfo["name"])
+                    continue
+                names_seen_in_run[toolinfo["name"]] = url.url
 
                 try:
                     obj, created, updated = Tool.objects.from_toolinfo(
@@ -134,12 +143,22 @@ class Crawler:
             expected.update(qs.values_list("name", flat=True))
         return expected
 
-    def getActiveUrls(self):
+    def validate_toolinfo(self, toolinfo):
+        """Determine if a record is valid."""
+        is_valid = True
+        # FIXME: do a more complete job of validating the record
+        for field in ["name", "title", "description", "url"]:
+            if field not in toolinfo or not toolinfo[field]:
+                logger.error("Toolinfo record missing %s.", field)
+                is_valid = False
+        return is_valid
+
+    def get_active_urls(self):
         """Get all URLs ready for crawling."""
         # FIXME: filter out "failed" urls?
         return Url.objects.all()
 
-    def crawlUrl(self, url):
+    def crawl_url(self, url):
         """Crawl a URL and return it's content."""
         raw_url = url.url.url
         r = requests.get(raw_url, headers={"user-agent": self.user_agent})

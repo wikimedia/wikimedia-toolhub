@@ -153,6 +153,25 @@ class ToolManager(SafeDeleteManager):
 
         return record
 
+    def get_create_or_revive(self, defaults=None, **kwargs):
+        """Convenience method to find an existing record or create a new one.
+
+        Similar to `get_or_create` but it will also find records which have
+        been marked as soft deleted. If the record was soft deleted the
+        deletion flag will be cleared, but not persisted.
+
+        :returns: (tool (Tool), was_created (boolean), was_revived (boolean))
+        :rtype: tuple
+        """
+        qs = self.all_with_deleted().filter(**kwargs).exclude(deleted=None)
+        tool = qs.first()
+        if tool:
+            # Mark as undeleted but do not save
+            tool.deleted = None
+            return tool, False, True
+        tool, created = self.get_or_create(**kwargs, defaults=defaults)
+        return tool, created, False
+
     def from_toolinfo(self, record, creator, origin, comment=None):
         """Create or update a Tool using data from a toolinfo record.
 
@@ -181,15 +200,15 @@ class ToolManager(SafeDeleteManager):
                 reversion.set_comment(comment)
 
             with auditlog_context(creator, comment):
-                tool, created = self.get_or_create(
+                tool, created, revived = self.get_create_or_revive(
                     name=record["name"], defaults=record
                 )
             if created:
                 return tool, created, False
 
             # Compare input to prior model and decide if anything of note has
-            # changed.
-            has_changes = False
+            # changed. Revived models are always considered changed.
+            has_changes = revived
 
             for key, value in record.items():
                 if key in self.VARIANT_FIELDS:
@@ -198,7 +217,9 @@ class ToolManager(SafeDeleteManager):
                 prior = getattr(tool, key)
 
                 if value != prior:
-                    if key in self.INVARIANT_FIELDS:
+                    if not revived and key in self.INVARIANT_FIELDS:
+                        # Invariant fields are allowed to change when reviving
+                        # a deleted record.
                         raise ValidationError(
                             _(
                                 "Changing %(key)s after initial "
@@ -220,11 +241,6 @@ class ToolManager(SafeDeleteManager):
             if has_changes:
                 with auditlog_context(creator, comment):
                     tool.save()
-
-        # FIXME: what should we do if we get duplicates from
-        # multiple source URLs? This can happen for example if
-        # a Toolforge tool is registered independent of the
-        # Striker managed toolinfo record.
 
         return tool, False, has_changes
 
