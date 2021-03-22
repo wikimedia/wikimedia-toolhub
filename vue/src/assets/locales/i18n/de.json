@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Anna7321",
+			"FF11",
 			"Wkandek",
 			"Wolfdietmann",
 			"Zauberzunge2000"
@@ -55,6 +56,8 @@
 	"search-filter-wiki-wikivoyage": "All-Wikivoyage-geeignet",
 	"search-filter-wiki-wiktionary": "All-Wiktionary-geeignet",
 	"search-no-results-message": "Keine Ergebnisse gefunden.",
+	"search-result-summary": "$1-$2 von {{PLURAL:$3|einem Ergebnis|$3 Ergebnissen}}",
+	"search-sort-created-asc": "Erstelldatum: Alt → Neu",
 	"search-sort-score": "Relevanz",
 	"sourcecode": "Quellcode",
 	"status": "Status",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Sofia Stecchi"
+			"Sofia Stecchi",
+			"Toa"
 		]
 	},
 	"auditlog-summary": "$1 un $2",
@@ -22,6 +23,7 @@
 	"name": "Nome",
 	"newtoolsfound": "{{PLURAL:$1|1 strumento|$1 strumenti}}",
 	"removeurl": "Rimuovi URL",
+	"required-field": "Questo campo è obbligatorio.",
 	"search": "Ricerca",
 	"search-filter-author": "Autore",
 	"search-filter-clear-selected": "Elimina tutto",
@@ -32,11 +34,11 @@
 	"search-filter-tool-type-bot": "bot",
 	"search-filter-tool-type-coding-framework": "Framework coding",
 	"search-filter-tool-type-command-line-tool": "strumento a linea di comando",
-	"search-filter-tool-type-desktop-app": "Applicazione desktop",
+	"search-filter-tool-type-desktop-app": "applicazione desktop",
 	"search-filter-tool-type-gadget": "accessorio",
 	"search-filter-tool-type-other": "altro",
 	"search-filter-tool-type-user-script": "script utente",
-	"search-filter-tool-type-web-app": "Applicazione web",
+	"search-filter-tool-type-web-app": "applicazione web",
 	"search-filter-ui-language": "Lingua interfaccia utente",
 	"search-filter-wiki": "Per wiki",
 	"search-filter-wiki-any": "Qualsiasi wiki",
@@ -63,5 +65,6 @@
 	"technologyused": "Tecnologia usata",
 	"title": "Titolo",
 	"toolsfound": "{{PLURAL:$1|1 strumento trovato|$1 strumenti trovati}}",
-	"tools-lastupdated": "ultimo aggiornamento il $1"
+	"tools-lastupdated": "ultimo aggiornamento il $1",
+	"tool-not-found": "Nessuno strumento di nome \"$1\" trovato."
 }
