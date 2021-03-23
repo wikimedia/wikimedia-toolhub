@@ -44,6 +44,7 @@ django-safedelete = "^1.0.0"
 rules = "^3.0"
 django-csp = "^3.7"
 django-prometheus = "^2.1.0"
+ecs-logging = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"

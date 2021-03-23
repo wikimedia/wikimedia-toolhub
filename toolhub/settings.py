@@ -54,6 +54,9 @@ LOGGING = {
         "request_id": {"()": "log_request_id.filters.RequestIDFilter"}
     },
     "formatters": {
+        "ecs": {
+            "()": "toolhub.logging.ECSFormatter",
+        },
         "line": {
             "format": "%(asctime)s [%(request_id)s] %(name)s %(levelname)s: "
             "%(message)s",
@@ -63,7 +66,7 @@ LOGGING = {
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
-            "formatter": "line",
+            "formatter": env.str("LOGGING_CONSOLE_FORMATTER", default="line"),
             "filters": ["request_id"],
             "level": "DEBUG",
         },
