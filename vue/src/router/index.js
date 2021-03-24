@@ -16,12 +16,27 @@ const routes = [
 		{
 			name: 'tool',
 			path: '/tool/:name([\\w-]{1,255})',
-			component: () => import( /* webpackChunkName: "tool" */ '../views/Tool.vue' )
+			component: () => import( /* webpackChunkName: "tool" */ '../views/ToolView.vue' )
 		},
 		{
 			name: 'edittool',
 			path: '/tool/:name([\\w-]{1,255})/edit',
 			component: () => import( /* webpackChunkName: "edittool" */ '../views/EditTool.vue' )
+		},
+		{
+			name: 'toolhistory',
+			path: '/tool/:name([\\w-]{1,255})/history',
+			component: () => import( /* webpackChunkName: "toolhistory" */ '../views/ToolHistory.vue' )
+		},
+		{
+			name: 'toolrevision',
+			path: '/tool/:name([\\w-]{1,255})/history/revision/:revId',
+			component: () => import( /* webpackChunkName: "toolrevision" */ '../views/ToolView.vue' )
+		},
+		{
+			name: 'revisionsdiff',
+			path: '/tool/:name([\\w-]{1,255})/history/revision/:revId/diff/:otherRevId/',
+			component: () => import( /* webpackChunkName: "revisionsdiff" */ '../views/RevisionsDiff.vue' )
 		},
 		{
 			name: 'addremovetools',

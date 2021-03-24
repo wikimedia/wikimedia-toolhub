@@ -107,3 +107,7 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 	white-space: pre-line;
 	word-break: break-word;
 }
+
+.tool-app-bar .v-toolbar__content {
+	padding: 0 !important;
+}

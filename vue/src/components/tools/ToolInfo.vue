@@ -1,21 +1,34 @@
 <template>
-	<v-container>
+	<v-container v-if="tool">
 		<v-app-bar
-			v-if="tool"
+			v-if="!revId"
 			color="bgtext"
 			dense
 			flat
+			class="tool-app-bar"
 		>
 			<v-spacer />
 			<v-btn
 				v-if="canEdit"
 				:to="`/tool/${tool.name}/edit`"
 				color="primary"
+				:small="$vuetify.breakpoint.smAndDown"
 			>
 				<v-icon class="me-2">
 					mdi-pencil
 				</v-icon>
 				{{ $t( 'edittool' ) }}
+			</v-btn>
+
+			<v-btn
+				:to="`/tool/${name}/history`"
+				:small="$vuetify.breakpoint.smAndDown"
+				class="ms-4"
+			>
+				<v-icon class="me-2">
+					mdi-history
+				</v-icon>
+				{{ $t( 'viewhistory' ) }}
 			</v-btn>
 		</v-app-bar>
 
@@ -75,6 +88,7 @@
 								dark
 								:href="`${tool.repository}`"
 								target="_blank"
+								:small="$vuetify.breakpoint.smAndDown"
 							>
 								{{ $t( 'sourcecode' ) }}
 								<v-icon
@@ -91,6 +105,7 @@
 								dark
 								:href="`${tool.url}`"
 								target="_blank"
+								:small="$vuetify.breakpoint.smAndDown"
 							>
 								{{ $t( 'browsetool' ) }}
 								<v-icon
@@ -254,25 +269,32 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapState } from 'vuex';
 import { ensureArray } from '@/helpers/array';
 import { forWikiLabel } from '@/helpers/tools';
 import CommonsImage from '@/components/tools/CommonsImage';
 import ScrollTop from '@/components/tools/ScrollTop';
 
 export default {
-	name: 'Tool',
+	name: 'ToolInfo',
 	components: {
 		CommonsImage,
 		ScrollTop
 	},
-	data() {
-		return {
-			name: this.$route.params.name
-		};
+	props: {
+		tool: {
+			type: Object,
+			default: null
+		},
+		revId: {
+			type: String,
+			default: null
+		},
+		name: {
+			type: String,
+			default: null
+		}
 	},
 	computed: {
-		...mapState( 'tools', [ 'tool' ] ),
 		links() {
 			const links = [
 				{
@@ -358,15 +380,6 @@ export default {
 			return this.tool.created_by.username === username &&
 				this.tool.origin === 'api';
 		}
-	},
-	methods: {
-		...mapActions( 'tools', [ 'getToolByName' ] ),
-		...mapMutations( 'tools', [ 'TOOL' ] )
-	},
-	mounted() {
-		// Clear any data from a prior view
-		this.TOOL( null );
-		this.getToolByName( this.name );
 	}
 };
 </script>

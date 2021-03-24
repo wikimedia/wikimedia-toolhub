@@ -191,9 +191,9 @@
 							dark
 							class="me-2"
 						>
-							mdi-close
+							mdi-cancel
 						</v-icon>
-						{{ $t( 'close' ) }}
+						{{ $t( 'cancel' ) }}
 					</v-btn>
 
 					<v-btn

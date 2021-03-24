@@ -17,7 +17,11 @@ export default {
 		numTools: 0,
 		apiErrorMsg: '',
 		spdxLicenses: [],
-		toolCreated: {}
+		toolCreated: {},
+		toolRevisions: [],
+		toolRevision: null,
+		numRevisions: 0,
+		diffRevision: null
 	},
 	mutations: {
 		TOOLS_LIST( state, tools ) {
@@ -33,6 +37,16 @@ export default {
 		},
 		CREATE_TOOL( state, tool ) {
 			state.toolCreated = tool;
+		},
+		TOOL_REVISIONS( state, revisions ) {
+			state.toolRevisions = revisions.results;
+			state.numRevisions = revisions.count;
+		},
+		TOOL_REVISION( state, revision ) {
+			state.toolRevision = revision;
+		},
+		DIFF_REVISION( state, revision ) {
+			state.diffRevision = revision;
 		},
 		ERROR( state, error ) {
 			state.apiErrorMsg = error;
@@ -153,6 +167,193 @@ export default {
 							] )
 						);
 					}
+				}
+			);
+		},
+		/**
+		 * Update tool revisions state with the results obtained via the API.
+		 *
+		 * @param {Object} context - vuex context
+		 * @param {Object} tool - tool info
+		 */
+		updateToolRevisions( context, tool ) {
+			context.dispatch( 'getRevisions', tool ).then(
+				( success ) => {
+					const data = success.body;
+					context.commit( 'TOOL_REVISIONS', data );
+				},
+				( failure ) => {
+					const data = getFailurePayload( failure );
+
+					for ( const err in data.errors ) {
+						this._vm.$notify.error(
+							i18n.t( 'apierrors', [
+								data.errors[ err ].field,
+								data.errors[ err ].message
+							] )
+						);
+					}
+				}
+			);
+		},
+		/**
+		 * Fetch tool revisions via the API.
+		 *
+		 * @param {Object} context - vuex context
+		 * @param {Object} tool - tool info
+		 * @return {Promise} Promise object with revisions data
+		 */
+		getRevisions( context, tool ) {
+			const request = {
+				url: '/api/tools/' + tool.name + '/revisions/?page=' + tool.page
+			};
+			return makeApiCall( context, request );
+		},
+		/**
+		 * Fetch tool revision information from the API.
+		 *
+		 * @param {Object} context - vuex context
+		 * @param {Object} tool - tool info
+		 */
+		getToolRevision( context, tool ) {
+			const request = {
+				url: '/api/tools/' + tool.name + '/revisions/' + tool.revId + '/'
+			};
+
+			makeApiCall( context, request ).then(
+				( response ) => {
+					context.commit( 'TOOL_REVISION', response.body );
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
+
+					this._vm.$notify.error(
+						i18n.t( 'apierror', [ explanation ] )
+					);
+				}
+			);
+		},
+		/**
+		 * Fetch differences between revisions from the API.
+		 *
+		 * @param {Object} context - vuex context
+		 * @param {Object} tool - tool info
+		 */
+		getRevisionsDiff( context, tool ) {
+			const request = {
+				url: '/api/tools/' + tool.name + '/revisions/' + tool.id + '/diff/' + tool.otherId + '/'
+			};
+
+			makeApiCall( context, request ).then(
+				( success ) => {
+					const data = success.body;
+					context.commit( 'DIFF_REVISION', data );
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
+
+					this._vm.$notify.error(
+						i18n.t( 'apierror', [ explanation ] )
+					);
+				}
+			);
+		},
+		/**
+		 * Undo changes between two revisions via the API
+		 *
+		 * @param {Object} context - vuex context
+		 * @param {Object} tool - tool info
+		 */
+		async undoChangesBetweenRevisions( context, tool ) {
+			const id = tool.id,
+				nextPage = tool.page + 1,
+				toolRevisions = context.state.toolRevisions,
+				revIndex = toolRevisions.findIndex( ( revision ) => revision.id === id ),
+				nextIndex = parseInt( revIndex ) + 1;
+
+			let otherId = '';
+
+			if ( nextIndex === toolRevisions.length ) {
+				// Fetch more revisions to obtain other id if the revision
+				// selected for an undo is last in the current list
+				await context.dispatch( 'getRevisions', {
+					name: tool.name, page: nextPage
+				} ).then(
+					( success ) => {
+						const results = success.body.results;
+						otherId = results[ 0 ].id; // Get rev id from the first element
+					},
+					( failure ) => {
+						const data = getFailurePayload( failure );
+
+						for ( const err in data.errors ) {
+							this._vm.$notify.error(
+								i18n.t( 'apierrors', [
+									data.errors[ err ].field,
+									data.errors[ err ].message
+								] )
+							);
+						}
+					}
+				);
+			} else {
+				otherId = toolRevisions[ nextIndex ] && toolRevisions[ nextIndex ].id;
+			}
+
+			if ( !( !!id && !!otherId ) ) {
+				return;
+			}
+
+			const request = {
+				url: '/api/tools/' + tool.name + '/revisions/' + id + '/undo/' + otherId + '/',
+				method: 'POST'
+			};
+
+			makeApiCall( context, request ).then(
+				() => {
+					context.dispatch( 'updateToolRevisions', {
+						page: tool.page,
+						name: tool.name
+					} );
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
+
+					this._vm.$notify.error(
+						i18n.t( 'apierror', [ explanation ] )
+					);
+				}
+			);
+		},
+		/**
+		 * Restore tool to a particular revision via the API
+		 *
+		 * @param {Object} context - vuex context
+		 * @param {Object} tool - tool info
+		 */
+		restoreToolToRevision( context, tool ) {
+			const request = {
+				url: '/api/tools/' + tool.name + '/revisions/' + tool.id + '/revert/',
+				method: 'POST'
+			};
+
+			makeApiCall( context, request ).then(
+				() => {
+					context.dispatch( 'updateToolRevisions', {
+						page: tool.page,
+						name: tool.name
+					} );
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
+
+					this._vm.$notify.error(
+						i18n.t( 'apierror', [ explanation ] )
+					);
 				}
 			);
 		}
