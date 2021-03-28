@@ -8,7 +8,7 @@
 		>
 			<v-spacer />
 			<v-btn
-				v-if="tool.created_by.username === $store.state.user.user.username"
+				v-if="canEdit"
 				:to="`/tool/${tool.name}/edit`"
 				color="primary"
 			>
@@ -352,6 +352,11 @@ export default {
 			} );
 
 			return filteredItems;
+		},
+		canEdit() {
+			const username = this.$store.state.user.user.username;
+			return this.tool.created_by.username === username &&
+				this.tool.origin === 'api';
 		}
 	},
 	methods: {

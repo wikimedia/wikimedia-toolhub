@@ -107,6 +107,7 @@ class ToolSerializer(ModelSerializer):
             "bugtracker_url",
             "_schema",
             "_language",
+            "origin",
             "created_by",
             "created_date",
             "modified_by",

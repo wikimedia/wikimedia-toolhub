@@ -159,6 +159,7 @@ class ToolDocument(SearchDocument):
             "bugtracker_url",
             "_schema",
             "_language",
+            "origin",
             # "created_by",
             "created_date",
             # "modified_by",
