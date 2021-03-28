@@ -137,6 +137,7 @@ export const methods = {
 			case 'author':
 			case 'keywords':
 			case 'license':
+			case 'origin':
 			case 'tool_type':
 			case 'ui_language':
 			case 'wiki':

@@ -80,6 +80,10 @@ export const methods = {
 				'search-filter-tool-type-' + value.replace( /\s/g, '-' )
 			);
 		}
+		if ( this.facet.name === 'origin' ) {
+			// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
+			return this.$i18n.t( 'search-filter-origin-' + value );
+		}
 		return value;
 	},
 

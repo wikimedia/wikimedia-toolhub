@@ -155,6 +155,13 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
                 constants.LOOKUP_QUERY_ISNULL,
             ],
         },
+        "origin": {
+            "field": "origin.keyword",
+            "lookups": [
+                constants.LOOKUP_FILTER_TERM,
+                constants.LOOKUP_QUERY_ISNULL,
+            ],
+        },
     }
     ordering_fields = {
         "score": "_score",
@@ -193,6 +200,11 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
         "keywords": {
             "field": "keywords.keyword",
             "options": build_term_facet_options("keywords", multi=True),
+            "enabled": True,
+        },
+        "origin": {
+            "field": "origin.keyword",
+            "options": build_term_facet_options("origin"),
             "enabled": True,
         },
     }
