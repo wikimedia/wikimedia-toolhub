@@ -55,6 +55,24 @@ def name_to_slug(name):
     return slugify(name, allow_unicode=True)
 
 
+class BlankAsNullFieldMixin:
+    """Mixin for optional text Field subclasses."""
+
+    def get_db_prep_value(self, value, *args, **kwargs):
+        """Get value prepared for interacting with the database backend."""
+        if self.blank is True and self.null is True and value == "":
+            value = None
+        return super().get_db_prep_value(value, *args, **kwargs)
+
+
+class BlankAsNullCharField(BlankAsNullFieldMixin, models.CharField):
+    """CharField that stores empty strings as null."""
+
+
+class BlankAsNullTextField(BlankAsNullFieldMixin, models.TextField):
+    """TextField that stores empty strings as null."""
+
+
 class ToolManager(SafeDeleteManager):
     """Custom manager for Tool models."""
 
@@ -304,22 +322,21 @@ class Tool(SafeDeleteModel):
     keywords = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         schema=schema.KEYWORDS,
     )
-    author = models.CharField(
+    author = BlankAsNullCharField(
         blank=True,
         max_length=255,
         null=True,
         help_text=_("The primary tool developer."),
     )
-    repository = models.CharField(
+    repository = BlankAsNullCharField(
         blank=True,
         max_length=2047,
         null=True,
         help_text=_("A link to the repository where the tool code is hosted."),
     )
-    subtitle = models.CharField(
+    subtitle = BlankAsNullCharField(
         blank=True,
         max_length=255,
         null=True,
@@ -328,7 +345,7 @@ class Tool(SafeDeleteModel):
             "It should add some additional context to the title."
         ),
     )
-    openhub_id = models.CharField(
+    openhub_id = BlankAsNullCharField(
         blank=True,
         max_length=255,
         null=True,
@@ -341,14 +358,13 @@ class Tool(SafeDeleteModel):
     url_alternates = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         help_text=_(
             "Alternate links to the tool or install documentation in "
             "different natural languages."
         ),
         schema=schema.schema_for("url_alternates"),
     )
-    bot_username = models.CharField(
+    bot_username = BlankAsNullCharField(
         blank=True,
         max_length=255,
         null=True,
@@ -364,7 +380,7 @@ class Tool(SafeDeleteModel):
             "The `replaced_by` parameter can be used to define a replacement."
         ),
     )
-    replaced_by = models.TextField(
+    replaced_by = BlankAsNullTextField(
         blank=True,
         max_length=2047,
         null=True,
@@ -384,7 +400,6 @@ class Tool(SafeDeleteModel):
     for_wikis = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         help_text=_(
             "A string or array of strings describing the wiki(s) this tool "
             "can be used on. Use hostnames such as `zh.wiktionary.org`. Use "
@@ -394,7 +409,7 @@ class Tool(SafeDeleteModel):
         ),
         schema=schema.schema_for("for_wikis", oneof=0),
     )
-    icon = models.CharField(
+    icon = BlankAsNullCharField(
         blank=True,
         max_length=2047,
         null=True,
@@ -408,7 +423,7 @@ class Tool(SafeDeleteModel):
             "that depicts the tool."
         ),
     )
-    license = models.CharField(  # noqa: A003
+    license = BlankAsNullCharField(  # noqa: A003
         blank=True,
         max_length=255,
         null=True,
@@ -421,14 +436,12 @@ class Tool(SafeDeleteModel):
     sponsor = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         help_text=_("Organization(s) that sponsored the tool's development."),
         schema=schema.schema_for("sponsor", oneof=1),
     )
     available_ui_languages = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         help_text=_(
             "The language(s) the tool's interface has been translated into. "
             "Use ISO 639 language codes like `zh` and `scn`. If not defined "
@@ -439,7 +452,6 @@ class Tool(SafeDeleteModel):
     technology_used = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         help_text=_(
             "A string or array of strings listing technologies "
             "(programming languages, development frameworks, etc.) used in "
@@ -447,7 +459,7 @@ class Tool(SafeDeleteModel):
         ),
         schema=schema.schema_for("technology_used", oneof=1),
     )
-    tool_type = models.CharField(
+    tool_type = BlankAsNullCharField(
         choices=TOOL_TYPE_CHOICES,
         blank=True,
         max_length=32,
@@ -457,7 +469,7 @@ class Tool(SafeDeleteModel):
             "Select one from the list of options."
         ),
     )
-    api_url = models.TextField(
+    api_url = BlankAsNullTextField(
         blank=True,
         max_length=2047,
         null=True,
@@ -467,7 +479,6 @@ class Tool(SafeDeleteModel):
     developer_docs_url = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         help_text=_(
             "A link to the tool's developer documentation, if available."
         ),
@@ -476,14 +487,12 @@ class Tool(SafeDeleteModel):
     user_docs_url = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         help_text=_("A link to the tool's user documentation, if available."),
         schema=schema.schema_for("user_docs_url", oneof=0),
     )
     feedback_url = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         help_text=_(
             "A link to location where the tool's user can leave feedback."
         ),
@@ -492,18 +501,17 @@ class Tool(SafeDeleteModel):
     privacy_policy_url = JSONSchemaField(
         blank=True,
         default=list,
-        null=True,
         help_text=_("A link to the tool's privacy policy, if available."),
         schema=schema.schema_for("privacy_policy_url", oneof=0),
     )
-    translate_url = models.TextField(
+    translate_url = BlankAsNullTextField(
         blank=True,
         max_length=2047,
         null=True,
         validators=[validators.URLValidator(schemes=["http", "https"])],
         help_text=_("A link to the tool's translation interface."),
     )
-    bugtracker_url = models.TextField(
+    bugtracker_url = BlankAsNullTextField(
         blank=True,
         max_length=2047,
         null=True,
@@ -513,7 +521,7 @@ class Tool(SafeDeleteModel):
             "Phabricator, etc."
         ),
     )
-    _schema = models.CharField(
+    _schema = BlankAsNullCharField(
         blank=True,
         max_length=32,
         null=True,
@@ -523,7 +531,7 @@ class Tool(SafeDeleteModel):
             "at the end of the URI path."
         ),
     )
-    _language = models.CharField(
+    _language = BlankAsNullCharField(
         blank=True,
         max_length=16,
         null=True,
