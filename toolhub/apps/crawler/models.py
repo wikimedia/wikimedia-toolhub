@@ -85,6 +85,7 @@ class RunUrl(models.Model):
         Tool,
         related_name="crawer_runs",
     )
+    logs = models.TextField(blank=True)
 
     def __str__(self):
         return "id={}; run: {}; url: {}; status_code: {}; valid: {}".format(

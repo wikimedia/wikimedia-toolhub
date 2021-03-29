@@ -69,6 +69,7 @@ class RunUrlSerializer(ModelSerializer):
             "elapsed_ms",
             "schema",
             "valid",
+            "logs",
         ]
 
 

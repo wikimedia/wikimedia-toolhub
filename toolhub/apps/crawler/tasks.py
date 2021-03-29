@@ -26,6 +26,7 @@ import requests
 from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.toolinfo.models import Tool
 
+from .logging import CaptureCrawlLogs
 from .models import Run
 from .models import RunUrl
 from .models import Url
@@ -50,89 +51,88 @@ class Crawler:
 
         for url in self.get_active_urls():
             # FIXME: rate limiting for outbound requests?
-            logger.info("Crawling %s", url)
-            expected_names = self.toolinfo_in_last_run(url)
             run_url = RunUrl(run=run, url=url)
-            toolinfo_list = self.crawl_url(run_url)
-            run_url.save()
-
-            for toolinfo in toolinfo_list:
-                if not self.validate_toolinfo(toolinfo):
-                    if run_url.valid:
-                        # Mark URL as invalid if any of it's contained tools
-                        # is invalid in this run.
-                        run_url.valid = False
-                        run_url.save()
-                    continue
-
-                logger.info(
-                    "Found toolinfo %s at %s",
-                    toolinfo["name"],
-                    url.url,
-                )
-                if toolinfo["name"] in names_seen_in_run:
-                    # T278065: Reject updates from multiple urls in same run
-                    logger.error(
-                        "Toolinfo %s already seen at %s",
-                        toolinfo["name"],
-                        names_seen_in_run[toolinfo["name"]],
-                    )
-                    expected_names.discard(toolinfo["name"])
-                    continue
-                names_seen_in_run[toolinfo["name"]] = url.url
-
-                try:
-                    obj, created, updated = Tool.objects.from_toolinfo(
-                        toolinfo,
-                        url.created_by,
-                        Tool.ORIGIN_CRAWLER,
-                        "Import from {}".format(url),
-                    )
-                    if created:
-                        run.new_tools += 1
-                    if updated:
-                        run.updated_tools += 1
-                    run.total_tools += 1
-                    run_url.tools.add(obj)
-                    expected_names.discard(obj.name)
-
-                except django.db.Error:
-                    logger.exception(
-                        "Failed to upsert `%s` from %s",
-                        toolinfo["name"],
-                        run_url.url.url,
-                    )
-                    run_url.valid = False
-                    run_url.save()
-
-            if len(expected_names) > 0:
-                logger.info(
-                    "Expected but did not find toolinfo: %s", expected_names
-                )
-                if (
-                    200 <= run_url.status_code <= 299
-                    or run_url.status_code == 404
-                ):
-                    # T271128: delete missing tools
-                    reason = "Toolinfo removed from {}"
-                    if run_url.status_code == 404:
-                        reason = "Url {} not found during crawl"
-                    try:
-                        with auditlog_context(
-                            url.created_by, reason.format(url)
-                        ):
-                            Tool.objects.filter(
-                                name__in=expected_names
-                            ).delete()
-                    except django.db.Error:
-                        logger.exception(
-                            "Failed to delete missing tools: %s",
-                            expected_names,
-                        )
+            with CaptureCrawlLogs(run_url):
+                self.process_url(run_url, names_seen_in_run)
 
         run.end_date = timezone.now()
         run.save()
         return run
+
+    def process_url(self, run_url, seen):
+        """Crawl a URL and update the run."""
+        logger.info("Crawling %s", run_url.url.url)
+        expected_names = self.toolinfo_in_last_run(run_url.url)
+        toolinfo_list = self.fetch_content(run_url)
+        run_url.save()
+
+        for toolinfo in toolinfo_list:
+            if not self.validate_toolinfo(toolinfo):
+                if run_url.valid:
+                    # Mark URL as invalid if any of it's contained tools is
+                    # invalid in this run.
+                    run_url.valid = False
+                    run_url.save()
+                continue
+
+            logger.info(
+                "Found toolinfo %s at %s",
+                toolinfo["name"],
+                run_url.url.url,
+            )
+            if toolinfo["name"] in seen:
+                # T278065: Reject updates from multiple urls in same run
+                logger.error(
+                    "Toolinfo %s already seen at %s",
+                    toolinfo["name"],
+                    seen[toolinfo["name"]],
+                )
+                expected_names.discard(toolinfo["name"])
+                continue
+            seen[toolinfo["name"]] = run_url.url.url
+
+            try:
+                obj, created, updated = Tool.objects.from_toolinfo(
+                    toolinfo,
+                    run_url.url.created_by,
+                    Tool.ORIGIN_CRAWLER,
+                    "Import from {}".format(run_url.url.url),
+                )
+                if created:
+                    run_url.run.new_tools += 1
+                if updated:
+                    run_url.run.updated_tools += 1
+                run_url.run.total_tools += 1
+                run_url.tools.add(obj)
+                expected_names.discard(obj.name)
+
+            except django.db.Error:
+                logger.exception(
+                    "Failed to upsert `%s` from %s",
+                    toolinfo["name"],
+                    run_url.url.url,
+                )
+                run_url.valid = False
+                run_url.save()
+
+        if len(expected_names) > 0:
+            logger.info(
+                "Expected but did not find toolinfo: %s", expected_names
+            )
+            if 200 <= run_url.status_code <= 299 or run_url.status_code == 404:
+                # T271128: delete missing tools
+                reason = "Toolinfo removed from {}"
+                if run_url.status_code == 404:
+                    reason = "Url {} not found during crawl"
+                try:
+                    with auditlog_context(
+                        run_url.url.created_by, reason.format(run_url.url.url)
+                    ):
+                        Tool.objects.filter(name__in=expected_names).delete()
+                except django.db.Error:
+                    logger.exception(
+                        "Failed to delete missing tools: %s", expected_names
+                    )
 
     def toolinfo_in_last_run(self, url):
         """Find the toolinfo records in the most recent run for a url."""
@@ -149,7 +149,11 @@ class Crawler:
         # FIXME: do a more complete job of validating the record
         for field in ["name", "title", "description", "url"]:
             if field not in toolinfo or not toolinfo[field]:
-                logger.error("Toolinfo record missing %s.", field)
+                logger.error(
+                    "Toolinfo record %s missing %s.",
+                    toolinfo.get("name", ""),
+                    field,
+                )
                 is_valid = False
         return is_valid
 
@@ -158,7 +162,7 @@ class Crawler:
         # FIXME: filter out "failed" urls?
         return Url.objects.all()
 
-    def crawl_url(self, url):
+    def fetch_content(self, url):
         """Crawl a URL and return it's content."""
         raw_url = url.url.url
         r = requests.get(raw_url, headers={"user-agent": self.user_agent})

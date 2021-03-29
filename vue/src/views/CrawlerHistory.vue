@@ -89,6 +89,10 @@
 					:page="urlsPage"
 					:items-per-page="itemsPerPage"
 					:items="crawlerUrls"
+					:expanded.sync="expanded"
+					item-key="url.url"
+					show-expand
+					single-expand
 					class="elevation-0 mt-2 table-striped"
 					hide-default-footer
 					mobile-breakpoint="0"
@@ -99,10 +103,6 @@
 						<a :href="`${item.url.url}`" target="_blank">{{ item.url.url }}</a>
 					</template>
 
-					<template #[`item.url.created_date`]="{ item }">
-						{{ item.url.created_date | moment( "lll" ) }}
-					</template>
-
 					<template #[`item.url.created_by.username`]="{ item }">
 						<a :href="`http://meta.wikimedia.org/wiki/User:${item.url.created_by.username}`"
 							target="_blank"
@@ -110,13 +110,20 @@
 					</template>
 
 					<template #[`item.valid`]="{ item }">
-						<p v-if="item.valid" class="success--text pa-0 ma-0">
+						<span v-if="item.valid" class="success--text pa-0 ma-0">
 							{{ $t( 'valid' ) }}
-						</p>
-
-						<p v-if="!item.valid" class="error--text pa-0 ma-0">
+						</span>
+						<span v-else class="error--text pa-0 ma-0">
 							{{ $t( 'invalid' ) }}
-						</p>
+						</span>
+					</template>
+					<template #expanded-item="{ headers, item }">
+						<td
+							class="pa-2"
+							:colspan="headers.length"
+						>
+							<pre class="pre-logs">{{ item.logs }}</pre>
+						</td>
 					</template>
 				</v-data-table>
 
@@ -149,7 +156,8 @@ export default {
 			crawlerRunEndDate: null,
 			crawlerRunId: 0,
 			firstRowActive: true,
-			rowSelected: false
+			rowSelected: false,
+			expanded: []
 		};
 	},
 	computed: {
@@ -193,11 +201,6 @@ export default {
 					sortable: true
 				},
 				{
-					text: this.$t( 'datecreated' ),
-					value: 'url.created_date',
-					sortable: true
-				},
-				{
 					text: 'Created By',
 					value: 'url.created_by.username',
 					sortable: true
@@ -206,6 +209,10 @@ export default {
 					text: 'Status',
 					value: 'valid',
 					sortable: true
+				},
+				{
+					text: '',
+					value: 'data-table-expand'
 				}
 			];
 		}

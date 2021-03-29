@@ -99,3 +99,11 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 .tool-links.v-list-item {
 	min-height: 25px;
 }
+
+.pre-logs {
+	font-size: 0.8em;
+	max-height: 10em;
+	overflow-y: auto;
+	white-space: pre-line;
+	word-break: break-word;
+}
