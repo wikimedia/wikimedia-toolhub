@@ -3,7 +3,8 @@
 		"authors": [
 			"Dimitri Nakashidze",
 			"Kareyac",
-			"Okras"
+			"Okras",
+			"Wileyfoxyx"
 		]
 	},
 	"add": "Добавить",
@@ -12,8 +13,12 @@
 	"auditlogs": "Журналы аудита",
 	"author": "Автор",
 	"authors": "Автор(ы)",
+	"basicinfo": "Основные сведения",
+	"cancel": "Отмена",
+	"close": "Закрыть",
 	"datecreated": "Дата создания",
 	"developerdocumentation": "Документация для разработчиков",
+	"experimental": "Экспериментальный",
 	"helptranslate": "Помочь с переводом",
 	"howtouse": "Как пользоваться",
 	"language": "Язык",
@@ -36,6 +41,7 @@
 	"status": "Состояние",
 	"system-user": "Система",
 	"talk": "обсуждение",
+	"thistoolis": "Этот инструмент:",
 	"toolhub": "Toolhub",
 	"tools": "инструменты",
 	"tooltype": "Тип инструмента",

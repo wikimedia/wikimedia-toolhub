@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-03-22 14:45:41+0000\n"
-"X-POT-Import-Date: 2021-03-22 12:15:02+0000\n"
+"PO-Revision-Date: 2021-03-29 16:04:27+0000\n"
+"X-POT-Import-Date: 2021-03-25 07:27:42+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ms\n"
@@ -226,7 +226,7 @@ msgid "Faceted classification"
 msgstr ""
 
 #: toolhub/apps/search/schema.py:79
-msgid "Query string search"
+msgid "Search string"
 msgstr ""
 
 #: toolhub/apps/search/schema.py:104
@@ -312,111 +312,111 @@ msgstr ""
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:278
+#: toolhub/apps/toolinfo/models.py:279
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:294
+#: toolhub/apps/toolinfo/models.py:295
 msgid "The primary tool developer."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:300
+#: toolhub/apps/toolinfo/models.py:301
 msgid "A link to the repository where the tool code is hosted."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:307
+#: toolhub/apps/toolinfo/models.py:308
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:316
+#: toolhub/apps/toolinfo/models.py:317
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:326
+#: toolhub/apps/toolinfo/models.py:327
 msgid "Alternate links to the tool or install documentation in different natural languages."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:336
+#: toolhub/apps/toolinfo/models.py:337
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:343
+#: toolhub/apps/toolinfo/models.py:344
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:352
+#: toolhub/apps/toolinfo/models.py:354
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:359
+#: toolhub/apps/toolinfo/models.py:361
 msgid "If true, this tool is unstable and can change or go offline at any time."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:368
+#: toolhub/apps/toolinfo/models.py:370
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:386
+#: toolhub/apps/toolinfo/models.py:388
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:395
+#: toolhub/apps/toolinfo/models.py:397
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:404
+#: toolhub/apps/toolinfo/models.py:406
 msgid "Organization(s) that sponsored the tool's development."
 msgstr "Pertubuhan yang menganjurkan pembangunan alat."
 
-#: toolhub/apps/toolinfo/models.py:412
+#: toolhub/apps/toolinfo/models.py:414
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:423
+#: toolhub/apps/toolinfo/models.py:425
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:435
+#: toolhub/apps/toolinfo/models.py:437
 msgid "The manner in which the tool is used. Select one from the list of options."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:443
+#: toolhub/apps/toolinfo/models.py:446
 msgid "A link to the tool's API, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:450
+#: toolhub/apps/toolinfo/models.py:453
 msgid "A link to the tool's developer documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:458
+#: toolhub/apps/toolinfo/models.py:461
 msgid "A link to the tool's user documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:466
+#: toolhub/apps/toolinfo/models.py:469
 msgid "A link to location where the tool's user can leave feedback."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:474
+#: toolhub/apps/toolinfo/models.py:477
 msgid "A link to the tool's privacy policy, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:481
+#: toolhub/apps/toolinfo/models.py:485
 msgid "A link to the tool's translation interface."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:488
+#: toolhub/apps/toolinfo/models.py:493
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:497
+#: toolhub/apps/toolinfo/models.py:502
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:510
+#: toolhub/apps/toolinfo/models.py:515
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:520
+#: toolhub/apps/toolinfo/models.py:525
 msgid "Origin of this tool record."
 msgstr ""
 
@@ -445,134 +445,78 @@ msgid "JSON-Pointer to location within document to move or copy the value from."
 msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:36
-msgid "Supported wikis"
-msgstr "Wiki tersokong"
-
-#: toolhub/apps/toolinfo/serializers.py:41
-msgid "Any wiki"
-msgstr "Sebarang wiki"
-
-#: toolhub/apps/toolinfo/serializers.py:42
-msgid "Wikimedia Commons"
-msgstr "Wikimedia Commons"
-
-#: toolhub/apps/toolinfo/serializers.py:43
-msgid "MediaWiki wiki"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:44
-msgid "Wikispecies"
-msgstr "Wikispesies"
-
-#: toolhub/apps/toolinfo/serializers.py:45
-msgid "Any Wikibooks"
-msgstr "Sebarang Wikibuku"
-
-#: toolhub/apps/toolinfo/serializers.py:46
-msgid "Wikidata"
-msgstr "Wikidata"
-
-#: toolhub/apps/toolinfo/serializers.py:47
-msgid "Any Wikinews"
-msgstr "Sebarang Wikiberita"
-
-#: toolhub/apps/toolinfo/serializers.py:48
-msgid "Any Wikipedia"
-msgstr "Sebarang Wikipedia"
-
-#: toolhub/apps/toolinfo/serializers.py:49
-msgid "Any Wikiquote"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:50
-msgid "Any Wikisource"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:51
-msgid "Any Wikiversity"
-msgstr "Sebarang Wikiversiti"
-
-#: toolhub/apps/toolinfo/serializers.py:52
-msgid "Any Wikivoyage"
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:53
-msgid "Any Wiktionary"
-msgstr "Sebarang Wikikamus"
-
-#: toolhub/apps/toolinfo/serializers.py:70
 msgid "SPDX license information"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:78
+#: toolhub/apps/toolinfo/serializers.py:44
 msgid "SPDX license ID"
 msgstr "ID lesen SPDX"
 
-#: toolhub/apps/toolinfo/serializers.py:83
+#: toolhub/apps/toolinfo/serializers.py:49
 msgid "Full name of this license"
 msgstr "Nama penuh lesen ini"
 
-#: toolhub/apps/toolinfo/serializers.py:88
+#: toolhub/apps/toolinfo/serializers.py:54
 msgid "Is this license approved as 'open source' by the OSI?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:93
+#: toolhub/apps/toolinfo/serializers.py:59
 msgid "Is this license approved as 'free software' by the FSF?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:98
+#: toolhub/apps/toolinfo/serializers.py:64
 msgid "Is this license considered to be outdated?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:102
+#: toolhub/apps/toolinfo/serializers.py:68
 msgid "Description of a tool"
 msgstr "Huraian alat"
 
-#: toolhub/apps/toolinfo/serializers.py:152
+#: toolhub/apps/toolinfo/serializers.py:117
 msgid "Summary of a tool"
 msgstr "Ringkasan alat"
 
-#: toolhub/apps/toolinfo/serializers.py:171
+#: toolhub/apps/toolinfo/serializers.py:136
 msgid "Edit summary"
 msgstr "Ringkasan suntingan"
 
-#: toolhub/apps/toolinfo/serializers.py:173
+#: toolhub/apps/toolinfo/serializers.py:138
 msgid "Description of the changes you are making to this toolinfo record."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:185
+#: toolhub/apps/toolinfo/serializers.py:150
 msgid "Create a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:246
+#: toolhub/apps/toolinfo/serializers.py:211
 msgid "Update a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:272
+#: toolhub/apps/toolinfo/serializers.py:237
 msgid "Tool revision."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:278
+#: toolhub/apps/toolinfo/serializers.py:243
 msgid "A unique integer value identifying this revision."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:290
+#: toolhub/apps/toolinfo/serializers.py:255
 msgid "Comment by the user for the revision."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:300
+#: toolhub/apps/toolinfo/serializers.py:265
 msgid "Tool revision detail."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:318
+#: toolhub/apps/toolinfo/serializers.py:283
 msgid "Tool revision difference."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:323
+#: toolhub/apps/toolinfo/serializers.py:288
 msgid "Revision to apply changes to."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:327
+#: toolhub/apps/toolinfo/serializers.py:292
 msgid "Revision after applying changes."
 msgstr ""
 

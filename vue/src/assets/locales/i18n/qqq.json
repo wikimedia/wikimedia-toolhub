@@ -68,7 +68,7 @@
 	"developersettings-pagesubtitle": "Page Subtitle",
 	"editformerror": "Error message for edit form validation failure. Parameters:\n* $1 - message\n* $2 - field\n* $3 - error",
 	"editsummary": "Dialog title",
-	"edittool": "Page subtitle",
+	"edittool": "Page subtitle. A description of an action: \"to edit (change, update) the tool\".",
 	"experimental": "Label for tool status",
 	"feedbackurl": "Label for feedback url for a tool",
 	"forwikis": "Label shown before list of wikis.",
