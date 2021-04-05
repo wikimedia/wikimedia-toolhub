@@ -106,6 +106,8 @@
 	"search-filter-keywords": "Palavras-chave",
 	"search-filter-license": "Licença",
 	"search-filter-missing-value": "(faltando)",
+	"search-filter-origin": "Origem",
+	"search-filter-origin-api": "API",
 	"search-filter-tool-type": "Tipo de ferramenta",
 	"search-filter-tool-type-bot": "robô",
 	"search-filter-tool-type-coding-framework": "estrutura de codificação",

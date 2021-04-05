@@ -3,6 +3,7 @@
 		"authors": [
 			"Dimitri Nakashidze",
 			"Kareyac",
+			"Nastua Buldakova",
 			"Okras",
 			"Wileyfoxyx"
 		]
@@ -35,6 +36,7 @@
 	"newtoolsfound": "{{PLURAL:$1|инструмент|инструмента|инструментов}}",
 	"privacypolicy": "Политика конфиденциальности",
 	"search-filter-keywords": "Ключевые слова",
+	"search-filter-origin": "Происхождение",
 	"search-filter-tool-type-bot": "бот",
 	"search-filter-tool-type-gadget": "гаджет",
 	"sourcecode": "Исходный код",

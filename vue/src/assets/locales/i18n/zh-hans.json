@@ -53,6 +53,8 @@
 	"search-filter-keywords": "关键字",
 	"search-filter-license": "执照",
 	"search-filter-missing-value": "（丢失）",
+	"search-filter-origin": "原点",
+	"search-filter-origin-api": "API",
 	"search-filter-tool-type": "工具类型",
 	"search-filter-tool-type-bot": "机器人",
 	"search-filter-tool-type-coding-framework": "编程框架",
