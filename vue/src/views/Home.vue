@@ -16,7 +16,7 @@
 				>
 					<v-row no-gutters>
 						<v-col>
-							<h2 class="display-1 ma-4">
+							<h2 class="text-h4 ma-4">
 								{{ $t( 'welcomemessage' ) }}
 							</h2>
 							<div class="me-4 ms-4">
@@ -32,7 +32,7 @@
 
 							<v-row
 								v-if="lastCrawlerRun"
-								class="mx-1 my-3 text--secondary subtitle-2"
+								class="mx-1 my-3 text--secondary text-subtitle-2"
 							>
 								<v-col
 									lg="6"

@@ -2,7 +2,7 @@
 	<v-container>
 		<v-row>
 			<v-col cols="12">
-				<h2 class="display-1">
+				<h2 class="text-h4">
 					{{ $t( 'auditlogs' ) }}
 				</h2>
 			</v-col>

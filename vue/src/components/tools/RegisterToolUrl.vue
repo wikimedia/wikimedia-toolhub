@@ -52,7 +52,7 @@
 							=== true && numUserCreatedUrls === 0"
 						>
 							<v-col cols="12">
-								<p class="title text--secondary">
+								<p class="text-h6 text--secondary">
 									{{ $t( 'nourlsfounderror' ) }}
 								</p>
 							</v-col>
@@ -122,7 +122,7 @@
 							colored-border
 							elevation="2"
 						>
-							<h3 class="headline">
+							<h3 class="text-h5">
 								{{ $t( 'addremovetools-summarytitle' ) }}
 							</h3>
 							<v-divider class="pa-2" />

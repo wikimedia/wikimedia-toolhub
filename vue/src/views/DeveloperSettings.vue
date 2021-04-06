@@ -2,7 +2,7 @@
 	<v-container>
 		<v-row>
 			<v-col cols="12">
-				<h2 class="display-1">
+				<h2 class="text-h4">
 					{{ $t( 'developersettings' ) }}
 				</h2>
 			</v-col>
@@ -166,7 +166,7 @@
 					<v-tab-item>
 						<v-row v-if="numClientApps === 0">
 							<v-col cols="12">
-								<p class="title text--secondary">
+								<p class="text-h6 text--secondary">
 									{{ $t( 'developersettings-noclientappsfoundtext' ) }}
 								</p>
 							</v-col>
@@ -281,7 +281,7 @@
 					<v-tab-item>
 						<v-row v-if="numAuthorizedApps === 0">
 							<v-col cols="12">
-								<p class="title text--secondary">
+								<p class="text-h6 text--secondary">
 									{{ $t( 'developersettings-noauthorizedappsfoundtext' ) }}
 								</p>
 							</v-col>

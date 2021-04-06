@@ -40,7 +40,7 @@
 						sm="10"
 						cols="12"
 					>
-						<h2 class="display-1">
+						<h2 class="text-h4">
 							{{ tool.title }}
 						</h2>
 
@@ -48,7 +48,7 @@
 							{{ tool.description }}
 						</div>
 
-						<dl class="row mx-0 mt-4 subtitle-1">
+						<dl class="row mx-0 mt-4 text-subtitle-1">
 							<dt class="me-1">{{ $t( 'authors' ) }}:</dt>
 							<dd>{{ tool.author }}</dd>
 						</dl>
@@ -106,7 +106,7 @@
 
 						<div
 							v-if="links.length > 0"
-							class="headline mt-4"
+							class="text-h5 mt-4"
 						>
 							{{ $t( 'links' ) }}
 						</div>
@@ -172,7 +172,7 @@
 
 				<div
 					v-if="moreInfoItems && moreInfoItems.length > 0"
-					class="headline mt-4"
+					class="text-h5 mt-4"
 				>
 					{{ $t( 'moreinfo' ) }}
 				</div>

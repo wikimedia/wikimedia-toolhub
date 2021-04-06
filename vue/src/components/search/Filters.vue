@@ -17,7 +17,7 @@
 				outlined
 			>
 				<template #header>
-					<v-card-title class="title accent flex-grow-0">
+					<v-card-title class="text-h6 accent flex-grow-0">
 						<v-badge
 							inline
 							:value="facet.selected.length > 0"
@@ -78,7 +78,7 @@
 							flat
 							tile
 						>
-							<v-toolbar-title class="title">
+							<v-toolbar-title class="text-h6">
 								{{ renderFacetTitle( facet ) }}
 							</v-toolbar-title>
 							<v-spacer />

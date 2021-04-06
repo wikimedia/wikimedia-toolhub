@@ -2,7 +2,7 @@
 	<v-container>
 		<v-row>
 			<v-col cols="12">
-				<h2 class="display-1">
+				<h2 class="text-h4">
 					{{ $t( 'crawlerhistory' ) }}
 				</h2>
 			</v-col>
@@ -18,7 +18,7 @@
 			class="elevation-2 pa-2 mx-1 my-4 table-crawler-history"
 		>
 			<v-col cols="12">
-				<h3 class="headline">
+				<h3 class="text-h5">
 					{{ $t( 'crawlerruns' ) }}
 				</h3>
 			</v-col>
@@ -79,7 +79,7 @@
 			class="elevation-2 mx-1 my-4 pa-2"
 		>
 			<v-col cols="12">
-				<h3 class="headline">
+				<h3 class="text-h5">
 					{{ $t( 'urlscrawledon', [ crawlerRunEndDate ] ) }}
 				</h3>
 			</v-col>

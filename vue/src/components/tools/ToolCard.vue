@@ -17,7 +17,7 @@
 			<div class="tool-card__desc text--primary line-clamp" dir="auto">
 				{{ tool.description }}
 			</div>
-			<dl class="row mx-0 my-4 subtitle-1">
+			<dl class="row mx-0 my-4 text-subtitle-1">
 				<dt class="me-1">{{ $t( 'authors' ) }}:</dt>
 				<dd>{{ tool.author }}</dd>
 			</dl>

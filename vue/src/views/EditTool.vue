@@ -2,7 +2,7 @@
 	<v-container v-if="schema">
 		<v-row>
 			<v-col md="6" cols="12">
-				<h2 class="display-1">
+				<h2 class="text-h4">
 					{{ $t( 'edittool' ) }}
 				</h2>
 			</v-col>
@@ -49,7 +49,7 @@
 					class="pe-4"
 				>
 					<v-row class="cols">
-						<v-col cols="12" class="headline mt-4">
+						<v-col cols="12" class="text-h5 mt-4">
 							{{ $t( 'basicinfo' ) }}
 						</v-col>
 					</v-row>
@@ -69,7 +69,7 @@
 					</v-row>
 
 					<v-row class="cols">
-						<v-col cols="12" class="headline mt-4">
+						<v-col cols="12" class="text-h5 mt-4">
 							{{ $t( 'links' ) }}
 						</v-col>
 					</v-row>
@@ -111,7 +111,7 @@
 					cols="12"
 					class="ps-4"
 				>
-					<div class="headline mt-4">
+					<div class="text-h5 mt-4">
 						{{ $t( 'moreinfo' ) }}
 					</div>
 
@@ -129,7 +129,7 @@
 						</v-col>
 					</v-row>
 
-					<div class="headline mt-4">
+					<div class="text-h5 mt-4">
 						{{ $t( 'thistoolis' ) }}
 					</div>
 
@@ -163,7 +163,7 @@
 		>
 			<v-card>
 				<v-card-title>
-					<span class="headline">{{ $t( 'editsummary' ) }}</span>
+					<span class="text-h5">{{ $t( 'editsummary' ) }}</span>
 				</v-card-title>
 
 				<v-card-text>
