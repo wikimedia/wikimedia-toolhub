@@ -133,7 +133,8 @@ class ToolManager(SafeDeleteManager):
                                 "url": value,
                             }
                         )
-                    else:
+                    elif value:
+                        # Ignore empty structured values (e.g. `{}`)
                         fixed.append(value)
                 record[field] = fixed
 
