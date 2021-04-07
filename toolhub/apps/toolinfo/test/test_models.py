@@ -29,50 +29,6 @@ from .. import models
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-class BlankAsNullCharFieldTest(TestCase):
-    """Test BlankAsNullCharField."""
-
-    def test_null_when_empty_str(self):
-        """An empty string should resovle to null."""
-        f = models.BlankAsNullCharField(blank=True, null=True)
-        self.assertEqual(None, f.get_db_prep_value("", None))
-        self.assertEqual(None, f.get_db_prep_value(None, None))
-
-    def test_passthrough(self):
-        """Non-empty strings should pass through."""
-        f = models.BlankAsNullCharField(blank=True, null=True)
-        self.assertEqual("[]", f.get_db_prep_value("[]", None))
-        self.assertEqual("test", f.get_db_prep_value("test", None))
-
-    def test_defaults(self):
-        """Without special config, assert normal behavior."""
-        f = models.BlankAsNullCharField()
-        self.assertEqual("", f.get_db_prep_value("", None))
-        self.assertEqual(None, f.get_db_prep_value(None, None))
-
-
-class BlankAsNullTextFieldTest(TestCase):
-    """Test BlankAsNullTextField."""
-
-    def test_null_when_empty_str(self):
-        """An empty string should resovle to null."""
-        f = models.BlankAsNullTextField(blank=True, null=True)
-        self.assertEqual(None, f.get_db_prep_value("", None))
-        self.assertEqual(None, f.get_db_prep_value(None, None))
-
-    def test_passthrough(self):
-        """Non-empty strings should pass through."""
-        f = models.BlankAsNullTextField(blank=True, null=True)
-        self.assertEqual("[]", f.get_db_prep_value("[]", None))
-        self.assertEqual("test", f.get_db_prep_value("test", None))
-
-    def test_defaults(self):
-        """Without special config, assert normal behavior."""
-        f = models.BlankAsNullTextField()
-        self.assertEqual("", f.get_db_prep_value("", None))
-        self.assertEqual(None, f.get_db_prep_value(None, None))
-
-
 class ToolManagerTest(TestCase):
     """Test ToolManager."""
 

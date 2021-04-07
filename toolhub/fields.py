@@ -19,6 +19,8 @@ import json
 
 from django.contrib.staticfiles import finders
 from django.core import exceptions
+from django.db.models import CharField
+from django.db.models import TextField
 from django.utils.deconstruct import deconstructible
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
@@ -99,3 +101,33 @@ class JSONSchemaField(JSONField):
             with open(finders.find(self._schema), "r") as f:
                 self._schema = json.loads(f.read())
         return self._schema
+
+
+class BlankAsNullFieldMixin:
+    """Mixin for optional text Field subclasses.
+
+    When both `blank=True` and `null=True` are set for this field it will
+    convert empty string values to null before persisting in the db.
+    """
+
+    def get_db_prep_value(self, value, *args, **kwargs):
+        """Get value prepared for interacting with the database backend."""
+        if self.blank is True and self.null is True and value == "":
+            value = None
+        return super().get_db_prep_value(value, *args, **kwargs)
+
+
+class BlankAsNullCharField(BlankAsNullFieldMixin, CharField):
+    """CharField that can store empty strings as null.
+
+    When both `blank=True` and `null=True` are set for this field it will
+    convert empty string values to null before persisting in the db.
+    """
+
+
+class BlankAsNullTextField(BlankAsNullFieldMixin, TextField):
+    """TextField that can store empty strings as null.
+
+    When both `blank=True` and `null=True` are set for this field it will
+    convert empty string values to null before persisting in the db.
+    """

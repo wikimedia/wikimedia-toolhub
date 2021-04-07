@@ -21,6 +21,50 @@ from django.test import SimpleTestCase
 from .. import fields
 
 
+class BlankAsNullCharFieldTest(SimpleTestCase):
+    """Test BlankAsNullCharField."""
+
+    def test_null_when_empty_str(self):
+        """An empty string should resolve to null."""
+        f = fields.BlankAsNullCharField(blank=True, null=True)
+        self.assertEqual(None, f.get_db_prep_value("", None))
+        self.assertEqual(None, f.get_db_prep_value(None, None))
+
+    def test_passthrough(self):
+        """Non-empty strings should pass through."""
+        f = fields.BlankAsNullCharField(blank=True, null=True)
+        self.assertEqual("[]", f.get_db_prep_value("[]", None))
+        self.assertEqual("test", f.get_db_prep_value("test", None))
+
+    def test_defaults(self):
+        """Without special config, assert normal behavior."""
+        f = fields.BlankAsNullCharField()
+        self.assertEqual("", f.get_db_prep_value("", None))
+        self.assertEqual(None, f.get_db_prep_value(None, None))
+
+
+class BlankAsNullTextFieldTest(SimpleTestCase):
+    """Test BlankAsNullTextField."""
+
+    def test_null_when_empty_str(self):
+        """An empty string should resolve to null."""
+        f = fields.BlankAsNullTextField(blank=True, null=True)
+        self.assertEqual(None, f.get_db_prep_value("", None))
+        self.assertEqual(None, f.get_db_prep_value(None, None))
+
+    def test_passthrough(self):
+        """Non-empty strings should pass through."""
+        f = fields.BlankAsNullTextField(blank=True, null=True)
+        self.assertEqual("[]", f.get_db_prep_value("[]", None))
+        self.assertEqual("test", f.get_db_prep_value("test", None))
+
+    def test_defaults(self):
+        """Without special config, assert normal behavior."""
+        f = fields.BlankAsNullTextField()
+        self.assertEqual("", f.get_db_prep_value("", None))
+        self.assertEqual(None, f.get_db_prep_value(None, None))
+
+
 class JSONSchemaValidatorTest(SimpleTestCase):
     """Test JSONSchemaValidator"""
 

@@ -31,6 +31,8 @@ from safedelete.models import SafeDeleteModel
 
 from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.auditlog.signals import registry
+from toolhub.fields import BlankAsNullCharField
+from toolhub.fields import BlankAsNullTextField
 from toolhub.fields import JSONSchemaField
 
 from . import schema
@@ -53,24 +55,6 @@ logger = logging.getLogger(__name__)
 def name_to_slug(name):
     """Convert a tool name into a slug value."""
     return slugify(name, allow_unicode=True)
-
-
-class BlankAsNullFieldMixin:
-    """Mixin for optional text Field subclasses."""
-
-    def get_db_prep_value(self, value, *args, **kwargs):
-        """Get value prepared for interacting with the database backend."""
-        if self.blank is True and self.null is True and value == "":
-            value = None
-        return super().get_db_prep_value(value, *args, **kwargs)
-
-
-class BlankAsNullCharField(BlankAsNullFieldMixin, models.CharField):
-    """CharField that stores empty strings as null."""
-
-
-class BlankAsNullTextField(BlankAsNullFieldMixin, models.TextField):
-    """TextField that stores empty strings as null."""
 
 
 class ToolManager(SafeDeleteManager):
