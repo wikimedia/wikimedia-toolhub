@@ -36,6 +36,9 @@ from toolhub.fields import BlankAsNullTextField
 from toolhub.fields import JSONSchemaField
 
 from . import schema
+from .utils import language_data
+from .validators import validate_language_code
+from .validators import validate_language_code_list
 from .validators import validate_spdx
 
 
@@ -92,6 +95,8 @@ class ToolManager(SafeDeleteManager):
     # Lazily populated list of all field names.
     ALL_FIELDS = None
 
+    DEFAULT_LANGUAGE = "en"
+
     def _valid_field_names(self):
         """List of all valid Tool model field names."""
         if self.ALL_FIELDS is None:
@@ -109,10 +114,13 @@ class ToolManager(SafeDeleteManager):
             record["_schema"] = record.pop("$schema")
 
         if "$language" in record:
-            record["_language"] = record.pop("$language")
+            record["_language"] = self._normalize_language_code(
+                record.pop("$language"),
+                self.DEFAULT_LANGUAGE,
+            )
 
         if "_language" not in record:
-            record["_language"] = "en"
+            record["_language"] = self.DEFAULT_LANGUAGE
 
         # Normalize 'oneOf' fields that could be an array of values or
         # a bare value to always be stored as an array of values.
@@ -124,19 +132,9 @@ class ToolManager(SafeDeleteManager):
         # urls to always be stored as 'url_multilingual' objects.
         for field in self.URL_MULTILINGUAL_FIELDS:
             if field in record:
-                fixed = []
-                for value in record[field]:
-                    if isinstance(value, str):
-                        fixed.append(
-                            {
-                                "language": record["_language"],
-                                "url": value,
-                            }
-                        )
-                    elif value:
-                        # Ignore empty structured values (e.g. `{}`)
-                        fixed.append(value)
-                record[field] = fixed
+                record[field] = self._normalize_url_multilingual(
+                    record[field], record["_language"]
+                )
 
         # Normalize keywords to lowercase and store as array of values
         if "keywords" in record and isinstance(record["keywords"], str):
@@ -147,6 +145,13 @@ class ToolManager(SafeDeleteManager):
                 )
             )
 
+        # Clean available_ui_languages
+        if "available_ui_languages" in record:
+            clean_ui_langs = self._normalize_available_ui_languages(
+                record["available_ui_languages"]
+            )
+            record["available_ui_languages"] = clean_ui_langs
+
         # Strip out any unknown fields. We are trying really, really hard to
         # keep any data that we can salvage even if the input is messed up.
         for field in list(record):
@@ -155,6 +160,69 @@ class ToolManager(SafeDeleteManager):
                 del record[field]
 
         return record
+
+    def _normalize_language_code(self, code, unknown=None):
+        """Normalize a language code.
+
+        - Convert to lowercase
+        - Validate against language_data
+        - Retry with successive subtags removed
+        - Give up and return unknown code
+        """
+        if not isinstance(code, str):
+            return unknown
+        code = code.lower()
+        if language_data.is_known(code):
+            return code
+        if "-" in code:
+            parts = code.split("-")
+            for parent in ["-".join(parts[:-x]) for x in range(1, len(parts))]:
+                if language_data.is_known(parent):
+                    return parent
+        return unknown
+
+    def _normalize_url_multilingual(self, values, default):
+        """Normalize incoming url_multilingual formatting."""
+        fixed = []
+        for value in values:
+            if isinstance(value, str):
+                fixed.append({"language": default, "url": value})
+            elif value:
+                # Ignore empty structured values (e.g. `{}`)
+                lang_raw = value.get("language")
+                lang_clean = self._normalize_language_code(lang_raw, default)
+                if lang_clean != lang_raw:
+                    logger.info(
+                        "Replacing unknown language '%s' with '%s'",
+                        lang_raw,
+                        lang_clean,
+                    )
+                    value["language"] = lang_clean
+                fixed.append(value)
+        return fixed
+
+    def _normalize_available_ui_languages(self, values):
+        """Normalize incoming available_ui_languages values."""
+        in_langs = set(values)
+        clean_langs = list(
+            filter(
+                None,
+                (
+                    self._normalize_language_code(lang, None)
+                    for lang in in_langs
+                ),
+            )
+        )
+        clean_langs_set = set(clean_langs)
+        if in_langs != clean_langs_set:
+            for code in in_langs - clean_langs_set:
+                logger.info(
+                    "Discarding unknown language '%s' "
+                    "from available_ui_languages",
+                    code,
+                )
+            return clean_langs
+        return values
 
     def get_create_or_revive(self, defaults=None, **kwargs):
         """Convenience method to find an existing record or create a new one.
@@ -433,6 +501,7 @@ class Tool(SafeDeleteModel):
             "it is assumed the tool is only available in English."
         ),
         schema=schema.schema_for("available_ui_languages", oneof=0),
+        validators=[validate_language_code_list],
     )
     technology_used = JSONSchemaField(
         blank=True,
@@ -520,9 +589,7 @@ class Tool(SafeDeleteModel):
         blank=True,
         max_length=16,
         null=True,
-        validators=[
-            validators.RegexValidator(regex=r"^(x-.*|[A-Za-z]{2,3}(-.*)?)$")
-        ],
+        validators=[validate_language_code],
         help_text=_(
             "The language in which this toolinfo record is written. "
             "If not set, the default value is English. "

@@ -44,7 +44,7 @@ class ToolManagerTest(TestCase):
         with open(os.path.join(TEST_DIR, "toolinfo_fixture.json")) as fixture:
             cls.toolinfo = json.load(fixture)
 
-    def assertTool(self, obj, toolinfo, origin=None, user=None):
+    def assertToolBasics(self, obj, toolinfo, origin=None, user=None):
         """Assert that a Tool model matches the given input record."""
         if not origin:  # pragma: no cover
             origin = models.Tool.ORIGIN_CRAWLER
@@ -54,11 +54,26 @@ class ToolManagerTest(TestCase):
         self.assertIsInstance(obj, models.Tool)
         slug = models.name_to_slug(toolinfo["name"])
         self.assertEqual(obj.name, slug)
+        self.assertEqual(obj.auditlog_label, slug)
         self.assertEqual(obj.created_by, user)
         self.assertEqual(obj.modified_by, user)
         self.assertEqual(obj._schema, toolinfo["$schema"])  # noqa: W0212
         self.assertEqual(obj._language, toolinfo["$language"])  # noqa: W0212
         self.assertEqual(obj.origin, origin)
+
+        for field in models.ToolManager.ARRAY_FIELDS:
+            self.assertIsInstance(getattr(obj, field), list)
+
+        for field in models.ToolManager.URL_MULTILINGUAL_FIELDS:
+            value = getattr(obj, field)
+            for mlurl in value:
+                self.assertIsInstance(mlurl, dict)
+                self.assertIn("url", mlurl)
+                self.assertIn("language", mlurl)
+
+        self.assertIsInstance(obj.keywords, list)
+        for kw in obj.keywords:
+            self.assertEqual(kw, kw.lower())
 
     def test_from_toolinfo(self):
         """Happy path test of creating a tool from toolinfo data."""
@@ -69,7 +84,7 @@ class ToolManagerTest(TestCase):
 
         self.assertTrue(created)
         self.assertFalse(updated)
-        self.assertTool(obj, self.toolinfo)
+        self.assertToolBasics(obj, self.toolinfo)
 
     def test_legacy_toolforge_name_fix(self):
         """Names starting with 'toolforge.' are slugified."""
@@ -81,31 +96,58 @@ class ToolManagerTest(TestCase):
 
         self.assertTrue(created)
         self.assertFalse(updated)
-        self.assertTool(
-            obj, {**self.toolinfo, **{"name": "toolforge-some-tool"}}
+        self.assertToolBasics(
+            obj, {**self.toolinfo, "name": "toolforge-some-tool"}
         )
         self.assertEqual(obj.name, "toolforge-some-tool")
 
     def test_url_multilingual_fixups(self):
         """url_multilingual fields should be normalized."""
         fixture = self.toolinfo.copy()
+        fixture["$language"] = "*"  # should change to "en"
+        fixture["privacy_policy_url"] = [
+            {
+                "language": "invalid-lang-code",  # should change to "en"
+                "url": "https://example.org/invalid_lang",
+            },
+            {
+                "language": "de-ch-foo",  # should change to "de-ch"
+                "url": "https://example.org/strip_tag",
+            },
+            {
+                # should have language:en added
+                "url": "https://example.org/missing_lang",
+            },
+            {
+                "language": "fj",
+                "url": "https://example.org/valid_lang",
+            },
+            {},  # should be discarded
+        ]
         obj, created, updated = models.Tool.objects.from_toolinfo(
             fixture, self.user, models.Tool.ORIGIN_CRAWLER
         )
 
         self.assertTrue(created)
         self.assertFalse(updated)
-        self.assertTool(
-            obj,
-            {
-                **self.toolinfo,
-                **{
-                    "developer_docs_url": {
-                        "language": "en",
-                        "url": "https://toolhub.wikimedia.org/static/docs/index.html",
-                    }
+        self.assertToolBasics(obj, self.toolinfo)
+        self.assertCountEqual(
+            obj.developer_docs_url,
+            [
+                {
+                    "language": "en",
+                    "url": "https://toolhub.wikimedia.org/static/docs/index.html",
                 },
-            },
+            ],
+        )
+        self.assertCountEqual(
+            obj.privacy_policy_url,
+            [
+                {"language": "en", "url": "https://example.org/invalid_lang"},
+                {"language": "de-ch", "url": "https://example.org/strip_tag"},
+                {"language": "en", "url": "https://example.org/missing_lang"},
+                {"language": "fj", "url": "https://example.org/valid_lang"},
+            ],
         )
 
     def test_keywords_string_to_array(self):
@@ -118,7 +160,8 @@ class ToolManagerTest(TestCase):
 
         self.assertTrue(created)
         self.assertFalse(updated)
-        self.assertTool(obj, {**self.toolinfo, **{"keywords": ["a", "b"]}})
+        self.assertToolBasics(obj, self.toolinfo)
+        self.assertCountEqual(obj.keywords, ["a", "b"])
 
     def test_allow_keywords_as_array(self):
         """Keywords can be an array in the input."""
@@ -130,7 +173,35 @@ class ToolManagerTest(TestCase):
 
         self.assertTrue(created)
         self.assertFalse(updated)
-        self.assertTool(obj, {**self.toolinfo, **{"keywords": ["a", "b"]}})
+        self.assertToolBasics(obj, self.toolinfo)
+        self.assertCountEqual(obj.keywords, ["a", "b"])
+
+    def test_clean_ui_langs(self):
+        """Invalid available_ui_languages values are discarded."""
+        fixture = self.toolinfo.copy()
+        fixture["available_ui_languages"] = ["en", "*", "en", "fj", "de-ch-"]
+        obj, created, updated = models.Tool.objects.from_toolinfo(
+            fixture, self.user, models.Tool.ORIGIN_CRAWLER
+        )
+
+        self.assertTrue(created)
+        self.assertFalse(updated)
+        self.assertToolBasics(obj, self.toolinfo)
+        self.assertCountEqual(
+            obj.available_ui_languages, ["en", "fj", "de-ch"]
+        )
+
+    def test_unexpected_fields_discarded(self):
+        """Unexpected fields in toolinfo.json should be discarded."""
+        fixture = self.toolinfo.copy()
+        fixture["__test__unexpected__"] = "ignore me!"
+        obj, created, updated = models.Tool.objects.from_toolinfo(
+            fixture, self.user, models.Tool.ORIGIN_CRAWLER
+        )
+
+        self.assertTrue(created)
+        self.assertFalse(updated)
+        self.assertToolBasics(obj, self.toolinfo)
 
     def test_from_toolinfo_origin_change(self):
         """Expect a validation error when changing a Tool's origin."""

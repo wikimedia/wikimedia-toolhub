@@ -18,11 +18,40 @@
 from django.core.exceptions import ValidationError
 from django.test import SimpleTestCase
 
+from ..validators import validate_language_code
+from ..validators import validate_language_code_list
 from ..validators import validate_spdx
 
 
 class ValidatorsTest(SimpleTestCase):
     """Test validators."""
+
+    def test_validate_language_code_valid(self):
+        """Valid language codes are valid."""
+        validate_language_code("en")
+        validate_language_code("fr")
+        validate_language_code("ady-cyrl")
+
+    def test_validate_language_code_invalid(self):
+        """Invalid language codes are invalid."""
+        with self.assertRaises(ValidationError):
+            validate_language_code("")
+        with self.assertRaises(ValidationError):
+            validate_language_code("*")
+        with self.assertRaises(ValidationError):
+            validate_language_code("en-us")
+
+    def test_validate_language_code_list(self):
+        """Validate lists of codes."""
+        validate_language_code_list(["en"])
+        validate_language_code_list(["fj", "ady-cyrl"])
+
+        with self.assertRaises(ValidationError):
+            validate_language_code_list(None)
+        with self.assertRaises(ValidationError):
+            validate_language_code_list("en")
+        with self.assertRaises(ValidationError):
+            validate_language_code_list(["*", "en"])
 
     def test_validate_spdx_valid(self):
         """Valid SPDX id are valid."""

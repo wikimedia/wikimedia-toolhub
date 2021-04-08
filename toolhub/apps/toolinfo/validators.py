@@ -20,6 +20,28 @@ from django.utils.translation import gettext_lazy as _
 
 import spdx_license_list
 
+from .utils import language_data
+
+
+def validate_language_code(value):
+    """Raise ValidationError if value is not a recognized language code."""
+    if not language_data.is_known(value):
+        raise ValidationError(
+            _("%(value)s is not a recognized language code."),
+            params={"value": value},
+        )
+
+
+def validate_language_code_list(value):
+    """Raise ValidationError if value is not a list of language codes."""
+    if not isinstance(value, list):
+        raise ValidationError(
+            _("Expected a list of language codes but found %(type)s"),
+            params={"type": type(value)},
+        )
+    for code in value:
+        validate_language_code(code)
+
 
 def validate_spdx(value):
     """Raise ValidationError if value is not an SPDX license identifier."""
