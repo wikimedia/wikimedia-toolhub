@@ -37,7 +37,7 @@
 					mobile-breakpoint="0"
 					:custom-sort="customSortHistory"
 					single-select
-					:loading="numCrawlerRuns > 0 || apiErrorMsg ? false : true"
+					:loading="numCrawlerRuns === 0"
 					@click:row="crawlerRunRowClicked"
 				>
 					<template #[`item.end_date`]="{ item }">
@@ -97,7 +97,7 @@
 					hide-default-footer
 					mobile-breakpoint="0"
 					:custom-sort="customSortHistory"
-					:loading="numCrawlerUrls > 0 || apiErrorMsg ? false : true"
+					:loading="numCrawlerUrls === 0"
 				>
 					<template #[`item.url.url`]="{ item }">
 						<a :href="`${item.url.url}`" target="_blank">{{ item.url.url }}</a>
@@ -163,7 +163,6 @@ export default {
 	computed: {
 		...mapState( 'crawler', [
 			'crawlerHistory',
-			'apiErrorMsg',
 			'numCrawlerRuns',
 			'crawlerUrls',
 			'numCrawlerUrls'

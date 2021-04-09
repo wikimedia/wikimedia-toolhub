@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import SwaggerClient from 'swagger-client';
+import makeApiCall from '@/plugins/swagger.js';
 import i18n from '@/plugins/i18n';
 
 Vue.use( Vuex );
@@ -18,36 +18,20 @@ export default {
 		}
 	},
 	actions: {
-		async makeApiCall( context, url ) {
-			let data,
-				error = '';
+		fetchAuditLogs( context, page ) {
+			const request = { url: '/api/auditlogs/?page=' + page };
 
-			try {
-				data = await SwaggerClient.http( {
-					url: url,
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json'
-					}
-				} );
-			} catch ( err ) {
-				error = err;
-			}
+			makeApiCall( context, request ).then(
+				( success ) => {
+					context.commit( 'AUDIT_LOGS', success.body );
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
 
-			return { data: data, error: error };
-		},
-		async fetchAuditLogs( context, page ) {
-			const url = '/api/auditlogs/?page=' + page;
-			const resp = await context.dispatch( 'makeApiCall', url );
-
-			if ( resp.error ) {
-				this._vm.$notify.error(
-					i18n.t( 'auditlogs-apierror', [ page, resp.error ] )
-				);
-				return;
-			}
-
-			context.commit( 'AUDIT_LOGS', resp.data && resp.data.body );
+					this._vm.$notify.error( i18n.t( 'auditlogs-apierror', [ page, explanation ] ) );
+				}
+			);
 		}
 	},
 	// Strict mode in development/testing, but disabled for performance in prod

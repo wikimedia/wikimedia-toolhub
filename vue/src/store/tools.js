@@ -1,8 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
-import SwaggerClient from 'swagger-client';
-
 import i18n from '@/plugins/i18n';
 import router from '@/router';
 import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
@@ -15,7 +12,6 @@ export default {
 		toolsList: [],
 		tool: null,
 		numTools: 0,
-		apiErrorMsg: '',
 		spdxLicenses: [],
 		toolCreated: {},
 		toolRevisions: [],
@@ -27,7 +23,6 @@ export default {
 		TOOLS_LIST( state, tools ) {
 			state.toolsList = tools.results;
 			state.numTools = tools.count;
-			state.apiErrorMsg = '';
 		},
 		TOOL( state, tool ) {
 			state.tool = tool;
@@ -47,9 +42,6 @@ export default {
 		},
 		DIFF_REVISION( state, revision ) {
 			state.diffRevision = revision;
-		},
-		ERROR( state, error ) {
-			state.apiErrorMsg = error;
 		}
 	},
 	actions: {
@@ -62,10 +54,20 @@ export default {
 				}
 			};
 
-			SwaggerClient.http( request ).then( ( response ) => {
-				context.commit( 'TOOLS_LIST', response.body );
-			} )
-				.catch( ( err ) => context.commit( 'ERROR', err ) );
+			makeApiCall( context, request ).then(
+				( success ) => {
+					const data = success.body;
+					context.commit( 'TOOLS_LIST', data );
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
+
+					this._vm.$notify.error(
+						i18n.t( 'apierror', [ explanation ] )
+					);
+				}
+			);
 		},
 
 		/**
@@ -107,10 +109,20 @@ export default {
 				}
 			};
 
-			SwaggerClient.http( request ).then( ( response ) => {
-				context.commit( 'SPDX_LICENSES', response.body );
-			} )
-				.catch( ( err ) => context.commit( 'ERROR', err ) );
+			makeApiCall( context, request ).then(
+				( success ) => {
+					const data = success.body;
+					context.commit( 'SPDX_LICENSES', data );
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
+
+					this._vm.$notify.error(
+						i18n.t( 'apierror', [ explanation ] )
+					);
+				}
+			);
 		},
 		createTool( context, toolInfo ) {
 			const request = {

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import SwaggerClient from 'swagger-client';
+import makeApiCall from '@/plugins/swagger.js';
 
 Vue.use( Vuex );
 
@@ -11,93 +11,79 @@ export default {
 		crawlerUrls: [],
 		lastCrawlerRun: [],
 		numCrawlerRuns: 0,
-		numCrawlerUrls: 0,
-		apiErrorMsg: ''
+		numCrawlerUrls: 0
 	},
 	mutations: {
 		CRAWLER_HISTORY( state, history ) {
 			state.crawlerHistory = history.results;
 			state.lastCrawlerRun = history.results[ 0 ];
 			state.numCrawlerRuns = history.count;
-			state.apiErrorMsg = '';
 		},
 		CRAWLER_URLS( state, urls ) {
 			state.crawlerUrls = urls.results;
 			state.numCrawlerUrls = urls.count;
-			state.apiErrorMsg = '';
-		},
-		ERROR( state, error ) {
-			state.apiErrorMsg = error;
 		}
 	},
 	actions: {
-		async makeApiCall( context, url ) {
-			let data,
-				error = '';
-
-			try {
-				data = await SwaggerClient.http( {
-					url: url,
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json'
-					}
-				} );
-			} catch ( err ) {
-				error = err;
-			}
-
-			return { data: data, error: error };
-		},
-
 		async fetchCrawlerHistory( context, page ) {
 			let history = [];
+			const request1 = { url: '/api/crawler/runs/?page=' + page };
 
-			const url1 = '/api/crawler/runs/?page=' + page;
-			const response1 = await context.dispatch( 'makeApiCall', url1 );
+			makeApiCall( context, request1 ).then(
+				( success1 ) => {
+					history = success1.body;
 
-			if ( response1.error ) {
-				context.commit( 'ERROR', response1.error );
-				return;
-			}
+					const getUrlsForACrawlerRun = async ( cr, index ) => {
+						const request2 = { url: '/api/crawler/runs/' + cr.id + '/urls' };
 
-			history = response1.data && response1.data.body;
+						await makeApiCall( context, request2 ).then(
+							( success2 ) => {
+								history.results[ index ].urls = success2.body;
+								return Promise.resolve( 'ok' );
+							},
+							( failure ) => {
+								return Promise.reject( failure );
+							}
+						);
+					};
 
-			const getUrlsForACrawlerRun = async ( cr, index ) => {
-				const url2 = '/api/crawler/runs/' + cr.id + '/urls/';
-				const response2 = await context.dispatch( 'makeApiCall', url2 );
+					const getCrawlerRuns = async () => {
+						await Promise.all( history.results.map( ( cr, index ) => {
+							return getUrlsForACrawlerRun( cr, index );
+						} ) ).then( () => {
+							context.commit( 'CRAWLER_HISTORY', history );
+						} ).catch( ( error ) => {
+							this._vm.$notify.error( i18n.t( 'apierror', [ error ] ) );
+						} );
+					};
 
-				if ( response2.error ) {
-					return Promise.reject( response2.error );
+					getCrawlerRuns();
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
+
+					this._vm.$notify.error( i18n.t( 'apierror', [ explanation ] ) );
 				}
-
-				history.results[ index ].urls = response2.data.body;
-				return Promise.resolve( 'ok' );
-			};
-
-			const getCrawlerRuns = async () => {
-				await Promise.all( history.results.map( ( cr, index ) => {
-					return getUrlsForACrawlerRun( cr, index );
-				} ) ).then( () => {
-					context.commit( 'CRAWLER_HISTORY', history );
-				} ).catch( ( error ) => {
-					context.commit( 'ERROR', error );
-				} );
-			};
-
-			getCrawlerRuns();
+			);
 		},
 
-		async fetchCrawlerUrls( context, data ) {
-			const apiUrl = '/api/crawler/runs/' + data.runId + '/urls/?page=' + data.page;
-			const response = await context.dispatch( 'makeApiCall', apiUrl );
+		fetchCrawlerUrls( context, data ) {
+			const request = {
+				url: '/api/crawler/runs/' + data.runId + '/urls/?page=' + data.page
+			};
 
-			if ( response.error ) {
-				context.commit( 'ERROR', response.error );
-				return;
-			}
+			makeApiCall( context, request ).then(
+				( success ) => {
+					context.commit( 'CRAWLER_URLS', success.body );
+				},
+				( failure ) => {
+					const explanation = ( 'statusCode' in failure ) ?
+						failure.response.statusText : failure;
 
-			context.commit( 'CRAWLER_URLS', response.data.body );
+					this._vm.$notify.error( i18n.t( 'apierror', [ explanation ] ) );
+				}
+			);
 		}
 	},
 	// Strict mode in development/testing, but disabled for performance in prod
