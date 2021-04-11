@@ -145,33 +145,29 @@ export default {
 			this.$store.dispatch( 'crawler/fetchCrawlerHistory', 1 );
 		},
 		goToPage( num ) {
-			this.page = num;
-			this.listAllTools();
-
-			this.$router.push( {
-				query: { page: this.page }
-			} ).catch( () => {} );
+			const query = { page: parseInt( num ) || 1 };
+			// Update query string and let our watch trigger a search
+			this.$router.push( { query } ).catch( () => {} );
 		},
 		formatDate( date ) {
 			return this.$moment( date ).format( 'lll' );
 		}
 	},
+	watch: {
+		/**
+		 * Watch ?page=... and update displayed tools.
+		 *
+		 * @param {string} newValue
+		 */
+		'$route.query.page'( newValue ) {
+			this.page = parseInt( newValue ) || 1;
+			this.listAllTools();
+		}
+	},
 	mounted() {
 		this.page = parseInt( this.$route.query.page ) || 1;
-
 		this.listAllTools();
 		this.fetchCrawlerHistory();
-
-		window.onpopstate = () => {
-			const params = ( new URL( document.location ) ).searchParams;
-			let pageNum = parseInt( params.get( 'page' ) );
-
-			if ( !pageNum ) {
-				pageNum = 1;
-			}
-
-			this.goToPage( pageNum );
-		};
 	}
 };
 </script>
