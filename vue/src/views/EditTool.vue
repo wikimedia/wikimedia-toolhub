@@ -160,6 +160,7 @@
 			v-model="commentDialog"
 			persistent
 			max-width="600px"
+			@keydown.esc="commentDialog = false"
 		>
 			<v-card>
 				<v-card-title>
@@ -175,6 +176,8 @@
 								:label="$t( 'describechanges' )"
 								required
 								:rules="requiredRule"
+								autofocus
+								@keydown.enter="publishChanges"
 							/>
 						</v-row>
 					</v-container>
