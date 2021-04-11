@@ -64,7 +64,7 @@ export default {
 			history = response1.data && response1.data.body;
 
 			const getUrlsForACrawlerRun = async ( cr, index ) => {
-				const url2 = '/api/crawler/runs/' + cr.id + '/urls';
+				const url2 = '/api/crawler/runs/' + cr.id + '/urls/';
 				const response2 = await context.dispatch( 'makeApiCall', url2 );
 
 				if ( response2.error ) {
