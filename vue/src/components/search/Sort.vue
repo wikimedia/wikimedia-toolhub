@@ -66,7 +66,7 @@ export default {
 				value: '-modified_date'
 			}
 		],
-		select: null
+		select: '-score'
 	} ),
 	methods
 };
