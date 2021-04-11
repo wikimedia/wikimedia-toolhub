@@ -66,19 +66,20 @@
 							<dd>{{ tool.author }}</dd>
 						</dl>
 
-						<v-chip-group
+						<div
 							v-if="tool.keywords"
-							active-class="primary--text"
 							class="mt-4"
-							column
 						>
 							<v-chip
 								v-for="tt in tool.keywords.filter(e => e)"
 								:key="tt"
+								:ripple="false"
+								disabled
+								class="ma-1 opacity-1"
 							>
 								{{ tt }}
 							</v-chip>
-						</v-chip-group>
+						</div>
 
 						<v-row>
 							<v-btn
@@ -205,17 +206,19 @@
 								>
 									<td>{{ item.name }}</td>
 									<td>
-										<v-chip-group
+										<div
 											v-if="Array.isArray(item.value)"
-											column
 										>
 											<v-chip
 												v-for="iv in item.value"
 												:key="iv"
+												:ripple="false"
+												disabled
+												class="ma-1 opacity-1"
 											>
 												{{ iv }}
 											</v-chip>
-										</v-chip-group>
+										</div>
 										<div
 											v-else
 										>

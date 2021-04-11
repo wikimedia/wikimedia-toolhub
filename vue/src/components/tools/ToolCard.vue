@@ -24,18 +24,17 @@
 			<v-divider />
 		</v-card-text>
 		<v-card-text class="py-0">
-			<v-chip-group
-				v-if="tool.keywords"
-				active-class="primary--text"
-				column
-			>
+			<div v-if="tool.keywords">
 				<v-chip
 					v-for="tt in tool.keywords.filter(e => e).slice(0, 5)"
 					:key="tt"
+					:ripple="false"
+					disabled
+					class="ma-1 opacity-1"
 				>
 					{{ tt }}
 				</v-chip>
-			</v-chip-group>
+			</div>
 		</v-card-text>
 		<v-card-actions class="ma-2">
 			<v-btn

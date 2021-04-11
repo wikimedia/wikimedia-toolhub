@@ -111,3 +111,7 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 .tool-app-bar .v-toolbar__content {
 	padding: 0 !important;
 }
+
+.v-chip--disabled.opacity-1 {
+	opacity: 1;
+}
