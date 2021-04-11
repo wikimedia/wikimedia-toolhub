@@ -186,6 +186,9 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         """Compute the JSON Patch between revisions."""
         data_left = ToolSerializer(left.field_dict).data
         data_right = ToolSerializer(right.field_dict).data
+        # T279484: exclude modified_date from diff
+        del data_left["modified_date"]
+        del data_right["modified_date"]
         return jsonpatch.make_patch(data_left, data_right)
 
     def _update_tool(self, data, request):
