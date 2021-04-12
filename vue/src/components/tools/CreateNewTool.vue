@@ -97,7 +97,7 @@ export default {
 				},
 				repository: {
 					icon: 'mdi-source-branch',
-					label: this.$t( 'sourcerepository' )
+					label: this.$t( 'repository' )
 				},
 				bugtracker_url: {
 					icon: 'mdi-bug-outline',
