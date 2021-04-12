@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Joquliina",
+			"MITO",
 			"Maantietäjä",
 			"Majavah",
 			"Mediawikitranslator",
@@ -29,6 +30,7 @@
 	"cancel": "Peru",
 	"clicktocopy": "Kopioi napsauttamalla",
 	"close": "Sulje",
+	"comparetwoselectedrevisions": "Vertaile valittuja versioita",
 	"copiedtoclipboard": "Kopioitu leikepöydälle!",
 	"crawlerhistory": "Indeksointihistoria",
 	"crawlerhistory-pagesubtitle": "Tällä sivulla luetellaan kaikki historialliset indeksointiradat",
@@ -63,6 +65,7 @@
 	"registeroauthapp": "Rekisteröi uusi oauth-sovellus",
 	"removeurl": "Poista URL",
 	"required-field": "Tämä kenttä on pakollinen.",
+	"revert": "palauta",
 	"schemalink": "Schema-linkki",
 	"search": "Hae",
 	"search-filter-keywords": "Avainsanat",
@@ -78,12 +81,15 @@
 	"talk": "keskustelu",
 	"technologyused": "Käytetty tekniikka",
 	"thistoolis": "Tämä työkalu on:",
+	"toolhistory": "Työkalun historia",
+	"toolhistory-pagesubtitle": "Katso tämän työkalun historia",
 	"tools": "työkalut",
 	"totaltools": "Työkaluja yhteensä",
 	"tooltype": "Työkalun tyyppi",
 	"tool-deprecated-error": "Tätä työkalua ei suositella käytettäväksi.",
 	"tool-experimental-error": "Tätä työkalua testataan. Se on epävakaa ja voi muuttua tai olla poissa käytöstä milloin tahansa.",
 	"tools-lastupdated": "Päivitetty viimeksi $1.",
+	"undo": "kumoa",
 	"update": "Päivitä",
 	"url": "URL",
 	"urlinvalid": "URL-osoitteen on oltava kelvollinen",
@@ -91,6 +97,7 @@
 	"urlscrawled": "URLeja indeksoitu",
 	"urlscrawledon": "URL-osoitteet indeksoitiin $1",
 	"valid": "pätevä",
+	"viewhistory": "Näytä historia",
 	"viewmore": "Katso lisää",
 	"welcomemessage": "Tervetuloa Toolhubiin"
 }

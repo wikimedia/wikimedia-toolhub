@@ -31,6 +31,7 @@
 	"publishchanges": "Pubblica modifiche",
 	"removeurl": "Rimuovi URL",
 	"required-field": "Questo campo è obbligatorio.",
+	"revert": "ripristina",
 	"search": "Ricerca",
 	"search-filter-author": "Autore",
 	"search-filter-clear-selected": "Elimina tutto",
@@ -75,5 +76,6 @@
 	"toolsfound": "{{PLURAL:$1|1 strumento trovato|$1 strumenti trovati}}",
 	"tools-lastupdated": "ultimo aggiornamento il $1",
 	"tool-not-found": "Nessuno strumento di nome \"$1\" trovato.",
-	"translateurl": "Traduci URL"
+	"translateurl": "Traduci URL",
+	"undo": "annulla"
 }

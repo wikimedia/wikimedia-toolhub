@@ -48,5 +48,6 @@
 	"tools": "инструменты",
 	"tooltype": "Тип инструмента",
 	"tools-lastupdated": "gоследнее обновление: $1",
+	"undo": "отменить",
 	"welcomemessage": "Добро пожаловать на Toolhub"
 }
