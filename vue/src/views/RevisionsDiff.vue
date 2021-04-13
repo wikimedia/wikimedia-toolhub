@@ -1,5 +1,5 @@
 <template>
-	<v-container v-if="diffRevision">
+	<v-container v-if="changes">
 		<v-row>
 			<v-col md="9" cols="12">
 				<h2 class="text-h4">
@@ -52,17 +52,18 @@
 
 		<v-row>
 			<v-col cols="12" class="my-4">
-				<v-row v-for="(op, i) in diffRevision.operations"
-					:key="i"
+				<v-row v-for="(op, idx) in changes"
+					:key="idx"
 				>
 					<v-col cols="6">
-						<v-row class="ms-2 cols">
-							{{ renderPropertyName( op.path) }}
+						<v-row
+							v-if="op.label"
+							class="ms-2 cols"
+						>
+							{{ op.label }}
 						</v-row>
 
-						<v-row v-if="op.op === 'remove'
-								|| op.op === 'replace'
-								|| op.op === 'move'"
+						<v-row v-if="op.oldValue !== null"
 							class="cols"
 						>
 							<v-col cols="1">
@@ -77,7 +78,6 @@
 
 							<v-col cols="11" class="ps-0">
 								<v-alert
-									v-if="getPropertyValueForRevision('previous', op.path)"
 									border="left"
 									colored-border
 									color="red lighten-1"
@@ -85,24 +85,24 @@
 									dense
 								>
 									<template
-										v-if="getProperty(op.path).index !== ''"
+										v-if="op.index !== null"
 									>
-										{{ getProperty(op.path).index + 1 }})
+										{{ op.index }})
 									</template>
-									{{ getPropertyValueForRevision('previous', op.path) }}
+									{{ op.oldValue }}
 								</v-alert>
 							</v-col>
 						</v-row>
 					</v-col>
 
 					<v-col cols="6">
-						<v-row class="ms-2 cols">
-							{{ renderPropertyName( op.path ) }}
+						<v-row
+							v-if="op.label"
+							class="ms-2 cols"
+						>
+							{{ op.label }}
 						</v-row>
-						<v-row v-if="op.op === 'add' ||
-								op.op === 'replace' ||
-								op.op === 'move' ||
-								op.op === 'copy'"
+						<v-row v-if="op.newValue !== null"
 							class="cols"
 						>
 							<v-col cols="1">
@@ -117,7 +117,6 @@
 
 							<v-col cols="11" class="ps-0">
 								<v-alert
-									v-if="op.value"
 									border="left"
 									colored-border
 									color="green lighten-1"
@@ -125,11 +124,11 @@
 									dense
 								>
 									<template
-										v-if="getProperty(op.path).index !== ''"
+										v-if="op.index !== null"
 									>
-										{{ getProperty(op.path).index + 1 }})
+										{{ op.index }})
 									</template>
-									{{ getPropertyValueForRevision( 'next', op.path ) }}
+									{{ op.newValue }}
 								</v-alert>
 							</v-col>
 						</v-row>
@@ -149,21 +148,85 @@ export default {
 		return {
 			name: this.$route.params.name,
 			revId: this.$route.params.revId,
-			otherRevId: this.$route.params.otherRevId,
-			propertiesModified: [],
-			diffRevision: null,
-			toolRevision: null
+			otherRevId: this.$route.params.otherRevId
 		};
 	},
 	computed: {
-		...mapState( 'tools', {
-			diffRevisionFromVuex: 'diffRevision',
-			toolRevisionFromVuex: 'toolRevision'
-		} )
+		...mapState( 'tools', [ 'diffRevision', 'toolRevision' ] ),
+		/**
+		 * @typedef {Object} ChangeInfo
+		 * @property {?string} label - Display label
+		 * @property {?number} index - List index position (1-based)
+		 * @property {(number|string|boolean|null)} oldValue - Old field value
+		 * @property {(number|string|boolean|null)} newValue - New field value
+		 */
+		/**
+		 * Compute changes to render as diff based on JSON Patch from API.
+		 *
+		 * @return {ChangeInfo[]}
+		 */
+		changes() {
+			if ( !this.diffRevision ) {
+				return false;
+			}
+			const priorRevOps = [ 'remove', 'replace', 'move' ];
+			const newRevOps = [ 'add', 'replace', 'move', 'copy' ];
+			const normalOps = [];
+
+			// Clone operations with move/copy normalized to remove+add/add
+			this.diffRevision.operations.forEach( ( op ) => {
+				if ( op.op === 'move' ) {
+					normalOps.push( { op: 'remove', path: op.from } );
+				}
+				if ( op.op === 'copy' || op.op === 'move' ) {
+					const value = this.valueForPath( op.from );
+					normalOps.push( { op: 'add', path: op.path, value: value } );
+				} else {
+					normalOps.push( op );
+				}
+			} );
+
+			let lastProp = null;
+			return normalOps.map( ( op ) => {
+				const { property, index } = this.parsePath( op.path );
+				const change = {
+					label: null,
+					// Report 1-based indexes in UI
+					index: index !== null ? index + 1 : index,
+					oldValue: null,
+					newValue: null
+				};
+
+				// Compute left hand side (old revision change)
+				if ( priorRevOps.indexOf( op.op ) !== -1 ) {
+					change.oldValue = this.displayFormat(
+						property, this.valueForPath( op.path )
+					);
+				}
+
+				// Compute right hand side (new revision change)
+				if ( newRevOps.indexOf( op.op ) !== -1 ) {
+					change.newValue = this.displayFormat( property, op.value );
+				}
+
+				// Only set label if different from last operation
+				// and oldValue or newValue is non-empty.
+				if (
+					property !== lastProp &&
+					(
+						change.oldValue !== null ||
+						change.newValue !== null
+					)
+				) {
+					change.label = this.propertyLabel( property );
+				}
+				lastProp = property;
+				return change;
+			} );
+		}
 	},
 	methods: {
 		...mapMutations( 'tools', [ 'DIFF_REVISION' ] ),
-
 		getRevisionsDiff() {
 			this.$store.dispatch( 'tools/getRevisionsDiff', {
 				name: this.name,
@@ -177,95 +240,93 @@ export default {
 				revId: this.revId
 			} );
 		},
-		getProperty( path ) {
+		/**
+		 * Parse a JSON Pointer from a JSON Patch instruction.
+		 *
+		 * @param {string} path - JSON Pointer (like '/foo/bar/0')
+		 * @return {{property: string, index: number|null}}
+		 */
+		parsePath( path ) {
 			const pArr = path.split( '/' );
 			return {
 				property: pArr[ 1 ],
-				index: pArr[ 2 ] ? parseInt( pArr[ 2 ] ) : ''
+				index: pArr[ 2 ] ? parseInt( pArr[ 2 ] ) : null
 			};
 		},
-		renderPropertyName( path ) {
-			const propertyName = this.getProperty( path ).property;
+		/**
+		 * Compute a localized label for a toolinfo property.
+		 *
+		 * @param {string} name - Property name (e.g. 'tool_type')
+		 * @return {string} Localized label for property
+		 */
+		propertyLabel( name ) {
 			// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
-			return this.$i18n.t( propertyName.replace( /_/g, '' ) );
+			return this.$i18n.t( name.replace( /_/g, '' ) );
 		},
-		getPropertyValueForRevision( type, path ) {
-			const extract = this.getProperty( path ),
-				property = extract.property,
-				index = extract.index,
-				links = [ 'user_docs_url', 'developer_docs_url', 'privacy_policy_url',
-					'feedback_url', 'url_alternates' ];
-			let propertyValue = '';
-
-			if ( type === 'previous' ) {
-				propertyValue = this.toolRevision && this.toolRevision.toolinfo[ property ];
-				if ( Array.isArray( propertyValue ) ) {
-					propertyValue = this.toolRevision &&
-						this.toolRevision.toolinfo[ property ][ index ];
+		/**
+		 * Normalize "empty" values to null.
+		 *
+		 * Values considered empty:
+		 * - undefined
+		 * - null
+		 * - '' (empty string)
+		 * - {} (empty object)
+		 *
+		 * @param {*} value
+		 * @return {*|null} Normalized value
+		 */
+		normalizeEmpty( value ) {
+			if ( value === '' || value === null || value === undefined ) {
+				return null;
+			}
+			if (
+				typeof value === 'object' &&
+				value.constructor === Object &&
+				Object.keys( value ).length === 0
+			) {
+				return null;
+			}
+			return value;
+		},
+		/**
+		 * Find the prior revision value associated with a JSON Pointer.
+		 *
+		 * @param {string} path - JSON Pointer
+		 * @return {*}
+		 */
+		valueForPath( path ) {
+			const { property, index } = this.parsePath( path );
+			const value = this.toolRevision &&
+				this.toolRevision.toolinfo[ property ];
+			if ( Array.isArray( value ) && index !== null ) {
+				return value[ index ];
+			}
+			return value;
+		},
+		/**
+		 * Format a property value for display to the user.
+		 *
+		 * @param {string} property - Property name
+		 * @param {*} value - property value
+		 * @return {string|null}
+		 */
+		displayFormat( property, value ) {
+			const linkTypes = [
+				'user_docs_url', 'developer_docs_url', 'privacy_policy_url',
+				'feedback_url', 'url_alternates'
+			];
+			if ( linkTypes.indexOf( property ) !== -1 ) {
+				if ( !!value && typeof value === 'object' ) {
+					value = value.url + ' (' + value.language + ')';
 				}
-			} else {
-				const diffOperations = this.diffRevision && this.diffRevision.operations;
-				diffOperations.forEach( ( op ) => {
-					if ( op.path === path ) {
-						propertyValue = op.value;
-					}
-				} );
 			}
-
-			if ( links.indexOf( property ) !== -1 ) {
-				if ( !!propertyValue && typeof propertyValue === 'object'
-				) {
-					propertyValue = propertyValue.url + ' (' + propertyValue.language + ')';
-				}
+			if ( property.indexOf( 'date' ) !== -1 ) {
+				value = this.formatDate( value );
 			}
-
-			if ( path.indexOf( 'date' ) !== -1 ) {
-				propertyValue = this.formatDate( propertyValue );
-			}
-
-			return propertyValue;
+			return this.normalizeEmpty( value );
 		},
 		formatDate( date ) {
 			return this.$moment( date ).format( 'lll' );
-		}
-	},
-	watch: {
-		toolRevisionFromVuex: {
-			handler( newVal ) {
-				this.toolRevision = JSON.parse( JSON.stringify( newVal ) );
-			},
-			deep: true
-		},
-		diffRevisionFromVuex: {
-			handler( newVal ) {
-				// Deep clone the new state
-				this.diffRevision = JSON.parse( JSON.stringify( newVal ) );
-
-				// Modify the 'copy' and 'move' operations
-				const diffOperations = this.diffRevision && this.diffRevision.operations;
-
-				for ( const opIndex in diffOperations ) {
-					const op = diffOperations[ opIndex ];
-
-					if ( op.op === 'move' ) {
-						diffOperations.push( {
-							op: 'remove',
-							path: op.from
-						} );
-					}
-
-					if ( op.op === 'copy' || op.op === 'move' ) {
-						const value = this.getPropertyValueForRevision( 'previous', op.from );
-						diffOperations.push( {
-							op: 'add',
-							path: op.path,
-							value: value
-						} );
-						diffOperations.splice( opIndex, 1 );
-					}
-				}
-			},
-			deep: true
 		}
 	},
 	mounted() {
