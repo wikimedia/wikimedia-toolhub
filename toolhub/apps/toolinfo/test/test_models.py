@@ -124,6 +124,7 @@ class ToolManagerTest(TestCase):
             },
             {},  # should be discarded
         ]
+        fixture["url_alternates"] = [""]  # should be discarded
         obj, created, updated = models.Tool.objects.from_toolinfo(
             fixture, self.user, models.Tool.ORIGIN_CRAWLER
         )
@@ -149,6 +150,7 @@ class ToolManagerTest(TestCase):
                 {"language": "fj", "url": "https://example.org/valid_lang"},
             ],
         )
+        self.assertEqual(obj.url_alternates, [])
 
     def test_keywords_string_to_array(self):
         """Keywords as a string will convert to an array."""

@@ -81,6 +81,7 @@ class ToolManager(SafeDeleteManager):
         "user_docs_url",
         "feedback_url",
         "privacy_policy_url",
+        "url_alternates",
     ]
 
     # Fields allowed to change without considering the record to be "dirty"
@@ -185,10 +186,9 @@ class ToolManager(SafeDeleteManager):
         """Normalize incoming url_multilingual formatting."""
         fixed = []
         for value in values:
-            if isinstance(value, str):
+            if isinstance(value, str) and value:
                 fixed.append({"language": default, "url": value})
-            elif value:
-                # Ignore empty structured values (e.g. `{}`)
+            elif value and value.get("url"):
                 lang_raw = value.get("language")
                 lang_clean = self._normalize_language_code(lang_raw, default)
                 if lang_clean != lang_raw:
