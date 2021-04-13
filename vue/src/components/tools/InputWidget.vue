@@ -178,9 +178,8 @@ export const methods = {
 				return false;
 			case 'number':
 			case 'integer':
-				return null;
 			default:
-				return '';
+				return null;
 		}
 	},
 
@@ -217,7 +216,7 @@ export default {
 		},
 		value: {
 			type: [ String, Number, Boolean, Array, Object ],
-			default: ''
+			default: null
 		}
 	},
 	data: () => ( {

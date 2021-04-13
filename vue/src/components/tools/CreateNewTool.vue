@@ -165,6 +165,9 @@ export default {
 		},
 		createTool() {
 			const newtool = { ...this.toolinfo };
+			newtool.user_docs_url = newtool.user_docs_url.filter( ( u ) => {
+				return u.url !== null && u.url !== '';
+			} );
 			newtool.comment = this.$t(
 				'toolcreationcomment', [ newtool.title ]
 			);

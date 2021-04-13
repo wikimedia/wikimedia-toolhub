@@ -483,18 +483,11 @@ export default {
 			}
 			newtool.comment = comment;
 
-			for ( const lk in this.links ) {
-				const items = newtool[ this.links[ lk ] ];
-				for ( const im in items ) {
-					if ( !items[ im ].url ) {
-						items[ im ] = {};
-					} else {
-						if ( !items[ im ].language ) {
-							items[ im ].language = 'en';
-						}
-					}
-				}
-			}
+			this.links.forEach( ( field ) => {
+				newtool[ field ] = newtool[ field ].filter( ( u ) => {
+					return u.url !== null && u.url !== '';
+				} );
+			} );
 
 			this.$store.dispatch(
 				'tools/editTool', { info: newtool, name: this.name }
