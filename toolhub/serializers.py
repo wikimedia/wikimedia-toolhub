@@ -67,6 +67,16 @@ class JSONSchemaField(serializers.ModelField):
         return obj
 
 
+class BlankAsNullCharField(serializers.CharField):
+    """CharField that can store empty strings as null."""
+
+    def to_internal_value(self, data):
+        """Transform the incoming primitive data to a native value."""
+        if self.allow_blank is True and self.allow_null is True and data == "":
+            data = None
+        return super().to_internal_value(data)
+
+
 class Serializer(  # noqa: W0223
     FriendlyErrorMessagesMixin, serializers.Serializer
 ):
@@ -81,3 +91,9 @@ class ModelSerializer(FriendlyErrorMessagesMixin, serializers.ModelSerializer):
         super().__init__(*args, **kwargs)
         self.serializer_field_mapping[JSONField] = serializers.JSONField
         self.serializer_field_mapping[fields.JSONSchemaField] = JSONSchemaField
+        self.serializer_field_mapping[
+            fields.BlankAsNullCharField
+        ] = BlankAsNullCharField
+        self.serializer_field_mapping[
+            fields.BlankAsNullTextField
+        ] = BlankAsNullCharField
