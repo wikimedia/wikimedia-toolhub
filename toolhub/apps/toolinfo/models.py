@@ -93,6 +93,9 @@ class ToolManager(SafeDeleteManager):
     # initially.
     INVARIANT_FIELDS = ["origin"]
 
+    # Extra fields that we allow to pass through normalize_toolinfo
+    EXTRA_ALLOWED_FIELDS = ["comment"]
+
     # Lazily populated list of all field names.
     ALL_FIELDS = None
 
@@ -104,12 +107,13 @@ class ToolManager(SafeDeleteManager):
             self.ALL_FIELDS = [field.name for field in Tool._meta.fields]
         return self.ALL_FIELDS
 
-    def _normalize_record(self, record):
+    def normalize_toolinfo(self, record):
         """Normalize incoming record formatting."""
-        if record["name"].startswith("toolforge."):
-            # Fixup tool names made by Striker to work as slugs
-            record["name"] = "toolforge-" + record["name"][10:]
-        record["name"] = name_to_slug(record["name"])
+        if "name" in record:
+            if record["name"].startswith("toolforge."):
+                # Fixup tool names made by Striker to work as slugs
+                record["name"] = "toolforge-" + record["name"][10:]
+            record["name"] = name_to_slug(record["name"])
 
         if "$schema" in record:
             record["_schema"] = record.pop("$schema")
@@ -157,8 +161,9 @@ class ToolManager(SafeDeleteManager):
         # keep any data that we can salvage even if the input is messed up.
         for field in list(record):
             if field not in self._valid_field_names():
-                logger.debug("Deleting unexpected field '%s'", field)
-                del record[field]
+                if field not in self.EXTRA_ALLOWED_FIELDS:
+                    logger.debug("Deleting unexpected field '%s'", field)
+                    del record[field]
 
         return record
 
@@ -263,7 +268,7 @@ class ToolManager(SafeDeleteManager):
         record["modified_by"] = creator
         record["origin"] = origin
 
-        record = self._normalize_record(record)
+        record = self.normalize_toolinfo(record)
 
         with reversion.create_revision():
             reversion.set_user(creator)

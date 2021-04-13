@@ -171,6 +171,11 @@ class CreateToolSerializer(ModelSerializer, EditCommentFieldMixin):
         serializer = ToolSerializer(instance)
         return serializer.data
 
+    def to_internal_value(self, data):
+        """Transform the incoming primitive data to a native value."""
+        data = super().to_internal_value(data)
+        return Tool.objects.normalize_toolinfo(data)
+
     class Meta:
         """Configure serializer."""
 
@@ -227,6 +232,11 @@ class UpdateToolSerializer(CreateToolSerializer):
         except ValidationError as e:
             raise PermissionDenied(e.messages[0], e.code) from e
         return obj
+
+    def to_internal_value(self, data):
+        """Transform the incoming primitive data to a native value."""
+        data = super().to_internal_value(data)
+        return Tool.objects.normalize_toolinfo(data)
 
     class Meta(CreateToolSerializer.Meta):
         """Configure serializer."""

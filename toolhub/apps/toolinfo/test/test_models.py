@@ -223,3 +223,13 @@ class ToolManagerTest(TestCase):
             self.fail(  # pragma: no cover
                 msg="Expected changing origin to raise ValidationError"
             )
+
+    def test_comment_field_allowed(self):
+        """Normalization should not strip a "comment" field"""
+        fixture = self.toolinfo.copy()
+        fixture["__test__should__strip"] = "ignore me!"
+        fixture["comment"] = "keep me!"
+
+        cleaned = models.Tool.objects.normalize_toolinfo(fixture)
+        self.assertNotIn("__test__should__strip", cleaned)
+        self.assertIn("comment", cleaned)
