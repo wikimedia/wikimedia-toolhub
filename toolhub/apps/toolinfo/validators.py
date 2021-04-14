@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.core import validators
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
@@ -23,11 +24,15 @@ import spdx_license_list
 from .utils import language_data
 
 
+url_validator = validators.URLValidator(schemes=["http", "https"])
+
+
 def validate_language_code(value):
     """Raise ValidationError if value is not a recognized language code."""
     if not language_data.is_known(value):
         raise ValidationError(
             _("%(value)s is not a recognized language code."),
+            code="invalid_language",
             params={"value": value},
         )
 
@@ -37,6 +42,7 @@ def validate_language_code_list(value):
     if not isinstance(value, list):
         raise ValidationError(
             _("Expected a list of language codes but found %(type)s"),
+            code="invalid_list",
             params={"type": type(value)},
         )
     for code in value:
@@ -48,5 +54,41 @@ def validate_spdx(value):
     if value not in spdx_license_list.LICENSES:
         raise ValidationError(
             _("%(value)s is not a known SPDX license identifier."),
+            code="invalid_spdx",
             params={"value": value},
         )
+
+
+def validate_url_mutilingual(value):
+    """Raise ValidationError if value is not a well formed url_multilingual."""
+    if not isinstance(value, dict):
+        raise ValidationError(
+            _("Expected a url_multilingual dict but found %(type)s"),
+            code="invalid_list",
+            params={"type": type(value)},
+        )
+    if "language" not in value:
+        raise ValidationError(
+            _("Url_multilingual missing 'language' property."),
+            code="missing_language",
+        )
+    validate_language_code(value["language"])
+
+    if "url" not in value:
+        raise ValidationError(
+            _("Url_multilingual missing 'url' property."),
+            code="missing_url",
+        )
+    url_validator(value["url"])
+
+
+def validate_url_mutilingual_list(value):
+    """Raise ValidationError if value is not a list of well formed values."""
+    if not isinstance(value, list):
+        raise ValidationError(
+            _("Expected a list of language codes but found %(type)s"),
+            code="invalid_list",
+            params={"type": type(value)},
+        )
+    for url in value:
+        validate_url_mutilingual(url)

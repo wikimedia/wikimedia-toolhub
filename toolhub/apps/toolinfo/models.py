@@ -40,6 +40,7 @@ from .utils import language_data
 from .validators import validate_language_code
 from .validators import validate_language_code_list
 from .validators import validate_spdx
+from .validators import validate_url_mutilingual_list
 
 
 # Inspiration from https://stackoverflow.com/a/24668215/8171
@@ -421,6 +422,7 @@ class Tool(SafeDeleteModel):
             "different natural languages."
         ),
         schema=schema.schema_for("url_alternates"),
+        validators=[validate_url_mutilingual_list],
     )
     bot_username = BlankAsNullCharField(
         blank=True,
@@ -542,12 +544,14 @@ class Tool(SafeDeleteModel):
             "A link to the tool's developer documentation, if available."
         ),
         schema=schema.schema_for("developer_docs_url", oneof=0),
+        validators=[validate_url_mutilingual_list],
     )
     user_docs_url = JSONSchemaField(
         blank=True,
         default=list,
         help_text=_("A link to the tool's user documentation, if available."),
         schema=schema.schema_for("user_docs_url", oneof=0),
+        validators=[validate_url_mutilingual_list],
     )
     feedback_url = JSONSchemaField(
         blank=True,
@@ -556,12 +560,14 @@ class Tool(SafeDeleteModel):
             "A link to location where the tool's user can leave feedback."
         ),
         schema=schema.schema_for("feedback_url", oneof=0),
+        validators=[validate_url_mutilingual_list],
     )
     privacy_policy_url = JSONSchemaField(
         blank=True,
         default=list,
         help_text=_("A link to the tool's privacy policy, if available."),
         schema=schema.schema_for("privacy_policy_url", oneof=0),
+        validators=[validate_url_mutilingual_list],
     )
     translate_url = BlankAsNullTextField(
         blank=True,

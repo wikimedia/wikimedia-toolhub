@@ -412,8 +412,24 @@ SPECTACULAR_SETTINGS = {
 }
 
 FRIENDLY_ERRORS = {
+    "FIELD_ERRORS": {
+        "BlankAsNullCharField": {
+            "invalid_spdx": 3104,
+        },
+        "JSONSchemaField": {
+            "invalid_language": 3102,
+            "invalid_list": 3203,
+            "missing_language": 3204,
+            "missing_url": 3205,
+        },
+    },
     "VALIDATOR_ERRORS": {
         "JSONSchemaValidator": 3101,
+        "validate_language_code": 3102,
+        "validate_language_code_list": 3103,
+        "validate_spdx": 3104,
+        "validate_url_mutilingual": 3105,
+        "validate_url_mutilingual_list": 3106,
     },
     "EXCEPTION_DICT": {
         "ConflictingState": 4090,

@@ -21,6 +21,8 @@ from django.test import SimpleTestCase
 from ..validators import validate_language_code
 from ..validators import validate_language_code_list
 from ..validators import validate_spdx
+from ..validators import validate_url_mutilingual
+from ..validators import validate_url_mutilingual_list
 
 
 class ValidatorsTest(SimpleTestCase):
@@ -68,3 +70,67 @@ class ValidatorsTest(SimpleTestCase):
             validate_spdx(None)
         with self.assertRaises(ValidationError):
             validate_spdx("bd808-general-license")
+
+    def test_validate_url_multilingual_valid(self):
+        """Valid url_multilingual values are valid."""
+        validate_url_mutilingual(
+            {"url": "https://example.org", "language": "en"}
+        )
+        validate_url_mutilingual(
+            {"url": "http://example.net", "language": "ady-cyrl"}
+        )
+
+    def test_validate_url_multilingual_invalid(self):
+        """Invalid url_multilingual values are invalid."""
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual(None)
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual("")
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual({})
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual({"url": "https://example.org"})
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual({"language": "en"})
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual(
+                {"url": "https://example.org", "language": "invalid"}
+            )
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual({"url": "example.org", "language": "en"})
+
+    def test_validate_url_multilingual_list_valid(self):
+        """Valid url_multilingual value lists are valid."""
+        validate_url_mutilingual_list(
+            [
+                {"url": "https://example.org", "language": "en"},
+                {"url": "http://example.net", "language": "ady-cyrl"},
+            ]
+        )
+
+    def test_validate_url_multilingual_list_invalid(self):
+        """Invalid url_multilingual value lists are invalid."""
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual_list(None)
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual_list([None])
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual_list([""])
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual_list([{}])
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual_list([{"url": "https://example.org"}])
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual_list([{"language": "en"}])
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual_list(
+                [
+                    {"url": "https://example.org", "language": "invalid"},
+                ]
+            )
+        with self.assertRaises(ValidationError):
+            validate_url_mutilingual_list(
+                [
+                    {"url": "example.org", "language": "en"},
+                ]
+            )
