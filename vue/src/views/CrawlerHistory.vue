@@ -167,53 +167,56 @@ export default {
 			'crawlerUrls',
 			'numCrawlerUrls'
 		] ),
-
-		clonedHistory() {
-			return this.crawlerHistory;
-		},
-
 		crawlerRunsHeaders() {
 			return [
 				{
 					text: this.$t( 'crawlerrundate' ),
-					value: 'end_date',
-					sortable: true
+					value: 'end_date'
 				},
 				{
 					text: this.$t( 'urlscrawled' ),
-					value: 'crawled_urls',
-					sortable: true
+					value: 'crawled_urls'
 				},
 				{
 					text: this.$t( 'totaltools' ),
-					value: 'total_tools',
-					sortable: true
+					value: 'total_tools'
 				}
 			];
 		},
-
 		urlsCrawledHeaders() {
 			return [
 				{
 					text: this.$t( 'url' ),
-					value: 'url.url',
-					sortable: true
+					value: 'url.url'
 				},
 				{
-					text: 'Created By',
-					value: 'url.created_by.username',
-					sortable: true
+					text: this.$t( 'createdby' ),
+					value: 'url.created_by.username'
 				},
 				{
-					text: 'Status',
-					value: 'valid',
-					sortable: true
+					text: this.$t( 'status' ),
+					value: 'valid'
 				},
 				{
 					text: '',
 					value: 'data-table-expand'
 				}
 			];
+		},
+		crawlEndDates() {
+			return this.crawlerHistory.map( ( crawl ) =>
+				this.$moment( crawl.end_date ).format( 'lll' )
+			).reverse();
+		},
+		crawlTotalTools() {
+			return this.crawlerHistory.map( ( crawl ) =>
+				crawl.total_tools
+			).reverse();
+		},
+		crawlUrlsCrawled() {
+			return this.crawlerHistory.map( ( crawl ) =>
+				crawl.crawled_urls
+			).reverse();
 		}
 	},
 	methods: {
@@ -239,53 +242,26 @@ export default {
 		},
 		fillChartsData() {
 			this.crawledUrlsChartData = {
-				labels: this.getEndDates(),
+				labels: this.crawlEndDates,
 				datasets: [
 					{
 						label: this.$t( 'urlscrawled' ),
 						backgroundColor: this.$vuetify.theme.themes.light.accent,
-						data: this.getUrlsCrawled()
+						data: this.crawlUrlsCrawled
 					}
 				]
 			};
 
 			this.totalToolsChartData = {
-				labels: this.getEndDates(),
+				labels: this.crawlEndDates,
 				datasets: [
 					{
 						label: this.$t( 'totaltools' ),
 						backgroundColor: this.$vuetify.theme.themes.light.primary,
-						data: this.getTotalTools()
+						data: this.crawlTotalTools
 					}
 				]
 			};
-		},
-		getEndDates() {
-			const endDates = [];
-
-			this.crawlerHistory.forEach( ( history ) => {
-				endDates.push( this.$moment( history.end_date ).format( 'lll' ) );
-			} );
-
-			return endDates.reverse();
-		},
-		getTotalTools() {
-			const totalTools = [];
-
-			this.crawlerHistory.forEach( ( history ) => {
-				totalTools.push( history.total_tools );
-			} );
-
-			return totalTools.reverse();
-		},
-		getUrlsCrawled() {
-			const crawledUrls = [];
-
-			this.crawlerHistory.forEach( ( history ) => {
-				crawledUrls.push( history.crawled_urls );
-			} );
-
-			return crawledUrls.reverse();
 		},
 		changeUrlsCrawled( item ) {
 			this.crawlerRunEndDate = this.$moment( item.end_date ).format( 'lll' );
@@ -301,7 +277,7 @@ export default {
 		}
 	},
 	watch: {
-		clonedHistory( newVal, oldVal ) {
+		crawlerHistory( newVal, oldVal ) {
 			if ( oldVal !== newVal ) {
 				this.fillChartsData();
 				this.changeUrlsCrawled( this.crawlerHistory[ 0 ] );
