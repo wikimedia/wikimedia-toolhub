@@ -17,6 +17,8 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.utils.translation import gettext_lazy as _
 
+from rest_framework import serializers
+
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.decorators import doc
 from toolhub.serializers import ModelSerializer
@@ -77,6 +79,8 @@ class RunUrlSerializer(ModelSerializer):
 class RunSerializer(ModelSerializer):
     """Summary of a single run of the crawler."""
 
+    crawled_urls = serializers.IntegerField()
+
     class Meta:
         """Configure serializer."""
 
@@ -85,7 +89,9 @@ class RunSerializer(ModelSerializer):
             "id",
             "start_date",
             "end_date",
+            "crawled_urls",
             "new_tools",
             "updated_tools",
             "total_tools",
         ]
+        read_only_fields = fields

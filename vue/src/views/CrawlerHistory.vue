@@ -181,7 +181,7 @@ export default {
 				},
 				{
 					text: this.$t( 'urlscrawled' ),
-					value: 'urls.count',
+					value: 'crawled_urls',
 					sortable: true
 				},
 				{
@@ -282,7 +282,7 @@ export default {
 			const crawledUrls = [];
 
 			this.crawlerHistory.forEach( ( history ) => {
-				crawledUrls.push( history.urls.count );
+				crawledUrls.push( history.crawled_urls );
 			} );
 
 			return crawledUrls.reverse();

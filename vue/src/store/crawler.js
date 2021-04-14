@@ -32,32 +32,7 @@ export default {
 			makeApiCall( context, request1 ).then(
 				( success1 ) => {
 					history = success1.body;
-
-					const getUrlsForACrawlerRun = async ( cr, index ) => {
-						const request2 = { url: '/api/crawler/runs/' + cr.id + '/urls' };
-
-						await makeApiCall( context, request2 ).then(
-							( success2 ) => {
-								history.results[ index ].urls = success2.body;
-								return Promise.resolve( 'ok' );
-							},
-							( failure ) => {
-								return Promise.reject( failure );
-							}
-						);
-					};
-
-					const getCrawlerRuns = async () => {
-						await Promise.all( history.results.map( ( cr, index ) => {
-							return getUrlsForACrawlerRun( cr, index );
-						} ) ).then( () => {
-							context.commit( 'CRAWLER_HISTORY', history );
-						} ).catch( ( error ) => {
-							this._vm.$notify.error( i18n.t( 'apierror', [ error ] ) );
-						} );
-					};
-
-					getCrawlerRuns();
+					context.commit( 'CRAWLER_HISTORY', history );
 				},
 				( failure ) => {
 					const explanation = ( 'statusCode' in failure ) ?

@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema
@@ -111,7 +112,7 @@ class UrlViewSet(
 class RunViewSet(viewsets.ReadOnlyModelViewSet):
     """Crawler runs."""
 
-    queryset = Run.objects.all()
+    queryset = Run.objects.all().annotate(crawled_urls=Count("urls"))
     serializer_class = RunSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filterset_fields = {
