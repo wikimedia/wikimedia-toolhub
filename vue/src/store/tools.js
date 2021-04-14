@@ -142,12 +142,16 @@ export default {
 					);
 				},
 				( failure ) => {
-					const explanation = ( 'statusCode' in failure ) ?
-						failure.response.statusText : failure;
+					const data = getFailurePayload( failure );
 
-					this._vm.$notify.error(
-						i18n.t( 'apierror', [ explanation ] )
-					);
+					for ( const err in data.errors ) {
+						this._vm.$notify.error(
+							i18n.t( 'apierrors', [
+								data.errors[ err ].field,
+								data.errors[ err ].message
+							] )
+						);
+					}
 				}
 			);
 		},
