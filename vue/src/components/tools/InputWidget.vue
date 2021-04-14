@@ -197,7 +197,7 @@ export const methods = {
 			}
 		} else if ( op === 'add' ) {
 			// TODO: make this configurable
-			data.push( { url: '', language: 'en' } );
+			data.push( { url: '', language: this.$i18n.locale } );
 		}
 	}
 };

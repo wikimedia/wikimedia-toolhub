@@ -242,11 +242,11 @@ export default {
 				api_url: null,
 				translate_url: null,
 				bugtracker_url: null,
-				user_docs_url: [ { language: 'en', url: null } ],
-				developer_docs_url: [ { language: 'en', url: null } ],
-				feedback_url: [ { language: 'en', url: null } ],
-				privacy_policy_url: [ { language: 'en', url: null } ],
-				url_alternates: [ { language: 'en', url: null } ],
+				user_docs_url: [ { language: this.$i18n.locale, url: null } ],
+				developer_docs_url: [ { language: this.$i18n.locale, url: null } ],
+				feedback_url: [ { language: this.$i18n.locale, url: null } ],
+				privacy_policy_url: [ { language: this.$i18n.locale, url: null } ],
+				url_alternates: [ { language: this.$i18n.locale, url: null } ],
 				tool_type: null,
 				license: null,
 				available_ui_languages: [],
@@ -504,7 +504,7 @@ export default {
 				for ( const lk in this.links ) {
 					const items = this.tool[ this.links[ lk ] ];
 					if ( items.length === 0 ) {
-						items.push( { url: '', language: 'en' } );
+						items.push( { url: '', language: this.$i18n.locale } );
 					}
 				}
 			},

@@ -47,8 +47,7 @@ export default {
 				license: null,
 				repository: null,
 				bugtracker_url: null,
-				// FIXME: can we initialize this to the current locale?
-				user_docs_url: [ { language: 'en', url: null } ]
+				user_docs_url: [ { language: this.$i18n.locale, url: null } ]
 			},
 			layout: {
 				name: {
