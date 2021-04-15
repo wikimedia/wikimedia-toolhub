@@ -108,7 +108,7 @@
 	"required-field": "Validation message",
 	"replacedby": "Label for link to a replacement tool",
 	"repository": "Label for source repository of tool",
-	"revert": "Link label for tool history revert operation",
+	"revert": "Link label for tool history revert operation\n{{identical|Revert}}",
 	"revisionsdiff": "Page title",
 	"schemalink": "Link label, links to JSON schema for toolinfo files.",
 	"scrolltotop": "Button label",
