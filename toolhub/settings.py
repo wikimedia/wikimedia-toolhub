@@ -177,6 +177,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "social_django.middleware.SocialAuthExceptionMiddleware",
     "toolhub.apps.auditlog.middleware.LogEntryUserMiddleware",
+    "toolhub.middleware.FLoCOptOutMiddleware",
 ]
 
 ROOT_URLCONF = "toolhub.urls"
