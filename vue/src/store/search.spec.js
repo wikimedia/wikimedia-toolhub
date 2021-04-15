@@ -100,10 +100,15 @@ describe( 'store/search', () => {
 		const state = {};
 		const rootState = { locale: { locale: 'en' } };
 		const context = { commit, state, rootState };
-		const http = sinon.stub( SwaggerClient, 'http' );
+		let http = 'func';
 
-		afterEach( () => sinon.reset() );
-		after( () => sinon.restore() );
+		beforeEach( () => {
+			http = sinon.stub( SwaggerClient, 'http' );
+		} );
+		afterEach( () => {
+			http.restore();
+			sinon.reset();
+		} );
 
 		describe( 'findTools', () => {
 			const response = {
