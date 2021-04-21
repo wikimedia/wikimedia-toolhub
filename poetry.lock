@@ -406,7 +406,7 @@ djangorestframework = ">=3.6.0"
 
 [[package]]
 name = "drf-spectacular"
-version = "0.13.1"
+version = "0.13.2"
 description = "Sane and flexible OpenAPI 3 schema generation for Django REST framework"
 category = "main"
 optional = false
@@ -1698,8 +1698,8 @@ drf-nested-routers = [
     {file = "drf_nested_routers-0.92.5-py2.py3-none-any.whl", hash = "sha256:995b831be036911e330a86b7129dc6589de62f2a53d72067e7ce2b4a90f28c35"},
 ]
 drf-spectacular = [
-    {file = "drf-spectacular-0.13.1.tar.gz", hash = "sha256:53701a1fcd0fb8ad4132b6f893ed60bfac992e7897554dd11f692d55b04ec38a"},
-    {file = "drf_spectacular-0.13.1-py2.py3-none-any.whl", hash = "sha256:b7e45fd6d6755a442459a965a8f4d595a69c0317e0385331d7b9f09b306c68f6"},
+    {file = "drf-spectacular-0.13.2.tar.gz", hash = "sha256:3e79a838960f27dc8a8ea955eac0c1c7335a94c0fba9657b85258ae6ac22d6ab"},
+    {file = "drf_spectacular-0.13.2-py2.py3-none-any.whl", hash = "sha256:0572019a7ae3c00aa1706e803f1182ef434da680a167900fae53e65a2dac9bbf"},
 ]
 elasticsearch = [
     {file = "elasticsearch-6.8.1-py2.py3-none-any.whl", hash = "sha256:540d633afcc0a32972e4b489c4559c9a96e294850853238f7a18b1cbd267c2ed"},

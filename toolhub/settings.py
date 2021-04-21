@@ -313,7 +313,6 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-
 STATIC_URL = "/static/"
 STATIC_ROOT = env.str(
     "STATIC_ROOT", default=os.path.join(BASE_DIR, "staticfiles")
@@ -383,7 +382,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "toolhub.pagination.CustomPagination",
     "PAGE_SIZE": 10,
     "DEFAULT_FILTER_BACKENDS": [
-        "drf_spectacular.contrib.django_filters.DjangoFilterBackend",
+        "django_filters.rest_framework.DjangoFilterBackend",
         "rest_framework.filters.OrderingFilter",
     ],
     "EXCEPTION_HANDLER": "rest_framework_friendly_errors.handlers.friendly_exception_handler",
