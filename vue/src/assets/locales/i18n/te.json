@@ -19,6 +19,7 @@
 	"leavefeedback": "ప్రతిస్పందనను తెలియజేయండి",
 	"links": "లంకెలు",
 	"login": "ప్రవేశించండి",
+	"modifieddate": "మార్చిన తేదీ",
 	"moreinfo": "మరింత సమాచారం",
 	"my-account": "నా ఖాతా",
 	"newtoolsfound": "1 పనిముట్టు | {n} పనిముట్లు",
@@ -32,5 +33,6 @@
 	"totaltools": "మొత్తం పనిముట్లు",
 	"tooltype": "పనిముట్టు రకం",
 	"urlrequired": "చిరునామా తప్పనిసరి",
+	"viewhistory": "చరిత్రను చూడండి",
 	"viewmore": "ఇంకా చూడండి"
 }
