@@ -135,5 +135,5 @@ class GroupSerializer(ModelSerializer):
         """Configure serializer."""
 
         model = Group
-        fields = ["name"]
+        fields = ["id", "name"]
         read_only_fields = fields
