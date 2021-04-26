@@ -25,4 +25,4 @@ class ToolinfoConfigTest(SimpleTestCase):
 
     def test_apps(self):
         """Assert the app has a name."""
-        self.assertEqual(ToolinfoConfig.name, "toolhub.apps.toolinfo")
+        self.assertEqual(ToolinfoConfig.name, "toolinfo")

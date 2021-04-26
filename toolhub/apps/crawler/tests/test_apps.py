@@ -25,4 +25,4 @@ class CrawlerConfigTest(SimpleTestCase):
 
     def test_apps(self):
         """Assert the app has a name."""
-        self.assertEqual(CrawlerConfig.name, "toolhub.apps.crawler")
+        self.assertEqual(CrawlerConfig.name, "crawler")
