@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import makeApiCall from '@/plugins/swagger.js';
+import i18n from '@/plugins/i18n';
 
 Vue.use( Vuex );
 
