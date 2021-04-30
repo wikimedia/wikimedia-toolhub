@@ -7,12 +7,12 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-04-26 13:32:12+0000\n"
+"PO-Revision-Date: 2021-04-30 07:08:25+0000\n"
 "X-POT-Import-Date: 2021-04-23 18:32:06+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
-"X-Generator: MediaWiki 1.37.0-alpha; Translate 2021-01-21\n"
+"X-Generator: MediaWiki 1.37.0-alpha; Translate 2021-04-28\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: toolhub/apps/auditlog/apps.py:26
@@ -77,23 +77,23 @@ msgstr "רשומת יומן אבטחה"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr ""
+msgstr "להציג רק יומנים בשביל סוגי הפעולה הנתונים."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr ""
+msgstr "להציג רק יומנים בשביל סוג היעד הנתון."
 
 #: toolhub/apps/auditlog/views.py:72
 msgid "Only show logs occuring before the given date and time."
-msgstr ""
+msgstr "להציג רק יומנים לפני התאריך והשעה הנתונים."
 
 #: toolhub/apps/auditlog/views.py:77
 msgid "Only show logs occuring after the given date and time."
-msgstr ""
+msgstr "להציג רק יומנים אחרי התאריך והשעה הנתונים."
 
 #: toolhub/apps/auditlog/views.py:82
 msgid "Only show logs for the given user."
-msgstr ""
+msgstr "להציג רק יומנים עבור המשתמש הנתון."
 
 #: toolhub/apps/auditlog/views.py:88
 msgid "List all log entries."
@@ -545,13 +545,13 @@ msgstr "הגרסה אחרי החלת השינויים."
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "%(value)s זה לא קוד שפה מוכר."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
 #, python-format
 msgid "Expected a list of language codes but found %(type)s"
-msgstr ""
+msgstr "הייתה אמורה תהיות רשימת קודי שפה, אבל נמצא %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
@@ -561,15 +561,15 @@ msgstr "%(value)s אינו מזהה SPDX ידוע עבור רישיון."
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
 msgid "Expected a url_multilingual dict but found %(type)s"
-msgstr ""
+msgstr "היה אמור להיות מילון url_multilingual, אבל המצא %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
-msgstr ""
+msgstr "ב־Url_multilingual חסר מאפיין \"language\"."
 
 #: toolhub/apps/toolinfo/validators.py:79
 msgid "Url_multilingual missing 'url' property."
-msgstr ""
+msgstr "ב־Url_multilingual חסר מאפיין \"url\"."
 
 #: toolhub/apps/toolinfo/views.py:53
 msgid "Failed to apply patch."
