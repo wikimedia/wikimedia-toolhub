@@ -35,6 +35,107 @@ from .. import views
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
+class ToolViewSetTest(TestCase):
+    """Test ToolViewSet."""
+
+    @classmethod
+    def setUpTestData(cls):
+        """Setup for all tests in this TestCase."""
+        cls.user = ToolhubUser.objects.create_user(  # nosec: B106
+            username="Demo Unicorn",
+            email="bdavis+dunicorn@wikimedia.org",
+            password="unused",
+        )
+
+        with open(os.path.join(TEST_DIR, "toolinfo_fixture.json")) as fixture:
+            cls.toolinfo = json.load(fixture)
+
+        cls.tool, _, _ = models.Tool.objects.from_toolinfo(
+            cls.toolinfo, cls.user, models.Tool.ORIGIN_API
+        )
+
+        with open(os.path.join(TEST_DIR, "view_fixture.json")) as data:
+            cls.fixture = json.load(data)
+
+    def test_create_requires_auth(self):
+        """Assert that create fails for anon."""
+        req = APIRequestFactory().post("", self.fixture, format="json")
+        force_authenticate(req)  # Ensure anon user
+        view = views.ToolViewSet.as_view({"post": "create"})
+        response = view(req)
+        self.assertEqual(response.status_code, 401)
+
+    def test_create(self):
+        """Test create."""
+        req = APIRequestFactory().post("", self.fixture, format="json")
+        force_authenticate(req, user=self.user)
+        view = views.ToolViewSet.as_view({"post": "create"})
+        response = view(req)
+        self.assertEqual(response.status_code, 201)
+
+    def test_retrieve(self):
+        """Test retrieve."""
+        req = APIRequestFactory().get("")
+        force_authenticate(req)  # Ensure anon user
+        view = views.ToolViewSet.as_view({"get": "retrieve"})
+        response = view(req, name=self.tool.name)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("name", response.data)
+        self.assertEqual(response.data["name"], self.tool.name)
+
+    def test_update_requires_auth(self):
+        """Assert that update requires authentication."""
+        self.fixture["description"] = "test_update_requires_auth"
+        self.fixture["comment"] = "test_update_requires_auth"
+        req = APIRequestFactory().put("", self.fixture, format="json")
+        force_authenticate(req)  # Ensure anon user
+        view = views.ToolViewSet.as_view({"put": "update"})
+        response = view(req, name=self.tool.name)
+        self.assertEqual(response.status_code, 401)
+
+    def test_update(self):
+        """Test update."""
+        self.fixture["description"] = "test_update"
+        self.fixture["comment"] = "test_update"
+        req = APIRequestFactory().put("", self.fixture, format="json")
+        force_authenticate(req, user=self.user)
+        view = views.ToolViewSet.as_view({"put": "update"})
+        response = view(req, name=self.tool.name)
+        self.assertEqual(response.status_code, 200)
+        data = response.data
+        self.assertEqual(data["name"], self.tool.name)
+        self.assertEqual(data["description"], self.fixture["description"])
+
+    def test_destroy_requires_auth(self):
+        """Assert that destroy requires auth."""
+        req = APIRequestFactory().delete("")
+        force_authenticate(req)  # Ensure anon user
+        view = views.ToolViewSet.as_view({"delete": "destroy"})
+        response = view(req, name=self.tool.name)
+        self.assertEqual(response.status_code, 401)
+
+    def test_destroy(self):
+        """Test destroy."""
+        req = APIRequestFactory().delete("")
+        force_authenticate(req, user=self.user)
+        view = views.ToolViewSet.as_view({"delete": "destroy"})
+        response = view(req, name=self.tool.name)
+        self.assertEqual(response.status_code, 204)
+
+    def test_list(self):
+        """Test list."""
+        req = APIRequestFactory().get("")
+        force_authenticate(req)  # Ensure anon user
+        view = views.ToolViewSet.as_view({"get": "list"})
+        response = view(req, name=self.tool.name)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("results", response.data)
+        self.assertEqual(len(response.data["results"]), 1)
+        tool = response.data["results"][0]
+        self.assertIn("name", tool)
+        self.assertEqual(tool["name"], self.tool.name)
+
+
 class ToolRevisionViewSetTest(TestCase):
     """Test ToolRevisionViewSet."""
 
@@ -64,6 +165,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_list(self):
         """Test list action."""
         req = APIRequestFactory().get("")
+        force_authenticate(req)  # Ensure anon user
         view = views.ToolRevisionViewSet.as_view({"get": "list"})
         response = view(req, tool_name=self.tool.name)
         self.assertEqual(response.status_code, 200)
@@ -71,6 +173,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_retrieve(self):
         """Test retrieve action."""
         req = APIRequestFactory().get("")
+        force_authenticate(req)  # Ensure anon user
         view = views.ToolRevisionViewSet.as_view({"get": "retrieve"})
         response = view(
             req, pk=self.versions().first().pk, tool_name=self.tool.name
@@ -84,6 +187,7 @@ class ToolRevisionViewSetTest(TestCase):
             self.tool.save()
 
         req = APIRequestFactory().get("")
+        force_authenticate(req)  # Ensure anon user
         view = views.ToolRevisionViewSet.as_view({"get": "diff"})
         diff_from = self.versions().first().pk
         diff_to = self.versions().last().pk
@@ -102,6 +206,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_revert_requires_auth(self):
         """Test revert action."""
         req = APIRequestFactory().post("")
+        force_authenticate(req)  # Ensure anon user
         view = views.ToolRevisionViewSet.as_view({"post": "revert"})
         response = view(
             req,
@@ -132,6 +237,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_undo_requires_auth(self):
         """Test undo action."""
         req = APIRequestFactory().post("")
+        force_authenticate(req)  # Ensure anon user
         view = views.ToolRevisionViewSet.as_view({"post": "undo"})
         response = view(
             req,

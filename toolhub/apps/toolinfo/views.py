@@ -25,7 +25,6 @@ from drf_spectacular.utils import extend_schema_view
 
 import jsonpatch
 
-from rest_framework import permissions
 from rest_framework import response
 from rest_framework import status
 from rest_framework import viewsets
@@ -35,6 +34,8 @@ from rest_framework.exceptions import APIException
 from reversion.models import Version
 
 import spdx_license_list
+
+from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 
 from .models import Tool
 from .serializers import CreateToolSerializer
@@ -81,17 +82,20 @@ class ToolViewSet(viewsets.ModelViewSet):
     """Tools."""
 
     lookup_field = "name"
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filterset_fields = {
         "name": ["exact", "contains", "startswith", "endswith"],
     }
     ordering_fields = ["name", "modified_date"]
     ordering = ["-modified_date"]
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
 
     def get_queryset(self):
         """Filter qs by current user when editing."""
         if self.request.method in ["DELETE", "PUT"]:
-            return Tool.objects.filter(created_by=self.request.user)
+            user = self.request.user
+            if not user.is_authenticated:
+                user = None
+            return Tool.objects.filter(created_by=user)
         return Tool.objects.all()
 
     def get_serializer_class(self):
@@ -167,7 +171,7 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
     queryset = Version.objects.none()
     serializer_class = ToolRevisionSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
 
     def get_queryset(self):
         """Filter queryset by Tool using path param."""
@@ -203,7 +207,7 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
     @action(
         detail=True,
-        methods=["get"],
+        methods=["GET"],
         url_path=r"diff/(?P<other_id>\d+)",
     )
     def diff(self, request, **kwargs):
@@ -228,7 +232,7 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
     @action(
         detail=True,
-        methods=["post"],
+        methods=["POST"],
         url_path=r"revert",
     )
     def revert(self, request, **kwargs):
@@ -250,7 +254,7 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
     @action(
         detail=True,
-        methods=["post"],
+        methods=["POST"],
         url_path=r"undo/(?P<other_id>\d+)",
     )
     def undo(self, request, **kwargs):

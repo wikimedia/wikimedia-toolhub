@@ -21,15 +21,12 @@ from django.utils.translation import gettext_lazy as _
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
-from rest_framework import mixins
-from rest_framework import permissions
+from rest_framework import exceptions
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from toolhub.permissions import IsAdminOrIsSelf
-from toolhub.permissions import IsCreator
-from toolhub.permissions import IsReadOnly
+from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 
 from .models import Run
 from .models import RunUrl
@@ -48,6 +45,12 @@ from .serializers import UrlSerializer
     retrieve=extend_schema(
         description=_("""Information about a specific crawled URL."""),
     ),
+    update=extend_schema(
+        exclude=True,
+    ),
+    partial_update=extend_schema(
+        exclude=True,
+    ),
     destroy=extend_schema(
         description=_("""Unregister a URL."""),
     ),
@@ -55,18 +58,12 @@ from .serializers import UrlSerializer
         description=_("""List all crawled URLs."""),
     ),
 )
-class UrlViewSet(
-    mixins.CreateModelMixin,
-    mixins.RetrieveModelMixin,
-    mixins.DestroyModelMixin,
-    mixins.ListModelMixin,
-    viewsets.GenericViewSet,
-):
+class UrlViewSet(viewsets.ModelViewSet):
     """Toolinfo URLs."""
 
     queryset = Url.objects.all()
     serializer_class = UrlSerializer
-    permission_classes = [IsCreator | IsReadOnly]
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
     filterset_fields = {
         "id": ["gt", "gte", "lt", "lte"],
         "created_by__username": [
@@ -87,11 +84,12 @@ class UrlViewSet(
     @extend_schema(
         description=_("""Get URLs created by the current user."""),
     )
-    @action(detail=False, permission_classes=[IsAdminOrIsSelf])
+    @action(detail=False)
     def self(self, request):
         """Owned item list."""
+        if not request.user.is_authenticated:
+            raise exceptions.NotAuthenticated()
         qs = self.filter_queryset(Url.objects.filter(created_by=request.user))
-
         page = self.paginate_queryset(qs)
         if page is not None:
             serializer = self.get_serializer(page, many=True)
@@ -114,7 +112,7 @@ class RunViewSet(viewsets.ReadOnlyModelViewSet):
 
     queryset = Run.objects.all().annotate(crawled_urls=Count("urls"))
     serializer_class = RunSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
     filterset_fields = {
         "id": ["gt", "gte", "lt", "lte"],
         "start_date": ["date__gt", "date__gte", "date__lt", "date__lte"],
@@ -138,7 +136,7 @@ class RunUrlViewSet(viewsets.ReadOnlyModelViewSet):
 
     queryset = RunUrl.objects.none()
     serializer_class = RunUrlSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
     ordering_fields = ["id", "url_id", "url__url", "status_code", "valid"]
     ordering = ["valid", "status_code", "id"]
 

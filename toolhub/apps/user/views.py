@@ -20,6 +20,7 @@ from django.contrib.auth.models import Group
 from django.middleware.csrf import get_token
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema
@@ -30,6 +31,8 @@ from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 
 from .models import ToolhubUser
 from .serializers import CurrentUserSerializer
@@ -66,6 +69,8 @@ class CurrentUserView(APIView):
 class LocaleView(APIView):
     """User's locale."""
 
+    permission_classes = [permissions.AllowAny]
+
     @extend_schema(
         description=_("""Get current locale."""),
         responses=LocaleSerializer,
@@ -73,7 +78,7 @@ class LocaleView(APIView):
     def get(self, request):
         """Get locale."""
         locale = {
-            "language": request.LANGUAGE_CODE,
+            "language": get_language(),
         }
         return Response(LocaleSerializer(locale).data)
 
@@ -107,7 +112,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
     queryset = ToolhubUser.objects.filter(is_active=True)
     serializer_class = UserDetailSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
     filterset_fields = {
         "id": ["gt", "gte", "lt", "lte"],
         "username": ["exact", "contains", "startswith", "endswith"],
@@ -130,7 +135,7 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
 
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
     ordering_fields = ["id", "name"]
     ordering = ["id"]
 

@@ -111,6 +111,11 @@ LOGGING = {
             "level": LOGGING_LEVEL,
             "propagate": False,
         },
+        "rules": {  # django-rules log channel
+            "handlers": LOGGING_HANDLERS,
+            "level": LOGGING_LEVEL,
+            "propagate": True,
+        },
     },
     "root": {
         "handlers": LOGGING_HANDLERS,
@@ -150,6 +155,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "reversion",
     "reversion_compare",
+    "rules",
     "safedelete",
     "social_django",
     "webpack_loader",
@@ -266,6 +272,7 @@ LOGOUT_REDIRECT_URL = "vue:main"
 
 AUTHENTICATION_BACKENDS = [
     "toolhub.oauth.WikimediaOAuth2",
+    "rules.permissions.ObjectPermissionBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
 

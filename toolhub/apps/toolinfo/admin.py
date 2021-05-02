@@ -19,6 +19,8 @@ import django.contrib.admin
 
 from reversion_compare.admin import CompareVersionAdmin
 
+from rules.contrib.admin import ObjectPermissionsModelAdmin
+
 from safedelete.admin import SafeDeleteAdmin
 from safedelete.admin import highlight_deleted
 
@@ -26,7 +28,11 @@ from . import models
 
 
 @django.contrib.admin.register(models.Tool)
-class ToolAdmin(CompareVersionAdmin, SafeDeleteAdmin):
+class ToolAdmin(
+    CompareVersionAdmin,
+    ObjectPermissionsModelAdmin,
+    SafeDeleteAdmin,
+):
     """Register with admin."""
 
     list_display = (

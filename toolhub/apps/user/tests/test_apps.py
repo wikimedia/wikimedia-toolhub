@@ -17,7 +17,7 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.test import SimpleTestCase
 
-from .apps import UserConfig
+from .. import apps
 
 
 class UserConfigTest(SimpleTestCase):
@@ -25,4 +25,4 @@ class UserConfigTest(SimpleTestCase):
 
     def test_apps(self):
         """Assert the app has a name."""
-        self.assertEqual(UserConfig.name, "user")
+        self.assertEqual(apps.UserConfig.name, "user")

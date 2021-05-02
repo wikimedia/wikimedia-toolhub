@@ -23,10 +23,10 @@ from drf_spectacular.utils import extend_schema_view
 from oauth2_provider.models import AccessToken
 from oauth2_provider.models import Application
 
-from rest_framework import permissions
 from rest_framework import viewsets
 
-from toolhub.permissions import IsUser
+from toolhub.permissions import ObjectPermissions
+from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 
 from .serializers import ApplicationSerializer
 from .serializers import AuthorizationSerializer
@@ -62,10 +62,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
     queryset = Application.objects.all()
     lookup_field = "client_id"
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly,
-        IsUser,
-    ]
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
     filterset_fields = {
         "user__username": ["exact"],
     }
@@ -73,9 +70,9 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         """Get the proper serializer for this request."""
-        if self.request.method == "POST":
+        if self.request.method.upper() == "POST":
             return RegisterApplicationSerializer
-        if self.request.method == "PATCH":
+        if self.request.method.upper() == "PATCH":
             return UpdateApplicationSerializer
         return ApplicationSerializer
 
@@ -114,10 +111,7 @@ class AuthorizationViewSet(viewsets.ModelViewSet):
 
     queryset = AccessToken.objects.none()
     serializer_class = AuthorizationSerializer
-    permission_classes = [
-        permissions.IsAuthenticated,
-        IsUser,
-    ]
+    permission_classes = [ObjectPermissions]
     ordering = ["id"]
 
     def get_queryset(self):
