@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-04-30 07:08:26+0000\n"
+"PO-Revision-Date: 2021-05-03 13:32:12+0000\n"
 "X-POT-Import-Date: 2021-04-23 18:32:06+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -78,23 +78,23 @@ msgstr "Denetim günlüğü girdisi"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr ""
+msgstr "Sadece verilen eylem türü için günlükleri göster."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr ""
+msgstr "Sadece verilen hedef türü için günlükleri göster."
 
 #: toolhub/apps/auditlog/views.py:72
 msgid "Only show logs occuring before the given date and time."
-msgstr ""
+msgstr "Sadece verilen tarih ve zamandan önce meydana gelen günlükleri göster."
 
 #: toolhub/apps/auditlog/views.py:77
 msgid "Only show logs occuring after the given date and time."
-msgstr ""
+msgstr "Sadece verilen tarih ve zamandan sonra meydana gelen günlükleri göster."
 
 #: toolhub/apps/auditlog/views.py:82
 msgid "Only show logs for the given user."
-msgstr ""
+msgstr "Sadece verilen kullanıcı için günlükleri göster."
 
 #: toolhub/apps/auditlog/views.py:88
 msgid "List all log entries."
@@ -546,13 +546,13 @@ msgstr "Değişiklikleri uyguladıktan sonraki sürüm."
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "%(value)s tanınan bir dil kodu değil."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
 #, python-format
 msgid "Expected a list of language codes but found %(type)s"
-msgstr ""
+msgstr "Bir dil kodları listesi bekleniyordu, ancak %(type)s bulundu"
 
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
@@ -562,15 +562,15 @@ msgstr "%(value)s bilinen bir SPDX lisans tanımı değil."
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
 msgid "Expected a url_multilingual dict but found %(type)s"
-msgstr ""
+msgstr "Bir url_multilingual bekleniyordu, ancak %(type)s bulundu"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
-msgstr ""
+msgstr "Url_multilingual için 'language' özelliği eksik."
 
 #: toolhub/apps/toolinfo/validators.py:79
 msgid "Url_multilingual missing 'url' property."
-msgstr ""
+msgstr "Url_multilingual için 'url' özelliği eksik."
 
 #: toolhub/apps/toolinfo/views.py:53
 msgid "Failed to apply patch."
