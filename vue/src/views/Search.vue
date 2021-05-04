@@ -78,6 +78,7 @@ import Filters from '@/components/search/Filters';
 import SearchBar from '@/components/search/SearchBar';
 import Sort from '@/components/search/Sort';
 import ToolCard from '@/components/tools/ToolCard';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	name: 'Search',
@@ -95,6 +96,9 @@ export default {
 		searching: false,
 		ordering: '-score'
 	} ),
+	metaInfo() {
+		return fetchMetaInfo( 'search' );
+	},
 	computed: {
 		...mapState( 'search', {
 			response: 'toolsResponse',

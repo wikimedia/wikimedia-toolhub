@@ -222,6 +222,7 @@
 import { mapState, mapActions } from 'vuex';
 import InputWidget from '@/components/tools/InputWidget';
 import ScrollTop from '@/components/tools/ScrollTop';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	name: 'Tool',
@@ -452,6 +453,9 @@ export default {
 			links: [ 'user_docs_url', 'developer_docs_url', 'privacy_policy_url', 'feedback_url', 'url_alternates' ],
 			valid: false
 		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'edittool', this.name );
 	},
 	computed: {
 		...mapState( 'tools', { toolFromVuex: 'tool' } ),

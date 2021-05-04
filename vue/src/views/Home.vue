@@ -117,6 +117,7 @@ import { mapState } from 'vuex';
 import '@/assets/styles/index.css';
 import SearchBar from '@/components/search/SearchBar';
 import ToolCard from '@/components/tools/ToolCard';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	components: {
@@ -127,6 +128,9 @@ export default {
 		page: 1,
 		itemsPerPage: 12
 	} ),
+	metaInfo() {
+		return fetchMetaInfo( 'home' );
+	},
 	computed: {
 		...mapState( 'tools', [ 'toolsList', 'numTools' ] ),
 		...mapState( 'crawler', [ 'crawlerHistory', 'lastCrawlerRun', 'numCrawlerRuns' ] )

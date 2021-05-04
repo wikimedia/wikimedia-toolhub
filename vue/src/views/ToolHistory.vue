@@ -106,6 +106,8 @@
 
 <script>
 import { mapState } from 'vuex';
+import fetchMetaInfo from '@/helpers/metadata';
+
 export default {
 	name: 'ToolHistory',
 	data() {
@@ -118,6 +120,9 @@ export default {
 			otherSelectedId: '',
 			checkbox: {}
 		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'toolhistory', this.name );
 	},
 	computed: {
 		...mapState( 'tools', [ 'toolRevisions', 'numRevisions' ] )

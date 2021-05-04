@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueMeta from 'vue-meta';
 import AsyncComputed from 'vue-async-computed';
 import clipboard from 'vue-clipboard2';
 import frag from 'vue-frag';
@@ -12,6 +13,7 @@ import notify from './plugins/notify';
 
 Vue.config.productionTip = false;
 Vue.directive( 'frag', frag );
+Vue.use( VueMeta );
 Vue.use( AsyncComputed );
 Vue.use( clipboard );
 Vue.use( notify, { store: store } );

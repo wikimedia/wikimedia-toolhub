@@ -35,6 +35,7 @@
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex';
 import ToolInfo from '@/components/tools/ToolInfo';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	name: 'ToolView',
@@ -46,6 +47,9 @@ export default {
 			name: this.$route.params.name,
 			revId: this.$route.params.revId
 		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'toolview', this.name );
 	},
 	computed: {
 		...mapState( 'tools', [ 'tool', 'toolRevision' ] )

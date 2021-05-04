@@ -143,6 +143,7 @@
 import { mapState } from 'vuex';
 import Chart from '@/components/chart/LineChart.js';
 import customSort from '@/plugins/sort.js';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	components: { Chart },
@@ -159,6 +160,9 @@ export default {
 			rowSelected: false,
 			expanded: []
 		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'crawlerhistory' );
 	},
 	computed: {
 		...mapState( 'crawler', [

@@ -359,6 +359,7 @@
 <script>
 import { mapState } from 'vuex';
 import urlRegex from '@/plugins/url-regex';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	data() {
@@ -381,6 +382,9 @@ export default {
 				( v ) => ( v || '' ).length <= 255 || this.$t( 'appnamecharslimit' )
 			]
 		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'developersettings' );
 	},
 	computed: {
 		...mapState( 'user', [

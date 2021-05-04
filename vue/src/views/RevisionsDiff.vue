@@ -141,6 +141,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	name: 'RevisionsDiff',
@@ -150,6 +151,9 @@ export default {
 			revId: this.$route.params.revId,
 			otherRevId: this.$route.params.otherRevId
 		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'revisionsdiff', this.name );
 	},
 	computed: {
 		...mapState( 'tools', [ 'diffRevision', 'toolRevision' ] ),

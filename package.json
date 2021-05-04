@@ -29,6 +29,7 @@
     "vue-clipboard2": "^0.3.1",
     "vue-frag": "^1.1.4",
     "vue-i18n": "^8.24.2",
+    "vue-meta": "^2.4.0",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.5.1",
     "vuetify": "^2.4.9",

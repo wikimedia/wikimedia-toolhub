@@ -159,6 +159,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	data() {
@@ -166,6 +167,9 @@ export default {
 			page: 1,
 			itemsPerPage: 10
 		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'auditlogs' );
 	},
 	computed: {
 		...mapState( 'auditlogs', [ 'auditLogs', 'numLogs' ] )

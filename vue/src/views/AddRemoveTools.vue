@@ -40,6 +40,7 @@
 <script>
 import CreateNewTool from '@/components/tools/CreateNewTool';
 import RegisterToolUrl from '@/components/tools/RegisterToolUrl';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	components: {
@@ -50,6 +51,9 @@ export default {
 		return {
 			tabs: null
 		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'addremovetools' );
 	}
 };
 </script>

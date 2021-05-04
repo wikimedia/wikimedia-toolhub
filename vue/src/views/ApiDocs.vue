@@ -38,9 +38,13 @@
 <script>
 import { mapActions, mapState } from 'vuex';
 import 'rapidoc';
+import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	name: 'ApiDocs',
+	metaInfo() {
+		return fetchMetaInfo( 'apidocs' );
+	},
 	computed: {
 		...mapState( 'api', [ 'apispec', 'specLoaded' ] ),
 		...mapState( 'user', [ 'user' ] )
