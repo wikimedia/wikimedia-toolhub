@@ -70,6 +70,17 @@ crawler_runs.register(
     basename="run-urls",
 )
 
+groups = nested_routers.NestedSimpleRouter(
+    root,
+    "groups",
+    lookup="group",
+)
+groups.register(
+    "members",
+    user_views.GroupMembersViewSet,
+    basename="group-members",
+)
+
 tool_revisions = nested_routers.NestedSimpleRouter(
     root,
     "tools",

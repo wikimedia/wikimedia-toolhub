@@ -39,10 +39,8 @@ class CurrentUserSerializer(Serializer):
 
     username = serializers.CharField(read_only=True)
     email = serializers.CharField(read_only=True)
-    is_active = serializers.BooleanField(read_only=True)
     is_anonymous = serializers.BooleanField(read_only=True)
     is_authenticated = serializers.BooleanField(read_only=True)
-    is_staff = serializers.BooleanField(read_only=True)
     csrf_token = serializers.CharField(read_only=True)
 
     def create(self, validated_data):
@@ -69,6 +67,30 @@ class LocaleSerializer(Serializer):
     def update(self, instance, validated_data):
         """Save the locale."""
         return self.create(validated_data)
+
+
+@doc(_("""User information"""))
+class UserSerializer(ModelSerializer):
+    """User information."""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = ToolhubUser
+        fields = ["id", "username"]
+        read_only_fields = fields
+
+
+@doc(_("""Group information"""))
+class GroupSerializer(ModelSerializer):
+    """Group information."""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = Group
+        fields = ["id", "name"]
+        read_only_fields = fields
 
 
 @doc(_("""Social authentication information for a user"""))
@@ -105,6 +127,7 @@ class UserSocialAuthSerializer(ModelSerializer):
 class UserDetailSerializer(ModelSerializer):
     """Detailed user information."""
 
+    groups = GroupSerializer(many=True, read_only=False)
     social_auth = UserSocialAuthSerializer(many=True, read_only=True)
 
     class Meta:
@@ -115,25 +138,19 @@ class UserDetailSerializer(ModelSerializer):
         read_only_fields = fields
 
 
-@doc(_("""User information"""))
-class UserSerializer(ModelSerializer):
-    """User information."""
+@doc(_("""Detailed group information"""))
+class GroupDetailSerializer(GroupSerializer):
+    """Group details."""
 
-    class Meta:
-        """Configure serializer."""
-
-        model = ToolhubUser
-        fields = ["id", "username"]
-        read_only_fields = fields
-
-
-@doc(_("""Group information"""))
-class GroupSerializer(ModelSerializer):
-    """Group information."""
+    users = UserSerializer(
+        source="user_set",
+        many=True,
+        read_only=True,
+    )
 
     class Meta:
         """Configure serializer."""
 
         model = Group
-        fields = ["id", "name"]
+        fields = ["id", "name", "users"]
         read_only_fields = fields

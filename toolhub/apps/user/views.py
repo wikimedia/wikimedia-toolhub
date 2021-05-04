@@ -18,24 +18,31 @@
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.models import Group
 from django.middleware.csrf import get_token
+from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
 
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
+from rest_framework import mixins
 from rest_framework import permissions
+from rest_framework import response
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from toolhub.permissions import ObjectPermissions
 from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 
 from .models import ToolhubUser
 from .serializers import CurrentUserSerializer
+from .serializers import GroupDetailSerializer
 from .serializers import GroupSerializer
 from .serializers import LocaleSerializer
 from .serializers import UserDetailSerializer
@@ -128,6 +135,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     ),
     retrieve=extend_schema(
         description=_("""Info for a user group."""),
+        responses=GroupDetailSerializer,
     ),
 )
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
@@ -138,6 +146,68 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [ObjectPermissionsOrAnonReadOnly]
     ordering_fields = ["id", "name"]
     ordering = ["id"]
+
+    def get_serializer_class(self):
+        """Use different serializers for list vs detail."""
+        if self.action == "retrieve":
+            return GroupDetailSerializer
+        return GroupSerializer
+
+
+@extend_schema_view(
+    update=extend_schema(
+        description=_("""Add a user to this group."""),
+        parameters=[
+            OpenApiParameter(
+                "group_pk",
+                OpenApiTypes.NUMBER,
+                OpenApiParameter.PATH,
+            ),
+        ],
+    ),
+    partial_update=extend_schema(exclude=True),
+    destroy=extend_schema(
+        description=_("""Remove a user from this group."""),
+        parameters=[
+            OpenApiParameter(
+                "group_pk",
+                OpenApiTypes.NUMBER,
+                OpenApiParameter.PATH,
+            ),
+        ],
+    ),
+)
+class GroupMembersViewSet(
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    viewsets.GenericViewSet,
+):
+    """Django group membership."""
+
+    queryset = ToolhubUser.objects.none()
+    serializer_class = GroupDetailSerializer
+    permission_classes = [ObjectPermissions]
+    lookup_field = "id"
+
+    def get_queryset(self):
+        """Get a queryset filtered to the appropriate objects."""
+        return Group.objects.filter(pk=self.kwargs["group_pk"])
+
+    def update(self, request, *args, **kwargs):  # noqa: W0613
+        """Add a user to the group."""
+        group = get_object_or_404(Group, pk=kwargs["group_pk"])
+        user = get_object_or_404(ToolhubUser, id=kwargs["id"])
+        group.user_set.add(user)
+        serializer = self.get_serializer(instance=group)
+        return response.Response(serializer.data)
+
+    def destroy(self, request, *args, **kwargs):  # noqa: W0613
+        """Remove a user from the group."""
+        group = get_object_or_404(Group, pk=kwargs["group_pk"])
+        user = get_object_or_404(ToolhubUser, id=kwargs["id"])
+        group.user_set.remove(user)
+        serializer = self.get_serializer(instance=group)
+        return response.Response(serializer.data)
 
 
 def login(request):  # noqa: W0613 unused argument
