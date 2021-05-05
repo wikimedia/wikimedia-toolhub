@@ -109,13 +109,19 @@
       "text-summary"
     ],
     "report-dir": "./.nyc_output/coverage",
-    "per-file": true,
+    "per-file": false,
     "skip-full": true,
-    "lines": 85,
-    "functions": 85,
-    "branches": 85,
-    "statements": 85,
-    "check-coverage": false
+    "lines": 75,
+    "functions": 75,
+    "branches": 60,
+    "statements": 75,
+    "check-coverage": true,
+    "watermarks": {
+        "lines": [84, 85],
+        "functions": [84, 85],
+        "branches": [84, 85],
+        "statements": [84, 85]
+    }
   },
   "eslintConfig": {
     "root": true,
