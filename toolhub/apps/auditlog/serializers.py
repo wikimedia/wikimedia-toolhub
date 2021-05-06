@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _
 
 from rest_framework import serializers
@@ -60,6 +61,9 @@ class TargetSerializer(serializers.Serializer):
                 ret["id"] = target.auditlog_label
         except AttributeError:
             pass
+
+        if isinstance(target, Group):
+            ret["label"] = target.name
 
         return ret
 

@@ -44,6 +44,22 @@
 						>
 							mdi-delete-outline
 						</v-icon>
+
+						<v-icon
+							v-if="log.action === 'added to'"
+							size="20"
+							class="mb-1"
+						>
+							mdi-account-multiple-plus-outline
+							</v-icon>
+
+						<v-icon
+							v-if="log.action === 'removed from'"
+							size="20"
+							class="mb-1"
+						>
+							mdi-account-multiple-minus-outline
+						</v-icon>
 					</dd>
 
 					<dd class="me-1">
@@ -104,6 +120,12 @@
 
 						<template
 							v-else-if="log.target.type === 'user'"
+						>
+							"{{ log.target.label }}"
+						</template>
+
+						<template
+							v-else-if="log.target.type === 'group'"
 						>
 							"{{ log.target.label }}"
 						</template>

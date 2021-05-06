@@ -17,6 +17,7 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth import get_user_model
 from django.db.models import Model
+from django.db.models.signals import m2m_changed
 from django.db.models.signals import post_delete
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
@@ -66,6 +67,39 @@ def log_delete_callback(sender, instance, **kwargs):  # noqa: W0613
         )
 
 
+def log_m2m_changed_callback(  # noqa: R0913
+    sender,
+    instance,
+    action,
+    reverse,
+    model,
+    **kwargs,
+):
+    """Handle a many-to-many relation change signal."""
+    if sender == get_user_model().groups.through:
+        # Users are being added/removed from a group.
+        for pk in kwargs["pk_set"]:
+            if reverse:
+                group = instance
+                user = model.objects.get(pk=pk)
+            else:
+                group = model.objects.get(pk=pk)
+                user = instance
+
+            if action == "post_add":
+                LogEntry.objects.log_action(
+                    user=user,
+                    target=group,
+                    action=LogEntry.ADD,
+                )
+            if action == "post_remove":
+                LogEntry.objects.log_action(
+                    user=user,
+                    target=group,
+                    action=LogEntry.REMOVE,
+                )
+
+
 class ModelRegistry:
     """A registry that tracks models to emit AuditLog instances for."""
 
@@ -99,13 +133,21 @@ class ModelRegistry:
         """Is this model registered?"""
         return model in self._registry
 
-    def _connect_signals(self, model):
+    def _connect_signals(self, cls):
         """Connect signals for a model."""
         for signal, reciever in self._signals.items():
             signal.connect(
                 reciever,
-                sender=model,
-                dispatch_uid=self._dispatch_uid(signal, model),
+                sender=cls,
+                dispatch_uid=self._dispatch_uid(signal, cls),
+            )
+
+        if issubclass(cls, get_user_model()):
+            # Special handling for m2m group relations
+            m2m_changed.connect(
+                log_m2m_changed_callback,
+                sender=cls.groups.through,
+                dispatch_uid=self._dispatch_uid(m2m_changed, cls),
             )
 
     def _dispatch_uid(self, signal, model):

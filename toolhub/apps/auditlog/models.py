@@ -75,11 +75,15 @@ class LogEntry(models.Model):
     CREATE = 0
     UPDATE = 1
     DELETE = 2
+    ADD = 3
+    REMOVE = 4
 
     ACTION_CHOICES = (
         (CREATE, _("created")),
         (UPDATE, _("updated")),
         (DELETE, _("deleted")),
+        (ADD, _("added to")),
+        (REMOVE, _("removed from")),
     )
 
     timestamp = models.DateTimeField(
