@@ -1,23 +1,45 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import makeApiCall from '@/plugins/swagger.js';
+import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
 import i18n from '@/plugins/i18n';
 
 Vue.use( Vuex );
 
 export const actions = {
-	fetchAuditLogs( context, page ) {
-		const request = { url: '/api/auditlogs/?page=' + page };
+	fetchAuditLogs( context, payload ) {
+		const filters = payload.filters;
 
-		makeApiCall( context, request ).then(
+		const params = [
+			[ 'target_type', filters.target_type ],
+			[ 'user', filters.user ],
+			[ 'after', filters.after ],
+			[ 'before', filters.before ],
+			[ 'page', payload.page ]
+		];
+
+		const cleanParams = new URLSearchParams(
+			params.filter( ( value ) => {
+				const val = value[ 1 ];
+				return val !== null && val !== undefined;
+			} )
+		);
+
+		const request = { url: '/api/auditlogs/?' + cleanParams.toString() };
+
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				context.commit( 'AUDIT_LOGS', success.body );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error( i18n.t( 'auditlogs-apierror', [ page, explanation ] ) );
+				const data = getFailurePayload( failure );
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
 			}
 		);
 	}

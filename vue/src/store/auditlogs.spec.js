@@ -51,22 +51,37 @@ describe( 'store/auditlogs', () => {
 		} );
 
 		describe( 'fetchAuditLogs', () => {
-			const testPage = 2;
+			const testPayload1 = {
+				page: 1,
+				filters: {
+					target_type: 'tool',
+					user: 'Bot'
+				}
+			};
+
+			const testPayload2 = {
+				page: 2,
+				filters: {
+					target_type: null,
+					user: 'Bot'
+				}
+			};
+
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/auditlogs/?page=' + testPage,
+				url: '/api/auditlogs/?target_type=tool&user=Bot&page=1',
 				headers: { 'Content-type': 'application/json' },
 				body: auditLogsResponse
 			};
 
 			it( 'should fetch logs', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/auditlogs/?page=' + testPage
+					url: '/api/auditlogs/?target_type=tool&user=Bot&page=1'
 				}, context );
 				http.resolves( response );
 
-				await actions.fetchAuditLogs( context, testPage );
+				await actions.fetchAuditLogs( context, testPayload1 );
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
@@ -82,14 +97,29 @@ describe( 'store/auditlogs', () => {
 						$notify: { error: sinon.stub() }
 					}
 				};
-				http.rejects( { response: { data: 'Boom' } } );
+				http.rejects( { errors: [ {
+					field: 'before',
+					message: 'Enter a valid date/time'
+				} ] } );
+
 				const fetchAuditLogs = actions.fetchAuditLogs.bind( stubThis );
-				await fetchAuditLogs( context, testPage );
+				await fetchAuditLogs( context, testPayload1 );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
 				// eslint-disable-next-line no-underscore-dangle
 				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
+
+			it( 'should remove null or undefined filters', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/auditlogs/?user=Bot&page=2'
+				}, context );
+				http.resolves( response );
+
+				await actions.fetchAuditLogs( context, testPayload2 );
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledWith( expectRequest );
 			} );
 		} );
 	} );
