@@ -117,10 +117,22 @@
     "statements": 75,
     "check-coverage": true,
     "watermarks": {
-        "lines": [84, 85],
-        "functions": [84, 85],
-        "branches": [84, 85],
-        "statements": [84, 85]
+      "lines": [
+        84,
+        85
+      ],
+      "functions": [
+        84,
+        85
+      ],
+      "branches": [
+        84,
+        85
+      ],
+      "statements": [
+        84,
+        85
+      ]
     }
   },
   "eslintConfig": {
