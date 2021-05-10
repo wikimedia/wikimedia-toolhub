@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-05-07 09:05:05+0000\n"
-"X-POT-Import-Date: 2021-04-23 18:32:06+0000\n"
+"PO-Revision-Date: 2021-05-10 12:17:04+0000\n"
+"X-POT-Import-Date: 2021-05-07 22:32:01+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
@@ -123,39 +123,39 @@ msgstr "מידע על URL בודד שעוּבד בזמן הרצת הזחלן"
 msgid "Summary of a single run of the crawler."
 msgstr "תקציר של הרצה בודדת של הזחלן."
 
-#: toolhub/apps/crawler/views.py:45
+#: toolhub/apps/crawler/views.py:42
 msgid "Register a new URL for crawling."
 msgstr "רישום URL חדש לזחילה."
 
-#: toolhub/apps/crawler/views.py:49
+#: toolhub/apps/crawler/views.py:46
 msgid "Information about a specific crawled URL."
 msgstr "מידע על URL מסוים שהזחלן עבר בו."
 
-#: toolhub/apps/crawler/views.py:52
+#: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
 msgstr "ביטול רישום URL."
 
-#: toolhub/apps/crawler/views.py:55
+#: toolhub/apps/crawler/views.py:58
 msgid "List all crawled URLs."
 msgstr "רשימת כל ה־URL־ים שהזחלן עבר בהם."
 
-#: toolhub/apps/crawler/views.py:88
+#: toolhub/apps/crawler/views.py:85
 msgid "Get URLs created by the current user."
 msgstr "קבלת URL־ים שיצרת המשתמש הנוכחי."
 
-#: toolhub/apps/crawler/views.py:106
+#: toolhub/apps/crawler/views.py:104
 msgid "List all historic crawler runs."
 msgstr "רשימת כל הרצות הזחלנים ההיסטוריות."
 
-#: toolhub/apps/crawler/views.py:109
+#: toolhub/apps/crawler/views.py:107
 msgid "Info for a specific crawler run."
 msgstr "מידע על הרצת זחלן מסוימת."
 
-#: toolhub/apps/crawler/views.py:130
+#: toolhub/apps/crawler/views.py:128
 msgid "List all urls crawled in a run."
 msgstr "רשימת כל ה־URL־ים שהזחלן עבר בהם בהרצה."
 
-#: toolhub/apps/crawler/views.py:133
+#: toolhub/apps/crawler/views.py:131
 msgid "Info for a specific url crawled in a run."
 msgstr "מידע על URL מסוים שהזחלן עבר בו בהרצה."
 
@@ -223,15 +223,15 @@ msgstr "עדכון יישום לקוח."
 msgid "Delete a client application."
 msgstr "מחיקת יישום לקוח."
 
-#: toolhub/apps/oauth2/views.py:94
+#: toolhub/apps/oauth2/views.py:91
 msgid "List applications authorized by the current user."
 msgstr "רשימת יישומים שהמשתמש הנוכחי אישר."
 
-#: toolhub/apps/oauth2/views.py:97
+#: toolhub/apps/oauth2/views.py:94
 msgid "Info for an authorized application."
 msgstr "מידע ליישום המאושר."
 
-#: toolhub/apps/oauth2/views.py:109
+#: toolhub/apps/oauth2/views.py:106
 msgid "Revoke an application authorization."
 msgstr "שלילת אישור מיישום."
 
@@ -239,7 +239,7 @@ msgstr "שלילת אישור מיישום."
 msgid "Search"
 msgstr "חיפוש"
 
-#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:118
+#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:72
 msgid "User information"
 msgstr "מידע על משתמש"
 
@@ -571,77 +571,77 @@ msgstr "ב־Url_multilingual חסר מאפיין \"language\"."
 msgid "Url_multilingual missing 'url' property."
 msgstr "ב־Url_multilingual חסר מאפיין \"url\"."
 
-#: toolhub/apps/toolinfo/views.py:53
+#: toolhub/apps/toolinfo/views.py:54
 msgid "Failed to apply patch."
 msgstr "החלת הטלאי נכשלה."
 
-#: toolhub/apps/toolinfo/views.py:58
+#: toolhub/apps/toolinfo/views.py:59
 msgid "Create a new tool."
 msgstr "יצירת כלי חדש."
 
-#: toolhub/apps/toolinfo/views.py:63
+#: toolhub/apps/toolinfo/views.py:64
 msgid "Info for a specific tool."
 msgstr "מידע עבור כלי מסוים."
 
-#: toolhub/apps/toolinfo/views.py:66
+#: toolhub/apps/toolinfo/views.py:67
 msgid "Update info for a specific tool."
 msgstr "עדכון מידע על כלי מסוים."
 
-#: toolhub/apps/toolinfo/views.py:74
+#: toolhub/apps/toolinfo/views.py:75
 msgid "Delete a tool."
 msgstr "מחיקת כלי."
 
-#: toolhub/apps/toolinfo/views.py:77
+#: toolhub/apps/toolinfo/views.py:78
 msgid "List all tools."
 msgstr "רשימת כלים."
 
-#: toolhub/apps/toolinfo/views.py:110
+#: toolhub/apps/toolinfo/views.py:114
 msgid "Unique identifier for this tool."
 msgstr "מזהה ייחודי לכלי הזה."
 
-#: toolhub/apps/toolinfo/views.py:116
+#: toolhub/apps/toolinfo/views.py:120
 msgid "Get revision information."
 msgstr "קבלת מידע על הגרסה."
 
-#: toolhub/apps/toolinfo/views.py:121
+#: toolhub/apps/toolinfo/views.py:125
 msgid "List revisions."
 msgstr "רשימת גרסאות."
 
-#: toolhub/apps/toolinfo/views.py:126
+#: toolhub/apps/toolinfo/views.py:130
 msgid "Compare two revisions to find difference."
 msgstr "השוואת שתי גרסאות לשם  מציאת הבדל."
 
-#: toolhub/apps/toolinfo/views.py:134
+#: toolhub/apps/toolinfo/views.py:138
 msgid "A unique integer value identifying version to diff against."
 msgstr "ערך שלם ייחודי שמזהה את הגרסה שמולה תיעשה ההשוואה."
 
-#: toolhub/apps/toolinfo/views.py:142
+#: toolhub/apps/toolinfo/views.py:146
 msgid "Restore the tool to this revision."
 msgstr "שחזור הכלי לגרסה הזאת."
 
-#: toolhub/apps/toolinfo/views.py:149
+#: toolhub/apps/toolinfo/views.py:153
 msgid "Undo all changes made between two revisions."
 msgstr "ביטול כל השינויים שנעשו אין שתי גרסאות."
 
-#: toolhub/apps/toolinfo/views.py:157
+#: toolhub/apps/toolinfo/views.py:161
 msgid "A unique integer value identifying version to undo until."
 msgstr "ערך שלם ייחודי שמזהה את הגרסה שצריך לשחזר אליה."
 
-#: toolhub/apps/toolinfo/views.py:241
+#: toolhub/apps/toolinfo/views.py:245
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr "שחזור לגרסה %(rev_id)s מתאריך %(datetime)s מאת by %(user)s"
 
-#: toolhub/apps/toolinfo/views.py:275
+#: toolhub/apps/toolinfo/views.py:279
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "ביטול גרסאות מ־%(first_id)s עד %(last_id)s"
 
-#: toolhub/apps/toolinfo/views.py:285
+#: toolhub/apps/toolinfo/views.py:289
 msgid "Info for a specific SPDX license."
 msgstr "מידע על רישיון SPDX מסוים."
 
-#: toolhub/apps/toolinfo/views.py:293
+#: toolhub/apps/toolinfo/views.py:297
 msgid "List all SPDX licenses."
 msgstr "רשימת כל רישיונות SPDX."
 
@@ -677,53 +677,65 @@ msgstr "משתמש עם השם הזה כבר קיים."
 msgid "Information about the current user"
 msgstr "מידע על המשתמש הנוכחי"
 
-#: toolhub/apps/user/serializers.py:57
+#: toolhub/apps/user/serializers.py:55
 msgid "Information about the current locale"
 msgstr "מידע על האזור הנוכחי"
 
-#: toolhub/apps/user/serializers.py:74
+#: toolhub/apps/user/serializers.py:84
+msgid "Group information"
+msgstr "מידע על קבוצה"
+
+#: toolhub/apps/user/serializers.py:96
 msgid "Social authentication information for a user"
 msgstr "מידע על הזדהות משתמש באמצעות רשתות חברתיות"
 
-#: toolhub/apps/user/serializers.py:104
+#: toolhub/apps/user/serializers.py:126
 msgid "Detailed user information"
 msgstr "מידע מפורט על משתמש"
 
-#: toolhub/apps/user/serializers.py:130
-msgid "Group information"
-msgstr "מידע על קבוצה"
+#: toolhub/apps/user/serializers.py:141
+msgid "Detailed group information"
+msgstr "מידע מפורט על קבוצה"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
 msgstr "נא להזין שם משתמש תקין. התווים `@` ו־`:` אסורים."
 
-#: toolhub/apps/user/views.py:46
+#: toolhub/apps/user/views.py:56
 msgid "Get information about the currently logged in user."
 msgstr "קבלת מידע על המשתמש הנוכחי שנכנס לחשבון."
 
-#: toolhub/apps/user/views.py:70
+#: toolhub/apps/user/views.py:82
 msgid "Get current locale."
 msgstr "קבלת האזור הנוכחי"
 
-#: toolhub/apps/user/views.py:81
+#: toolhub/apps/user/views.py:93
 msgid "Set locale."
 msgstr "הגדרת אזור."
 
-#: toolhub/apps/user/views.py:99
+#: toolhub/apps/user/views.py:111
 msgid "List all active users."
 msgstr "רשימת כל המשתמשים הפעילים."
 
-#: toolhub/apps/user/views.py:102
+#: toolhub/apps/user/views.py:114
 msgid "Info for a specific user."
 msgstr "מידע על משתמש מסוים."
 
-#: toolhub/apps/user/views.py:122
+#: toolhub/apps/user/views.py:134
 msgid "List all user groups."
 msgstr "קבלת כל קבוצות המשתמשים."
 
-#: toolhub/apps/user/views.py:125
+#: toolhub/apps/user/views.py:137
 msgid "Info for a user group."
 msgstr "מידע על קבוצת משתמשים."
+
+#: toolhub/apps/user/views.py:159
+msgid "Add a user to this group."
+msgstr "הוספת משתמש לקבוצה הזאת."
+
+#: toolhub/apps/user/views.py:170
+msgid "Remove a user from this group."
+msgstr "הסרת משתמש מהקבוצה הזאת."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
@@ -733,15 +745,15 @@ msgstr "נא למלא ערך שתואם לסכמת ה־JSON."
 msgid "API error"
 msgstr "שגיאת API"
 
-#: toolhub/settings.py:367
+#: toolhub/settings.py:374
 msgid "Read scope"
 msgstr "טווח קריאה"
 
-#: toolhub/settings.py:368
+#: toolhub/settings.py:375
 msgid "Write scope"
 msgstr "טווח כתיבה"
 
-#: toolhub/settings.py:395
+#: toolhub/settings.py:402
 msgid "Toolhub API"
 msgstr "API של Toolhub"
 
