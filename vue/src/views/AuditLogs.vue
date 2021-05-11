@@ -51,7 +51,7 @@
 							class="mb-1"
 						>
 							mdi-account-multiple-plus-outline
-							</v-icon>
+						</v-icon>
 
 						<v-icon
 							v-if="log.action === 'removed from'"
