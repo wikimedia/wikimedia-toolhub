@@ -33,15 +33,54 @@ from toolhub.serializers import Serializer
 from .models import ToolhubUser
 
 
+class CASLRuleSerializer(Serializer):
+    """CASL access control rule."""
+
+    action = serializers.CharField(
+        read_only=True,
+        help_text=_("Action that the user can take"),
+    )
+    subject = serializers.CharField(
+        required=False,
+        read_only=True,
+        help_text=_("Subject type to check user action on"),
+    )
+    conditions = serializers.DictField(
+        required=False,
+        read_only=True,
+        help_text=_("Criteria which restricts user action"),
+    )
+
+    def create(self, validated_data):
+        """Operation not implemented."""
+        raise NotImplementedError("Data output only serializer.")
+
+    def update(self, instance, validated_data):
+        """Operation not implemented."""
+        raise NotImplementedError("Data output only serializer.")
+
+
 @doc(_("""Information about the current user"""))
 class CurrentUserSerializer(Serializer):
     """Information about the current user."""
 
+    id = serializers.IntegerField(  # noqa: A003
+        read_only=True,
+        help_text=_("Numeric user id"),
+    )
     username = serializers.CharField(read_only=True)
     email = serializers.CharField(read_only=True)
     is_anonymous = serializers.BooleanField(read_only=True)
     is_authenticated = serializers.BooleanField(read_only=True)
-    csrf_token = serializers.CharField(read_only=True)
+    csrf_token = serializers.CharField(
+        read_only=True,
+        help_text=_("Cross-site request forgery prevention token"),
+    )
+    casl = CASLRuleSerializer(
+        many=True,
+        read_only=True,
+        help_text=_("CASL access control rules"),
+    )
 
     def create(self, validated_data):
         """Operation not implemented."""

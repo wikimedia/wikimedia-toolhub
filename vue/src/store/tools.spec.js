@@ -8,6 +8,7 @@ chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
 /* eslint-disable no-unused-expressions */
 
+import { asTool } from '@/helpers/casl';
 import {
 	actions,
 	mutations
@@ -668,14 +669,14 @@ describe( 'store/tools', () => {
 			};
 
 			mutations.TOOLS_LIST( state, tools );
-			expect( state.toolsList ).to.equal( tools.results );
+			expect( state.toolsList ).to.eql( asTool( tools.results ) );
 			expect( state.numTools ).to.equal( tools.count );
 
 			mutations.TOOL( state, toolResponse );
-			expect( state.tool ).to.equal( toolResponse );
+			expect( state.tool ).to.eql( asTool( toolResponse ) );
 
 			mutations.CREATE_TOOL( state, toolResponse );
-			expect( state.toolCreated ).to.equal( toolResponse );
+			expect( state.toolCreated ).to.eql( asTool( toolResponse ) );
 		} );
 
 		it( 'should store licenses', () => {

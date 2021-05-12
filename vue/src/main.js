@@ -3,6 +3,8 @@ import VueMeta from 'vue-meta';
 import AsyncComputed from 'vue-async-computed';
 import clipboard from 'vue-clipboard2';
 import frag from 'vue-frag';
+import { abilitiesPlugin } from '@casl/vue';
+import { Ability } from '@casl/ability';
 
 import App from './App.vue';
 import router from './router';
@@ -17,6 +19,7 @@ Vue.use( VueMeta );
 Vue.use( AsyncComputed );
 Vue.use( clipboard );
 Vue.use( notify, { store: store } );
+Vue.use( abilitiesPlugin, new Ability( [] ) );
 
 new Vue( {
 	vuetify,

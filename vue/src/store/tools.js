@@ -3,22 +3,23 @@ import Vuex from 'vuex';
 import i18n from '@/plugins/i18n';
 import router from '@/router';
 import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
+import { asTool } from '@/helpers/casl';
 
 Vue.use( Vuex );
 
 export const mutations = {
 	TOOLS_LIST( state, tools ) {
-		state.toolsList = tools.results;
+		state.toolsList = asTool( tools.results );
 		state.numTools = tools.count;
 	},
 	TOOL( state, tool ) {
-		state.tool = tool;
+		state.tool = asTool( tool );
 	},
 	SPDX_LICENSES( state, data ) {
 		state.spdxLicenses = data;
 	},
 	CREATE_TOOL( state, tool ) {
-		state.toolCreated = tool;
+		state.toolCreated = asTool( tool );
 	},
 	TOOL_REVISIONS( state, revisions ) {
 		state.toolRevisions = revisions.results;

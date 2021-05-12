@@ -39,6 +39,7 @@ from rest_framework.views import APIView
 
 from toolhub.permissions import ObjectPermissions
 from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
+from toolhub.permissions import casl_for_user
 
 from .models import ToolhubUser
 from .serializers import CurrentUserSerializer
@@ -61,6 +62,7 @@ class CurrentUserView(APIView):
         """Get info."""
         user = request.user
         user_info = {
+            "id": user.id,
             "username": user.get_username(),
             "email": getattr(user, "email", None),
             "is_active": user.is_active,
@@ -68,6 +70,7 @@ class CurrentUserView(APIView):
             "is_authenticated": user.is_authenticated,
             "is_staff": user.is_staff,
             "csrf_token": get_token(request),
+            "casl": casl_for_user(user),
         }
         serializer = CurrentUserSerializer(user_info)
         return Response(serializer.data)

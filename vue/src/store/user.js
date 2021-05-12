@@ -1,15 +1,37 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import makeApiCall from '@/plugins/swagger.js';
+import { makeApiCall, getFailurePayload } from '@/plugins/swagger';
 import i18n from '@/plugins/i18n';
+import { asUrl, asApp, asToken } from '@/helpers/casl';
 
 Vue.use( Vuex );
 
 export const actions = {
-	getUserInfo( context ) {
-		return fetch( '/api/user/', { credentials: 'same-origin' } )
-			.then( ( response ) => response.json() )
-			.then( ( data ) => ( context.commit( 'USER', data ) ) );
+	/**
+	 * Get information about the current user.
+	 *
+	 * @param {Object} context - Vuex context
+	 * @param {Object} payload
+	 * @param {Object} payload.vm - Vue
+	 * @return {Promise}
+	 */
+	getUserInfo( context, { vm } ) {
+		const request = {
+			url: '/api/user/'
+		};
+		return makeApiCall( context, request ).then(
+			( success ) => {
+				context.commit( 'USER', success.body );
+				// Set the user's abilities
+				vm.$ability.update( success.body.casl );
+			},
+			( failure ) => {
+				const data = getFailurePayload( failure );
+				this._vm.$notify.error(
+					i18n.t( 'apierror', [ data ] )
+				);
+			}
+		);
 	},
 	registerUrl( context, url ) {
 		if ( !context.state.user.is_authenticated ) {
@@ -249,38 +271,45 @@ export const mutations = {
 		state.user = user;
 	},
 	USER_CREATED_URLS( state, urls ) {
-		state.userCreatedUrls = urls.results;
+		state.userCreatedUrls = asUrl( urls.results );
 		state.numUserCreatedUrls = urls.count;
 	},
-	REGISTER_URL( state, urlObj ) {
-		state.userCreatedUrls.push( urlObj );
+	REGISTER_URL( state, url ) {
+		state.userCreatedUrls.push( asUrl( url ) );
 		state.numUserCreatedUrls += 1;
 	},
 	UNREGISTER_URL( state, url ) {
-		const index = state.userCreatedUrls.findIndex( ( obj ) => obj.url === url );
+		const index = state.userCreatedUrls.findIndex(
+			( obj ) => obj.url === url
+		);
 		state.userCreatedUrls.splice( index, 1 );
 		state.numUserCreatedUrls -= 1;
 	},
 	REGISTER_APP( state, app ) {
-		state.clientAppCreated = app;
-		state.clientApps.push( app );
+		const application = asApp( app );
+		state.clientAppCreated = application;
+		state.clientApps.push( application );
 		state.numClientApps += 1;
 	},
 	CLIENT_APPS( state, apps ) {
-		state.clientApps = apps.results;
+		state.clientApps = asApp( apps.results );
 		state.numClientApps = apps.count;
 	},
 	DELETE_CLIENT_APP( state, clientId ) {
-		const index = state.clientApps.findIndex( ( obj ) => obj.client_id === clientId );
+		const index = state.clientApps.findIndex(
+			( obj ) => obj.client_id === clientId
+		);
 		state.clientApps.splice( index, 1 );
 		state.numClientApps -= 1;
 	},
 	AUTHORIZED_APPS( state, apps ) {
-		state.authorizedApps = apps.results;
+		state.authorizedApps = asToken( apps.results );
 		state.numAuthorizedApps = apps.count;
 	},
 	DELETE_AUTHORIZED_APP( state, id ) {
-		const index = state.authorizedApps.findIndex( ( obj ) => obj.id === id );
+		const index = state.authorizedApps.findIndex(
+			( obj ) => obj.id === id
+		);
 		state.authorizedApps.splice( index, 1 );
 		state.numAuthorizedApps -= 1;
 	}
@@ -291,7 +320,8 @@ export default {
 	state: {
 		user: {
 			is_authenticated: false,
-			csrf_token: ''
+			csrf_token: '',
+			casl: []
 		},
 		userCreatedUrls: [],
 		numUserCreatedUrls: 0,

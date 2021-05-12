@@ -20,8 +20,7 @@
 							prepend-icon="mdi-link-variant"
 							:rules="requiredRule.concat( urlRule )"
 							required
-							:disabled="$store.state.user.user.is_authenticated
-								=== false"
+							:disabled="!$can( 'add', 'crawler/url' )"
 						/>
 					</v-col>
 					<v-col
@@ -32,8 +31,7 @@
 							class="mt-4"
 							color="primary"
 							width="100%"
-							:disabled="$store.state.user.user.is_authenticated
-								=== false"
+							:disabled="!$can( 'add', 'crawler/url' )"
 							@click="registerUrl(fileUrl)"
 						>
 							{{ $t( 'add' ) }}
@@ -48,8 +46,8 @@
 				</v-row>
 				<v-row>
 					<v-col cols="12">
-						<v-row v-if="$store.state.user.user.is_authenticated
-							=== true && numUserCreatedUrls === 0"
+						<v-row v-if="$can( 'add', 'crawler/url' )
+							&& numUserCreatedUrls === 0"
 						>
 							<v-col cols="12">
 								<p class="text-h6 text--secondary">
@@ -80,6 +78,7 @@
 							</template>
 							<template #[`item.btn_remove_url`]="{ item }">
 								<v-btn
+									v-if="$can( 'delete', item )"
 									class="mt-2 mb-2"
 									color="error"
 									dark
@@ -199,8 +198,8 @@ export default {
 			this.fileUrl = '';
 			this.$refs.url.reset();
 		},
-		unregisterUrl( urlObj ) {
-			this.$store.dispatch( 'user/unregisterUrl', urlObj );
+		unregisterUrl( url ) {
+			this.$store.dispatch( 'user/unregisterUrl', url );
 		},
 		goToNextPage( page ) {
 			this.page = page;

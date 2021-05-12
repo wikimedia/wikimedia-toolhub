@@ -9,7 +9,7 @@
 		>
 			<v-spacer />
 			<v-btn
-				v-if="canEdit"
+				v-if="$can( 'change', tool )"
 				:to="`/tool/${tool.name}/edit`"
 				color="primary"
 				:small="$vuetify.breakpoint.smAndDown"
@@ -377,11 +377,6 @@ export default {
 			} );
 
 			return filteredItems;
-		},
-		canEdit() {
-			const username = this.$store.state.user.user.username;
-			return this.tool.created_by.username === username &&
-				this.tool.origin === 'api';
 		}
 	}
 };

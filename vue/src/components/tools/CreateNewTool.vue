@@ -1,6 +1,10 @@
 <template>
 	<v-container v-if="schema">
-		<v-form ref="createtoolform" v-model="valid">
+		<v-form
+			ref="createtoolform"
+			v-model="valid"
+			:disabled="!$can( 'add', 'toolinfo/tool' )"
+		>
 			<v-col
 				v-for="( uischema, id ) in layout"
 				:key="id"
@@ -16,7 +20,7 @@
 				<v-btn
 					color="primary"
 					class="pa-4 mb-4"
-					:disabled="!valid || !$store.state.user.user.is_authenticated"
+					:disabled="!valid || !$can( 'add', 'toolinfo/tool' )"
 					@click="createTool"
 				>
 					{{ $t( 'createnewtool' ) }}

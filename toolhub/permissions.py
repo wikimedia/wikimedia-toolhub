@@ -73,7 +73,7 @@ is_administrator = rules.is_group_member("Administrators")
 is_bureaucrat = rules.is_group_member("Bureaucrats")
 is_oversighter = rules.is_group_member("Oversighters")
 is_patroller = rules.is_group_member("Patrollers")
-is_user = rules.is_group_member("Users")
+is_admin_or_crat = is_bureaucrat | is_administrator
 
 
 # Convenience permission combinations
@@ -82,7 +82,6 @@ is_obj_creator_or_admin = is_authed & (is_obj_creator | is_administrator)
 is_obj_user_or_admin = is_authed & (is_obj_user | is_administrator)
 is_self_or_admin = is_authed & (is_self | is_administrator)
 
-
 # Configure permissions by app and model.
 # Any of add, change, delete, view that are not set for a given model will
 # default to rules.always_deny when the rules are applied.
@@ -90,8 +89,8 @@ MODEL_PERMISSIONS = {
     "auth": {  # django.contrib.auth
         "group": {
             "add": is_administrator,
-            "change": is_bureaucrat | is_administrator,
-            "delete": is_bureaucrat | is_administrator,
+            "change": is_admin_or_crat,
+            "delete": is_admin_or_crat,
             "view": rules.always_allow,
         },
     },
@@ -118,6 +117,7 @@ MODEL_PERMISSIONS = {
         },
         "accesstoken": {
             "view": is_obj_user_or_admin,
+            "delete": is_obj_user_or_admin,
         },
     },
     "reversion": {  # https://github.com/etianen/django-reversion
@@ -137,8 +137,8 @@ MODEL_PERMISSIONS = {
     "user": {
         "toolhubuser": {
             "add": rules.always_deny,
-            "change": is_obj_creator_or_admin,
-            "delete": is_obj_creator_or_admin,
+            "change": is_self_or_admin,
+            "delete": is_self_or_admin,
             "view": rules.always_allow,
         },
     },
@@ -163,6 +163,92 @@ def register_model_permissions(conf):
             register(perms, app, model, "change")
             register(perms, app, model, "delete")
             register(perms, app, model, "view")
+
+
+def casl_for_user(user):
+    """Generate CASL authorization rules for the given user."""
+    # CASL rules are sent to API consumers to help them understand if the
+    # current user is allowed to perform certain actions. These rules can
+    # largely be computed from our MODEL_PERMISSIONS base, but when things
+    # enter the realm of per-instance permissions we need to send those rules
+    # in a way that others can use rather than our backend predicates. We do
+    # that by mapping predicates to rules here.
+
+    def make_rule(user, perms, app, model, action):
+        """Create a CASL rule."""
+        predicate = perms.get(action, rules.always_deny)
+        rule = {
+            "subject": "{}/{}".format(app, model),
+            "action": action,
+        }
+        if predicate in [
+            is_obj_creator,
+            is_obj_creator_or_admin,
+            is_obj_user,
+            is_obj_user_or_admin,
+            is_self,
+            is_self_or_admin,
+        ]:
+            # Complex predicates which require checking something about the
+            # user's group membership and/or relationship to the object
+            # instance.
+
+            if not user.is_authenticated:
+                rule["inverted"] = True
+
+            else:
+                if predicate == is_obj_creator or (  # noqa: W0143
+                    predicate == is_obj_creator_or_admin
+                    and not is_administrator.test(user)
+                ):
+                    rule["conditions"] = {
+                        "created_by.id": user.id,
+                    }
+
+                if predicate == is_obj_user or (  # noqa: W0143
+                    predicate == is_obj_user_or_admin
+                    and not is_administrator.test(user)
+                ):
+                    rule["conditions"] = {
+                        "user.id": user.id,
+                    }
+
+                if predicate == is_self or (  # noqa: W0143
+                    predicate == is_self_or_admin
+                    and not is_administrator.test(user)
+                ):
+                    rule["conditions"] = {
+                        "id": user.id,
+                    }
+        else:
+            # "Simple" predicate that we only need to extract the
+            # user-based result from.
+            if not predicate.test(user):
+                # User is not allowed to take this action
+                rule["inverted"] = True
+
+        if (
+            app == "toolinfo"
+            and model == "tool"
+            and action in ["change", "delete"]
+        ):
+            # Only API managed toolinfo records can be edited via API
+            rule.setdefault("conditions", {})
+            rule["conditions"]["origin"] = "api"
+
+        return rule
+
+    casl = []
+    for app, models in MODEL_PERMISSIONS.items():
+        for model, perms in models.items():
+            # NOTE: "view" action is ignored because the backend will not send
+            # data that cannot be viewed.
+            for action in ["add", "change", "delete"]:
+                casl.append(make_rule(user, perms, app, model, action))
+
+    # Filter out inverted rules. We don't need to state all the things that
+    # cannot be done by the user, and we don't have any AND'd rules.
+    return [rule for rule in casl if not rule.get("inverted", False)]
 
 
 register_model_permissions(MODEL_PERMISSIONS)

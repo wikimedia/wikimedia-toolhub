@@ -28,7 +28,7 @@
 				<v-btn
 					color="primary"
 					block
-					:disabled="!valid"
+					:disabled="!valid || !$can( 'change', tool )"
 					@click="showCommentDialog"
 				>
 					<v-icon
@@ -223,6 +223,7 @@ import { mapState, mapActions } from 'vuex';
 import InputWidget from '@/components/tools/InputWidget';
 import ScrollTop from '@/components/tools/ScrollTop';
 import fetchMetaInfo from '@/helpers/metadata';
+import { asTool } from '@/helpers/casl';
 
 export default {
 	name: 'Tool',
@@ -503,7 +504,7 @@ export default {
 		toolFromVuex: {
 			handler( newVal ) {
 				// Deep clone the new state
-				this.tool = JSON.parse( JSON.stringify( newVal ) );
+				this.tool = asTool( JSON.parse( JSON.stringify( newVal ) ) );
 				// Inject placeholders in empty link arrays
 				for ( const lk in this.links ) {
 					const items = this.tool[ this.links[ lk ] ];

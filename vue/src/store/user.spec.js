@@ -8,10 +8,8 @@ chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
 /* eslint-disable no-unused-expressions */
 
-import {
-	actions,
-	mutations
-} from './user';
+import { asUrl, asApp, asToken } from '@/helpers/casl';
+import { actions, mutations } from './user';
 
 describe( 'store/user', () => {
 	const testUrlsObj = {
@@ -477,15 +475,15 @@ describe( 'store/user', () => {
 			};
 
 			mutations.USER_CREATED_URLS( state, urls );
-			expect( state.userCreatedUrls ).to.equal( urls.results );
+			expect( state.userCreatedUrls ).to.eql( asUrl( urls.results ) );
 			expect( state.numUserCreatedUrls ).to.equal( urls.count );
 
 			mutations.REGISTER_URL( state, testUrlObj );
-			expect( state.userCreatedUrls[ urls.count ] ).to.equal( testUrlObj );
+			expect( state.userCreatedUrls[ urls.count ] ).to.eql( asUrl( testUrlObj ) );
 			expect( state.numUserCreatedUrls ).to.equal( urls.count + 1 );
 
 			mutations.UNREGISTER_URL( state, testUrlObj.url );
-			expect( state.userCreatedUrls[ urls.count ] ).to.not.equal( testUrlObj );
+			expect( state.userCreatedUrls[ urls.count ] ).to.not.eql( asUrl( testUrlObj ) );
 			expect( state.numUserCreatedUrls ).to.equal( urls.count );
 		} );
 
@@ -502,15 +500,15 @@ describe( 'store/user', () => {
 			};
 
 			mutations.CLIENT_APPS( state, apps );
-			expect( state.clientApps ).to.equal( apps.results );
+			expect( state.clientApps ).to.eql( asApp( apps.results ) );
 			expect( state.numClientApps ).to.equal( apps.count );
 
 			mutations.REGISTER_APP( state, testAppObj );
-			expect( state.clientApps[ apps.count ] ).to.equal( testAppObj );
+			expect( state.clientApps[ apps.count ] ).to.eql( asApp( testAppObj ) );
 			expect( state.numClientApps ).to.equal( apps.count + 1 );
 
 			mutations.DELETE_CLIENT_APP( state, testAppObj.client_id );
-			expect( state.clientApps[ apps.count ] ).to.not.equal( testAppObj );
+			expect( state.clientApps[ apps.count ] ).to.not.eql( asApp( testAppObj ) );
 			expect( state.numClientApps ).to.equal( apps.count );
 		} );
 
@@ -526,13 +524,13 @@ describe( 'store/user', () => {
 			};
 
 			mutations.AUTHORIZED_APPS( state, apps );
-			expect( state.authorizedApps ).to.equal( apps.results );
+			expect( state.authorizedApps ).to.eql( asToken( apps.results ) );
 			expect( state.numAuthorizedApps ).to.equal( apps.count );
 
 			const app = testAuthorizedAppsObj.results[ 0 ];
 
 			mutations.DELETE_AUTHORIZED_APP( state, app.id );
-			expect( state.authorizedApps[ apps.count ] ).to.not.equal( app );
+			expect( state.authorizedApps[ apps.count ] ).to.not.eql( asToken( app ) );
 			expect( state.numAuthorizedApps ).to.equal( apps.count - 1 );
 		} );
 

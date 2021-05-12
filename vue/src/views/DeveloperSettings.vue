@@ -202,7 +202,7 @@
 									class="row ma-1 pa-1"
 								>
 									<template
-										v-if="$store.state.user.user.username === app.user.username"
+										v-if="$can( 'change', app )"
 									>
 										<dt class="me-2 mt-5 font-weight-bold">
 											{{ $t( 'redirecturl' ) }}
@@ -232,7 +232,7 @@
 								</dl>
 							</v-col>
 
-							<v-col v-if="$store.state.user.user.username === app.user.username"
+							<v-col v-if="$can( 'change', app )"
 								cols="12"
 							>
 								<v-btn
