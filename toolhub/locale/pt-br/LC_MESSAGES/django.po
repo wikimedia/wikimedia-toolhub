@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-05-10 12:17:04+0000\n"
+"PO-Revision-Date: 2021-05-13 11:56:34+0000\n"
 "X-POT-Import-Date: 2021-05-07 22:32:01+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -81,7 +81,7 @@ msgstr "Mostrar apenas registros para os tipos de ação fornecidos."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr ""
+msgstr "Mostrar apenas registros para o tipo de destino fornecido."
 
 #: toolhub/apps/auditlog/views.py:72
 msgid "Only show logs occuring before the given date and time."
@@ -89,7 +89,7 @@ msgstr "Mostra apenas os registros que ocorrem antes da data e hora fornecidas."
 
 #: toolhub/apps/auditlog/views.py:77
 msgid "Only show logs occuring after the given date and time."
-msgstr ""
+msgstr "Mostra apenas os registros que ocorrem após a data e hora fornecidas"
 
 #: toolhub/apps/auditlog/views.py:82
 msgid "Only show logs for the given user."
@@ -545,13 +545,13 @@ msgstr "Revisão após aplicar alterações."
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "%(value)s não é um código de idioma reconhecido."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
 #, python-format
 msgid "Expected a list of language codes but found %(type)s"
-msgstr ""
+msgstr "Esperava-se uma lista de códigos de idioma, mas foi encontrado %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
@@ -561,15 +561,15 @@ msgstr "%(value)s não é um identificador de licença SPDX conhecido."
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
 msgid "Expected a url_multilingual dict but found %(type)s"
-msgstr ""
+msgstr "Era esperado um dicionário url_multilingual mas encontrado %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
-msgstr ""
+msgstr "Propriedade Url_multilingual missing 'language'."
 
 #: toolhub/apps/toolinfo/validators.py:79
 msgid "Url_multilingual missing 'url' property."
-msgstr ""
+msgstr "Propriedade Url_multilingual missing 'url'."
 
 #: toolhub/apps/toolinfo/views.py:54
 msgid "Failed to apply patch."
