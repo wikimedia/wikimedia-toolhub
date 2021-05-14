@@ -27,6 +27,7 @@ urlpatterns = [
     path("audit-logs", main, name="audit-logs"),
     path("crawler-history", main, name="crawler-history"),
     path("developer-settings", main, name="developer-settings"),
+    path("members", main, name="members"),
     path("tool/<path:path>", main, name="tool"),
     path("search", main, name="search"),
 ]

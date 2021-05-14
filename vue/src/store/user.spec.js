@@ -12,6 +12,27 @@ import { asUrl, asApp, asToken } from '@/helpers/casl';
 import { actions, mutations } from './user';
 
 describe( 'store/user', () => {
+	const testUsersObj = {
+		count: 2,
+		results: [
+			{
+				id: 2,
+				username: 'Srish',
+				groups: [
+					{
+						id: 1,
+						name: 'Administrators'
+					},
+					{
+						id: 2,
+						name: 'Bureaucrats'
+					}
+				],
+				date_joined: '2021-02-26T20:45:06Z'
+			}
+		]
+	};
+
 	const testUrlsObj = {
 		count: 1,
 		results: [
@@ -82,6 +103,55 @@ describe( 'store/user', () => {
 		afterEach( () => {
 			http.restore();
 			sinon.reset();
+		} );
+
+		describe( 'listAllUsers', () => {
+			const testPayload = {
+				page: 1,
+				filters: {
+					username: 'Srish',
+					groups_id: 1
+				}
+			};
+
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/users/?page=1&username__contains=Srish&groups__id=1',
+				headers: {
+					'Content-type': 'application/json'
+				},
+				body: testUsersObj
+			};
+
+			it( 'should fetch users', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/users/?page=1&username__contains=Srish&groups__id=1'
+				}, context );
+				http.resolves( response );
+
+				await actions.listAllUsers( context, testPayload );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'USERS', testUsersObj
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( { response: { data: 'Boom' } } );
+				const listAllUsers = actions.listAllUsers.bind( stubThis );
+				await listAllUsers( context, testPayload );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
 		} );
 
 		describe( 'getUrlsCreatedByUser', () => {

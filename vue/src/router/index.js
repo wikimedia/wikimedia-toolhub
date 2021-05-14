@@ -71,6 +71,14 @@ const routes = [
 			}
 		},
 		{
+			name: 'members',
+			path: '/members',
+			component: () => import( /* webpackChunkName: "members" */ '../views/Members.vue' ),
+			meta: {
+				icon: 'mdi-account-group'
+			}
+		},
+		{
 			name: 'developersettings',
 			path: '/developer-settings',
 			component: () => import( /* webpackChunkName: "developersettings" */ '../views/DeveloperSettings.vue' )

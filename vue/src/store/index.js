@@ -8,6 +8,7 @@ import LocaleModule from './locale';
 import SearchModule from './search';
 import ToolsModule from './tools';
 import UserModule from './user';
+import GroupsModule from './groups';
 
 /* istanbul ignore next: upstream tested */
 Vue.use( Vuex );
@@ -20,7 +21,8 @@ export default new Vuex.Store( {
 		locale: LocaleModule,
 		search: SearchModule,
 		tools: ToolsModule,
-		user: UserModule
+		user: UserModule,
+		groups: GroupsModule
 	},
 	// Strict mode in development/testing, but disabled for performance in prod
 	strict: process.env.NODE_ENV !== 'production'

@@ -33,6 +33,37 @@ export const actions = {
 			}
 		);
 	},
+	listAllUsers( context, payload ) {
+		const filters = payload.filters;
+		const params = [
+			[ 'page', payload.page ],
+			[ 'username__contains', filters.username ],
+			[ 'groups__id', filters.groups_id ]
+		];
+
+		const cleanParams = new URLSearchParams(
+			params.filter( ( value ) => {
+				const val = value[ 1 ];
+				return val !== null && val !== undefined;
+			} )
+		);
+
+		const request = { url: '/api/users/?' + cleanParams.toString() };
+
+		return makeApiCall( context, request ).then(
+			( success ) => {
+				context.commit( 'USERS', success.body );
+			},
+			( failure ) => {
+				const explanation = ( 'statusCode' in failure ) ?
+					failure.response.statusText : failure;
+
+				this._vm.$notify.error(
+					i18n.t( 'apierror', [ explanation ] )
+				);
+			}
+		);
+	},
 	registerUrl( context, url ) {
 		if ( !context.state.user.is_authenticated ) {
 			return;
@@ -270,6 +301,10 @@ export const mutations = {
 	USER( state, user ) {
 		state.user = user;
 	},
+	USERS( state, users ) {
+		state.users = users.results;
+		state.numUsers = users.count || users.length;
+	},
 	USER_CREATED_URLS( state, urls ) {
 		state.userCreatedUrls = asUrl( urls.results );
 		state.numUserCreatedUrls = urls.count;
@@ -323,6 +358,8 @@ export default {
 			csrf_token: '',
 			casl: []
 		},
+		users: [],
+		numUsers: 0,
 		userCreatedUrls: [],
 		numUserCreatedUrls: 0,
 		clientApps: [],
