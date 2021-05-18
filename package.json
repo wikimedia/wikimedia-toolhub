@@ -1,266 +1,256 @@
 {
-  "name": "toolhub",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "build:vue": "vue-cli-service build",
-    "format": "eslint --fix .",
-    "lint": "npm run lint:eslint && npm run lint:vue && npm run lint:stylelint && npm run lint:banana && npm run lint:css-rtl",
-    "lint:banana": "banana-checker vue/src/assets/locales/i18n/",
-    "lint:css-rtl": "bash -c \"if grep -rnHIE --color '\\b[mp][lr]-(n?[0-9][0-6]?|auto)\\b' vue/src; then echo 'ERROR: Use S and E helper classes, not L and R. (T269056)'; echo; exit 1; fi\"",
-    "lint:eslint": "eslint .",
-    "lint:stylelint": "stylelint -f verbose '**/*.{css,scss,sass,vue}'",
-    "lint:vue": "vue-cli-service lint",
-    "schemas:generate": "jsonschema-tools materialize-all",
-    "serve:vue": "vue-cli-service serve",
-    "unit": "npm run unit:jsonschema && npm run unit:vue",
-    "unit:jsonschema": "mocha tests/jsonschema",
-    "unit:vue": "NODE_ENV=test nyc vue-cli-service test:unit --colors 'vue/src/**/*.spec.js'",
-    "test": "npm run lint && npm run unit"
-  },
-  "dependencies": {
-    "@wikimedia/language-data": "^1.0.2",
-    "banana-i18n": "^2.1.0",
-    "chart.js": "^2.9.4",
-    "core-js": "^3.12.1",
-    "swagger-client": "^3.13.3",
-    "vue": "^2.6.11",
-    "vue-async-computed": "^3.9.0",
-    "vue-chartjs": "^3.5.1",
-    "vue-clipboard2": "^0.3.1",
-    "vue-frag": "^1.1.5",
-    "vue-i18n": "^8.24.4",
-    "vue-meta": "^2.4.0",
-    "vue-moment": "^4.1.0",
-    "vue-router": "^3.5.1",
-    "vuetify": "^2.5.0",
-    "vuex": "^3.6.2"
-  },
-  "devDependencies": {
-    "@intlify/eslint-plugin-vue-i18n": "^0.11.1",
-    "@mdi/font": "^5.9.55",
-    "@vue/cli": "^4.5.13",
-    "@vue/cli-plugin-babel": "^4.5.13",
-    "@vue/cli-plugin-eslint": "^4.5.13",
-    "@vue/cli-plugin-router": "^4.5.13",
-    "@vue/cli-plugin-unit-mocha": "^4.5.13",
-    "@vue/cli-plugin-vuex": "^4.5.13",
-    "@vue/cli-service": "^4.5.13",
-    "@wikimedia/jsonschema-tools": "^0.9.0",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-istanbul": "^6.0.0",
-    "chai": "^4.3.4",
-    "eslint": "^7.26.0",
-    "eslint-config-wikimedia": "^0.20.0",
-    "eslint-plugin-vuetify": "^1.0.0-beta.8",
-    "grunt-banana-checker": "^0.9.0",
-    "mocha": "^8.4.0",
-    "nyc": "^15.1.0",
-    "rapidoc": "^8.4.9",
-    "sass": "^1.32.13",
-    "sass-loader": "^10.2.0",
-    "sinon": "^10.0.0",
-    "sinon-chai": "^3.6.0",
-    "stylelint": "^13.13.1",
-    "stylelint-config-wikimedia": "^0.10.3",
-    "vue-cli-plugin-vuetify": "^2.4.0",
-    "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.7.2",
-    "webpack-bundle-tracker": "^0.4.3"
-  },
-  "babel": {
-    "presets": [
-      "@vue/cli-plugin-babel/preset"
-    ],
-    "env": {
-      "test": {
-        "plugins": [
-          [
-            "istanbul",
-            {
-              "useInlineSourceMaps": false
-            }
-          ]
-        ]
-      }
-    }
-  },
-  "nyc": {
-    "all": true,
-    "extension": [
-      ".js",
-      ".vue"
-    ],
-    "include": [
-      "vue/src/**/*.js",
-      "vue/src/**/*.vue"
-    ],
-    "exclude": [
-      "vue/src/main.js",
-      "vue/src/**/*.spec.js",
-      "**/test/**"
-    ],
-    "sourceMap": false,
-    "reporter": [
-      "text",
-      "text-summary"
-    ],
-    "report-dir": "./.nyc_output/coverage",
-    "per-file": false,
-    "skip-full": true,
-    "lines": 75,
-    "functions": 75,
-    "branches": 60,
-    "statements": 75,
-    "check-coverage": true,
-    "watermarks": {
-      "lines": [
-        84,
-        85
-      ],
-      "functions": [
-        84,
-        85
-      ],
-      "branches": [
-        84,
-        85
-      ],
-      "statements": [
-        84,
-        85
-      ]
-    }
-  },
-  "eslintConfig": {
-    "root": true,
-    "parserOptions": {
-      "parser": "babel-eslint",
-      "allowImportExportEverywhere": true
-    },
-    "extends": [
-      "wikimedia/client-es6"
-    ],
-    "reportUnusedDisableDirectives": true,
-    "overrides": [
-      {
-        "files": [
-          "jsonschema/**/*.json"
-        ],
-        "rules": {
-          "indent": "off",
-          "eol-last": "off"
-        }
-      },
-      {
-        "files": [
-          "package.json",
-          "package-lock.json"
-        ],
-        "rules": {
-          "indent": "off",
-          "eol-last": "off"
-        }
-      },
-      {
-        "files": [
-          "tests/jsonschema/**/*.js"
-        ],
-        "extends": [
-          "wikimedia/server",
-          "wikimedia/mocha"
-        ]
-      },
-      {
-        "files": [
-          "vue/src/**/*.{js,vue}"
-        ],
-        "extends": [
-          "wikimedia/vue-es6",
-          "wikimedia/language/es6",
-          "plugin:vue/recommended",
-          "plugin:@intlify/vue-i18n/recommended"
-        ],
-        "plugins": [
-          "vuetify"
-        ],
-        "rules": {
-          "camelcase": "off",
-          "no-undef": "off",
-          "no-underscore-dangle": [
-            "error",
-            {
-              "allowAfterThis": true
-            }
-          ],
-          "vue/singleline-html-element-content-newline": "off",
-          "vuetify/grid-unknown-attributes": "error",
-          "vuetify/no-deprecated-classes": "error",
-          "vuetify/no-legacy-grid": "error",
-          "@intlify/vue-i18n/no-dynamic-keys": "error",
-          "@intlify/vue-i18n/no-unused-keys": [
-            "error",
-            {
-              "extensions": [
-                ".js",
-                ".vue"
-              ]
-            }
-          ],
-          "@intlify/vue-i18n/no-raw-text": [
-            "error",
-            {
-              "ignoreNodes": [
-                "v-icon"
-              ],
-              "ignorePattern": "^\\s*[:()\"]+$",
-              "ignoreText": []
-            }
-          ],
-          "@intlify/vue-i18n/key-format-style": [
-            "error",
-            "kebab-case"
-          ]
-        },
-        "settings": {
-          "vue-i18n": {
-            "localeDir": "./vue/src/assets/locales/i18n/*.js",
-            "messageSyntaxVersion": "^8.22.1"
-          }
-        }
-      },
-      {
-        "files": [
-          "vue.config.js"
-        ],
-        "extends": [
-          "wikimedia/server"
-        ]
-      }
-    ]
-  },
-  "eslintIgnore": [
-    ".pipeline",
-    "bin",
-    "dist",
-    "docs",
-    "toolhub/apps/toolinfo/data/language-data.json",
-    "vue/dist-tests/webpack-stats.json"
-  ],
-  "stylelint": {
-    "extends": "stylelint-config-wikimedia/grade-a",
-    "ignoreFiles": [
-      "docs/_build/**/*.css",
-      "vue/dist/**/*"
-    ],
-    "rules": {
-      "selector-max-id": null,
-      "declaration-no-important": null
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+	"name": "toolhub",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"build:vue": "vue-cli-service build",
+		"format": "eslint --fix .",
+		"lint": "npm run lint:eslint && npm run lint:vue && npm run lint:stylelint && npm run lint:banana && npm run lint:css-rtl",
+		"lint:banana": "banana-checker vue/src/assets/locales/i18n/",
+		"lint:css-rtl": "bash -c \"if grep -rnHIE --color '\\b[mp][lr]-(n?[0-9][0-6]?|auto)\\b' vue/src; then echo 'ERROR: Use S and E helper classes, not L and R. (T269056)'; echo; exit 1; fi\"",
+		"lint:eslint": "eslint .",
+		"lint:stylelint": "stylelint -f verbose '**/*.{css,scss,sass,vue}'",
+		"lint:vue": "vue-cli-service lint",
+		"schemas:generate": "jsonschema-tools materialize-all",
+		"serve:vue": "vue-cli-service serve",
+		"unit": "npm run unit:jsonschema && npm run unit:vue",
+		"unit:jsonschema": "mocha tests/jsonschema",
+		"unit:vue": "NODE_ENV=test nyc vue-cli-service test:unit --colors 'vue/src/**/*.spec.js'",
+		"test": "npm run lint && npm run unit"
+	},
+	"dependencies": {
+		"@wikimedia/language-data": "^1.0.2",
+		"banana-i18n": "^2.1.0",
+		"chart.js": "^2.9.4",
+		"core-js": "^3.12.1",
+		"swagger-client": "^3.13.3",
+		"vue": "^2.6.11",
+		"vue-async-computed": "^3.9.0",
+		"vue-chartjs": "^3.5.1",
+		"vue-clipboard2": "^0.3.1",
+		"vue-frag": "^1.1.5",
+		"vue-i18n": "^8.24.4",
+		"vue-meta": "^2.4.0",
+		"vue-moment": "^4.1.0",
+		"vue-router": "^3.5.1",
+		"vuetify": "^2.5.0",
+		"vuex": "^3.6.2"
+	},
+	"devDependencies": {
+		"@intlify/eslint-plugin-vue-i18n": "^0.11.1",
+		"@mdi/font": "^5.9.55",
+		"@vue/cli": "^4.5.13",
+		"@vue/cli-plugin-babel": "^4.5.13",
+		"@vue/cli-plugin-eslint": "^4.5.13",
+		"@vue/cli-plugin-router": "^4.5.13",
+		"@vue/cli-plugin-unit-mocha": "^4.5.13",
+		"@vue/cli-plugin-vuex": "^4.5.13",
+		"@vue/cli-service": "^4.5.13",
+		"@wikimedia/jsonschema-tools": "^0.9.0",
+		"babel-eslint": "^10.1.0",
+		"babel-plugin-istanbul": "^6.0.0",
+		"chai": "^4.3.4",
+		"eslint": "^7.26.0",
+		"eslint-config-wikimedia": "^0.20.0",
+		"eslint-plugin-vuetify": "^1.0.0-beta.8",
+		"grunt-banana-checker": "^0.9.0",
+		"mocha": "^8.4.0",
+		"nyc": "^15.1.0",
+		"rapidoc": "^8.4.9",
+		"sass": "^1.32.13",
+		"sass-loader": "^10.2.0",
+		"sinon": "^10.0.0",
+		"sinon-chai": "^3.6.0",
+		"stylelint": "^13.13.1",
+		"stylelint-config-wikimedia": "^0.10.3",
+		"vue-cli-plugin-vuetify": "^2.4.0",
+		"vue-template-compiler": "^2.6.11",
+		"vuetify-loader": "^1.7.2",
+		"webpack-bundle-tracker": "^0.4.3"
+	},
+	"babel": {
+		"presets": [
+			"@vue/cli-plugin-babel/preset"
+		],
+		"env": {
+			"test": {
+				"plugins": [
+					[
+						"istanbul",
+						{
+							"useInlineSourceMaps": false
+						}
+					]
+				]
+			}
+		}
+	},
+	"nyc": {
+		"all": true,
+		"extension": [
+			".js",
+			".vue"
+		],
+		"include": [
+			"vue/src/**/*.js",
+			"vue/src/**/*.vue"
+		],
+		"exclude": [
+			"vue/src/main.js",
+			"vue/src/**/*.spec.js",
+			"**/test/**"
+		],
+		"sourceMap": false,
+		"reporter": [
+			"text",
+			"text-summary"
+		],
+		"report-dir": "./.nyc_output/coverage",
+		"per-file": false,
+		"skip-full": true,
+		"lines": 75,
+		"functions": 75,
+		"branches": 60,
+		"statements": 75,
+		"check-coverage": true,
+		"watermarks": {
+			"lines": [
+				84,
+				85
+			],
+			"functions": [
+				84,
+				85
+			],
+			"branches": [
+				84,
+				85
+			],
+			"statements": [
+				84,
+				85
+			]
+		}
+	},
+	"eslintConfig": {
+		"root": true,
+		"parserOptions": {
+			"parser": "babel-eslint",
+			"allowImportExportEverywhere": true
+		},
+		"extends": [
+			"wikimedia/client-es6"
+		],
+		"reportUnusedDisableDirectives": true,
+		"overrides": [
+			{
+				"files": [
+					"jsonschema/**/*.json"
+				],
+				"rules": {
+					"indent": "off",
+					"eol-last": "off"
+				}
+			},
+			{
+				"files": [
+					"tests/jsonschema/**/*.js"
+				],
+				"extends": [
+					"wikimedia/server",
+					"wikimedia/mocha"
+				]
+			},
+			{
+				"files": [
+					"vue/src/**/*.{js,vue}"
+				],
+				"extends": [
+					"wikimedia/vue-es6",
+					"wikimedia/language/es6",
+					"plugin:vue/recommended",
+					"plugin:@intlify/vue-i18n/recommended"
+				],
+				"plugins": [
+					"vuetify"
+				],
+				"rules": {
+					"camelcase": "off",
+					"no-undef": "off",
+					"no-underscore-dangle": [
+						"error",
+						{
+							"allowAfterThis": true
+						}
+					],
+					"vue/singleline-html-element-content-newline": "off",
+					"vuetify/grid-unknown-attributes": "error",
+					"vuetify/no-deprecated-classes": "error",
+					"vuetify/no-legacy-grid": "error",
+					"@intlify/vue-i18n/no-dynamic-keys": "error",
+					"@intlify/vue-i18n/no-unused-keys": [
+						"error",
+						{
+							"extensions": [
+								".js",
+								".vue"
+							]
+						}
+					],
+					"@intlify/vue-i18n/no-raw-text": [
+						"error",
+						{
+							"ignoreNodes": [
+								"v-icon"
+							],
+							"ignorePattern": "^\\s*[:()\"]+$",
+							"ignoreText": []
+						}
+					],
+					"@intlify/vue-i18n/key-format-style": [
+						"error",
+						"kebab-case"
+					]
+				},
+				"settings": {
+					"vue-i18n": {
+						"localeDir": "./vue/src/assets/locales/i18n/*.js",
+						"messageSyntaxVersion": "^8.22.1"
+					}
+				}
+			},
+			{
+				"files": [
+					"vue.config.js"
+				],
+				"extends": [
+					"wikimedia/server"
+				]
+			}
+		]
+	},
+	"eslintIgnore": [
+		".pipeline",
+		"bin",
+		"dist",
+		"docs",
+		"toolhub/apps/toolinfo/data/language-data.json",
+		"vue/dist-tests/webpack-stats.json"
+	],
+	"stylelint": {
+		"extends": "stylelint-config-wikimedia/grade-a",
+		"ignoreFiles": [
+			"docs/_build/**/*.css",
+			"vue/dist/**/*"
+		],
+		"rules": {
+			"selector-max-id": null,
+			"declaration-no-important": null
+		}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead"
+	]
 }
