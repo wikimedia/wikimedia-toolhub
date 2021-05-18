@@ -24,7 +24,6 @@ describe( 'notify/vuex', () => {
 			expect( commit ).to.have.been.calledOnce;
 			expect( commit ).to.have.been.calledWithExactly(
 				'onMessage',
-				// eslint-disable-next-line es/no-object-assign
 				Object.assign( payload, { id: mid, timeoutID: null } )
 			);
 		} );
