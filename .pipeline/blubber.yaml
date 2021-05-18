@@ -113,7 +113,7 @@ variants:
     entrypoint:
       - npm
       - run-script
-      - test
+      - unit
 
   local-python:
     # Local development Python runtime container including special support for

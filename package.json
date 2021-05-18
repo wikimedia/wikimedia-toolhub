@@ -13,9 +13,10 @@
     "lint:vue": "vue-cli-service lint",
     "schemas:generate": "jsonschema-tools materialize-all",
     "serve:vue": "vue-cli-service serve",
-    "test": "npm run test:jsonschema && npm run test:vue",
-    "test:jsonschema": "mocha tests/jsonschema",
-    "test:vue": "NODE_ENV=test nyc vue-cli-service test:unit --colors 'vue/src/**/*.spec.js'"
+    "unit": "npm run unit:jsonschema && npm run unit:vue",
+    "unit:jsonschema": "mocha tests/jsonschema",
+    "unit:vue": "NODE_ENV=test nyc vue-cli-service test:unit --colors 'vue/src/**/*.spec.js'",
+    "test": "npm run lint && npm run unit"
   },
   "dependencies": {
     "@wikimedia/language-data": "^1.0.2",

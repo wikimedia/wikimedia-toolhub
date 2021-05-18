@@ -5,8 +5,8 @@ USER 0
 ENV HOME="/root"
 ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get install -y "ca-certificates" "wget" && rm -rf /var/lib/apt/lists/*
-RUN groupadd -o -g "65533" -r "somebody" && useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody" && mkdir -p "/srv/dockerize/bin" && chown "65533":"65533" "/srv/dockerize/bin" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
-RUN groupadd -o -g "900" -r "runuser" && useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser"
+RUN (getent group "65533" || groupadd -o -g "65533" -r "somebody") && (getent passwd "65533" || useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody") && mkdir -p "/srv/dockerize/bin" && chown "65533":"65533" "/srv/dockerize/bin" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
+RUN (getent group "900" || groupadd -o -g "900" -r "runuser") && (getent passwd "900" || useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser")
 USER 65533
 ENV HOME="/home/somebody"
 WORKDIR "/srv/dockerize/bin"
@@ -23,8 +23,8 @@ RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclie
 RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
 RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.4"
-RUN groupadd -o -g "65533" -r "somebody" && useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody" && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
-RUN groupadd -o -g "900" -r "runuser" && useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser"
+RUN (getent group "65533" || groupadd -o -g "65533" -r "somebody") && (getent passwd "65533" || useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody") && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
+RUN (getent group "900" || groupadd -o -g "900" -r "runuser") && (getent passwd "900" || useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser")
 USER 65533
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
@@ -35,4 +35,4 @@ RUN poetry "install" "--no-root"
 COPY --chown=65533:65533 [".", "."]
 COPY --chown=65533:65533 --from=dockerize ["/srv/dockerize", "/srv/dockerize"]
 
-LABEL blubber.variant="local-python" blubber.version="0.8.0+007009e"
+LABEL blubber.variant="local-python" blubber.version="0.8.0+459234d"

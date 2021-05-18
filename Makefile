@@ -131,7 +131,7 @@ test-nodejs-lint:  ## Run linter checks for nodejs code
 
 test-nodejs-unit:  ## Run unit tests for nodejs code
 	@echo "== Test Nodejs =="
-	docker-compose exec nodejs npm run-script test
+	docker-compose exec nodejs npm run-script unit
 .PHONY: test-nodejs-unit
 
 schemas:  ## Create/update versioned json schema documents
