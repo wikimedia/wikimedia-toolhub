@@ -51,7 +51,7 @@
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.3.4",
     "eslint": "^7.26.0",
-    "eslint-config-wikimedia": "^0.17.0",
+    "eslint-config-wikimedia": "^0.20.0",
     "eslint-plugin-vuetify": "^1.0.0-beta.8",
     "grunt-banana-checker": "^0.9.0",
     "mocha": "^8.4.0",
@@ -139,10 +139,38 @@
       "allowImportExportEverywhere": true
     },
     "extends": [
-      "wikimedia/client"
+      "wikimedia/client-es6"
     ],
     "reportUnusedDisableDirectives": true,
     "overrides": [
+      {
+        "files": [
+          "jsonschema/**/*.json"
+        ],
+        "rules": {
+          "indent": "off",
+          "eol-last": "off"
+        }
+      },
+      {
+        "files": [
+          "package.json",
+          "package-lock.json"
+        ],
+        "rules": {
+          "indent": "off",
+          "eol-last": "off"
+        }
+      },
+      {
+        "files": [
+          "tests/jsonschema/**/*.js"
+        ],
+        "extends": [
+          "wikimedia/server",
+          "wikimedia/mocha"
+        ]
+      },
       {
         "files": [
           "vue/src/**/*.{js,vue}"
@@ -203,15 +231,6 @@
       },
       {
         "files": [
-          "tests/jsonschema/**/*.js"
-        ],
-        "extends": [
-          "wikimedia/server",
-          "wikimedia/mocha"
-        ]
-      },
-      {
-        "files": [
           "vue.config.js"
         ],
         "extends": [
@@ -221,10 +240,12 @@
     ]
   },
   "eslintIgnore": [
+    ".pipeline",
+    "bin",
     "dist",
     "docs",
-    "bin",
-    ".pipeline"
+    "toolhub/apps/toolinfo/data/language-data.json",
+    "vue/dist-tests/webpack-stats.json"
   ],
   "stylelint": {
     "extends": "stylelint-config-wikimedia/grade-a",
