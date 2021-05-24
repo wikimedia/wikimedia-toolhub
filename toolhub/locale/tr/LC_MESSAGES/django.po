@@ -4,12 +4,13 @@
 # Author: Agaafd
 # Author: Hedda
 # Author: Joseph
+# Author: Melissadilara
 # Author: MuratTheTurkish
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-05-10 12:17:04+0000\n"
-"X-POT-Import-Date: 2021-05-07 22:32:01+0000\n"
+"PO-Revision-Date: 2021-05-24 12:17:12+0000\n"
+"X-POT-Import-Date: 2021-05-19 00:31:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr\n"
@@ -20,59 +21,67 @@ msgstr ""
 msgid "Audit log"
 msgstr "Denetim günlüğü"
 
-#: toolhub/apps/auditlog/models.py:80
+#: toolhub/apps/auditlog/models.py:82
 msgid "created"
 msgstr "oluşturuldu"
 
-#: toolhub/apps/auditlog/models.py:81
+#: toolhub/apps/auditlog/models.py:83
 msgid "updated"
 msgstr "güncellendi"
 
-#: toolhub/apps/auditlog/models.py:82
+#: toolhub/apps/auditlog/models.py:84
 msgid "deleted"
 msgstr "silindi"
 
-#: toolhub/apps/auditlog/models.py:87
+#: toolhub/apps/auditlog/models.py:85
+msgid "added to"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:86
+msgid "removed from"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:91
 msgid "timestamp"
 msgstr "zaman damgası"
 
-#: toolhub/apps/auditlog/models.py:95
+#: toolhub/apps/auditlog/models.py:99
 msgid "user"
 msgstr "kullanıcı"
 
-#: toolhub/apps/auditlog/models.py:103
+#: toolhub/apps/auditlog/models.py:107
 msgid "content type"
 msgstr "içerik türü"
 
-#: toolhub/apps/auditlog/models.py:109
+#: toolhub/apps/auditlog/models.py:113
 msgid "object id"
 msgstr "nesne kimliği"
 
-#: toolhub/apps/auditlog/models.py:116
+#: toolhub/apps/auditlog/models.py:120
 msgid "object pk"
 msgstr "nesne birincil anahtarı"
 
-#: toolhub/apps/auditlog/models.py:121
+#: toolhub/apps/auditlog/models.py:125
 msgid "action"
 msgstr "eylem"
 
-#: toolhub/apps/auditlog/models.py:130
+#: toolhub/apps/auditlog/models.py:134
 msgid "auditlog entry"
 msgstr "denetim günlüğü girdisi"
 
-#: toolhub/apps/auditlog/models.py:131
+#: toolhub/apps/auditlog/models.py:135
 msgid "auditlog entries"
 msgstr "denetim günlüğü girdileri"
 
-#: toolhub/apps/auditlog/serializers.py:30
+#: toolhub/apps/auditlog/serializers.py:31
 msgid "Event action"
 msgstr "Etkinlik eylemi"
 
-#: toolhub/apps/auditlog/serializers.py:39
+#: toolhub/apps/auditlog/serializers.py:40
 msgid "Event target"
 msgstr "Etkinlik hedefi"
 
-#: toolhub/apps/auditlog/serializers.py:67
+#: toolhub/apps/auditlog/serializers.py:71
 msgid "Audit log entry"
 msgstr "Denetim günlüğü girdisi"
 
@@ -240,7 +249,7 @@ msgstr "Bir uygulama yetkisini iptal edin."
 msgid "Search"
 msgstr "Ara"
 
-#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:72
+#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
 msgstr "Kullanıcı bilgisi"
 
@@ -674,69 +683,93 @@ msgstr "Gereklidir. 255 veya daha az karakter."
 msgid "A user with that username already exists."
 msgstr "Bir kullanıcı bu adı zaten kulanıyor."
 
-#: toolhub/apps/user/serializers.py:36
+#: toolhub/apps/user/serializers.py:41
+msgid "Action that the user can take"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:46
+msgid "Subject type to check user action on"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:51
+msgid "Criteria which restricts user action"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
 msgstr "Mevcut kullanıcı hakkında bilgiler"
 
-#: toolhub/apps/user/serializers.py:55
+#: toolhub/apps/user/serializers.py:69
+msgid "Numeric user id"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:77
+msgid "Cross-site request forgery prevention token"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:82
+msgid "CASL access control rules"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
 msgstr "Mevcut yerel ayar hakkında bilgi"
 
-#: toolhub/apps/user/serializers.py:84
+#: toolhub/apps/user/serializers.py:123
 msgid "Group information"
 msgstr "Grup bilgisi"
 
-#: toolhub/apps/user/serializers.py:96
+#: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
 msgstr "Bir kullanıcı için sosyal kimlik doğrulama bilgileri"
 
-#: toolhub/apps/user/serializers.py:126
+#: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
 msgstr "Ayrıntılı kullanıcı bilgileri"
 
-#: toolhub/apps/user/serializers.py:141
+#: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
-msgstr ""
+msgstr "Ayrıntılı grup bilgileri"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
 msgstr "Geçerli bir kullanıcı adı girin. `@` ve `:` karakterlerine izin verilmez."
 
-#: toolhub/apps/user/views.py:56
+#: toolhub/apps/user/views.py:57
 msgid "Get information about the currently logged in user."
 msgstr "Şu anda oturum açmış kullanıcı hakkında bilgi alın."
 
-#: toolhub/apps/user/views.py:82
+#: toolhub/apps/user/views.py:85
 msgid "Get current locale."
 msgstr "Mevcut yerel ayarı alın."
 
-#: toolhub/apps/user/views.py:93
+#: toolhub/apps/user/views.py:96
 msgid "Set locale."
 msgstr "Yerel ayarlayın."
 
-#: toolhub/apps/user/views.py:111
+#: toolhub/apps/user/views.py:114
 msgid "List all active users."
 msgstr "Tüm aktif kullanıcıları listeleyin."
 
-#: toolhub/apps/user/views.py:114
+#: toolhub/apps/user/views.py:117
 msgid "Info for a specific user."
 msgstr "Belirli bir kullanıcı için bilgi."
 
-#: toolhub/apps/user/views.py:134
+#: toolhub/apps/user/views.py:137
 msgid "List all user groups."
 msgstr "Tüm kullanıcı gruplarını listeleyin."
 
-#: toolhub/apps/user/views.py:137
+#: toolhub/apps/user/views.py:140
 msgid "Info for a user group."
 msgstr "Bir kullanıcı grubu için bilgi."
 
-#: toolhub/apps/user/views.py:159
+#: toolhub/apps/user/views.py:162
 msgid "Add a user to this group."
-msgstr ""
+msgstr "Bu gruba kullanıcı ekle."
 
-#: toolhub/apps/user/views.py:170
+#: toolhub/apps/user/views.py:173
 msgid "Remove a user from this group."
-msgstr ""
+msgstr "Kullanıcıyı bu gruptan kaldır."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."

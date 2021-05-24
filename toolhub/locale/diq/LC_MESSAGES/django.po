@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-05-10 12:17:04+0000\n"
-"X-POT-Import-Date: 2021-05-07 22:32:01+0000\n"
+"PO-Revision-Date: 2021-05-24 12:17:11+0000\n"
+"X-POT-Import-Date: 2021-05-19 00:31:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: diq\n"
@@ -17,59 +17,67 @@ msgstr ""
 msgid "Audit log"
 msgstr "Roceka Weynayışi"
 
-#: toolhub/apps/auditlog/models.py:80
+#: toolhub/apps/auditlog/models.py:82
 msgid "created"
 msgstr "vıraziya"
 
-#: toolhub/apps/auditlog/models.py:81
+#: toolhub/apps/auditlog/models.py:83
 msgid "updated"
 msgstr "Biyo rocane"
 
-#: toolhub/apps/auditlog/models.py:82
+#: toolhub/apps/auditlog/models.py:84
 msgid "deleted"
 msgstr "Esteriya"
 
-#: toolhub/apps/auditlog/models.py:87
+#: toolhub/apps/auditlog/models.py:85
+msgid "added to"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:86
+msgid "removed from"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:91
 msgid "timestamp"
 msgstr "imzay demi"
 
-#: toolhub/apps/auditlog/models.py:95
+#: toolhub/apps/auditlog/models.py:99
 msgid "user"
 msgstr "karber"
 
-#: toolhub/apps/auditlog/models.py:103
+#: toolhub/apps/auditlog/models.py:107
 msgid "content type"
 msgstr "tewrê zereki"
 
-#: toolhub/apps/auditlog/models.py:109
+#: toolhub/apps/auditlog/models.py:113
 msgid "object id"
 msgstr "kamiya obceyi"
 
-#: toolhub/apps/auditlog/models.py:116
+#: toolhub/apps/auditlog/models.py:120
 msgid "object pk"
 msgstr "obcey pk"
 
-#: toolhub/apps/auditlog/models.py:121
+#: toolhub/apps/auditlog/models.py:125
 msgid "action"
 msgstr "kerdış"
 
-#: toolhub/apps/auditlog/models.py:130
+#: toolhub/apps/auditlog/models.py:134
 msgid "auditlog entry"
 msgstr "dekerdekê auditlog"
 
-#: toolhub/apps/auditlog/models.py:131
+#: toolhub/apps/auditlog/models.py:135
 msgid "auditlog entries"
 msgstr "dekerdekanê auditlog"
 
-#: toolhub/apps/auditlog/serializers.py:30
+#: toolhub/apps/auditlog/serializers.py:31
 msgid "Event action"
 msgstr "kerdışê weqay"
 
-#: toolhub/apps/auditlog/serializers.py:39
+#: toolhub/apps/auditlog/serializers.py:40
 msgid "Event target"
 msgstr "Etiketê Weqay"
 
-#: toolhub/apps/auditlog/serializers.py:67
+#: toolhub/apps/auditlog/serializers.py:71
 msgid "Audit log entry"
 msgstr "Dekerdekê qeydê Auditi"
 
@@ -237,7 +245,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:72
+#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
 msgstr "Zanışiya Karberi"
 
@@ -671,27 +679,51 @@ msgstr "255 ra kemeyêri karakteri lazımi"
 msgid "A user with that username already exists."
 msgstr "No karbero xora nê nameyi gureyneno"
 
-#: toolhub/apps/user/serializers.py:36
+#: toolhub/apps/user/serializers.py:41
+msgid "Action that the user can take"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:46
+msgid "Subject type to check user action on"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:51
+msgid "Criteria which restricts user action"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
 msgstr "Heqê karberê mewcudi malumat"
 
-#: toolhub/apps/user/serializers.py:55
+#: toolhub/apps/user/serializers.py:69
+msgid "Numeric user id"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:77
+msgid "Cross-site request forgery prevention token"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:82
+msgid "CASL access control rules"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
 msgstr ""
 
-#: toolhub/apps/user/serializers.py:84
+#: toolhub/apps/user/serializers.py:123
 msgid "Group information"
 msgstr "Zangeyê grub"
 
-#: toolhub/apps/user/serializers.py:96
+#: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
 msgstr ""
 
-#: toolhub/apps/user/serializers.py:126
+#: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
 msgstr ""
 
-#: toolhub/apps/user/serializers.py:141
+#: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
 msgstr ""
 
@@ -699,39 +731,39 @@ msgstr ""
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
 msgstr ""
 
-#: toolhub/apps/user/views.py:56
+#: toolhub/apps/user/views.py:57
 msgid "Get information about the currently logged in user."
 msgstr ""
 
-#: toolhub/apps/user/views.py:82
+#: toolhub/apps/user/views.py:85
 msgid "Get current locale."
 msgstr "Şo mewcud lokali"
 
-#: toolhub/apps/user/views.py:93
+#: toolhub/apps/user/views.py:96
 msgid "Set locale."
 msgstr "Lokali eyar kerê"
 
-#: toolhub/apps/user/views.py:111
+#: toolhub/apps/user/views.py:114
 msgid "List all active users."
 msgstr "Karberanê aktivan liste kerê"
 
-#: toolhub/apps/user/views.py:114
+#: toolhub/apps/user/views.py:117
 msgid "Info for a specific user."
 msgstr "Spesifik karberi rê melumat"
 
-#: toolhub/apps/user/views.py:134
+#: toolhub/apps/user/views.py:137
 msgid "List all user groups."
 msgstr ""
 
-#: toolhub/apps/user/views.py:137
+#: toolhub/apps/user/views.py:140
 msgid "Info for a user group."
 msgstr ""
 
-#: toolhub/apps/user/views.py:159
+#: toolhub/apps/user/views.py:162
 msgid "Add a user to this group."
 msgstr ""
 
-#: toolhub/apps/user/views.py:170
+#: toolhub/apps/user/views.py:173
 msgid "Remove a user from this group."
 msgstr ""
 

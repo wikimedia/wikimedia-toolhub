@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-05-10 12:17:04+0000\n"
-"X-POT-Import-Date: 2021-05-07 22:32:01+0000\n"
+"PO-Revision-Date: 2021-05-24 12:17:12+0000\n"
+"X-POT-Import-Date: 2021-05-19 00:31:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
@@ -18,59 +18,67 @@ msgstr ""
 msgid "Audit log"
 msgstr "감사 로그"
 
-#: toolhub/apps/auditlog/models.py:80
+#: toolhub/apps/auditlog/models.py:82
 msgid "created"
 msgstr "만들어짐"
 
-#: toolhub/apps/auditlog/models.py:81
+#: toolhub/apps/auditlog/models.py:83
 msgid "updated"
 msgstr "수정됨"
 
-#: toolhub/apps/auditlog/models.py:82
+#: toolhub/apps/auditlog/models.py:84
 msgid "deleted"
 msgstr "삭제됨"
 
-#: toolhub/apps/auditlog/models.py:87
+#: toolhub/apps/auditlog/models.py:85
+msgid "added to"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:86
+msgid "removed from"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:91
 msgid "timestamp"
 msgstr "타임스탬프"
 
-#: toolhub/apps/auditlog/models.py:95
+#: toolhub/apps/auditlog/models.py:99
 msgid "user"
 msgstr "사용자"
 
-#: toolhub/apps/auditlog/models.py:103
+#: toolhub/apps/auditlog/models.py:107
 msgid "content type"
 msgstr "콘텐츠 유형"
 
-#: toolhub/apps/auditlog/models.py:109
+#: toolhub/apps/auditlog/models.py:113
 msgid "object id"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:116
+#: toolhub/apps/auditlog/models.py:120
 msgid "object pk"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:121
+#: toolhub/apps/auditlog/models.py:125
 msgid "action"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:130
+#: toolhub/apps/auditlog/models.py:134
 msgid "auditlog entry"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:131
+#: toolhub/apps/auditlog/models.py:135
 msgid "auditlog entries"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:30
+#: toolhub/apps/auditlog/serializers.py:31
 msgid "Event action"
 msgstr ""
 
-#: toolhub/apps/auditlog/serializers.py:39
+#: toolhub/apps/auditlog/serializers.py:40
 msgid "Event target"
 msgstr "이벤트 대상"
 
-#: toolhub/apps/auditlog/serializers.py:67
+#: toolhub/apps/auditlog/serializers.py:71
 msgid "Audit log entry"
 msgstr ""
 
@@ -238,7 +246,7 @@ msgstr "애플리케이션 인가를 철회합니다."
 msgid "Search"
 msgstr "검색"
 
-#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:72
+#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
 msgstr "사용자 정보"
 
@@ -672,69 +680,93 @@ msgstr "필수입니다. 255자 이하."
 msgid "A user with that username already exists."
 msgstr "해당 사용자 이름의 사용자가 이미 존재합니다."
 
-#: toolhub/apps/user/serializers.py:36
+#: toolhub/apps/user/serializers.py:41
+msgid "Action that the user can take"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:46
+msgid "Subject type to check user action on"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:51
+msgid "Criteria which restricts user action"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
 msgstr "현재 사용자에 관한 정보"
 
-#: toolhub/apps/user/serializers.py:55
+#: toolhub/apps/user/serializers.py:69
+msgid "Numeric user id"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:77
+msgid "Cross-site request forgery prevention token"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:82
+msgid "CASL access control rules"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
 msgstr "현재 로케일에 관한 정보"
 
-#: toolhub/apps/user/serializers.py:84
+#: toolhub/apps/user/serializers.py:123
 msgid "Group information"
 msgstr "그룹 정보"
 
-#: toolhub/apps/user/serializers.py:96
+#: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
 msgstr ""
 
-#: toolhub/apps/user/serializers.py:126
+#: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
 msgstr "상세 사용자 정보"
 
-#: toolhub/apps/user/serializers.py:141
+#: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
-msgstr ""
+msgstr "상세 그룹 정보"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
 msgstr ""
 
-#: toolhub/apps/user/views.py:56
+#: toolhub/apps/user/views.py:57
 msgid "Get information about the currently logged in user."
 msgstr "현재 로그인한 사용자에 관한 정보를 가져옵니다."
 
-#: toolhub/apps/user/views.py:82
+#: toolhub/apps/user/views.py:85
 msgid "Get current locale."
 msgstr "현재 로케일을 가져옵니다."
 
-#: toolhub/apps/user/views.py:93
+#: toolhub/apps/user/views.py:96
 msgid "Set locale."
 msgstr "로케일을 설정합니다."
 
-#: toolhub/apps/user/views.py:111
+#: toolhub/apps/user/views.py:114
 msgid "List all active users."
 msgstr "활동 중인 모든 사용자를 나열합니다."
 
-#: toolhub/apps/user/views.py:114
+#: toolhub/apps/user/views.py:117
 msgid "Info for a specific user."
 msgstr "특정 사용자의 정보입니다."
 
-#: toolhub/apps/user/views.py:134
+#: toolhub/apps/user/views.py:137
 msgid "List all user groups."
 msgstr "모든 사용자 그룹을 나열합니다."
 
-#: toolhub/apps/user/views.py:137
+#: toolhub/apps/user/views.py:140
 msgid "Info for a user group."
 msgstr "사용자 그룹의 정보입니다."
 
-#: toolhub/apps/user/views.py:159
+#: toolhub/apps/user/views.py:162
 msgid "Add a user to this group."
-msgstr ""
+msgstr "이 그룹에 사용자를 추가합니다."
 
-#: toolhub/apps/user/views.py:170
+#: toolhub/apps/user/views.py:173
 msgid "Remove a user from this group."
-msgstr ""
+msgstr "이 그룹에서 사용자를 제거합니다."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."

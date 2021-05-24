@@ -85,6 +85,7 @@
 	"toolhistory-pagesubtitle": "Katso tämän työkalun historia",
 	"tools": "työkalut",
 	"totaltools": "Työkaluja yhteensä",
+	"toolview": "Työkalu",
 	"tooltype": "Työkalun tyyppi",
 	"tool-deprecated-error": "Tätä työkalua ei suositella käytettäväksi.",
 	"tool-experimental-error": "Tätä työkalua testataan. Se on epävakaa ja voi muuttua tai olla poissa käytöstä milloin tahansa.",

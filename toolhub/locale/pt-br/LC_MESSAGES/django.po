@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-05-13 11:56:34+0000\n"
-"X-POT-Import-Date: 2021-05-07 22:32:01+0000\n"
+"PO-Revision-Date: 2021-05-24 12:17:12+0000\n"
+"X-POT-Import-Date: 2021-05-19 00:31:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt-BR\n"
@@ -19,59 +19,67 @@ msgstr ""
 msgid "Audit log"
 msgstr "Registro de auditoria"
 
-#: toolhub/apps/auditlog/models.py:80
+#: toolhub/apps/auditlog/models.py:82
 msgid "created"
 msgstr "criado"
 
-#: toolhub/apps/auditlog/models.py:81
+#: toolhub/apps/auditlog/models.py:83
 msgid "updated"
 msgstr "atualizado"
 
-#: toolhub/apps/auditlog/models.py:82
+#: toolhub/apps/auditlog/models.py:84
 msgid "deleted"
 msgstr "excluído"
 
-#: toolhub/apps/auditlog/models.py:87
+#: toolhub/apps/auditlog/models.py:85
+msgid "added to"
+msgstr "Adicionado a"
+
+#: toolhub/apps/auditlog/models.py:86
+msgid "removed from"
+msgstr "removido de"
+
+#: toolhub/apps/auditlog/models.py:91
 msgid "timestamp"
 msgstr "data e hora"
 
-#: toolhub/apps/auditlog/models.py:95
+#: toolhub/apps/auditlog/models.py:99
 msgid "user"
 msgstr "usuário"
 
-#: toolhub/apps/auditlog/models.py:103
+#: toolhub/apps/auditlog/models.py:107
 msgid "content type"
 msgstr "tipo de conteúdo"
 
-#: toolhub/apps/auditlog/models.py:109
+#: toolhub/apps/auditlog/models.py:113
 msgid "object id"
 msgstr "id do objeto"
 
-#: toolhub/apps/auditlog/models.py:116
+#: toolhub/apps/auditlog/models.py:120
 msgid "object pk"
 msgstr "pk do objeto"
 
-#: toolhub/apps/auditlog/models.py:121
+#: toolhub/apps/auditlog/models.py:125
 msgid "action"
 msgstr "ação"
 
-#: toolhub/apps/auditlog/models.py:130
+#: toolhub/apps/auditlog/models.py:134
 msgid "auditlog entry"
 msgstr "entrada da auditoria"
 
-#: toolhub/apps/auditlog/models.py:131
+#: toolhub/apps/auditlog/models.py:135
 msgid "auditlog entries"
 msgstr "entradas da auditoria"
 
-#: toolhub/apps/auditlog/serializers.py:30
+#: toolhub/apps/auditlog/serializers.py:31
 msgid "Event action"
 msgstr "Ação do evento"
 
-#: toolhub/apps/auditlog/serializers.py:39
+#: toolhub/apps/auditlog/serializers.py:40
 msgid "Event target"
 msgstr "Alvo do evento"
 
-#: toolhub/apps/auditlog/serializers.py:67
+#: toolhub/apps/auditlog/serializers.py:71
 msgid "Audit log entry"
 msgstr "Entrada de registro de auditoria"
 
@@ -239,7 +247,7 @@ msgstr "Revogar a autorização de um aplicativo."
 msgid "Search"
 msgstr "Pesquisar"
 
-#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:72
+#: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
 msgstr "Informação sobre o usuário"
 
@@ -673,27 +681,51 @@ msgstr "Requeridos. 255 caracteres ou menos."
 msgid "A user with that username already exists."
 msgstr "Um usuário com esse nome já existe."
 
-#: toolhub/apps/user/serializers.py:36
+#: toolhub/apps/user/serializers.py:41
+msgid "Action that the user can take"
+msgstr "Ação que o usuário pode levar"
+
+#: toolhub/apps/user/serializers.py:46
+msgid "Subject type to check user action on"
+msgstr "Tipo de assunto para verificar a ação do usuário em"
+
+#: toolhub/apps/user/serializers.py:51
+msgid "Criteria which restricts user action"
+msgstr "Critérios que restringem a ação do usuário"
+
+#: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
 msgstr "Informações sobre o usuário atual"
 
-#: toolhub/apps/user/serializers.py:55
+#: toolhub/apps/user/serializers.py:69
+msgid "Numeric user id"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:77
+msgid "Cross-site request forgery prevention token"
+msgstr "Token de prevenção de pedidos de solicitação"
+
+#: toolhub/apps/user/serializers.py:82
+msgid "CASL access control rules"
+msgstr "Regras de Controle de Acesso de CASL"
+
+#: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
 msgstr "Informações sobre a localidade atual"
 
-#: toolhub/apps/user/serializers.py:84
+#: toolhub/apps/user/serializers.py:123
 msgid "Group information"
 msgstr "Informação do grupo"
 
-#: toolhub/apps/user/serializers.py:96
+#: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
 msgstr "Informações de autenticação social para um usuário"
 
-#: toolhub/apps/user/serializers.py:126
+#: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
 msgstr "Informações detalhadas do usuário"
 
-#: toolhub/apps/user/serializers.py:141
+#: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
 msgstr "Informações detalhadas do grupo"
 
@@ -701,39 +733,39 @@ msgstr "Informações detalhadas do grupo"
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
 msgstr "Digite um nome de usuário válido. Os personagens `@` e `:` não são permitidos."
 
-#: toolhub/apps/user/views.py:56
+#: toolhub/apps/user/views.py:57
 msgid "Get information about the currently logged in user."
 msgstr "Obtenha informações sobre o usuário conectado no momento."
 
-#: toolhub/apps/user/views.py:82
+#: toolhub/apps/user/views.py:85
 msgid "Get current locale."
 msgstr "Obtenha a localidade atual."
 
-#: toolhub/apps/user/views.py:93
+#: toolhub/apps/user/views.py:96
 msgid "Set locale."
 msgstr "Definir localidade."
 
-#: toolhub/apps/user/views.py:111
+#: toolhub/apps/user/views.py:114
 msgid "List all active users."
 msgstr "Listar todos os usuários ativos."
 
-#: toolhub/apps/user/views.py:114
+#: toolhub/apps/user/views.py:117
 msgid "Info for a specific user."
 msgstr "Informações para um usuário específico."
 
-#: toolhub/apps/user/views.py:134
+#: toolhub/apps/user/views.py:137
 msgid "List all user groups."
 msgstr "Listar todos os grupos de usuários."
 
-#: toolhub/apps/user/views.py:137
+#: toolhub/apps/user/views.py:140
 msgid "Info for a user group."
 msgstr "Informações para um grupo de usuários."
 
-#: toolhub/apps/user/views.py:159
+#: toolhub/apps/user/views.py:162
 msgid "Add a user to this group."
 msgstr "Adicione um usuário a este grupo."
 
-#: toolhub/apps/user/views.py:170
+#: toolhub/apps/user/views.py:173
 msgid "Remove a user from this group."
 msgstr "Remover um usuário deste grupo."
 

@@ -74,6 +74,7 @@
 	"login": "로그인",
 	"logout": "로그아웃",
 	"message-close": "메시지 닫기",
+	"metadata-edittool-description": "도구 편집을 위해 이 문서를 방문합니다",
 	"modifieddate": "수정된 날짜",
 	"moreinfo": "추가 정보",
 	"mostrecentcrawledurls": "최근에 크롤링한 URL",
