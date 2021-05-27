@@ -154,7 +154,7 @@ export default {
 			this.$router.push( { query } ).catch( () => {} );
 		},
 		formatDate( date ) {
-			return this.$moment( date ).format( 'lll' );
+			return this.$moment.utc( date ).format( 'lll' );
 		}
 	},
 	watch: {

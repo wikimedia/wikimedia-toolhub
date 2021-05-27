@@ -330,7 +330,7 @@ export default {
 			return this.normalizeEmpty( value );
 		},
 		formatDate( date ) {
-			return this.$moment( date ).format( 'lll' );
+			return this.$moment.utc( date ).format( 'lll' );
 		}
 	},
 	mounted() {

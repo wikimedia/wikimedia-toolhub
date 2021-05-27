@@ -59,7 +59,7 @@ export default {
 		...mapMutations( 'tools', [ 'TOOL', 'TOOL_REVISION' ] ),
 
 		formatDate( date ) {
-			return this.$moment( date ).format( 'LT ll' );
+			return this.$moment.utc( date ).format( 'LT ll' );
 		},
 		backToToolInfo() {
 			this.revId = null;

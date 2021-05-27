@@ -59,7 +59,7 @@
 
 					<dd class="me-2 mt-1">
 						<router-link :to="`/tool/${name}/history/revision/${rev.id}`">
-							{{ rev.timestamp | moment( "LT ll" ) }}
+							{{ rev.timestamp | moment( "utc", "LT ll" ) }}
 						</router-link>
 					</dd>
 

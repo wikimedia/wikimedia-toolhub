@@ -41,7 +41,7 @@
 					@click:row="crawlerRunRowClicked"
 				>
 					<template #[`item.end_date`]="{ item }">
-						{{ item.end_date | moment( "lll" ) }}
+						{{ item.end_date | moment( "utc", "lll" ) }}
 					</template>
 				</v-data-table>
 
@@ -209,7 +209,7 @@ export default {
 		},
 		crawlEndDates() {
 			return this.crawlerHistory.map( ( crawl ) =>
-				this.$moment( crawl.end_date ).format( 'lll' )
+				this.$moment.utc( crawl.end_date ).format( 'lll' )
 			).reverse();
 		},
 		crawlTotalTools() {
@@ -268,7 +268,7 @@ export default {
 			};
 		},
 		changeUrlsCrawled( item ) {
-			this.crawlerRunEndDate = this.$moment( item.end_date ).format( 'lll' );
+			this.crawlerRunEndDate = this.$moment.utc( item.end_date ).format( 'lll' );
 			this.crawlerRunId = item.id;
 			this.fetchCrawlerUrls();
 		},
