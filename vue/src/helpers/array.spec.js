@@ -6,7 +6,7 @@ const expect = chai.expect;
 
 import { ensureArray } from './array';
 
-describe( 'utils', () => {
+describe( 'helpers/array', () => {
 	describe( 'ensureArray', () => {
 		it( 'should accept null-like args', () => {
 			expect( ensureArray() ).to.be.an( 'array' ).that.is.empty;
