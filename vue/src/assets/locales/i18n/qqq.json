@@ -82,6 +82,7 @@
 	"developersettings-appupdateerror": "Error message for app update request. Parameters:\n* $1 - app id",
 	"developersettings-noauthorizedappsfoundtext": "Info message for no authorized apps found",
 	"developersettings-noclientappsfoundtext": "Info message for no client apps found",
+	"developersettings-nologintext": "Info message to show to users not logged in.",
 	"developersettings-pagesubtitle": "Page Subtitle",
 	"editformerror": "Error message for edit form validation failure. Parameters:\n* $1 - message\n* $2 - field\n* $3 - error",
 	"editsummary": "Dialog title",

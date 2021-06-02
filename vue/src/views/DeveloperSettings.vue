@@ -57,6 +57,7 @@
 								<v-btn
 									color="primary"
 									class="pa-4"
+									:disabled="!$can( 'add', 'oauth2_provider/application' )"
 									@click="registerApp( appName, redirectUrl )"
 								>
 									{{ $t( 'registeroauthapp' ) }}
@@ -279,11 +280,24 @@
 					</v-tab-item>
 
 					<v-tab-item>
-						<v-row v-if="numAuthorizedApps === 0">
-							<v-col cols="12">
-								<p class="text-h6 text--secondary">
-									{{ $t( 'developersettings-noauthorizedappsfoundtext' ) }}
-								</p>
+						<v-row>
+							<v-col
+								cols="12"
+								class="text-h6 text--secondary"
+							>
+								<template
+									v-if="!$can( 'add', 'oauth2_provider/application' )"
+								>
+									<span>{{ $t( 'developersettings-nologintext' ) }}</span>
+								</template>
+
+								<template
+									v-else
+								>
+									<span v-if="numAuthorizedApps === 0">
+										{{ $t( 'developersettings-noauthorizedappsfoundtext' ) }}
+									</span>
+								</template>
 							</v-col>
 						</v-row>
 
@@ -451,6 +465,10 @@ export default {
 			this.$store.dispatch( 'user/deleteClientApp', clientId );
 		},
 		listAuthorizedApps() {
+			if ( !this.$can( 'add', 'oauth2_provider/application' ) ) {
+				return;
+			}
+
 			this.$store.dispatch( 'user/listAuthorizedApps', this.authorizedAppsPage );
 		},
 		deleteAuthorizedApp( id ) {
