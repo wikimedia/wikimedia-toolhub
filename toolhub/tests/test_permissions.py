@@ -64,7 +64,8 @@ class CASLForUserTest(TestCase):
     def test_anon(self):
         """Anon user should get boring permissions."""
         rules = permissions.casl_for_user(self.anon)
-        self.assertEqual(rules, [])
+        for rule in rules:
+            self.assertEqual(rule["action"], "view")
 
     def test_user(self):
         """A user with no groups should be able to edit their objects."""
@@ -73,7 +74,7 @@ class CASLForUserTest(TestCase):
             self.assertIn("subject", rule)
             self.assertIn("action", rule)
             action = rule["action"]
-            self.assertIn(action, ["add", "change", "delete"])
+            self.assertIn(action, ["view", "add", "change", "delete"])
             if action in ["change", "delete"]:
                 self.assertIn("conditions", rule)
                 conds = rule["conditions"]
@@ -94,8 +95,11 @@ class CASLForUserTest(TestCase):
             self.assertIn("subject", rule)
             self.assertIn("action", rule)
             action = rule["action"]
-            self.assertIn(action, ["add", "change", "delete"])
-            if rule["subject"] == "toolinfo/tool" and action != "add":
+            self.assertIn(action, ["view", "add", "change", "delete"])
+            if rule["subject"] == "toolinfo/tool" and action in [
+                "change",
+                "delete",
+            ]:
                 self.assertIn("conditions", rule)
                 conds = rule["conditions"]
                 self.assertEqual(conds["origin"], "api")

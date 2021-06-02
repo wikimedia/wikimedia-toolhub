@@ -49,7 +49,13 @@ from .validators import validate_url_mutilingual_list
 # This this will be used to allow suppression of malicious changes by an
 # admin.
 reversion.models.Version.add_to_class(
-    "suppressed", models.BooleanField(blank=True, default=False, db_index=True)
+    "suppressed",
+    models.BooleanField(
+        blank=True,
+        default=False,
+        db_index=True,
+        help_text=_("Has this historical revision been marked as hidden?"),
+    ),
 )
 
 

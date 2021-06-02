@@ -77,6 +77,8 @@ class LogEntry(models.Model):
     DELETE = 2
     ADD = 3
     REMOVE = 4
+    HIDE = 5
+    REVEAL = 6
 
     ACTION_CHOICES = (
         (CREATE, _("created")),
@@ -84,6 +86,8 @@ class LogEntry(models.Model):
         (DELETE, _("deleted")),
         (ADD, _("added to")),
         (REMOVE, _("removed from")),
+        (HIDE, _("hid")),
+        (REVEAL, _("revealed")),
     )
 
     timestamp = models.DateTimeField(

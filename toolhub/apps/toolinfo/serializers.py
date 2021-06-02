@@ -27,6 +27,8 @@ from reversion.models import Version
 
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.decorators import doc
+from toolhub.permissions import is_administrator
+from toolhub.permissions import is_oversighter
 from toolhub.serializers import ModelSerializer
 
 from . import schema
@@ -266,11 +268,26 @@ class ToolRevisionSerializer(ModelSerializer):
         help_text=_("Comment by the user for the revision."),
     )
 
+    def _should_hide_details(self, instance):
+        """Should the details of this revision be hidden?"""
+        user = self.context["request"].user
+        return instance.suppressed and not (
+            is_oversighter(user) or is_administrator(user)
+        )
+
+    def to_representation(self, instance):
+        """Generate primative representation of a model instance."""
+        ret = super().to_representation(instance)
+        if self._should_hide_details(instance):
+            ret["user"] = {"id": -1, "username": _("username removed")}
+            ret["comment"] = _("edit summary removed")
+        return ret
+
     class Meta:
         """Configure serializer."""
 
         model = Version
-        fields = ["id", "timestamp", "user", "comment"]
+        fields = ["id", "timestamp", "user", "comment", "suppressed"]
 
 
 @doc(_("""Tool revision detail."""))
@@ -278,6 +295,13 @@ class ToolRevisionDetailSerializer(ToolRevisionSerializer):
     """Tool revision details."""
 
     toolinfo = ToolSerializer(source="field_dict", many=False)
+
+    def to_representation(self, instance):
+        """Generate primative representation of a model instance."""
+        ret = super().to_representation(instance)
+        if self._should_hide_details(instance):
+            ret["toolinfo"] = {}
+        return ret
 
     class Meta(ToolRevisionSerializer.Meta):
         """Configure serializer."""
@@ -302,3 +326,8 @@ class ToolRevisionDiffSerializer(serializers.Serializer):
     result = ToolRevisionSerializer(
         help_text=_("Revision after applying changes."),
     )
+
+
+@doc(_("""Comment describing an action."""))  # noqa: W0223
+class CommentSerializer(serializers.Serializer, EditCommentFieldMixin):
+    """Comment for an action."""

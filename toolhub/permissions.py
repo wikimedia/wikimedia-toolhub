@@ -68,19 +68,28 @@ def is_self(user, obj=None):
     return obj == user
 
 
+@rules.predicate
+def is_not_suppressed(user, obj=None):  # noqa: W0613
+    """Is the given object suppressed?"""
+    if obj is None:  # called via has_permission()
+        return True
+    return not getattr(obj, "suppressed", False)
+
+
 # User group based permissions
 is_administrator = rules.is_group_member("Administrators")
 is_bureaucrat = rules.is_group_member("Bureaucrats")
 is_oversighter = rules.is_group_member("Oversighters")
 is_patroller = rules.is_group_member("Patrollers")
 is_admin_or_crat = is_bureaucrat | is_administrator
-
+is_admin_or_oversighter = is_oversighter | is_administrator
 
 # Convenience permission combinations
 is_authed = rules.is_authenticated
 is_obj_creator_or_admin = is_authed & (is_obj_creator | is_administrator)
 is_obj_user_or_admin = is_authed & (is_obj_user | is_administrator)
 is_self_or_admin = is_authed & (is_self | is_administrator)
+not_suppressed_or_is_oversighter = is_not_suppressed | is_admin_or_oversighter
 
 # Configure permissions by app and model.
 # Any of add, change, delete, view that are not set for a given model will
@@ -123,7 +132,9 @@ MODEL_PERMISSIONS = {
     "reversion": {  # https://github.com/etianen/django-reversion
         "version": {
             "add": is_authed,
-            "view": rules.always_allow,
+            "change": is_admin_or_oversighter,
+            "delete": is_admin_or_oversighter,
+            "view": not_suppressed_or_is_oversighter,
         },
     },
     "toolinfo": {
@@ -220,6 +231,15 @@ def casl_for_user(user):
                     rule["conditions"] = {
                         "id": user.id,
                     }
+
+        elif predicate == not_suppressed_or_is_oversighter and not (
+            user.is_authenticated and is_admin_or_oversighter.test(user)
+        ):
+            # Special predicate combining payload and group membership checks.
+            rule["conditions"] = {
+                "suppressed": False,
+            }
+
         else:
             # "Simple" predicate that we only need to extract the
             # user-based result from.
@@ -241,9 +261,7 @@ def casl_for_user(user):
     casl = []
     for app, models in MODEL_PERMISSIONS.items():
         for model, perms in models.items():
-            # NOTE: "view" action is ignored because the backend will not send
-            # data that cannot be viewed.
-            for action in ["add", "change", "delete"]:
+            for action in ["view", "add", "change", "delete"]:
                 casl.append(make_rule(user, perms, app, model, action))
 
     # Filter out inverted rules. We don't need to state all the things that

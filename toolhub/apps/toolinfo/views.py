@@ -15,6 +15,9 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+import logging
+
+from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 
@@ -35,9 +38,12 @@ from reversion.models import Version
 
 import spdx_license_list
 
+from toolhub.apps.auditlog.models import LogEntry
+from toolhub.permissions import ObjectPermissions
 from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 
 from .models import Tool
+from .serializers import CommentSerializer
 from .serializers import CreateToolSerializer
 from .serializers import SpdxLicenseSerializer
 from .serializers import ToolRevisionDetailSerializer
@@ -47,11 +53,22 @@ from .serializers import ToolSerializer
 from .serializers import UpdateToolSerializer
 
 
+logger = logging.getLogger(__name__)
+
+
 class ConflictingState(APIException):
     """Patch failed due to conflicting state."""
 
     status_code = status.HTTP_409_CONFLICT
     default_detail = _("Failed to apply patch.")
+
+
+class CurrentRevision(APIException):
+    """Suppression failed for HEAD revision."""
+
+    status_code = status.HTTP_403_FORBIDDEN
+    default_detail = _("Current revision cannot be hidden.")
+    default_code = "current_revision"
 
 
 @extend_schema_view(
@@ -165,6 +182,18 @@ path_param_tool_name = OpenApiParameter(
         ],
         responses=ToolSerializer,
     ),
+    hide=extend_schema(
+        description=_("""Hide revision text and edit summary from users."""),
+        parameters=[path_param_tool_name],
+        request=CommentSerializer,
+        responses={204: None},
+    ),
+    reveal=extend_schema(
+        description=_("""Reveal a previously hidden revision."""),
+        parameters=[path_param_tool_name],
+        request=CommentSerializer,
+        responses={204: None},
+    ),
 )
 class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
     """Historical revisions of a tool."""
@@ -188,6 +217,7 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
     def _get_patch(self, left, right):
         """Compute the JSON Patch between revisions."""
+        # TODO: check for suppression
         data_left = ToolSerializer(left.field_dict).data
         data_right = ToolSerializer(right.field_dict).data
         # T279484: exclude modified_date from diff
@@ -225,7 +255,8 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
                 "original": version_left,
                 "operations": patch,
                 "result": version_right,
-            }
+            },
+            context={"request": request},
         )
 
         return response.Response(diff.data)
@@ -282,6 +313,56 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
             "last_id": id_right,
         }
         return self._update_tool(data, request)
+
+    @action(
+        detail=True,
+        methods=["PATCH"],
+        url_path=r"hide",
+        permission_classes=[ObjectPermissions],
+    )
+    def hide(self, request, **kwargs):
+        """Suppress a revision."""
+        rev_id = int(kwargs["pk"])
+        current_rev = self.get_queryset()[0]
+        if current_rev.pk == rev_id:
+            # The current revision cannot be hidden
+            raise CurrentRevision()
+        qs = self.get_queryset().filter(suppressed=False)
+        rev = get_object_or_404(qs, pk=rev_id)
+        comment = request.data.get("comment", None)
+        with transaction.atomic():
+            rev.suppressed = True
+            rev.save()
+            LogEntry.objects.log_action(
+                request.user,
+                rev,
+                LogEntry.HIDE,
+                comment,
+            )
+        return response.Response(status=status.HTTP_204_NO_CONTENT)
+
+    @action(
+        detail=True,
+        methods=["PATCH"],
+        url_path=r"reveal",
+        permission_classes=[ObjectPermissions],
+    )
+    def reveal(self, request, **kwargs):
+        """Restore a suppressed revision."""
+        rev_id = kwargs["pk"]
+        qs = self.get_queryset().filter(suppressed=True)
+        rev = get_object_or_404(qs, pk=rev_id)
+        comment = request.data.get("comment", None)
+        with transaction.atomic():
+            rev.suppressed = False
+            rev.save()
+            LogEntry.objects.log_action(
+                request.user,
+                rev,
+                LogEntry.REVEAL,
+                comment,
+            )
+        return response.Response(status=status.HTTP_204_NO_CONTENT)
 
 
 @extend_schema_view(

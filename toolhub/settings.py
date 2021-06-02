@@ -439,5 +439,6 @@ FRIENDLY_ERRORS = {
     },
     "EXCEPTION_DICT": {
         "ConflictingState": 4090,
+        "CurrentRevision": 4091,
     },
 }
