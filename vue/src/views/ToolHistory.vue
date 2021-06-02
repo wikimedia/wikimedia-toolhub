@@ -46,6 +46,7 @@
 				<dl v-for="rev in toolRevisions"
 					:key="rev.id"
 					class="row pa-2"
+					:class="{ 'rev-suppressed': rev.suppressed }"
 				>
 					<dd class="me-1">
 						<v-checkbox
@@ -53,38 +54,58 @@
 							v-model="checkbox[rev.id]"
 							class="ma-0"
 							hide-details
+							:disabled="!$can( 'view', rev )"
 							@change="selectToolRevision($event, rev.id)"
 						/>
 					</dd>
 
-					<dd class="me-2 mt-1">
-						<router-link :to="`/tool/${name}/history/revision/${rev.id}`">
+					<dd class="me-2 mt-1 rev-timestamp">
+						<router-link
+							v-if="$can( 'view', rev )"
+							:to="`/tool/${name}/history/revision/${rev.id}`"
+						>
 							{{ rev.timestamp | moment( "utc", "LT ll" ) }}
 						</router-link>
+						<span v-else>
+							{{ rev.timestamp | moment( "utc", "LT ll" ) }}
+						</span>
 					</dd>
 
-					<dd class="me-1 mt-1">
-						<a :href="`http://meta.wikimedia.org/wiki/User:${rev.user.username}`" target="_blank">{{ rev.user.username
-						}}</a>
-					</dd>
+					<template v-if="$can( 'view', rev )">
+						<dd class="me-1 mt-1 rev-user">
+							<a
+								:href="`http://meta.wikimedia.org/wiki/User:${rev.user.username}`"
+								target="_blank"
+							>{{ rev.user.username }}</a>
+						</dd>
 
-					<dd class="me-1 mt-1">
-						(<a :href="`http://meta.wikimedia.org/wiki/User_talk:${rev.user.username}`"
-							target="_blank"
-						>{{ $t( 'talk' ) }}</a>)
-					</dd>
+						<dd class="me-1 mt-1 rev-user-talk">
+							(<a
+								:href="`http://meta.wikimedia.org/wiki/User_talk:${rev.user.username}`"
+								target="_blank"
+							>{{ $t( 'talk' ) }}</a>)
+						</dd>
+					</template>
+					<template v-else>
+						<dd class="me-1 mt-1 rev-user">
+							{{ rev.user.username }}
+						</dd>
+						<dd class="me-1 mt-1 rev-user-talk" />
+					</template>
 
-					<dd class="me-1 mt-1">
+					<dd class="me-1 mt-1 rev-comment">
 						<i>({{ rev.comment }})</i>
 					</dd>
 
-					<dd class="me-1 mt-1">
-						(<a @click="undoChangesBetweenRevisions(rev.id)">{{ $t( 'undo' ) }}</a>)
-					</dd>
+					<template v-if="$can( 'view', rev )">
+						<dd class="me-1 mt-1">
+							(<a @click="undoChangesBetweenRevisions(rev.id)">{{ $t( 'undo' ) }}</a>)
+						</dd>
 
-					<dd class="me-1 mt-1">
-						(<a @click="restoreToolToRevision(rev.id)">{{ $t( 'revert' ) }}</a>)
-					</dd>
+						<dd class="me-1 mt-1">
+							(<a @click="restoreToolToRevision(rev.id)">{{ $t( 'revert' ) }}</a>)
+						</dd>
+					</template>
 				</dl>
 			</v-col>
 		</v-row>

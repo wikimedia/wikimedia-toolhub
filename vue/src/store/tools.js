@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import i18n from '@/plugins/i18n';
 import router from '@/router';
 import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
-import { asTool } from '@/helpers/casl';
+import { asTool, asVersion } from '@/helpers/casl';
 
 Vue.use( Vuex );
 
@@ -22,11 +22,11 @@ export const mutations = {
 		state.toolCreated = asTool( tool );
 	},
 	TOOL_REVISIONS( state, revisions ) {
-		state.toolRevisions = revisions.results;
+		state.toolRevisions = asVersion( revisions.results );
 		state.numRevisions = revisions.count;
 	},
 	TOOL_REVISION( state, revision ) {
-		state.toolRevision = revision;
+		state.toolRevision = asVersion( revision );
 	},
 	DIFF_REVISION( state, revision ) {
 		state.diffRevision = revision;

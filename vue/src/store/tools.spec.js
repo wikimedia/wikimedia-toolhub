@@ -8,7 +8,7 @@ chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
 /* eslint-disable no-unused-expressions */
 
-import { asTool } from '@/helpers/casl';
+import { asTool, asVersion } from '@/helpers/casl';
 import {
 	actions,
 	mutations
@@ -697,11 +697,11 @@ describe( 'store/tools', () => {
 			};
 
 			mutations.TOOL_REVISIONS( state, toolRevisionsResponse );
-			expect( state.toolRevisions ).to.equal( toolRevisionsResponse.results );
+			expect( state.toolRevisions ).to.eql( asVersion( toolRevisionsResponse.results ) );
 			expect( state.numRevisions ).to.equal( toolRevisionsResponse.count );
 
 			mutations.TOOL_REVISION( state, toolRevisionResponse1 );
-			expect( state.toolRevision ).to.equal( toolRevisionResponse1 );
+			expect( state.toolRevision ).to.eql( asVersion( toolRevisionResponse1 ) );
 
 			mutations.DIFF_REVISION( state, diffRevisionResponse );
 			expect( state.diffRevision ).to.equal( diffRevisionResponse );

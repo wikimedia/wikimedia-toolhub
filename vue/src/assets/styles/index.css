@@ -115,3 +115,11 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 .v-chip--disabled.opacity-1 {
 	opacity: 1;
 }
+
+.rev-suppressed .rev-timestamp,
+.rev-suppressed .rev-user,
+.rev-suppressed .rev-user-talk,
+.rev-suppressed .rev-comment {
+	text-decoration: line-through;
+	color: rgba( 0, 0, 0, 0.38 );
+}
