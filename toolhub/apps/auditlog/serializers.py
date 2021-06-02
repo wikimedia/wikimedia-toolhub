@@ -34,7 +34,12 @@ class ActionField(serializers.ReadOnlyField):
 
     def to_representation(self, value):
         """Transform the *outgoing* native value into primitive data."""
-        return LogEntry.ACTION_CHOICES[value][1]
+        try:
+            return LogEntry.ACTION_CHOICES[value][1]
+        except IndexError:
+            # Should only happen in development environments when log events
+            # have been placed in the db using code that is not merged yet.
+            return value
 
 
 @doc(_("""Event target"""))  # noqa: W0223
