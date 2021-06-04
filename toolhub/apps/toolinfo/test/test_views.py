@@ -18,6 +18,7 @@
 import json
 import os
 
+from django.contrib.auth.models import Group
 from django.test import TestCase
 
 from rest_framework.test import APIRequestFactory
@@ -154,6 +155,12 @@ class ToolRevisionViewSetTest(TestCase):
             email="bdavis+dunicorn@wikimedia.org",
             password="unused",
         )
+        cls.oversighter = ToolhubUser.objects.create_user(  # nosec: B106
+            username="Oversighter",
+            email="oversighter@example.org",
+            password="unused",
+        )
+        Group.objects.get(name="Oversighters").user_set.add(cls.oversighter)
 
         with open(os.path.join(TEST_DIR, "toolinfo_fixture.json")) as fixture:
             cls.toolinfo = json.load(fixture)
@@ -202,6 +209,56 @@ class ToolRevisionViewSetTest(TestCase):
         self.assertIn("original", response.data)
         self.assertIn("operations", response.data)
         self.assertIn("result", response.data)
+
+    def test_diff_suppressed_anon(self):
+        """Test diff with suppressed start/end as anon."""
+        with reversion.create_revision():
+            self.tool.title = "BAD FAITH"
+            self.tool.save()
+        bad_faith = self.versions().last()
+        bad_faith.suppressed = True
+        bad_faith.save()
+
+        req = APIRequestFactory().get("")
+        force_authenticate(req)  # Ensure anon user
+        view = views.ToolRevisionViewSet.as_view({"get": "diff"})
+        diff_from = self.versions().first().pk
+        diff_to = self.versions().last().pk
+        self.assertNotEqual(diff_from, diff_to)
+        response = view(
+            req,
+            pk=diff_from,
+            other_id=diff_to,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 403)
+
+    def test_diff_suppressed_priv(self):
+        """Test diff with suppressed start/end as privledged user."""
+        with reversion.create_revision():
+            self.tool.title = "BAD FAITH"
+            self.tool.save()
+        bad_faith = self.versions().last()
+        bad_faith.suppressed = True
+        bad_faith.save()
+
+        req = APIRequestFactory().get("")
+        force_authenticate(req, user=self.oversighter)
+        view = views.ToolRevisionViewSet.as_view({"get": "diff"})
+        diff_from = self.versions().first().pk
+        diff_to = self.versions().last().pk
+        self.assertNotEqual(diff_from, diff_to)
+        response = view(
+            req,
+            pk=diff_from,
+            other_id=diff_to,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("original", response.data)
+        self.assertIn("operations", response.data)
+        self.assertIn("result", response.data)
+        self.assertTrue(response.data["result"]["suppressed"])
 
     def test_revert_requires_auth(self):
         """Test revert action."""
@@ -291,3 +348,5 @@ class ToolRevisionViewSetTest(TestCase):
             tool_name=self.tool.name,
         )
         self.assertEqual(response.status_code, 409)
+
+    # TODO: test hide/reveal

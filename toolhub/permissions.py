@@ -125,8 +125,8 @@ MODEL_PERMISSIONS = {
             "view": rules.always_allow,
         },
         "accesstoken": {
-            "view": is_obj_user_or_admin,
             "delete": is_obj_user_or_admin,
+            "view": is_obj_user_or_admin,
         },
     },
     "reversion": {  # https://github.com/etianen/django-reversion

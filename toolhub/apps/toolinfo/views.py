@@ -71,6 +71,14 @@ class CurrentRevision(APIException):
     default_code = "current_revision"
 
 
+class SuppressedRevision(APIException):
+    """Diff failed due to a suppressed revision."""
+
+    status_code = status.HTTP_403_FORBIDDEN
+    default_detail = _("Missing content for one or more revisions.")
+    default_code = "suppressed_revision"
+
+
 @extend_schema_view(
     create=extend_schema(
         description=_("""Create a new tool."""),
@@ -215,9 +223,20 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
             return ToolRevisionDetailSerializer
         return ToolRevisionSerializer
 
-    def _get_patch(self, left, right):
+    def _get_patch(self, left, right, request):
         """Compute the JSON Patch between revisions."""
-        # TODO: check for suppression
+        # Our built-in permissions checking doesn't trigger on GET/HEAD
+        # routes, so we need to explictly check that the calling user can see
+        # the start and end revisions before preparing a patch.
+        user = request.user
+        perms = ["reversion.view_version"]
+        if left.suppressed and not user.has_perms(perms, left):
+            logger.warning("User %s cannot %s %s", user, perms, left)
+            raise SuppressedRevision()
+        if right.suppressed and not user.has_perms(perms, right):
+            logger.warning("User %s cannot %s %s", user, perms, right)
+            raise SuppressedRevision()
+
         data_left = ToolSerializer(left.field_dict).data
         data_right = ToolSerializer(right.field_dict).data
         # T279484: exclude modified_date from diff
@@ -248,7 +267,7 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
         version_left = get_object_or_404(qs, pk=id_left)
         version_right = get_object_or_404(qs, pk=id_right)
-        patch = self._get_patch(version_left, version_right)
+        patch = self._get_patch(version_left, version_right, request)
 
         diff = ToolRevisionDiffSerializer(
             {
@@ -296,7 +315,7 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
         version_left = get_object_or_404(qs, pk=id_left)
         version_right = get_object_or_404(qs, pk=id_right)
-        patch = self._get_patch(version_left, version_right)
+        patch = self._get_patch(version_left, version_right, request)
 
         head = qs.first()
         data = head.field_dict
