@@ -349,4 +349,125 @@ class ToolRevisionViewSetTest(TestCase):
         )
         self.assertEqual(response.status_code, 409)
 
-    # TODO: test hide/reveal
+    def test_hide_requires_auth(self):
+        """Test hide action."""
+        req = APIRequestFactory().patch("")
+        force_authenticate(req)  # Ensure anon user
+        view = views.ToolRevisionViewSet.as_view({"patch": "hide"})
+        response = view(
+            req,
+            pk=self.versions().last().pk,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 401)
+
+    def test_hide_requires_special_rights(self):
+        """Test hide action."""
+        req = APIRequestFactory().patch("")
+        force_authenticate(req, user=self.user)
+        view = views.ToolRevisionViewSet.as_view({"patch": "hide"})
+        response = view(
+            req,
+            pk=self.versions().last().pk,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 403)
+
+    def test_hide_forbids_head(self):
+        """Test hide action."""
+        req = APIRequestFactory().patch("")
+        force_authenticate(req, user=self.oversighter)
+        view = views.ToolRevisionViewSet.as_view({"patch": "hide"})
+        response = view(
+            req,
+            pk=self.versions().last().pk,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.data["code"], 4091)
+
+    def test_hide(self):
+        """Test hide action."""
+        with reversion.create_revision():
+            self.tool.title = "REVERTED"
+            self.tool.save()
+
+        req = APIRequestFactory().patch("")
+        force_authenticate(req, user=self.oversighter)
+        view = views.ToolRevisionViewSet.as_view({"patch": "hide"})
+        response = view(
+            req,
+            pk=self.versions().last().pk,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 204)
+        self.assertTrue(self.versions()[1].suppressed)
+
+    def test_reveal_requires_auth(self):
+        """Test reveal action."""
+        with reversion.create_revision():
+            self.tool.title = "REVERTED"
+            self.tool.save()
+        bad_faith = self.versions().last()
+        bad_faith.suppressed = True
+        bad_faith.save()
+
+        req = APIRequestFactory().patch("")
+        force_authenticate(req)  # Ensure anon user
+        view = views.ToolRevisionViewSet.as_view({"patch": "reveal"})
+        response = view(
+            req,
+            pk=bad_faith.pk,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 401)
+
+    def test_reveal_requires_special_rights(self):
+        """Test reveal action."""
+        with reversion.create_revision():
+            self.tool.title = "REVERTED"
+            self.tool.save()
+        bad_faith = self.versions().last()
+        bad_faith.suppressed = True
+        bad_faith.save()
+
+        req = APIRequestFactory().patch("")
+        force_authenticate(req, user=self.user)
+        view = views.ToolRevisionViewSet.as_view({"patch": "reveal"})
+        response = view(
+            req,
+            pk=bad_faith.pk,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 403)
+
+    def test_reveal(self):
+        """Test reveal action."""
+        with reversion.create_revision():
+            self.tool.title = "REVERTED"
+            self.tool.save()
+        bad_faith = self.versions().last()
+        bad_faith.suppressed = True
+        bad_faith.save()
+
+        req = APIRequestFactory().patch("")
+        force_authenticate(req, user=self.oversighter)
+        view = views.ToolRevisionViewSet.as_view({"patch": "reveal"})
+        response = view(
+            req,
+            pk=bad_faith.pk,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 204)
+
+    def test_reveal_rejects_unhidden(self):
+        """Test reveal action."""
+        req = APIRequestFactory().patch("")
+        force_authenticate(req, user=self.oversighter)
+        view = views.ToolRevisionViewSet.as_view({"patch": "reveal"})
+        response = view(
+            req,
+            pk=self.versions().first().pk,
+            tool_name=self.tool.name,
+        )
+        self.assertEqual(response.status_code, 404)
