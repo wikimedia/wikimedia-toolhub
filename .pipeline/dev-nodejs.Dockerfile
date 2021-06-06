@@ -12,6 +12,7 @@ ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on"
 COPY --chown=65533:65533 ["package.json", "package-lock.json", "./"]
 RUN npm install
 COPY --chown=65533:65533 [".", "."]
+COPY --chown=65533:65533 [".git/", "./.git/"]
 ENV NODE_ENV="development"
 
 LABEL blubber.variant="dev-nodejs" blubber.version="0.8.0+459234d"

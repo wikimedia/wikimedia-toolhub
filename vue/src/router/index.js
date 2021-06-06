@@ -59,7 +59,7 @@ const routes = [
 			path: '/crawler-history',
 			component: () => import( /* webpackChunkName: "crawlerhistory" */ '../views/CrawlerHistory.vue' ),
 			meta: {
-				icon: 'mdi-bug'
+				icon: 'mdi-history'
 			}
 		},
 		{

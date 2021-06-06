@@ -96,6 +96,9 @@ variants:
       - from: local
         source: .
         destination: .
+      - from: local
+        source: .git/
+        destination: ./.git/
 
   lint-nodejs:
     # CI container: runs lint checks on nodejs code
@@ -158,6 +161,9 @@ variants:
         - from: local
           source: vue/
           destination: ./vue/
+        - from: local
+          source: .git/
+          destination: ./.git/
       command:
         - /bin/bash
         - -c

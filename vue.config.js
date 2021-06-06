@@ -1,4 +1,5 @@
 'use strict';
+const fs = require( 'fs' );
 const path = require( 'path' );
 const BundleTracker = require( 'webpack-bundle-tracker' );
 
@@ -16,10 +17,24 @@ const pages = {
 };
 
 // Keep bundles built for running test separate from bundles for the dev/prod
-// server. Test bundles skip building somethings and do not split into the
+// server. Test bundles skip building some things and do not split into the
 // same chunks as dev/prod bundles. Why? Good question. Webpack gets angry is
 // the best answer I have at the moment. :/
 const buildDir = isTest ? 'vue/dist-tests' : 'vue/dist';
+
+// T280069: Export the current git hash as an env var
+process.env.VUE_APP_VERSION = require( './package.json' ).version;
+process.env.VUE_APP_GIT_HASH = ( function () {
+	try {
+		const HEAD = fs.readFileSync( '.git/HEAD', 'utf8' )
+			.split( ': ' )[ 1 ].trim();
+		return fs.readFileSync( '.git/' + HEAD, 'utf8' ).substr( 0, 7 );
+	} catch ( e ) {
+		// eslint-disable-next-line no-console
+		console.log( 'Failed to read git hash from .git:', e );
+		return 'unknown';
+	}
+}() );
 
 module.exports = {
 	pages: pages,

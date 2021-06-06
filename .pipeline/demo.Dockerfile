@@ -3,8 +3,8 @@
 FROM docker-registry.wikimedia.org/nodejs10-devel AS prep-nodejs
 USER 0
 ENV HOME="/root"
-RUN groupadd -o -g "65533" -r "somebody" && useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody" && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
-RUN groupadd -o -g "900" -r "runuser" && useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser"
+RUN (getent group "65533" || groupadd -o -g "65533" -r "somebody") && (getent passwd "65533" || useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody") && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
+RUN (getent group "900" || groupadd -o -g "900" -r "runuser") && (getent passwd "900" || useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser")
 USER 65533
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
@@ -13,6 +13,7 @@ COPY --chown=65533:65533 ["package.json", "package-lock.json", "./"]
 RUN npm install
 COPY --chown=65533:65533 ["vue.config.js", "./"]
 COPY --chown=65533:65533 ["vue/", "vue/"]
+COPY --chown=65533:65533 [".git/", ".git/"]
 RUN /bin/bash "-c" "ls -alh && npm run-script build:vue"
 USER 900
 ENV HOME="/home/runuser"
@@ -26,8 +27,8 @@ RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclie
 RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
 RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.4"
-RUN groupadd -o -g "65533" -r "somebody" && useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody" && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
-RUN groupadd -o -g "900" -r "runuser" && useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser"
+RUN (getent group "65533" || groupadd -o -g "65533" -r "somebody") && (getent passwd "65533" || useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody") && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
+RUN (getent group "900" || groupadd -o -g "900" -r "runuser") && (getent passwd "900" || useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser")
 USER 65533
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
@@ -49,8 +50,8 @@ RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclie
 RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
 RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.4"
-RUN groupadd -o -g "65533" -r "somebody" && useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody" && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
-RUN groupadd -o -g "900" -r "runuser" && useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser"
+RUN (getent group "65533" || groupadd -o -g "65533" -r "somebody") && (getent passwd "65533" || useradd -l -o -m -d "/home/somebody" -r -g "somebody" -u "65533" "somebody") && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
+RUN (getent group "900" || groupadd -o -g "900" -r "runuser") && (getent passwd "900" || useradd -l -o -m -d "/home/runuser" -r -g "runuser" -u "900" "runuser")
 USER 65533
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
@@ -63,4 +64,4 @@ USER 900
 ENV HOME="/home/runuser"
 ENTRYPOINT ["/bin/bash", "-c", "poetry run python3 manage.py migrate && poetry run python3 manage.py createinitialrevisions && poetry run python3 manage.py loaddata toolhub/fixtures/demo.yaml && poetry run python3 manage.py crawl && poetry run python3 manage.py runserver --noreload --nostatic 0.0.0.0:8000"]
 
-LABEL blubber.variant="demo" blubber.version="0.8.0+007009e"
+LABEL blubber.variant="demo" blubber.version="0.8.0+459234d"

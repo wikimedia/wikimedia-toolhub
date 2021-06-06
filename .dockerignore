@@ -2,6 +2,11 @@
 *
 
 # Conditionally include things we know we want in the container
+# Copy .git/refs/heads/* into the container
+!.git
+.git/*
+!.git/HEAD
+!.git/refs/heads/*
 !.jsonschema-tools.yaml
 !.pipeline
 !COPYING
