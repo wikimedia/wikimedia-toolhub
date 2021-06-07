@@ -58,7 +58,7 @@
 		"grunt-banana-checker": "^0.9.0",
 		"mocha": "^8.4.0",
 		"nyc": "^15.1.0",
-		"rapidoc": "^8.4.9",
+		"rapidoc": "^9.0.0",
 		"sass": "^1.32.13",
 		"sass-loader": "^10.2.0",
 		"sinon": "^10.0.0",

@@ -20,6 +20,8 @@
 					allow-spec-file-load="false"
 					allow-spec-url-load="false"
 					layout="column"
+					load-fonts="false"
+					:primary-color="$vuetify.theme.themes.light.primary"
 					render-style="view"
 					schema-description-expanded="true"
 					schema-style="tree"
