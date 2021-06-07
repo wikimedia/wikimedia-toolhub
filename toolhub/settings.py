@@ -167,6 +167,7 @@ INSTALLED_APPS = [
     "toolhub.apps.search",
     "toolhub.apps.toolinfo",
     "toolhub.apps.user",
+    "toolhub.apps.versioned",
     "vue",
 ]
 

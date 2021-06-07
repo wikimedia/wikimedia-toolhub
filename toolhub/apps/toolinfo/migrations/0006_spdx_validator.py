@@ -7,7 +7,7 @@ import toolhub.apps.toolinfo.validators
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('toolinfo', '0005_monkey_patch_reversion'),
+        ("toolinfo", "0004_jsonschemafield"),
     ]
 
     operations = [

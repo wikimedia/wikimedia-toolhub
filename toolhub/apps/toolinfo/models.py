@@ -31,6 +31,7 @@ from safedelete.models import SafeDeleteModel
 
 from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.auditlog.signals import registry
+from toolhub.apps.versioned.models import RevisionMetadata
 from toolhub.fields import BlankAsNullCharField
 from toolhub.fields import BlankAsNullTextField
 from toolhub.fields import JSONSchemaField
@@ -41,22 +42,6 @@ from .validators import validate_language_code
 from .validators import validate_language_code_list
 from .validators import validate_spdx
 from .validators import validate_url_mutilingual_list
-
-
-# Inspiration from https://stackoverflow.com/a/24668215/8171
-#
-# Add a 'suppressed' field to the reversion Version model.
-# This this will be used to allow suppression of malicious changes by an
-# admin.
-reversion.models.Version.add_to_class(
-    "suppressed",
-    models.BooleanField(
-        blank=True,
-        default=False,
-        db_index=True,
-        help_text=_("Has this historical revision been marked as hidden?"),
-    ),
-)
 
 
 logger = logging.getLogger(__name__)
@@ -278,6 +263,7 @@ class ToolManager(SafeDeleteManager):
         record = self.normalize_toolinfo(record)
 
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             reversion.set_user(creator)
             if comment is not None:
                 reversion.set_comment(comment)

@@ -73,7 +73,19 @@ def is_not_suppressed(user, obj=None):  # noqa: W0613
     """Is the given object suppressed?"""
     if obj is None:  # called via has_permission()
         return True
-    return not getattr(obj, "suppressed", False)
+
+    # Check for objects which have a direct flag:
+    if hasattr(obj, "suppressed"):
+        return not obj.suppressed
+
+    # Normally, suppression is recorded in the 'meta' model attached to
+    # a 'revision' that collects 'versions' of one or more models that were
+    # changed under revision tracking.
+    if not hasattr(obj, "revision"):
+        return False
+    if not hasattr(obj.revision, "meta"):
+        return False
+    return not getattr(obj.revision.meta, "suppressed", False)
 
 
 # User group based permissions

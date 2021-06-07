@@ -213,7 +213,11 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         """Filter queryset by Tool using path param."""
         tool = get_object_or_404(Tool, name=self.kwargs["tool_name"])
-        qs = Version.objects.select_related("revision", "revision__user")
+        qs = Version.objects.select_related(
+            "revision",
+            "revision__user",
+            "revision__meta",
+        )
         qs = qs.get_for_object(tool)
         return qs
 
@@ -230,10 +234,10 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         # the start and end revisions before preparing a patch.
         user = request.user
         perms = ["reversion.view_version"]
-        if left.suppressed and not user.has_perms(perms, left):
+        if left.revision.meta.suppressed and not user.has_perms(perms, left):
             logger.warning("User %s cannot %s %s", user, perms, left)
             raise SuppressedRevision()
-        if right.suppressed and not user.has_perms(perms, right):
+        if right.revision.meta.suppressed and not user.has_perms(perms, right):
             logger.warning("User %s cannot %s %s", user, perms, right)
             raise SuppressedRevision()
 
@@ -346,12 +350,12 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         if current_rev.pk == rev_id:
             # The current revision cannot be hidden
             raise CurrentRevision()
-        qs = self.get_queryset().filter(suppressed=False)
+        qs = self.get_queryset().filter(revision__meta__suppressed=False)
         rev = get_object_or_404(qs, pk=rev_id)
         comment = request.data.get("comment", None)
         with transaction.atomic():
-            rev.suppressed = True
-            rev.save()
+            rev.revision.meta.suppressed = True
+            rev.revision.meta.save()
             LogEntry.objects.log_action(
                 request.user,
                 rev,
@@ -369,12 +373,12 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
     def reveal(self, request, **kwargs):
         """Restore a suppressed revision."""
         rev_id = kwargs["pk"]
-        qs = self.get_queryset().filter(suppressed=True)
+        qs = self.get_queryset().filter(revision__meta__suppressed=True)
         rev = get_object_or_404(qs, pk=rev_id)
         comment = request.data.get("comment", None)
         with transaction.atomic():
-            rev.suppressed = False
-            rev.save()
+            rev.revision.meta.suppressed = False
+            rev.revision.meta.save()
             LogEntry.objects.log_action(
                 request.user,
                 rev,

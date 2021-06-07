@@ -267,11 +267,17 @@ class ToolRevisionSerializer(ModelSerializer):
         default="",
         help_text=_("Comment by the user for the revision."),
     )
+    suppressed = serializers.BooleanField(
+        source="revision.meta.suppressed",
+        read_only=True,
+        default=False,
+        help_text=_("Has this revision been marked as hidden?"),
+    )
 
     def _should_hide_details(self, instance):
         """Should the details of this revision be hidden?"""
         user = self.context["request"].user
-        return instance.suppressed and not (
+        return instance.revision.meta.suppressed and not (
             is_oversighter(user) or is_administrator(user)
         )
 

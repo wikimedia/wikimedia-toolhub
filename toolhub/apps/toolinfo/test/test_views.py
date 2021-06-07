@@ -28,6 +28,7 @@ import reversion
 from reversion.models import Version
 
 from toolhub.apps.user.models import ToolhubUser
+from toolhub.apps.versioned.models import RevisionMetadata
 
 from .. import models
 from .. import views
@@ -190,6 +191,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_diff(self):
         """Test diff action."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.title = "Changed"
             self.tool.save()
 
@@ -213,11 +215,13 @@ class ToolRevisionViewSetTest(TestCase):
     def test_diff_suppressed_anon(self):
         """Test diff with suppressed start/end as anon."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.title = "BAD FAITH"
             self.tool.save()
         bad_faith = self.versions().last()
-        bad_faith.suppressed = True
-        bad_faith.save()
+        bad_faith.revision.meta.suppressed = True
+        bad_faith.revision.meta.save()
+        self.assertTrue(self.versions().last().revision.meta.suppressed)
 
         req = APIRequestFactory().get("")
         force_authenticate(req)  # Ensure anon user
@@ -236,11 +240,12 @@ class ToolRevisionViewSetTest(TestCase):
     def test_diff_suppressed_priv(self):
         """Test diff with suppressed start/end as privledged user."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.title = "BAD FAITH"
             self.tool.save()
         bad_faith = self.versions().last()
-        bad_faith.suppressed = True
-        bad_faith.save()
+        bad_faith.revision.meta.suppressed = True
+        bad_faith.revision.meta.save()
 
         req = APIRequestFactory().get("")
         force_authenticate(req, user=self.oversighter)
@@ -275,6 +280,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_revert(self):
         """Test revert action."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.title = "Changed"
             self.tool.save()
         self.assertEqual(self.tool.title, "Changed")
@@ -307,6 +313,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_undo(self):
         """Test undo action."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.title = "Changed"
             self.tool.save()
         self.assertEqual(self.tool.title, "Changed")
@@ -330,6 +337,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_undo_invalid(self):
         """Test undo action."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.technology_used = []
             self.tool.save()
         self.assertEqual(self.tool.technology_used, [])
@@ -389,6 +397,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_hide(self):
         """Test hide action."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.title = "REVERTED"
             self.tool.save()
 
@@ -401,16 +410,17 @@ class ToolRevisionViewSetTest(TestCase):
             tool_name=self.tool.name,
         )
         self.assertEqual(response.status_code, 204)
-        self.assertTrue(self.versions()[1].suppressed)
+        self.assertTrue(self.versions()[1].revision.meta.suppressed)
 
     def test_reveal_requires_auth(self):
         """Test reveal action."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.title = "REVERTED"
             self.tool.save()
         bad_faith = self.versions().last()
-        bad_faith.suppressed = True
-        bad_faith.save()
+        bad_faith.revision.meta.suppressed = True
+        bad_faith.revision.meta.save()
 
         req = APIRequestFactory().patch("")
         force_authenticate(req)  # Ensure anon user
@@ -425,11 +435,12 @@ class ToolRevisionViewSetTest(TestCase):
     def test_reveal_requires_special_rights(self):
         """Test reveal action."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.title = "REVERTED"
             self.tool.save()
         bad_faith = self.versions().last()
-        bad_faith.suppressed = True
-        bad_faith.save()
+        bad_faith.revision.meta.suppressed = True
+        bad_faith.revision.meta.save()
 
         req = APIRequestFactory().patch("")
         force_authenticate(req, user=self.user)
@@ -444,11 +455,12 @@ class ToolRevisionViewSetTest(TestCase):
     def test_reveal(self):
         """Test reveal action."""
         with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
             self.tool.title = "REVERTED"
             self.tool.save()
         bad_faith = self.versions().last()
-        bad_faith.suppressed = True
-        bad_faith.save()
+        bad_faith.revision.meta.suppressed = True
+        bad_faith.revision.meta.save()
 
         req = APIRequestFactory().patch("")
         force_authenticate(req, user=self.oversighter)
