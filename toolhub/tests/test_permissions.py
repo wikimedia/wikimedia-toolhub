@@ -95,7 +95,9 @@ class CASLForUserTest(TestCase):
             self.assertIn("subject", rule)
             self.assertIn("action", rule)
             action = rule["action"]
-            self.assertIn(action, ["view", "add", "change", "delete"])
+            self.assertIn(
+                action, ["view", "add", "change", "delete", "patrol"]
+            )
             if rule["subject"] == "toolinfo/tool" and action in [
                 "change",
                 "delete",

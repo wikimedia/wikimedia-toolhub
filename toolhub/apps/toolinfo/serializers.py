@@ -273,6 +273,12 @@ class ToolRevisionSerializer(ModelSerializer):
         default=False,
         help_text=_("Has this revision been marked as hidden?"),
     )
+    patrolled = serializers.BooleanField(
+        source="revision.meta.patrolled",
+        read_only=True,
+        default=False,
+        help_text=_("Has this revision been reviewed by a patroller?"),
+    )
 
     def _should_hide_details(self, instance):
         """Should the details of this revision be hidden?"""
@@ -293,7 +299,14 @@ class ToolRevisionSerializer(ModelSerializer):
         """Configure serializer."""
 
         model = Version
-        fields = ["id", "timestamp", "user", "comment", "suppressed"]
+        fields = [
+            "id",
+            "timestamp",
+            "user",
+            "comment",
+            "suppressed",
+            "patrolled",
+        ]
 
 
 @doc(_("""Tool revision detail."""))

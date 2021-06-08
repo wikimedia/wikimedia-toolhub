@@ -39,6 +39,7 @@ from reversion.models import Version
 import spdx_license_list
 
 from toolhub.apps.auditlog.models import LogEntry
+from toolhub.permissions import CustomModelPermission
 from toolhub.permissions import ObjectPermissions
 from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 
@@ -198,6 +199,12 @@ path_param_tool_name = OpenApiParameter(
     ),
     reveal=extend_schema(
         description=_("""Reveal a previously hidden revision."""),
+        parameters=[path_param_tool_name],
+        request=CommentSerializer,
+        responses={204: None},
+    ),
+    patrol=extend_schema(
+        description=_("""Mark a revision as patrolled."""),
         parameters=[path_param_tool_name],
         request=CommentSerializer,
         responses={204: None},
@@ -383,6 +390,31 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
                 request.user,
                 rev,
                 LogEntry.REVEAL,
+                comment,
+            )
+        return response.Response(status=status.HTTP_204_NO_CONTENT)
+
+    @action(
+        detail=True,
+        methods=["PATCH"],
+        url_path=r"patrol",
+        permission_classes=[
+            CustomModelPermission("reversion", "version", "patrol"),
+        ],
+    )
+    def patrol(self, request, **kwargs):
+        """Mark a revision as patrolled."""
+        rev_id = kwargs["pk"]
+        qs = self.get_queryset().filter(revision__meta__patrolled=False)
+        rev = get_object_or_404(qs, pk=rev_id)
+        comment = request.data.get("comment", None)
+        with transaction.atomic():
+            rev.revision.meta.patrolled = True
+            rev.revision.meta.save()
+            LogEntry.objects.log_action(
+                request.user,
+                rev,
+                LogEntry.PATROL,
                 comment,
             )
         return response.Response(status=status.HTTP_204_NO_CONTENT)

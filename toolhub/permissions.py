@@ -40,6 +40,25 @@ class ObjectPermissionsOrAnonReadOnly(ObjectPermissions):
     authenticated_users_only = False
 
 
+class CustomModelPermission(permissions.BasePermission):
+    """Check a specific model permission."""
+
+    def __init__(self, app_label, model_name, permission):
+        """Initialize object."""
+        self._perms = ["{}.{}_{}".format(app_label, permission, model_name)]
+
+    def __call__(self):
+        """Act like a callable so that DRF's plumbing works."""
+        return self
+
+    def has_permission(self, request, view):
+        """Check permission."""
+        import logging
+
+        logging.info("has_permission(%s, %s): %s", request, view, self._perms)
+        return request.user.has_perms(self._perms)
+
+
 @rules.predicate
 def is_obj_creator(user, obj=None):
     """Is the given user the creator of the given object?"""
@@ -95,6 +114,7 @@ is_oversighter = rules.is_group_member("Oversighters")
 is_patroller = rules.is_group_member("Patrollers")
 is_admin_or_crat = is_bureaucrat | is_administrator
 is_admin_or_oversighter = is_oversighter | is_administrator
+is_admin_or_patroller = is_patroller | is_administrator
 
 # Convenience permission combinations
 is_authed = rules.is_authenticated
@@ -147,6 +167,7 @@ MODEL_PERMISSIONS = {
             "change": is_admin_or_oversighter,
             "delete": is_admin_or_oversighter,
             "view": not_suppressed_or_is_oversighter,
+            "patrol": is_admin_or_patroller,
         },
     },
     "toolinfo": {
@@ -186,6 +207,9 @@ def register_model_permissions(conf):
             register(perms, app, model, "change")
             register(perms, app, model, "delete")
             register(perms, app, model, "view")
+            for perm in perms:
+                if perm not in ["add", "change", "delete", "view"]:
+                    register(perms, app, model, perm)
 
 
 def casl_for_user(user):
@@ -270,11 +294,15 @@ def casl_for_user(user):
 
         return rule
 
+    defaults = ["view", "add", "change", "delete"]
     casl = []
     for app, models in MODEL_PERMISSIONS.items():
         for model, perms in models.items():
-            for action in ["view", "add", "change", "delete"]:
+            for action in defaults:
                 casl.append(make_rule(user, perms, app, model, action))
+            for perm in perms:
+                if perm not in defaults:
+                    casl.append(make_rule(user, perms, app, model, perm))
 
     # Filter out inverted rules. We don't need to state all the things that
     # cannot be done by the user, and we don't have any AND'd rules.

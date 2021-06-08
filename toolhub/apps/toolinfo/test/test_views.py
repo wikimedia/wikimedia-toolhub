@@ -21,6 +21,7 @@ import os
 from django.contrib.auth.models import Group
 from django.test import TestCase
 
+from rest_framework.test import APIClient
 from rest_framework.test import APIRequestFactory
 from rest_framework.test import force_authenticate
 
@@ -162,6 +163,12 @@ class ToolRevisionViewSetTest(TestCase):
             password="unused",
         )
         Group.objects.get(name="Oversighters").user_set.add(cls.oversighter)
+        cls.patroller = ToolhubUser.objects.create_user(  # nosec: B106
+            username="Patroller",
+            email="patroller@example.org",
+            password="unused",
+        )
+        Group.objects.get(name="Patrollers").user_set.add(cls.patroller)
 
         with open(os.path.join(TEST_DIR, "toolinfo_fixture.json")) as fixture:
             cls.toolinfo = json.load(fixture)
@@ -482,4 +489,52 @@ class ToolRevisionViewSetTest(TestCase):
             pk=self.versions().first().pk,
             tool_name=self.tool.name,
         )
+        self.assertEqual(response.status_code, 404)
+
+    def test_patrol_requires_auth(self):
+        """Test patrol action."""
+        client = APIClient()
+        client.force_authenticate(user=None)
+        url = "/api/tools/{tool_name}/revisions/{id}/patrol/".format(
+            tool_name=self.tool.name,
+            id=self.versions().first().pk,
+        )
+        response = client.patch(url)
+        self.assertEqual(response.status_code, 401)
+
+    def test_patrol_requires_special_rights(self):
+        """Test patrol action."""
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/tools/{tool_name}/revisions/{id}/patrol/".format(
+            tool_name=self.tool.name,
+            id=self.versions().first().pk,
+        )
+        response = client.patch(url)
+        self.assertEqual(response.status_code, 403)
+
+    def test_patrol(self):
+        """Test patrol action."""
+        client = APIClient()
+        client.force_authenticate(user=self.patroller)
+        url = "/api/tools/{tool_name}/revisions/{id}/patrol/".format(
+            tool_name=self.tool.name,
+            id=self.versions().first().pk,
+        )
+        response = client.patch(url)
+        self.assertEqual(response.status_code, 204)
+
+    def test_patrol_rejects_patrolled(self):
+        """Test patrol action."""
+        p = self.versions().first()
+        p.revision.meta.patrolled = True
+        p.revision.meta.save()
+
+        client = APIClient()
+        client.force_authenticate(user=self.patroller)
+        url = "/api/tools/{tool_name}/revisions/{id}/patrol/".format(
+            tool_name=self.tool.name,
+            id=self.versions().first().pk,
+        )
+        response = client.patch(url)
         self.assertEqual(response.status_code, 404)
