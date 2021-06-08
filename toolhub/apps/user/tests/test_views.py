@@ -17,9 +17,9 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth.models import Group
-from django.contrib.sessions.middleware import SessionMiddleware
 from django.test import TestCase
 
+from rest_framework.test import APIClient
 from rest_framework.test import APIRequestFactory
 from rest_framework.test import force_authenticate
 
@@ -87,54 +87,38 @@ class LocaleViewTest(TestCase):
             password="unused",
         )
 
-        cls.request_factory = APIRequestFactory()
-        cls.session_middleware = SessionMiddleware()
-
-    @classmethod
-    def make_request(cls, method, route, *args, **kwargs):
-        """Make a request object."""
-        func = getattr(cls.request_factory, method)
-        req = func(route, *args, **kwargs)
-        cls.session_middleware.process_request(req)
-        req.session.save()
-        return req
-
     def test_get_as_anon(self):
         """Test get."""
-        req = self.make_request("get", "")
-        force_authenticate(req, user=AnonymousUser())
-        view = views.LocaleView.as_view()
-        response = view(req)
+        client = APIClient()
+        client.force_authenticate(user=None)
+        response = client.get("/api/user/locale/")
         self.assertEqual(response.status_code, 200)
         self.assertIn("language", response.data)
-        self.assertEqual(response.data["language"], "en-us")
+        self.assertEqual(response.data["language"], "en")
 
     def test_get(self):
         """Test get."""
-        req = self.make_request("get", "")
-        force_authenticate(req, user=self.user)
-        view = views.LocaleView.as_view()
-        response = view(req)
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        response = client.get("/api/user/locale/")
         self.assertEqual(response.status_code, 200)
         self.assertIn("language", response.data)
-        self.assertEqual(response.data["language"], "en-us")
+        self.assertEqual(response.data["language"], "en")
 
     def test_post_as_anon(self):
         """Test post as anon user."""
-        req = self.make_request("post", "", {"language": "fj"})
-        force_authenticate(req, user=AnonymousUser())
-        view = views.LocaleView.as_view()
-        response = view(req)
+        client = APIClient()
+        client.force_authenticate(user=None)
+        response = client.post("/api/user/locale/", {"language": "fj"})
         self.assertEqual(response.status_code, 200)
         self.assertIn("language", response.data)
         self.assertEqual(response.data["language"], "fj")
 
     def test_post(self):
         """Test post."""
-        req = self.make_request("post", "", {"language": "fj"})
-        force_authenticate(req, user=self.user)
-        view = views.LocaleView.as_view()
-        response = view(req)
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        response = client.post("/api/user/locale/", {"language": "fj"})
         self.assertEqual(response.status_code, 200)
         self.assertIn("language", response.data)
         self.assertEqual(response.data["language"], "fj")
