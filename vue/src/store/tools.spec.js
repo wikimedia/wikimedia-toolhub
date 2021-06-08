@@ -652,6 +652,61 @@ describe( 'store/tools', () => {
 
 		} );
 
+		describe( 'hideRevealRevision', () => {
+			const testTool = {
+				name: 'Hellotool',
+				id: '596',
+				page: 1,
+				action: 'hide'
+			};
+
+			const response = {
+				ok: true,
+				status: 204,
+				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/' + testTool.action + '/',
+				headers: { 'Content-type': 'application/json' }
+			};
+
+			it( 'should hide a revision', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/' + testTool.action + '/',
+					method: 'PATCH'
+				}, context );
+				http.resolves( response );
+
+				const hideRevealRevision = actions.hideRevealRevision.bind( stubThis );
+				await hideRevealRevision( context, testTool );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'updateToolRevisions', {
+						page: testTool.page,
+						name: testTool.name
+					}
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( { errors: [ {
+					field: 'detail',
+					message: 'Current revision cannot be hidden'
+				} ] } );
+
+				const hideRevealRevision = actions.hideRevealRevision.bind( stubThis );
+				await hideRevealRevision( context, testTool );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
+
+		} );
+
 	} );
 
 	describe( 'mutations', () => {

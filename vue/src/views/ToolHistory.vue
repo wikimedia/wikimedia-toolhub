@@ -106,6 +106,17 @@
 							(<a @click="restoreToolToRevision(rev.id)">{{ $t( 'revert' ) }}</a>)
 						</dd>
 					</template>
+
+					<template v-if="$can( 'change', 'reversion/version' )">
+						<dd class="me-1 mt-1">
+							<template v-if="rev.suppressed">
+								(<a @click="suppress(rev.id, 'reveal')">{{ $t( 'reveal' ) }}</a>)
+							</template>
+							<template v-else>
+								(<a @click="suppress(rev.id, 'hide')">{{ $t( 'hide' ) }}</a>)
+							</template>
+						</dd>
+					</template>
 				</dl>
 			</v-col>
 		</v-row>
@@ -168,6 +179,14 @@ export default {
 				name: this.name,
 				id: id,
 				page: this.page
+			} );
+		},
+		suppress( id, action ) {
+			this.$store.dispatch( 'tools/hideRevealRevision', {
+				name: this.name,
+				id: id,
+				page: this.page,
+				action: action
 			} );
 		},
 		selectToolRevision( event, idSelected ) {
