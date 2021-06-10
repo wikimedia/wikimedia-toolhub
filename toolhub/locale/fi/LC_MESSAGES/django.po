@@ -1,34 +1,36 @@
-# Translation of Toolhub - Backend to Korean (한국어)
+# Translation of Toolhub - Backend to Finnish (suomi)
 # Exported from translatewiki.net
 #
-# Author: Gustmd7410
-# Author: Ykhwong
+# Author: MITO
+# Author: Maantietäjä
+# Author: Majavah
+# Author: Nike
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-06-10 14:57:14+0000\n"
+"PO-Revision-Date: 2021-06-10 14:57:13+0000\n"
 "X-POT-Import-Date: 2021-06-08 17:08:16+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ko\n"
+"Language: fi\n"
 "X-Generator: MediaWiki 1.36.0; Translate 2021-04-28\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr "감사 로그"
+msgstr "Tarkastusloki"
 
 #: toolhub/apps/auditlog/models.py:84
 msgid "created"
-msgstr "만들어짐"
+msgstr "luotu"
 
 #: toolhub/apps/auditlog/models.py:85
 msgid "updated"
-msgstr "수정됨"
+msgstr "päivitetty"
 
 #: toolhub/apps/auditlog/models.py:86
 msgid "deleted"
-msgstr "삭제됨"
+msgstr "poistettu"
 
 #: toolhub/apps/auditlog/models.py:87
 msgid "added to"
@@ -40,23 +42,23 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:89
 msgid "hid"
-msgstr ""
+msgstr "piilota"
 
 #: toolhub/apps/auditlog/models.py:90
 msgid "revealed"
-msgstr ""
+msgstr "palautettu"
 
 #: toolhub/apps/auditlog/models.py:95
 msgid "timestamp"
-msgstr "타임스탬프"
+msgstr ""
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "user"
-msgstr "사용자"
+msgstr "käyttäjä"
 
 #: toolhub/apps/auditlog/models.py:111
 msgid "content type"
-msgstr "콘텐츠 유형"
+msgstr "sisältötyyppi"
 
 #: toolhub/apps/auditlog/models.py:117
 msgid "object id"
@@ -68,7 +70,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:129
 msgid "action"
-msgstr ""
+msgstr "toiminto"
 
 #: toolhub/apps/auditlog/models.py:138
 msgid "auditlog entry"
@@ -76,7 +78,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:139
 msgid "auditlog entries"
-msgstr ""
+msgstr "tarkastuslokin merkinnät"
 
 #: toolhub/apps/auditlog/serializers.py:31
 msgid "Event action"
@@ -84,11 +86,11 @@ msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:45
 msgid "Event target"
-msgstr "이벤트 대상"
+msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:76
 msgid "Audit log entry"
-msgstr ""
+msgstr "Tarkastuslokimerkintä"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
@@ -120,15 +122,15 @@ msgstr ""
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr "툴인포 웹 크롤러"
+msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:31
 msgid "A URL that has been registered for crawling"
-msgstr "크롤링을 위해 등록된 URL"
+msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:44
 msgid "A URL to crawl"
-msgstr "크롤링할 URL"
+msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
@@ -140,23 +142,23 @@ msgstr ""
 
 #: toolhub/apps/crawler/views.py:42
 msgid "Register a new URL for crawling."
-msgstr "크롤링을 위해 새 URL을 등록합니다."
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:46
 msgid "Information about a specific crawled URL."
-msgstr "크롤링되는 특정 URL에 관한 정보입니다."
+msgstr "Tietoja tietystä indeksoidusta URL-osoitteesta."
 
 #: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
-msgstr "URL의 등록을 해제합니다."
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:58
 msgid "List all crawled URLs."
-msgstr "크롤한 모든 URL을 나열합니다."
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:85
 msgid "Get URLs created by the current user."
-msgstr "현재 사용자가 만든 URL을 가져옵니다."
+msgstr ""
 
 #: toolhub/apps/crawler/views.py:104
 msgid "List all historic crawler runs."
@@ -168,7 +170,7 @@ msgstr ""
 
 #: toolhub/apps/crawler/views.py:128
 msgid "List all urls crawled in a run."
-msgstr ""
+msgstr "Luettelo kaikista ajossa indeksoiduista URL-osoitteista."
 
 #: toolhub/apps/crawler/views.py:131
 msgid "Info for a specific url crawled in a run."
@@ -176,15 +178,15 @@ msgstr ""
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
-msgstr "OAuth 2.0 인가 서버 API"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
-msgstr "OAuth 클라이언트 애플리케이션입니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:37
 msgid "Application name"
-msgstr "애플리케이션 이름"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
@@ -192,19 +194,19 @@ msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
 msgid "Authorization callback URL"
-msgstr "인가 콜백 URL"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
 msgid "The application's callback URL."
-msgstr "애플리케이션의 콜백 URL"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:49
 msgid "Public identifier for this application"
-msgstr "이 애플리케이션의 공개 식별자"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:66
 msgid "OAuth Client application registration."
-msgstr "OAuth 클라이언트 애플리케이션 등록입니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:74
 msgid "Secret known only to the application and the authorization server"
@@ -212,51 +214,51 @@ msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:92
 msgid "OAuth Client application update."
-msgstr "OAuth 클라이언트 애플리케이션 업데이트입니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:117
 msgid "Authorized OAuth client application."
-msgstr "인가된 OAuth 클라이언트 애플리케이션입니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:39
 msgid "List all client applications."
-msgstr "모든 클라이언트 애플리케이션을 나열합니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:42
 msgid "Info for a client application."
-msgstr "클라이언트 애플리케이션의 정보입니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:45
 msgid "Register a new client application."
-msgstr "새 클라이언트 애플리케이션을 등록합니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:53
 msgid "Update a client application."
-msgstr "클라이언트 애플리케이션을 업데이트합니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:57
 msgid "Delete a client application."
-msgstr "클라이언트 애플리케이션을 삭제합니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:91
 msgid "List applications authorized by the current user."
-msgstr "현재 사용자가 인가한 애플리케이션을 나열합니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:94
 msgid "Info for an authorized application."
-msgstr "인가된 애플리케이션의 정보입니다."
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:106
 msgid "Revoke an application authorization."
-msgstr "애플리케이션 인가를 철회합니다."
+msgstr ""
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr "검색"
+msgstr ""
 
 #: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr "사용자 정보"
+msgstr ""
 
 #: toolhub/apps/search/schema.py:37
 msgid "Faceted classification"
@@ -274,7 +276,7 @@ msgstr ""
 #: toolhub/apps/search/schema.py:106
 #, optional
 msgid ", "
-msgstr ", "
+msgstr ""
 
 #: toolhub/apps/search/schema.py:191
 msgid "Field to use when ordering results."
@@ -282,7 +284,7 @@ msgstr ""
 
 #: toolhub/apps/search/serializers.py:27
 msgid "Tool search results"
-msgstr "도구 검색 결과"
+msgstr ""
 
 #: toolhub/apps/search/views.py:87
 msgid "Faceted search for tools."
@@ -290,7 +292,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr "툴인포"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:294
 #, python-format
@@ -299,43 +301,43 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:323
 msgid "web app"
-msgstr "웹 앱"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:324
 msgid "desktop app"
-msgstr "데스크톱 앱"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:325
 msgid "bot"
-msgstr "봇"
+msgstr "botti"
 
 #: toolhub/apps/toolinfo/models.py:326
 msgid "gadget"
-msgstr "소도구"
+msgstr "pienoisohjelma"
 
 #: toolhub/apps/toolinfo/models.py:327
 msgid "user script"
-msgstr "사용자 스크립트"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:328
 msgid "command line tool"
-msgstr "명령 줄 도구"
+msgstr "komentorivityökalu"
 
 #: toolhub/apps/toolinfo/models.py:329
 msgid "coding framework"
-msgstr "코딩 프레임워크"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:330
 msgid "other"
-msgstr "기타"
+msgstr "muu"
 
 #: toolhub/apps/toolinfo/models.py:336
 msgid "crawler"
-msgstr "크롤러"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:337
 msgid "api"
-msgstr "api"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:345
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
@@ -347,7 +349,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:359
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr "도구에 대한 장문의 설명입니다. 설명을 위해 권장되는 길이는 3~5개 문장입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:367
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
@@ -355,7 +357,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:382
 msgid "The primary tool developer."
-msgstr "주 도구 개발자입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:388
 msgid "A link to the repository where the tool code is hosted."
@@ -379,11 +381,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:431
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
-msgstr "참인 경우 이 도구의 사용은 공식적으로 권고되지 않습니다. `replaced_by` 변수를 사용하여 대안이 되는 도구를 정의할 수 있습니다."
+msgstr "Jos totta, tämän työkalun käyttöä ei suositella virallisesti. Parametria `replaced_by` voidaan käyttää korvaavan työkalun määrittämiseen."
 
 #: toolhub/apps/toolinfo/models.py:441
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
-msgstr "이 도구가 구식인 경우 이 변수는 대체 도구를 링크하기 위해 사용하는 것이 좋습니다."
+msgstr "Jos tämä työkalu on vanhentunut, tätä parametria tulisi käyttää linkittämään korvaustyökaluun."
 
 #: toolhub/apps/toolinfo/models.py:448
 msgid "If true, this tool is unstable and can change or go offline at any time."
@@ -415,11 +417,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:521
 msgid "The manner in which the tool is used. Select one from the list of options."
-msgstr "도구가 사용되는 방식입니다. 옵션 목록에서 하나를 선택하십시오."
+msgstr "Tapa, jolla työkalua käytetään. Valitse yksi vaihtoehtoluettelosta."
 
 #: toolhub/apps/toolinfo/models.py:530
 msgid "A link to the tool's API, if available."
-msgstr "도구의 API 링크입니다. (사용 가능한 경우)"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:536
 msgid "A link to the tool's developer documentation, if available."
@@ -431,7 +433,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:552
 msgid "A link to location where the tool's user can leave feedback."
-msgstr ""
+msgstr "Linkki sijaintiin, johon työkalun käyttäjä voi jättää palautetta."
 
 #: toolhub/apps/toolinfo/models.py:560
 msgid "A link to the tool's privacy policy, if available."
@@ -447,7 +449,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:586
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
-msgstr ""
+msgstr "URI, joka tunnistaa jsonscheman tälle toolinfo.json -tietueelle. Tämän tulisi olla lyhyt uri, joka sisältää vain nimen ja version URI-polun lopussa."
 
 #: toolhub/apps/toolinfo/models.py:597
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
@@ -459,15 +461,15 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/schema.py:43
 msgid "RFC 6902 application/json-patch+json data"
-msgstr "RFC 6902 application/json-patch+json 데이터"
+msgstr ""
 
 #: toolhub/apps/toolinfo/schema.py:46
 msgid "RFC 6902 JSON patch operation"
-msgstr "RFC 6902 JSON 패치 작업"
+msgstr ""
 
 #: toolhub/apps/toolinfo/schema.py:51
 msgid "The operation to be performed"
-msgstr "수행될 작업"
+msgstr ""
 
 #: toolhub/apps/toolinfo/schema.py:57
 msgid "JSON-Pointer to location within document where operation is performed."
@@ -475,7 +477,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/schema.py:63
 msgid "The value to add, replace, or test."
-msgstr "추가, 치환, 테스트할 값입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/schema.py:69
 msgid "JSON-Pointer to location within document to move or copy the value from."
@@ -483,63 +485,63 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:38
 msgid "SPDX license information"
-msgstr "SPDX 라이선스 정보"
+msgstr "SPDX-lisenssitiedot"
 
 #: toolhub/apps/toolinfo/serializers.py:46
 msgid "SPDX license ID"
-msgstr "SPDX 라이선스 ID"
+msgstr "Lisenssin SPDX-tunniste"
 
 #: toolhub/apps/toolinfo/serializers.py:51
 msgid "Full name of this license"
-msgstr "이 라이선스의 정식 명칭"
+msgstr "Lienssin koko nimi"
 
 #: toolhub/apps/toolinfo/serializers.py:56
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr "이 라이선스가 OSI에 의해 '오픈 소스'로 승인된 것입니까?"
+msgstr "Onko OSI hyväksynyt tämän lisenssin avoimen lähdekoodin lisenssiksi?"
 
 #: toolhub/apps/toolinfo/serializers.py:61
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr "이 라이선스가 FSF에 의해 '자유 소프트웨어'로 승인된 것입니까?"
+msgstr "Onko FSF hyväksynyt tämän lisenssin vapaan koodin lisenssiksi?"
 
 #: toolhub/apps/toolinfo/serializers.py:66
 msgid "Is this license considered to be outdated?"
-msgstr "이 라이선스의 기간이 만료된 것으로 간주됩니까?"
+msgstr "Pidetäänkö tätä lisenssiä vanhentuneena?"
 
 #: toolhub/apps/toolinfo/serializers.py:70
 msgid "Description of a tool"
-msgstr "도구 설명"
+msgstr "Työkalun kuvaus"
 
 #: toolhub/apps/toolinfo/serializers.py:120
 msgid "Summary of a tool"
-msgstr "도구 요약"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:139
 msgid "Edit summary"
-msgstr "편집 요약"
+msgstr "Muokkausyhteenveto"
 
 #: toolhub/apps/toolinfo/serializers.py:141
 msgid "Description of the changes you are making to this toolinfo record."
-msgstr ""
+msgstr "Kuvaus tekemistäsi muutoksista tähän työkalutietotietueeseen."
 
 #: toolhub/apps/toolinfo/serializers.py:153
 msgid "Create a tool"
-msgstr "도구 만들기"
+msgstr "Luo työkalu"
 
 #: toolhub/apps/toolinfo/serializers.py:219
 msgid "Update a tool"
-msgstr "도구 업데이트"
+msgstr "Päivitä työkalu"
 
 #: toolhub/apps/toolinfo/serializers.py:250
 msgid "Tool revision."
-msgstr "도구 버전입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:256
 msgid "A unique integer value identifying this revision."
-msgstr "이 판을 식별하는 고유 정수값입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:268
 msgid "Comment by the user for the revision."
-msgstr "판에 대한 사용자의 의견입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:274 toolhub/apps/versioned/models.py:40
 msgid "Has this revision been marked as hidden?"
@@ -547,11 +549,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:288
 msgid "username removed"
-msgstr "사용자 이름 삭제됨"
+msgstr "käyttäjänimi poistettu"
 
 #: toolhub/apps/toolinfo/serializers.py:289
 msgid "edit summary removed"
-msgstr "편집 요약 삭제됨"
+msgstr "muokkausyhteenveto poistettu"
 
 #: toolhub/apps/toolinfo/serializers.py:299
 msgid "Tool revision detail."
@@ -563,11 +565,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:329
 msgid "Revision to apply changes to."
-msgstr "변경을 적용할 판입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:333
 msgid "Revision after applying changes."
-msgstr "변경사항 적용 후의 판입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:337
 msgid "Comment describing an action."
@@ -587,7 +589,7 @@ msgstr ""
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr "%(value)s 값은(는) 알려진 SPDX 라이선스 식별자가 아닙니다."
+msgstr "%(value)s ei ole tunnettu SPDX-lisenssitunniste"
 
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
@@ -604,11 +606,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:63
 msgid "Failed to apply patch."
-msgstr "패치 적용을 실패했습니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:70
 msgid "Current revision cannot be hidden."
-msgstr ""
+msgstr "Nykyistä versiota ei voida piilottaa."
 
 #: toolhub/apps/toolinfo/views.py:78
 msgid "Missing content for one or more revisions."
@@ -616,39 +618,39 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:84
 msgid "Create a new tool."
-msgstr "새 도구를 만듭니다."
+msgstr "Luo uusi työkalu."
 
 #: toolhub/apps/toolinfo/views.py:89
 msgid "Info for a specific tool."
-msgstr "특정 도구의 정보입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:92
 msgid "Update info for a specific tool."
-msgstr "특정 도구의 정보를 업데이트합니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:100
 msgid "Delete a tool."
-msgstr "도구를 삭제합니다."
+msgstr "Poista työkalu."
 
 #: toolhub/apps/toolinfo/views.py:103
 msgid "List all tools."
-msgstr "모든 도구를 나열합니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:139
 msgid "Unique identifier for this tool."
-msgstr "이 도구의 고유 식별자입니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:145
 msgid "Get revision information."
-msgstr "판 정보를 가져옵니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:150
 msgid "List revisions."
-msgstr "판을 나열합니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:155
 msgid "Compare two revisions to find difference."
-msgstr "차이 확인을 위해 두 판을 비교합니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:163
 msgid "A unique integer value identifying version to diff against."
@@ -656,11 +658,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:171
 msgid "Restore the tool to this revision."
-msgstr "도구를 이 판으로 복원합니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:178
 msgid "Undo all changes made between two revisions."
-msgstr "두 판 사이의 모든 변경사항을 취소합니다."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:186
 msgid "A unique integer value identifying version to undo until."
@@ -668,7 +670,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:194
 msgid "Hide revision text and edit summary from users."
-msgstr ""
+msgstr "Piilota version teksti ja muokkausyhteenveto käyttäjiltä."
 
 #: toolhub/apps/toolinfo/views.py:200
 msgid "Reveal a previously hidden revision."
@@ -682,43 +684,43 @@ msgstr ""
 #: toolhub/apps/toolinfo/views.py:333
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
-msgstr "%(first_id)s 판에서 %(last_id)s 판으로 편집 취소"
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:393
 msgid "Info for a specific SPDX license."
-msgstr "특정 SPDX 라이선스의 정보입니다."
+msgstr "Tietyn SPDX-lisenssin tiedot."
 
 #: toolhub/apps/toolinfo/views.py:401
 msgid "List all SPDX licenses."
-msgstr "모든 SPDX 라이선스를 나열합니다."
+msgstr "Näytä kaikki SPDX-lisenssit."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
-msgstr "개인 정보"
+msgstr ""
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr "권한"
+msgstr ""
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
-msgstr "중요 날짜"
+msgstr ""
 
 #: toolhub/apps/user/apps.py:26
 msgid "Toolhub user"
-msgstr "툴허브 사용자"
+msgstr "Toolhub-käyttäjä"
 
 #: toolhub/apps/user/models.py:34
 msgid "username"
-msgstr "사용자 이름"
+msgstr "käyttäjänimi"
 
 #: toolhub/apps/user/models.py:37
 msgid "Required. 255 characters or fewer."
-msgstr "필수입니다. 255자 이하."
+msgstr ""
 
 #: toolhub/apps/user/models.py:40
 msgid "A user with that username already exists."
-msgstr "해당 사용자 이름의 사용자가 이미 존재합니다."
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:41
 msgid "Action that the user can take"
@@ -734,7 +736,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
-msgstr "현재 사용자에 관한 정보"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
@@ -750,23 +752,23 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
-msgstr "현재 로케일에 관한 정보"
+msgstr "Tietoja nykyisestä sijainnista"
 
 #: toolhub/apps/user/serializers.py:123
 msgid "Group information"
-msgstr "그룹 정보"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr ""
+msgstr "Käyttäjän sosiaalisen todennuksen tiedot"
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
-msgstr "상세 사용자 정보"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
-msgstr "상세 그룹 정보"
+msgstr "Yksityiskohtaiset tiedot ryhmästä"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
@@ -774,39 +776,39 @@ msgstr ""
 
 #: toolhub/apps/user/views.py:57
 msgid "Get information about the currently logged in user."
-msgstr "현재 로그인한 사용자에 관한 정보를 가져옵니다."
+msgstr "Hanki tietoa tällä hetkellä kirjautuneesta käyttäjästä."
 
 #: toolhub/apps/user/views.py:85
 msgid "Get current locale."
-msgstr "현재 로케일을 가져옵니다."
+msgstr "Hanki nykyinen sijainti."
 
 #: toolhub/apps/user/views.py:96
 msgid "Set locale."
-msgstr "로케일을 설정합니다."
+msgstr ""
 
 #: toolhub/apps/user/views.py:114
 msgid "List all active users."
-msgstr "활동 중인 모든 사용자를 나열합니다."
+msgstr ""
 
 #: toolhub/apps/user/views.py:117
 msgid "Info for a specific user."
-msgstr "특정 사용자의 정보입니다."
+msgstr ""
 
 #: toolhub/apps/user/views.py:138
 msgid "List all user groups."
-msgstr "모든 사용자 그룹을 나열합니다."
+msgstr ""
 
 #: toolhub/apps/user/views.py:141
 msgid "Info for a user group."
-msgstr "사용자 그룹의 정보입니다."
+msgstr "Tietoja käyttäjäryhmästä."
 
 #: toolhub/apps/user/views.py:163
 msgid "Add a user to this group."
-msgstr "이 그룹에 사용자를 추가합니다."
+msgstr "Lisää käyttäjä tähän ryhmään."
 
 #: toolhub/apps/user/views.py:174
 msgid "Remove a user from this group."
-msgstr "이 그룹에서 사용자를 제거합니다."
+msgstr "Poista käyttäjä tästä ryhmästä."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
@@ -818,23 +820,23 @@ msgstr ""
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr "JSON 스키마를 준수하는 유효한 값을 입력하십시오."
+msgstr ""
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr "API 오류"
+msgstr "API-virhe"
 
 #: toolhub/settings.py:375
 msgid "Read scope"
-msgstr "읽기 범위"
+msgstr ""
 
 #: toolhub/settings.py:376
 msgid "Write scope"
-msgstr "쓰기 범위"
+msgstr ""
 
 #: toolhub/settings.py:403
 msgid "Toolhub API"
-msgstr "툴허브 API"
+msgstr ""
 
 #: vue/templates/vue/base.html:20
 msgid "Toolhub's user interface requires JavaScript to be enabled."
@@ -842,5 +844,5 @@ msgstr ""
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
-msgstr "불러오는 중"
+msgstr "LADATAAN"
 

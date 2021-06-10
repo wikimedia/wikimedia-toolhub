@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-06-07 13:01:16+0000\n"
-"X-POT-Import-Date: 2021-06-04 18:39:36+0000\n"
+"PO-Revision-Date: 2021-06-10 14:57:15+0000\n"
+"X-POT-Import-Date: 2021-06-08 17:08:16+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: qqq\n"
@@ -293,172 +293,168 @@ msgstr "OpenAPI action description."
 msgid "Toolinfo"
 msgstr "Label used in admin console."
 
-#: toolhub/apps/toolinfo/models.py:57
-msgid "Has this historical revision been marked as hidden?"
-msgstr "Help text message for OpenAPI schema field description."
-
-#: toolhub/apps/toolinfo/models.py:308
+#: toolhub/apps/toolinfo/models.py:294
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
 msgstr "Error message shown when an edit attempts to change a read-only field. This message uses python replacement parameter formatting. Parameters:\n* %(key)s - name of read-only field"
 
-#: toolhub/apps/toolinfo/models.py:337
+#: toolhub/apps/toolinfo/models.py:323
 msgid "web app"
 msgstr "Name of a toolinfo record type."
 
-#: toolhub/apps/toolinfo/models.py:338
+#: toolhub/apps/toolinfo/models.py:324
 msgid "desktop app"
 msgstr "Name of a toolinfo record type."
 
-#: toolhub/apps/toolinfo/models.py:339
+#: toolhub/apps/toolinfo/models.py:325
 msgid "bot"
 msgstr "Name of a toolinfo record type."
 
-#: toolhub/apps/toolinfo/models.py:340
+#: toolhub/apps/toolinfo/models.py:326
 msgid "gadget"
 msgstr "Name of a toolinfo record type."
 
-#: toolhub/apps/toolinfo/models.py:341
+#: toolhub/apps/toolinfo/models.py:327
 msgid "user script"
 msgstr "Name of a toolinfo record type."
 
-#: toolhub/apps/toolinfo/models.py:342
+#: toolhub/apps/toolinfo/models.py:328
 msgid "command line tool"
 msgstr "Name of a toolinfo record type."
 
-#: toolhub/apps/toolinfo/models.py:343
+#: toolhub/apps/toolinfo/models.py:329
 msgid "coding framework"
 msgstr "Name of a toolinfo record type."
 
-#: toolhub/apps/toolinfo/models.py:344
+#: toolhub/apps/toolinfo/models.py:330
 msgid "other"
 msgstr "Name of a toolinfo record type."
 
-#: toolhub/apps/toolinfo/models.py:350
+#: toolhub/apps/toolinfo/models.py:336
 msgid "crawler"
 msgstr "Name of a toolinfo record origin."
 
-#: toolhub/apps/toolinfo/models.py:351
+#: toolhub/apps/toolinfo/models.py:337
 msgid "api"
 msgstr "Name of a toolinfo record origin."
 
-#: toolhub/apps/toolinfo/models.py:359
+#: toolhub/apps/toolinfo/models.py:345
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:367
+#: toolhub/apps/toolinfo/models.py:353
 msgid "Human readable tool name. Recommended limit of 25 characters."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:373
+#: toolhub/apps/toolinfo/models.py:359
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:381
+#: toolhub/apps/toolinfo/models.py:367
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:396
+#: toolhub/apps/toolinfo/models.py:382
 msgid "The primary tool developer."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:402
+#: toolhub/apps/toolinfo/models.py:388
 msgid "A link to the repository where the tool code is hosted."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:409
+#: toolhub/apps/toolinfo/models.py:395
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:418
+#: toolhub/apps/toolinfo/models.py:404
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:427
+#: toolhub/apps/toolinfo/models.py:413
 msgid "Alternate links to the tool or install documentation in different natural languages."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:438
+#: toolhub/apps/toolinfo/models.py:424
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:445
+#: toolhub/apps/toolinfo/models.py:431
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:455
+#: toolhub/apps/toolinfo/models.py:441
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:462
+#: toolhub/apps/toolinfo/models.py:448
 msgid "If true, this tool is unstable and can change or go offline at any time."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:470
+#: toolhub/apps/toolinfo/models.py:456
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:488
+#: toolhub/apps/toolinfo/models.py:474
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:497
+#: toolhub/apps/toolinfo/models.py:483
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:505
+#: toolhub/apps/toolinfo/models.py:491
 msgid "Organization(s) that sponsored the tool's development."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:512
+#: toolhub/apps/toolinfo/models.py:498
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:523
+#: toolhub/apps/toolinfo/models.py:509
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:535
+#: toolhub/apps/toolinfo/models.py:521
 msgid "The manner in which the tool is used. Select one from the list of options."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:544
+#: toolhub/apps/toolinfo/models.py:530
 msgid "A link to the tool's API, if available."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:550
+#: toolhub/apps/toolinfo/models.py:536
 msgid "A link to the tool's developer documentation, if available."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:558
+#: toolhub/apps/toolinfo/models.py:544
 msgid "A link to the tool's user documentation, if available."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:566
+#: toolhub/apps/toolinfo/models.py:552
 msgid "A link to location where the tool's user can leave feedback."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:574
+#: toolhub/apps/toolinfo/models.py:560
 msgid "A link to the tool's privacy policy, if available."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:583
+#: toolhub/apps/toolinfo/models.py:569
 msgid "A link to the tool's translation interface."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:591
+#: toolhub/apps/toolinfo/models.py:577
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:600
+#: toolhub/apps/toolinfo/models.py:586
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:611
+#: toolhub/apps/toolinfo/models.py:597
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
 msgstr "OpenAPI schema help text."
 
-#: toolhub/apps/toolinfo/models.py:621
+#: toolhub/apps/toolinfo/models.py:607
 msgid "Origin of this tool record."
 msgstr "Label for name of a toolinfo record origin."
 
@@ -546,31 +542,35 @@ msgstr "OpenAPI response property description."
 msgid "Comment by the user for the revision."
 msgstr "OpenAPI response property description."
 
-#: toolhub/apps/toolinfo/serializers.py:282
+#: toolhub/apps/toolinfo/serializers.py:274 toolhub/apps/versioned/models.py:40
+msgid "Has this revision been marked as hidden?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:288
 msgid "username removed"
 msgstr "Replacement for username when viewing a historical edit which has been suppressed."
 
-#: toolhub/apps/toolinfo/serializers.py:283
+#: toolhub/apps/toolinfo/serializers.py:289
 msgid "edit summary removed"
 msgstr "Replacement for edit summary when viewing a historical edit which has been suppressed."
 
-#: toolhub/apps/toolinfo/serializers.py:293
+#: toolhub/apps/toolinfo/serializers.py:299
 msgid "Tool revision detail."
 msgstr "OpenAPI response description."
 
-#: toolhub/apps/toolinfo/serializers.py:318
+#: toolhub/apps/toolinfo/serializers.py:324
 msgid "Tool revision difference."
 msgstr "OpenAPI response description."
 
-#: toolhub/apps/toolinfo/serializers.py:323
+#: toolhub/apps/toolinfo/serializers.py:329
 msgid "Revision to apply changes to."
 msgstr "OpenAPI response property help text."
 
-#: toolhub/apps/toolinfo/serializers.py:327
+#: toolhub/apps/toolinfo/serializers.py:333
 msgid "Revision after applying changes."
 msgstr "OpenAPI response property help text."
 
-#: toolhub/apps/toolinfo/serializers.py:331
+#: toolhub/apps/toolinfo/serializers.py:337
 msgid "Comment describing an action."
 msgstr "OpenAPI schema object description."
 
@@ -611,81 +611,85 @@ msgstr "Error message shown when undo fails."
 msgid "Current revision cannot be hidden."
 msgstr "Error message"
 
-#: toolhub/apps/toolinfo/views.py:76
+#: toolhub/apps/toolinfo/views.py:78
+msgid "Missing content for one or more revisions."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:84
 msgid "Create a new tool."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:81
+#: toolhub/apps/toolinfo/views.py:89
 msgid "Info for a specific tool."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:84
+#: toolhub/apps/toolinfo/views.py:92
 msgid "Update info for a specific tool."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:92
+#: toolhub/apps/toolinfo/views.py:100
 msgid "Delete a tool."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:95
+#: toolhub/apps/toolinfo/views.py:103
 msgid "List all tools."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:131
+#: toolhub/apps/toolinfo/views.py:139
 msgid "Unique identifier for this tool."
 msgstr "OpenAPI path parameter description."
 
-#: toolhub/apps/toolinfo/views.py:137
+#: toolhub/apps/toolinfo/views.py:145
 msgid "Get revision information."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:142
+#: toolhub/apps/toolinfo/views.py:150
 msgid "List revisions."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:147
+#: toolhub/apps/toolinfo/views.py:155
 msgid "Compare two revisions to find difference."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:155
+#: toolhub/apps/toolinfo/views.py:163
 msgid "A unique integer value identifying version to diff against."
 msgstr "OpenAPI path parameter description."
 
-#: toolhub/apps/toolinfo/views.py:163
+#: toolhub/apps/toolinfo/views.py:171
 msgid "Restore the tool to this revision."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:170
+#: toolhub/apps/toolinfo/views.py:178
 msgid "Undo all changes made between two revisions."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:178
+#: toolhub/apps/toolinfo/views.py:186
 msgid "A unique integer value identifying version to undo until."
 msgstr "OpenAPI path parameter description."
 
-#: toolhub/apps/toolinfo/views.py:186
+#: toolhub/apps/toolinfo/views.py:194
 msgid "Hide revision text and edit summary from users."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:192
+#: toolhub/apps/toolinfo/views.py:200
 msgid "Reveal a previously hidden revision."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:276
+#: toolhub/apps/toolinfo/views.py:299
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr "System generated comment for a revert action. Parameters:\n* %(rev_id)s - numeric revision id\n* %(datetime)s - ISO 8601 date and time\n* %(user)s - username"
 
-#: toolhub/apps/toolinfo/views.py:310
+#: toolhub/apps/toolinfo/views.py:333
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "System generated comment for an undo action. Parameters:\n* %(first_id)s - numeric revision id\n* %(last_id)s - numeric revision id"
 
-#: toolhub/apps/toolinfo/views.py:370
+#: toolhub/apps/toolinfo/views.py:393
 msgid "Info for a specific SPDX license."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:378
+#: toolhub/apps/toolinfo/views.py:401
 msgid "List all SPDX licenses."
 msgstr "OpenAPI action description."
 
@@ -805,6 +809,14 @@ msgstr "OpenAPI schema route summary."
 msgid "Remove a user from this group."
 msgstr "OpenAPI schema route summary."
 
+#: toolhub/apps/versioned/apps.py:26
+msgid "Versioned"
+msgstr ""
+
+#: toolhub/apps/versioned/models.py:45
+msgid "Has this revision been reviewed by a patroller?"
+msgstr ""
+
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
 msgstr "Error message shown when JSON schema validation fails."
@@ -813,15 +825,15 @@ msgstr "Error message shown when JSON schema validation fails."
 msgid "API error"
 msgstr "OpenAPI error response description."
 
-#: toolhub/settings.py:374
+#: toolhub/settings.py:375
 msgid "Read scope"
 msgstr "OAuth authorization scope label."
 
-#: toolhub/settings.py:375
+#: toolhub/settings.py:376
 msgid "Write scope"
 msgstr "OAuth authorization scope label."
 
-#: toolhub/settings.py:402
+#: toolhub/settings.py:403
 msgid "Toolhub API"
 msgstr "Section header."
 

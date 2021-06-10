@@ -5,6 +5,7 @@
 			"Kareyac",
 			"Nastua Buldakova",
 			"Okras",
+			"Rivka Silinsky",
 			"Wileyfoxyx"
 		]
 	},
@@ -27,6 +28,7 @@
 	"developerdocumentation": "Документация для разработчиков",
 	"experimental": "Экспериментальный",
 	"helptranslate": "Помочь с переводом",
+	"hide": "скрыть",
 	"howtouse": "Как пользоваться",
 	"language": "Язык",
 	"learnmore": "Узнать больше",
@@ -50,6 +52,7 @@
 	"newtoolsfound": "{{PLURAL:$1|инструмент|инструмента|инструментов}}",
 	"ok": "OK",
 	"privacypolicy": "Политика конфиденциальности",
+	"reveal": "раскрыть",
 	"search-filter-keywords": "Ключевые слова",
 	"search-filter-origin": "Происхождение",
 	"search-filter-tool-type-bot": "бот",
