@@ -59,6 +59,29 @@
 						/>
 					</dd>
 
+					<template v-if="$can( 'patrol', 'reversion/version' )">
+						<dd class="me-1 mt-1">
+							<template v-if="!rev.patrolled">
+								<v-icon class="error--text"
+									aria-hidden="false"
+									:aria-label="$t( 'unpatrolled' )"
+									role="img"
+								>
+									mdi-exclamation-thick
+								</v-icon>
+							</template>
+							<template v-else>
+								<v-icon class="success--text"
+									aria-hidden="false"
+									:aria-label="$t( 'patrolled' )"
+									role="img"
+								>
+									mdi-check-bold
+								</v-icon>
+							</template>
+						</dd>
+					</template>
+
 					<dd class="me-2 mt-1 rev-timestamp">
 						<router-link
 							v-if="$can( 'view', rev )"
@@ -114,6 +137,17 @@
 							</template>
 							<template v-else>
 								(<a @click="suppress(rev.id, 'hide')">{{ $t( 'hide' ) }}</a>)
+							</template>
+						</dd>
+					</template>
+
+					<template v-if="$can( 'patrol', 'reversion/version' )">
+						<dd class="me-1 mt-1">
+							<template v-if="!rev.patrolled">
+								(<a @click="patrol(rev.id)">{{ $t( 'markaspatrolled' ) }}</a>)
+							</template>
+							<template v-else>
+								(<span>{{ $t( 'patrolled' ) }}</span>)
 							</template>
 						</dd>
 					</template>
@@ -187,6 +221,13 @@ export default {
 				id: id,
 				page: this.page,
 				action: action
+			} );
+		},
+		patrol( id ) {
+			this.$store.dispatch( 'tools/markRevisionAsPatrolled', {
+				name: this.name,
+				id: id,
+				page: this.page
 			} );
 		},
 		selectToolRevision( event, idSelected ) {

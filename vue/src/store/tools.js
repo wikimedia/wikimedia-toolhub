@@ -389,6 +389,39 @@ export const actions = {
 				}
 			}
 		);
+	},
+	/**
+	 * Mark a revision as patrolled via the API
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} tool - tool info
+	 */
+	markRevisionAsPatrolled( context, tool ) {
+		const request = {
+			url: '/api/tools/' + tool.name + '/revisions/' + tool.id + '/patrol/',
+			method: 'PATCH'
+		};
+
+		makeApiCall( context, request ).then(
+			() => {
+				context.dispatch( 'updateToolRevisions', {
+					page: tool.page,
+					name: tool.name
+				} );
+			},
+			( failure ) => {
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
 	}
 };
 

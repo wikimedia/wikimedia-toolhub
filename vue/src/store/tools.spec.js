@@ -707,6 +707,60 @@ describe( 'store/tools', () => {
 
 		} );
 
+		describe( 'markRevisionAsPatrolled', () => {
+			const testTool = {
+				name: 'Hellotool',
+				id: '596',
+				page: 1
+			};
+
+			const response = {
+				ok: true,
+				status: 204,
+				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/patrol/',
+				headers: { 'Content-type': 'application/json' }
+			};
+
+			it( 'should patrol a revision', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/patrol/',
+					method: 'PATCH'
+				}, context );
+				http.resolves( response );
+
+				const markRevisionAsPatrolled = actions.markRevisionAsPatrolled.bind( stubThis );
+				await markRevisionAsPatrolled( context, testTool );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'updateToolRevisions', {
+						page: testTool.page,
+						name: testTool.name
+					}
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( { errors: [ {
+					field: 'detail',
+					message: 'Not found.'
+				} ] } );
+
+				const markRevisionAsPatrolled = actions.markRevisionAsPatrolled.bind( stubThis );
+				await markRevisionAsPatrolled( context, testTool );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
+
+		} );
+
 	} );
 
 	describe( 'mutations', () => {
