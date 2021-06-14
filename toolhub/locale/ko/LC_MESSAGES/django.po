@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-06-10 14:57:14+0000\n"
-"X-POT-Import-Date: 2021-06-08 17:08:16+0000\n"
+"PO-Revision-Date: 2021-06-14 08:00:28+0000\n"
+"X-POT-Import-Date: 2021-06-11 18:31:51+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
@@ -18,63 +18,67 @@ msgstr ""
 msgid "Audit log"
 msgstr "감사 로그"
 
-#: toolhub/apps/auditlog/models.py:84
+#: toolhub/apps/auditlog/models.py:85
 msgid "created"
 msgstr "만들어짐"
 
-#: toolhub/apps/auditlog/models.py:85
+#: toolhub/apps/auditlog/models.py:86
 msgid "updated"
 msgstr "수정됨"
 
-#: toolhub/apps/auditlog/models.py:86
+#: toolhub/apps/auditlog/models.py:87
 msgid "deleted"
 msgstr "삭제됨"
 
-#: toolhub/apps/auditlog/models.py:87
+#: toolhub/apps/auditlog/models.py:88
 msgid "added to"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:88
+#: toolhub/apps/auditlog/models.py:89
 msgid "removed from"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:89
+#: toolhub/apps/auditlog/models.py:90
 msgid "hid"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:90
+#: toolhub/apps/auditlog/models.py:91
 msgid "revealed"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:95
+#: toolhub/apps/auditlog/models.py:92
+msgid "patrolled"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:97
 msgid "timestamp"
 msgstr "타임스탬프"
 
-#: toolhub/apps/auditlog/models.py:103
+#: toolhub/apps/auditlog/models.py:105
 msgid "user"
 msgstr "사용자"
 
-#: toolhub/apps/auditlog/models.py:111
+#: toolhub/apps/auditlog/models.py:113
 msgid "content type"
 msgstr "콘텐츠 유형"
 
-#: toolhub/apps/auditlog/models.py:117
+#: toolhub/apps/auditlog/models.py:119
 msgid "object id"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:124
+#: toolhub/apps/auditlog/models.py:126
 msgid "object pk"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:129
+#: toolhub/apps/auditlog/models.py:131
 msgid "action"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:138
+#: toolhub/apps/auditlog/models.py:140
 msgid "auditlog entry"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:139
+#: toolhub/apps/auditlog/models.py:141
 msgid "auditlog entries"
 msgstr ""
 
@@ -545,31 +549,35 @@ msgstr "판에 대한 사용자의 의견입니다."
 msgid "Has this revision been marked as hidden?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:288
+#: toolhub/apps/toolinfo/serializers.py:280 toolhub/apps/versioned/models.py:45
+msgid "Has this revision been reviewed by a patroller?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:294
 msgid "username removed"
 msgstr "사용자 이름 삭제됨"
 
-#: toolhub/apps/toolinfo/serializers.py:289
+#: toolhub/apps/toolinfo/serializers.py:295
 msgid "edit summary removed"
 msgstr "편집 요약 삭제됨"
 
-#: toolhub/apps/toolinfo/serializers.py:299
+#: toolhub/apps/toolinfo/serializers.py:312
 msgid "Tool revision detail."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:324
+#: toolhub/apps/toolinfo/serializers.py:337
 msgid "Tool revision difference."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:329
+#: toolhub/apps/toolinfo/serializers.py:342
 msgid "Revision to apply changes to."
 msgstr "변경을 적용할 판입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:333
+#: toolhub/apps/toolinfo/serializers.py:346
 msgid "Revision after applying changes."
 msgstr "변경사항 적용 후의 판입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:337
+#: toolhub/apps/toolinfo/serializers.py:350
 msgid "Comment describing an action."
 msgstr ""
 
@@ -602,93 +610,97 @@ msgstr ""
 msgid "Url_multilingual missing 'url' property."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:63
+#: toolhub/apps/toolinfo/views.py:64
 msgid "Failed to apply patch."
 msgstr "패치 적용을 실패했습니다."
 
-#: toolhub/apps/toolinfo/views.py:70
+#: toolhub/apps/toolinfo/views.py:71
 msgid "Current revision cannot be hidden."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:78
+#: toolhub/apps/toolinfo/views.py:79
 msgid "Missing content for one or more revisions."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:84
+#: toolhub/apps/toolinfo/views.py:85
 msgid "Create a new tool."
 msgstr "새 도구를 만듭니다."
 
-#: toolhub/apps/toolinfo/views.py:89
+#: toolhub/apps/toolinfo/views.py:90
 msgid "Info for a specific tool."
 msgstr "특정 도구의 정보입니다."
 
-#: toolhub/apps/toolinfo/views.py:92
+#: toolhub/apps/toolinfo/views.py:93
 msgid "Update info for a specific tool."
 msgstr "특정 도구의 정보를 업데이트합니다."
 
-#: toolhub/apps/toolinfo/views.py:100
+#: toolhub/apps/toolinfo/views.py:101
 msgid "Delete a tool."
 msgstr "도구를 삭제합니다."
 
-#: toolhub/apps/toolinfo/views.py:103
+#: toolhub/apps/toolinfo/views.py:104
 msgid "List all tools."
 msgstr "모든 도구를 나열합니다."
 
-#: toolhub/apps/toolinfo/views.py:139
+#: toolhub/apps/toolinfo/views.py:140
 msgid "Unique identifier for this tool."
 msgstr "이 도구의 고유 식별자입니다."
 
-#: toolhub/apps/toolinfo/views.py:145
+#: toolhub/apps/toolinfo/views.py:146
 msgid "Get revision information."
 msgstr "판 정보를 가져옵니다."
 
-#: toolhub/apps/toolinfo/views.py:150
+#: toolhub/apps/toolinfo/views.py:151
 msgid "List revisions."
 msgstr "판을 나열합니다."
 
-#: toolhub/apps/toolinfo/views.py:155
+#: toolhub/apps/toolinfo/views.py:156
 msgid "Compare two revisions to find difference."
 msgstr "차이 확인을 위해 두 판을 비교합니다."
 
-#: toolhub/apps/toolinfo/views.py:163
+#: toolhub/apps/toolinfo/views.py:164
 msgid "A unique integer value identifying version to diff against."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:171
+#: toolhub/apps/toolinfo/views.py:172
 msgid "Restore the tool to this revision."
 msgstr "도구를 이 판으로 복원합니다."
 
-#: toolhub/apps/toolinfo/views.py:178
+#: toolhub/apps/toolinfo/views.py:179
 msgid "Undo all changes made between two revisions."
 msgstr "두 판 사이의 모든 변경사항을 취소합니다."
 
-#: toolhub/apps/toolinfo/views.py:186
+#: toolhub/apps/toolinfo/views.py:187
 msgid "A unique integer value identifying version to undo until."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:194
+#: toolhub/apps/toolinfo/views.py:195
 msgid "Hide revision text and edit summary from users."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:200
+#: toolhub/apps/toolinfo/views.py:201
 msgid "Reveal a previously hidden revision."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:299
+#: toolhub/apps/toolinfo/views.py:207
+msgid "Mark a revision as patrolled."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:306
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:333
+#: toolhub/apps/toolinfo/views.py:340
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "%(first_id)s 판에서 %(last_id)s 판으로 편집 취소"
 
-#: toolhub/apps/toolinfo/views.py:393
+#: toolhub/apps/toolinfo/views.py:425
 msgid "Info for a specific SPDX license."
 msgstr "특정 SPDX 라이선스의 정보입니다."
 
-#: toolhub/apps/toolinfo/views.py:401
+#: toolhub/apps/toolinfo/views.py:433
 msgid "List all SPDX licenses."
 msgstr "모든 SPDX 라이선스를 나열합니다."
 
@@ -810,10 +822,6 @@ msgstr "이 그룹에서 사용자를 제거합니다."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr ""
-
-#: toolhub/apps/versioned/models.py:45
-msgid "Has this revision been reviewed by a patroller?"
 msgstr ""
 
 #: toolhub/fields.py:40

@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-06-10 14:57:15+0000\n"
-"X-POT-Import-Date: 2021-06-08 17:08:16+0000\n"
+"PO-Revision-Date: 2021-06-14 08:00:29+0000\n"
+"X-POT-Import-Date: 2021-06-11 18:31:51+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: qqq\n"
@@ -19,63 +19,67 @@ msgstr ""
 msgid "Audit log"
 msgstr "Label used in admin console."
 
-#: toolhub/apps/auditlog/models.py:84
+#: toolhub/apps/auditlog/models.py:85
 msgid "created"
 msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
-#: toolhub/apps/auditlog/models.py:85
+#: toolhub/apps/auditlog/models.py:86
 msgid "updated"
 msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
-#: toolhub/apps/auditlog/models.py:86
+#: toolhub/apps/auditlog/models.py:87
 msgid "deleted"
 msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
-#: toolhub/apps/auditlog/models.py:87
+#: toolhub/apps/auditlog/models.py:88
 msgid "added to"
 msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
-#: toolhub/apps/auditlog/models.py:88
+#: toolhub/apps/auditlog/models.py:89
 msgid "removed from"
 msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
-#: toolhub/apps/auditlog/models.py:89
+#: toolhub/apps/auditlog/models.py:90
 msgid "hid"
 msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
-#: toolhub/apps/auditlog/models.py:90
+#: toolhub/apps/auditlog/models.py:91
 msgid "revealed"
 msgstr "Action taken for a audit log event.\nInserted as action parameter in the frontend [[Wikimedia:Toolhub-js-auditlog-summary/qqq|auditlog-summary]] message."
 
-#: toolhub/apps/auditlog/models.py:95
+#: toolhub/apps/auditlog/models.py:92
+msgid "patrolled"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:97
 msgid "timestamp"
 msgstr "Label for date and time an action was performed. {{Identical|Timestamp}}"
 
-#: toolhub/apps/auditlog/models.py:103
+#: toolhub/apps/auditlog/models.py:105
 msgid "user"
 msgstr "Label for user performing an action. {{Identical|User}}"
 
-#: toolhub/apps/auditlog/models.py:111
+#: toolhub/apps/auditlog/models.py:113
 msgid "content type"
 msgstr "Label for content type an action was performed on."
 
-#: toolhub/apps/auditlog/models.py:117
+#: toolhub/apps/auditlog/models.py:119
 msgid "object id"
 msgstr "Label for id of object an action was performed on."
 
-#: toolhub/apps/auditlog/models.py:124
+#: toolhub/apps/auditlog/models.py:126
 msgid "object pk"
 msgstr "Label for primary key of an object an action was performed on."
 
-#: toolhub/apps/auditlog/models.py:129
+#: toolhub/apps/auditlog/models.py:131
 msgid "action"
 msgstr "Label for which type of action was performed. {{Identical|Action}}"
 
-#: toolhub/apps/auditlog/models.py:138
+#: toolhub/apps/auditlog/models.py:140
 msgid "auditlog entry"
 msgstr "Label used in admin console."
 
-#: toolhub/apps/auditlog/models.py:139
+#: toolhub/apps/auditlog/models.py:141
 msgid "auditlog entries"
 msgstr "Label used in admin console."
 
@@ -546,31 +550,35 @@ msgstr "OpenAPI response property description."
 msgid "Has this revision been marked as hidden?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:288
+#: toolhub/apps/toolinfo/serializers.py:280 toolhub/apps/versioned/models.py:45
+msgid "Has this revision been reviewed by a patroller?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:294
 msgid "username removed"
 msgstr "Replacement for username when viewing a historical edit which has been suppressed."
 
-#: toolhub/apps/toolinfo/serializers.py:289
+#: toolhub/apps/toolinfo/serializers.py:295
 msgid "edit summary removed"
 msgstr "Replacement for edit summary when viewing a historical edit which has been suppressed."
 
-#: toolhub/apps/toolinfo/serializers.py:299
+#: toolhub/apps/toolinfo/serializers.py:312
 msgid "Tool revision detail."
 msgstr "OpenAPI response description."
 
-#: toolhub/apps/toolinfo/serializers.py:324
+#: toolhub/apps/toolinfo/serializers.py:337
 msgid "Tool revision difference."
 msgstr "OpenAPI response description."
 
-#: toolhub/apps/toolinfo/serializers.py:329
+#: toolhub/apps/toolinfo/serializers.py:342
 msgid "Revision to apply changes to."
 msgstr "OpenAPI response property help text."
 
-#: toolhub/apps/toolinfo/serializers.py:333
+#: toolhub/apps/toolinfo/serializers.py:346
 msgid "Revision after applying changes."
 msgstr "OpenAPI response property help text."
 
-#: toolhub/apps/toolinfo/serializers.py:337
+#: toolhub/apps/toolinfo/serializers.py:350
 msgid "Comment describing an action."
 msgstr "OpenAPI schema object description."
 
@@ -603,93 +611,97 @@ msgstr "Error message"
 msgid "Url_multilingual missing 'url' property."
 msgstr "Error message"
 
-#: toolhub/apps/toolinfo/views.py:63
+#: toolhub/apps/toolinfo/views.py:64
 msgid "Failed to apply patch."
 msgstr "Error message shown when undo fails."
 
-#: toolhub/apps/toolinfo/views.py:70
+#: toolhub/apps/toolinfo/views.py:71
 msgid "Current revision cannot be hidden."
 msgstr "Error message"
 
-#: toolhub/apps/toolinfo/views.py:78
+#: toolhub/apps/toolinfo/views.py:79
 msgid "Missing content for one or more revisions."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:84
+#: toolhub/apps/toolinfo/views.py:85
 msgid "Create a new tool."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:89
+#: toolhub/apps/toolinfo/views.py:90
 msgid "Info for a specific tool."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:92
+#: toolhub/apps/toolinfo/views.py:93
 msgid "Update info for a specific tool."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:100
+#: toolhub/apps/toolinfo/views.py:101
 msgid "Delete a tool."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:103
+#: toolhub/apps/toolinfo/views.py:104
 msgid "List all tools."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:139
+#: toolhub/apps/toolinfo/views.py:140
 msgid "Unique identifier for this tool."
 msgstr "OpenAPI path parameter description."
 
-#: toolhub/apps/toolinfo/views.py:145
+#: toolhub/apps/toolinfo/views.py:146
 msgid "Get revision information."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:150
+#: toolhub/apps/toolinfo/views.py:151
 msgid "List revisions."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:155
+#: toolhub/apps/toolinfo/views.py:156
 msgid "Compare two revisions to find difference."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:163
+#: toolhub/apps/toolinfo/views.py:164
 msgid "A unique integer value identifying version to diff against."
 msgstr "OpenAPI path parameter description."
 
-#: toolhub/apps/toolinfo/views.py:171
+#: toolhub/apps/toolinfo/views.py:172
 msgid "Restore the tool to this revision."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:178
+#: toolhub/apps/toolinfo/views.py:179
 msgid "Undo all changes made between two revisions."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:186
+#: toolhub/apps/toolinfo/views.py:187
 msgid "A unique integer value identifying version to undo until."
 msgstr "OpenAPI path parameter description."
 
-#: toolhub/apps/toolinfo/views.py:194
+#: toolhub/apps/toolinfo/views.py:195
 msgid "Hide revision text and edit summary from users."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:200
+#: toolhub/apps/toolinfo/views.py:201
 msgid "Reveal a previously hidden revision."
 msgstr "OpenAPI schema route summary."
 
-#: toolhub/apps/toolinfo/views.py:299
+#: toolhub/apps/toolinfo/views.py:207
+msgid "Mark a revision as patrolled."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:306
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr "System generated comment for a revert action. Parameters:\n* %(rev_id)s - numeric revision id\n* %(datetime)s - ISO 8601 date and time\n* %(user)s - username"
 
-#: toolhub/apps/toolinfo/views.py:333
+#: toolhub/apps/toolinfo/views.py:340
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "System generated comment for an undo action. Parameters:\n* %(first_id)s - numeric revision id\n* %(last_id)s - numeric revision id"
 
-#: toolhub/apps/toolinfo/views.py:393
+#: toolhub/apps/toolinfo/views.py:425
 msgid "Info for a specific SPDX license."
 msgstr "OpenAPI action description."
 
-#: toolhub/apps/toolinfo/views.py:401
+#: toolhub/apps/toolinfo/views.py:433
 msgid "List all SPDX licenses."
 msgstr "OpenAPI action description."
 
@@ -811,10 +823,6 @@ msgstr "OpenAPI schema route summary."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr ""
-
-#: toolhub/apps/versioned/models.py:45
-msgid "Has this revision been reviewed by a patroller?"
 msgstr ""
 
 #: toolhub/fields.py:40
