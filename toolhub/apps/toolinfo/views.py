@@ -368,6 +368,9 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
                 rev,
                 LogEntry.HIDE,
                 comment,
+                params={
+                    "tool_name": self.kwargs["tool_name"],
+                },
             )
         return response.Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -391,6 +394,9 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
                 rev,
                 LogEntry.REVEAL,
                 comment,
+                params={
+                    "tool_name": self.kwargs["tool_name"],
+                },
             )
         return response.Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -416,6 +422,9 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
                 rev,
                 LogEntry.PATROL,
                 comment,
+                params={
+                    "tool_name": self.kwargs["tool_name"],
+                },
             )
         return response.Response(status=status.HTTP_204_NO_CONTENT)
 

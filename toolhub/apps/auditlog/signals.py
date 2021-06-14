@@ -88,15 +88,27 @@ def log_m2m_changed_callback(  # noqa: R0913
 
             if action == "post_add":
                 LogEntry.objects.log_action(
-                    user=user,
+                    user=None,
                     target=group,
                     action=LogEntry.ADD,
+                    params={
+                        "user": {
+                            "id": user.pk,
+                            "username": user.username,
+                        }
+                    },
                 )
             if action == "post_remove":
                 LogEntry.objects.log_action(
-                    user=user,
+                    user=None,
                     target=group,
                     action=LogEntry.REMOVE,
+                    params={
+                        "user": {
+                            "id": user.pk,
+                            "username": user.username,
+                        }
+                    },
                 )
 
 

@@ -21,19 +21,24 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from toolhub.fields import JSONSchemaField
+
+from . import schema
+
 
 class LogEntryManager(models.Manager):
     """Custom manager for LogEntry models."""
 
     use_in_migrations = True
 
-    def log_action(self, user, target, action, msg=None):
+    def log_action(self, user, target, action, msg=None, params=None):
         """Log an action."""
         kwargs = {
             "user": user,
             "content_type": LogEntryManager._get_content_type(target),
             "action": action,
             "change_message": msg,
+            "params": params or {},
         }
         pk = LogEntryManager._get_pk_value(target)
         if isinstance(pk, int):
@@ -131,6 +136,11 @@ class LogEntry(models.Model):
         verbose_name=_("action"),
     )
     change_message = models.TextField(blank=True, null=True)
+    params = JSONSchemaField(
+        null=True,
+        default=dict,
+        schema=schema.PARAMS,
+    )
 
     objects = LogEntryManager()
 

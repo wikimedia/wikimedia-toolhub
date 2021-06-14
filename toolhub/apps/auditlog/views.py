@@ -55,7 +55,7 @@ class LogEntryFilter(filters.FilterSet):
         help_text=format_lazy(
             "{}\n{}",
             _("Only show logs for the given action types."),
-            "".join(
+            "".join(  # NOTE: this inner bit will be rendered in the en locale
                 "* {} = {}\n".format(c[0], c[1])
                 for c in LogEntry.ACTION_CHOICES
             ),

@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth.models import Group
+from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 
 from rest_framework import serializers
@@ -34,12 +35,14 @@ class ActionField(serializers.ReadOnlyField):
 
     def to_representation(self, value):
         """Transform the *outgoing* native value into primitive data."""
-        try:
-            return LogEntry.ACTION_CHOICES[value][1]
-        except IndexError:
-            # Should only happen in development environments when log events
-            # have been placed in the db using code that is not merged yet.
-            return value
+        with translation.override("en"):
+            try:
+                return str(LogEntry.ACTION_CHOICES[value][1])
+            except IndexError:
+                # Should only happen in development environments when log
+                # events have been placed in the db using code that is not
+                # merged yet.
+                return value
 
 
 @doc(_("""Event target"""))  # noqa: W0223
@@ -52,11 +55,12 @@ class TargetSerializer(serializers.Serializer):
 
     def to_representation(self, instance):
         """Convert a log entry target."""
-        ret = {
-            "type": instance.content_type.name,
-            "id": instance.get_target_id(),
-            "label": "",
-        }
+        with translation.override("en"):
+            ret = {
+                "type": str(instance.content_type.name),
+                "id": instance.get_target_id(),
+                "label": "",
+            }
 
         target = instance.get_target()
         try:
@@ -86,4 +90,12 @@ class LogEntrySerializer(ModelSerializer):
         """Configure serializer."""
 
         model = LogEntry
-        fields = ["id", "timestamp", "user", "target", "action", "message"]
+        fields = [
+            "id",
+            "timestamp",
+            "user",
+            "target",
+            "action",
+            "params",
+            "message",
+        ]

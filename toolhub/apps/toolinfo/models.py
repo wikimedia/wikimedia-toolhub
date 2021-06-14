@@ -15,21 +15,26 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+import functools
 import logging
 
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.core import validators
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.dispatch import receiver
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 import reversion
+from reversion.signals import post_revision_commit
 
 from safedelete.managers import SafeDeleteManager
 from safedelete.models import SafeDeleteModel
 
 from toolhub.apps.auditlog.context import auditlog_context
+from toolhub.apps.auditlog.models import LogEntry
 from toolhub.apps.auditlog.signals import registry
 from toolhub.apps.versioned.models import RevisionMetadata
 from toolhub.fields import BlankAsNullCharField
@@ -633,3 +638,29 @@ class Tool(SafeDeleteModel):
     def auditlog_label(self):
         """Get label for use in auditlog output."""
         return self.name
+
+
+@functools.lru_cache(maxsize=1)
+def get_tool_content_type_id():
+    """Lookup the content_type_id for a Tool model."""
+    return ContentType.objects.get_for_model(Tool).pk
+
+
+@receiver(post_revision_commit)
+def add_revision_to_tool(sender, revision, versions, **kwargs):  # noqa: W0613
+    """Handle post_revision_commit signal."""
+    ct_id = get_tool_content_type_id()
+    for version in versions:
+        if version.content_type.id == ct_id:
+            # Find the latest LogEntry for this Tool
+            log_entry = (
+                LogEntry.objects.filter(
+                    content_type=version.content_type,
+                    object_id=version.object_id,
+                )
+                .order_by("-timestamp")
+                .first()
+            )
+            # Decorate with the revision id
+            log_entry.params["revision"] = version.id
+            log_entry.save(update_fields=["params"])
