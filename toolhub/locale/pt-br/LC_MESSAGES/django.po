@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-06-14 08:00:29+0000\n"
+"PO-Revision-Date: 2021-06-21 10:38:24+0000\n"
 "X-POT-Import-Date: 2021-06-11 18:31:51+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -548,19 +548,19 @@ msgstr "Comentário do usuário para a revisão."
 
 #: toolhub/apps/toolinfo/serializers.py:274 toolhub/apps/versioned/models.py:40
 msgid "Has this revision been marked as hidden?"
-msgstr ""
+msgstr "Esta revisão foi marcada como escondida?"
 
 #: toolhub/apps/toolinfo/serializers.py:280 toolhub/apps/versioned/models.py:45
 msgid "Has this revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Esta revisão foi revisada por um patrulheiro?"
 
 #: toolhub/apps/toolinfo/serializers.py:294
 msgid "username removed"
-msgstr ""
+msgstr "Nome de usuário removido"
 
 #: toolhub/apps/toolinfo/serializers.py:295
 msgid "edit summary removed"
-msgstr ""
+msgstr "resumo da edição suprimido"
 
 #: toolhub/apps/toolinfo/serializers.py:312
 msgid "Tool revision detail."
@@ -580,7 +580,7 @@ msgstr "Revisão após aplicar alterações."
 
 #: toolhub/apps/toolinfo/serializers.py:350
 msgid "Comment describing an action."
-msgstr ""
+msgstr "Comentário descrevendo uma ação."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
@@ -617,11 +617,11 @@ msgstr "Falha ao aplicar patch."
 
 #: toolhub/apps/toolinfo/views.py:71
 msgid "Current revision cannot be hidden."
-msgstr ""
+msgstr "A revisão atual não pode ser ocultada."
 
 #: toolhub/apps/toolinfo/views.py:79
 msgid "Missing content for one or more revisions."
-msgstr ""
+msgstr "Conteúdo ausente por uma ou mais revisões."
 
 #: toolhub/apps/toolinfo/views.py:85
 msgid "Create a new tool."
@@ -677,7 +677,7 @@ msgstr "Um valor inteiro único identificando a versão para desfazer até."
 
 #: toolhub/apps/toolinfo/views.py:195
 msgid "Hide revision text and edit summary from users."
-msgstr ""
+msgstr "Ocultar texto de revisão e editar resumo dos usuários."
 
 #: toolhub/apps/toolinfo/views.py:201
 msgid "Reveal a previously hidden revision."

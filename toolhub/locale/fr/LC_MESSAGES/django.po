@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-06-14 08:00:28+0000\n"
+"PO-Revision-Date: 2021-06-21 10:38:24+0000\n"
 "X-POT-Import-Date: 2021-06-11 18:31:51+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,7 +51,7 @@ msgstr "révélé"
 
 #: toolhub/apps/auditlog/models.py:92
 msgid "patrolled"
-msgstr ""
+msgstr "patrouillé"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "timestamp"
@@ -687,7 +687,7 @@ msgstr "Révéler une révision précédemment masquée."
 
 #: toolhub/apps/toolinfo/views.py:207
 msgid "Mark a revision as patrolled."
-msgstr ""
+msgstr "Marquer une révision comme patrouillée."
 
 #: toolhub/apps/toolinfo/views.py:306
 #, python-format

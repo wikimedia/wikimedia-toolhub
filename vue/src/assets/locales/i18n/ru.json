@@ -13,6 +13,7 @@
 	"addremovetools": "Добавить или удалить инструменты",
 	"addremovetools-summarytitle": "Как работает эта функция",
 	"auditlogs": "Журналы аудита",
+	"auditlogs-clear": "Очистить",
 	"auditlogs-targettype-tool": "инструмент",
 	"auditlogs-targettype-user": "участник",
 	"auditlogs-targettype-group": "группа",

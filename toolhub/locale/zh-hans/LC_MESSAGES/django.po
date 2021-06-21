@@ -3,6 +3,7 @@
 #
 # Author: )8
 # Author: Colathewikian
+# Author: GuoPC
 # Author: Si109
 # Author: Wuqianye
 # Author: Yfdyh000
@@ -11,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-06-14 08:00:29+0000\n"
+"PO-Revision-Date: 2021-06-21 10:38:25+0000\n"
 "X-POT-Import-Date: 2021-06-11 18:31:51+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -552,11 +553,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:274 toolhub/apps/versioned/models.py:40
 msgid "Has this revision been marked as hidden?"
-msgstr ""
+msgstr "该修订版本是否已被标记为隐藏？"
 
 #: toolhub/apps/toolinfo/serializers.py:280 toolhub/apps/versioned/models.py:45
 msgid "Has this revision been reviewed by a patroller?"
-msgstr ""
+msgstr "该修订版本是否已被巡查员复核？"
 
 #: toolhub/apps/toolinfo/serializers.py:294
 msgid "username removed"
@@ -564,7 +565,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:295
 msgid "edit summary removed"
-msgstr ""
+msgstr "编辑摘要已移除"
 
 #: toolhub/apps/toolinfo/serializers.py:312
 msgid "Tool revision detail."
@@ -625,7 +626,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:79
 msgid "Missing content for one or more revisions."
-msgstr ""
+msgstr "一个或多个修订版本缺少内容。"
 
 #: toolhub/apps/toolinfo/views.py:85
 msgid "Create a new tool."
