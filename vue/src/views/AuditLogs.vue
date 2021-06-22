@@ -35,7 +35,7 @@
 							v-model="filters.target_type"
 							:label="$t( 'auditlogs-type' )"
 							:items="targets"
-							item-value="label"
+							item-value="type"
 							item-text="label"
 							prepend-icon="mdi-filter-variant"
 						/>
@@ -103,7 +103,7 @@
 			</v-form>
 		</v-row>
 
-		<v-row v-if="numLogs === 0">
+		<v-row v-if="!loading && numLogs === 0">
 			<v-col cols="12">
 				<p class="text-h6 text--secondary">
 					{{ $t( 'auditlogs-nologsfoundtext' ) }}
@@ -113,124 +113,11 @@
 
 		<v-row>
 			<v-col cols="12">
-				<dl v-for="log in auditLogs"
+				<LogEvent
+					v-for="log in auditLogs"
 					:key="log.id"
-					class="row elevation-2 ma-1 mb-2 pa-4"
-				>
-					<dd class="me-1">
-						<v-icon
-							v-if="log.action === 'created'"
-							size="20"
-							class="mb-1"
-						>
-							mdi-note-plus-outline
-						</v-icon>
-
-						<v-icon
-							v-if="log.action === 'updated'"
-							size="20"
-							class="mb-1"
-						>
-							mdi-update
-						</v-icon>
-
-						<v-icon
-							v-if="log.action === 'deleted'"
-							size="20"
-							class="mb-1"
-						>
-							mdi-delete-outline
-						</v-icon>
-
-						<v-icon
-							v-if="log.action === 'added to'"
-							size="20"
-							class="mb-1"
-						>
-							mdi-account-multiple-plus-outline
-						</v-icon>
-
-						<v-icon
-							v-if="log.action === 'removed from'"
-							size="20"
-							class="mb-1"
-						>
-							mdi-account-multiple-minus-outline
-						</v-icon>
-					</dd>
-
-					<dd class="me-1">
-						{{ log.timestamp | moment( "utc", "LT ll" ) }}
-					</dd>
-
-					<dd class="me-1">
-						<template
-							v-if="log.user"
-						>
-							<a :href="`http://meta.wikimedia.org/wiki/User:${log.user.username}`" target="_blank">{{ log.user.username
-							}}</a>
-						</template>
-						<template
-							v-else
-						>
-							{{ $t( 'system-user' ) }}
-						</template>
-					</dd>
-
-					<dd class="me-1">
-						<template
-							v-if="log.user"
-						>
-							(<a :href="`http://meta.wikimedia.org/wiki/User_talk:${log.user.username}`"
-								target="_blank"
-							>{{ $t( 'talk' ) }}</a>)
-						</template>
-					</dd>
-
-					<dd class="me-1">
-						{{ renderAuditLogSummary( log.action, log.target.type ) }}
-					</dd>
-
-					<dd class="me-1">
-						<template
-							v-if="log.target.type === 'tool'"
-						>
-							"<a
-								:href="`/tool/${log.target.id}`"
-								target="_blank"
-							>{{ log.target.label }}</a>"
-						</template>
-
-						<template
-							v-else-if="log.target.type === 'url'"
-						>
-							"<a
-								:href="`${log.target.label}`"
-								target="_blank"
-							>{{ log.target.label }}</a>"
-						</template>
-
-						<template
-							v-else-if="log.target.type === 'user'"
-						>
-							"{{ log.target.label }}"
-						</template>
-
-						<template
-							v-else-if="log.target.type === 'group'"
-						>
-							"{{ log.target.label }}"
-						</template>
-					</dd>
-
-					<dd class="me-1">
-						<template
-							v-if="log.message"
-						>
-							({{ log.message }})
-						</template>
-					</dd>
-				</dl>
+					:log="log"
+				/>
 			</v-col>
 		</v-row>
 
@@ -253,17 +140,19 @@
 import { mapState } from 'vuex';
 import { fetchMetaInfo } from '@/helpers/metadata';
 import { filterEmpty } from '@/helpers/object';
-import i18n from '@/plugins/i18n';
 import DatePicker from '@/components/common/DatePicker';
+import LogEvent from '@/components/auditlog/LogEvent';
 
 export default {
 	components: {
-		DatePicker
+		DatePicker,
+		LogEvent
 	},
 	data() {
 		return {
 			page: 1,
 			itemsPerPage: 10,
+			loading: true,
 			filters: {
 				user: null,
 				target_type: null,
@@ -286,6 +175,10 @@ export default {
 				{
 					type: 'group',
 					label: this.$t( 'auditlogs-targettype-group' )
+				},
+				{
+					type: 'version',
+					label: this.$t( 'auditlogs-targettype-version' )
 				}
 			]
 		};
@@ -298,10 +191,12 @@ export default {
 	},
 	methods: {
 		fetchAuditLogs() {
+			this.loading = true;
 			this.$store.dispatch( 'auditlogs/fetchAuditLogs', {
 				page: this.page,
 				filters: this.filters
 			} ).then( () => {
+				this.loading = false;
 				this.$router.push( {
 					path: '/audit-logs',
 					query: filterEmpty( this.filters )
@@ -325,13 +220,6 @@ export default {
 			};
 			this.$refs.filtersform.reset();
 			this.fetchAuditLogs();
-		},
-		renderAuditLogSummary( action, type ) {
-			return i18n.t( 'auditlog-summary', [
-				action,
-				// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
-				i18n.t( 'auditlogs-targettype-' + type )
-			] );
 		},
 		/**
 		 * Allow deep linking to filtered results by reconstructing internal

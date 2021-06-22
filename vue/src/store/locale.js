@@ -83,6 +83,16 @@ export const getters = {
 	 */
 	localeAutonym( state ) {
 		return languageData.getAutonym( state.locale );
+	},
+
+	/**
+	 * Get RTL status of active locale.
+	 *
+	 * @param {Object} state
+	 * @return {boolean}
+	 */
+	isRTL( state ) {
+		return languageData.isRtl( state.locale );
 	}
 };
 

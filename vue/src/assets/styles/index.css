@@ -123,3 +123,11 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 	text-decoration: line-through;
 	color: rgba( 0, 0, 0, 0.38 );
 }
+
+.v-application--is-ltr .log-event dd {
+	margin-right: 4px !important;
+}
+
+.v-application--is-rtl .log-event dd {
+	margin-left: 4px !important;
+}
