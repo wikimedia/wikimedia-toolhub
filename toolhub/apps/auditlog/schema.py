@@ -27,6 +27,16 @@ PARAMS = {
             "type": "integer",
             "required": False,
         },
+        "suppressed": {
+            "description": _("Has the revision been marked as hidden?"),
+            "type": "boolean",
+            "required": False,
+        },
+        "patrolled": {
+            "description": _("Has the revision been reviewed by a patroller?"),
+            "type": "boolean",
+            "required": False,
+        },
         "tool_name": {
             "description": _("Name of tool related to the change"),
             "type": "string",

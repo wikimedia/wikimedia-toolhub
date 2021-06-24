@@ -21,9 +21,12 @@ from django.utils.translation import gettext_lazy as _
 
 from rest_framework import serializers
 
+from reversion.models import Version
+
 from toolhub.apps.toolinfo.models import Tool
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.decorators import doc
+from toolhub.serializers import JSONSchemaField
 from toolhub.serializers import ModelSerializer
 
 from .models import LogEntry
@@ -77,14 +80,41 @@ class TargetSerializer(serializers.Serializer):
         return ret
 
 
+@doc(_("""Event parameters"""))  # noqa: W0223
+class ParamsField(JSONSchemaField):
+    """Event parameters."""
+
+    def to_representation(self, obj):
+        """Transform the *outgoing* native value into primitive data."""
+        raw = super().to_representation(obj)
+        if raw.get("revision"):
+            # When we have a revision, add its meta data to the output.
+            meta = (
+                Version.objects.select_related("revision", "revision__meta")
+                .get(pk=raw["revision"])
+                .revision.meta
+            )
+            raw["suppressed"] = meta.suppressed
+            raw["patrolled"] = meta.patrolled
+        return raw
+
+
 @doc(_("""Audit log entry"""))
 class LogEntrySerializer(ModelSerializer):
     """Details of an audit log entry."""
 
     user = UserSerializer(many=False, read_only=True)
-    action = ActionField()
     target = TargetSerializer(many=False, read_only=True, source="*")
+    action = ActionField()
     message = serializers.CharField(source="change_message", read_only=True)
+
+    def build_standard_field(self, field_name, model_field):
+        """Create regular model fields."""
+        cls, args = super().build_standard_field(field_name, model_field)
+        if field_name == "params":
+            # Hacky way to override the class for our params collection
+            cls = ParamsField
+        return cls, args
 
     class Meta:
         """Configure serializer."""
