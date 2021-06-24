@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-06-21 10:38:25+0000\n"
+"PO-Revision-Date: 2021-06-24 10:07:45+0000\n"
 "X-POT-Import-Date: 2021-06-11 18:31:51+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -46,15 +46,15 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:90
 msgid "hid"
-msgstr ""
+msgstr "已隐藏"
 
 #: toolhub/apps/auditlog/models.py:91
 msgid "revealed"
-msgstr ""
+msgstr "揭示"
 
 #: toolhub/apps/auditlog/models.py:92
 msgid "patrolled"
-msgstr ""
+msgstr "已巡查"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "timestamp"
@@ -561,7 +561,7 @@ msgstr "该修订版本是否已被巡查员复核？"
 
 #: toolhub/apps/toolinfo/serializers.py:294
 msgid "username removed"
-msgstr ""
+msgstr "（用户名已移除）"
 
 #: toolhub/apps/toolinfo/serializers.py:295
 msgid "edit summary removed"
@@ -585,7 +585,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:350
 msgid "Comment describing an action."
-msgstr ""
+msgstr "描述行为的评论。"
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
@@ -622,7 +622,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:71
 msgid "Current revision cannot be hidden."
-msgstr ""
+msgstr "当前修订不可被隐藏。"
 
 #: toolhub/apps/toolinfo/views.py:79
 msgid "Missing content for one or more revisions."
@@ -682,15 +682,15 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:195
 msgid "Hide revision text and edit summary from users."
-msgstr ""
+msgstr "隐藏修订文字并编辑用户的总结。"
 
 #: toolhub/apps/toolinfo/views.py:201
 msgid "Reveal a previously hidden revision."
-msgstr ""
+msgstr "揭示一个之前被隐藏的修订。"
 
 #: toolhub/apps/toolinfo/views.py:207
 msgid "Mark a revision as patrolled."
-msgstr ""
+msgstr "将一个修正标为已被巡查。"
 
 #: toolhub/apps/toolinfo/views.py:306
 #, python-format
@@ -828,7 +828,7 @@ msgstr ""
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr ""
+msgstr "版本化"
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
