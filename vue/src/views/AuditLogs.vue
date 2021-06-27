@@ -179,6 +179,10 @@ export default {
 				{
 					type: 'version',
 					label: this.$t( 'auditlogs-targettype-version' )
+				},
+				{
+					type: 'toollist',
+					label: this.$t( 'auditlogs-targettype-toollist' )
 				}
 			]
 		};

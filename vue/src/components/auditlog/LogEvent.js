@@ -127,6 +127,14 @@ export function render( createElement ) {
 			'"'
 		], { class: 'log-event-tool' } ) );
 	}
+	if ( target.type === 'toollist' ) {
+		msgArgs.push( dd( [
+			'"',
+			// TODO: replace with link to list detail page
+			target.label,
+			'"'
+		], { class: 'log-event-toollist' } ) );
+	}
 	if ( target.type === 'url' ) {
 		msgArgs.push( dd( [
 			'"',
