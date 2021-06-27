@@ -634,6 +634,10 @@ class Tool(SafeDeleteModel):
 
     objects = ToolManager()
 
+    def __str__(self):
+        """Str repr"""
+        return self.name
+
     @property
     def auditlog_label(self):
         """Get label for use in auditlog output."""
