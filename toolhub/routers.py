@@ -21,6 +21,7 @@ from rest_framework_nested import routers as nested_routers
 
 import toolhub.apps.auditlog.views as auditlog_views
 import toolhub.apps.crawler.views as crawler_views
+import toolhub.apps.lists.views as lists_views
 import toolhub.apps.oauth2.views as oauth_views
 import toolhub.apps.search.views as search_views
 import toolhub.apps.toolinfo.views as toolinfo_views
@@ -46,6 +47,7 @@ root.register("auditlogs", auditlog_views.LogEntryViewSet)
 root.register("crawler/runs", crawler_views.RunViewSet)
 root.register("crawler/urls", crawler_views.UrlViewSet)
 root.register("groups", user_views.GroupViewSet)
+root.register("lists", lists_views.ToolListViewSet)
 root.register("oauth/applications", oauth_views.ApplicationViewSet)
 root.register(
     "oauth/authorized",

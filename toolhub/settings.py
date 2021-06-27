@@ -164,6 +164,7 @@ INSTALLED_APPS = [
     # ==== Local apps ====
     "toolhub.apps.auditlog",
     "toolhub.apps.crawler",
+    "toolhub.apps.lists",
     "toolhub.apps.search",
     "toolhub.apps.toolinfo",
     "toolhub.apps.user",

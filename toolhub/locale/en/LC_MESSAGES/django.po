@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-24 16:58+0000\n"
+"POT-Creation-Date: 2021-06-28 04:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -204,6 +204,57 @@ msgstr ""
 
 #: toolhub/apps/crawler/views.py:131
 msgid "Info for a specific url crawled in a run."
+msgstr ""
+
+#: toolhub/apps/lists/apps.py:26
+msgid "Lists"
+msgstr ""
+
+#: toolhub/apps/lists/models.py:40
+msgid "Title of this list"
+msgstr ""
+
+#: toolhub/apps/lists/models.py:46
+msgid "Description of the list's theme or contents."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:58
+msgid ""
+"A link to a Wikimedia Commons file description page for an icon that depicts "
+"the list."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:65
+msgid ""
+"If true, this list is a collection of the owning user's'favorite' tools."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:71
+msgid "If true, this list is visible to everyone."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:75
+msgid "If true, this list has been marked as featured."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:124
+msgid "Position of this tool in the list."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:31
+msgid "List of tools metadata."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:65
+msgid "List of tools with details."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:37
+msgid "Details of a specific list of tools."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:50
+msgid "List all lists of tools."
 msgstr ""
 
 #: toolhub/apps/oauth2/apps.py:26
@@ -899,15 +950,15 @@ msgstr ""
 msgid "API error"
 msgstr ""
 
-#: toolhub/settings.py:375
+#: toolhub/settings.py:376
 msgid "Read scope"
 msgstr ""
 
-#: toolhub/settings.py:376
+#: toolhub/settings.py:377
 msgid "Write scope"
 msgstr ""
 
-#: toolhub/settings.py:403
+#: toolhub/settings.py:404
 msgid "Toolhub API"
 msgstr ""
 
