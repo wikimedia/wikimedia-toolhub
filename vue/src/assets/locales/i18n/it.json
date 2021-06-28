@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Beta16",
 			"Sofia Stecchi",
 			"Toa"
@@ -43,6 +44,7 @@
 	"locale-select": "Seleziona lingua",
 	"login": "Entra",
 	"logout": "Esci",
+	"markaspatrolled": "segna come verificata",
 	"members": "Membri",
 	"members-usergroupslist-header-removemember": "Rimuovi membro",
 	"members-userslist-header-action": "Azione",
@@ -53,6 +55,7 @@
 	"name": "Nome",
 	"newtoolsfound": "{{PLURAL:$1|1 strumento|$1 strumenti}}",
 	"ok": "Ok",
+	"patrolled": "verificata",
 	"publishchanges": "Pubblica modifiche",
 	"removeurl": "Rimuovi URL",
 	"required-field": "Questo campo è obbligatorio.",
@@ -102,5 +105,6 @@
 	"tools-lastupdated": "ultimo aggiornamento il $1",
 	"tool-not-found": "Nessuno strumento di nome \"$1\" trovato.",
 	"translateurl": "Traduci URL",
-	"undo": "annulla"
+	"undo": "annulla",
+	"unpatrolled": "non verificata"
 }

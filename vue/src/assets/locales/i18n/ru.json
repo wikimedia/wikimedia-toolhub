@@ -39,6 +39,7 @@
 	"locale-select": "Выберите язык",
 	"login": "Войти",
 	"logout": "Выйти",
+	"markaspatrolled": "отметить как проверенную",
 	"members": "Участники",
 	"members-groupadd-success": "Успех! Участник '$1' добавлен в группу '$2'",
 	"members-groupselect-label": "Выбрать группу",
@@ -53,6 +54,7 @@
 	"name": "Имя",
 	"newtoolsfound": "{{PLURAL:$1|инструмент|инструмента|инструментов}}",
 	"ok": "OK",
+	"patrolled": "патрулированные",
 	"privacypolicy": "Политика конфиденциальности",
 	"reveal": "раскрыть",
 	"search-filter-keywords": "Ключевые слова",
@@ -70,5 +72,6 @@
 	"tooltype": "Тип инструмента",
 	"tools-lastupdated": "gоследнее обновление: $1",
 	"undo": "отменить",
+	"unpatrolled": "непатрулированные",
 	"welcomemessage": "Добро пожаловать на Toolhub"
 }
