@@ -9,6 +9,16 @@
 						toolRevision.comment
 					] ) }}
 				</h3>
+				<template v-if="$can( 'patrol', 'reversion/version' )">
+					<h3 class="font-weight-medium">
+						<template v-if="!toolRevision.patrolled">
+							(<a @click="patrol(toolRevision.id)">{{ $t( 'markaspatrolled' ) }}</a>)
+						</template>
+						<template v-else>
+							(<span>{{ $t( 'patrolled' ) }}</span>)
+						</template>
+					</h3>
+				</template>
 			</v-col>
 			<v-col md="3" cols="12">
 				<v-btn
@@ -65,18 +75,34 @@ export default {
 			this.revId = null;
 			this.TOOL_REVISION( null );
 			this.getToolByName( this.name );
+		},
+		patrol( id ) {
+			this.$store.dispatch( 'tools/markRevisionAsPatrolled', {
+				name: this.name,
+				id: id,
+				page: 1
+			} );
+		},
+		getToolInfo() {
+			if ( this.revId ) {
+				this.getToolRevision( { name: this.name, revId: this.revId } );
+			} else {
+				this.getToolByName( this.name );
+			}
+		}
+	},
+	watch: {
+		toolRevision: {
+			handler() {
+				this.getToolInfo();
+			}
 		}
 	},
 	mounted() {
 		// Clear any data from a prior view
 		this.TOOL( null );
 		this.TOOL_REVISION( null );
-
-		if ( this.revId ) {
-			this.getToolRevision( { name: this.name, revId: this.revId } );
-		} else {
-			this.getToolByName( this.name );
-		}
+		this.getToolInfo();
 	}
 };
 </script>
