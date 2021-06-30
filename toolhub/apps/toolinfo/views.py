@@ -242,10 +242,8 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         user = request.user
         perms = ["reversion.view_version"]
         if left.revision.meta.suppressed and not user.has_perms(perms, left):
-            logger.warning("User %s cannot %s %s", user, perms, left)
             raise SuppressedRevision()
         if right.revision.meta.suppressed and not user.has_perms(perms, right):
-            logger.warning("User %s cannot %s %s", user, perms, right)
             raise SuppressedRevision()
 
         data_left = ToolSerializer(left.field_dict).data
