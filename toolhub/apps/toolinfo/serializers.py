@@ -29,6 +29,7 @@ from toolhub.apps.user.serializers import UserSerializer
 from toolhub.decorators import doc
 from toolhub.permissions import is_administrator
 from toolhub.permissions import is_oversighter
+from toolhub.serializers import EditCommentFieldMixin
 from toolhub.serializers import ModelSerializer
 
 from . import schema
@@ -127,27 +128,6 @@ class SummaryToolSerializer(ModelSerializer):
         model = Tool
         fields = ["name", "title", "url"]
         read_only_fields = fields
-
-
-class EditCommentFieldMixin(metaclass=serializers.SerializerMetaclass):
-    """Reversion comment.
-
-    When using you must add "comment" to the meta.fields collection manually.
-    """
-
-    comment = serializers.CharField(
-        label=_("""Edit summary"""),
-        help_text=_(
-            """Description of the changes you are making """
-            """to this toolinfo record."""
-        ),
-        write_only=True,
-        required=False,
-    )
-
-    def get_comment(self, instance):  # noqa: W0613
-        """Placeholder method needed for comment field."""
-        return ""
 
 
 @doc(_("""Create a tool"""))

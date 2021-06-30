@@ -17,6 +17,8 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 import json
 
+from django.utils.translation import gettext_lazy as _
+
 from drf_spectacular.drainage import set_override
 
 from jsonfield import JSONField
@@ -97,3 +99,21 @@ class ModelSerializer(FriendlyErrorMessagesMixin, serializers.ModelSerializer):
         self.serializer_field_mapping[
             fields.BlankAsNullTextField
         ] = BlankAsNullCharField
+
+
+class EditCommentFieldMixin(metaclass=serializers.SerializerMetaclass):
+    """Reversion comment.
+
+    When using you must add "comment" to the meta.fields collection manually.
+    """
+
+    comment = serializers.CharField(
+        label=_("""Edit summary"""),
+        help_text=_("""Description of the changes you are making."""),
+        write_only=True,
+        required=False,
+    )
+
+    def get_comment(self, instance):  # noqa: W0613
+        """Placeholder method needed for comment field."""
+        return ""

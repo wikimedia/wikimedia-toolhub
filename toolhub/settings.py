@@ -430,6 +430,10 @@ FRIENDLY_ERRORS = {
             "missing_language": 3204,
             "missing_url": 3205,
         },
+        "ListField": {
+            "duplicate_values": 3207,
+            "unknown_tool": 3208,
+        },
     },
     "VALIDATOR_ERRORS": {
         "JSONSchemaValidator": 3101,

@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.db import transaction
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
@@ -24,14 +25,25 @@ from drf_spectacular.utils import extend_schema_view
 from rest_framework import permissions
 from rest_framework import viewsets
 
+import reversion
+
+from toolhub.apps.auditlog.context import auditlog_context
+from toolhub.apps.toolinfo.models import Tool
+from toolhub.apps.versioned.models import RevisionMetadata
+from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
+
 from .models import ToolList
+from .models import ToolListItem
+from .serializers import CreateToolListSerializer
 from .serializers import ToolListDetailSerializer
 from .serializers import ToolListSerializer
 
 
 @extend_schema_view(
     create=extend_schema(
-        exclude=True,
+        description=_("""Create a new list of tools."""),
+        request=CreateToolListSerializer,
+        responses=ToolListDetailSerializer,
     ),
     retrieve=extend_schema(
         description=_("""Details of a specific list of tools."""),
@@ -55,7 +67,7 @@ class ToolListViewSet(viewsets.ModelViewSet):
 
     queryset = ToolList.objects.none()
     serializer_class = ToolListSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
     filterset_fields = {
         "featured": ["exact"],
         "published": ["exact"],
@@ -77,4 +89,35 @@ class ToolListViewSet(viewsets.ModelViewSet):
         """Use different serializers for input vs output."""
         if self.action == "retrieve":
             return ToolListDetailSerializer
+        if self.action == "create":
+            return CreateToolListSerializer
         return ToolListSerializer
+
+    @transaction.atomic
+    def perform_create(self, serializer):
+        """Create a new tool list."""
+        user = self.request.user
+        validated_data = serializer.validated_data
+        comment = validated_data.pop("comment", None)
+        tools = validated_data.pop("tools", None)
+        validated_data["created_by"] = user
+        validated_data["modified_by"] = user
+
+        with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
+            reversion.set_user(user)
+            if comment is not None:
+                reversion.set_comment(comment)
+
+            with auditlog_context(user, comment):
+                obj = ToolList.objects.create(**validated_data)
+                for idx, name in enumerate(tools):
+                    ToolListItem.objects.create(
+                        toollist=obj,
+                        tool=Tool.objects.get(name=name),
+                        order=idx,
+                        added_by=user,
+                    )
+
+        serializer.instance = obj
+        return obj

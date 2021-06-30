@@ -53,9 +53,6 @@ class CustomModelPermission(permissions.BasePermission):
 
     def has_permission(self, request, view):
         """Check permission."""
-        import logging
-
-        logging.info("has_permission(%s, %s): %s", request, view, self._perms)
         return request.user.has_perms(self._perms)
 
 
@@ -146,6 +143,14 @@ MODEL_PERMISSIONS = {
             "view": rules.always_allow,
         },
         "runurl": {
+            "view": rules.always_allow,
+        },
+    },
+    "lists": {
+        "toollist": {
+            "add": is_authed,
+            "change": is_obj_creator_or_admin,
+            "delete": is_obj_creator_or_admin,
             "view": rules.always_allow,
         },
     },

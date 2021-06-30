@@ -17,13 +17,18 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.utils.translation import gettext_lazy as _
 
+from rest_framework import serializers
+
 from toolhub.apps.toolinfo.serializers import SummaryToolSerializer
 from toolhub.apps.toolinfo.serializers import ToolSerializer
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.decorators import doc
+from toolhub.serializers import EditCommentFieldMixin
 from toolhub.serializers import ModelSerializer
 
 from .models import ToolList
+from .validators import validate_tools_exist
+from .validators import validate_unique_list
 
 
 @doc(_("""List of tools metadata."""))
@@ -68,3 +73,37 @@ class ToolListDetailSerializer(ToolListSerializer):
 
     class Meta(ToolListSerializer.Meta):
         """Configure serializer."""
+
+
+@doc(_("""Create a list."""))
+class CreateToolListSerializer(ModelSerializer, EditCommentFieldMixin):
+    """Create a list."""
+
+    tools = serializers.ListField(
+        child=serializers.CharField(required=False),
+        allow_empty=True,
+        max_length=128,
+        help_text=_("""List of tool names."""),
+        validators=[
+            validate_unique_list,
+            validate_tools_exist,
+        ],
+    )
+
+    def to_representation(self, instance):
+        """Proxy to ToolListDetailSerializer for output."""
+        serializer = ToolListDetailSerializer(instance)
+        return serializer.data
+
+    class Meta:
+        """Configure serializer."""
+
+        model = ToolList
+        fields = [
+            "title",
+            "description",
+            "icon",
+            "published",
+            "tools",
+            "comment",
+        ]
