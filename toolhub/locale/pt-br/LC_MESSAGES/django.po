@@ -7,91 +7,115 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-06-21 10:38:24+0000\n"
-"X-POT-Import-Date: 2021-06-11 18:31:51+0000\n"
+"PO-Revision-Date: 2021-07-01 11:51:47+0000\n"
+"X-POT-Import-Date: 2021-06-30 20:30:31+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt-BR\n"
-"X-Generator: MediaWiki 1.36.0; Translate 2021-04-28\n"
+"X-Generator: MediaWiki 1.36.1; Translate 2021-04-28\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
 msgstr "Registro de auditoria"
 
-#: toolhub/apps/auditlog/models.py:85
+#: toolhub/apps/auditlog/models.py:90
 msgid "created"
 msgstr "criado"
 
-#: toolhub/apps/auditlog/models.py:86
+#: toolhub/apps/auditlog/models.py:91
 msgid "updated"
 msgstr "atualizado"
 
-#: toolhub/apps/auditlog/models.py:87
+#: toolhub/apps/auditlog/models.py:92
 msgid "deleted"
 msgstr "excluído"
 
-#: toolhub/apps/auditlog/models.py:88
+#: toolhub/apps/auditlog/models.py:93
 msgid "added to"
 msgstr "Adicionado a"
 
-#: toolhub/apps/auditlog/models.py:89
+#: toolhub/apps/auditlog/models.py:94
 msgid "removed from"
 msgstr "removido de"
 
-#: toolhub/apps/auditlog/models.py:90
+#: toolhub/apps/auditlog/models.py:95
 msgid "hid"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:91
+#: toolhub/apps/auditlog/models.py:96
 msgid "revealed"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:92
+#: toolhub/apps/auditlog/models.py:97
 msgid "patrolled"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:97
+#: toolhub/apps/auditlog/models.py:102
 msgid "timestamp"
 msgstr "data e hora"
 
-#: toolhub/apps/auditlog/models.py:105
+#: toolhub/apps/auditlog/models.py:110
 msgid "user"
 msgstr "usuário"
 
-#: toolhub/apps/auditlog/models.py:113
+#: toolhub/apps/auditlog/models.py:118
 msgid "content type"
 msgstr "tipo de conteúdo"
 
-#: toolhub/apps/auditlog/models.py:119
+#: toolhub/apps/auditlog/models.py:124
 msgid "object id"
 msgstr "id do objeto"
 
-#: toolhub/apps/auditlog/models.py:126
+#: toolhub/apps/auditlog/models.py:131
 msgid "object pk"
 msgstr "pk do objeto"
 
-#: toolhub/apps/auditlog/models.py:131
+#: toolhub/apps/auditlog/models.py:136
 msgid "action"
 msgstr "ação"
 
-#: toolhub/apps/auditlog/models.py:140
+#: toolhub/apps/auditlog/models.py:150
 msgid "auditlog entry"
 msgstr "entrada da auditoria"
 
-#: toolhub/apps/auditlog/models.py:141
+#: toolhub/apps/auditlog/models.py:151
 msgid "auditlog entries"
 msgstr "entradas da auditoria"
 
-#: toolhub/apps/auditlog/serializers.py:31
+#: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
+msgid "Event parameters"
+msgstr ""
+
+#: toolhub/apps/auditlog/schema.py:26
+msgid "Revision created by edit action"
+msgstr ""
+
+#: toolhub/apps/auditlog/schema.py:31
+msgid "Has the revision been marked as hidden?"
+msgstr ""
+
+#: toolhub/apps/auditlog/schema.py:36
+msgid "Has the revision been reviewed by a patroller?"
+msgstr "A revisão foi revisada por um patrulheiro?"
+
+#: toolhub/apps/auditlog/schema.py:41
+msgid "Name of tool related to the change"
+msgstr ""
+
+#: toolhub/apps/auditlog/schema.py:46
+msgid "Identity of user related to the change"
+msgstr ""
+
+#: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
 msgstr "Ação do evento"
 
-#: toolhub/apps/auditlog/serializers.py:45
+#: toolhub/apps/auditlog/serializers.py:51
 msgid "Event target"
 msgstr "Alvo do evento"
 
-#: toolhub/apps/auditlog/serializers.py:76
+#: toolhub/apps/auditlog/serializers.py:102
 msgid "Audit log entry"
 msgstr "Entrada de registro de auditoria"
 
@@ -178,6 +202,54 @@ msgstr "Liste todos os urls rastreados em uma execução."
 #: toolhub/apps/crawler/views.py:131
 msgid "Info for a specific url crawled in a run."
 msgstr "Informações para um url específico rastreado em uma execução."
+
+#: toolhub/apps/lists/apps.py:26
+msgid "Lists"
+msgstr "Listas"
+
+#: toolhub/apps/lists/models.py:40
+msgid "Title of this list"
+msgstr ""
+
+#: toolhub/apps/lists/models.py:46
+msgid "Description of the list's theme or contents."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:58
+msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:65
+msgid "If true, this list is a collection of the owning user's'favorite' tools."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:71
+msgid "If true, this list is visible to everyone."
+msgstr "Se true, esta lista é visível para todos."
+
+#: toolhub/apps/lists/models.py:75
+msgid "If true, this list has been marked as featured."
+msgstr "Se true, esta lista foi marcada como apresentada."
+
+#: toolhub/apps/lists/models.py:124
+msgid "Position of this tool in the list."
+msgstr "Posição desta ferramenta na lista."
+
+#: toolhub/apps/lists/serializers.py:31
+msgid "List of tools metadata."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:65
+msgid "List of tools with details."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:37
+msgid "Details of a specific list of tools."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:50
+msgid "List all lists of tools."
+msgstr ""
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
@@ -297,168 +369,168 @@ msgstr "Pesquisa facetada de ferramentas."
 msgid "Toolinfo"
 msgstr "Toolinfo"
 
-#: toolhub/apps/toolinfo/models.py:294
+#: toolhub/apps/toolinfo/models.py:299
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
 msgstr "Alterar %(key)s após a criação inicial do objeto não é permitido"
 
-#: toolhub/apps/toolinfo/models.py:323
+#: toolhub/apps/toolinfo/models.py:328
 msgid "web app"
 msgstr "aplicativo web"
 
-#: toolhub/apps/toolinfo/models.py:324
+#: toolhub/apps/toolinfo/models.py:329
 msgid "desktop app"
 msgstr "aplicativo para computador"
 
-#: toolhub/apps/toolinfo/models.py:325
+#: toolhub/apps/toolinfo/models.py:330
 msgid "bot"
 msgstr "robô"
 
-#: toolhub/apps/toolinfo/models.py:326
+#: toolhub/apps/toolinfo/models.py:331
 msgid "gadget"
 msgstr "gadget"
 
-#: toolhub/apps/toolinfo/models.py:327
+#: toolhub/apps/toolinfo/models.py:332
 msgid "user script"
 msgstr "script do usuário"
 
-#: toolhub/apps/toolinfo/models.py:328
+#: toolhub/apps/toolinfo/models.py:333
 msgid "command line tool"
 msgstr "ferramenta de linha de comando"
 
-#: toolhub/apps/toolinfo/models.py:329
+#: toolhub/apps/toolinfo/models.py:334
 msgid "coding framework"
 msgstr "estrutura de codificação"
 
-#: toolhub/apps/toolinfo/models.py:330
+#: toolhub/apps/toolinfo/models.py:335
 msgid "other"
 msgstr "outros"
 
-#: toolhub/apps/toolinfo/models.py:336
+#: toolhub/apps/toolinfo/models.py:341
 msgid "crawler"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:337
+#: toolhub/apps/toolinfo/models.py:342
 msgid "api"
 msgstr "api"
 
-#: toolhub/apps/toolinfo/models.py:345
+#: toolhub/apps/toolinfo/models.py:350
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
 msgstr "Identificador único para esta ferramenta. Deve ser exclusivo para cada ferramenta. É recomendável que você prefixe os nomes das ferramentas para reduzir o risco de conflitos."
 
-#: toolhub/apps/toolinfo/models.py:353
+#: toolhub/apps/toolinfo/models.py:358
 msgid "Human readable tool name. Recommended limit of 25 characters."
 msgstr "Nome da ferramenta legível por humanos. Limite recomendado de 25 caracteres."
 
-#: toolhub/apps/toolinfo/models.py:359
+#: toolhub/apps/toolinfo/models.py:364
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
 msgstr "Uma descrição mais longa da ferramenta. O comprimento recomendado para uma descrição é de 3 a 5 frases."
 
-#: toolhub/apps/toolinfo/models.py:367
+#: toolhub/apps/toolinfo/models.py:372
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
 msgstr "Um link direto para a ferramenta ou para instruções sobre como usar ou instalar a ferramenta."
 
-#: toolhub/apps/toolinfo/models.py:382
+#: toolhub/apps/toolinfo/models.py:387
 msgid "The primary tool developer."
 msgstr "O principal desenvolvedor de ferramentas."
 
-#: toolhub/apps/toolinfo/models.py:388
+#: toolhub/apps/toolinfo/models.py:393
 msgid "A link to the repository where the tool code is hosted."
 msgstr "Um link para o repositório onde o código da ferramenta está hospedado."
 
-#: toolhub/apps/toolinfo/models.py:395
+#: toolhub/apps/toolinfo/models.py:400
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
 msgstr "Mais longo que o título completo, mas mais curto que a descrição. Deve adicionar algum contexto adicional ao título."
 
-#: toolhub/apps/toolinfo/models.py:404
+#: toolhub/apps/toolinfo/models.py:409
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
 msgstr "O ID do projeto no OpenHub. Dado um URL de https://openhub.net/p/foo, o ID do projeto é `foo`."
 
-#: toolhub/apps/toolinfo/models.py:413
+#: toolhub/apps/toolinfo/models.py:418
 msgid "Alternate links to the tool or install documentation in different natural languages."
 msgstr "Links alternativos para a ferramenta ou instalação da documentação em diferentes idiomas naturais."
 
-#: toolhub/apps/toolinfo/models.py:424
+#: toolhub/apps/toolinfo/models.py:429
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
 msgstr "Se a ferramenta for um robô, o nome de usuário da Wikimedia do bot. Não inclua 'Usuário:' ou prefixos semelhantes."
 
-#: toolhub/apps/toolinfo/models.py:431
+#: toolhub/apps/toolinfo/models.py:436
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
 msgstr "Se for verdade, o uso desta ferramenta é oficialmente desencorajado. O parâmetro `replace_by` pode ser usado para definir uma substituição."
 
-#: toolhub/apps/toolinfo/models.py:441
+#: toolhub/apps/toolinfo/models.py:446
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
 msgstr "Se esta ferramenta for descontinuada, este parâmetro deve ser usado para vincular à ferramenta de substituição."
 
-#: toolhub/apps/toolinfo/models.py:448
+#: toolhub/apps/toolinfo/models.py:453
 msgid "If true, this tool is unstable and can change or go offline at any time."
 msgstr "Se true, esta ferramenta é instável e pode mudar ou ficar offline a qualquer momento."
 
-#: toolhub/apps/toolinfo/models.py:456
+#: toolhub/apps/toolinfo/models.py:461
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr "Uma string ou matriz de strings descrevendo a(s) wiki(s) em que esta ferramenta pode ser usada. Use nomes de host como `zh.wiktionary.org`. Use asterisks como curingas. Por exemplo, `*.wikisource.org` significa 'esta ferramenta funciona em todos os wikis do Wikisource.' `*` significa 'isso funciona em todos os wikis, incluindo os wikis da Wikimedia.'"
 
-#: toolhub/apps/toolinfo/models.py:474
+#: toolhub/apps/toolinfo/models.py:479
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr "Um link para uma página de descrição de arquivo do Wikimedia Commons para um ícone que representa a ferramenta."
 
-#: toolhub/apps/toolinfo/models.py:483
+#: toolhub/apps/toolinfo/models.py:488
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
 msgstr "A licença do software sob a qual o código da ferramenta está disponível. Use um identificador de licença SPDX padrão como 'GPL-3.0-or-later'."
 
-#: toolhub/apps/toolinfo/models.py:491
+#: toolhub/apps/toolinfo/models.py:496
 msgid "Organization(s) that sponsored the tool's development."
 msgstr "Organização(ões) que patrocinaram o desenvolvimento da ferramenta."
 
-#: toolhub/apps/toolinfo/models.py:498
+#: toolhub/apps/toolinfo/models.py:503
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
 msgstr "Os idiomas para os quais a interface da ferramenta foi traduzida. Use códigos de idioma ISO 639 como `zh` e` scn`. Se não for definido, presume-se que a ferramenta está disponível apenas em inglês."
 
-#: toolhub/apps/toolinfo/models.py:509
+#: toolhub/apps/toolinfo/models.py:514
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
 msgstr "Uma string ou array de tecnologias de strings de strings (linguagens de programação, estruturas de desenvolvimento, etc.) usadas na criação da ferramenta."
 
-#: toolhub/apps/toolinfo/models.py:521
+#: toolhub/apps/toolinfo/models.py:526
 msgid "The manner in which the tool is used. Select one from the list of options."
 msgstr "A maneira como a ferramenta é usada. Selecione um na lista de opções."
 
-#: toolhub/apps/toolinfo/models.py:530
+#: toolhub/apps/toolinfo/models.py:535
 msgid "A link to the tool's API, if available."
 msgstr "Um link para a API da ferramenta, se disponível."
 
-#: toolhub/apps/toolinfo/models.py:536
+#: toolhub/apps/toolinfo/models.py:541
 msgid "A link to the tool's developer documentation, if available."
 msgstr "Um link para a documentação do desenvolvedor da ferramenta, se disponível."
 
-#: toolhub/apps/toolinfo/models.py:544
+#: toolhub/apps/toolinfo/models.py:549
 msgid "A link to the tool's user documentation, if available."
 msgstr "Um link para a documentação do usuário da ferramenta, se disponível."
 
-#: toolhub/apps/toolinfo/models.py:552
+#: toolhub/apps/toolinfo/models.py:557
 msgid "A link to location where the tool's user can leave feedback."
 msgstr "Um link para o local onde o usuário da ferramenta pode deixar feedback."
 
-#: toolhub/apps/toolinfo/models.py:560
+#: toolhub/apps/toolinfo/models.py:565
 msgid "A link to the tool's privacy policy, if available."
 msgstr "Um link para a política de privacidade da ferramenta, se disponível."
 
-#: toolhub/apps/toolinfo/models.py:569
+#: toolhub/apps/toolinfo/models.py:574
 msgid "A link to the tool's translation interface."
 msgstr "Um link para a interface de tradução da ferramenta."
 
-#: toolhub/apps/toolinfo/models.py:577
+#: toolhub/apps/toolinfo/models.py:582
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
 msgstr "Um link para o rastreador de erros da ferramenta no GitHub, Bitbucket, Phabricator, etc."
 
-#: toolhub/apps/toolinfo/models.py:586
+#: toolhub/apps/toolinfo/models.py:591
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
 msgstr "Um URI que identifica o jsonschema para este registro toolinfo.json. Deve ser um uri curto contendo apenas o nome e a revisão no final do caminho do URI."
 
-#: toolhub/apps/toolinfo/models.py:597
+#: toolhub/apps/toolinfo/models.py:602
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
 msgstr "O idioma no qual este registro de informações da ferramenta foi escrito. Se não for definido, o valor padrão é Inglês. Use códigos de idioma ISO 639."
 
-#: toolhub/apps/toolinfo/models.py:607
+#: toolhub/apps/toolinfo/models.py:612
 msgid "Origin of this tool record."
 msgstr "Origem deste registro de ferramenta."
 
@@ -697,11 +769,11 @@ msgstr "Reverter para revisão %(rev_id)s em %(datetime)s por %(user)s"
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "Desfazer revisões de %(first_id)s para %(last_id)s"
 
-#: toolhub/apps/toolinfo/views.py:425
+#: toolhub/apps/toolinfo/views.py:434
 msgid "Info for a specific SPDX license."
 msgstr "Informações para uma licença SPDX específica."
 
-#: toolhub/apps/toolinfo/views.py:433
+#: toolhub/apps/toolinfo/views.py:442
 msgid "List all SPDX licenses."
 msgstr "Listar todas as licenças SPDX."
 
@@ -833,15 +905,15 @@ msgstr "Insira um valor válido em conformidade com o esquema JSON."
 msgid "API error"
 msgstr "Erro de API"
 
-#: toolhub/settings.py:375
+#: toolhub/settings.py:376
 msgid "Read scope"
 msgstr "Leia o escopo"
 
-#: toolhub/settings.py:376
+#: toolhub/settings.py:377
 msgid "Write scope"
 msgstr "Escopo de escrita"
 
-#: toolhub/settings.py:403
+#: toolhub/settings.py:404
 msgid "Toolhub API"
 msgstr "API do Toolhub"
 

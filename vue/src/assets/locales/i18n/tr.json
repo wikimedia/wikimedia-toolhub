@@ -22,7 +22,6 @@
 	"appname": "Uygulama Adı",
 	"appnamecharslimit": "Uygulama adı 255 karakterden az olmalıdır",
 	"appnamerequired": "Uygulama adı gerekli",
-	"auditlog-summary": "$2 $1",
 	"auditlogs": "Denetim günlükleri",
 	"auditlogs-apierror": "$1 sayfasını alırken hata: $2",
 	"auditlogs-pagetitle": "Bu sayfa tüm günlük girişlerini listeler",
