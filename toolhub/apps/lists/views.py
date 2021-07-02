@@ -59,7 +59,7 @@ from .serializers import UpdateToolListSerializer
         exclude=True,
     ),
     destroy=extend_schema(
-        exclude=True,
+        description=_("""Delete a list of tools."""),
     ),
     list=extend_schema(
         description=_("""List all lists of tools."""),

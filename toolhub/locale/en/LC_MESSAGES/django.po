@@ -285,6 +285,10 @@ msgstr ""
 msgid "Update a list of tools."
 msgstr ""
 
+#: toolhub/apps/lists/views.py:62
+msgid "Delete a list of tools."
+msgstr ""
+
 #: toolhub/apps/lists/views.py:65
 msgid "List all lists of tools."
 msgstr ""

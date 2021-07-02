@@ -154,6 +154,22 @@ class ToolListViewSetTest(TestCase):
         self.assertIn("tools", response.data)
         self.assertEqual(len(response.data["tools"]), 0)
 
+    def test_destroy_requires_auth(self):
+        """Assert that destroy requires auth."""
+        client = APIClient()
+        client.force_authenticate(user=None)
+        url = "/api/lists/{}/".format(self.list.pk)
+        response = client.delete(url)
+        self.assertEqual(response.status_code, 401)
+
+    def test_destroy(self):
+        """Test destroy."""
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/lists/{}/".format(self.list.pk)
+        response = client.delete(url)
+        self.assertEqual(response.status_code, 204)
+
     def test_list(self):
         """Test list."""
         client = APIClient()
