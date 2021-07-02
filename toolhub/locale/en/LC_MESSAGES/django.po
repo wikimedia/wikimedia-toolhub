@@ -257,6 +257,10 @@ msgstr ""
 msgid "List of tool names."
 msgstr ""
 
+#: toolhub/apps/lists/serializers.py:112
+msgid "Update a list."
+msgstr ""
+
 #: toolhub/apps/lists/validators.py:34
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
@@ -269,15 +273,19 @@ msgid_plural "Unknown tools: %(names)s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: toolhub/apps/lists/views.py:44
+#: toolhub/apps/lists/views.py:45
 msgid "Create a new list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:49
+#: toolhub/apps/lists/views.py:50
 msgid "Details of a specific list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:62
+#: toolhub/apps/lists/views.py:54
+msgid "Update a list of tools."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:65
 msgid "List all lists of tools."
 msgstr ""
 

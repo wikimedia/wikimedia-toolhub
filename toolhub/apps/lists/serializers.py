@@ -107,3 +107,11 @@ class CreateToolListSerializer(ModelSerializer, EditCommentFieldMixin):
             "tools",
             "comment",
         ]
+
+
+@doc(_("""Update a list."""))
+class UpdateToolListSerializer(CreateToolListSerializer):
+    """Update a list."""
+
+    class Meta(CreateToolListSerializer.Meta):
+        """Configure serializer."""

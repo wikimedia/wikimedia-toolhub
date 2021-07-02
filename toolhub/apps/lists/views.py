@@ -37,6 +37,7 @@ from .models import ToolListItem
 from .serializers import CreateToolListSerializer
 from .serializers import ToolListDetailSerializer
 from .serializers import ToolListSerializer
+from .serializers import UpdateToolListSerializer
 
 
 @extend_schema_view(
@@ -50,7 +51,9 @@ from .serializers import ToolListSerializer
         responses=ToolListDetailSerializer,
     ),
     update=extend_schema(
-        exclude=True,
+        description=_("""Update a list of tools."""),
+        request=UpdateToolListSerializer,
+        responses=ToolListDetailSerializer,
     ),
     partial_update=extend_schema(
         exclude=True,
@@ -91,17 +94,18 @@ class ToolListViewSet(viewsets.ModelViewSet):
             return ToolListDetailSerializer
         if self.action == "create":
             return CreateToolListSerializer
+        if self.action == "update":
+            return UpdateToolListSerializer
         return ToolListSerializer
 
     @transaction.atomic
     def perform_create(self, serializer):
         """Create a new tool list."""
         user = self.request.user
-        validated_data = serializer.validated_data
-        comment = validated_data.pop("comment", None)
-        tools = validated_data.pop("tools", None)
-        validated_data["created_by"] = user
-        validated_data["modified_by"] = user
+        comment = serializer.validated_data.pop("comment", None)
+        tools = serializer.validated_data.pop("tools", None)
+        serializer.validated_data["created_by"] = user
+        serializer.validated_data["modified_by"] = user
 
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
@@ -110,14 +114,62 @@ class ToolListViewSet(viewsets.ModelViewSet):
                 reversion.set_comment(comment)
 
             with auditlog_context(user, comment):
-                obj = ToolList.objects.create(**validated_data)
+                instance = ToolList.objects.create(**serializer.validated_data)
                 for idx, name in enumerate(tools):
                     ToolListItem.objects.create(
-                        toollist=obj,
+                        toollist=instance,
                         tool=Tool.objects.get(name=name),
                         order=idx,
                         added_by=user,
                     )
 
-        serializer.instance = obj
-        return obj
+        serializer.instance = instance
+        return instance
+
+    @transaction.atomic
+    def perform_update(self, serializer):
+        """Update a tool list."""
+        user = self.request.user
+        comment = serializer.validated_data.pop("comment", None)
+        tools = serializer.validated_data.pop("tools", None)
+
+        # Compute changes to the list metadata
+        instance_has_changes = False
+        for key, value in serializer.validated_data.items():
+            prior = getattr(serializer.instance, key)
+            if value != prior:
+                setattr(serializer.instance, key, value)
+                instance_has_changes = True
+
+        # Compute changes to the list contents
+        list_qs = ToolListItem.objects.filter(toollist=serializer.instance)
+        prior_tools = list(list_qs.values_list("tool__name", flat=True))
+        # I thought about doing some really fancy list diffing here using
+        # difflib.SequenceMatcher to find the minimal set of changes to the
+        # list items so that the db update could be really targeted. After
+        # playing with the idea it felt like a big pile of overkill, so
+        # instead we will just compare the ordered lists and if anything is
+        # different replace all of it below.
+        list_has_changes = prior_tools != tools
+
+        with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
+            reversion.set_user(user)
+            if comment is not None:
+                reversion.set_comment(comment)
+
+            with auditlog_context(user, comment):
+                if instance_has_changes:
+                    serializer.instance.modified_by = user
+                    serializer.instance.save()
+
+                if list_has_changes:
+                    # Delete prior list contents and then repopulate
+                    list_qs.delete()
+                    for idx, name in enumerate(tools):
+                        ToolListItem.objects.create(
+                            toollist=serializer.instance,
+                            tool=Tool.objects.get(name=name),
+                            order=idx,
+                            added_by=user,
+                        )

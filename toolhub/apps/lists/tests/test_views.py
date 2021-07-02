@@ -107,6 +107,53 @@ class ToolListViewSetTest(TestCase):
             self.assertIn("message", error)
             self.assertEqual(str(error["field"]), "tools")
 
+    def test_update_requires_auth(self):
+        """Assert that update requires authentication."""
+        client = APIClient()
+        client.force_authenticate(user=None)
+        url = "/api/lists/{}/".format(self.list.pk)
+        payload = {
+            "title": "Update test",
+            "tools": [],
+            "comment": "unauthenticated update should fail",
+        }
+        response = client.put(url, payload, format="json")
+        self.assertEqual(response.status_code, 401)
+
+    def test_update_requires_creator(self):
+        """Assert that update requires authentication."""
+        new_user = ToolhubUser.objects.create_user(  # nosec: B106
+            username="Testy McTestface",
+            email="test@example.net",
+            password="unused",
+        )
+        client = APIClient()
+        client.force_authenticate(user=new_user)
+        url = "/api/lists/{}/".format(self.list.pk)
+        payload = {
+            "title": "Update test",
+            "tools": [],
+            "comment": "non-creator update should fail",
+        }
+        response = client.put(url, payload, format="json")
+        self.assertEqual(response.status_code, 404)
+
+    def test_update(self):
+        """Test update."""
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/lists/{}/".format(self.list.pk)
+        payload = {
+            "title": "Update test",
+            "tools": [],
+            "comment": "remove a tool from the list",
+        }
+        response = client.put(url, payload, format="json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["id"], self.list.id)
+        self.assertIn("tools", response.data)
+        self.assertEqual(len(response.data["tools"]), 0)
+
     def test_list(self):
         """Test list."""
         client = APIClient()
