@@ -21,7 +21,6 @@ import json
 import urllib.parse
 
 from django.contrib.staticfiles import finders
-from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.extensions import OpenApiSerializerFieldExtension
 
@@ -36,43 +35,6 @@ KEYWORDS = {
         "type": "string",
     },
     "deprecated": True,
-}
-
-
-JSONPATCH = {
-    "description": _("RFC 6902 application/json-patch+json data"),
-    "type": "array",
-    "items": {
-        "description": _("RFC 6902 JSON patch operation"),
-        "type": "object",
-        "required": ["op", "path"],
-        "properties": {
-            "op": {
-                "description": _("The operation to be performed"),
-                "type": "string",
-                "enum": ["add", "remove", "replace", "move", "copy", "test"],
-            },
-            "path": {
-                "description": _(
-                    "JSON-Pointer to location within document "
-                    "where operation is performed."
-                ),
-                "type": "string",
-            },
-            "value": {
-                "description": _("The value to add, replace, or test."),
-                # TODO: make this a union?
-                "type": "any",
-            },
-            "from": {
-                "description": _(
-                    "JSON-Pointer to location within document "
-                    "to move or copy the value from."
-                ),
-                "type": "string",
-            },
-        },
-    },
 }
 
 

@@ -32,19 +32,21 @@ from rest_framework import response
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.decorators import action
-from rest_framework.exceptions import APIException
 
 from reversion.models import Version
 
 import spdx_license_list
 
 from toolhub.apps.auditlog.models import LogEntry
+from toolhub.apps.versioned.exceptions import ConflictingState
+from toolhub.apps.versioned.exceptions import CurrentRevision
+from toolhub.apps.versioned.exceptions import SuppressedRevision
 from toolhub.permissions import CustomModelPermission
 from toolhub.permissions import ObjectPermissions
 from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
+from toolhub.serializers import CommentSerializer
 
 from .models import Tool
-from .serializers import CommentSerializer
 from .serializers import CreateToolSerializer
 from .serializers import SpdxLicenseSerializer
 from .serializers import ToolRevisionDetailSerializer
@@ -55,29 +57,6 @@ from .serializers import UpdateToolSerializer
 
 
 logger = logging.getLogger(__name__)
-
-
-class ConflictingState(APIException):
-    """Patch failed due to conflicting state."""
-
-    status_code = status.HTTP_409_CONFLICT
-    default_detail = _("Failed to apply patch.")
-
-
-class CurrentRevision(APIException):
-    """Suppression failed for HEAD revision."""
-
-    status_code = status.HTTP_403_FORBIDDEN
-    default_detail = _("Current revision cannot be hidden.")
-    default_code = "current_revision"
-
-
-class SuppressedRevision(APIException):
-    """Diff failed due to a suppressed revision."""
-
-    status_code = status.HTTP_403_FORBIDDEN
-    default_detail = _("Missing content for one or more revisions.")
-    default_code = "suppressed_revision"
 
 
 @extend_schema_view(

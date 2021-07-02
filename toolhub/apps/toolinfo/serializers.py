@@ -18,21 +18,16 @@
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from drf_spectacular.utils import extend_schema_field
-
 from rest_framework import serializers
 from rest_framework.exceptions import PermissionDenied
 
-from reversion.models import Version
-
 from toolhub.apps.user.serializers import UserSerializer
+from toolhub.apps.versioned.serializers import JSONPatchField
+from toolhub.apps.versioned.serializers import RevisionSerializer
 from toolhub.decorators import doc
-from toolhub.permissions import is_administrator
-from toolhub.permissions import is_oversighter
 from toolhub.serializers import EditCommentFieldMixin
 from toolhub.serializers import ModelSerializer
 
-from . import schema
 from .models import Tool
 
 
@@ -236,65 +231,11 @@ class UpdateToolSerializer(CreateToolSerializer):
 
 
 @doc(_("""Tool revision."""))
-class ToolRevisionSerializer(ModelSerializer):
+class ToolRevisionSerializer(RevisionSerializer):
     """Tool revision."""
 
-    id = serializers.IntegerField(  # noqa: A003
-        source="pk",
-        help_text=_("A unique integer value identifying this revision."),
-    )
-    timestamp = serializers.DateTimeField(
-        source="revision.date_created",
-        read_only=True,
-        help_text=("The timestamp of the revision."),
-    )
-    user = UserSerializer(source="revision.user", many=False, read_only=True)
-    comment = serializers.CharField(
-        source="revision.comment",
-        read_only=True,
-        default="",
-        help_text=_("Comment by the user for the revision."),
-    )
-    suppressed = serializers.BooleanField(
-        source="revision.meta.suppressed",
-        read_only=True,
-        default=False,
-        help_text=_("Has this revision been marked as hidden?"),
-    )
-    patrolled = serializers.BooleanField(
-        source="revision.meta.patrolled",
-        read_only=True,
-        default=False,
-        help_text=_("Has this revision been reviewed by a patroller?"),
-    )
-
-    def _should_hide_details(self, instance):
-        """Should the details of this revision be hidden?"""
-        user = self.context["request"].user
-        return instance.revision.meta.suppressed and not (
-            is_oversighter(user) or is_administrator(user)
-        )
-
-    def to_representation(self, instance):
-        """Generate primative representation of a model instance."""
-        ret = super().to_representation(instance)
-        if self._should_hide_details(instance):
-            ret["user"] = {"id": -1, "username": _("username removed")}
-            ret["comment"] = _("edit summary removed")
-        return ret
-
-    class Meta:
+    class Meta(RevisionSerializer.Meta):
         """Configure serializer."""
-
-        model = Version
-        fields = [
-            "id",
-            "timestamp",
-            "user",
-            "comment",
-            "suppressed",
-            "patrolled",
-        ]
 
 
 @doc(_("""Tool revision detail."""))
@@ -317,11 +258,6 @@ class ToolRevisionDetailSerializer(ToolRevisionSerializer):
         fields.append("toolinfo")
 
 
-@extend_schema_field(schema.JSONPATCH)
-class JSONPatchField(serializers.JSONField):
-    """JSONField with schema."""
-
-
 @doc(_("""Tool revision difference."""))  # noqa: W0223
 class ToolRevisionDiffSerializer(serializers.Serializer):
     """Tool revision difference."""
@@ -333,8 +269,3 @@ class ToolRevisionDiffSerializer(serializers.Serializer):
     result = ToolRevisionSerializer(
         help_text=_("Revision after applying changes."),
     )
-
-
-@doc(_("""Comment describing an action."""))  # noqa: W0223
-class CommentSerializer(serializers.Serializer, EditCommentFieldMixin):
-    """Comment for an action."""

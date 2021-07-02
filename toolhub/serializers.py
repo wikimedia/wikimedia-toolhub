@@ -28,6 +28,7 @@ from rest_framework import serializers
 from rest_framework_friendly_errors.mixins import FriendlyErrorMessagesMixin
 
 from . import fields
+from .decorators import doc
 
 
 class JSONSchemaField(serializers.ModelField):
@@ -117,3 +118,8 @@ class EditCommentFieldMixin(metaclass=serializers.SerializerMetaclass):
     def get_comment(self, instance):  # noqa: W0613
         """Placeholder method needed for comment field."""
         return ""
+
+
+@doc(_("""Comment describing an action."""))  # noqa: W0223
+class CommentSerializer(Serializer, EditCommentFieldMixin):
+    """Comment for an action."""
