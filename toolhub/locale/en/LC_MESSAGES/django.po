@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-28 04:18+0000\n"
+"POT-Creation-Date: 2021-07-05 17:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -226,7 +226,7 @@ msgstr ""
 
 #: toolhub/apps/lists/models.py:65
 msgid ""
-"If true, this list is a collection of the owning user's'favorite' tools."
+"If true, this list is a collection of the owning user's 'favorite' tools."
 msgstr ""
 
 #: toolhub/apps/lists/models.py:71
@@ -241,11 +241,11 @@ msgstr ""
 msgid "Position of this tool in the list."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:31
+#: toolhub/apps/lists/serializers.py:29
 msgid "List of tools metadata."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:65
+#: toolhub/apps/lists/serializers.py:63
 msgid "List of tools with details."
 msgstr ""
 
@@ -804,21 +804,21 @@ msgstr ""
 msgid "Mark a revision as patrolled."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:306
+#: toolhub/apps/toolinfo/views.py:304
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:340
+#: toolhub/apps/toolinfo/views.py:338
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:434
+#: toolhub/apps/toolinfo/views.py:432
 msgid "Info for a specific SPDX license."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:442
+#: toolhub/apps/toolinfo/views.py:440
 msgid "List all SPDX licenses."
 msgstr ""
 

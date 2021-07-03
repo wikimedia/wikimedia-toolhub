@@ -62,7 +62,7 @@ class ToolList(SafeDeleteModel):
     favorites = models.BooleanField(
         default=False,
         help_text=_(
-            """If true, this list is a collection of the owning user's"""
+            """If true, this list is a collection of the owning user's """
             """'favorite' tools."""
         ),
     )
