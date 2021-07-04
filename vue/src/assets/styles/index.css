@@ -37,6 +37,11 @@ div.tool-card__card {
 	text-overflow: ellipsis;
 }
 
+.featured-lists .box-header {
+	background-color: var( --v-base90-base );
+	border-bottom: 2px solid var( --v-accent-base );
+}
+
 .table-striped tbody tr:nth-of-type( odd ) {
 	background-color: var( --v-accent-base );
 }

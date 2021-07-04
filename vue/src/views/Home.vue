@@ -89,22 +89,20 @@
 				</v-card>
 			</v-col>
 		</v-row>
-		<v-row justify="space-around">
-			<v-col v-for="tool in toolsList"
-				:key="tool.name"
-				sm="6"
-				md="4"
-				lg="3"
-				cols="12"
+
+		<v-row>
+			<v-col v-for="list in featuredLists.results"
+				:key="list.title"
+				class="featured-lists"
 			>
-				<ToolCard :tool="tool" />
+				<ListView :list="list" />
 			</v-col>
 		</v-row>
 
 		<v-pagination
-			v-if="numTools > 0"
+			v-if="featuredLists.count > 0"
 			v-model="page"
-			:length="Math.ceil( numTools / itemsPerPage )"
+			:length="Math.ceil( featuredLists.count / itemsPerPage )"
 			class="ma-4"
 			total-visible="10"
 			@input="goToPage"
@@ -116,24 +114,25 @@
 import { mapState } from 'vuex';
 import '@/assets/styles/index.css';
 import SearchBar from '@/components/search/SearchBar';
-import ToolCard from '@/components/tools/ToolCard';
 import fetchMetaInfo from '@/helpers/metadata';
+import ListView from '@/components/tools/ListView';
 
 export default {
 	components: {
 		SearchBar,
-		ToolCard
+		ListView
 	},
 	data: () => ( {
 		page: 1,
-		itemsPerPage: 12
+		itemsPerPage: 10
 	} ),
 	metaInfo() {
 		return fetchMetaInfo( 'home' );
 	},
 	computed: {
-		...mapState( 'tools', [ 'toolsList', 'numTools' ] ),
-		...mapState( 'crawler', [ 'crawlerHistory', 'lastCrawlerRun', 'numCrawlerRuns' ] )
+		...mapState( 'tools', [ 'numTools' ] ),
+		...mapState( 'crawler', [ 'crawlerHistory', 'lastCrawlerRun', 'numCrawlerRuns' ] ),
+		...mapState( 'lists', [ 'featuredLists' ] )
 	},
 	methods: {
 		onSearchBarSearch( query ) {
@@ -144,6 +143,9 @@ export default {
 		},
 		listAllTools() {
 			this.$store.dispatch( 'tools/listAllTools', this.page );
+		},
+		getFeaturedLists() {
+			this.$store.dispatch( 'lists/getFeaturedLists', this.page );
 		},
 		fetchCrawlerHistory() {
 			this.$store.dispatch( 'crawler/fetchCrawlerHistory', 1 );
@@ -165,13 +167,16 @@ export default {
 		 */
 		'$route.query.page'( newValue ) {
 			this.page = parseInt( newValue ) || 1;
-			this.listAllTools();
+			this.getFeaturedLists();
 		}
 	},
 	mounted() {
 		this.page = parseInt( this.$route.query.page ) || 1;
+		// Obtain the total number of tools currently available
 		this.listAllTools();
+		// Obtain the number of crawler runs and last update
 		this.fetchCrawlerHistory();
+		this.getFeaturedLists();
 	}
 };
 </script>
