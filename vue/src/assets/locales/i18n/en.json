@@ -225,7 +225,7 @@
 	"status": "Status",
 	"submitjsonurl": "Submit a toolinfo.json URL",
 	"system-user": "System",
-	"tagline-about": "An authoritative and well promoted catalog of Wikimedia tools.",
+	"tagline-about": "Discover new tools, promote their use in your wiki community, help improve them by contributing data.",
 	"tagline-learnmore": "Learn more about Toolhub on metawiki",
 	"talk": "talk",
 	"technologyused": "Technology used",
@@ -268,5 +268,5 @@
 	"viewhistory": "View history",
 	"viewrevisionsdiff": "View difference between revisions of tool $1",
 	"viewmore": "View More",
-	"welcomemessage": "Welcome to Toolhub"
+	"welcomemessage": "Toolhub is a community-authored catalog of Wikimedia tools."
 }

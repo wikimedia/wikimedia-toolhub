@@ -29,6 +29,15 @@ div.tool-card__card {
 	-webkit-line-clamp: 2;
 }
 
+.tool-card__authors {
+	position: absolute;
+	bottom: 0;
+}
+
+.tool-card__authors dd {
+	-webkit-line-clamp: 1;
+}
+
 .line-clamp {
 	display: block;
 	display: -webkit-box;
