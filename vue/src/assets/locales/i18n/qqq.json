@@ -51,7 +51,7 @@
 	"auditlogs-pagetitle": "Page title",
 	"auditlogs-targettype-group": "Noun representing a group of users.",
 	"auditlogs-targettype-tool": "Noun representing a tool.",
-	"auditlogs-targettype-toollist": "Noun representing a list of tools.",
+	"auditlogs-targettype-toollist": "Noun representing a list of tools.\n{{identical|List}}",
 	"auditlogs-targettype-url": "Noun representing a URL.",
 	"auditlogs-targettype-user": "Noun representing a user.",
 	"auditlogs-targettype-version": "Noun representing point in time edit state.",

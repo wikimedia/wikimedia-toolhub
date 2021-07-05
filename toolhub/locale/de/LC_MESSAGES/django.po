@@ -3,12 +3,13 @@
 #
 # Author: FF-11
 # Author: Gebu
+# Author: Lorem Ipsum
 # Author: Wolfdietmann
 # Author: Zauberzunge2000
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-01 11:51:46+0000\n"
+"PO-Revision-Date: 2021-07-05 11:12:26+0000\n"
 "X-POT-Import-Date: 2021-06-30 20:30:31+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -226,7 +227,7 @@ msgstr ""
 
 #: toolhub/apps/lists/models.py:71
 msgid "If true, this list is visible to everyone."
-msgstr ""
+msgstr "Wenn wahr (true), ist diese Liste für alle sichtbar."
 
 #: toolhub/apps/lists/models.py:75
 msgid "If true, this list has been marked as featured."
@@ -234,7 +235,7 @@ msgstr ""
 
 #: toolhub/apps/lists/models.py:124
 msgid "Position of this tool in the list."
-msgstr ""
+msgstr "Position dieses Werkzeugs in der Liste."
 
 #: toolhub/apps/lists/serializers.py:31
 msgid "List of tools metadata."
@@ -242,15 +243,15 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:65
 msgid "List of tools with details."
-msgstr ""
+msgstr "Liste der Werkzeuge mit Details."
 
 #: toolhub/apps/lists/views.py:37
 msgid "Details of a specific list of tools."
-msgstr ""
+msgstr "Details zu einer bestimmten Liste von Tools."
 
 #: toolhub/apps/lists/views.py:50
 msgid "List all lists of tools."
-msgstr ""
+msgstr "Listet alle Listen von Tools auf."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
@@ -461,7 +462,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:446
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
-msgstr ""
+msgstr "Wenn dieses Werkzeug veraltet ist, sollte dieser Parameter verwendet werden, um eine Verknüpfung mit dem Ersetzungstool herzustellen."
 
 #: toolhub/apps/toolinfo/models.py:453
 msgid "If true, this tool is unstable and can change or go offline at any time."
@@ -473,11 +474,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:479
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
-msgstr ""
+msgstr "Ein Link zu einer Wikimedia Commons-Dateibeschreibungsseite für ein Symbol, das die Liste darstellt."
 
 #: toolhub/apps/toolinfo/models.py:488
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
-msgstr ""
+msgstr "Die Softwarelizenz, unter der der Toolcode verfügbar ist. Verwende eine standardmäßige SPDX-Lizenzkennung wie „GPL-3.0-or-later“."
 
 #: toolhub/apps/toolinfo/models.py:496
 msgid "Organization(s) that sponsored the tool's development."
@@ -485,43 +486,43 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:503
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
-msgstr ""
+msgstr "Die Sprache(n), in die die Benutzeroberfläche des Tools übersetzt wurde. Verwendet ISO 639-Sprachcodes wie „zh“ und „scn“. Wenn nicht definiert, wird davon ausgegangen, dass das Tool nur auf Englisch verfügbar ist."
 
 #: toolhub/apps/toolinfo/models.py:514
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
-msgstr ""
+msgstr "Eine Zeichenfolge oder ein Array von Zeichenfolgen, die Technologien (Programmiersprachen, Entwicklungsframeworks usw.) auflisten, die bei der Erstellung des Tools verwendet werden."
 
 #: toolhub/apps/toolinfo/models.py:526
 msgid "The manner in which the tool is used. Select one from the list of options."
-msgstr ""
+msgstr "Die Art und Weise, in der das Werkzeug verwendet wird. Wähle eine aus der Liste der Optionen aus."
 
 #: toolhub/apps/toolinfo/models.py:535
 msgid "A link to the tool's API, if available."
-msgstr ""
+msgstr "Ein Link zur API des Tools, falls verfügbar."
 
 #: toolhub/apps/toolinfo/models.py:541
 msgid "A link to the tool's developer documentation, if available."
-msgstr ""
+msgstr "Ein Link zur Entwicklerdokumentation des Tools, falls verfügbar."
 
 #: toolhub/apps/toolinfo/models.py:549
 msgid "A link to the tool's user documentation, if available."
-msgstr ""
+msgstr "Ein Link zur Benutzerdokumentation des Tools, falls verfügbar."
 
 #: toolhub/apps/toolinfo/models.py:557
 msgid "A link to location where the tool's user can leave feedback."
-msgstr ""
+msgstr "Ein Link zu einem Ort, an dem der Benutzer des Tools Feedback hinterlassen kann."
 
 #: toolhub/apps/toolinfo/models.py:565
 msgid "A link to the tool's privacy policy, if available."
-msgstr ""
+msgstr "Ein Link zur Datenschutzrichtlinie des Tools, falls verfügbar."
 
 #: toolhub/apps/toolinfo/models.py:574
 msgid "A link to the tool's translation interface."
-msgstr ""
+msgstr "Ein Link zur Übersetzungsschnittstelle des Tools."
 
 #: toolhub/apps/toolinfo/models.py:582
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
-msgstr ""
+msgstr "Ein Link zum Bugtracker des Tools auf GitHub, Bitbucket, Phabricator usw."
 
 #: toolhub/apps/toolinfo/models.py:591
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
@@ -629,7 +630,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:294
 msgid "username removed"
-msgstr ""
+msgstr "(Benutzername entfernt)"
 
 #: toolhub/apps/toolinfo/serializers.py:295
 msgid "edit summary removed"

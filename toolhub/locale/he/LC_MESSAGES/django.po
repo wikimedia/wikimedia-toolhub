@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-01 11:51:47+0000\n"
+"PO-Revision-Date: 2021-07-05 11:12:26+0000\n"
 "X-POT-Import-Date: 2021-06-30 20:30:31+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -205,19 +205,19 @@ msgstr "מידע על URL מסוים שהזחלן עבר בו בהרצה."
 
 #: toolhub/apps/lists/apps.py:26
 msgid "Lists"
-msgstr ""
+msgstr "רשימות"
 
 #: toolhub/apps/lists/models.py:40
 msgid "Title of this list"
-msgstr ""
+msgstr "כותרת הרשימה הזאת"
 
 #: toolhub/apps/lists/models.py:46
 msgid "Description of the list's theme or contents."
-msgstr ""
+msgstr "תיאור נושא או תוכן הרשימה."
 
 #: toolhub/apps/lists/models.py:58
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
-msgstr ""
+msgstr "קישור לדף תיאור קובץ בוויקישיתוף לסמל שמייצג את הרשימה."
 
 #: toolhub/apps/lists/models.py:65
 msgid "If true, this list is a collection of the owning user's'favorite' tools."
@@ -225,31 +225,31 @@ msgstr ""
 
 #: toolhub/apps/lists/models.py:71
 msgid "If true, this list is visible to everyone."
-msgstr ""
+msgstr "אם true, הרשימה הזאת גלויה לכולם."
 
 #: toolhub/apps/lists/models.py:75
 msgid "If true, this list has been marked as featured."
-msgstr ""
+msgstr "אם true, הרשימה הזאת סומנה בתור מומלצת."
 
 #: toolhub/apps/lists/models.py:124
 msgid "Position of this tool in the list."
-msgstr ""
+msgstr "מיקום הכלי הזה ברשימה."
 
 #: toolhub/apps/lists/serializers.py:31
 msgid "List of tools metadata."
-msgstr ""
+msgstr "רשימה של מטא־נתונים של כלים."
 
 #: toolhub/apps/lists/serializers.py:65
 msgid "List of tools with details."
-msgstr ""
+msgstr "רשימה של כלים עם פרטים."
 
 #: toolhub/apps/lists/views.py:37
 msgid "Details of a specific list of tools."
-msgstr ""
+msgstr "פרטים של רשימה מסוימת של כלים."
 
 #: toolhub/apps/lists/views.py:50
 msgid "List all lists of tools."
-msgstr ""
+msgstr "הצגת כל רשימות הכלים."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
@@ -456,7 +456,7 @@ msgstr "אם הכלי הוא בוט, שם המשתמש של הבוט בוויק�
 
 #: toolhub/apps/toolinfo/models.py:436
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
-msgstr "אם כן, השימוש בכלי הזה רשמית אינו מומלץ. הפרמטר `replaced_by` יכול לשמש להגדרת החלופה."
+msgstr "אם true, השימוש בכלי הזה רשמית אינו מומלץ. הפרמטר `replaced_by` יכול לשמש להגדרת החלופה."
 
 #: toolhub/apps/toolinfo/models.py:446
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
@@ -464,7 +464,7 @@ msgstr "אם הכלי הזה מוכרז בתור מיושן, כדאי להשתמ
 
 #: toolhub/apps/toolinfo/models.py:453
 msgid "If true, this tool is unstable and can change or go offline at any time."
-msgstr "אם כן, הכלי הזה אינו יציב ויכול להשתנות או להיעלם בכל זמן."
+msgstr "אם true, הכלי הזה אינו יציב ויכול להשתנות או להיעלם בכל זמן."
 
 #: toolhub/apps/toolinfo/models.py:461
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
