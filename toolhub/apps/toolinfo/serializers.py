@@ -126,7 +126,15 @@ class SummaryToolSerializer(ModelSerializer):
         """Configure serializer."""
 
         model = Tool
-        fields = ["name", "title", "url"]
+        fields = [
+            "name",
+            "title",
+            "description",
+            "url",
+            "keywords",
+            "author",
+            "icon",
+        ]
         read_only_fields = fields
 
 
