@@ -76,8 +76,7 @@ variants:
   base-nodejs:
     # Provides the basic foundation for all other nodejs runtime containers
     # needed to develop and test Toolhub.
-    # FIXME: T286212: 0.0.3-20210704 is missing npm
-    base: docker-registry.wikimedia.org/nodejs10-devel:0.0.3
+    base: docker-registry.wikimedia.org/nodejs10-devel
     node:
       requirements:
         - package.json
