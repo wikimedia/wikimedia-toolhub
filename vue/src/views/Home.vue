@@ -66,7 +66,8 @@
 		<v-row>
 			<v-col v-for="list in featuredLists.results"
 				:key="list.title"
-				class="featured-lists"
+				class="lists"
+				cols="12"
 			>
 				<ListView :list="list" />
 			</v-col>
@@ -88,7 +89,7 @@ import { mapState } from 'vuex';
 import '@/assets/styles/index.css';
 import SearchBar from '@/components/search/SearchBar';
 import fetchMetaInfo from '@/helpers/metadata';
-import ListView from '@/components/tools/ListView';
+import ListView from '@/components/lists/ListView';
 
 export default {
 	components: {

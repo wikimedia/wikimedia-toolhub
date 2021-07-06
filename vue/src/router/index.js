@@ -47,6 +47,21 @@ const routes = [
 			}
 		},
 		{
+			name: 'lists',
+			path: '/lists',
+			component: () => import( /* webpackChunkName: "lists" */ '../views/Lists.vue' )
+		},
+		{
+			name: 'list',
+			path: '/list/:id',
+			component: () => import( /* webpackChunkName: "list" */ '../components/lists/ListInfo.vue' )
+		},
+		{
+			name: 'lists-create',
+			path: '/lists/create',
+			component: () => import( /* webpackChunkName: "createnewlist" */ '../components/lists/CreateNewList.vue' )
+		},
+		{
 			name: 'apidocs',
 			path: '/api-docs',
 			component: () => import( /* webpackChunkName: "apidoc" */ '../views/ApiDocs.vue' ),

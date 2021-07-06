@@ -15,7 +15,22 @@
 					{{ list.title }}
 				</h2>
 			</v-col>
-			<v-col v-if="list.description" cols="auto">
+
+			<v-col cols="auto" class="list-action">
+				<v-btn
+					class="transparent elevation-0 my-3"
+					:to="`/list/${list.id}`"
+				>
+					<v-icon size="30" color="secondary">
+						mdi-link-variant
+					</v-icon>
+				</v-btn>
+			</v-col>
+
+			<v-col v-if="list.description"
+				cols="auto"
+				class="list-action"
+			>
 				<v-btn
 					class="transparent elevation-0 my-3"
 					@click="listInfo = !listInfo"
@@ -39,6 +54,14 @@
 			class="mx-auto"
 			min-width="300"
 		>
+			<v-card
+				v-if="list.tools.length === 0"
+				class="ma-4"
+				elevation="0"
+			>
+				<v-card-title class="pa-0">{{ $t( 'lists-listempty' ) }}</v-card-title>
+			</v-card>
+
 			<v-slide-group
 				show-arrows
 			>

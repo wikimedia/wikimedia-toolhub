@@ -76,8 +76,8 @@
 		</v-row>
 
 		<v-row
-			class="elevation-2 mx-1 my-4 pa-2"
 			ref="crawldetails"
+			class="elevation-2 mx-1 my-4 pa-2"
 		>
 			<v-col cols="12">
 				<h3 class="text-h5">

@@ -38,17 +38,48 @@ div.tool-card__card {
 	-webkit-line-clamp: 1;
 }
 
+.lists .box-header {
+	background-color: var( --v-base90-base );
+	border-bottom: 2px solid var( --v-accent-base );
+}
+
+div.list-card__card {
+	display: flex;
+	flex-direction: column;
+}
+
+.list-card__card > div {
+	flex: 1 1 auto;
+}
+
+.list-card__card .v-card__title {
+	flex: 0 0 auto;
+	word-break: break-word;
+}
+
+.list-action .v-btn:not( .v-btn--round ).v-size--default {
+	min-width: 0;
+	padding: 10px 10px 10px 0;
+}
+
+.list-card__title {
+	-webkit-line-clamp: 2;
+}
+
+.list-card__desc {
+	-webkit-line-clamp: 3;
+}
+
+.list-card__authors dd {
+	-webkit-line-clamp: 1;
+}
+
 .line-clamp {
 	display: block;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-.featured-lists .box-header {
-	background-color: var( --v-base90-base );
-	border-bottom: 2px solid var( --v-accent-base );
 }
 
 .table-striped tbody tr:nth-of-type( odd ) {
