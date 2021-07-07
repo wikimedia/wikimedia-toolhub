@@ -93,3 +93,14 @@ tool_revisions.register(
     toolinfo_views.ToolRevisionViewSet,
     basename="tool-revisions",
 )
+
+list_revisions = nested_routers.NestedSimpleRouter(
+    root,
+    "lists",
+    lookup="list",
+)
+list_revisions.register(
+    "revisions",
+    lists_views.ToolListRevisionViewSet,
+    basename="list-revisions",
+)

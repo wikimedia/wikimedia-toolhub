@@ -29,6 +29,7 @@ from toolhub.apps.user.views import LocaleView
 
 from .routers import crawler_runs
 from .routers import groups
+from .routers import list_revisions
 from .routers import root
 from .routers import tool_revisions
 
@@ -41,6 +42,7 @@ api_patterns = [
     path("", include(crawler_runs.urls)),
     path("", include(groups.urls)),
     path("", include(tool_revisions.urls)),
+    path("", include(list_revisions.urls)),
 ]
 
 urlpatterns = [

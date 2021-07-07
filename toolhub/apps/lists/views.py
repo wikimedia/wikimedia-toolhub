@@ -15,45 +15,63 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+import logging
+
 from django.db import transaction
 from django.db.models import Q
+from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
+import jsonpatch
+
 from rest_framework import permissions
+from rest_framework import response
+from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.decorators import action
 
-import reversion
+from reversion.models import Version
 
-from toolhub.apps.auditlog.context import auditlog_context
-from toolhub.apps.toolinfo.models import Tool
-from toolhub.apps.versioned.models import RevisionMetadata
+from toolhub.apps.auditlog.models import LogEntry
+from toolhub.apps.versioned.exceptions import ConflictingState
+from toolhub.apps.versioned.exceptions import CurrentRevision
+from toolhub.apps.versioned.exceptions import SuppressedRevision
+from toolhub.permissions import CustomModelPermission
+from toolhub.permissions import ObjectPermissions
 from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
+from toolhub.serializers import CommentSerializer
 
 from .models import ToolList
-from .models import ToolListItem
-from .serializers import CreateToolListSerializer
-from .serializers import ToolListDetailSerializer
+from .serializers import EditToolListSerializer
+from .serializers import ToolListHistoricVersionSerializer
+from .serializers import ToolListRevisionDetailSerializer
+from .serializers import ToolListRevisionDiffSerializer
+from .serializers import ToolListRevisionSerializer
 from .serializers import ToolListSerializer
-from .serializers import UpdateToolListSerializer
+
+
+logger = logging.getLogger(__name__)
 
 
 @extend_schema_view(
     create=extend_schema(
         description=_("""Create a new list of tools."""),
-        request=CreateToolListSerializer,
-        responses=ToolListDetailSerializer,
+        request=EditToolListSerializer,
+        responses=ToolListSerializer,
     ),
     retrieve=extend_schema(
         description=_("""Details of a specific list of tools."""),
-        responses=ToolListDetailSerializer,
+        responses=ToolListSerializer,
     ),
     update=extend_schema(
         description=_("""Update a list of tools."""),
-        request=UpdateToolListSerializer,
-        responses=ToolListDetailSerializer,
+        request=EditToolListSerializer,
+        responses=ToolListSerializer,
     ),
     partial_update=extend_schema(
         exclude=True,
@@ -90,86 +108,321 @@ class ToolListViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         """Use different serializers for input vs output."""
-        if self.action == "retrieve":
-            return ToolListDetailSerializer
-        if self.action == "create":
-            return CreateToolListSerializer
-        if self.action == "update":
-            return UpdateToolListSerializer
+        if self.action in ["create", "update"]:
+            return EditToolListSerializer
         return ToolListSerializer
 
-    @transaction.atomic
-    def perform_create(self, serializer):
-        """Create a new tool list."""
-        user = self.request.user
-        comment = serializer.validated_data.pop("comment", None)
-        tools = serializer.validated_data.pop("tools", None)
-        serializer.validated_data["created_by"] = user
-        serializer.validated_data["modified_by"] = user
 
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(user)
-            if comment is not None:
-                reversion.set_comment(comment)
+path_param_list_pk = OpenApiParameter(
+    "list_pk",
+    type=OpenApiTypes.INT,
+    location=OpenApiParameter.PATH,
+    description=_("""A unique integer value identifying this toollist."""),
+)
 
-            with auditlog_context(user, comment):
-                instance = ToolList.objects.create(**serializer.validated_data)
-                for idx, name in enumerate(tools):
-                    ToolListItem.objects.create(
-                        toollist=instance,
-                        tool=Tool.objects.get(name=name),
-                        order=idx,
-                        added_by=user,
-                    )
 
-        serializer.instance = instance
-        return instance
+@extend_schema_view(
+    retrieve=extend_schema(
+        description=_("""Get revision information."""),
+        parameters=[path_param_list_pk],
+        responses=ToolListRevisionDetailSerializer,
+    ),
+    list=extend_schema(
+        description=_("""List revisions."""),
+        parameters=[path_param_list_pk],
+        responses=ToolListRevisionSerializer,
+    ),
+    diff=extend_schema(
+        description=_("""Compare two revisions to find difference."""),
+        parameters=[
+            path_param_list_pk,
+            OpenApiParameter(
+                "other_id",
+                type=OpenApiTypes.NUMBER,
+                location=OpenApiParameter.PATH,
+                description=_(
+                    "A unique integer value identifying version "
+                    "to diff against."
+                ),
+            ),
+        ],
+        responses=ToolListRevisionDiffSerializer,
+    ),
+    revert=extend_schema(
+        description=_("""Restore the list to this revision."""),
+        parameters=[
+            path_param_list_pk,
+        ],
+        responses=ToolListSerializer,
+    ),
+    undo=extend_schema(
+        description=_("""Undo all changes made between two revisions."""),
+        parameters=[
+            path_param_list_pk,
+            OpenApiParameter(
+                "other_id",
+                type=OpenApiTypes.NUMBER,
+                location=OpenApiParameter.PATH,
+                description=_(
+                    "A unique integer value identifying version "
+                    "to undo until."
+                ),
+            ),
+        ],
+        responses=ToolListSerializer,
+    ),
+    hide=extend_schema(
+        description=_("""Hide revision text and edit summary from users."""),
+        parameters=[path_param_list_pk],
+        request=CommentSerializer,
+        responses={204: None},
+    ),
+    reveal=extend_schema(
+        description=_("""Reveal a previously hidden revision."""),
+        parameters=[path_param_list_pk],
+        request=CommentSerializer,
+        responses={204: None},
+    ),
+    patrol=extend_schema(
+        description=_("""Mark a revision as patrolled."""),
+        parameters=[path_param_list_pk],
+        request=CommentSerializer,
+        responses={204: None},
+    ),
+)
+class ToolListRevisionViewSet(viewsets.ReadOnlyModelViewSet):
+    """Historical revisions of a tool list."""
 
-    @transaction.atomic
-    def perform_update(self, serializer):
-        """Update a tool list."""
-        user = self.request.user
-        comment = serializer.validated_data.pop("comment", None)
-        tools = serializer.validated_data.pop("tools", None)
+    queryset = Version.objects.none()
+    serializer_class = ToolListRevisionSerializer
+    permission_classes = [ObjectPermissionsOrAnonReadOnly]
 
-        # Compute changes to the list metadata
-        instance_has_changes = False
-        for key, value in serializer.validated_data.items():
-            prior = getattr(serializer.instance, key)
-            if value != prior:
-                setattr(serializer.instance, key, value)
-                instance_has_changes = True
+    def _get_list(self):
+        """Get the list to act upon."""
+        return get_object_or_404(ToolList, pk=self.kwargs["list_pk"])
 
-        # Compute changes to the list contents
-        list_qs = ToolListItem.objects.filter(toollist=serializer.instance)
-        prior_tools = list(list_qs.values_list("tool__name", flat=True))
-        # I thought about doing some really fancy list diffing here using
-        # difflib.SequenceMatcher to find the minimal set of changes to the
-        # list items so that the db update could be really targeted. After
-        # playing with the idea it felt like a big pile of overkill, so
-        # instead we will just compare the ordered lists and if anything is
-        # different replace all of it below.
-        list_has_changes = prior_tools != tools
+    def get_queryset(self):
+        """Filter queryset by ToolList using path param."""
+        qs = Version.objects.select_related(
+            "revision",
+            "revision__user",
+            "revision__meta",
+        )
+        return qs.get_for_object(self._get_list())
 
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(user)
-            if comment is not None:
-                reversion.set_comment(comment)
+    def get_serializer_class(self):
+        """Use different serializers for list vs retrieve."""
+        if self.action == "retrieve":
+            return ToolListRevisionDetailSerializer
+        return ToolListRevisionSerializer
 
-            with auditlog_context(user, comment):
-                if instance_has_changes:
-                    serializer.instance.modified_by = user
-                    serializer.instance.save()
+    def _get_patch(self, left, right, request):
+        """Compute the JSON Patch between revisions."""
+        # Our built-in permissions checking doesn't trigger on GET/HEAD
+        # routes, so we need to explictly check that the calling user can see
+        # the start and end revisions before preparing a patch.
+        user = request.user
+        perms = ["reversion.view_version"]
+        if left.revision.meta.suppressed and not user.has_perms(perms, left):
+            raise SuppressedRevision()
+        if right.revision.meta.suppressed and not user.has_perms(perms, right):
+            raise SuppressedRevision()
 
-                if list_has_changes:
-                    # Delete prior list contents and then repopulate
-                    list_qs.delete()
-                    for idx, name in enumerate(tools):
-                        ToolListItem.objects.create(
-                            toollist=serializer.instance,
-                            tool=Tool.objects.get(name=name),
-                            order=idx,
-                            added_by=user,
-                        )
+        data_left = ToolListHistoricVersionSerializer(left.field_dict).data
+        data_right = ToolListHistoricVersionSerializer(right.field_dict).data
+        return jsonpatch.make_patch(data_left, data_right)
+
+    def _update_list(self, data, request):
+        """Update our list record."""
+        instance = get_object_or_404(ToolList, pk=self.kwargs["list_pk"])
+        # Move the `tool_names` member to `tools` to match
+        # EditToolListSerializer expectations for well formed input.
+        data["tools"] = data.pop("tool_names", [])
+        serializer = EditToolListSerializer(
+            instance, data=data, context={"request": request}
+        )
+        serializer.is_valid(raise_exception=True)
+        instance = serializer.save()
+        return response.Response(ToolListSerializer(instance).data)
+
+    @action(
+        detail=True,
+        methods=["GET"],
+        url_path=r"diff/(?P<other_id>\d+)",
+    )
+    def diff(self, request, **kwargs):
+        """Diff."""
+        id_left = kwargs["pk"]
+        id_right = kwargs["other_id"]
+        qs = self.get_queryset()
+
+        version_left = get_object_or_404(qs, pk=id_left)
+        version_right = get_object_or_404(qs, pk=id_right)
+        patch = self._get_patch(version_left, version_right, request)
+
+        diff = ToolListRevisionDiffSerializer(
+            {
+                "original": version_left,
+                "operations": patch,
+                "result": version_right,
+            },
+            context={"request": request},
+        )
+
+        return response.Response(diff.data)
+
+    @action(
+        detail=True,
+        methods=["POST"],
+        url_path=r"revert",
+    )
+    def revert(self, request, **kwargs):
+        """Revert."""
+        rev_id = kwargs["pk"]
+        qs = self.get_queryset()
+        rev = get_object_or_404(qs, pk=rev_id)
+        data = rev.field_dict
+        data["comment"] = _(
+            "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
+        ) % {
+            "rev_id": rev_id,
+            "datetime": rev.revision.date_created.strftime(
+                "%Y-%m-%dT%H:%M:%S.%f%z"
+            ),
+            "user": rev.revision.user.username,
+        }
+        return self._update_list(data, request)
+
+    @action(
+        detail=True,
+        methods=["POST"],
+        url_path=r"undo/(?P<other_id>\d+)",
+    )
+    def undo(self, request, **kwargs):
+        """Undo."""
+        id_left = kwargs["pk"]
+        id_right = kwargs["other_id"]
+        qs = self.get_queryset()
+
+        version_left = get_object_or_404(qs, pk=id_left)
+        version_right = get_object_or_404(qs, pk=id_right)
+        patch = self._get_patch(version_left, version_right, request)
+
+        head = qs.first()
+        data = head.field_dict
+
+        try:
+            # The operations on `tools` and `tool_names` below are needed to
+            # coerce our live instance data into the shape expected by the
+            # generated patch and then convert back to the shape expected by
+            # the storage layer. It sure would be neat if the reversion
+            # library had better built-in support for m2m relations!
+            data["tools"] = data.get("tool_names", [])
+            jsonpatch.apply_patch(data, patch, in_place=True)
+            data["tool_names"] = data.get("tools", [])
+        except jsonpatch.JsonPatchException as e:
+            raise ConflictingState() from e
+
+        data["comment"] = _(
+            "Undo revisions from %(first_id)s to %(last_id)s"
+        ) % {
+            "first_id": id_left,
+            "last_id": id_right,
+        }
+        return self._update_list(data, request)
+
+    @action(
+        detail=True,
+        methods=["PATCH"],
+        url_path=r"hide",
+        permission_classes=[ObjectPermissions],
+    )
+    def hide(self, request, **kwargs):
+        """Suppress a revision."""
+        rev_id = int(kwargs["pk"])
+        current_rev = self.get_queryset()[0]
+        if current_rev.pk == rev_id:
+            # The current revision cannot be hidden
+            raise CurrentRevision()
+        qs = self.get_queryset().filter(revision__meta__suppressed=False)
+        rev = get_object_or_404(qs, pk=rev_id)
+        comment = request.data.get("comment", None)
+        active_list = self._get_list()
+        with transaction.atomic():
+            rev.revision.meta.suppressed = True
+            rev.revision.meta.save()
+            LogEntry.objects.log_action(
+                request.user,
+                rev,
+                LogEntry.HIDE,
+                comment,
+                params={
+                    "toollist": {
+                        "id": active_list.pk,
+                        "title": active_list.title,
+                    },
+                },
+            )
+        return response.Response(status=status.HTTP_204_NO_CONTENT)
+
+    @action(
+        detail=True,
+        methods=["PATCH"],
+        url_path=r"reveal",
+        permission_classes=[ObjectPermissions],
+    )
+    def reveal(self, request, **kwargs):
+        """Restore a suppressed revision."""
+        rev_id = kwargs["pk"]
+        qs = self.get_queryset().filter(revision__meta__suppressed=True)
+        rev = get_object_or_404(qs, pk=rev_id)
+        comment = request.data.get("comment", None)
+        active_list = self._get_list()
+        with transaction.atomic():
+            rev.revision.meta.suppressed = False
+            rev.revision.meta.save()
+            LogEntry.objects.log_action(
+                request.user,
+                rev,
+                LogEntry.REVEAL,
+                comment,
+                params={
+                    "toollist": {
+                        "id": active_list.pk,
+                        "title": active_list.title,
+                    },
+                },
+            )
+        return response.Response(status=status.HTTP_204_NO_CONTENT)
+
+    @action(
+        detail=True,
+        methods=["PATCH"],
+        url_path=r"patrol",
+        permission_classes=[
+            CustomModelPermission("reversion", "version", "patrol"),
+        ],
+    )
+    def patrol(self, request, **kwargs):
+        """Mark a revision as patrolled."""
+        rev_id = kwargs["pk"]
+        qs = self.get_queryset().filter(revision__meta__patrolled=False)
+        rev = get_object_or_404(qs, pk=rev_id)
+        comment = request.data.get("comment", None)
+        active_list = self._get_list()
+        with transaction.atomic():
+            rev.revision.meta.patrolled = True
+            rev.revision.meta.save()
+            LogEntry.objects.log_action(
+                request.user,
+                rev,
+                LogEntry.PATROL,
+                comment,
+                params={
+                    "toollist": {
+                        "id": active_list.pk,
+                        "title": active_list.title,
+                    },
+                },
+            )
+        return response.Response(status=status.HTTP_204_NO_CONTENT)

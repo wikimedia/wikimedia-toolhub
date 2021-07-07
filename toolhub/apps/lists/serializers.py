@@ -15,20 +15,33 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+import logging
+
+from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 
 from rest_framework import serializers
 
+import reversion
+
+from toolhub.apps.auditlog.context import auditlog_context
+from toolhub.apps.toolinfo.models import Tool
 from toolhub.apps.toolinfo.serializers import SummaryToolSerializer
-from toolhub.apps.toolinfo.serializers import ToolSerializer
 from toolhub.apps.user.serializers import UserSerializer
+from toolhub.apps.versioned.models import RevisionMetadata
+from toolhub.apps.versioned.serializers import JSONPatchField
+from toolhub.apps.versioned.serializers import RevisionSerializer
 from toolhub.decorators import doc
 from toolhub.serializers import EditCommentFieldMixin
 from toolhub.serializers import ModelSerializer
 
 from .models import ToolList
+from .models import ToolListItem
 from .validators import validate_tools_exist
 from .validators import validate_unique_list
+
+
+logger = logging.getLogger(__name__)
 
 
 @doc(_("""List of tools metadata."""))
@@ -65,19 +78,9 @@ class ToolListSerializer(ModelSerializer):
         ]
 
 
-@doc(_("""List of tools with details."""))
-class ToolListDetailSerializer(ToolListSerializer):
-    """List of tools with details."""
-
-    tools = ToolSerializer(many=True)
-
-    class Meta(ToolListSerializer.Meta):
-        """Configure serializer."""
-
-
-@doc(_("""Create a list."""))
-class CreateToolListSerializer(ModelSerializer, EditCommentFieldMixin):
-    """Create a list."""
+@doc(_("""Create or update a list."""))
+class EditToolListSerializer(ModelSerializer, EditCommentFieldMixin):
+    """Create or update a list."""
 
     tools = serializers.ListField(
         child=serializers.CharField(required=False),
@@ -89,11 +92,6 @@ class CreateToolListSerializer(ModelSerializer, EditCommentFieldMixin):
             validate_tools_exist,
         ],
     )
-
-    def to_representation(self, instance):
-        """Proxy to ToolListDetailSerializer for output."""
-        serializer = ToolListDetailSerializer(instance)
-        return serializer.data
 
     class Meta:
         """Configure serializer."""
@@ -108,10 +106,162 @@ class CreateToolListSerializer(ModelSerializer, EditCommentFieldMixin):
             "comment",
         ]
 
+    def to_representation(self, instance):
+        """Proxy to ToolListSerializer for output."""
+        serializer = ToolListSerializer(instance)
+        return serializer.data
 
-@doc(_("""Update a list."""))
-class UpdateToolListSerializer(CreateToolListSerializer):
-    """Update a list."""
+    @transaction.atomic
+    def create(self, validated_data):
+        """Create a new tool list."""
+        user = self.context["request"].user
+        comment = validated_data.pop("comment", None)
+        tools = validated_data.pop("tools", [])
+        validated_data["tool_names"] = tools
+        validated_data["created_by"] = user
+        validated_data["modified_by"] = user
 
-    class Meta(CreateToolListSerializer.Meta):
+        with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
+            reversion.set_user(user)
+            if comment is not None:
+                reversion.set_comment(comment)
+
+            with auditlog_context(user, comment):
+                instance = ToolList.objects.create(**validated_data)
+                for idx, name in enumerate(tools):
+                    ToolListItem.objects.create(
+                        toollist=instance,
+                        tool=Tool.objects.get(name=name),
+                        order=idx,
+                        added_by=user,
+                    )
+        return instance
+
+    @transaction.atomic
+    def update(self, instance, validated_data):
+        """Update a tool list record."""
+        user = self.context["request"].user
+        comment = validated_data.pop("comment", None)
+        tools = validated_data.pop("tools", [])
+
+        # Compute changes to the list metadata
+        instance_has_changes = False
+        for key, value in validated_data.items():
+            prior = getattr(instance, key)
+            if value != prior:
+                setattr(instance, key, value)
+                instance_has_changes = True
+
+        # Compute changes to the list contents
+        list_qs = ToolListItem.objects.filter(toollist=instance)
+        prior_tools = list(list_qs.values_list("tool__name", flat=True))
+        # I thought about doing some really fancy list diffing here using
+        # difflib.SequenceMatcher to find the minimal set of changes to the
+        # list items so that the db update could be really targeted. After
+        # playing with the idea it felt like a big pile of overkill, so
+        # instead we will just compare the ordered lists and if anything is
+        # different replace all of it below.
+        list_has_changes = prior_tools != tools
+
+        with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
+            reversion.set_user(user)
+            if comment is not None:
+                reversion.set_comment(comment)
+
+            with auditlog_context(user, comment):
+                if instance_has_changes:
+                    instance.modified_by = user
+
+                if list_has_changes:
+                    # Save the list of tool names directly in our model as
+                    # well as via the m2m relationship. This is a workaround
+                    # for difficulties versioning m2m relations.
+                    instance.tool_names = tools
+
+                    # Delete prior list contents and then repopulate
+                    list_qs.delete()
+                    for idx, name in enumerate(tools):
+                        ToolListItem.objects.create(
+                            toollist=instance,
+                            tool=Tool.objects.get(name=name),
+                            order=idx,
+                            added_by=user,
+                        )
+
+                if instance_has_changes or list_has_changes:
+                    instance.save()
+        return instance
+
+
+@doc(_("""Historic revision of a list."""))
+class ToolListHistoricVersionSerializer(ModelSerializer):
+    """Historic revision of a list."""
+
+    tools = serializers.ListField(
+        child=serializers.CharField(required=False),
+        allow_empty=True,
+        max_length=128,
+        help_text=_("""List of tool names."""),
+        source="tool_names",
+    )
+
+    class Meta:
         """Configure serializer."""
+
+        model = ToolList
+        fields = [
+            "id",
+            "title",
+            "description",
+            "icon",
+            "favorites",
+            "published",
+            "featured",
+            "tools",
+        ]
+        read_only_fields = fields
+
+
+@doc(_("""Tool list revision."""))
+class ToolListRevisionSerializer(RevisionSerializer):
+    """Tool list revision."""
+
+    class Meta(RevisionSerializer.Meta):
+        """Configure serializer."""
+
+
+@doc(_("""Tool list revision detail."""))
+class ToolListRevisionDetailSerializer(ToolListRevisionSerializer):
+    """Tool list revision."""
+
+    toollist = ToolListHistoricVersionSerializer(
+        source="field_dict", many=False
+    )
+
+    class Meta(ToolListRevisionSerializer.Meta):
+        """Configure serializer."""
+
+        fields = list(ToolListRevisionSerializer.Meta.fields)
+        fields.append("toollist")
+
+    def to_representation(self, instance):
+        """Generate primative representation of a model instance."""
+        ret = super().to_representation(instance)
+        if self._should_hide_details(instance):
+            ret["toollist"] = {}
+        return ret
+
+
+@doc(_("""Tool list revision difference."""))  # noqa: W0223
+class ToolListRevisionDiffSerializer(serializers.Serializer):
+    """Tool list revision difference."""
+
+    original = ToolListRevisionSerializer(
+        help_text=_("Revision to apply changes to."),
+    )
+    operations = JSONPatchField()
+    result = ToolListRevisionSerializer(
+        help_text=_("Revision after applying changes."),
+    )

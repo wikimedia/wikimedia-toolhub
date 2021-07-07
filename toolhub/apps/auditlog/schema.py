@@ -55,5 +55,18 @@ PARAMS = {
                 },
             },
         },
+        "toollist": {
+            "description": _("Tool list related to the change"),
+            "type": "object",
+            "required": False,
+            "properties": {
+                "id": {
+                    "type": "integer",
+                },
+                "title": {
+                    "type": "string",
+                },
+            },
+        },
     },
 }

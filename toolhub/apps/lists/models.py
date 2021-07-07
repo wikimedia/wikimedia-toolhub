@@ -28,9 +28,10 @@ from toolhub.apps.auditlog.signals import registry
 from toolhub.apps.toolinfo.models import Tool
 from toolhub.fields import BlankAsNullCharField
 from toolhub.fields import BlankAsNullTextField
+from toolhub.fields import JSONSchemaField
 
 
-@reversion.register(follow=("tools",))
+@reversion.register()
 @registry.register()
 class ToolList(SafeDeleteModel):
     """A list of tools."""
@@ -78,6 +79,20 @@ class ToolList(SafeDeleteModel):
         Tool,
         through="ToolListItem",
     )
+    # The tool_names member is parallel tracking of the m2m `tools`
+    # collection contents. This bit of clunkiness is needed for tracking
+    # and reporting the point in time list contents using reversion.
+    tool_names = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_("List of the names of the tools in this list."),
+        schema={
+            "type": "array",
+            "items": {
+                "type": "string",
+            },
+        },
+    )
 
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -114,6 +129,7 @@ class ToolList(SafeDeleteModel):
         return self.title
 
 
+@reversion.register()
 class ToolListItem(models.Model):
     """Many-to-many tracking of Tool models contained by a ToolList."""
 
@@ -145,3 +161,7 @@ class ToolListItem(models.Model):
     def __str__(self):
         """Str repr"""
         return self.tool.name
+
+    def natural_key(self):
+        """Natural reference."""
+        return (self.toollist, self.tool)
