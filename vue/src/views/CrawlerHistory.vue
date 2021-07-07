@@ -77,6 +77,7 @@
 
 		<v-row
 			class="elevation-2 mx-1 my-4 pa-2"
+			ref="crawldetails"
 		>
 			<v-col cols="12">
 				<h3 class="text-h5">
@@ -136,6 +137,12 @@
 				/>
 			</v-col>
 		</v-row>
+
+		<v-row>
+			<v-col cols="12">
+				<ScrollTop />
+			</v-col>
+		</v-row>
 	</v-container>
 </template>
 
@@ -144,9 +151,13 @@ import { mapState } from 'vuex';
 import Chart from '@/components/chart/LineChart.js';
 import customSort from '@/plugins/sort.js';
 import fetchMetaInfo from '@/helpers/metadata';
+import ScrollTop from '@/components/tools/ScrollTop';
 
 export default {
-	components: { Chart },
+	components: {
+		Chart,
+		ScrollTop
+	},
 	data() {
 		return {
 			runsPage: 1,
@@ -278,6 +289,7 @@ export default {
 			this.firstRowActive = false;
 			this.urlsPage = 1;
 			this.changeUrlsCrawled( item );
+			this.$vuetify.goTo( this.$refs.crawldetails );
 		}
 	},
 	watch: {
