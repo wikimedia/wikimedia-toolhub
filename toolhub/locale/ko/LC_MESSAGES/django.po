@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-01 11:51:47+0000\n"
-"X-POT-Import-Date: 2021-06-30 20:30:31+0000\n"
+"PO-Revision-Date: 2021-07-08 11:10:29+0000\n"
+"X-POT-Import-Date: 2021-07-06 06:18:40+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: toolhub/apps/lists/apps.py:26
 msgid "Lists"
-msgstr ""
+msgstr "목록"
 
 #: toolhub/apps/lists/models.py:40
 msgid "Title of this list"
@@ -219,7 +219,7 @@ msgid "A link to a Wikimedia Commons file description page for an icon that depi
 msgstr ""
 
 #: toolhub/apps/lists/models.py:65
-msgid "If true, this list is a collection of the owning user's'favorite' tools."
+msgid "If true, this list is a collection of the owning user's 'favorite' tools."
 msgstr ""
 
 #: toolhub/apps/lists/models.py:71
@@ -234,19 +234,54 @@ msgstr ""
 msgid "Position of this tool in the list."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:31
+#: toolhub/apps/lists/serializers.py:34
 msgid "List of tools metadata."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:65
+#: toolhub/apps/lists/serializers.py:68
 msgid "List of tools with details."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:37
+#: toolhub/apps/lists/serializers.py:78
+msgid "Create a list."
+msgstr "목록을 만듭니다."
+
+#: toolhub/apps/lists/serializers.py:86
+msgid "List of tool names."
+msgstr "도구 이름 목록입니다."
+
+#: toolhub/apps/lists/serializers.py:112
+msgid "Update a list."
+msgstr "목록을 업데이트합니다."
+
+#: toolhub/apps/lists/validators.py:34
+#, python-format
+msgid "Duplicate values in list: %(duplicates)s"
+msgstr ""
+
+#: toolhub/apps/lists/validators.py:51
+#, python-format
+msgid "Unknown tool: %(names)s"
+msgid_plural "Unknown tools: %(names)s"
+msgstr[0] ""
+
+#: toolhub/apps/lists/views.py:45
+msgid "Create a new list of tools."
+msgstr "새 도구 목록을 만듭니다."
+
+#: toolhub/apps/lists/views.py:50
 msgid "Details of a specific list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:50
+#: toolhub/apps/lists/views.py:54
+msgid "Update a list of tools."
+msgstr "도구 목록을 업데이트합니다."
+
+#: toolhub/apps/lists/views.py:62
+msgid "Delete a list of tools."
+msgstr "도구 목록을 삭제합니다."
+
+#: toolhub/apps/lists/views.py:65
 msgid "List all lists of tools."
 msgstr ""
 
@@ -557,99 +592,91 @@ msgstr "추가, 치환, 테스트할 값입니다."
 msgid "JSON-Pointer to location within document to move or copy the value from."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:38
+#: toolhub/apps/toolinfo/serializers.py:39
 msgid "SPDX license information"
 msgstr "SPDX 라이선스 정보"
 
-#: toolhub/apps/toolinfo/serializers.py:46
+#: toolhub/apps/toolinfo/serializers.py:47
 msgid "SPDX license ID"
 msgstr "SPDX 라이선스 ID"
 
-#: toolhub/apps/toolinfo/serializers.py:51
+#: toolhub/apps/toolinfo/serializers.py:52
 msgid "Full name of this license"
 msgstr "이 라이선스의 정식 명칭"
 
-#: toolhub/apps/toolinfo/serializers.py:56
+#: toolhub/apps/toolinfo/serializers.py:57
 msgid "Is this license approved as 'open source' by the OSI?"
 msgstr "이 라이선스가 OSI에 의해 '오픈 소스'로 승인된 것입니까?"
 
-#: toolhub/apps/toolinfo/serializers.py:61
+#: toolhub/apps/toolinfo/serializers.py:62
 msgid "Is this license approved as 'free software' by the FSF?"
 msgstr "이 라이선스가 FSF에 의해 '자유 소프트웨어'로 승인된 것입니까?"
 
-#: toolhub/apps/toolinfo/serializers.py:66
+#: toolhub/apps/toolinfo/serializers.py:67
 msgid "Is this license considered to be outdated?"
 msgstr "이 라이선스의 기간이 만료된 것으로 간주됩니까?"
 
-#: toolhub/apps/toolinfo/serializers.py:70
+#: toolhub/apps/toolinfo/serializers.py:71
 msgid "Description of a tool"
 msgstr "도구 설명"
 
-#: toolhub/apps/toolinfo/serializers.py:120
+#: toolhub/apps/toolinfo/serializers.py:121
 msgid "Summary of a tool"
 msgstr "도구 요약"
 
-#: toolhub/apps/toolinfo/serializers.py:139
-msgid "Edit summary"
-msgstr "편집 요약"
-
-#: toolhub/apps/toolinfo/serializers.py:141
-msgid "Description of the changes you are making to this toolinfo record."
-msgstr ""
-
-#: toolhub/apps/toolinfo/serializers.py:153
+#: toolhub/apps/toolinfo/serializers.py:133
 msgid "Create a tool"
 msgstr "도구 만들기"
 
-#: toolhub/apps/toolinfo/serializers.py:219
+#: toolhub/apps/toolinfo/serializers.py:199
 msgid "Update a tool"
 msgstr "도구 업데이트"
 
-#: toolhub/apps/toolinfo/serializers.py:250
+#: toolhub/apps/toolinfo/serializers.py:230
 msgid "Tool revision."
 msgstr "도구 버전입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:256
+#: toolhub/apps/toolinfo/serializers.py:236
 msgid "A unique integer value identifying this revision."
 msgstr "이 판을 식별하는 고유 정수값입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:268
+#: toolhub/apps/toolinfo/serializers.py:248
 msgid "Comment by the user for the revision."
 msgstr "판에 대한 사용자의 의견입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:274 toolhub/apps/versioned/models.py:40
+#: toolhub/apps/toolinfo/serializers.py:254 toolhub/apps/versioned/models.py:40
 msgid "Has this revision been marked as hidden?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:280 toolhub/apps/versioned/models.py:45
+#: toolhub/apps/toolinfo/serializers.py:260 toolhub/apps/versioned/models.py:45
 msgid "Has this revision been reviewed by a patroller?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:294
+#: toolhub/apps/toolinfo/serializers.py:274
 msgid "username removed"
 msgstr "사용자 이름 삭제됨"
 
-#: toolhub/apps/toolinfo/serializers.py:295
+#: toolhub/apps/toolinfo/serializers.py:275
 msgid "edit summary removed"
 msgstr "편집 요약 삭제됨"
 
-#: toolhub/apps/toolinfo/serializers.py:312
+#: toolhub/apps/toolinfo/serializers.py:292
 msgid "Tool revision detail."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:337
+#: toolhub/apps/toolinfo/serializers.py:317
 msgid "Tool revision difference."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:342
+#: toolhub/apps/toolinfo/serializers.py:322
 msgid "Revision to apply changes to."
 msgstr "변경을 적용할 판입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:346
+#: toolhub/apps/toolinfo/serializers.py:326
 msgid "Revision after applying changes."
 msgstr "변경사항 적용 후의 판입니다."
 
-#: toolhub/apps/toolinfo/serializers.py:350
+#: toolhub/apps/toolinfo/serializers.py:330
 msgid "Comment describing an action."
 msgstr ""
 
@@ -758,21 +785,21 @@ msgstr ""
 msgid "Mark a revision as patrolled."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:306
+#: toolhub/apps/toolinfo/views.py:304
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:340
+#: toolhub/apps/toolinfo/views.py:338
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "%(first_id)s 판에서 %(last_id)s 판으로 편집 취소"
 
-#: toolhub/apps/toolinfo/views.py:434
+#: toolhub/apps/toolinfo/views.py:432
 msgid "Info for a specific SPDX license."
 msgstr "특정 SPDX 라이선스의 정보입니다."
 
-#: toolhub/apps/toolinfo/views.py:442
+#: toolhub/apps/toolinfo/views.py:440
 msgid "List all SPDX licenses."
 msgstr "모든 SPDX 라이선스를 나열합니다."
 
@@ -903,6 +930,14 @@ msgstr "JSON 스키마를 준수하는 유효한 값을 입력하십시오."
 #: toolhub/openapi.py:36
 msgid "API error"
 msgstr "API 오류"
+
+#: toolhub/serializers.py:111
+msgid "Edit summary"
+msgstr "편집 요약"
+
+#: toolhub/serializers.py:112
+msgid "Description of the changes you are making."
+msgstr ""
 
 #: toolhub/settings.py:376
 msgid "Read scope"

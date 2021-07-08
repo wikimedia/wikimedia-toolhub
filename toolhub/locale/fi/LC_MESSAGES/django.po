@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-01 11:51:46+0000\n"
-"X-POT-Import-Date: 2021-06-30 20:30:31+0000\n"
+"PO-Revision-Date: 2021-07-08 11:10:28+0000\n"
+"X-POT-Import-Date: 2021-07-06 06:18:40+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fi\n"
@@ -221,7 +221,7 @@ msgid "A link to a Wikimedia Commons file description page for an icon that depi
 msgstr ""
 
 #: toolhub/apps/lists/models.py:65
-msgid "If true, this list is a collection of the owning user's'favorite' tools."
+msgid "If true, this list is a collection of the owning user's 'favorite' tools."
 msgstr ""
 
 #: toolhub/apps/lists/models.py:71
@@ -236,19 +236,55 @@ msgstr ""
 msgid "Position of this tool in the list."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:31
+#: toolhub/apps/lists/serializers.py:34
 msgid "List of tools metadata."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:65
+#: toolhub/apps/lists/serializers.py:68
 msgid "List of tools with details."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:37
-msgid "Details of a specific list of tools."
+#: toolhub/apps/lists/serializers.py:78
+msgid "Create a list."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:86
+msgid "List of tool names."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:112
+msgid "Update a list."
+msgstr ""
+
+#: toolhub/apps/lists/validators.py:34
+#, python-format
+msgid "Duplicate values in list: %(duplicates)s"
+msgstr ""
+
+#: toolhub/apps/lists/validators.py:51
+#, python-format
+msgid "Unknown tool: %(names)s"
+msgid_plural "Unknown tools: %(names)s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: toolhub/apps/lists/views.py:45
+msgid "Create a new list of tools."
 msgstr ""
 
 #: toolhub/apps/lists/views.py:50
+msgid "Details of a specific list of tools."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:54
+msgid "Update a list of tools."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:62
+msgid "Delete a list of tools."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:65
 msgid "List all lists of tools."
 msgstr ""
 
@@ -559,99 +595,91 @@ msgstr ""
 msgid "JSON-Pointer to location within document to move or copy the value from."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:38
+#: toolhub/apps/toolinfo/serializers.py:39
 msgid "SPDX license information"
 msgstr "SPDX-lisenssitiedot"
 
-#: toolhub/apps/toolinfo/serializers.py:46
+#: toolhub/apps/toolinfo/serializers.py:47
 msgid "SPDX license ID"
 msgstr "Lisenssin SPDX-tunniste"
 
-#: toolhub/apps/toolinfo/serializers.py:51
+#: toolhub/apps/toolinfo/serializers.py:52
 msgid "Full name of this license"
 msgstr "Lienssin koko nimi"
 
-#: toolhub/apps/toolinfo/serializers.py:56
+#: toolhub/apps/toolinfo/serializers.py:57
 msgid "Is this license approved as 'open source' by the OSI?"
 msgstr "Onko OSI hyväksynyt tämän lisenssin avoimen lähdekoodin lisenssiksi?"
 
-#: toolhub/apps/toolinfo/serializers.py:61
+#: toolhub/apps/toolinfo/serializers.py:62
 msgid "Is this license approved as 'free software' by the FSF?"
 msgstr "Onko FSF hyväksynyt tämän lisenssin vapaan koodin lisenssiksi?"
 
-#: toolhub/apps/toolinfo/serializers.py:66
+#: toolhub/apps/toolinfo/serializers.py:67
 msgid "Is this license considered to be outdated?"
 msgstr "Pidetäänkö tätä lisenssiä vanhentuneena?"
 
-#: toolhub/apps/toolinfo/serializers.py:70
+#: toolhub/apps/toolinfo/serializers.py:71
 msgid "Description of a tool"
 msgstr "Työkalun kuvaus"
 
-#: toolhub/apps/toolinfo/serializers.py:120
+#: toolhub/apps/toolinfo/serializers.py:121
 msgid "Summary of a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:139
-msgid "Edit summary"
-msgstr "Muokkausyhteenveto"
-
-#: toolhub/apps/toolinfo/serializers.py:141
-msgid "Description of the changes you are making to this toolinfo record."
-msgstr "Kuvaus tekemistäsi muutoksista tähän työkalutietotietueeseen."
-
-#: toolhub/apps/toolinfo/serializers.py:153
+#: toolhub/apps/toolinfo/serializers.py:133
 msgid "Create a tool"
 msgstr "Luo työkalu"
 
-#: toolhub/apps/toolinfo/serializers.py:219
+#: toolhub/apps/toolinfo/serializers.py:199
 msgid "Update a tool"
 msgstr "Päivitä työkalu"
 
-#: toolhub/apps/toolinfo/serializers.py:250
+#: toolhub/apps/toolinfo/serializers.py:230
 msgid "Tool revision."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:256
+#: toolhub/apps/toolinfo/serializers.py:236
 msgid "A unique integer value identifying this revision."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:268
+#: toolhub/apps/toolinfo/serializers.py:248
 msgid "Comment by the user for the revision."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:274 toolhub/apps/versioned/models.py:40
+#: toolhub/apps/toolinfo/serializers.py:254 toolhub/apps/versioned/models.py:40
 msgid "Has this revision been marked as hidden?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:280 toolhub/apps/versioned/models.py:45
+#: toolhub/apps/toolinfo/serializers.py:260 toolhub/apps/versioned/models.py:45
 msgid "Has this revision been reviewed by a patroller?"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:294
+#: toolhub/apps/toolinfo/serializers.py:274
 msgid "username removed"
 msgstr "käyttäjänimi poistettu"
 
-#: toolhub/apps/toolinfo/serializers.py:295
+#: toolhub/apps/toolinfo/serializers.py:275
 msgid "edit summary removed"
 msgstr "muokkausyhteenveto poistettu"
 
-#: toolhub/apps/toolinfo/serializers.py:312
+#: toolhub/apps/toolinfo/serializers.py:292
 msgid "Tool revision detail."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:337
+#: toolhub/apps/toolinfo/serializers.py:317
 msgid "Tool revision difference."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:342
+#: toolhub/apps/toolinfo/serializers.py:322
 msgid "Revision to apply changes to."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:346
+#: toolhub/apps/toolinfo/serializers.py:326
 msgid "Revision after applying changes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:350
+#: toolhub/apps/toolinfo/serializers.py:330
 msgid "Comment describing an action."
 msgstr ""
 
@@ -760,21 +788,21 @@ msgstr ""
 msgid "Mark a revision as patrolled."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:306
+#: toolhub/apps/toolinfo/views.py:304
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:340
+#: toolhub/apps/toolinfo/views.py:338
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:434
+#: toolhub/apps/toolinfo/views.py:432
 msgid "Info for a specific SPDX license."
 msgstr "Tietyn SPDX-lisenssin tiedot."
 
-#: toolhub/apps/toolinfo/views.py:442
+#: toolhub/apps/toolinfo/views.py:440
 msgid "List all SPDX licenses."
 msgstr "Näytä kaikki SPDX-lisenssit."
 
@@ -905,6 +933,14 @@ msgstr ""
 #: toolhub/openapi.py:36
 msgid "API error"
 msgstr "API-virhe"
+
+#: toolhub/serializers.py:111
+msgid "Edit summary"
+msgstr "Muokkausyhteenveto"
+
+#: toolhub/serializers.py:112
+msgid "Description of the changes you are making."
+msgstr ""
 
 #: toolhub/settings.py:376
 msgid "Read scope"
