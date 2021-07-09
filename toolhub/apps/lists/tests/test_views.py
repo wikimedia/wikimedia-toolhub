@@ -47,6 +47,14 @@ class ToolListViewSetTest(TestCase):
             email="bdavis+dunicorn@wikimedia.org",
             password="unused",
         )
+        cls.administrator = ToolhubUser.objects.create_user(  # nosec: B106
+            username="Administrator",
+            email="administrator@example.org",
+            password="unused",
+        )
+        Group.objects.get(name="Administrators").user_set.add(
+            cls.administrator
+        )
 
         with open(os.path.join(TEST_DIR, "toolinfo_fixture.json")) as fixture:
             cls.toolinfo = json.load(fixture)
@@ -220,6 +228,7 @@ class ToolListViewSetTest(TestCase):
         """Ensure that unpublished lists are not shown to non-owners."""
         self.list.published = False
         self.list.save()
+
         client = APIClient()
         client.force_authenticate(user=None)
         url = "/api/lists/{id}/".format(
@@ -227,6 +236,85 @@ class ToolListViewSetTest(TestCase):
         )
         response = client.get(url)
         self.assertEqual(response.status_code, 404)
+
+    def test_feature_requires_auth(self):
+        """Assert that feature fails for anon."""
+        client = APIClient()
+        client.force_authenticate(user=None)
+        url = "/api/lists/{id}/feature/".format(
+            id=self.list.pk,
+        )
+        payload = {"message": "test feature"}
+        response = client.patch(url, payload, format="json")
+        self.assertEqual(response.status_code, 401)
+
+    def test_feature_requires_advanced_rights(self):
+        """Assert that feature fails for normal user."""
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/lists/{id}/feature/".format(
+            id=self.list.pk,
+        )
+        payload = {"message": "test feature"}
+        response = client.patch(url, payload, format="json")
+        self.assertEqual(response.status_code, 403)
+
+    def test_feature(self):
+        """Test marking a list as featured."""
+        client = APIClient()
+        client.force_authenticate(user=self.administrator)
+        url = "/api/lists/{id}/feature/".format(
+            id=self.list.pk,
+        )
+        payload = {"message": "test feature"}
+        response = client.patch(url, payload, format="json")
+        self.assertEqual(response.status_code, 204)
+
+    def test_unfeature_requires_auth(self):
+        """Assert that unfeature fails for anon."""
+        self.list.featured = True
+        self.list.save()
+
+        client = APIClient()
+        client.force_authenticate(user=None)
+        url = "/api/lists/{id}/unfeature/".format(
+            id=self.list.pk,
+        )
+        payload = {"message": "test unfeature"}
+        response = client.patch(url, payload, format="json")
+        self.assertEqual(response.status_code, 401)
+
+    def set_list_featured(self):
+        """Set the state of our list to featured."""
+        obj = models.ToolList.objects.get(pk=self.list.pk)
+        obj.featured = True
+        obj.save()
+
+    def test_unfeature_requires_advanced_rights(self):
+        """Assert that unfeature fails for normal user."""
+        self.set_list_featured()
+
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/lists/{id}/unfeature/".format(
+            id=self.list.pk,
+        )
+        payload = {"message": "test unfeature"}
+        response = client.patch(url, payload, format="json")
+        self.assertEqual(response.status_code, 403)
+
+    def test_unfeature(self):
+        """Test marking a list as unfeatured."""
+        self.set_list_featured()
+
+        client = APIClient()
+        client.force_authenticate(user=self.administrator)
+        url = "/api/lists/{id}/unfeature/".format(
+            id=self.list.pk,
+        )
+        payload = {"message": "test unfeature"}
+        response = client.patch(url, payload, format="json")
+        self.assertEqual(response.status_code, 204)
 
 
 class ToolListRevisionViewSetTest(TestCase):

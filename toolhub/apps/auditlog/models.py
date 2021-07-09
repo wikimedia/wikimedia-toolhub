@@ -85,6 +85,8 @@ class LogEntry(models.Model):
     HIDE = 5
     REVEAL = 6
     PATROL = 7
+    FEATURE = 8
+    UNFEATURE = 9
 
     ACTION_CHOICES = (
         (CREATE, _("created")),
@@ -95,6 +97,8 @@ class LogEntry(models.Model):
         (HIDE, _("hid")),
         (REVEAL, _("revealed")),
         (PATROL, _("patrolled")),
+        (FEATURE, _("featured")),
+        (UNFEATURE, _("unfeatured")),
     )
 
     timestamp = models.DateTimeField(

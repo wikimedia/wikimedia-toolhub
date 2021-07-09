@@ -15,8 +15,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-import logging
-
 from django.db import transaction
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
@@ -53,9 +51,6 @@ from .serializers import ToolListRevisionDetailSerializer
 from .serializers import ToolListRevisionDiffSerializer
 from .serializers import ToolListRevisionSerializer
 from .serializers import ToolListSerializer
-
-
-logger = logging.getLogger(__name__)
 
 
 @extend_schema_view(
@@ -101,6 +96,9 @@ class ToolListViewSet(viewsets.ModelViewSet):
         if not user.is_authenticated:
             user = None
         qs = ToolList.objects.filter(favorites=False)
+        if self.action in ["feature", "unfeature"]:
+            featured_state = self.action == "unfeature"
+            return qs.filter(published=True, featured=featured_state)
         if self.request.method not in permissions.SAFE_METHODS:
             return qs.filter(created_by=user)
         qs = qs.filter(Q(published=True) | Q(created_by=user))
@@ -111,6 +109,62 @@ class ToolListViewSet(viewsets.ModelViewSet):
         if self.action in ["create", "update"]:
             return EditToolListSerializer
         return ToolListSerializer
+
+    @extend_schema(
+        description=_("""Mark a list as featured."""),
+        request=CommentSerializer,
+        responses={204: None},
+    )
+    @action(
+        detail=True,
+        methods=["PATCH"],
+        url_path=r"feature",
+        permission_classes=[
+            CustomModelPermission("lists", "toollist", "feature"),
+        ],
+    )
+    def feature(self, request, **kwargs):  # noqa: W0613
+        """Mark a list as featured."""
+        instance = self.get_object()
+        comment = request.data.get("comment", None)
+        with transaction.atomic():
+            instance.featured = True
+            instance.save()
+            LogEntry.objects.log_action(
+                request.user,
+                instance,
+                LogEntry.FEATURE,
+                comment,
+            )
+        return response.Response(status=status.HTTP_204_NO_CONTENT)
+
+    @extend_schema(
+        description=_("""Remove featured flag from a list."""),
+        request=CommentSerializer,
+        responses={204: None},
+    )
+    @action(
+        detail=True,
+        methods=["PATCH"],
+        url_path=r"unfeature",
+        permission_classes=[
+            CustomModelPermission("lists", "toollist", "feature"),
+        ],
+    )
+    def unfeature(self, request, **kwargs):  # noqa: W0613
+        """Remove featured flag from a list."""
+        instance = self.get_object()
+        comment = request.data.get("comment", None)
+        with transaction.atomic():
+            instance.featured = False
+            instance.save()
+            LogEntry.objects.log_action(
+                request.user,
+                instance,
+                LogEntry.UNFEATURE,
+                comment,
+            )
+        return response.Response(status=status.HTTP_204_NO_CONTENT)
 
 
 path_param_list_pk = OpenApiParameter(

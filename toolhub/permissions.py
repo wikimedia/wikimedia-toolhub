@@ -45,7 +45,7 @@ class CustomModelPermission(permissions.BasePermission):
 
     def __init__(self, app_label, model_name, permission):
         """Initialize object."""
-        self._perms = ["{}.{}_{}".format(app_label, permission, model_name)]
+        self._perm = "{}.{}_{}".format(app_label, permission, model_name)
 
     def __call__(self):
         """Act like a callable so that DRF's plumbing works."""
@@ -53,7 +53,23 @@ class CustomModelPermission(permissions.BasePermission):
 
     def has_permission(self, request, view):
         """Check permission."""
-        return request.user.has_perms(self._perms)
+        return rules.permissions.has_perm(self._perm, request.user)
+
+    def has_object_permission(self, request, view, obj):
+        """Check object permission."""
+        return rules.permissions.has_perm(self._perm, request.user, obj)
+
+    def __repr__(self):
+        """Object repr."""
+        return "<{}:{} object at {}>".format(
+            type(self).__name__,
+            str(self),
+            hex(id(self)),
+        )
+
+    def __str__(self):
+        """String repr."""
+        return ", ".join(self._perms)
 
 
 @rules.predicate
@@ -152,6 +168,7 @@ MODEL_PERMISSIONS = {
             "change": is_obj_creator_or_admin,
             "delete": is_obj_creator_or_admin,
             "view": rules.always_allow,
+            "feature": is_administrator,
         },
     },
     "oauth2_provider": {  # https://github.com/jazzband/django-oauth-toolkit

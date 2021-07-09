@@ -42,12 +42,12 @@ class CASLForUserTest(TestCase):
             password="unused",
         )
         Group.objects.get(name="Administrators").user_set.add(cls.admin)
-        cls.crat = ToolhubUser.objects.create_user(  # nosec: B106
+        cls.bureaucrat = ToolhubUser.objects.create_user(  # nosec: B106
             username="Bureaucrat",
             email="crat@example.org",
             password="unused",
         )
-        Group.objects.get(name="Bureaucrats").user_set.add(cls.crat)
+        Group.objects.get(name="Bureaucrats").user_set.add(cls.bureaucrat)
         cls.oversighter = ToolhubUser.objects.create_user(  # nosec: B106
             username="Oversighter",
             email="oversighter@example.org",
@@ -61,6 +61,31 @@ class CASLForUserTest(TestCase):
         )
         Group.objects.get(name="Patrollers").user_set.add(cls.patroller)
 
+    def assertRuleViewUnsuppressed(self, rule):
+        """Assert that the rule allows viewing if suppressed=False."""
+        self.assertEqual(rule["subject"], "reversion/version")
+        self.assertEqual(rule["action"], "view")
+        self.assertIn("conditions", rule)
+        conds = rule["conditions"]
+        self.assertEqual(len(conds), 1)
+        self.assertEqual(conds["suppressed"], False)
+
+    def assertRuleChangeDelete(self, rule, user_id):
+        """Assert that the rule allows based on user id."""
+        self.assertIn(rule["action"], ["change", "delete"])
+        self.assertIn("conditions", rule)
+        conds = rule["conditions"]
+        self.assertTrue(len(conds) > 0)
+        if "origin" in conds:
+            # All toolinfo edit/delete actions are restricted to orgin=api
+            self.assertEqual(rule["subject"], "toolinfo/tool")
+            self.assertEqual(conds["origin"], "api")
+            conds.pop("origin")
+        self.assertEqual(len(conds), 1)
+        # The name of the condition varies by predicate, but it will
+        # always check for a value == the user's id
+        self.assertEqual(conds.popitem()[1], user_id)
+
     def test_anon(self):
         """Anon user should get boring permissions."""
         rules = permissions.casl_for_user(self.anon)
@@ -73,20 +98,13 @@ class CASLForUserTest(TestCase):
         for rule in rules:
             self.assertIn("subject", rule)
             self.assertIn("action", rule)
+            subject = rule["subject"]
             action = rule["action"]
             self.assertIn(action, ["view", "add", "change", "delete"])
-            if action in ["change", "delete"]:
-                self.assertIn("conditions", rule)
-                conds = rule["conditions"]
-                self.assertTrue(len(conds) > 0)
-                if "origin" in conds:
-                    self.assertEqual(rule["subject"], "toolinfo/tool")
-                    self.assertEqual(conds["origin"], "api")
-                    conds.pop("origin")
-                self.assertEqual(len(conds), 1)
-                # The name of the condition varies by predicate, but it will
-                # always check for a value == the user's id
-                self.assertEqual(conds.popitem()[1], self.user.id)
+            if action == "view" and subject == "reversion/version":
+                self.assertRuleViewUnsuppressed(rule)
+            elif action in ["change", "delete"]:
+                self.assertRuleChangeDelete(rule, self.user.id)
 
     def test_admin(self):
         """An Administrator can do it all."""
@@ -94,14 +112,14 @@ class CASLForUserTest(TestCase):
         for rule in rules:
             self.assertIn("subject", rule)
             self.assertIn("action", rule)
+            subject = rule["subject"]
             action = rule["action"]
             self.assertIn(
-                action, ["view", "add", "change", "delete", "patrol"]
+                action,
+                ["view", "add", "change", "delete", "patrol", "feature"],
             )
-            if rule["subject"] == "toolinfo/tool" and action in [
-                "change",
-                "delete",
-            ]:
+            if subject == "toolinfo/tool" and action in ["change", "delete"]:
+                # Even admins cannot edit non-api origin toolinfo records
                 self.assertIn("conditions", rule)
                 conds = rule["conditions"]
                 self.assertEqual(conds["origin"], "api")
@@ -110,5 +128,60 @@ class CASLForUserTest(TestCase):
             else:
                 self.assertNotIn("conditions", rule)
 
-    # TODO: add tests for oversighter and patroller once they have some
-    # special roles in the system
+    def test_bureaucrat(self):
+        """Verify bureaucrat perms."""
+        rules = permissions.casl_for_user(self.bureaucrat)
+        for rule in rules:
+            self.assertIn("subject", rule)
+            self.assertIn("action", rule)
+            subject = rule["subject"]
+            action = rule["action"]
+            self.assertIn(action, ["view", "add", "change", "delete"])
+            if action == "view" and subject == "reversion/version":
+                self.assertRuleViewUnsuppressed(rule)
+            elif action in ["change", "delete"]:
+                if subject == "auth/group":
+                    # Bureaucrats get unconditional ability to edit groups
+                    self.assertNotIn("conditions", rule)
+                else:
+                    self.assertRuleChangeDelete(rule, self.bureaucrat.id)
+
+    def test_oversighter(self):
+        """Verify oversighter perms."""
+        rules = permissions.casl_for_user(self.oversighter)
+        for rule in rules:
+            self.assertIn("subject", rule)
+            self.assertIn("action", rule)
+            subject = rule["subject"]
+            action = rule["action"]
+            self.assertIn(action, ["view", "add", "change", "delete"])
+            if action == "view" and subject == "reversion/version":
+                # Oversighters get unconditional ability to view
+                # reversion/version instances.
+                self.assertNotIn("conditions", rule)
+            elif action in ["change", "delete"]:
+                if subject == "reversion/version":
+                    # Oversighters get unconditional ability to change and
+                    # delete reversion/version instances.
+                    self.assertNotIn("conditions", rule)
+                else:
+                    self.assertRuleChangeDelete(rule, self.oversighter.id)
+
+    def test_patroller(self):
+        """Verify patroller perms."""
+        rules = permissions.casl_for_user(self.patroller)
+        for rule in rules:
+            self.assertIn("subject", rule)
+            self.assertIn("action", rule)
+            subject = rule["subject"]
+            action = rule["action"]
+            self.assertIn(
+                action, ["view", "add", "change", "delete", "patrol"]
+            )
+            if action == "view" and subject == "reversion/version":
+                self.assertRuleViewUnsuppressed(rule)
+            elif action in ["change", "delete"]:
+                self.assertRuleChangeDelete(rule, self.patroller.id)
+            elif action == "patrol":
+                self.assertEqual(subject, "reversion/version")
+                self.assertNotIn("conditions", rule)
