@@ -1040,10 +1040,30 @@ msgstr ""
 msgid "Toolhub API"
 msgstr ""
 
+#: vue/serializers.py:26
+msgid "Information used on the Toolhub Home view."
+msgstr ""
+
+#: vue/serializers.py:32
+msgid "Count of tools known to Toolhub."
+msgstr ""
+
+#: vue/serializers.py:36
+msgid "Date and time of most recent crawler run."
+msgstr ""
+
+#: vue/serializers.py:41
+msgid "Number of tools added or updated in the most recent crawler run."
+msgstr ""
+
 #: vue/templates/vue/base.html:20
 msgid "Toolhub's user interface requires JavaScript to be enabled."
 msgstr ""
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
+msgstr ""
+
+#: vue/views.py:41
+msgid "Get information used on the Toolhub Home view."
 msgstr ""
