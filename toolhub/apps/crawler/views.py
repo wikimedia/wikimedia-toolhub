@@ -110,7 +110,9 @@ class UrlViewSet(viewsets.ModelViewSet):
 class RunViewSet(viewsets.ReadOnlyModelViewSet):
     """Crawler runs."""
 
-    queryset = Run.objects.all().annotate(crawled_urls=Count("urls"))
+    queryset = Run.objects.exclude(end_date__isnull=True).annotate(
+        crawled_urls=Count("urls")
+    )
     serializer_class = RunSerializer
     permission_classes = [ObjectPermissionsOrAnonReadOnly]
     filterset_fields = {
