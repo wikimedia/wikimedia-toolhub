@@ -37,6 +37,10 @@ export default {
 					return 'mdi-eye-outline';
 				case 'patrolled':
 					return 'mdi-eye-check-outline';
+				case 'featured':
+					return 'mdi-star-plus-outline';
+				case 'unfeatured':
+					return 'mdi-star-remove-outline';
 				default:
 					return 'mdi-crosshairs-question';
 			}

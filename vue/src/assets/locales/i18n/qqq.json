@@ -37,6 +37,8 @@
 	"auditlog-entry-tool-updated": "Log entry. Parameters:\n* $1 - User who performed the action (usually linked to the user page)\n* $2 - Tool name (linked to tool details)",
 	"auditlog-entry-toollist-created": "Log entry. Parameters:\n* $1 - User who performed the action (usually linked to the user page)\n* $2 - List title (linked to list details)",
 	"auditlog-entry-toollist-deleted": "Log entry. Parameters:\n* $1 - User who performed the action (usually linked to the user page)\n* $2 - List title (linked to list details)",
+	"auditlog-entry-toollist-featured": "Log entry. Parameters:\n* $1 - User who performed the action (usually linked to the user page)\n* $2 - List title (linked to list details)",
+	"auditlog-entry-toollist-unfeatured": "Log entry. Parameters:\n* $1 - User who performed the action (usually linked to the user page)\n* $2 - List title (linked to list details)",
 	"auditlog-entry-toollist-updated": "Log entry. Parameters:\n* $1 - User who performed the action (usually linked to the user page)\n* $2 - List title (linked to list details)",
 	"auditlog-entry-url-created": "Log entry. Parameters:\n* $1 - User who performed the action (usually linked to the user page)\n* $2 - URL (linked to URL)",
 	"auditlog-entry-url-deleted": "Log entry. Parameters:\n* $1 - User who performed the action (usually linked to the user page)\n* $2 - URL (linked to URL)",

@@ -31,6 +31,8 @@
 	"auditlog-entry-tool-updated": "$1 updated the tool $2",
 	"auditlog-entry-toollist-created": "$1 created the list $2",
 	"auditlog-entry-toollist-deleted": "$1 deleted the list $2",
+	"auditlog-entry-toollist-featured": "$1 marked the list $2 as featured",
+	"auditlog-entry-toollist-unfeatured": "$1 unmarked the list $2 as featured",
 	"auditlog-entry-toollist-updated": "$1 updated the list $2",
 	"auditlog-entry-url-created": "$1 created the url $2",
 	"auditlog-entry-url-deleted": "$1 deleted the url $2",
