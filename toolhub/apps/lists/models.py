@@ -117,7 +117,20 @@ class ToolList(SafeDeleteModel):
     class Meta:
         """Configure model."""
 
+        constraints = [
+            models.UniqueConstraint(
+                fields=["created_by"],
+                condition=models.Q(favorites=True),
+                name="unique_favorites_user",
+            ),
+        ]
         verbose_name = "toollist"
+
+        # Do not generate auditlog entries when the instance represents a list
+        # of user's favorites.
+        toolhub_auditlog_exclude = {
+            "favorites": True,
+        }
 
     def __str__(self):
         """Str repr"""
@@ -129,7 +142,21 @@ class ToolList(SafeDeleteModel):
         return self.title
 
 
-@reversion.register()
+class ToolListItemManager(models.Manager):
+    """Custom manager for ToolListItem models."""
+
+    def get_user_favorites(self, user):
+        """Get the user's favorites list."""
+        favorites, _ = ToolList.objects.get_or_create(
+            created_by=user,
+            favorites=True,
+            defaults={
+                "title": "Favorites",
+            },
+        )
+        return favorites
+
+
 class ToolListItem(models.Model):
     """Many-to-many tracking of Tool models contained by a ToolList."""
 
@@ -150,9 +177,17 @@ class ToolListItem(models.Model):
         auto_now_add=True, editable=False, db_index=True
     )
 
+    objects = ToolListItemManager()
+
     class Meta:
         """Model config"""
 
+        constraints = [
+            models.UniqueConstraint(
+                fields=["toollist", "tool"],
+                name="unique_item",
+            ),
+        ]
         ordering = (
             "order",
             "added_date",

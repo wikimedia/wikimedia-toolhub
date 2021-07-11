@@ -60,6 +60,7 @@ root.register(
 root.register("spdx", toolinfo_views.SpdxViewSet, basename="spdx")
 root.register("tools", toolinfo_views.ToolViewSet, basename="tool")
 root.register("users", user_views.UserViewSet)
+root.register("user/favorites", lists_views.FavoritesViewSet)
 
 crawler_runs = nested_routers.NestedSimpleRouter(
     root,

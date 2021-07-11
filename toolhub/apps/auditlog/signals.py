@@ -17,6 +17,7 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth import get_user_model
 from django.db.models import Model
+from django.db.models import options
 from django.db.models.signals import m2m_changed
 from django.db.models.signals import post_delete
 from django.db.models.signals import post_save
@@ -28,8 +29,30 @@ from safedelete.signals import post_softdelete
 from .models import LogEntry
 
 
+# Allow models to add a "toolhub_auditlog_exclude" value to their Meta. See
+# `exclude_instance_from_auditlogging` for more information.
+options.DEFAULT_NAMES += ("toolhub_auditlog_exclude",)
+
+
+def exclude_instance_from_auditlogging(instance):
+    """Should this instance be excluded from logging?
+
+    Models can declare conditions under which changes should *not* be logged
+    by providing a dict of field:value pairs as the `auditlog_exclude`
+    attribute of the model's Meta class.
+    """
+    excludes = getattr(instance._meta, "toolhub_auditlog_exclude", {})
+    for field, value in excludes.items():
+        if getattr(instance, field) == value:
+            return True
+    return False
+
+
 def log_create_callback(sender, instance, created, **kwargs):  # noqa: W0613
     """Handle an instance creation signal."""
+    if exclude_instance_from_auditlogging(instance):
+        return
+
     if created:
         LogEntry.objects.log_action(
             user=None,
@@ -40,6 +63,9 @@ def log_create_callback(sender, instance, created, **kwargs):  # noqa: W0613
 
 def log_update_callback(sender, instance, **kwargs):  # noqa: W0613
     """Handle an instance update signal."""
+    if exclude_instance_from_auditlogging(instance):
+        return
+
     if instance.pk is not None:
         if isinstance(instance, get_user_model()):
             # Ignore updates to user models.
@@ -59,6 +85,9 @@ def log_update_callback(sender, instance, **kwargs):  # noqa: W0613
 
 def log_delete_callback(sender, instance, **kwargs):  # noqa: W0613
     """Handle an instance deletion signal."""
+    if exclude_instance_from_auditlogging(instance):
+        return
+
     if instance.pk is not None:
         LogEntry.objects.log_action(
             user=None,

@@ -37,6 +37,7 @@ from toolhub.serializers import ModelSerializer
 
 from .models import ToolList
 from .models import ToolListItem
+from .validators import validate_favorites_unique
 from .validators import validate_tools_exist
 from .validators import validate_unique_list
 
@@ -265,3 +266,42 @@ class ToolListRevisionDiffSerializer(serializers.Serializer):
     result = ToolListRevisionSerializer(
         help_text=_("Revision after applying changes."),
     )
+
+
+@doc(_("""Favorites list item."""))
+class FavoritesItemSerializer(ModelSerializer):
+    """Favorites list item."""
+
+    tool = SummaryToolSerializer(many=False)
+
+    class Meta:
+        """Configure serializer."""
+
+        model = ToolListItem
+        fields = [
+            "tool",
+        ]
+
+
+@doc(_("""Add a favorite tool."""))  # noqa: W0223
+class AddFavoriteSerializer(serializers.Serializer):
+    """Add a favorite tool."""
+
+    name = serializers.CharField(
+        help_text=_("""Tool name."""),
+        validators=[
+            validate_tools_exist,
+            validate_favorites_unique,
+        ],
+    )
+
+    def create(self, validated_data):
+        """Create a new tool list."""
+        name = validated_data.pop("name")
+        validated_data["tool"] = Tool.objects.get(name=name)
+        return ToolListItem.objects.create(**validated_data)
+
+    def to_representation(self, instance):
+        """Proxy to FavoritesItemSerializer for output."""
+        serializer = FavoritesItemSerializer(instance)
+        return serializer.data

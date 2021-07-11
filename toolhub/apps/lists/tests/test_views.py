@@ -700,3 +700,165 @@ class ToolListRevisionViewSetTest(TestCase):
         )
         response = client.patch(url)
         self.assertEqual(response.status_code, 404)
+
+
+class FavoritesViewSetTest(TestCase):
+    """Test FavoritesViewSet."""
+
+    @classmethod
+    def setUpTestData(cls):
+        """Setup for all tests in this TestCase."""
+        cls.user = ToolhubUser.objects.create_user(  # nosec: B106
+            username="Demo Unicorn",
+            email="bdavis+dunicorn@wikimedia.org",
+            password="unused",
+        )
+
+        with open(os.path.join(TEST_DIR, "toolinfo_fixture.json")) as fixture:
+            cls.toolinfo = json.load(fixture)
+
+        cls.tool, _, _ = Tool.objects.from_toolinfo(
+            cls.toolinfo, cls.user, Tool.ORIGIN_API
+        )
+
+    def test_list_requires_auth(self):
+        """Assert that anons get a 401 when calling."""
+        client = APIClient()
+        client.force_authenticate(user=None)
+        url = "/api/user/favorites/"
+        response = client.get(url)
+        self.assertEqual(response.status_code, 401)
+
+    def test_list(self):
+        """Test list action."""
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/user/favorites/"
+        response = client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("results", response.data)
+        self.assertEqual(len(response.data["results"]), 0)
+
+    def test_create_requires_auth(self):
+        """Assert that anons get a 401 when calling."""
+        client = APIClient()
+        client.force_authenticate(user=None)
+        url = "/api/user/favorites/"
+        payload = {
+            "name": self.tool.name,
+        }
+        response = client.post(url, payload, format="json")
+        self.assertEqual(response.status_code, 401)
+
+    def test_create(self):
+        """Test create action."""
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/user/favorites/"
+        payload = {
+            "name": self.tool.name,
+        }
+        response = client.post(url, payload, format="json")
+        self.assertEqual(response.status_code, 201)
+        self.assertIn("tool", response.data)
+        self.assertIn("name", response.data["tool"])
+        self.assertEqual(response.data["tool"]["name"], self.tool.name)
+
+    def test_create_rejects_duplicates(self):
+        """Test create action."""
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/user/favorites/"
+        payload = {
+            "name": self.tool.name,
+        }
+        response = client.post(url, payload, format="json")
+        self.assertEqual(response.status_code, 201)
+
+        response = client.post(url, payload, format="json")
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("errors", response.data)
+        self.assertEqual("name", response.data["errors"][0]["field"])
+
+    def test_retrieve_requires_auth(self):
+        """Assert that anons get a 401 when calling."""
+        client = APIClient()
+        client.force_authenticate(user=None)
+        url = "/api/user/favorites/{name}/".format(
+            name=self.tool.name,
+        )
+        response = client.get(url)
+        self.assertEqual(response.status_code, 401)
+
+    def test_retrieve_404(self):
+        """Assert that a 404 is returned when a tool is not on the list."""
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/user/favorites/{name}/".format(
+            name=self.tool.name,
+        )
+        response = client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_retrieve(self):
+        """Test retrieve action."""
+        toollist = models.ToolListItem.objects.get_user_favorites(self.user)
+        item = models.ToolListItem.objects.create(
+            toollist=toollist,
+            tool=self.tool,
+            order=0,
+            added_by=self.user,
+        )
+        self.assertEqual(item.toollist, toollist)
+        self.assertEqual(item.tool, self.tool)
+
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/user/favorites/{name}/".format(
+            name=self.tool.name,
+        )
+        response = client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("tool", response.data)
+        self.assertIn("name", response.data["tool"])
+        self.assertEqual(response.data["tool"]["name"], self.tool.name)
+
+    def test_delete_requires_auth(self):
+        """Assert that anons get a 401 when calling."""
+        client = APIClient()
+        client.force_authenticate(user=None)
+        url = "/api/user/favorites/{name}/".format(
+            name=self.tool.name,
+        )
+        response = client.delete(url)
+        self.assertEqual(response.status_code, 401)
+
+    def test_delete_404(self):
+        """Assert that a 404 is returned when a tool is not on the list."""
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/user/favorites/{name}/".format(
+            name=self.tool.name,
+        )
+        response = client.delete(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_delete(self):
+        """Test the delete action."""
+        toollist = models.ToolListItem.objects.get_user_favorites(self.user)
+        item = models.ToolListItem.objects.create(
+            toollist=toollist,
+            tool=self.tool,
+            order=0,
+            added_by=self.user,
+        )
+        self.assertEqual(item.toollist, toollist)
+        self.assertEqual(item.tool, self.tool)
+
+        client = APIClient()
+        client.force_authenticate(user=self.user)
+        url = "/api/user/favorites/{name}/".format(
+            name=self.tool.name,
+        )
+        response = client.delete(url)
+        self.assertEqual(response.status_code, 204)

@@ -45,7 +45,10 @@ from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 from toolhub.serializers import CommentSerializer
 
 from .models import ToolList
+from .models import ToolListItem
+from .serializers import AddFavoriteSerializer
 from .serializers import EditToolListSerializer
+from .serializers import FavoritesItemSerializer
 from .serializers import ToolListHistoricVersionSerializer
 from .serializers import ToolListRevisionDetailSerializer
 from .serializers import ToolListRevisionDiffSerializer
@@ -480,3 +483,57 @@ class ToolListRevisionViewSet(viewsets.ReadOnlyModelViewSet):
                 },
             )
         return response.Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@extend_schema_view(
+    create=extend_schema(
+        description=_("""Add a tool to favorites."""),
+        request=AddFavoriteSerializer,
+        responses=FavoritesItemSerializer,
+    ),
+    retrieve=extend_schema(
+        description=_("""Check to see if a tool is in favorites."""),
+        request=None,
+        responses=FavoritesItemSerializer,
+    ),
+    destroy=extend_schema(
+        description=_("""Remove a tool from favorites."""),
+        request=None,
+        responses={204: None},
+    ),
+    list=extend_schema(
+        description=_("""Personal favorites."""),
+        responses=FavoritesItemSerializer,
+    ),
+    partial_update=extend_schema(exclude=True),
+    update=extend_schema(exclude=True),
+)
+class FavoritesViewSet(viewsets.ModelViewSet):
+    """Personal favorites."""
+
+    queryset = ToolListItem.objects.none()
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = "tool__name"
+    lookup_url_kwarg = "tool_name"
+
+    def get_queryset(self):
+        """Get the current user's favorites."""
+        user = self.request.user
+        favorites = ToolListItem.objects.get_user_favorites(user)
+        qs = ToolListItem.objects.select_related("tool")
+        return qs.filter(toollist=favorites.pk)
+
+    def get_serializer_class(self):
+        """Use different serializers for input vs output."""
+        if self.action == "create":
+            return AddFavoriteSerializer
+        return FavoritesItemSerializer
+
+    def perform_create(self, serializer):
+        """Add a tool to this user's favorites."""
+        user = self.request.user
+        serializer.save(
+            toollist=ToolListItem.objects.get_user_favorites(user),
+            order=0,
+            added_by=user,
+        )

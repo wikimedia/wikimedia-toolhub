@@ -23,6 +23,8 @@ from django.utils.translation import ngettext_lazy
 
 from toolhub.apps.toolinfo.models import Tool
 
+from .models import ToolListItem
+
 
 def validate_unique_list(value):
     """Ensure that the given list has no duplicates."""
@@ -39,6 +41,8 @@ def validate_unique_list(value):
 
 def validate_tools_exist(value):
     """Ensure that the provided data is a list of current tool names."""
+    if type(value) is str:
+        value = [value]
     names = set(value)
     found = {
         tool["name"]
@@ -55,3 +59,23 @@ def validate_tools_exist(value):
             code="unknown_tool",
             params={"names": ", ".join(bad)},
         )
+
+
+def validate_favorites_unique(name, ctx):
+    """Ensure that the provided data is not already a favorite tool."""
+    user = ctx.context["request"].user
+    favorites = ToolListItem.objects.get_user_favorites(user)
+    try:
+        ToolListItem.objects.get(toollist=favorites, tool__name=name)
+    except ToolListItem.DoesNotExist:
+        # Happy path
+        return
+    raise ValidationError(
+        _("""Tool %(name)s is already favorited."""),
+        code="duplicate_favorite",
+        params={"name": name},
+    )
+
+
+# Mark validate_favorites_unique as needing context to be passed by the caller
+validate_favorites_unique.requires_context = True
