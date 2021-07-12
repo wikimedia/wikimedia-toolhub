@@ -3,14 +3,15 @@
 #
 # Author: Gomoko
 # Author: JenyxGym
+# Author: Raphoraph
 # Author: Thibaut120094
 # Author: Verdy p
 # Author: Wladek92
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-08 11:10:29+0000\n"
-"X-POT-Import-Date: 2021-07-06 06:18:40+0000\n"
+"PO-Revision-Date: 2021-07-12 11:09:52+0000\n"
+"X-POT-Import-Date: 2021-07-09 22:30:30+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
@@ -21,67 +22,75 @@ msgstr ""
 msgid "Audit log"
 msgstr "Journal d’audit"
 
-#: toolhub/apps/auditlog/models.py:90
+#: toolhub/apps/auditlog/models.py:92
 msgid "created"
 msgstr "créé"
 
-#: toolhub/apps/auditlog/models.py:91
+#: toolhub/apps/auditlog/models.py:93
 msgid "updated"
 msgstr "mis à jour"
 
-#: toolhub/apps/auditlog/models.py:92
+#: toolhub/apps/auditlog/models.py:94
 msgid "deleted"
 msgstr "supprimé"
 
-#: toolhub/apps/auditlog/models.py:93
+#: toolhub/apps/auditlog/models.py:95
 msgid "added to"
 msgstr "ajouté à"
 
-#: toolhub/apps/auditlog/models.py:94
+#: toolhub/apps/auditlog/models.py:96
 msgid "removed from"
 msgstr "supprimé de"
 
-#: toolhub/apps/auditlog/models.py:95
+#: toolhub/apps/auditlog/models.py:97
 msgid "hid"
 msgstr "Caché"
 
-#: toolhub/apps/auditlog/models.py:96
+#: toolhub/apps/auditlog/models.py:98
 msgid "revealed"
 msgstr "révélé"
 
-#: toolhub/apps/auditlog/models.py:97
+#: toolhub/apps/auditlog/models.py:99
 msgid "patrolled"
 msgstr "patrouillé"
 
-#: toolhub/apps/auditlog/models.py:102
+#: toolhub/apps/auditlog/models.py:100
+msgid "featured"
+msgstr "mis en avant"
+
+#: toolhub/apps/auditlog/models.py:101
+msgid "unfeatured"
+msgstr "non mis en avant"
+
+#: toolhub/apps/auditlog/models.py:106
 msgid "timestamp"
 msgstr "horodatage"
 
-#: toolhub/apps/auditlog/models.py:110
+#: toolhub/apps/auditlog/models.py:114
 msgid "user"
 msgstr "utilisateur"
 
-#: toolhub/apps/auditlog/models.py:118
+#: toolhub/apps/auditlog/models.py:122
 msgid "content type"
 msgstr "type de contenu"
 
-#: toolhub/apps/auditlog/models.py:124
+#: toolhub/apps/auditlog/models.py:128
 msgid "object id"
 msgstr "ID d’objet"
 
-#: toolhub/apps/auditlog/models.py:131
+#: toolhub/apps/auditlog/models.py:135
 msgid "object pk"
 msgstr "PK d’objet"
 
-#: toolhub/apps/auditlog/models.py:136
+#: toolhub/apps/auditlog/models.py:140
 msgid "action"
 msgstr "action"
 
-#: toolhub/apps/auditlog/models.py:150
+#: toolhub/apps/auditlog/models.py:154
 msgid "auditlog entry"
 msgstr "entrée du journal d’audit"
 
-#: toolhub/apps/auditlog/models.py:151
+#: toolhub/apps/auditlog/models.py:155
 msgid "auditlog entries"
 msgstr "entrées du journal d’audit"
 
@@ -108,6 +117,10 @@ msgstr "Nom de l’outil relatif à la modification"
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
 msgstr "Identité de l’utilisateur relatif à la modification"
+
+#: toolhub/apps/auditlog/schema.py:59
+msgid "Tool list related to the change"
+msgstr "Liste d’outils liée à la modification"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
@@ -209,53 +222,75 @@ msgstr "Infos pour une URL spécifique indexée dans une exécution."
 msgid "Lists"
 msgstr "Listes"
 
-#: toolhub/apps/lists/models.py:40
+#: toolhub/apps/lists/models.py:41
 msgid "Title of this list"
 msgstr "Titre de cette liste"
 
-#: toolhub/apps/lists/models.py:46
+#: toolhub/apps/lists/models.py:47
 msgid "Description of the list's theme or contents."
 msgstr "Description du thème ou du contenu de la liste."
 
-#: toolhub/apps/lists/models.py:58
+#: toolhub/apps/lists/models.py:59
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
 msgstr "Un lien vers la page de description du fichier de Wikimédia Communs pour une icône qui dépeint la liste."
 
-#: toolhub/apps/lists/models.py:65
+#: toolhub/apps/lists/models.py:66
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
 msgstr "Si vrai, cette liste est une collection des outils 'favoris' de l’utilisateur propriétaire."
 
-#: toolhub/apps/lists/models.py:71
+#: toolhub/apps/lists/models.py:72
 msgid "If true, this list is visible to everyone."
 msgstr "Si vrai, cette liste est visible par tout le monde."
 
-#: toolhub/apps/lists/models.py:75
+#: toolhub/apps/lists/models.py:76
 msgid "If true, this list has been marked as featured."
 msgstr "Si vrai, cette liste a été marquée comme mise en avant."
 
-#: toolhub/apps/lists/models.py:124
+#: toolhub/apps/lists/models.py:88
+msgid "List of the names of the tools in this list."
+msgstr "Liste des noms des outils dans cette liste."
+
+#: toolhub/apps/lists/models.py:140
 msgid "Position of this tool in the list."
 msgstr "Position de cet outil dans la liste."
 
-#: toolhub/apps/lists/serializers.py:34
+#: toolhub/apps/lists/serializers.py:47
 msgid "List of tools metadata."
 msgstr "Liste des métadonnées des outils."
 
-#: toolhub/apps/lists/serializers.py:68
-msgid "List of tools with details."
-msgstr "Liste des outils avec les détails."
+#: toolhub/apps/lists/serializers.py:81
+msgid "Create or update a list."
+msgstr "Créer ou mettre à jour une liste."
 
-#: toolhub/apps/lists/serializers.py:78
-msgid "Create a list."
-msgstr "Créer une liste."
-
-#: toolhub/apps/lists/serializers.py:86
+#: toolhub/apps/lists/serializers.py:89 toolhub/apps/lists/serializers.py:206
 msgid "List of tool names."
 msgstr "Liste des noms d’outil."
 
-#: toolhub/apps/lists/serializers.py:112
-msgid "Update a list."
-msgstr "Mettre à jour une liste."
+#: toolhub/apps/lists/serializers.py:198
+msgid "Historic revision of a list."
+msgstr "Révision historique d’une liste."
+
+#: toolhub/apps/lists/serializers.py:227
+msgid "Tool list revision."
+msgstr "Révision de la liste d’outils."
+
+#: toolhub/apps/lists/serializers.py:235
+msgid "Tool list revision detail."
+msgstr "Détail de la révision de la liste d’outils."
+
+#: toolhub/apps/lists/serializers.py:257
+msgid "Tool list revision difference."
+msgstr "Différence de la révision de la liste d’outils."
+
+#: toolhub/apps/lists/serializers.py:262
+#: toolhub/apps/toolinfo/serializers.py:266
+msgid "Revision to apply changes to."
+msgstr "Révision sur laquelle appliquer les modifications."
+
+#: toolhub/apps/lists/serializers.py:266
+#: toolhub/apps/toolinfo/serializers.py:270
+msgid "Revision after applying changes."
+msgstr "Révision après application des modifications."
 
 #: toolhub/apps/lists/validators.py:34
 #, python-format
@@ -269,25 +304,87 @@ msgid_plural "Unknown tools: %(names)s"
 msgstr[0] "Outil inconnu : %(names)s"
 msgstr[1] "Outils inconnus : %(names)s"
 
-#: toolhub/apps/lists/views.py:45
+#: toolhub/apps/lists/views.py:58
 msgid "Create a new list of tools."
 msgstr "Créer une nouvelle liste d’outils."
 
-#: toolhub/apps/lists/views.py:50
+#: toolhub/apps/lists/views.py:63
 msgid "Details of a specific list of tools."
 msgstr "Détails d’une liste spécifique d’outils."
 
-#: toolhub/apps/lists/views.py:54
+#: toolhub/apps/lists/views.py:67
 msgid "Update a list of tools."
 msgstr "Mettre à jour une liste d’outils."
 
-#: toolhub/apps/lists/views.py:62
+#: toolhub/apps/lists/views.py:75
 msgid "Delete a list of tools."
 msgstr "Supprimer une liste d’outils."
 
-#: toolhub/apps/lists/views.py:65
+#: toolhub/apps/lists/views.py:78
 msgid "List all lists of tools."
 msgstr "Lister toutes les listes d’outils."
+
+#: toolhub/apps/lists/views.py:114
+msgid "Mark a list as featured."
+msgstr "Marquer une liste comme mise en avant."
+
+#: toolhub/apps/lists/views.py:142
+msgid "Remove featured flag from a list."
+msgstr "Supprimer la marque de mise en avant d’une liste."
+
+#: toolhub/apps/lists/views.py:174
+msgid "A unique integer value identifying this toollist."
+msgstr "Une valeur entière unique identifiant cette liste d’outils."
+
+#: toolhub/apps/lists/views.py:180 toolhub/apps/toolinfo/views.py:125
+msgid "Get revision information."
+msgstr "Obtenir les informations de révision."
+
+#: toolhub/apps/lists/views.py:185 toolhub/apps/toolinfo/views.py:130
+msgid "List revisions."
+msgstr "Liste des révisions."
+
+#: toolhub/apps/lists/views.py:190 toolhub/apps/toolinfo/views.py:135
+msgid "Compare two revisions to find difference."
+msgstr "Comparer deux révisions pour trouver la différence."
+
+#: toolhub/apps/lists/views.py:198 toolhub/apps/toolinfo/views.py:143
+msgid "A unique integer value identifying version to diff against."
+msgstr "Une valeur d’entier unique identifiant les versions à comparer."
+
+#: toolhub/apps/lists/views.py:206
+msgid "Restore the list to this revision."
+msgstr "Restaurer la liste à cette révision."
+
+#: toolhub/apps/lists/views.py:213 toolhub/apps/toolinfo/views.py:158
+msgid "Undo all changes made between two revisions."
+msgstr "Annuler tous les changements réalisés entre deux révisions."
+
+#: toolhub/apps/lists/views.py:221 toolhub/apps/toolinfo/views.py:166
+msgid "A unique integer value identifying version to undo until."
+msgstr "Une valeur entière unique identifiant les versions à défaire pour revenir à la version donnée."
+
+#: toolhub/apps/lists/views.py:229 toolhub/apps/toolinfo/views.py:174
+msgid "Hide revision text and edit summary from users."
+msgstr "Masquer le texte de la révision et le résumé de modification des utilisateurs."
+
+#: toolhub/apps/lists/views.py:235 toolhub/apps/toolinfo/views.py:180
+msgid "Reveal a previously hidden revision."
+msgstr "Révéler une révision précédemment masquée."
+
+#: toolhub/apps/lists/views.py:241 toolhub/apps/toolinfo/views.py:186
+msgid "Mark a revision as patrolled."
+msgstr "Marquer une révision comme patrouillée."
+
+#: toolhub/apps/lists/views.py:340 toolhub/apps/toolinfo/views.py:283
+#, python-format
+msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
+msgstr "Revenir à la révision %(rev_id)s datée du %(datetime)s par %(user)s"
+
+#: toolhub/apps/lists/views.py:381 toolhub/apps/toolinfo/views.py:317
+#, python-format
+msgid "Undo revisions from %(first_id)s to %(last_id)s"
+msgstr "Annuler les révisions de %(first_id)s à %(last_id)s"
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
@@ -572,117 +669,57 @@ msgstr "La langue dans laquelle est écrit cet enregistrement Toolinfo. Si elle 
 msgid "Origin of this tool record."
 msgstr "Origine de l’enregistrement de cet outil."
 
-#: toolhub/apps/toolinfo/schema.py:43
-msgid "RFC 6902 application/json-patch+json data"
-msgstr "données « application/json-patch+json » RFC 6902"
-
-#: toolhub/apps/toolinfo/schema.py:46
-msgid "RFC 6902 JSON patch operation"
-msgstr "opération rustine JSON RFC 6902"
-
-#: toolhub/apps/toolinfo/schema.py:51
-msgid "The operation to be performed"
-msgstr "L’opération à effectuer"
-
-#: toolhub/apps/toolinfo/schema.py:57
-msgid "JSON-Pointer to location within document where operation is performed."
-msgstr "Pointeur-JSON vers l’emplacement dans le document où l’opération est effectuée."
-
-#: toolhub/apps/toolinfo/schema.py:63
-msgid "The value to add, replace, or test."
-msgstr "La valeur à ajouter, remplacer ou tester."
-
-#: toolhub/apps/toolinfo/schema.py:69
-msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr "Pointeur JSON vers l’emplacement dans le document depuis lequel il faut déplacer ou copier la valeur."
-
-#: toolhub/apps/toolinfo/serializers.py:39
+#: toolhub/apps/toolinfo/serializers.py:34
 msgid "SPDX license information"
 msgstr "informations sur la licence SPDX"
 
-#: toolhub/apps/toolinfo/serializers.py:47
+#: toolhub/apps/toolinfo/serializers.py:42
 msgid "SPDX license ID"
 msgstr "ID de la licence SPDX"
 
-#: toolhub/apps/toolinfo/serializers.py:52
+#: toolhub/apps/toolinfo/serializers.py:47
 msgid "Full name of this license"
 msgstr "Nom complet de cette licence"
 
-#: toolhub/apps/toolinfo/serializers.py:57
+#: toolhub/apps/toolinfo/serializers.py:52
 msgid "Is this license approved as 'open source' by the OSI?"
 msgstr "Cette licence est-elle approuvée comme étant à « code source ouvert » par l’OSI ?"
 
-#: toolhub/apps/toolinfo/serializers.py:62
+#: toolhub/apps/toolinfo/serializers.py:57
 msgid "Is this license approved as 'free software' by the FSF?"
 msgstr "Cette licence est-elle approuvée comme « logiciel libre » par la FSF ?"
 
-#: toolhub/apps/toolinfo/serializers.py:67
+#: toolhub/apps/toolinfo/serializers.py:62
 msgid "Is this license considered to be outdated?"
 msgstr "Cette licence est-elle considérée comme obsolète ?"
 
-#: toolhub/apps/toolinfo/serializers.py:71
+#: toolhub/apps/toolinfo/serializers.py:66
 msgid "Description of a tool"
 msgstr "Description d’un outil"
 
-#: toolhub/apps/toolinfo/serializers.py:121
+#: toolhub/apps/toolinfo/serializers.py:116
 msgid "Summary of a tool"
 msgstr "Résumé d’un outil"
 
-#: toolhub/apps/toolinfo/serializers.py:133
+#: toolhub/apps/toolinfo/serializers.py:136
 msgid "Create a tool"
 msgstr "Créer un outil"
 
-#: toolhub/apps/toolinfo/serializers.py:199
+#: toolhub/apps/toolinfo/serializers.py:202
 msgid "Update a tool"
 msgstr "Mettre à jour un outil"
 
-#: toolhub/apps/toolinfo/serializers.py:230
+#: toolhub/apps/toolinfo/serializers.py:233
 msgid "Tool revision."
 msgstr "Révision de l’outil."
 
-#: toolhub/apps/toolinfo/serializers.py:236
-msgid "A unique integer value identifying this revision."
-msgstr "Une valeur d’entier unique identifiant cette révision."
-
-#: toolhub/apps/toolinfo/serializers.py:248
-msgid "Comment by the user for the revision."
-msgstr "Commentaire par l’utilisateur de la révision."
-
-#: toolhub/apps/toolinfo/serializers.py:254 toolhub/apps/versioned/models.py:40
-msgid "Has this revision been marked as hidden?"
-msgstr "Cette révision a-t-elle été marquée comme cachée ?"
-
-#: toolhub/apps/toolinfo/serializers.py:260 toolhub/apps/versioned/models.py:45
-msgid "Has this revision been reviewed by a patroller?"
-msgstr "Cette révision a-t-elle été relue par un patrouilleur ?"
-
-#: toolhub/apps/toolinfo/serializers.py:274
-msgid "username removed"
-msgstr "Utilisateur supprimé"
-
-#: toolhub/apps/toolinfo/serializers.py:275
-msgid "edit summary removed"
-msgstr "résumé de modification supprimé"
-
-#: toolhub/apps/toolinfo/serializers.py:292
+#: toolhub/apps/toolinfo/serializers.py:241
 msgid "Tool revision detail."
 msgstr "Détail de la révision de l’outil."
 
-#: toolhub/apps/toolinfo/serializers.py:317
+#: toolhub/apps/toolinfo/serializers.py:261
 msgid "Tool revision difference."
 msgstr "Différence de révision de l’outil."
-
-#: toolhub/apps/toolinfo/serializers.py:322
-msgid "Revision to apply changes to."
-msgstr "Révision sur laquelle appliquer les modifications."
-
-#: toolhub/apps/toolinfo/serializers.py:326
-msgid "Revision after applying changes."
-msgstr "Révision après application des modifications."
-
-#: toolhub/apps/toolinfo/serializers.py:330
-msgid "Comment describing an action."
-msgstr "Commentaire décrivant une action."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
@@ -714,96 +751,38 @@ msgid "Url_multilingual missing 'url' property."
 msgstr "Propriété 'url' manquante à url_multilingue."
 
 #: toolhub/apps/toolinfo/views.py:64
-msgid "Failed to apply patch."
-msgstr "Échec de l’application du correctif."
-
-#: toolhub/apps/toolinfo/views.py:71
-msgid "Current revision cannot be hidden."
-msgstr "La révision actuelle ne peut pas être cachée."
-
-#: toolhub/apps/toolinfo/views.py:79
-msgid "Missing content for one or more revisions."
-msgstr "Contenu manquant pour au moins une révision."
-
-#: toolhub/apps/toolinfo/views.py:85
 msgid "Create a new tool."
 msgstr "Créer un nouvel outil."
 
-#: toolhub/apps/toolinfo/views.py:90
+#: toolhub/apps/toolinfo/views.py:69
 msgid "Info for a specific tool."
 msgstr "Infos pour un outil spécifique."
 
-#: toolhub/apps/toolinfo/views.py:93
+#: toolhub/apps/toolinfo/views.py:72
 msgid "Update info for a specific tool."
 msgstr "Mettre à jour les informations pour un outil spécifique."
 
-#: toolhub/apps/toolinfo/views.py:101
+#: toolhub/apps/toolinfo/views.py:80
 msgid "Delete a tool."
 msgstr "Supprimer un outil."
 
-#: toolhub/apps/toolinfo/views.py:104
+#: toolhub/apps/toolinfo/views.py:83
 msgid "List all tools."
 msgstr "Lister tous les outils."
 
-#: toolhub/apps/toolinfo/views.py:140
+#: toolhub/apps/toolinfo/views.py:119
 msgid "Unique identifier for this tool."
 msgstr "Identifiant unique pour cet outil."
 
-#: toolhub/apps/toolinfo/views.py:146
-msgid "Get revision information."
-msgstr "Obtenir les informations de révision."
-
 #: toolhub/apps/toolinfo/views.py:151
-msgid "List revisions."
-msgstr "Liste des révisions."
-
-#: toolhub/apps/toolinfo/views.py:156
-msgid "Compare two revisions to find difference."
-msgstr "Comparer deux révisions pour trouver la différence."
-
-#: toolhub/apps/toolinfo/views.py:164
-msgid "A unique integer value identifying version to diff against."
-msgstr "Une valeur d’entier unique identifiant les versions à comparer."
-
-#: toolhub/apps/toolinfo/views.py:172
 msgid "Restore the tool to this revision."
 msgstr "Restaurer l’outil à cette révision."
 
-#: toolhub/apps/toolinfo/views.py:179
-msgid "Undo all changes made between two revisions."
-msgstr "Annuler tous les changements réalisés entre deux révisions."
-
-#: toolhub/apps/toolinfo/views.py:187
-msgid "A unique integer value identifying version to undo until."
-msgstr "Une valeur entière unique identifiant les versions à défaire pour revenir à la version donnée."
-
-#: toolhub/apps/toolinfo/views.py:195
-msgid "Hide revision text and edit summary from users."
-msgstr "Masquer le texte de la révision et le résumé de modification des utilisateurs."
-
-#: toolhub/apps/toolinfo/views.py:201
-msgid "Reveal a previously hidden revision."
-msgstr "Révéler une révision précédemment masquée."
-
-#: toolhub/apps/toolinfo/views.py:207
-msgid "Mark a revision as patrolled."
-msgstr "Marquer une révision comme patrouillée."
-
-#: toolhub/apps/toolinfo/views.py:304
-#, python-format
-msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
-msgstr "Revenir à la révision %(rev_id)s datée du %(datetime)s par %(user)s"
-
-#: toolhub/apps/toolinfo/views.py:338
-#, python-format
-msgid "Undo revisions from %(first_id)s to %(last_id)s"
-msgstr "Annuler les révisions de %(first_id)s à %(last_id)s"
-
-#: toolhub/apps/toolinfo/views.py:432
+#: toolhub/apps/toolinfo/views.py:411
 msgid "Info for a specific SPDX license."
 msgstr "Info sur une licence SPDX particulière."
 
-#: toolhub/apps/toolinfo/views.py:440
+#: toolhub/apps/toolinfo/views.py:419
 msgid "List all SPDX licenses."
 msgstr "Lister toutes les licences SPDX."
 
@@ -927,6 +906,66 @@ msgstr "Supprimer un utilisateur de ce groupe."
 msgid "Versioned"
 msgstr "Versionné"
 
+#: toolhub/apps/versioned/exceptions.py:28
+msgid "Failed to apply patch."
+msgstr "Échec de l’application du correctif."
+
+#: toolhub/apps/versioned/exceptions.py:35
+msgid "Current revision cannot be hidden."
+msgstr "La révision actuelle ne peut pas être cachée."
+
+#: toolhub/apps/versioned/exceptions.py:43
+msgid "Missing content for one or more revisions."
+msgstr "Contenu manquant pour au moins une révision."
+
+#: toolhub/apps/versioned/models.py:40 toolhub/apps/versioned/serializers.py:62
+msgid "Has this revision been marked as hidden?"
+msgstr "Cette révision a-t-elle été marquée comme cachée ?"
+
+#: toolhub/apps/versioned/models.py:45 toolhub/apps/versioned/serializers.py:68
+msgid "Has this revision been reviewed by a patroller?"
+msgstr "Cette révision a-t-elle été relue par un patrouilleur ?"
+
+#: toolhub/apps/versioned/schema.py:22
+msgid "RFC 6902 application/json-patch+json data"
+msgstr "données « application/json-patch+json » RFC 6902"
+
+#: toolhub/apps/versioned/schema.py:25
+msgid "RFC 6902 JSON patch operation"
+msgstr "opération rustine JSON RFC 6902"
+
+#: toolhub/apps/versioned/schema.py:30
+msgid "The operation to be performed"
+msgstr "L’opération à effectuer"
+
+#: toolhub/apps/versioned/schema.py:36
+msgid "JSON-Pointer to location within document where operation is performed."
+msgstr "Pointeur-JSON vers l’emplacement dans le document où l’opération est effectuée."
+
+#: toolhub/apps/versioned/schema.py:42
+msgid "The value to add, replace, or test."
+msgstr "La valeur à ajouter, remplacer ou tester."
+
+#: toolhub/apps/versioned/schema.py:48
+msgid "JSON-Pointer to location within document to move or copy the value from."
+msgstr "Pointeur JSON vers l’emplacement dans le document depuis lequel il faut déplacer ou copier la valeur."
+
+#: toolhub/apps/versioned/serializers.py:44
+msgid "A unique integer value identifying this revision."
+msgstr "Une valeur d’entier unique identifiant cette révision."
+
+#: toolhub/apps/versioned/serializers.py:56
+msgid "Comment by the user for the revision."
+msgstr "Commentaire par l’utilisateur de la révision."
+
+#: toolhub/apps/versioned/serializers.py:82
+msgid "username removed"
+msgstr "Utilisateur supprimé"
+
+#: toolhub/apps/versioned/serializers.py:83
+msgid "edit summary removed"
+msgstr "résumé de modification supprimé"
+
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
 msgstr "Saisir une valeur valide et conforme au schéma JSON."
@@ -935,13 +974,17 @@ msgstr "Saisir une valeur valide et conforme au schéma JSON."
 msgid "API error"
 msgstr "Erreur de l’API"
 
-#: toolhub/serializers.py:111
+#: toolhub/serializers.py:112
 msgid "Edit summary"
 msgstr "Résumé de modification"
 
-#: toolhub/serializers.py:112
+#: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
 msgstr "Description des modifications que vous êtes en train de faire."
+
+#: toolhub/serializers.py:123
+msgid "Comment describing an action."
+msgstr "Commentaire décrivant une action."
 
 #: toolhub/settings.py:376
 msgid "Read scope"
@@ -955,6 +998,22 @@ msgstr "Portée en écriture"
 msgid "Toolhub API"
 msgstr "API de Toolhub"
 
+#: vue/serializers.py:26
+msgid "Information used on the Toolhub Home view."
+msgstr "Information utilisée dans l’affichage de l’accueil de Toolhub."
+
+#: vue/serializers.py:32
+msgid "Count of tools known to Toolhub."
+msgstr "Nombre d’outils connus de Toolhub."
+
+#: vue/serializers.py:36
+msgid "Date and time of most recent crawler run."
+msgstr "Date et heure de l’exécution la plus récente du butineur."
+
+#: vue/serializers.py:41
+msgid "Number of tools added or updated in the most recent crawler run."
+msgstr "Nombre d’outils ajoutés ou mis à jour lors de l’exécution la plus récente du butineur."
+
 #: vue/templates/vue/base.html:20
 msgid "Toolhub's user interface requires JavaScript to be enabled."
 msgstr "L’interface utilisateur de Toolhub nécessite que JavaScript soit activé."
@@ -962,4 +1021,8 @@ msgstr "L’interface utilisateur de Toolhub nécessite que JavaScript soit acti
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
 msgstr "CHARGEMENT EN COURS"
+
+#: vue/views.py:41
+msgid "Get information used on the Toolhub Home view."
+msgstr "Obtenir les informations utilisées dans l’affichage de l’accueil de Toolhub."
 

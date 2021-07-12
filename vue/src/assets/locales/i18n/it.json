@@ -121,6 +121,7 @@
 	"sponsor": "Sponsor",
 	"status": "Stato",
 	"system-user": "Sistema",
+	"tagline-about": "Scopri nuovi strumenti, promuovi il loro utilizzo nella tua comunità wiki, aiuta a migliorarli fornendo dati.",
 	"technologyused": "Tecnologia usata",
 	"thistoolis": "Questo strumento è:",
 	"title": "Titolo",
@@ -133,5 +134,6 @@
 	"undo": "annulla",
 	"unpatrolled": "non verificata",
 	"valid": "valido",
-	"viewhistory": "Visualizza cronologia"
+	"viewhistory": "Visualizza cronologia",
+	"welcomemessage": "Toolhub è un catalogo di strumenti Wikimedia creato dalla comunità."
 }

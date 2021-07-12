@@ -32,6 +32,8 @@
 	"auditlog-entry-tool-updated": "$1 a mis à jour l’outil $2",
 	"auditlog-entry-toollist-created": "$1 a créé la liste $2",
 	"auditlog-entry-toollist-deleted": "$1 a supprimé la liste $2",
+	"auditlog-entry-toollist-featured": "$1 a marqué la liste $2 comme mise en avant",
+	"auditlog-entry-toollist-unfeatured": "$1 a supprimé le marquage de la liste $2 comme mise en avant",
 	"auditlog-entry-toollist-updated": "$1 a mis à jour la liste $2",
 	"auditlog-entry-url-created": "$1 a créé l’url $2",
 	"auditlog-entry-url-deleted": "$1 a supprimé l’url $2",
@@ -221,7 +223,7 @@
 	"status": "État",
 	"submitjsonurl": "Soumettre une URL de toolinfo.json",
 	"system-user": "Système",
-	"tagline-about": "Un catalogue faisant autorité et bien promu d’outils Wikimedia.",
+	"tagline-about": "Découvrir de nouveaux outils, promouvoir leur utilisation dans votre communauté wiki, aider à les améliorer en contribuant aux données.",
 	"tagline-learnmore": "En savoir plus au sujet de Toolhub sur MetaWiki.",
 	"talk": "discuter",
 	"technologyused": "Technologie utilisée",
@@ -264,5 +266,5 @@
 	"viewhistory": "Voir l’historique",
 	"viewrevisionsdiff": "Afficher la différence entre versions de l’outil $1",
 	"viewmore": "Voir plus",
-	"welcomemessage": "Bienvenue sur Toolhub"
+	"welcomemessage": "Toolhub est un catalogue d’outils Wikimédia géré par la communauté."
 }

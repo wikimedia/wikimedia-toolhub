@@ -158,7 +158,7 @@
 	"status": "Durum",
 	"submitjsonurl": "Bir toolinfo.json URLsi gönder",
 	"system-user": "Sistem",
-	"tagline-about": "Wikimedia araçlarının yetkili ve iyi tanıtılan bir kataloğu.",
+	"tagline-about": "Yeni araçları keşfedin, viki topluluğunuzda kullanımlarını tanıtın, verilere katkıda bulunarak geliştirmeye yardımcı olun.",
 	"tagline-learnmore": "Metawiki'de Toolhub hakkında daha fazla bilgi edinin",
 	"talk": "mesaj",
 	"technologyused": "Kullanılan teknoloji",
@@ -199,5 +199,5 @@
 	"viewhistory": "Geçmişi gör",
 	"viewrevisionsdiff": "$1 aracının sürümleri arasındaki farkları gör",
 	"viewmore": "Daha Fazla Göster",
-	"welcomemessage": "Toolhuba hoş geldiniz"
+	"welcomemessage": "Toolhub, topluluk tarafından yazılmış bir Wikimedia araçları kataloğudur."
 }

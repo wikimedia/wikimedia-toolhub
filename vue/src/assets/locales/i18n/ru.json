@@ -14,10 +14,19 @@
 	"addremovetools-summarytitle": "Как работает эта функция",
 	"auditlogs": "Журналы аудита",
 	"auditlogs-clear": "Очистить",
+	"auditlog-entry-group-added-to": "$1 добавил $2 в группу $3",
+	"auditlog-entry-group-removed-from": "$1 удалил $2 из группы $3",
 	"auditlog-entry-tool-created": "$1 создал инструмент $2",
+	"auditlog-entry-tool-deleted": "$1 удалил инструмент $2",
+	"auditlog-entry-tool-updated": "$1 обновил инструмент $2",
 	"auditlog-entry-toollist-created": "$1 создал список $2",
 	"auditlog-entry-toollist-deleted": "$1 удалил список $2",
 	"auditlog-entry-toollist-updated": "$1 обновил список $2",
+	"auditlog-entry-url-created": "$1 создал url $2",
+	"auditlog-entry-url-deleted": "$1 удалил url $2",
+	"auditlog-entry-url-updated": "$1 обновил url $2",
+	"auditlog-entry-user-created": "$1 создал участника $2",
+	"auditlog-entry-user-deleted": "$1 удалил участника $2",
 	"auditlogs-targettype-group": "группа",
 	"auditlogs-targettype-tool": "инструмент",
 	"auditlogs-targettype-toollist": "список",
@@ -83,5 +92,5 @@
 	"tools-lastupdated": "gоследнее обновление: $1",
 	"undo": "отменить",
 	"unpatrolled": "непатрулированные",
-	"welcomemessage": "Добро пожаловать на Toolhub"
+	"welcomemessage": "Toolhub - это каталог инструментов Викимедиа, созданный сообществом."
 }
