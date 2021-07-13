@@ -68,7 +68,7 @@ export const actions = {
 	 */
 	getToolByName( context, name ) {
 		const request = {
-			url: '/api/tools/' + encodeURI( name )
+			url: '/api/tools/' + encodeURI( name ) + '/'
 		};
 
 		return makeApiCall( context, request ).then(
@@ -146,7 +146,7 @@ export const actions = {
 	},
 	editTool( context, tool ) {
 		const request = {
-			url: '/api/tools/' + tool.name + '/',
+			url: '/api/tools/' + encodeURI( tool.name ) + '/',
 			method: 'PUT',
 			body: JSON.stringify( tool.info )
 		};
@@ -205,7 +205,7 @@ export const actions = {
 	 */
 	getRevisions( context, tool ) {
 		const request = {
-			url: '/api/tools/' + tool.name + '/revisions/?page=' + tool.page
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/?page=' + tool.page
 		};
 		return makeApiCall( context, request );
 	},
@@ -217,7 +217,7 @@ export const actions = {
 	 */
 	getToolRevision( context, tool ) {
 		const request = {
-			url: '/api/tools/' + tool.name + '/revisions/' + tool.revId + '/'
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.revId + '/'
 		};
 
 		makeApiCall( context, request ).then(
@@ -242,7 +242,7 @@ export const actions = {
 	 */
 	getRevisionsDiff( context, tool ) {
 		const request = {
-			url: '/api/tools/' + tool.name + '/revisions/' + tool.id + '/diff/' + tool.otherId + '/'
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/diff/' + tool.otherId + '/'
 		};
 
 		makeApiCall( context, request ).then(
@@ -307,7 +307,7 @@ export const actions = {
 		}
 
 		const request = {
-			url: '/api/tools/' + tool.name + '/revisions/' + id + '/undo/' + otherId + '/',
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + id + '/undo/' + otherId + '/',
 			method: 'POST'
 		};
 
@@ -336,7 +336,7 @@ export const actions = {
 	 */
 	restoreToolToRevision( context, tool ) {
 		const request = {
-			url: '/api/tools/' + tool.name + '/revisions/' + tool.id + '/revert/',
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/revert/',
 			method: 'POST'
 		};
 
@@ -365,7 +365,7 @@ export const actions = {
 	 */
 	hideRevealRevision( context, tool ) {
 		const request = {
-			url: '/api/tools/' + tool.name + '/revisions/' + tool.id + '/' + tool.action + '/',
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/' + tool.action + '/',
 			method: 'PATCH'
 		};
 
@@ -398,7 +398,7 @@ export const actions = {
 	 */
 	markRevisionAsPatrolled( context, tool ) {
 		const request = {
-			url: '/api/tools/' + tool.name + '/revisions/' + tool.id + '/patrol/',
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/patrol/',
 			method: 'PATCH'
 		};
 

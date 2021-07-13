@@ -223,14 +223,14 @@ describe( 'store/tools', () => {
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/tools/' + encodeURI( testName ),
+				url: '/api/tools/' + encodeURI( testName ) + '/',
 				headers: { 'Content-type': 'application/json' },
 				body: toolResponse
 			};
 
 			it( 'should fetch tool by name', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/tools/' + encodeURI( testName )
+					url: '/api/tools/' + encodeURI( testName ) + '/'
 				}, context );
 				http.resolves( response );
 
