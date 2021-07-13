@@ -113,6 +113,7 @@ class EditCommentFieldMixin(metaclass=serializers.SerializerMetaclass):
         help_text=_("""Description of the changes you are making."""),
         write_only=True,
         required=False,
+        allow_null=True,
     )
 
     def get_comment(self, instance):  # noqa: W0613
