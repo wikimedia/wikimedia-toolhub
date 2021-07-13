@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.conf import settings
 
 
 class FLoCOptOutMiddleware:
@@ -32,6 +33,27 @@ class FLoCOptOutMiddleware:
 
     def __call__(self, request):
         """Add FLoC opt-out header to responses."""
+        response = self.get_response(request)
+        if self.header not in response:
+            response[self.header] = self.payload
+        return response
+
+
+class ReferrerPolicyMiddleware:
+    """Add a Referrer-Policy header to responses.
+
+    https://www.w3.org/TR/referrer-policy/
+    """
+
+    header = "Referrer-Policy"
+
+    def __init__(self, get_response):
+        """Configure middleware."""
+        self.get_response = get_response
+        self.payload = getattr(settings, "REFERRER_POLICY", "strict-origin")
+
+    def __call__(self, request):
+        """Add Referrer-Policy header to responses."""
         response = self.get_response(request)
         if self.header not in response:
             response[self.header] = self.payload

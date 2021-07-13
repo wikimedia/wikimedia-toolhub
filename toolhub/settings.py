@@ -186,6 +186,7 @@ MIDDLEWARE = [
     "social_django.middleware.SocialAuthExceptionMiddleware",
     "toolhub.apps.auditlog.middleware.LogEntryUserMiddleware",
     "toolhub.middleware.FLoCOptOutMiddleware",
+    "toolhub.middleware.ReferrerPolicyMiddleware",
 ]
 
 ROOT_URLCONF = "toolhub.urls"
@@ -361,7 +362,9 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 
 # TODO: CSP
-# TODO: Referrer-Policy
+
+# Referrer-Policy: only send origin to external hosts
+REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 WEBPACK_LOADER = {
     "DEFAULT": {
