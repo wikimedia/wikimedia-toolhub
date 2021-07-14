@@ -42,6 +42,7 @@ django-elasticsearch-dsl = ">=6.0.0,<7.0.0"
 django-elasticsearch-dsl-drf = "^0.21"
 django-safedelete = "^1.0.0"
 rules = "^2.2"
+django-csp = "^3.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -92,6 +93,7 @@ pylint = [
     "-R0201",
     "-R0901",
     "-R0903",
+    "-R0911",
     "-R0913",
     "-W0235",
     "-W0511",

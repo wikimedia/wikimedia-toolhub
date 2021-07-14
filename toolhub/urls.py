@@ -34,6 +34,7 @@ from .routers import groups
 from .routers import list_revisions
 from .routers import root
 from .routers import tool_revisions
+from .views import csp_report
 
 
 api_patterns = [
@@ -50,6 +51,7 @@ api_patterns = [
 
 urlpatterns = [
     path("", include("vue.urls", namespace="vue")),
+    path("csp-report", csp_report, name="csp_report"),
     path("admin/", admin.site.urls),
     path("api/", include((api_patterns, "api"), namespace="api")),
     path(

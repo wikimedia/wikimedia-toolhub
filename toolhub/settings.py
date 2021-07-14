@@ -184,6 +184,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "social_django.middleware.SocialAuthExceptionMiddleware",
+    "csp.middleware.CSPMiddleware",
     "toolhub.apps.auditlog.middleware.LogEntryUserMiddleware",
     "toolhub.middleware.FLoCOptOutMiddleware",
     "toolhub.middleware.ReferrerPolicyMiddleware",
@@ -317,12 +318,14 @@ SOCIAL_AUTH_CLEAN_USERNAMES = False
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = LOGIN_REDIRECT_URL
 SOCIAL_AUTH_LOGOUT_REDIRECT_URL = LOGOUT_REDIRECT_URL
 
+# == Localization and internationalization ==
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# == Static assets ==
 STATIC_URL = "/static/"
 STATIC_ROOT = env.str(
     "STATIC_ROOT", default=os.path.join(BASE_DIR, "staticfiles")
@@ -361,11 +364,43 @@ CSRF_COOKIE_SECURE = env.bool("REQUIRE_HTTPS", default=False)
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 
-# TODO: CSP
+# == Content-Security-Policy ==
+# https://django-csp.readthedocs.io/en/latest/configuration.html
+CSP_DEFAULT_SRC = ["'none'"]  # Use an allowlist approach for all rules
+CSP_SCRIPT_SRC = ["'self'", "'report-sample'"]
+CSP_IMG_SRC = ["'self'", "data:", "https://upload.wikimedia.org"]
+CSP_OBJECT_SRC = ["'none'"]
+CSP_PREFETCH_SRC = ["'none'"]
+CSP_MEDIA_SRC = ["'none'"]
+CSP_FRAME_SRC = ["'none'"]
+CSP_FONT_SRC = ["'self'"]
+CSP_CONNECT_SRC = ["'self'", "https://commons.wikimedia.org"]
+CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]  # Vue generates inline css
+CSP_WORKER_SRC = ["'none'"]
+CSP_BASE_URI = ["'none'"]
+CSP_FRAME_ANCESTORS = ["'none'"]
+CSP_FORM_ACTION = ["'self'"]
+CSP_SANDBOX = [
+    "allow-forms",
+    "allow-popups",  # Allows target="_blank" on anchor tags
+    "allow-same-origin",
+    "allow-scripts",
+    "allow-top-navigation",
+]
+CSP_REPORT_URI = "/csp-report"
 
-# Referrer-Policy: only send origin to external hosts
+if DEBUG:
+    # Assume local development when DEBUG is true.
+    # Add origins needed when using Vue development mode server.
+    CSP_SCRIPT_SRC.append("http://localhost:*")
+    CSP_FONT_SRC.append("http://localhost:*")
+    CSP_CONNECT_SRC.append("http://localhost:*")
+    CSP_CONNECT_SRC.append("ws://localhost:*")
+
+# == Referrer-Policy settings ==
 REFERRER_POLICY = "strict-origin-when-cross-origin"
 
+# == Vue/webpack integration settings ==
 WEBPACK_LOADER = {
     "DEFAULT": {
         "CACHE": not DEBUG,
@@ -374,6 +409,7 @@ WEBPACK_LOADER = {
     },
 }
 
+# == Local OAuth server settings ==
 OAUTH2_PROVIDER = {
     "SCOPES": {
         "read": _("Read scope"),
@@ -382,6 +418,7 @@ OAUTH2_PROVIDER = {
     "ERROR_RESPONSE_WITH_SCOPES": True,
 }
 
+# == Django REST Framework settings ==
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
