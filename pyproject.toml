@@ -83,20 +83,31 @@ show_source = true
 
 [tool.flakehell.plugins]
 "flake8-*" = ["+*"]
-flake8-docstrings = ["+*", "-D100", "-D105", "-D400", "-D401"]
-pycodestyle = ["+*", "-E501", "-W503", "-W504"]
+flake8-docstrings = [
+    "+*",
+    "-D100",  # missing-docstring-in-public-module
+    "-D105",  # missing-docstring-in-magic-method
+    "-D400",  # first-line-should-end-with-period
+    "-D401",  # first-line-should-be-in-imperative-mood
+]
+pycodestyle = [
+    "+*",
+    "-E501",  # line-too-long
+    "-W503",  # line-break-before-binary-operator
+    "-W504",  # line-break-after-binary-operator
+]
 pyflakes = ["+*"]
 pylint = [
     "+*",
-    "-C*",
-    "-E1101",
-    "-R0201",
-    "-R0901",
-    "-R0903",
-    "-R0911",
-    "-R0913",
-    "-W0235",
-    "-W0511",
+    "-C*",     # disable all "convention" rules
+    "-E1101",  # no-member
+    "-R0201",  # could-be-function
+    "-R0901",  # too-many-ancestors
+    "-R0903",  # too-few-public-methods
+    "-R0911",  # too-many-return-statements
+    "-R0913",  # too-many-arguments
+    "-W0235",  # useless-super-delegation
+    "-W0511",  # fixme
 ]
 
 [tool.pylint]
