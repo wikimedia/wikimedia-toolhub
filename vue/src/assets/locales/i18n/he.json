@@ -31,6 +31,8 @@
 	"auditlog-entry-tool-updated": "הכלי $2 עודכן על ידי $1",
 	"auditlog-entry-toollist-created": "הרשימה $2 נוצרה על ידי $1",
 	"auditlog-entry-toollist-deleted": "הרשימה $2 נמחקה על ידי $1",
+	"auditlog-entry-toollist-featured": "$1 סימן את הרשימה $2 כמומלצת",
+	"auditlog-entry-toollist-unfeatured": "$1 ביטל את הסימון של הרשימה $2 כמומלצת",
 	"auditlog-entry-toollist-updated": "הרשימה $2 עודכנה על ידי $1",
 	"auditlog-entry-url-created": "הכתובת $2 נוצרה על ידי $1",
 	"auditlog-entry-url-deleted": "הכתובת $2 נמחקה על ידי $1",
@@ -220,7 +222,7 @@
 	"status": "מצב",
 	"submitjsonurl": "שליחת URL של toolinfo.json",
 	"system-user": "מערכת",
-	"tagline-about": "קטלוג מהימן ומקודם היטב של כלי ויקימדיה.",
+	"tagline-about": "גלו כלים חדשים, קדמו את השימוש בהם בקהילת הוויקי שלכם, עזרו לשפר אותם באמצעות תרומת נתונים.",
 	"tagline-learnmore": "מידע נוסף על Toolhub באתר מטא",
 	"talk": "שיחה",
 	"technologyused": "טכנולוגיות בשימוש",
@@ -262,5 +264,5 @@
 	"viewhistory": "הצגת היסטוריה",
 	"viewrevisionsdiff": "הצגת ההבדל בין גרסאות הכלי $1",
 	"viewmore": "להציג עוד",
-	"welcomemessage": "ברוך בואך ל־Toolhub"
+	"welcomemessage": "Toolhub הוא קטלוג קהילתי של כלי ויקימדיה."
 }

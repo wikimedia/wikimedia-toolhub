@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-12 11:09:52+0000\n"
+"PO-Revision-Date: 2021-07-15 11:12:03+0000\n"
 "X-POT-Import-Date: 2021-07-09 22:30:30+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -53,11 +53,11 @@ msgstr "מנוטרת"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "featured"
-msgstr ""
+msgstr "מומלצת"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "unfeatured"
-msgstr ""
+msgstr "מומלצת לשעבר"
 
 #: toolhub/apps/auditlog/models.py:106
 msgid "timestamp"
@@ -117,7 +117,7 @@ msgstr "זהות המשמש האחראי לשינוי"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr ""
+msgstr "רשימת כלים הקשורה לשינוי"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
@@ -245,7 +245,7 @@ msgstr "אם true, הרשימה הזאת סומנה בתור מומלצת."
 
 #: toolhub/apps/lists/models.py:88
 msgid "List of the names of the tools in this list."
-msgstr ""
+msgstr "רשימת שמות הכלים ברשימה הזאת."
 
 #: toolhub/apps/lists/models.py:140
 msgid "Position of this tool in the list."
@@ -257,7 +257,7 @@ msgstr "רשימה של מטא־נתונים של כלים."
 
 #: toolhub/apps/lists/serializers.py:81
 msgid "Create or update a list."
-msgstr ""
+msgstr "יצירה או עדכון של רשימה."
 
 #: toolhub/apps/lists/serializers.py:89 toolhub/apps/lists/serializers.py:206
 msgid "List of tool names."
@@ -265,19 +265,19 @@ msgstr "רשימת שמות כלים."
 
 #: toolhub/apps/lists/serializers.py:198
 msgid "Historic revision of a list."
-msgstr ""
+msgstr "גרסה היסטורית של רשימה."
 
 #: toolhub/apps/lists/serializers.py:227
 msgid "Tool list revision."
-msgstr ""
+msgstr "גרסת רשימת כלים."
 
 #: toolhub/apps/lists/serializers.py:235
 msgid "Tool list revision detail."
-msgstr ""
+msgstr "פרט של גרסת רשימת כלים."
 
 #: toolhub/apps/lists/serializers.py:257
 msgid "Tool list revision difference."
-msgstr ""
+msgstr "השוואת גרסאות רשימת כלים."
 
 #: toolhub/apps/lists/serializers.py:262
 #: toolhub/apps/toolinfo/serializers.py:266
@@ -323,15 +323,15 @@ msgstr "הצגת כל רשימות הכלים."
 
 #: toolhub/apps/lists/views.py:114
 msgid "Mark a list as featured."
-msgstr ""
+msgstr "סימון הרשימה בתור מומלצת."
 
 #: toolhub/apps/lists/views.py:142
 msgid "Remove featured flag from a list."
-msgstr ""
+msgstr "הסרת דגל ההמלצה מרשימה."
 
 #: toolhub/apps/lists/views.py:174
 msgid "A unique integer value identifying this toollist."
-msgstr ""
+msgstr "ערך שלם ייחודי שמזהה את רשימת הכלים הזאת."
 
 #: toolhub/apps/lists/views.py:180 toolhub/apps/toolinfo/views.py:125
 msgid "Get revision information."
@@ -351,7 +351,7 @@ msgstr "ערך שלם ייחודי שמזהה את הגרסה שמולה תיע�
 
 #: toolhub/apps/lists/views.py:206
 msgid "Restore the list to this revision."
-msgstr ""
+msgstr "שחזור רשימת הכלים לגרסה הזאת."
 
 #: toolhub/apps/lists/views.py:213 toolhub/apps/toolinfo/views.py:158
 msgid "Undo all changes made between two revisions."
@@ -997,19 +997,19 @@ msgstr "API של Toolhub"
 
 #: vue/serializers.py:26
 msgid "Information used on the Toolhub Home view."
-msgstr ""
+msgstr "מידע שמשמש בתצוגת הבית של Toolhub."
 
 #: vue/serializers.py:32
 msgid "Count of tools known to Toolhub."
-msgstr ""
+msgstr "ספירת כלים שידועים ל־Toolhub."
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
-msgstr ""
+msgstr "תאריך ושעה של ריצת הזחלן האחרונה."
 
 #: vue/serializers.py:41
 msgid "Number of tools added or updated in the most recent crawler run."
-msgstr ""
+msgstr "מספר הכלים שנוספו או עודכנו בהרצת הזחלן האחרונה."
 
 #: vue/templates/vue/base.html:20
 msgid "Toolhub's user interface requires JavaScript to be enabled."
@@ -1021,5 +1021,5 @@ msgstr "טעינה"
 
 #: vue/views.py:41
 msgid "Get information used on the Toolhub Home view."
-msgstr ""
+msgstr "קבלת מידע שמשמש בתצוגת הבית של Toolhub."
 
