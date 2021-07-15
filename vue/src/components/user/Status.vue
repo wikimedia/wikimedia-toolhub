@@ -34,7 +34,7 @@
 				</v-list-item-content>
 			</v-list-item>
 			<v-list-item
-				href="/developer-settings"
+				to="/developer-settings"
 			>
 				<v-list-item-icon>
 					<v-icon>mdi-file-code</v-icon>
