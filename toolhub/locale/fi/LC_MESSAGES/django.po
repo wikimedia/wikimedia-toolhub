@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-12 11:09:52+0000\n"
+"PO-Revision-Date: 2021-07-19 11:10:41+0000\n"
 "X-POT-Import-Date: 2021-07-09 22:30:30+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,11 +34,11 @@ msgstr "poistettu"
 
 #: toolhub/apps/auditlog/models.py:95
 msgid "added to"
-msgstr ""
+msgstr "lisätty"
 
 #: toolhub/apps/auditlog/models.py:96
 msgid "removed from"
-msgstr ""
+msgstr "poistettu"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "hid"
@@ -50,7 +50,7 @@ msgstr "palautettu"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "patrolled"
-msgstr ""
+msgstr "partioitu"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "featured"
@@ -218,11 +218,11 @@ msgstr ""
 
 #: toolhub/apps/lists/apps.py:26
 msgid "Lists"
-msgstr ""
+msgstr "Luettelot"
 
 #: toolhub/apps/lists/models.py:41
 msgid "Title of this list"
-msgstr ""
+msgstr "Tämän luettelon otsikko"
 
 #: toolhub/apps/lists/models.py:47
 msgid "Description of the list's theme or contents."
@@ -258,7 +258,7 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:81
 msgid "Create or update a list."
-msgstr ""
+msgstr "Luo tai päivitä luettelo."
 
 #: toolhub/apps/lists/serializers.py:89 toolhub/apps/lists/serializers.py:206
 msgid "List of tool names."
@@ -304,7 +304,7 @@ msgstr[1] ""
 
 #: toolhub/apps/lists/views.py:58
 msgid "Create a new list of tools."
-msgstr ""
+msgstr "Luo uusi luettelo työkaluista."
 
 #: toolhub/apps/lists/views.py:63
 msgid "Details of a specific list of tools."
@@ -462,11 +462,11 @@ msgstr ""
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 #: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr ""
+msgstr "Käyttäjän tiedot"
 
 #: toolhub/apps/search/schema.py:37
 msgid "Faceted classification"
@@ -509,11 +509,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:328
 msgid "web app"
-msgstr ""
+msgstr "verkkosovellus"
 
 #: toolhub/apps/toolinfo/models.py:329
 msgid "desktop app"
-msgstr ""
+msgstr "työpöytäsovellus"
 
 #: toolhub/apps/toolinfo/models.py:330
 msgid "bot"
@@ -525,7 +525,7 @@ msgstr "pienoisohjelma"
 
 #: toolhub/apps/toolinfo/models.py:332
 msgid "user script"
-msgstr ""
+msgstr "käyttäjäskripti"
 
 #: toolhub/apps/toolinfo/models.py:333
 msgid "command line tool"

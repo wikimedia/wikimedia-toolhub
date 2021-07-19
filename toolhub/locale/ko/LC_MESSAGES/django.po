@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-12 11:09:52+0000\n"
+"PO-Revision-Date: 2021-07-19 11:10:41+0000\n"
 "X-POT-Import-Date: 2021-07-09 22:30:30+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -220,7 +220,7 @@ msgstr "목록"
 
 #: toolhub/apps/lists/models.py:41
 msgid "Title of this list"
-msgstr ""
+msgstr "이 목록의 제목"
 
 #: toolhub/apps/lists/models.py:47
 msgid "Description of the list's theme or contents."
@@ -252,11 +252,11 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:47
 msgid "List of tools metadata."
-msgstr ""
+msgstr "도구 메타데이터 목록입니다."
 
 #: toolhub/apps/lists/serializers.py:81
 msgid "Create or update a list."
-msgstr ""
+msgstr "목록을 만들거나 업데이트합니다."
 
 #: toolhub/apps/lists/serializers.py:89 toolhub/apps/lists/serializers.py:206
 msgid "List of tool names."
@@ -305,7 +305,7 @@ msgstr "새 도구 목록을 만듭니다."
 
 #: toolhub/apps/lists/views.py:63
 msgid "Details of a specific list of tools."
-msgstr ""
+msgstr "특정 도구 목록에 대한 세부정보입니다."
 
 #: toolhub/apps/lists/views.py:67
 msgid "Update a list of tools."
@@ -317,7 +317,7 @@ msgstr "도구 목록을 삭제합니다."
 
 #: toolhub/apps/lists/views.py:78
 msgid "List all lists of tools."
-msgstr ""
+msgstr "모든 도구 목록을 나열합니다."
 
 #: toolhub/apps/lists/views.py:114
 msgid "Mark a list as featured."
