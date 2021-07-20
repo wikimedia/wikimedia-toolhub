@@ -21,6 +21,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from django_prometheus.models import ExportModelOperationsMixin
+
 from toolhub.fields import JSONSchemaField
 
 from . import schema
@@ -74,7 +76,7 @@ class LogEntryManager(models.Manager):
         return pk
 
 
-class LogEntry(models.Model):
+class LogEntry(ExportModelOperationsMixin("logentry"), models.Model):
     """An audit log entry."""
 
     CREATE = 0

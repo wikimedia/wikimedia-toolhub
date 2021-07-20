@@ -27,6 +27,8 @@ from django.dispatch import receiver
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
+from django_prometheus.models import ExportModelOperationsMixin
+
 import reversion
 from reversion.signals import post_revision_commit
 
@@ -321,7 +323,7 @@ class ToolManager(SafeDeleteManager):
 
 @reversion.register()
 @registry.register()
-class Tool(SafeDeleteModel):
+class Tool(ExportModelOperationsMixin("tool"), SafeDeleteModel):
     """Description of a tool."""
 
     TOOL_TYPE_CHOICES = (

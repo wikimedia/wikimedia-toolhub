@@ -51,9 +51,10 @@ api_patterns = [
 
 urlpatterns = [
     path("", include("vue.urls", namespace="vue")),
-    path("csp-report", csp_report, name="csp_report"),
+    path("", include("django_prometheus.urls")),  # /metrics
     path("admin/", admin.site.urls),
     path("api/", include((api_patterns, "api"), namespace="api")),
+    path("csp-report", csp_report, name="csp_report"),
     path(
         "o/",
         include(

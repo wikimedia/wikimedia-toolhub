@@ -161,6 +161,7 @@ INSTALLED_APPS = [
     "webpack_loader",
     "django_elasticsearch_dsl",
     "django_elasticsearch_dsl_drf",
+    "django_prometheus",
     # ==== Local apps ====
     "toolhub.apps.auditlog",
     "toolhub.apps.crawler",
@@ -173,6 +174,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django_prometheus.middleware.PrometheusBeforeMiddleware",  # Keep first
     "log_request_id.middleware.RequestIDMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -188,6 +190,7 @@ MIDDLEWARE = [
     "toolhub.apps.auditlog.middleware.LogEntryUserMiddleware",
     "toolhub.middleware.FLoCOptOutMiddleware",
     "toolhub.middleware.ReferrerPolicyMiddleware",
+    "django_prometheus.middleware.PrometheusAfterMiddleware",  # Keep last
 ]
 
 ROOT_URLCONF = "toolhub.urls"
@@ -225,7 +228,10 @@ DATABASES = {
         "PORT": env.int("DB_PORT", default=0),
     }
 }
-if "mysql" in DATABASES["default"]["ENGINE"]:  # pragma: no cover
+if DATABASES["default"]["ENGINE"] == "django.db.backends.mysql":
+    # Swap in the django_prometheus backend to enable query tracking
+    DATABASES["default"]["ENGINE"] = "django_prometheus.db.backends.mysql"
+
     # Make Django and MySQL play nice
     # https://blog.ionelmc.ro/2014/12/28/terrible-choices-mysql/
     # NOTE: use of utf8mb4 charset assumes innodb_large_prefix on the hosting
@@ -244,7 +250,7 @@ CACHES = {
     "default": {
         "BACKEND": env.str(
             "CACHE_BACKEND",
-            default="django.core.cache.backends.locmem.LocMemCache",
+            default="django_prometheus.cache.backends.locmem.LocMemCache",
         ),
         "LOCATION": env.str("CACHE_LOCATION", default=""),
         "KEY_PREFIX": "toolhub",

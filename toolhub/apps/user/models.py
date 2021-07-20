@@ -19,13 +19,15 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from django_prometheus.models import ExportModelOperationsMixin
+
 from toolhub.apps.auditlog.signals import registry
 
 from .validators import MediaWikiUsernameValidator
 
 
 @registry.register()
-class ToolhubUser(AbstractUser):
+class ToolhubUser(ExportModelOperationsMixin("user"), AbstractUser):
     """Local user model for Toolhub."""
 
     username_validator = MediaWikiUsernameValidator()

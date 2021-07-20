@@ -20,6 +20,8 @@ from django.core import validators
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from django_prometheus.models import ExportModelOperationsMixin
+
 import reversion
 
 from safedelete.models import SafeDeleteModel
@@ -33,7 +35,7 @@ from toolhub.fields import JSONSchemaField
 
 @reversion.register()
 @registry.register()
-class ToolList(SafeDeleteModel):
+class ToolList(ExportModelOperationsMixin("list"), SafeDeleteModel):
     """A list of tools."""
 
     title = models.CharField(
@@ -157,7 +159,7 @@ class ToolListItemManager(models.Manager):
         return favorites
 
 
-class ToolListItem(models.Model):
+class ToolListItem(ExportModelOperationsMixin("listitem"), models.Model):
     """Many-to-many tracking of Tool models contained by a ToolList."""
 
     toollist = models.ForeignKey(ToolList, on_delete=models.CASCADE)

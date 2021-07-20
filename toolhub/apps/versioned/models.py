@@ -18,10 +18,12 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from django_prometheus.models import ExportModelOperationsMixin
+
 import reversion
 
 
-class RevisionMetadata(models.Model):
+class RevisionMetadata(ExportModelOperationsMixin("revision"), models.Model):
     """Additional metadata to attach to a reversion revision.
 
     Use by calling `reversion.add_meta(RevisionMetadata, ...)` inside an

@@ -18,12 +18,14 @@
 from django.conf import settings
 from django.db import models
 
+from django_prometheus.models import ExportModelOperationsMixin
+
 from toolhub.apps.auditlog.signals import registry
 from toolhub.apps.toolinfo.models import Tool
 
 
 @registry.register()
-class Url(models.Model):
+class Url(ExportModelOperationsMixin("url"), models.Model):
     """A URL that the crawler should fetch."""
 
     url = models.URLField(max_length=255, unique=True)
@@ -47,7 +49,7 @@ class Url(models.Model):
         return self.url
 
 
-class Run(models.Model):
+class Run(ExportModelOperationsMixin("run"), models.Model):
     """A run of the crawler."""
 
     start_date = models.DateTimeField(auto_now_add=True)
@@ -63,7 +65,7 @@ class Run(models.Model):
         )
 
 
-class RunUrl(models.Model):
+class RunUrl(ExportModelOperationsMixin("runurl"), models.Model):
     """Information about a URL crawled during a Run."""
 
     run = models.ForeignKey(
