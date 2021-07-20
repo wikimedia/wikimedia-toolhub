@@ -29,7 +29,7 @@
 					color="primary"
 					block
 					:disabled="!valid || !$can( 'change', tool )"
-					@click="showCommentDialog"
+					@click="commentDialog = true"
 				>
 					<v-icon
 						dark
@@ -156,71 +156,14 @@
 			</v-col>
 		</v-row>
 
-		<v-dialog
-			v-model="commentDialog"
-			persistent
-			max-width="600px"
-			@keydown.esc="commentDialog = false"
-		>
-			<v-card>
-				<v-card-title>
-					<span class="text-h5">{{ $t( 'editsummary' ) }}</span>
-				</v-card-title>
-
-				<v-card-text>
-					<v-container>
-						<v-row>
-							<v-text-field
-								ref="comment"
-								v-model="comment"
-								:label="$t( 'describechanges' )"
-								required
-								:rules="requiredRule"
-								autofocus
-								@keydown.enter="publishChanges"
-							/>
-						</v-row>
-					</v-container>
-				</v-card-text>
-
-				<v-card-actions>
-					<v-spacer />
-
-					<v-btn
-						color="accent text--secondary"
-						@click="commentDialog = false"
-					>
-						<v-icon
-							dark
-							class="me-2"
-						>
-							mdi-cancel
-						</v-icon>
-						{{ $t( 'cancel' ) }}
-					</v-btn>
-
-					<v-btn
-						color="primary"
-						dark
-						@click="publishChanges"
-					>
-						<v-icon
-							dark
-							class="me-2"
-						>
-							mdi-content-save-edit
-						</v-icon>
-						{{ $t( 'publishchanges' ) }}
-					</v-btn>
-				</v-card-actions>
-			</v-card>
-		</v-dialog>
+		<CommentDialog v-model="commentDialog" @save="publishChanges" />
 	</v-container>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
 import InputWidget from '@/components/tools/InputWidget';
+import CommentDialog from '@/components/tools/CommentDialog';
 import ScrollTop from '@/components/tools/ScrollTop';
 import fetchMetaInfo from '@/helpers/metadata';
 import { asTool } from '@/helpers/casl';
@@ -229,7 +172,8 @@ export default {
 	name: 'Tool',
 	components: {
 		InputWidget,
-		ScrollTop
+		ScrollTop,
+		CommentDialog
 	},
 	data() {
 		return {
@@ -448,7 +392,6 @@ export default {
 					label: this.$t( 'replacedby' )
 				}
 			},
-			comment: '',
 			commentDialog: false,
 			requiredRule: [ ( v ) => !!v || this.$t( 'required-field' ) ],
 			links: [ 'user_docs_url', 'developer_docs_url', 'privacy_policy_url', 'feedback_url', 'url_alternates' ],
@@ -474,18 +417,9 @@ export default {
 	methods: {
 		...mapActions( 'api', [ 'getRequestSchema' ] ),
 		...mapActions( 'tools', [ 'getToolByName', 'getSpdxLicenses' ] ),
-		showCommentDialog() {
-			this.commentDialog = true;
-		},
-		publishChanges() {
-			const refs = this.$refs,
-				comment = refs.comment.value,
-				newtool = { ...this.tool };
 
-			if ( !comment ) {
-				refs.comment.validate( true );
-				return;
-			}
+		publishChanges( comment ) {
+			const newtool = { ...this.tool };
 			newtool.comment = comment;
 
 			this.links.forEach( ( field ) => {
