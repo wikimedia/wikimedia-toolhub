@@ -16,6 +16,7 @@
 	<v-icon
 		v-else
 		:size="size"
+		color="base20"
 	>
 		{{ fallback }}
 	</v-icon>

@@ -18,7 +18,7 @@
 			</v-col>
 			<v-col cols="12">
 				<v-btn
-					color="primary"
+					color="primary base100--text"
 					class="pa-4 mb-4"
 					:disabled="!valid || !$can( 'add', 'toolinfo/tool' )"
 					@click="createTool"

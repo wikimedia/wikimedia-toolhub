@@ -22,7 +22,7 @@
 							inline
 							:value="facet.selected.length > 0"
 							:content="facet.selected.length"
-							color="info"
+							color="base20"
 						>
 							{{ renderFacetTitle( facet ) }}
 						</v-badge>
@@ -60,7 +60,7 @@
 							inline
 							:value="facet.selected.length > 0"
 							:content="facet.selected.length"
-							color="info"
+							color="base20"
 						>
 							{{ renderFacetTitle( facet ) }}
 						</v-badge>

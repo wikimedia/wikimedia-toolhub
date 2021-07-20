@@ -14,43 +14,47 @@
 					</v-col>
 
 					<v-col>
-						<h1 class="text-h4 ma-1">
+						<h1 class="text-h4 mx-1 my-3">
 							{{ $t( 'welcomemessage' ) }}
 						</h1>
-						<div class="text-subtitle-1 mx-1">
+
+						<div class="text-subtitle-1 ma-1">
 							{{ $t( 'tagline-about' ) }}
 						</div>
 
-						<dl v-if="lastCrawlerRun" class="row ma-1">
-							<dt class="me-1">
-								<v-icon size="20">
-									mdi-tools
-								</v-icon>
-								{{ $t( 'toolsfound', [ numTools ] ) }}
-							</dt>
-							<dd>
-								<v-icon
-									size="21"
-								>
-									mdi-update
-								</v-icon>
-								{{ $t(
-									'newtoolsfound',
-									[
-										lastCrawlerRun.new_tools +
-											lastCrawlerRun.updated_tools
-									]
-								) }}
-								{{ $t(
-									'tools-lastupdated',
-									[
-										formatDate(
-											lastCrawlerRun.end_date
-										)
-									]
-								) }}
-							</dd>
-						</dl>
+						<div v-if="lastCrawlerRun" class="text-subtitle-1 ma-1">
+							<v-icon
+								size="20"
+								color="base20"
+							>
+								mdi-update
+							</v-icon>
+							{{ $t(
+								'newtoolsfound',
+								[
+									lastCrawlerRun.new_tools +
+										lastCrawlerRun.updated_tools
+								]
+							) }}
+							{{ $t(
+								'tools-lastupdated',
+								[
+									formatDate(
+										lastCrawlerRun.end_date
+									)
+								]
+							) }}
+						</div>
+
+						<div v-if="lastCrawlerRun" class="text-subtitle-1 ma-1">
+							<v-icon
+								size="20"
+								color="base20"
+							>
+								mdi-tools
+							</v-icon>
+							{{ $t( 'toolsfound', [ numTools ] ) }}
+						</div>
 					</v-col>
 				</v-row>
 			</v-col>
@@ -66,8 +70,8 @@
 		<v-row>
 			<v-col v-for="list in featuredLists.results"
 				:key="list.title"
-				class="lists"
 				cols="12"
+				class="featured-lists"
 			>
 				<ListView :list="list" />
 			</v-col>

@@ -21,7 +21,7 @@
 					class="transparent elevation-0 my-3"
 					:to="`/list/${list.id}`"
 				>
-					<v-icon size="30" color="secondary">
+					<v-icon size="30" color="base20">
 						mdi-link-variant
 					</v-icon>
 				</v-btn>
@@ -35,7 +35,7 @@
 					class="transparent elevation-0 my-3"
 					@click="listInfo = !listInfo"
 				>
-					<v-icon size="30" color="secondary">
+					<v-icon size="30" color="base20">
 						mdi-information-outline
 					</v-icon>
 				</v-btn>
@@ -44,16 +44,13 @@
 		<v-alert
 			class="ma-2"
 			:value="listInfo"
-			color="base90"
+			color="accent"
 			dismissible
 			@input="closeListInfo"
 		>
 			{{ list.description }}
 		</v-alert>
-		<v-sheet
-			class="mx-auto"
-			min-width="300"
-		>
+		<v-sheet>
 			<v-card
 				v-if="list.tools.length === 0"
 				class="ma-4"
@@ -61,9 +58,9 @@
 			>
 				<v-card-title class="pa-0">{{ $t( 'lists-listempty' ) }}</v-card-title>
 			</v-card>
-
 			<v-slide-group
-				show-arrows
+				v-else
+				show-arrows="always"
 			>
 				<v-slide-item
 					v-for="( tool, idx ) in list.tools"

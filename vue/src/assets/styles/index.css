@@ -3,6 +3,12 @@ div.tool-card__card {
 	flex-direction: column;
 }
 
+.tool-card__card.v-card {
+	background-color: var( --v-accent-base );
+	border-bottom: 1px solid var( --v-base80-base );
+	box-shadow: none;
+}
+
 .tool-card__card > div {
 	flex: 1 1 auto;
 }
@@ -39,8 +45,8 @@ div.tool-card__card {
 }
 
 .lists .box-header {
-	background-color: var( --v-base90-base );
-	border-bottom: 2px solid var( --v-accent-base );
+	background-color: var( --v-accent-base );
+	border-bottom: 1px solid var( --v-base80-base );
 }
 
 div.list-card__card {
@@ -82,6 +88,16 @@ div.list-card__card {
 	text-overflow: ellipsis;
 }
 
+.featured-lists .box-header {
+	background-color: var( --v-accent-base );
+	border-bottom: 1px solid var( --v-base80-base );
+}
+
+.featured-lists .v-sheet.v-card {
+	box-shadow: none;
+	border-bottom: 1px solid var( --v-base80-base );
+}
+
 .table-striped tbody tr:nth-of-type( odd ) {
 	background-color: var( --v-accent-base );
 }
@@ -93,7 +109,7 @@ div.list-card__card {
 .table-crawler-history .selected tr.v-data-table__selected,
 .table-crawler-history .active tbody tr:first-child {
 	background: var( --v-primary-base ) !important;
-	color: var( --v-bgtext-base );
+	color: var( --v-base100-base );
 }
 
 .selectlocale-body {
@@ -111,6 +127,10 @@ div.list-card__card {
 	z-index: 5;
 	position: fixed;
 	bottom: 0%;
+}
+
+.searchbar.v-text-field.v-text-field--solo:not( .v-text-field--solo-flat ) > .v-input__control > .v-input__slot {
+	border: 1px solid var( --v-base80-base );
 }
 
 @media only screen and ( min-width: 960px ) {

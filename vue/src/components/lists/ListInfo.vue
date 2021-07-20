@@ -4,7 +4,7 @@
 			elevation="0"
 			class="list-card__card"
 		>
-			<v-card-title>
+			<v-card-title class="px-0">
 				<CommonsImage
 					:commons-url="list.icon"
 					:size="50"
@@ -15,8 +15,8 @@
 				</h2>
 				<v-chip
 					v-if="list.featured"
-					color="utility_yellow30"
-					text-color="bgtext"
+					color="yellow30"
+					text-color="base100"
 					:small="$vuetify.breakpoint.smAndDown"
 				>
 					<v-icon size="15" class="me-1">
@@ -28,7 +28,7 @@
 
 			<v-card-text>
 				<v-row>
-					<v-col cols="12">
+					<v-col cols="12" class="px-0">
 						<div
 							class="text--primary text-subtitle-1"
 							dir="auto"

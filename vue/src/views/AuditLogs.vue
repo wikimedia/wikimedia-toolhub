@@ -68,7 +68,7 @@
 						class="mt-2"
 					>
 						<v-btn
-							color="primary"
+							color="primary base100--text"
 							block
 							@click="filterLogs"
 						>

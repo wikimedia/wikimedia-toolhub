@@ -2,7 +2,7 @@
 	<v-container v-if="tool">
 		<v-app-bar
 			v-if="!revId"
-			color="bgtext"
+			color="base100"
 			dense
 			flat
 			class="tool-app-bar"
@@ -11,7 +11,7 @@
 			<v-btn
 				v-if="$can( 'change', tool )"
 				:to="`/tool/${tool.name}/edit`"
-				color="primary"
+				color="primary base100--text"
 				:small="$vuetify.breakpoint.smAndDown"
 			>
 				<v-icon class="me-2">
@@ -85,7 +85,7 @@
 							<v-btn
 								v-if="tool.repository"
 								class="mt-4 ms-3"
-								color="primary"
+								color="primary base100--text"
 								dark
 								:href="`${tool.repository}`"
 								target="_blank"
@@ -102,7 +102,7 @@
 
 							<v-btn
 								class="mt-4 ms-3"
-								color="primary"
+								color="primary base100--text"
 								dark
 								:href="`${tool.url}`"
 								target="_blank"
@@ -251,7 +251,7 @@
 				<v-alert
 					v-if="tool.replaced_by"
 					border="left"
-					color="primary"
+					color="primary base100--text"
 					dark
 					elevation="2"
 					type="info"

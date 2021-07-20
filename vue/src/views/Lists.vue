@@ -11,7 +11,7 @@
 				cols="auto"
 			>
 				<v-btn
-					color="primary"
+					color="primary base100--text"
 					to="/lists/create"
 				>
 					<v-icon>

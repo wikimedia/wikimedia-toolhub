@@ -44,7 +44,7 @@
 					class="mt-2"
 				>
 					<v-btn
-						color="primary"
+						color="primary base100--text"
 						block
 						@click="filterUsers"
 					>
@@ -111,7 +111,7 @@
 					<template #[`item.add_remove_member`]="{ item }">
 						<v-btn
 							class="mt-2 mb-2"
-							color="primary"
+							color="primary base100--text"
 							@click="invokeDialog( item )"
 						>
 							<v-icon
@@ -174,7 +174,7 @@
 							<v-col cols="3">
 								<v-btn
 									class="mt-4"
-									color="primary"
+									color="primary base100--text"
 									width="100%"
 									block
 									:disabled="groupFilterForSelectedUser === ''"

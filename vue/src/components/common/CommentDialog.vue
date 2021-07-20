@@ -31,7 +31,7 @@
 					<v-spacer />
 
 					<v-btn
-						color="accent text--secondary"
+						color="accent"
 						@click="show = false"
 					>
 						<v-icon
@@ -44,7 +44,7 @@
 					</v-btn>
 
 					<v-btn
-						color="primary"
+						color="primary base100--text"
 						dark
 						@click="saveComment"
 					>

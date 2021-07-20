@@ -1,6 +1,7 @@
 <template>
 	<v-text-field
 		v-model="query"
+		class="searchbar"
 		:label="$t( 'search-label' )"
 		:loading="loading"
 		solo
@@ -18,6 +19,8 @@
 					aria-hidden="false"
 					:aria-label="$t( 'search' )"
 					role="img"
+					color="base20"
+					size="30"
 				>
 					mdi-magnify
 				</v-icon>

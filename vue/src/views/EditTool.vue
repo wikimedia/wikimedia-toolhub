@@ -9,8 +9,7 @@
 
 			<v-col md="2" cols="12">
 				<v-btn
-					color="accent text--secondary"
-					dark
+					color="accent"
 					block
 					:to="`/tool/${tool.name}`"
 				>
@@ -26,7 +25,7 @@
 
 			<v-col md="4" cols="12">
 				<v-btn
-					color="primary"
+					color="primary base100--text"
 					block
 					:disabled="!valid || !$can( 'change', tool )"
 					@click="commentDialog = true"

@@ -79,7 +79,7 @@
 							elevation="2"
 							icon
 							class="mt-2"
-							color="primary"
+							color="primary base100--text"
 							@click="alterArray( 'add', value )"
 						>
 							<v-icon>

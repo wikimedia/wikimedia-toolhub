@@ -29,7 +29,7 @@
 					>
 						<v-btn
 							class="mt-4"
-							color="primary"
+							color="primary base100--text"
 							width="100%"
 							:disabled="!$can( 'add', 'crawler/url' )"
 							@click="registerUrl(fileUrl)"

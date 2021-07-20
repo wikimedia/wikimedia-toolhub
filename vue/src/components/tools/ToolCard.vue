@@ -1,8 +1,9 @@
 <template>
 	<v-card
 		class="tool-card__card pa-1"
-		height="220px"
+		height="250px"
 		:to="`/tool/${tool.name}`"
+		outlined
 	>
 		<v-card-title class="flex-nowrap">
 			<CommonsImage

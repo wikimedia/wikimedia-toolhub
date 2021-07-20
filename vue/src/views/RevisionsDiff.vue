@@ -69,7 +69,7 @@
 							<v-col cols="1">
 								<v-icon
 									class="mt-3"
-									color="secondary"
+									color="base20"
 									small
 								>
 									mdi-minus
@@ -107,7 +107,7 @@
 						>
 							<v-col cols="1">
 								<v-icon
-									color="secondary"
+									color="base20"
 									class="mt-3"
 									small
 								>

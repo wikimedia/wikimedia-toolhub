@@ -30,7 +30,7 @@
 
 			<v-col cols="12" lg="8">
 				<v-btn
-					color="primary"
+					color="primary base100--text"
 					class="pa-4"
 					:disabled="!valid || !$can( 'add', 'lists/toollist' )"
 					@click="createList"

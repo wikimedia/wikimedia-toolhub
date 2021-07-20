@@ -55,7 +55,7 @@
 
 							<v-col cols="12" lg="8">
 								<v-btn
-									color="primary"
+									color="primary base100--text"
 									class="pa-4"
 									:disabled="!$can( 'add', 'oauth2_provider/application' )"
 									@click="registerApp( appName, redirectUrl )"
@@ -237,7 +237,7 @@
 								cols="12"
 							>
 								<v-btn
-									color="primary"
+									color="primary base100--text"
 									class="me-2"
 									@click="updateClientApp( app )"
 								>
@@ -252,7 +252,7 @@
 								</v-btn>
 
 								<v-btn
-									color="error"
+									color="error base100--text"
 									@click="deleteClientApp( app.client_id )"
 								>
 									<v-icon
@@ -337,7 +337,7 @@
 
 							<v-col cols="12">
 								<v-btn
-									color="error"
+									color="error base100--text"
 									@click="deleteAuthorizedApp( app.id )"
 								>
 									<v-icon
