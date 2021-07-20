@@ -1,0 +1,17 @@
+# Development mode testing configuration
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+  external_labels:
+    monitor: django-monitor
+
+rule_files:
+  - 'toolhub.rules'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'toolhub'
+    static_configs:
+      - targets: ['web:8000']

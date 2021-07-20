@@ -22,7 +22,7 @@ PIPELINE_DIR := $(PROJECT_DIR)/.pipeline
 BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
 DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile
-DEFAULT_CONTAINERS := web db nodejs search
+DEFAULT_CONTAINERS := web db nodejs search prometheus
 ALL_TESTS := test-python test-nodejs-lint test-nodejs-unit
 
 help:
@@ -63,6 +63,10 @@ db-shell:  ## Get an interactive shell inside the db container
 search-shell:  ## Get an interactive shell inside the search container
 	docker-compose exec search bash
 .PHONY: search-shell
+
+prometheus-shell:  ## Get an interactive shell inside the prometheus container
+	docker-compose exec prometheus sh
+.PHONY: prometheus-shell
 
 tail:  ## Tail logs from the docker-compose stack
 	docker-compose logs -f
