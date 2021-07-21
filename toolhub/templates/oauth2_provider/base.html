@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="imagetoolbar" content="no">
+    <link rel="icon" type="image/svg+xml" href="{% static "img/favicon-outline.svg" %}">
+    <link rel="alternate icon" href="{% static "img/favicon-outline.ico" %}">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static "css/oauth.css" %}">
+    {% block css %}{% endblock css %}
+    <style>
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+      <img src="{% static "img/logo-solid-white.svg" %}"/>
+      {% trans 'Toolhub' %}</h1>
+    </header>
+    <div class="container">
+      {% block content %}{% endblock content %}
+    </div>
+  </body>
+</html>
