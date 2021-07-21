@@ -60,7 +60,7 @@
 
 <script>
 import ToolCard from '@/components/tools/ToolCard';
-import CommonsImage from '@/components/tools/CommonsImage';
+import CommonsImage from '@/components/common/CommonsImage';
 
 export default {
 	components: {

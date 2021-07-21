@@ -151,7 +151,7 @@ import { mapState } from 'vuex';
 import Chart from '@/components/chart/LineChart.js';
 import customSort from '@/plugins/sort.js';
 import fetchMetaInfo from '@/helpers/metadata';
-import ScrollTop from '@/components/tools/ScrollTop';
+import ScrollTop from '@/components/common/ScrollTop';
 
 export default {
 	components: {

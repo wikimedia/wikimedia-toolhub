@@ -162,9 +162,9 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import InputWidget from '@/components/tools/InputWidget';
-import CommentDialog from '@/components/tools/CommentDialog';
-import ScrollTop from '@/components/tools/ScrollTop';
+import InputWidget from '@/components/common/InputWidget';
+import ScrollTop from '@/components/common/ScrollTop';
+import CommentDialog from '@/components/common/CommentDialog';
 import fetchMetaInfo from '@/helpers/metadata';
 import { asTool } from '@/helpers/casl';
 

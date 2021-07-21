@@ -32,7 +32,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import InputWidget from '@/components/tools/InputWidget';
+import InputWidget from '@/components/common/InputWidget';
 
 export default {
 	name: 'CreateNewTool',

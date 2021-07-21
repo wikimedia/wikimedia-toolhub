@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import CommonsImage from '@/components/tools/CommonsImage';
+import CommonsImage from '@/components/common/CommonsImage';
 
 export default {
 	name: 'ToolCard',

@@ -274,8 +274,8 @@
 <script>
 import { ensureArray } from '@/helpers/array';
 import { forWikiLabel } from '@/helpers/tools';
-import CommonsImage from '@/components/tools/CommonsImage';
-import ScrollTop from '@/components/tools/ScrollTop';
+import CommonsImage from '@/components/common/CommonsImage';
+import ScrollTop from '@/components/common/ScrollTop';
 
 export default {
 	name: 'ToolInfo',
