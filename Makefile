@@ -56,6 +56,7 @@ nodejs-shell:  ## Get an interactive shell inside the nodejs container
 .PHONY: nodejs-shell
 
 db-shell:  ## Get an interactive shell inside the db container
+	grep DOCKER_DB_MYSQL_ROOT_PASSWORD .env
 	docker-compose exec db bash
 .PHONY: db-shell
 
