@@ -21,7 +21,7 @@ PROJECT_DIR := $(dir $(this))
 PIPELINE_DIR := $(PROJECT_DIR)/.pipeline
 BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
-DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile
+DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile $(PIPELINE_DIR)/oauth-client.Dockerfile
 DEFAULT_CONTAINERS := web db nodejs search prometheus
 ALL_TESTS := test-python test-nodejs-lint test-nodejs-unit
 
@@ -67,6 +67,10 @@ search-shell:  ## Get an interactive shell inside the search container
 prometheus-shell:  ## Get an interactive shell inside the prometheus container
 	docker-compose exec prometheus sh
 .PHONY: prometheus-shell
+
+oauth-client: .env $(DOCKERFILES) ## Start the oauth-client app container
+	docker-compose up --build oauth-client
+.PHONY: oauth-client
 
 tail:  ## Tail logs from the docker-compose stack
 	docker-compose logs -f

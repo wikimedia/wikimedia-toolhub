@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="en-us"/>
+    <title>Toolhub OAuth client demo</title>
+    <meta http-equiv="imagetoolbar" content="no"/>
+  </head>
+  <body>
+    <h1>Toolhub OAuth client demo</h1>
+    {% if profile %}
+    <a href="/logout">logout</a>
+    <dl>
+      <dt>Username</dt>
+      <dd>{{ profile.username }}</dd>
+      <dt>Email</dt>
+      <dd>{{ profile.email }}</dd>
+      <dt>Rights</dt>
+      <dd>
+        <dl>
+          {% for right in profile.casl %}
+          {% if loop.previtem is not defined or right.subject != loop.previtem.subject %}
+          {% if not loop.first %}</ul></dd>{% endif %}
+          <dt>{{ right.subject }}</dt>
+          <dd>
+            <ul>
+          {% endif %}
+          <li><em>{{ right.action }}</em>
+            {% if right.conditions %}
+            when
+            {% for key, value in right.conditions.items() %}
+              {% if not loop.first %} and {% endif %}
+              {{ key }} == {{ value }}
+              {% endfor %}
+            {% endif %}
+          </li>
+          {% if loop.last %}</ul></dd>{% endif %}
+          {% endfor %}
+        </dl>
+      </dd>
+    </dl>
+    {% else %}
+    <a href="/login">login</a>
+    {% endif %}
+  </body>
+</html>

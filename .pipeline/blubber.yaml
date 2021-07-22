@@ -149,6 +149,29 @@ variants:
           && tar -C /srv/dockerize/bin -xzvf dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
           && rm dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz
 
+  oauth-client:
+    # Trivial OAuth client application for local testing of Toolhub's built-in
+    # OAuth authorization server.
+    includes:
+      - base-python
+    python:
+      requirements:
+        - from: local
+          source: contrib/oauth-client-example/pyproject.toml
+          destination: ./
+        - from: local
+          source: contrib/oauth-client-example/poetry.lock
+          destination: ./
+    copies:
+      - from: local
+        source: contrib/oauth-client-example
+        destination: ./
+    entrypoint:
+      - /bin/bash
+      - -c
+      - >-
+        poetry run python3 -m flask run --host 0.0.0.0 --port 8000
+
   prep-nodejs:
     # Builder container: compiles Vue frontend code
     includes:
