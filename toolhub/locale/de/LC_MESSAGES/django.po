@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-12 11:09:52+0000\n"
+"PO-Revision-Date: 2021-07-22 11:12:32+0000\n"
 "X-POT-Import-Date: 2021-07-09 22:30:30+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -294,18 +294,18 @@ msgstr "Version nach dem Anwenden von Änderungen."
 #: toolhub/apps/lists/validators.py:34
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr ""
+msgstr "Doppelte Werte in der Liste: %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:51
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Unbekanntes Werkzeug: %(names)s"
+msgstr[1] "Unbekannte Werkzeuge: %(names)s"
 
 #: toolhub/apps/lists/views.py:58
 msgid "Create a new list of tools."
-msgstr ""
+msgstr "Erstellen einee neuen Werkzeugliste."
 
 #: toolhub/apps/lists/views.py:63
 msgid "Details of a specific list of tools."
@@ -313,11 +313,11 @@ msgstr "Details zu einer bestimmten Liste von Tools."
 
 #: toolhub/apps/lists/views.py:67
 msgid "Update a list of tools."
-msgstr ""
+msgstr "Aktualisieren einer Liste von Werkzeugen."
 
 #: toolhub/apps/lists/views.py:75
 msgid "Delete a list of tools."
-msgstr ""
+msgstr "Löschen einer Liste von Werkzeugen."
 
 #: toolhub/apps/lists/views.py:78
 msgid "List all lists of tools."
@@ -325,15 +325,15 @@ msgstr "Listet alle Listen von Tools auf."
 
 #: toolhub/apps/lists/views.py:114
 msgid "Mark a list as featured."
-msgstr ""
+msgstr "Markieren einer Liste als hervorgehoben."
 
 #: toolhub/apps/lists/views.py:142
 msgid "Remove featured flag from a list."
-msgstr ""
+msgstr "Entfernen der empfohlenen Markierung aus einer Liste."
 
 #: toolhub/apps/lists/views.py:174
 msgid "A unique integer value identifying this toollist."
-msgstr ""
+msgstr "Ein eindeutiger ganzzahliger Wert, der diese Werkzeugliste identifiziert."
 
 #: toolhub/apps/lists/views.py:180 toolhub/apps/toolinfo/views.py:125
 msgid "Get revision information."
@@ -349,11 +349,11 @@ msgstr "Vergleiche zwei Versionen, um Unterschiede zu finden."
 
 #: toolhub/apps/lists/views.py:198 toolhub/apps/toolinfo/views.py:143
 msgid "A unique integer value identifying version to diff against."
-msgstr ""
+msgstr "Ein eindeutiger ganzzahliger Wert, der die Version identifiziert, gegen die abgeglichen werden soll."
 
 #: toolhub/apps/lists/views.py:206
 msgid "Restore the list to this revision."
-msgstr ""
+msgstr "Die Liste auf diese Version zurücksetzen."
 
 #: toolhub/apps/lists/views.py:213 toolhub/apps/toolinfo/views.py:158
 msgid "Undo all changes made between two revisions."
@@ -361,7 +361,7 @@ msgstr "Alle Veränderungen, die zwischen zwei Bearbeitungen gemacht wurden, zur
 
 #: toolhub/apps/lists/views.py:221 toolhub/apps/toolinfo/views.py:166
 msgid "A unique integer value identifying version to undo until."
-msgstr ""
+msgstr "Ein eindeutiger ganzzahliger Wert, der die Version identifiziert, gegen die abgeglichen werden soll."
 
 #: toolhub/apps/lists/views.py:229 toolhub/apps/toolinfo/views.py:174
 msgid "Hide revision text and edit summary from users."
