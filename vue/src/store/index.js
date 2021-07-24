@@ -10,6 +10,7 @@ import ToolsModule from './tools';
 import UserModule from './user';
 import GroupsModule from './groups';
 import ListsModule from './lists';
+import OauthModule from './oauth';
 
 /* istanbul ignore next: upstream tested */
 Vue.use( Vuex );
@@ -24,7 +25,8 @@ export default new Vuex.Store( {
 		tools: ToolsModule,
 		user: UserModule,
 		groups: GroupsModule,
-		lists: ListsModule
+		lists: ListsModule,
+		oauth: OauthModule
 	},
 	// Strict mode in development/testing, but disabled for performance in prod
 	strict: process.env.NODE_ENV !== 'production'
