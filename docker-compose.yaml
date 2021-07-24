@@ -32,6 +32,7 @@ services:
       - WIKIMEDIA_OAUTH2_KEY
       - WIKIMEDIA_OAUTH2_SECRET
       - "ES_HOSTS=${ES_HOSTS:-search:9200}"
+      - "FIREFOX_DEVTOOL_HACK=${FIREFOX_DEVTOOL_HACK:-false}"
     volumes:
       - type: bind
         source: .

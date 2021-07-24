@@ -403,6 +403,14 @@ if DEBUG:
     CSP_CONNECT_SRC.append("http://localhost:*")
     CSP_CONNECT_SRC.append("ws://localhost:*")
 
+    if env.bool("FIREFOX_DEVTOOL_HACK", default=False):
+        # This is super duper gross, but the Vue.js devtools extension for
+        # Firefox will not work at all when the CSP header for the app blocks
+        # eval(), inline scripts, and data: media-src.
+        CSP_SCRIPT_SRC.append("'unsafe-eval'")
+        CSP_SCRIPT_SRC.append("'unsafe-inline'")
+        CSP_MEDIA_SRC = ["data:"]
+
 # == Referrer-Policy settings ==
 REFERRER_POLICY = "strict-origin-when-cross-origin"
 
