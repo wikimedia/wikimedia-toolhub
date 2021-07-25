@@ -221,18 +221,31 @@ variants:
           && mv /tmp/staticfiles.json staticfiles/staticfiles.json
           && poetry run ./manage.py compilemessages
 
-  demo:
-    # Demonstration server: runs Toolhub in a single container with an
-    # ephemeral sqlite3 database.
+  production:
     includes:
       - base-python
-    runs:
-      environment:
-        DB_NAME: /dev/shm/toolhub.sqlite3
     copies:
       - from: prep
         source: /srv/app
         destination: .
+    entrypoint:
+      - /usr/local/bin/poetry
+      - run
+      - python3
+      - manage.py
+      - runserver
+      - --noreload
+      - --nostatic
+      - 0.0.0.0:8000
+
+  demo:
+    # Demonstration server: runs Toolhub in a single container with an
+    # ephemeral sqlite3 database.
+    includes:
+      - production
+    runs:
+      environment:
+        DB_NAME: /dev/shm/toolhub.sqlite3
     entrypoint:
       - /bin/bash
       - -c

@@ -27,3 +27,17 @@ pipelines:
         build: test-nodejs
         run:
           env: *node-env-settings
+
+  publish:
+    blubberfile: blubber.yaml
+    stages:
+      - name: production
+        build: production
+        publish: &publish_with_tags
+          image:
+            id: '${.imageID}'
+            tags:
+              - '${setup.tag}'
+      - name: demo
+        build: demo
+        publish: *publish_with_tags
