@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-22 11:12:32+0000\n"
+"PO-Revision-Date: 2021-07-26 11:13:02+0000\n"
 "X-POT-Import-Date: 2021-07-09 22:30:30+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -365,15 +365,15 @@ msgstr "Ein eindeutiger ganzzahliger Wert, der die Version identifiziert, gegen 
 
 #: toolhub/apps/lists/views.py:229 toolhub/apps/toolinfo/views.py:174
 msgid "Hide revision text and edit summary from users."
-msgstr ""
+msgstr "Verstecken vom Text der Version und der Bearbeitungszusammenfassung vor Benutzern."
 
 #: toolhub/apps/lists/views.py:235 toolhub/apps/toolinfo/views.py:180
 msgid "Reveal a previously hidden revision."
-msgstr ""
+msgstr "Zeigt eine zuvor versteckte Version wieder an."
 
 #: toolhub/apps/lists/views.py:241 toolhub/apps/toolinfo/views.py:186
 msgid "Mark a revision as patrolled."
-msgstr ""
+msgstr "Markieren einer Version als kontrolliert."
 
 #: toolhub/apps/lists/views.py:340 toolhub/apps/toolinfo/views.py:283
 #, python-format

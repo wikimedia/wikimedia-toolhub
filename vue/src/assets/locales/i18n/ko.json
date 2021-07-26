@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Apzp79",
 			"Gustmd7410",
 			"Ykhwong"
 		]
@@ -28,15 +29,19 @@
 	"auditlog-entry-tool-updated": "$1님이 $2 도구를 업데이트했습니다",
 	"auditlog-entry-toollist-created": "$1님이 $2 목록을 만들었습니다",
 	"auditlog-entry-toollist-deleted": "$1님이 $2 목록을 삭제했습니다",
+	"auditlog-entry-url-created": "$1님이 url $2을 만들었습니다.",
 	"auditlog-entry-url-deleted": "$1님이 $2 URL을 삭제했습니다.",
 	"auditlog-entry-url-updated": "$1님이 $2 URL을 업데이트했습니다",
 	"auditlog-entry-user-created": "$1님이 $2 사용자를 만들었습니다",
 	"auditlog-entry-user-deleted": "$1님이 $2 사용자를 삭제했습니다",
+	"auditlog-entry-version-hid": "$1님이 $3의 $2 판을 숨김",
 	"auditlogs-filter": "필터",
 	"auditlogs-pagetitle": "이 문서는 모든 기록 항목을 나열합니다",
 	"auditlogs-targettype-group": "그룹",
 	"auditlogs-targettype-tool": "도구",
+	"auditlogs-targettype-toollist": "목록",
 	"auditlogs-targettype-user": "사용자",
+	"auditlogs-targettype-version": "판",
 	"auditlogs-username": "사용자 이름",
 	"authorizedapps": "인가된 앱",
 	"author": "만든이",
