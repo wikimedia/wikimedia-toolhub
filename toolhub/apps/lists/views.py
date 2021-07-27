@@ -103,7 +103,10 @@ class ToolListViewSet(viewsets.ModelViewSet):
             featured_state = self.action == "unfeature"
             return qs.filter(published=True, featured=featured_state)
         if self.request.method not in permissions.SAFE_METHODS:
-            return qs.filter(created_by=user)
+            # T287286: Administrators and Oversighters need to be able to
+            # access all published lists for vandal fighting, so we cannot
+            # limit to created_by=user here.
+            return qs
         qs = qs.filter(Q(published=True) | Q(created_by=user))
         return qs
 
