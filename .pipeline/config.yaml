@@ -38,6 +38,7 @@ pipelines:
             id: '${.imageID}'
             tags:
               - '${setup.tag}'
-      - name: demo
-        build: demo
-        publish: *publish_with_tags
+      # T287516: Demo goes boom!
+      #- name: demo
+      #  build: demo
+      #  publish: *publish_with_tags
