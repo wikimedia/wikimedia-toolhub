@@ -86,6 +86,7 @@ logger = logging.getLogger(__name__)
 class ToolViewSet(viewsets.ModelViewSet):
     """Tools."""
 
+    queryset = Tool.objects.all()
     lookup_field = "name"
     filterset_fields = {
         "name": ["exact", "contains", "startswith", "endswith"],
@@ -93,15 +94,6 @@ class ToolViewSet(viewsets.ModelViewSet):
     ordering_fields = ["name", "modified_date"]
     ordering = ["-modified_date"]
     permission_classes = [ObjectPermissionsOrAnonReadOnly]
-
-    def get_queryset(self):
-        """Filter qs by current user when editing."""
-        if self.request.method in ["DELETE", "PUT"]:
-            user = self.request.user
-            if not user.is_authenticated:
-                user = None
-            return Tool.objects.filter(created_by=user)
-        return Tool.objects.all()
 
     def get_serializer_class(self):
         """Use different serializers for input vs output."""
@@ -152,6 +144,7 @@ path_param_tool_name = OpenApiParameter(
         parameters=[
             path_param_tool_name,
         ],
+        request=None,
         responses=ToolSerializer,
     ),
     undo=extend_schema(
@@ -168,6 +161,7 @@ path_param_tool_name = OpenApiParameter(
                 ),
             ),
         ],
+        request=None,
         responses=ToolSerializer,
     ),
     hide=extend_schema(
