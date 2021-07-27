@@ -159,13 +159,29 @@ class CASLForUserTest(TestCase):
                 # Oversighters get unconditional ability to view
                 # reversion/version instances.
                 self.assertNotIn("conditions", rule)
-            elif action in ["change", "delete"]:
-                if subject == "reversion/version":
-                    # Oversighters get unconditional ability to change and
-                    # delete reversion/version instances.
+            elif action == "change":
+                if subject in (
+                    "lists/toollist",
+                    "reversion/version",
+                ):
+                    # Oversighters get unconditional ability to change user
+                    # created content so that they can remove harmful content
+                    # before supressing.
                     self.assertNotIn("conditions", rule)
+
+                elif subject == "toolinfo/tool":
+                    # Even oversighters cannot edit non-api origin toolinfo
+                    # records
+                    self.assertIn("conditions", rule)
+                    conds = rule["conditions"]
+                    self.assertEqual(conds["origin"], "api")
+                    conds.pop("origin")
+                    self.assertEqual(len(conds), 0)
+
                 else:
                     self.assertRuleChangeDelete(rule, self.oversighter.id)
+            elif action == "delete":
+                self.assertRuleChangeDelete(rule, self.oversighter.id)
 
     def test_patroller(self):
         """Verify patroller perms."""

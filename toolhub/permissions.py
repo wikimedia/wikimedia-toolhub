@@ -73,7 +73,7 @@ class CustomModelPermission(permissions.BasePermission):
 
 
 @rules.predicate
-def is_obj_creator(user, obj=None):
+def is_creator(user, obj=None):
     """Is the given user the creator of the given object?"""
     if obj is None:  # called via has_permission()
         return True
@@ -131,7 +131,8 @@ is_admin_or_patroller = is_patroller | is_administrator
 
 # Convenience permission combinations
 is_authed = rules.is_authenticated
-is_obj_creator_or_admin = is_authed & (is_obj_creator | is_administrator)
+is_creator_or_admin = is_authed & (is_creator | is_administrator)
+is_creator_or_oversighter = is_authed & (is_creator | is_admin_or_oversighter)
 is_obj_user_or_admin = is_authed & (is_obj_user | is_administrator)
 is_self_or_admin = is_authed & (is_self | is_administrator)
 not_suppressed_or_is_oversighter = is_not_suppressed | is_admin_or_oversighter
@@ -151,8 +152,8 @@ MODEL_PERMISSIONS = {
     "crawler": {
         "url": {
             "add": is_authed,
-            "change": is_obj_creator_or_admin,
-            "delete": is_obj_creator_or_admin,
+            "change": is_creator_or_admin,
+            "delete": is_creator_or_admin,
             "view": rules.always_allow,
         },
         "run": {
@@ -165,8 +166,8 @@ MODEL_PERMISSIONS = {
     "lists": {
         "toollist": {
             "add": is_authed,
-            "change": is_obj_creator_or_admin,
-            "delete": is_obj_creator_or_admin,
+            "change": is_creator_or_oversighter,
+            "delete": is_creator_or_admin,
             "view": rules.always_allow,
             "feature": is_administrator,
         },
@@ -187,7 +188,7 @@ MODEL_PERMISSIONS = {
         "version": {
             "add": is_authed,
             "change": is_admin_or_oversighter,
-            "delete": is_admin_or_oversighter,
+            "delete": is_administrator,
             "view": not_suppressed_or_is_oversighter,
             "patrol": is_admin_or_patroller,
         },
@@ -195,8 +196,8 @@ MODEL_PERMISSIONS = {
     "toolinfo": {
         "tool": {
             "add": is_authed,
-            "change": is_obj_creator_or_admin,
-            "delete": is_obj_creator_or_admin,
+            "change": is_creator_or_oversighter,
+            "delete": is_creator_or_admin,
             "view": rules.always_allow,
         },
     },
@@ -251,8 +252,9 @@ def casl_for_user(user):
             "action": action,
         }
         if predicate in [
-            is_obj_creator,
-            is_obj_creator_or_admin,
+            is_creator,
+            is_creator_or_admin,
+            is_creator_or_oversighter,
             is_obj_user,
             is_obj_user_or_admin,
             is_self,
@@ -266,9 +268,16 @@ def casl_for_user(user):
                 rule["inverted"] = True
 
             else:
-                if predicate == is_obj_creator or (  # noqa: W0143
-                    predicate == is_obj_creator_or_admin
-                    and not is_administrator.test(user)
+                if (
+                    predicate == is_creator  # noqa: W0143
+                    or (
+                        predicate == is_creator_or_admin
+                        and not is_administrator.test(user)
+                    )
+                    or (
+                        predicate == is_creator_or_oversighter
+                        and not is_admin_or_oversighter.test(user)
+                    )
                 ):
                     rule["conditions"] = {
                         "created_by.id": user.id,
