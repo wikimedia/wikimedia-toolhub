@@ -2,13 +2,14 @@
 version: "3.2"
 services:
   web:
-    image: "bd808/toolhub-beta:search"
+    image: docker-registry.wikimedia.org/wikimedia/wikimedia-toolhub:latest
     user: somebody
     working_dir: /srv/app
-    # Comment out entry point override if attempting to rebuild from scratch.
-    # The default entrypoint assumes an ephemeral db and loads initial
-    # fixtures which we do not want when using a volume backed mysql.
     entrypoint:
+      # NOTE: when setting up a persistent database for demos for the first
+      # time you may also want to execute `poetry run python3 manage.py
+      # loaddata toolhub/fixtures/demo.yaml` to load a set of toolinfo.json
+      # URLs for the crawler.
       - /bin/bash
       - -c
       - >-

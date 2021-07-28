@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 
+IMAGE := docker-registry.wikimedia.org/wikimedia/wikimedia-toolhub:latest
+
 help:
 	@echo "Make targets:"
 	@echo "============="
@@ -41,7 +43,7 @@ status: ## Show status of the docker-compose stack
 .PHONY: status
 
 pull: ## Pull the latest image down from the docker repo
-	sudo docker pull bd808/toolhub-beta:search
+	sudo docker pull ${IMAGE}
 .PHONY: pull
 
 update: pull restart ## Update and restart
