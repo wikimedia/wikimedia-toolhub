@@ -26,9 +26,18 @@ const buildDir = isTest ? 'vue/dist-tests' : 'vue/dist';
 process.env.VUE_APP_VERSION = require( './package.json' ).version;
 process.env.VUE_APP_GIT_HASH = ( function () {
 	try {
-		const HEAD = fs.readFileSync( '.git/HEAD', 'utf8' )
-			.split( ': ' )[ 1 ].trim();
-		return fs.readFileSync( '.git/' + HEAD, 'utf8' ).substr( 0, 7 );
+		const HEAD = fs.readFileSync(
+			path.resolve( __dirname, '.git/HEAD' ), 'utf8'
+		);
+		if ( HEAD.indexOf( ':' ) !== -1 ) {
+			// HEAD is a branch pointer, not a direct hash
+			const branch = HEAD.split( ': ' )[ 1 ].trim();
+			return fs.readFileSync(
+				path.resolve( __dirname, '.git/' + branch ), 'utf8'
+			).substr( 0, 7 );
+		} else {
+			return HEAD.substr( 0, 7 );
+		}
 	} catch ( e ) {
 		// eslint-disable-next-line no-console
 		console.log( 'Failed to read git hash from .git:', e );
