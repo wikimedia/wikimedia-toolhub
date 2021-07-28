@@ -19,6 +19,7 @@ import json
 import logging
 
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
@@ -82,3 +83,8 @@ def csp_report(req):
 
     csp_logger.warning(raw_report)
     return resp
+
+
+def healthz(req):  # noqa: W0613
+    """Trivial 'is this process alive' check."""
+    return JsonResponse({"status": "OK"})
