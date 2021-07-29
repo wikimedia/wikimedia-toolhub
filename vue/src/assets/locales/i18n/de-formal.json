@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Killarnee"
+		]
+	},
+	"auditlog-entry-toollist-created": "$1 hat die Liste $2 erstellt",
+	"auditlog-entry-toollist-deleted": "$1 hat die Liste $2 gelöscht",
+	"auditlogs-targettype-toollist": "Liste"
+}

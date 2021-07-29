@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Reedy",
+			"Samwilson"
+		]
+	},
+	"authcallbackurl": "Authorisation Callback URL",
+	"authorizedapps": "Authorised apps",
+	"cancel": "Cancel",
+	"close": "Close",
+	"comparetwoselectedrevisions": "Compare two selected revisions",
+	"developersettings-noauthorizedappsfoundtext": "You have not authorised any client apps to use your account",
+	"developersettings-pagesubtitle": "View, register, authorise and revoke oauth applications",
+	"modifieddate": "Modified date",
+	"publishchanges": "Publish Changes",
+	"revert": "revert",
+	"scrolltotop": "Scroll to top",
+	"search-filter-origin": "Origin",
+	"toolhistory": "Tool history",
+	"toolrevisioninfo": "Tool revision as of $1 by $2 ($3)",
+	"translateurl": "Translate URL",
+	"undo": "undo",
+	"viewhistory": "View history",
+	"viewrevisionsdiff": "View difference between revisions of tool $1"
+}

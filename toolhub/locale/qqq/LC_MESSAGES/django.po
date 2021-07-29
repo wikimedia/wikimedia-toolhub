@@ -7,12 +7,12 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-12 11:09:53+0000\n"
+"PO-Revision-Date: 2021-07-29 11:12:54+0000\n"
 "X-POT-Import-Date: 2021-07-09 22:30:30+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: qqq\n"
-"X-Generator: MediaWiki 1.36.1; Translate 2021-04-28\n"
+"X-Generator: MediaWiki 1.36.1; Translate 2021-07-26\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: toolhub/apps/auditlog/apps.py:26
@@ -49,15 +49,15 @@ msgstr "Action taken for a audit log event.\nInserted as action parameter in the
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "patrolled"
-msgstr ""
+msgstr "Action taken for an audit log event."
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "featured"
-msgstr ""
+msgstr "Action taken for an audit log event."
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "unfeatured"
-msgstr ""
+msgstr "Action taken for an audit log event."
 
 #: toolhub/apps/auditlog/models.py:106
 msgid "timestamp"
@@ -93,31 +93,31 @@ msgstr "Label used in admin console."
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr ""
+msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr ""
+msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr ""
+msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr ""
+msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr ""
+msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr ""
+msgstr "OpenAPI schema object description."
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
@@ -217,7 +217,7 @@ msgstr "OpenAPI schema route summary."
 
 #: toolhub/apps/lists/apps.py:26
 msgid "Lists"
-msgstr ""
+msgstr "Label used in admin console."
 
 #: toolhub/apps/lists/models.py:41
 msgid "Title of this list"
