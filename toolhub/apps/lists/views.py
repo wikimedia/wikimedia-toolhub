@@ -488,6 +488,14 @@ class ToolListRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         return response.Response(status=status.HTTP_204_NO_CONTENT)
 
 
+path_param_tool_name = OpenApiParameter(
+    "tool_name",
+    type=OpenApiTypes.STR,
+    location=OpenApiParameter.PATH,
+    description=_("""Unique identifier for this tool."""),
+)
+
+
 @extend_schema_view(
     create=extend_schema(
         description=_("""Add a tool to favorites."""),
@@ -496,11 +504,13 @@ class ToolListRevisionViewSet(viewsets.ReadOnlyModelViewSet):
     ),
     retrieve=extend_schema(
         description=_("""Check to see if a tool is in favorites."""),
+        parameters=[path_param_tool_name],
         request=None,
         responses=FavoritesItemSerializer,
     ),
     destroy=extend_schema(
         description=_("""Remove a tool from favorites."""),
+        parameters=[path_param_tool_name],
         request=None,
         responses={204: None},
     ),
