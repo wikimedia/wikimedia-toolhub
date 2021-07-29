@@ -127,8 +127,9 @@ services:
     ports:
       - "${TOOLHUB_PROMETHEUS_PORT:-9090}:9090"
     depends_on:
-      - db
       - web
+    profiles:
+      - monitoring
 
   oauth-client:
     build:
@@ -148,6 +149,10 @@ services:
         source: ./contrib/oauth-client-example
         target: /srv/app
         consistency: cached
+    depends_on:
+      - web
+    profiles:
+      - oauth
 
 volumes:
   dbdata:

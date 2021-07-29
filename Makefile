@@ -22,7 +22,6 @@ PIPELINE_DIR := $(PROJECT_DIR)/.pipeline
 BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
 DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile $(PIPELINE_DIR)/oauth-client.Dockerfile
-DEFAULT_CONTAINERS := web db nodejs search prometheus
 ALL_TESTS := test-python test-nodejs-lint test-nodejs-unit
 
 help:
@@ -33,7 +32,7 @@ help:
 .PHONY: help
 
 start: .env $(DOCKERFILES) ## Start the docker-compose stack
-	docker-compose up --build --detach ${DEFAULT_CONTAINERS}
+	docker-compose up --build --detach
 .PHONY: start
 
 stop:  ## Stop the docker-compose stack
@@ -64,13 +63,17 @@ search-shell:  ## Get an interactive shell inside the search container
 	docker-compose exec search bash
 .PHONY: search-shell
 
-prometheus-shell:  ## Get an interactive shell inside the prometheus container
+oauth-client: .env $(DOCKERFILES) ## Start the oauth-client app container in the foreground
+	docker-compose --profile oauth up --build oauth-client
+.PHONY: oauth-client
+
+prometheus:  ## Start the prometheus monitoring container
+	docker-compose --profile monitoring up --detach prometheus
+.PHONY: prometheus
+
+prometheus-shell: prometheus  ## Get an interactive shell inside the prometheus container
 	docker-compose exec prometheus sh
 .PHONY: prometheus-shell
-
-oauth-client: .env $(DOCKERFILES) ## Start the oauth-client app container
-	docker-compose up --build oauth-client
-.PHONY: oauth-client
 
 tail:  ## Tail logs from the docker-compose stack
 	docker-compose logs -f
