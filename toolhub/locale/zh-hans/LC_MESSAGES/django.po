@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-07-29 11:12:55+0000\n"
-"X-POT-Import-Date: 2021-07-09 22:30:30+0000\n"
+"PO-Revision-Date: 2021-08-02 11:11:36+0000\n"
+"X-POT-Import-Date: 2021-07-29 16:30:40+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh-Hans\n"
@@ -24,75 +24,75 @@ msgstr ""
 msgid "Audit log"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:92
+#: toolhub/apps/auditlog/models.py:94
 msgid "created"
 msgstr "已创建"
 
-#: toolhub/apps/auditlog/models.py:93
+#: toolhub/apps/auditlog/models.py:95
 msgid "updated"
 msgstr "已更新"
 
-#: toolhub/apps/auditlog/models.py:94
+#: toolhub/apps/auditlog/models.py:96
 msgid "deleted"
 msgstr "已删除"
 
-#: toolhub/apps/auditlog/models.py:95
+#: toolhub/apps/auditlog/models.py:97
 msgid "added to"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:96
+#: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:97
+#: toolhub/apps/auditlog/models.py:99
 msgid "hid"
 msgstr "已隐藏"
 
-#: toolhub/apps/auditlog/models.py:98
+#: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
 msgstr "揭示"
 
-#: toolhub/apps/auditlog/models.py:99
+#: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
 msgstr "已巡查"
 
-#: toolhub/apps/auditlog/models.py:100
+#: toolhub/apps/auditlog/models.py:102
 msgid "featured"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:101
+#: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:106
+#: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
 msgstr "时间戳记"
 
-#: toolhub/apps/auditlog/models.py:114
+#: toolhub/apps/auditlog/models.py:116
 msgid "user"
 msgstr "用户"
 
-#: toolhub/apps/auditlog/models.py:122
+#: toolhub/apps/auditlog/models.py:124
 msgid "content type"
 msgstr "内容类型"
 
-#: toolhub/apps/auditlog/models.py:128
+#: toolhub/apps/auditlog/models.py:130
 msgid "object id"
 msgstr "对象id"
 
-#: toolhub/apps/auditlog/models.py:135
+#: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:140
+#: toolhub/apps/auditlog/models.py:142
 msgid "action"
 msgstr "操作"
 
-#: toolhub/apps/auditlog/models.py:154
+#: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
 msgstr ""
 
-#: toolhub/apps/auditlog/models.py:155
+#: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
 msgstr ""
 
@@ -212,11 +212,11 @@ msgstr ""
 msgid "Info for a specific crawler run."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:128
+#: toolhub/apps/crawler/views.py:130
 msgid "List all urls crawled in a run."
 msgstr ""
 
-#: toolhub/apps/crawler/views.py:131
+#: toolhub/apps/crawler/views.py:133
 msgid "Info for a specific url crawled in a run."
 msgstr ""
 
@@ -224,167 +224,204 @@ msgstr ""
 msgid "Lists"
 msgstr ""
 
-#: toolhub/apps/lists/models.py:41
+#: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
 msgstr ""
 
-#: toolhub/apps/lists/models.py:47
+#: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
 msgstr ""
 
-#: toolhub/apps/lists/models.py:59
+#: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
 msgstr ""
 
-#: toolhub/apps/lists/models.py:66
+#: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
 msgstr ""
 
-#: toolhub/apps/lists/models.py:72
+#: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
 msgstr ""
 
-#: toolhub/apps/lists/models.py:76
+#: toolhub/apps/lists/models.py:78
 msgid "If true, this list has been marked as featured."
 msgstr ""
 
-#: toolhub/apps/lists/models.py:88
+#: toolhub/apps/lists/models.py:90
 msgid "List of the names of the tools in this list."
 msgstr ""
 
-#: toolhub/apps/lists/models.py:140
+#: toolhub/apps/lists/models.py:169
 msgid "Position of this tool in the list."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:47
+#: toolhub/apps/lists/serializers.py:48
 msgid "List of tools metadata."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:81
+#: toolhub/apps/lists/serializers.py:82
 msgid "Create or update a list."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:89 toolhub/apps/lists/serializers.py:206
+#: toolhub/apps/lists/serializers.py:90 toolhub/apps/lists/serializers.py:207
 msgid "List of tool names."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:198
+#: toolhub/apps/lists/serializers.py:199
 msgid "Historic revision of a list."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:227
+#: toolhub/apps/lists/serializers.py:228
 msgid "Tool list revision."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:235
+#: toolhub/apps/lists/serializers.py:236
 msgid "Tool list revision detail."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:257
+#: toolhub/apps/lists/serializers.py:258
 msgid "Tool list revision difference."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:262
+#: toolhub/apps/lists/serializers.py:263
 #: toolhub/apps/toolinfo/serializers.py:266
 msgid "Revision to apply changes to."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:266
+#: toolhub/apps/lists/serializers.py:267
 #: toolhub/apps/toolinfo/serializers.py:270
 msgid "Revision after applying changes."
 msgstr ""
 
-#: toolhub/apps/lists/validators.py:34
+#: toolhub/apps/lists/serializers.py:271
+msgid "Favorites list item."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:286
+msgid "Add a favorite tool."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:291
+msgid "Tool name."
+msgstr ""
+
+#: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
 msgstr ""
 
-#: toolhub/apps/lists/validators.py:51
+#: toolhub/apps/lists/validators.py:55
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
 msgstr[0] ""
 
-#: toolhub/apps/lists/views.py:58
+#: toolhub/apps/lists/validators.py:74
+#, python-format
+msgid "Tool %(name)s is already favorited."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:61
 msgid "Create a new list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:63
+#: toolhub/apps/lists/views.py:66
 msgid "Details of a specific list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:67
+#: toolhub/apps/lists/views.py:70
 msgid "Update a list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:75
+#: toolhub/apps/lists/views.py:78
 msgid "Delete a list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:78
+#: toolhub/apps/lists/views.py:81
 msgid "List all lists of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:114
+#: toolhub/apps/lists/views.py:120
 msgid "Mark a list as featured."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:142
+#: toolhub/apps/lists/views.py:148
 msgid "Remove featured flag from a list."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:174
+#: toolhub/apps/lists/views.py:180
 msgid "A unique integer value identifying this toollist."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:180 toolhub/apps/toolinfo/views.py:125
+#: toolhub/apps/lists/views.py:186 toolhub/apps/toolinfo/views.py:117
 msgid "Get revision information."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:185 toolhub/apps/toolinfo/views.py:130
+#: toolhub/apps/lists/views.py:191 toolhub/apps/toolinfo/views.py:122
 msgid "List revisions."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:190 toolhub/apps/toolinfo/views.py:135
+#: toolhub/apps/lists/views.py:196 toolhub/apps/toolinfo/views.py:127
 msgid "Compare two revisions to find difference."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:198 toolhub/apps/toolinfo/views.py:143
+#: toolhub/apps/lists/views.py:204 toolhub/apps/toolinfo/views.py:135
 msgid "A unique integer value identifying version to diff against."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:206
+#: toolhub/apps/lists/views.py:212
 msgid "Restore the list to this revision."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:213 toolhub/apps/toolinfo/views.py:158
+#: toolhub/apps/lists/views.py:219 toolhub/apps/toolinfo/views.py:151
 msgid "Undo all changes made between two revisions."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:221 toolhub/apps/toolinfo/views.py:166
+#: toolhub/apps/lists/views.py:227 toolhub/apps/toolinfo/views.py:159
 msgid "A unique integer value identifying version to undo until."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:229 toolhub/apps/toolinfo/views.py:174
+#: toolhub/apps/lists/views.py:235 toolhub/apps/toolinfo/views.py:168
 msgid "Hide revision text and edit summary from users."
 msgstr "隐藏修订文字并编辑用户的总结。"
 
-#: toolhub/apps/lists/views.py:235 toolhub/apps/toolinfo/views.py:180
+#: toolhub/apps/lists/views.py:241 toolhub/apps/toolinfo/views.py:174
 msgid "Reveal a previously hidden revision."
 msgstr "揭示一个之前被隐藏的修订。"
 
-#: toolhub/apps/lists/views.py:241 toolhub/apps/toolinfo/views.py:186
+#: toolhub/apps/lists/views.py:247 toolhub/apps/toolinfo/views.py:180
 msgid "Mark a revision as patrolled."
 msgstr "将一个修正标为已被巡查。"
 
-#: toolhub/apps/lists/views.py:340 toolhub/apps/toolinfo/views.py:283
+#: toolhub/apps/lists/views.py:346 toolhub/apps/toolinfo/views.py:277
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr ""
 
-#: toolhub/apps/lists/views.py:381 toolhub/apps/toolinfo/views.py:317
+#: toolhub/apps/lists/views.py:387 toolhub/apps/toolinfo/views.py:311
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
+msgstr ""
+
+#: toolhub/apps/lists/views.py:495 toolhub/apps/toolinfo/views.py:111
+msgid "Unique identifier for this tool."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:501
+msgid "Add a tool to favorites."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:506
+msgid "Check to see if a tool is in favorites."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:512
+msgid "Remove a tool from favorites."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:518
+msgid "Personal favorites."
 msgstr ""
 
 #: toolhub/apps/oauth2/apps.py:26
@@ -505,168 +542,168 @@ msgstr ""
 msgid "Toolinfo"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:299
+#: toolhub/apps/toolinfo/models.py:301
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:328
+#: toolhub/apps/toolinfo/models.py:330
 msgid "web app"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:329
+#: toolhub/apps/toolinfo/models.py:331
 msgid "desktop app"
 msgstr "桌面应用程式"
 
-#: toolhub/apps/toolinfo/models.py:330
+#: toolhub/apps/toolinfo/models.py:332
 msgid "bot"
 msgstr "机器人"
 
-#: toolhub/apps/toolinfo/models.py:331
+#: toolhub/apps/toolinfo/models.py:333
 msgid "gadget"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:332
+#: toolhub/apps/toolinfo/models.py:334
 msgid "user script"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:333
+#: toolhub/apps/toolinfo/models.py:335
 msgid "command line tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:334
+#: toolhub/apps/toolinfo/models.py:336
 msgid "coding framework"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:335
+#: toolhub/apps/toolinfo/models.py:337
 msgid "other"
 msgstr "其他"
 
-#: toolhub/apps/toolinfo/models.py:341
+#: toolhub/apps/toolinfo/models.py:343
 msgid "crawler"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:342
+#: toolhub/apps/toolinfo/models.py:344
 msgid "api"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:350
+#: toolhub/apps/toolinfo/models.py:352
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:358
+#: toolhub/apps/toolinfo/models.py:360
 msgid "Human readable tool name. Recommended limit of 25 characters."
 msgstr "人类可读的工具名.建议限制25个字"
 
-#: toolhub/apps/toolinfo/models.py:364
+#: toolhub/apps/toolinfo/models.py:366
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:372
+#: toolhub/apps/toolinfo/models.py:374
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:387
+#: toolhub/apps/toolinfo/models.py:389
 msgid "The primary tool developer."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:393
+#: toolhub/apps/toolinfo/models.py:395
 msgid "A link to the repository where the tool code is hosted."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:400
+#: toolhub/apps/toolinfo/models.py:402
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:409
+#: toolhub/apps/toolinfo/models.py:411
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:418
+#: toolhub/apps/toolinfo/models.py:420
 msgid "Alternate links to the tool or install documentation in different natural languages."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:429
+#: toolhub/apps/toolinfo/models.py:431
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:436
+#: toolhub/apps/toolinfo/models.py:438
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:446
+#: toolhub/apps/toolinfo/models.py:448
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:453
+#: toolhub/apps/toolinfo/models.py:455
 msgid "If true, this tool is unstable and can change or go offline at any time."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:461
+#: toolhub/apps/toolinfo/models.py:463
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:479
+#: toolhub/apps/toolinfo/models.py:481
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:488
+#: toolhub/apps/toolinfo/models.py:490
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:496
+#: toolhub/apps/toolinfo/models.py:498
 msgid "Organization(s) that sponsored the tool's development."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:503
+#: toolhub/apps/toolinfo/models.py:505
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:514
+#: toolhub/apps/toolinfo/models.py:516
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:526
+#: toolhub/apps/toolinfo/models.py:528
 msgid "The manner in which the tool is used. Select one from the list of options."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:535
+#: toolhub/apps/toolinfo/models.py:537
 msgid "A link to the tool's API, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:541
+#: toolhub/apps/toolinfo/models.py:543
 msgid "A link to the tool's developer documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:549
+#: toolhub/apps/toolinfo/models.py:551
 msgid "A link to the tool's user documentation, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:557
+#: toolhub/apps/toolinfo/models.py:559
 msgid "A link to location where the tool's user can leave feedback."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:565
+#: toolhub/apps/toolinfo/models.py:567
 msgid "A link to the tool's privacy policy, if available."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:574
+#: toolhub/apps/toolinfo/models.py:576
 msgid "A link to the tool's translation interface."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:582
+#: toolhub/apps/toolinfo/models.py:584
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:591
+#: toolhub/apps/toolinfo/models.py:593
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:602
+#: toolhub/apps/toolinfo/models.py:604
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
 msgstr ""
 
-#: toolhub/apps/toolinfo/models.py:612
+#: toolhub/apps/toolinfo/models.py:614
 msgid "Origin of this tool record."
 msgstr ""
 
@@ -771,19 +808,15 @@ msgstr ""
 msgid "List all tools."
 msgstr "列举所有工具"
 
-#: toolhub/apps/toolinfo/views.py:119
-msgid "Unique identifier for this tool."
-msgstr ""
-
-#: toolhub/apps/toolinfo/views.py:151
+#: toolhub/apps/toolinfo/views.py:143
 msgid "Restore the tool to this revision."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:411
+#: toolhub/apps/toolinfo/views.py:405
 msgid "Info for a specific SPDX license."
 msgstr ""
 
-#: toolhub/apps/toolinfo/views.py:419
+#: toolhub/apps/toolinfo/views.py:413
 msgid "List all SPDX licenses."
 msgstr ""
 
@@ -803,15 +836,15 @@ msgstr "重要日期"
 msgid "Toolhub user"
 msgstr ""
 
-#: toolhub/apps/user/models.py:34
+#: toolhub/apps/user/models.py:36
 msgid "username"
 msgstr "用户名"
 
-#: toolhub/apps/user/models.py:37
+#: toolhub/apps/user/models.py:39
 msgid "Required. 255 characters or fewer."
 msgstr "必填.不得多于255个字"
 
-#: toolhub/apps/user/models.py:40
+#: toolhub/apps/user/models.py:42
 msgid "A user with that username already exists."
 msgstr "用户名已占用"
 
@@ -919,11 +952,11 @@ msgstr "当前修订不可被隐藏。"
 msgid "Missing content for one or more revisions."
 msgstr "一个或多个修订版本缺少内容。"
 
-#: toolhub/apps/versioned/models.py:40 toolhub/apps/versioned/serializers.py:62
+#: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:62
 msgid "Has this revision been marked as hidden?"
 msgstr "该修订版本是否已被标记为隐藏？"
 
-#: toolhub/apps/versioned/models.py:45 toolhub/apps/versioned/serializers.py:68
+#: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:68
 msgid "Has this revision been reviewed by a patroller?"
 msgstr "该修订版本是否已被巡查员复核？"
 
@@ -983,20 +1016,42 @@ msgstr "编辑摘要"
 msgid "Description of the changes you are making."
 msgstr ""
 
-#: toolhub/serializers.py:123
+#: toolhub/serializers.py:124
 msgid "Comment describing an action."
 msgstr "描述行为的评论。"
 
-#: toolhub/settings.py:376
+#: toolhub/settings.py:429
 msgid "Read scope"
 msgstr "读取范围"
 
-#: toolhub/settings.py:377
+#: toolhub/settings.py:430
 msgid "Write scope"
 msgstr "写入范围"
 
-#: toolhub/settings.py:404
+#: toolhub/settings.py:458
 msgid "Toolhub API"
+msgstr ""
+
+#: toolhub/templates/oauth2_provider/authorize.html:8
+#: toolhub/templates/oauth2_provider/authorize.html:26
+msgid "Authorize"
+msgstr ""
+
+#: toolhub/templates/oauth2_provider/authorize.html:15
+msgid "Application requires the following permissions"
+msgstr ""
+
+#: toolhub/templates/oauth2_provider/authorize.html:25
+msgid "Cancel"
+msgstr ""
+
+#: toolhub/templates/oauth2_provider/authorize.html:32
+#, python-format
+msgid "Error: %(error.error)s"
+msgstr ""
+
+#: toolhub/templates/oauth2_provider/base.html:22
+msgid "Toolhub"
 msgstr ""
 
 #: vue/serializers.py:26
