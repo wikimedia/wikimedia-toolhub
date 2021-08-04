@@ -122,7 +122,7 @@ class ToolDocument(SearchDocument):
     class Index:
         """Configure index."""
 
-        name = "tools"
+        name = "toolhub_tools"
 
     class Django:
         """Configure document."""
