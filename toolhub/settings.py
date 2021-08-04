@@ -261,7 +261,7 @@ CACHES = {
 # === Search ===
 ELASTICSEARCH_DSL = {
     "default": {
-        "hosts": env.str("ES_HOSTS", default="localhost:9200"),
+        "hosts": env.list("ES_HOSTS", default="localhost:9200"),
     }
 }
 ELASTICSEARCH_DSL_INDEX_SETTINGS = {
