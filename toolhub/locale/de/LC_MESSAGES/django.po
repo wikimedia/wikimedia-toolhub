@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-02 11:11:35+0000\n"
+"PO-Revision-Date: 2021-08-05 11:10:24+0000\n"
 "X-POT-Import-Date: 2021-07-29 16:30:40+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -297,11 +297,11 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:286
 msgid "Add a favorite tool."
-msgstr ""
+msgstr "Füge ein Lieblingswerkzeug hinzu."
 
 #: toolhub/apps/lists/serializers.py:291
 msgid "Tool name."
-msgstr ""
+msgstr "Werkzeugname."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
@@ -318,7 +318,7 @@ msgstr[1] "Unbekannte Werkzeuge: %(names)s"
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr ""
+msgstr "Das Werkzeug %(name)s wird bereits favorisiert."
 
 #: toolhub/apps/lists/views.py:61
 msgid "Create a new list of tools."
@@ -404,23 +404,23 @@ msgstr "Versionen von %(first_id)s bis %(last_id)s rückgängig machen"
 
 #: toolhub/apps/lists/views.py:495 toolhub/apps/toolinfo/views.py:111
 msgid "Unique identifier for this tool."
-msgstr ""
+msgstr "Eindeutiger Bezeichner für dieses Werkzeug."
 
 #: toolhub/apps/lists/views.py:501
 msgid "Add a tool to favorites."
-msgstr ""
+msgstr "Ein Werkzeug zu den Favoriten hinzufügen."
 
 #: toolhub/apps/lists/views.py:506
 msgid "Check to see if a tool is in favorites."
-msgstr ""
+msgstr "Prüfe, ob sich ein Werkzeug bereits in den Favoriten befindet."
 
 #: toolhub/apps/lists/views.py:512
 msgid "Remove a tool from favorites."
-msgstr ""
+msgstr "Ein Werkzeug aus den Favoriten entfernen."
 
 #: toolhub/apps/lists/views.py:518
 msgid "Personal favorites."
-msgstr ""
+msgstr "Persönliche Favoriten."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
