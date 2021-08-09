@@ -3,6 +3,7 @@
 		"locale": "qqq",
 		"message-documentation": "qqq",
 		"authors": [
+			"Ajeje Brazorf",
 			"Amire80",
 			"Matěj Suchánek",
 			"MuratTheTurkish",
@@ -142,7 +143,7 @@
 	"lists-nolistsfoundtext": "Message to show when no lists are found",
 	"lists-yourlists": "Tab label",
 	"locale-select": "Input label.",
-	"login": "Button label.\n{{Identical:Login}}",
+	"login": "Button label.\n{{Identical|Login}}",
 	"logout": "Button label.\n{{Identical|Logout}}",
 	"markaspatrolled": "Link label for tool history patrol operation",
 	"members": "Page title\n{{Identical|Member}}",

@@ -15,6 +15,7 @@
 	"addremovetools": "Agregar o quitar herramientas",
 	"addremovetools-nologintext": "Necesitas iniciar sesión en Toolhub para agregar o quitar herramientas",
 	"addremovetools-summarytitle": "¿Cómo funciona esta característica?",
+	"apidocs": "Documentación de la API",
 	"apidocumentation": "Documentación de la API",
 	"apierrors": "Oops! Un error ha ocurrido en $1:$2",
 	"apiurl": "URL de la API",

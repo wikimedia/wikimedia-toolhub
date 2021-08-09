@@ -1,13 +1,14 @@
 # Translation of Toolhub - Backend to Message documentation (Message documentation)
 # Exported from translatewiki.net
 #
+# Author: Ajeje Brazorf
 # Author: BryanDavis
 # Author: Eleassar
 # Author: Nike
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-02 11:11:36+0000\n"
+"PO-Revision-Date: 2021-08-09 11:12:43+0000\n"
 "X-POT-Import-Date: 2021-07-29 16:30:40+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1038,7 +1039,7 @@ msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
-msgstr ""
+msgstr "{{Identical|Cancel}}"
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
