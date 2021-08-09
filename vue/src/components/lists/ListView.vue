@@ -18,7 +18,8 @@
 
 			<v-col cols="auto" class="list-action">
 				<v-btn
-					class="transparent elevation-0 my-3"
+					class="my-3"
+					icon
 					:to="`/list/${list.id}`"
 				>
 					<v-icon size="30" color="base20">
@@ -32,7 +33,8 @@
 				class="list-action"
 			>
 				<v-btn
-					class="transparent elevation-0 my-3"
+					class="my-3"
+					icon
 					@click="listInfo = !listInfo"
 				>
 					<v-icon size="30" color="base20">
