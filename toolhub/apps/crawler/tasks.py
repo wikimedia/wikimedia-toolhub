@@ -165,23 +165,43 @@ class Crawler:
     def fetch_content(self, url):
         """Crawl a URL and return it's content."""
         raw_url = url.url.url
-        r = requests.get(raw_url, headers={"user-agent": self.user_agent})
-        url.status_code = r.status_code
-        if r.history:
-            url.redirected = True
-        url.elapsed_ms = r.elapsed.microseconds
-        if r.ok:
-            try:
-                tools = r.json()
-                # FIXME: validate schema for entire file?
-                url.valid = True
-                if not isinstance(tools, list):
-                    tools = [tools]
-                return tools
-            except json.decoder.JSONDecodeError:
-                logger.exception("Failed to parse JSON from %s", raw_url)
-                url.valid = False
-                return []
+        url.status_code = 999
+        try:
+            r = requests.get(
+                raw_url,
+                headers={"user-agent": self.user_agent},
+                # T288536: 5s connect, 13s read (time between bytes)
+                timeout=(5, 13),
+            )
+
+            url.status_code = r.status_code
+            if r.history:
+                url.redirected = True
+            url.elapsed_ms = r.elapsed.microseconds
+            if r.ok:
+                try:
+                    tools = r.json()
+                    # FIXME: validate schema for entire file?
+                    url.valid = True
+                    if not isinstance(tools, list):
+                        tools = [tools]
+                    return tools
+                except json.decoder.JSONDecodeError:
+                    logger.exception("Failed to parse JSON from %s", raw_url)
+                    url.valid = False
+                    return []
+
+        except requests.ConnectTimeout:
+            logger.exception("Timeout connecting to %s", raw_url)
+            r = "Connect Timeout"
+
+        except requests.ReadTimeout:
+            logger.exception("Timeout reading response bytes from %s", raw_url)
+            r = "Read Timeout"
+
+        except requests.RequestException as e:
+            logger.exception("Error crawling url %s", raw_url)
+            r = str(e)
 
         logger.error("Failed to fetch %s: %s", url.url, r)
         return []
