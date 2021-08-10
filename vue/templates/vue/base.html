@@ -17,7 +17,7 @@
     <div id="app">
       <app>{% block app %}
       <noscript>
-        <p>{% trans "Toolhub's user interface requires JavaScript to be enabled." %}</p>
+          <p>{% filter force_escape %}{% trans "Toolhub's user interface requires JavaScript to be enabled." %}{% endfilter %}</p>
       </noscript>
       {% endblock %}</app>
     </div>

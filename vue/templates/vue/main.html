@@ -6,7 +6,7 @@
 {% block app %}
 {{ block.super }}
 <div id="loading-wrapper">
-  <div id="loading-text">{% trans "LOADING" %}</div>
+    <div id="loading-text">{% filter force_escape %}{% trans "LOADING" %}{% endfilter %}</div>
   <div id="loading-content"></div>
 </div>
 {% endblock app %}

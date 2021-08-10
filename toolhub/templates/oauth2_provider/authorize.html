@@ -5,14 +5,14 @@
 <div class="block-center">
   {% if not error %}
   <form id="authorizationForm" method="post">
-    <h3 class="block-center-heading">{% trans "Authorize" %} {{ application.name }}?</h3>
+      <h3 class="block-center-heading">{% filter force_escape %}{% blocktrans with app_name=application.name%}Authorize {{ app_name }}?{% endblocktrans %}{% endfilter %}</h3>
     {% csrf_token %}
     {% for field in form %}
     {% if field.is_hidden %}
     {{ field }}
     {% endif %}
     {% endfor %}
-    <p>{% trans "Application requires the following permissions" %}</p>
+    <p>{% filter force_escape %}{% trans "Application requires the following permissions" %}{% endfilter %}</p>
     <ul>
       {% for scope in scopes_descriptions %}
       <li>{{ scope }}</li>
@@ -29,7 +29,7 @@
   </form>
 
   {% else %}
-  <h2>{% blocktrans %}Error: {{ error.error }}{% endblocktrans %}</h2>
+  <h2>{% filter force_escape %}{% blocktrans with message=error.error %}Error: {{ message }}{% endblocktrans %}{% endfilter %}</h2>
   <p>{{ error.description }}</p>
   {% endif %}
 </div>
