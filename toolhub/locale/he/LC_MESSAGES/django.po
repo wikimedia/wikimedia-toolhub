@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-02 11:11:35+0000\n"
+"PO-Revision-Date: 2021-08-12 11:11:40+0000\n"
 "X-POT-Import-Date: 2021-07-29 16:30:40+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1026,6 +1026,7 @@ msgid "Write scope"
 msgstr "טווח כתיבה"
 
 #: toolhub/settings.py:458
+#, optional
 msgid "Toolhub API"
 msgstr "API של Toolhub"
 
@@ -1048,6 +1049,7 @@ msgid "Error: %(error.error)s"
 msgstr ""
 
 #: toolhub/templates/oauth2_provider/base.html:22
+#, optional
 msgid "Toolhub"
 msgstr ""
 
