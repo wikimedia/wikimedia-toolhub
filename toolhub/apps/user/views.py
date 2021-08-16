@@ -29,11 +29,13 @@ from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
+from rest_framework import generics
 from rest_framework import mixins
 from rest_framework import permissions
 from rest_framework import response
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -42,6 +44,7 @@ from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 from toolhub.permissions import casl_for_user
 
 from .models import ToolhubUser
+from .serializers import AuthTokenSerializer
 from .serializers import CurrentUserSerializer
 from .serializers import GroupDetailSerializer
 from .serializers import GroupSerializer
@@ -212,6 +215,52 @@ class GroupMembersViewSet(
         group.user_set.remove(user)
         serializer = self.get_serializer(instance=group)
         return response.Response(serializer.data)
+
+
+@extend_schema_view(
+    get=extend_schema(
+        description=_("""Get authentication token."""),
+    ),
+    post=extend_schema(
+        description=_("""Create authentication token."""),
+    ),
+    delete=extend_schema(
+        description=_("""Delete authentication token."""),
+    ),
+)
+class AuthTokenView(generics.GenericAPIView):
+    """API auth tokens for user-only bots."""
+
+    serializer_class = AuthTokenSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        """Get a queryset filtered to the current user."""
+        return Token.objects.filter(user=self.request.user)
+
+    def get_object(self):
+        """Get the user's authtoken or raise a 404."""
+        obj = get_object_or_404(self.get_queryset())
+        self.check_object_permissions(self.request, obj)
+        return obj
+
+    def get(self, request, *args, **kwargs):
+        """Get auth token."""
+        obj = self.get_object()
+        serializer = self.get_serializer(obj)
+        return Response(serializer.data)
+
+    def post(self, request, *args, **kwargs):
+        """Create auth token if none exists."""
+        obj, _ = Token.objects.get_or_create(user=request.user)
+        serializer = self.get_serializer(obj)
+        return Response(serializer.data)
+
+    def delete(self, request, *args, **kwargs):
+        """Revoke auth token if it exists."""
+        obj = self.get_object()
+        obj.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 def login(request):  # noqa: W0613 unused argument

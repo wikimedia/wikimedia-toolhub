@@ -193,3 +193,17 @@ class GroupDetailSerializer(GroupSerializer):
         model = Group
         fields = ["id", "name", "users"]
         read_only_fields = fields
+
+
+@doc(_("""Owner-only API Token"""))
+class AuthTokenSerializer(Serializer):
+    """Owner-only API Token."""
+
+    token = serializers.CharField(
+        source="key",
+        read_only=True,
+        help_text=_("Authentication token"),
+    )
+    user = UserSerializer(
+        read_only=True,
+    )

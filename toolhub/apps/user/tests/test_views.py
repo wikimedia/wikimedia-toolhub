@@ -17,6 +17,8 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib.auth.models import Group
 
+from rest_framework.authtoken.models import Token
+
 from toolhub.tests import TestCase
 
 from .. import serializers
@@ -294,3 +296,96 @@ class GroupMembersViewSetTest(TestCase):
         self.assertIn("users", response.data)
         users = response.data["users"]
         self.assertEqual(len(users), 0)
+
+
+class AuthTokenViewTest(TestCase):
+    """Test AuthTokenView."""
+
+    @classmethod
+    def setUpTestData(cls):
+        """Setup for all tests in this TestCase."""
+        cls.user = cls._user("user")
+
+    def test_get_requires_auth(self):
+        """GET requires auth."""
+        self.client.force_authenticate(user=None)
+
+        url = "/api/user/authtoken/"
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 401)
+
+    def test_get_without_create(self):
+        """Test GET as an authenticated user with no token in db."""
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/user/authtoken/"
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 404)
+
+    def test_get(self):
+        """Test GET as an authenticated user."""
+        token, created = Token.objects.get_or_create(user=self.user)
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/user/authtoken/"
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("token", response.data)
+        self.assertEqual(response.data["token"], token.key)
+        self.assertIn("user", response.data)
+        self.assertEqual(response.data["user"]["id"], self.user.pk)
+
+    def test_post_requires_auth(self):
+        """POST requires auth."""
+        self.client.force_authenticate(user=None)
+
+        url = "/api/user/authtoken/"
+        response = self.client.post(url)
+
+        self.assertEqual(response.status_code, 401)
+
+    def test_post(self):
+        """POST creates new token."""
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/user/authtoken/"
+        response = self.client.post(url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("token", response.data)
+        token = Token.objects.get(user=self.user)
+        self.assertEqual(response.data["token"], token.key)
+        self.assertIn("user", response.data)
+        self.assertEqual(response.data["user"]["id"], self.user.pk)
+
+    def test_delete_requires_auth(self):
+        """DELETE requires auth."""
+        self.client.force_authenticate(user=None)
+
+        url = "/api/user/authtoken/"
+        response = self.client.delete(url)
+
+        self.assertEqual(response.status_code, 401)
+
+    def test_delete_without_create(self):
+        """Test DELETE as an authenticated user with no token in db."""
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/user/authtoken/"
+        response = self.client.delete(url)
+
+        self.assertEqual(response.status_code, 404)
+
+    def test_delete(self):
+        """Test DELETE as an authenticated user."""
+        token, created = Token.objects.get_or_create(user=self.user)
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/user/authtoken/"
+        response = self.client.delete(url)
+
+        self.assertEqual(response.status_code, 204)
+        self.assertFalse(Token.objects.filter(user=self.user).exists())

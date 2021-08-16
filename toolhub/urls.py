@@ -24,6 +24,7 @@ from drf_spectacular.views import SpectacularAPIView
 
 from oauth2_provider.urls import base_urlpatterns as oauth2_patterns
 
+from toolhub.apps.user.views import AuthTokenView
 from toolhub.apps.user.views import CurrentUserView
 from toolhub.apps.user.views import LocaleView
 
@@ -41,6 +42,7 @@ from .views import healthz
 api_patterns = [
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
     path("user/", CurrentUserView.as_view(), name="user"),
+    path("user/authtoken/", AuthTokenView.as_view(), name="authtoken"),
     path("user/locale/", LocaleView.as_view(), name="locale"),
     path("ui/home", HomeView.as_view(), name="api_ui_home"),
     path("", include(root.urls)),
