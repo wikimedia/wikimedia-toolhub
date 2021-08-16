@@ -1,10 +1,8 @@
-# Translation of Toolhub - Backend to Finnish (suomi)
+# Translation of Toolhub - Backend to Ukrainian (українська)
 # Exported from translatewiki.net
 #
-# Author: MITO
-# Author: Maantietäjä
-# Author: Majavah
-# Author: Nike
+# Author: DDPAT
+# Author: Kareyac
 msgid ""
 msgstr ""
 ""
@@ -12,300 +10,300 @@ msgstr ""
 "X-POT-Import-Date: 2021-08-16 04:27:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fi\n"
+"Language: uk\n"
 "X-Generator: MediaWiki 1.36.1; Translate 2021-07-26\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10 == 1 && n%100 != 11) ? 0 : ( (n%10 >= 2 && n%10 <= 4 && (n%100 < 10 || n%100 >= 20)) ? 1 : 2 );\n"
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr "Tarkastusloki"
+msgstr "Журнал аудиту"
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "created"
-msgstr "luotu"
+msgstr "створено"
 
 #: toolhub/apps/auditlog/models.py:95
 msgid "updated"
-msgstr "päivitetty"
+msgstr "оновлено"
 
 #: toolhub/apps/auditlog/models.py:96
 msgid "deleted"
-msgstr "poistettu"
+msgstr "видалено"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr "lisätty"
+msgstr "додано на"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr "poistettu"
+msgstr "вилучено з"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr "piilota"
+msgstr "сховався"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr "palautettu"
+msgstr "виявлено"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr "partioitu"
+msgstr "відпатрульовано"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr ""
+msgstr "вибрано"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "без ознак"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
-msgstr ""
+msgstr "мітка часу"
 
 #: toolhub/apps/auditlog/models.py:116
 msgid "user"
-msgstr "käyttäjä"
+msgstr "користувач"
 
 #: toolhub/apps/auditlog/models.py:124
 msgid "content type"
-msgstr "sisältötyyppi"
+msgstr "тип вмісту"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr ""
+msgstr "ідентифікатор об'єкта"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
-msgstr ""
+msgstr "об'єкт pk"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
-msgstr "toiminto"
+msgstr "дія"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr ""
+msgstr "запис журналу аудиту"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
-msgstr "tarkastuslokin merkinnät"
+msgstr "записи журналу аудиту"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "Параметри події"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr ""
+msgstr "Версія, створена за допомогою дії редагування"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr ""
+msgstr "Чи редакцію позначено як приховану?"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Чи перевірялася редакція патрульним?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr ""
+msgstr "Назва інструменту, пов'язаного зі зміною"
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr ""
+msgstr "Ідентифікація користувача, пов'язана зі зміною"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr ""
+msgstr "Список інструментів, пов'язаних із зміною"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
-msgstr ""
+msgstr "Дія події"
 
 #: toolhub/apps/auditlog/serializers.py:51
 msgid "Event target"
-msgstr ""
+msgstr "Ціль події"
 
 #: toolhub/apps/auditlog/serializers.py:102
 msgid "Audit log entry"
-msgstr "Tarkastuslokimerkintä"
+msgstr "Запис журналу аудиту"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr ""
+msgstr "Показувати журнали лише для даних типів дій."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr ""
+msgstr "Показувати журнали лише для даного типу цілі."
 
 #: toolhub/apps/auditlog/views.py:72
 msgid "Only show logs occuring before the given date and time."
-msgstr ""
+msgstr "Показувати лише журнали, що відбуваються до зазначеної дати та часу."
 
 #: toolhub/apps/auditlog/views.py:77
 msgid "Only show logs occuring after the given date and time."
-msgstr ""
+msgstr "Показувати журнали лише після зазначеної дати та часу."
 
 #: toolhub/apps/auditlog/views.py:82
 msgid "Only show logs for the given user."
-msgstr ""
+msgstr "Показувати журнали лише для даного користувача."
 
 #: toolhub/apps/auditlog/views.py:88
 msgid "List all log entries."
-msgstr ""
+msgstr "Перелічити всі записи журналу."
 
 #: toolhub/apps/auditlog/views.py:91
 msgid "Info for a specific log entry."
-msgstr ""
+msgstr "Інформація для певного запису журналу."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr ""
+msgstr "Веб-сканер Toolinfo"
 
 #: toolhub/apps/crawler/serializers.py:31
 msgid "A URL that has been registered for crawling"
-msgstr ""
+msgstr "URL-адреса, зареєстрована для сканування"
 
 #: toolhub/apps/crawler/serializers.py:44
 msgid "A URL to crawl"
-msgstr ""
+msgstr "URL-адреса для сканування"
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
-msgstr ""
+msgstr "Інформація про одну URL-адресу, оброблену під час роботи сканера"
 
 #: toolhub/apps/crawler/serializers.py:78
 msgid "Summary of a single run of the crawler."
-msgstr ""
+msgstr "Підсумок одного пробігу гусеничного шасі."
 
 #: toolhub/apps/crawler/views.py:42
 msgid "Register a new URL for crawling."
-msgstr ""
+msgstr "Зареєструйте нову URL-адресу для сканування."
 
 #: toolhub/apps/crawler/views.py:46
 msgid "Information about a specific crawled URL."
-msgstr "Tietoja tietystä indeksoidusta URL-osoitteesta."
+msgstr "Інформація про певну скановану URL-адресу."
 
 #: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
-msgstr ""
+msgstr "Скасувати реєстрацію URL-адреси."
 
 #: toolhub/apps/crawler/views.py:58
 msgid "List all crawled URLs."
-msgstr ""
+msgstr "Перелічіть усі скановані URL-адреси."
 
 #: toolhub/apps/crawler/views.py:85
 msgid "Get URLs created by the current user."
-msgstr ""
+msgstr "Отримати URL-адреси, створені поточним користувачем."
 
 #: toolhub/apps/crawler/views.py:104
 msgid "List all historic crawler runs."
-msgstr ""
+msgstr "Перелічіть усі історичні скани."
 
 #: toolhub/apps/crawler/views.py:107
 msgid "Info for a specific crawler run."
-msgstr ""
+msgstr "Інформація про певний запуск сканера."
 
 #: toolhub/apps/crawler/views.py:130
 msgid "List all urls crawled in a run."
-msgstr "Luettelo kaikista ajossa indeksoiduista URL-osoitteista."
+msgstr "Перелічити всі URL-адреси, проскановані під час виконання."
 
 #: toolhub/apps/crawler/views.py:133
 msgid "Info for a specific url crawled in a run."
-msgstr ""
+msgstr "Інформація про певну URL-адресу, проскановану під час виконання."
 
 #: toolhub/apps/lists/apps.py:26
 msgid "Lists"
-msgstr "Luettelot"
+msgstr "Списки"
 
 #: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
-msgstr "Tämän luettelon otsikko"
+msgstr "Назва цього списку"
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
-msgstr ""
+msgstr "Опис теми чи змісту списку."
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
-msgstr ""
+msgstr "Посилання на сторінку опису файлу Вікімедіа для значка зі списком."
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
-msgstr ""
+msgstr "Якщо це правда, цей список є набором улюблених інструментів власника."
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
-msgstr ""
+msgstr "Якщо це правда, цей список бачать усі."
 
 #: toolhub/apps/lists/models.py:78
 msgid "If true, this list has been marked as featured."
-msgstr ""
+msgstr "Якщо це правда, цей список позначено як рекомендований."
 
 #: toolhub/apps/lists/models.py:90
 msgid "List of the names of the tools in this list."
-msgstr ""
+msgstr "Список назв інструментів у цьому списку."
 
 #: toolhub/apps/lists/models.py:169
 msgid "Position of this tool in the list."
-msgstr ""
+msgstr "Позиція цього інструменту у списку."
 
 #: toolhub/apps/lists/serializers.py:48
 msgid "List of tools metadata."
-msgstr ""
+msgstr "Список метаданих інструментів."
 
 #: toolhub/apps/lists/serializers.py:82
 msgid "Create or update a list."
-msgstr "Luo tai päivitä luettelo."
+msgstr "Створення або оновлення списку."
 
 #: toolhub/apps/lists/serializers.py:90 toolhub/apps/lists/serializers.py:207
 msgid "List of tool names."
-msgstr ""
+msgstr "Список назв інструментів."
 
 #: toolhub/apps/lists/serializers.py:199
 msgid "Historic revision of a list."
-msgstr ""
+msgstr "Історичний перегляд списку."
 
 #: toolhub/apps/lists/serializers.py:228
 msgid "Tool list revision."
-msgstr ""
+msgstr "Перегляд списку інструментів."
 
 #: toolhub/apps/lists/serializers.py:236
 msgid "Tool list revision detail."
-msgstr ""
+msgstr "Деталі перегляду списку інструментів."
 
 #: toolhub/apps/lists/serializers.py:258
 msgid "Tool list revision difference."
-msgstr ""
+msgstr "Різниця в перегляді списку інструментів."
 
 #: toolhub/apps/lists/serializers.py:263
 #: toolhub/apps/toolinfo/serializers.py:266
 msgid "Revision to apply changes to."
-msgstr ""
+msgstr "Перегляд для застосування змін."
 
 #: toolhub/apps/lists/serializers.py:267
 #: toolhub/apps/toolinfo/serializers.py:270
 msgid "Revision after applying changes."
-msgstr ""
+msgstr "Перегляд після застосування змін."
 
 #: toolhub/apps/lists/serializers.py:271
 msgid "Favorites list item."
-msgstr ""
+msgstr "Пункт списку вибраного."
 
 #: toolhub/apps/lists/serializers.py:286
 msgid "Add a favorite tool."
-msgstr "Lisää suosikkityökaluihin."
+msgstr "Додати улюблений інструмент."
 
 #: toolhub/apps/lists/serializers.py:291
 msgid "Tool name."
-msgstr "Työkalun nimi."
+msgstr "Назва інструменту."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr ""
+msgstr "Повторювані значення у списку: %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
@@ -313,210 +311,211 @@ msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr ""
+msgstr "Інструмент %(name)s вже вибрано."
 
 #: toolhub/apps/lists/views.py:61
 msgid "Create a new list of tools."
-msgstr "Luo uusi luettelo työkaluista."
+msgstr "Створити новий список інструментів."
 
 #: toolhub/apps/lists/views.py:66
 msgid "Details of a specific list of tools."
-msgstr ""
+msgstr "Деталі конкретного списку інструментів."
 
 #: toolhub/apps/lists/views.py:70
 msgid "Update a list of tools."
-msgstr ""
+msgstr "Оновити список інструментів."
 
 #: toolhub/apps/lists/views.py:78
 msgid "Delete a list of tools."
-msgstr ""
+msgstr "Видалити список інструментів."
 
 #: toolhub/apps/lists/views.py:81
 msgid "List all lists of tools."
-msgstr ""
+msgstr "Перелічити усі списки інструментів."
 
 #: toolhub/apps/lists/views.py:120
 msgid "Mark a list as featured."
-msgstr ""
+msgstr "Позначте список як пропонований."
 
 #: toolhub/apps/lists/views.py:148
 msgid "Remove featured flag from a list."
-msgstr ""
+msgstr "Вилучити прапорець зі списку."
 
 #: toolhub/apps/lists/views.py:180
 msgid "A unique integer value identifying this toollist."
-msgstr ""
+msgstr "Унікальне ціле значення, що ідентифікує цей список списків."
 
 #: toolhub/apps/lists/views.py:186 toolhub/apps/toolinfo/views.py:117
 msgid "Get revision information."
-msgstr ""
+msgstr "Отримати інформацію про версію."
 
 #: toolhub/apps/lists/views.py:191 toolhub/apps/toolinfo/views.py:122
 msgid "List revisions."
-msgstr ""
+msgstr "Список версій."
 
 #: toolhub/apps/lists/views.py:196 toolhub/apps/toolinfo/views.py:127
 msgid "Compare two revisions to find difference."
-msgstr ""
+msgstr "Порівняти дві версії, щоб знайти різницю."
 
 #: toolhub/apps/lists/views.py:204 toolhub/apps/toolinfo/views.py:135
 msgid "A unique integer value identifying version to diff against."
-msgstr ""
+msgstr "Унікальне ціле значення, що ідентифікує версію, проти якої можна відрізнитись."
 
 #: toolhub/apps/lists/views.py:212
 msgid "Restore the list to this revision."
-msgstr ""
+msgstr "Відновити список до цієї версії."
 
 #: toolhub/apps/lists/views.py:219 toolhub/apps/toolinfo/views.py:151
 msgid "Undo all changes made between two revisions."
-msgstr ""
+msgstr "Скасувати всі зміни, внесені між двома версіями."
 
 #: toolhub/apps/lists/views.py:227 toolhub/apps/toolinfo/views.py:159
 msgid "A unique integer value identifying version to undo until."
-msgstr ""
+msgstr "Унікальне ціле значення, що ідентифікує версію для скасування до."
 
 #: toolhub/apps/lists/views.py:235 toolhub/apps/toolinfo/views.py:168
 msgid "Hide revision text and edit summary from users."
-msgstr "Piilota version teksti ja muokkausyhteenveto käyttäjiltä."
+msgstr "Приховати текст редакції та змінити резюме від користувачів."
 
 #: toolhub/apps/lists/views.py:241 toolhub/apps/toolinfo/views.py:174
 msgid "Reveal a previously hidden revision."
-msgstr ""
+msgstr "Розкрити раніше приховану версію."
 
 #: toolhub/apps/lists/views.py:247 toolhub/apps/toolinfo/views.py:180
 msgid "Mark a revision as patrolled."
-msgstr ""
+msgstr "Позначити версію як патрульовану."
 
 #: toolhub/apps/lists/views.py:346 toolhub/apps/toolinfo/views.py:277
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
-msgstr ""
+msgstr "Повернутися до версії %(rev_id)s від %(datetime)s від %(user)s"
 
 #: toolhub/apps/lists/views.py:387 toolhub/apps/toolinfo/views.py:311
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
-msgstr ""
+msgstr "Скасувати зміни від %(first_id)s до %(last_id)s"
 
 #: toolhub/apps/lists/views.py:495 toolhub/apps/toolinfo/views.py:111
 msgid "Unique identifier for this tool."
-msgstr ""
+msgstr "Унікальний ідентифікатор цього інструменту."
 
 #: toolhub/apps/lists/views.py:501
 msgid "Add a tool to favorites."
-msgstr "Lisää työkalu suosikkeihin."
+msgstr "Додати інструмент до вибраного."
 
 #: toolhub/apps/lists/views.py:506
 msgid "Check to see if a tool is in favorites."
-msgstr ""
+msgstr "Перевірити, чи є інструмент у вибраному."
 
 #: toolhub/apps/lists/views.py:512
 msgid "Remove a tool from favorites."
-msgstr "Poista työkalu suosikeista."
+msgstr "Видалити інструмент із вибраного."
 
 #: toolhub/apps/lists/views.py:518
 msgid "Personal favorites."
-msgstr ""
+msgstr "Особисті улюблені."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
-msgstr ""
+msgstr "API сервера авторизації OAuth 2.0"
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
-msgstr ""
+msgstr "Програма OAuth Client."
 
 #: toolhub/apps/oauth2/serializers.py:37
 msgid "Application name"
-msgstr ""
+msgstr "Назва програми"
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
-msgstr ""
+msgstr "Те, що користувачі впізнають і довіряють"
 
 #: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
 msgid "Authorization callback URL"
-msgstr ""
+msgstr "URL-адреса зворотного виклику авторизації"
 
 #: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
 msgid "The application's callback URL."
-msgstr ""
+msgstr "URL-адреса зворотного виклику програми."
 
 #: toolhub/apps/oauth2/serializers.py:49
 msgid "Public identifier for this application"
-msgstr ""
+msgstr "Публічний ідентифікатор цієї програми"
 
 #: toolhub/apps/oauth2/serializers.py:66
 msgid "OAuth Client application registration."
-msgstr ""
+msgstr "Реєстрація програми OAuth Client."
 
 #: toolhub/apps/oauth2/serializers.py:74
 msgid "Secret known only to the application and the authorization server"
-msgstr ""
+msgstr "Секрет, відомий лише програмі та серверу авторизації"
 
 #: toolhub/apps/oauth2/serializers.py:92
 msgid "OAuth Client application update."
-msgstr ""
+msgstr "Оновлення програми OAuth Client."
 
 #: toolhub/apps/oauth2/serializers.py:117
 msgid "Authorized OAuth client application."
-msgstr ""
+msgstr "Авторизована клієнтська програма OAuth."
 
 #: toolhub/apps/oauth2/views.py:39
 msgid "List all client applications."
-msgstr ""
+msgstr "Перелічити усі клієнтські програми."
 
 #: toolhub/apps/oauth2/views.py:42
 msgid "Info for a client application."
-msgstr ""
+msgstr "Інформація про клієнтську програму."
 
 #: toolhub/apps/oauth2/views.py:45
 msgid "Register a new client application."
-msgstr ""
+msgstr "Зареєструйте нову клієнтську програму."
 
 #: toolhub/apps/oauth2/views.py:53
 msgid "Update a client application."
-msgstr ""
+msgstr "Оновити клієнтську програму."
 
 #: toolhub/apps/oauth2/views.py:57
 msgid "Delete a client application."
-msgstr ""
+msgstr "Видалити клієнтську програму."
 
 #: toolhub/apps/oauth2/views.py:91
 msgid "List applications authorized by the current user."
-msgstr ""
+msgstr "Перелічити програми, дозволені поточним користувачем."
 
 #: toolhub/apps/oauth2/views.py:94
 msgid "Info for an authorized application."
-msgstr ""
+msgstr "Інформація про авторизовану програму."
 
 #: toolhub/apps/oauth2/views.py:106
 msgid "Revoke an application authorization."
-msgstr ""
+msgstr "Скасувати авторизацію програми."
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr "Etsi"
+msgstr "Пошук"
 
 #: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr "Käyttäjän tiedot"
+msgstr "Інформація про користувача"
 
 #: toolhub/apps/search/schema.py:37
 msgid "Faceted classification"
-msgstr ""
+msgstr "Гранична класифікація"
 
 #: toolhub/apps/search/schema.py:79
 msgid "Search string"
-msgstr ""
+msgstr "Рядок пошуку"
 
 #: toolhub/apps/search/schema.py:104
 #, python-format
 msgid "Search in %(fields)s"
-msgstr ""
+msgstr "Пошук у %(fields)s"
 
 #: toolhub/apps/search/schema.py:106
 #, optional
@@ -525,505 +524,505 @@ msgstr ""
 
 #: toolhub/apps/search/schema.py:191
 msgid "Field to use when ordering results."
-msgstr ""
+msgstr "Поле для використання при замовленні результатів."
 
 #: toolhub/apps/search/serializers.py:27
 msgid "Tool search results"
-msgstr ""
+msgstr "Результати пошуку інструментів"
 
 #: toolhub/apps/search/views.py:87
 msgid "Faceted search for tools."
-msgstr ""
+msgstr "Гранчастий пошук інструментів."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr ""
+msgstr "Toolinfo"
 
 #: toolhub/apps/toolinfo/models.py:301
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
-msgstr ""
+msgstr "Зміна %(key)s після початкового створення об’єкта не допускається"
 
 #: toolhub/apps/toolinfo/models.py:330
 msgid "web app"
-msgstr "verkkosovellus"
+msgstr "веб-додаток"
 
 #: toolhub/apps/toolinfo/models.py:331
 msgid "desktop app"
-msgstr "työpöytäsovellus"
+msgstr "настільний додаток"
 
 #: toolhub/apps/toolinfo/models.py:332
 msgid "bot"
-msgstr "botti"
+msgstr "бот"
 
 #: toolhub/apps/toolinfo/models.py:333
 msgid "gadget"
-msgstr "pienoisohjelma"
+msgstr "гаджет"
 
 #: toolhub/apps/toolinfo/models.py:334
 msgid "user script"
-msgstr "käyttäjäskripti"
+msgstr "скрипт користувача"
 
 #: toolhub/apps/toolinfo/models.py:335
 msgid "command line tool"
-msgstr "komentorivityökalu"
+msgstr "інструмент командного рядка"
 
 #: toolhub/apps/toolinfo/models.py:336
 msgid "coding framework"
-msgstr ""
+msgstr "фреймворк кодування"
 
 #: toolhub/apps/toolinfo/models.py:337
 msgid "other"
-msgstr "muu"
+msgstr "інші"
 
 #: toolhub/apps/toolinfo/models.py:343
 msgid "crawler"
-msgstr ""
+msgstr "crawler"
 
 #: toolhub/apps/toolinfo/models.py:344
 msgid "api"
-msgstr ""
+msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:352
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
-msgstr ""
+msgstr "Унікальний ідентифікатор цього інструменту. Повинен бути унікальним для кожного інструменту. Рекомендується додавати префікси до назв інструментів, щоб зменшити ризик зіткнень."
 
 #: toolhub/apps/toolinfo/models.py:360
 msgid "Human readable tool name. Recommended limit of 25 characters."
-msgstr ""
+msgstr "Зрозуміла для людини назва інструменту. Рекомендована межа - 25 символів."
 
 #: toolhub/apps/toolinfo/models.py:366
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr ""
+msgstr "Більш довгий опис інструменту. Рекомендована довжина опису - 3-5 речень."
 
 #: toolhub/apps/toolinfo/models.py:374
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
-msgstr ""
+msgstr "Пряме посилання на інструмент або на інструкції щодо використання або встановлення інструменту."
 
 #: toolhub/apps/toolinfo/models.py:389
 msgid "The primary tool developer."
-msgstr ""
+msgstr "Основний розробник інструментів."
 
 #: toolhub/apps/toolinfo/models.py:395
 msgid "A link to the repository where the tool code is hosted."
-msgstr ""
+msgstr "Посилання на сховище, де розміщено код інструменту."
 
 #: toolhub/apps/toolinfo/models.py:402
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
-msgstr ""
+msgstr "Довший за повну назву, але коротший за опис. Він повинен додати до заголовка додатковий контекст."
 
 #: toolhub/apps/toolinfo/models.py:411
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
-msgstr ""
+msgstr "Ідентифікатор проєкту на OpenHub. Враховуючи URL-адресу https://openhub.net/p/foo, ідентифікатор проєкту - `foo`."
 
 #: toolhub/apps/toolinfo/models.py:420
 msgid "Alternate links to the tool or install documentation in different natural languages."
-msgstr ""
+msgstr "Альтернативні посилання на інструмент або інсталяція документації різними природними мовами."
 
 #: toolhub/apps/toolinfo/models.py:431
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
-msgstr ""
+msgstr "Якщо інструментом є бот, ім’я користувача Вікімедіа бота. Не включайте префікси \"Користувач:\" або подібні до них."
 
 #: toolhub/apps/toolinfo/models.py:438
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
-msgstr "Jos totta, tämän työkalun käyttöä ei suositella virallisesti. Parametria `replaced_by` voidaan käyttää korvaavan työkalun määrittämiseen."
+msgstr "Якщо це правда, використання цього інструменту офіційно не рекомендується. Параметр `replace_by\" може бути використаний для визначення заміни."
 
 #: toolhub/apps/toolinfo/models.py:448
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
-msgstr "Jos tämä työkalu on vanhentunut, tätä parametria tulisi käyttää linkittämään korvaustyökaluun."
+msgstr "Якщо цей інструмент не підтримується, цей параметр слід використовувати для посилання на інструмент заміни."
 
 #: toolhub/apps/toolinfo/models.py:455
 msgid "If true, this tool is unstable and can change or go offline at any time."
-msgstr ""
+msgstr "Якщо це правда, цей інструмент є нестабільним і в будь-який час може змінитись або перейти в автономний режим."
 
 #: toolhub/apps/toolinfo/models.py:463
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
-msgstr ""
+msgstr "Рядок або масив рядків, що описують вікі, на яких можна використовувати цей інструмент. Використовуйте імена хостів, такі як `zh.wiktionary.org`. Використовуйте зірочки як підстановні знаки. Наприклад, `*.wikisource.org` означає, що «цей інструмент працює на всіх вікіджерелах Вікіджерел». `*` означає 'це працює на всіх вікі, включаючи Вікімедіа.'"
 
 #: toolhub/apps/toolinfo/models.py:481
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
-msgstr ""
+msgstr "Посилання на сторінку опису файлу Вікімедіа для піктограми, який зображує інструмент."
 
 #: toolhub/apps/toolinfo/models.py:490
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
-msgstr ""
+msgstr "Код інструменту доступний під ліцензією на програмне забезпечення. Використовуйте стандартний ідентифікатор ліцензії SPDX, наприклад \"GPL-3.0 або пізніша\"."
 
 #: toolhub/apps/toolinfo/models.py:498
 msgid "Organization(s) that sponsored the tool's development."
-msgstr ""
+msgstr "Організації, які спонсорували розробку інструменту."
 
 #: toolhub/apps/toolinfo/models.py:505
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
-msgstr ""
+msgstr "Мова(и) інтерфейсу інструменту перекладена. Використовуйте мовні коди ISO 639, такі як `zh` та` scn`. Якщо не визначено, інструмент доступний лише англійською мовою."
 
 #: toolhub/apps/toolinfo/models.py:516
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
-msgstr ""
+msgstr "Рядок або масив рядків із переліком технологій (мови програмування, рамки розробки тощо), що використовуються при створенні інструменту."
 
 #: toolhub/apps/toolinfo/models.py:528
 msgid "The manner in which the tool is used. Select one from the list of options."
-msgstr "Tapa, jolla työkalua käytetään. Valitse yksi vaihtoehtoluettelosta."
+msgstr "Спосіб використання інструменту. Виберіть один зі списку опцій."
 
 #: toolhub/apps/toolinfo/models.py:537
 msgid "A link to the tool's API, if available."
-msgstr ""
+msgstr "Посилання на API інструменту, якщо воно є."
 
 #: toolhub/apps/toolinfo/models.py:543
 msgid "A link to the tool's developer documentation, if available."
-msgstr ""
+msgstr "Посилання на документацію розробника інструменту, якщо вона є."
 
 #: toolhub/apps/toolinfo/models.py:551
 msgid "A link to the tool's user documentation, if available."
-msgstr ""
+msgstr "Посилання на документацію користувача інструменту, якщо вона є."
 
 #: toolhub/apps/toolinfo/models.py:559
 msgid "A link to location where the tool's user can leave feedback."
-msgstr "Linkki sijaintiin, johon työkalun käyttäjä voi jättää palautetta."
+msgstr "Посилання на місце, де користувач інструменту може залишити відгук."
 
 #: toolhub/apps/toolinfo/models.py:567
 msgid "A link to the tool's privacy policy, if available."
-msgstr ""
+msgstr "Посилання на політику конфіденційності інструменту, якщо воно є."
 
 #: toolhub/apps/toolinfo/models.py:576
 msgid "A link to the tool's translation interface."
-msgstr ""
+msgstr "Посилання на інтерфейс перекладу інструменту."
 
 #: toolhub/apps/toolinfo/models.py:584
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
-msgstr ""
+msgstr "Посилання на інструмент відстеження помилок на GitHub, Bitbucket, Phabricator тощо."
 
 #: toolhub/apps/toolinfo/models.py:593
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
-msgstr "URI, joka tunnistaa jsonscheman tälle toolinfo.json -tietueelle. Tämän tulisi olla lyhyt uri, joka sisältää vain nimen ja version URI-polun lopussa."
+msgstr "URI, що ідентифікує jsonschema для цього запису toolinfo.json. Це має бути короткий uri, що містить лише ім’я та версію в кінці шляху URI."
 
 #: toolhub/apps/toolinfo/models.py:604
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
-msgstr ""
+msgstr "Мова, якою написано цей запис інформаційної програми. Якщо не встановлено, значенням за замовчуванням є англійська. Використовуйте мовні коди ISO 639."
 
 #: toolhub/apps/toolinfo/models.py:614
 msgid "Origin of this tool record."
-msgstr ""
+msgstr "Походження цього запису інструменту."
 
 #: toolhub/apps/toolinfo/serializers.py:34
 msgid "SPDX license information"
-msgstr "SPDX-lisenssitiedot"
+msgstr "Інформація про ліцензію SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:42
 msgid "SPDX license ID"
-msgstr "Lisenssin SPDX-tunniste"
+msgstr "Ідентифікатор ліцензії SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:47
 msgid "Full name of this license"
-msgstr "Lienssin koko nimi"
+msgstr "Повна назва цієї ліцензії"
 
 #: toolhub/apps/toolinfo/serializers.py:52
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr "Onko OSI hyväksynyt tämän lisenssin avoimen lähdekoodin lisenssiksi?"
+msgstr "Чи схвалена ця ліцензія як \"відкритий вихідний код\" OSI?"
 
 #: toolhub/apps/toolinfo/serializers.py:57
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr "Onko FSF hyväksynyt tämän lisenssin vapaan koodin lisenssiksi?"
+msgstr "Чи схвалена ця ліцензія FSF як «безкоштовне програмне забезпечення»?"
 
 #: toolhub/apps/toolinfo/serializers.py:62
 msgid "Is this license considered to be outdated?"
-msgstr "Pidetäänkö tätä lisenssiä vanhentuneena?"
+msgstr "Чи вважається ця ліцензія застарілою?"
 
 #: toolhub/apps/toolinfo/serializers.py:66
 msgid "Description of a tool"
-msgstr "Työkalun kuvaus"
+msgstr "Опис інструменту"
 
 #: toolhub/apps/toolinfo/serializers.py:116
 msgid "Summary of a tool"
-msgstr ""
+msgstr "Опис інструменту"
 
 #: toolhub/apps/toolinfo/serializers.py:136
 msgid "Create a tool"
-msgstr "Luo työkalu"
+msgstr "Створити інструмент"
 
 #: toolhub/apps/toolinfo/serializers.py:202
 msgid "Update a tool"
-msgstr "Päivitä työkalu"
+msgstr "Оновити інструмент"
 
 #: toolhub/apps/toolinfo/serializers.py:233
 msgid "Tool revision."
-msgstr ""
+msgstr "Версія інструменту."
 
 #: toolhub/apps/toolinfo/serializers.py:241
 msgid "Tool revision detail."
-msgstr ""
+msgstr "Деталі перегляду інструменту."
 
 #: toolhub/apps/toolinfo/serializers.py:261
 msgid "Tool revision difference."
-msgstr ""
+msgstr "Різниця в перегляді інструменту."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "%(value)s не є розпізнаним кодом мови."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
 #, python-format
 msgid "Expected a list of language codes but found %(type)s"
-msgstr ""
+msgstr "Очікується список кодів мов, але знайдено %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr "%(value)s ei ole tunnettu SPDX-lisenssitunniste"
+msgstr "%(value)s не є відомим ідентифікатором ліцензії SPDX."
 
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
 msgid "Expected a url_multilingual dict but found %(type)s"
-msgstr ""
+msgstr "Очікували url_multilingual dict, але знайшли %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
-msgstr ""
+msgstr "Url_multilingual відсутня властивість 'language'."
 
 #: toolhub/apps/toolinfo/validators.py:79
 msgid "Url_multilingual missing 'url' property."
-msgstr ""
+msgstr "Url_multilingual відсутня властивість 'url'."
 
 #: toolhub/apps/toolinfo/views.py:64
 msgid "Create a new tool."
-msgstr "Luo uusi työkalu."
+msgstr "Створити новий інструмент."
 
 #: toolhub/apps/toolinfo/views.py:69
 msgid "Info for a specific tool."
-msgstr ""
+msgstr "Інформація про певний інструмент."
 
 #: toolhub/apps/toolinfo/views.py:72
 msgid "Update info for a specific tool."
-msgstr ""
+msgstr "Оновити інформацію про певний інструмент."
 
 #: toolhub/apps/toolinfo/views.py:80
 msgid "Delete a tool."
-msgstr "Poista työkalu."
+msgstr "Видалити інструмент."
 
 #: toolhub/apps/toolinfo/views.py:83
 msgid "List all tools."
-msgstr ""
+msgstr "Список усіх інструментів."
 
 #: toolhub/apps/toolinfo/views.py:143
 msgid "Restore the tool to this revision."
-msgstr ""
+msgstr "Відновити інструмент до цієї версії."
 
 #: toolhub/apps/toolinfo/views.py:405
 msgid "Info for a specific SPDX license."
-msgstr "Tietyn SPDX-lisenssin tiedot."
+msgstr "Інформація про певну ліцензію SPDX."
 
 #: toolhub/apps/toolinfo/views.py:413
 msgid "List all SPDX licenses."
-msgstr "Näytä kaikki SPDX-lisenssit."
+msgstr "Перелічити усі ліцензії SPDX."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
-msgstr ""
+msgstr "Особиста інформація"
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr ""
+msgstr "Дозволи"
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
-msgstr ""
+msgstr "Важливі дати"
 
 #: toolhub/apps/user/apps.py:26
 msgid "Toolhub user"
-msgstr "Toolhub-käyttäjä"
+msgstr "Користувач Toolhub"
 
 #: toolhub/apps/user/models.py:36
 msgid "username"
-msgstr "käyttäjänimi"
+msgstr "ім'я користувача"
 
 #: toolhub/apps/user/models.py:39
 msgid "Required. 255 characters or fewer."
-msgstr ""
+msgstr "Вимагається. 255 символів або менше."
 
 #: toolhub/apps/user/models.py:42
 msgid "A user with that username already exists."
-msgstr ""
+msgstr "Користувач із таким ім'ям вже існує."
 
 #: toolhub/apps/user/serializers.py:41
 msgid "Action that the user can take"
-msgstr ""
+msgstr "Дії, які може виконати користувач"
 
 #: toolhub/apps/user/serializers.py:46
 msgid "Subject type to check user action on"
-msgstr ""
+msgstr "Тип теми для перевірки дій користувача"
 
 #: toolhub/apps/user/serializers.py:51
 msgid "Criteria which restricts user action"
-msgstr ""
+msgstr "Критерії, що обмежують дії користувача"
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
-msgstr ""
+msgstr "Інформація про поточного користувача"
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
-msgstr ""
+msgstr "Числовий ідентифікатор користувача"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
-msgstr ""
+msgstr "Жетон запобігання підробці між сайтами"
 
 #: toolhub/apps/user/serializers.py:82
 msgid "CASL access control rules"
-msgstr ""
+msgstr "Правила контролю доступу CASL"
 
 #: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
-msgstr "Tietoja nykyisestä sijainnista"
+msgstr "Інформація про поточний регіон"
 
 #: toolhub/apps/user/serializers.py:123
 msgid "Group information"
-msgstr ""
+msgstr "Інформація про групу"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr "Käyttäjän sosiaalisen todennuksen tiedot"
+msgstr "Інформація про соціальну автентифікацію для користувача"
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
-msgstr ""
+msgstr "Детальна інформація про користувача"
 
 #: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
-msgstr "Yksityiskohtaiset tiedot ryhmästä"
+msgstr "Детальна інформація про групу"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
-msgstr ""
+msgstr "Ввести дійсне ім'я користувача. Символи `@` і `:` заборонені."
 
 #: toolhub/apps/user/views.py:57
 msgid "Get information about the currently logged in user."
-msgstr "Hanki tietoa tällä hetkellä kirjautuneesta käyttäjästä."
+msgstr "Отримати інформацію про поточно зареєстрованого користувача."
 
 #: toolhub/apps/user/views.py:85
 msgid "Get current locale."
-msgstr "Hanki nykyinen sijainti."
+msgstr "Отримати поточну мову"
 
 #: toolhub/apps/user/views.py:96
 msgid "Set locale."
-msgstr ""
+msgstr "Встановити локал."
 
 #: toolhub/apps/user/views.py:114
 msgid "List all active users."
-msgstr ""
+msgstr "Список усіх активних користувачів."
 
 #: toolhub/apps/user/views.py:117
 msgid "Info for a specific user."
-msgstr ""
+msgstr "Інформація про певного користувача."
 
 #: toolhub/apps/user/views.py:138
 msgid "List all user groups."
-msgstr ""
+msgstr "Перелічити всі групи користувачів."
 
 #: toolhub/apps/user/views.py:141
 msgid "Info for a user group."
-msgstr "Tietoja käyttäjäryhmästä."
+msgstr "Інформація про групу користувачів."
 
 #: toolhub/apps/user/views.py:163
 msgid "Add a user to this group."
-msgstr "Lisää käyttäjä tähän ryhmään."
+msgstr "Додати користувача до цієї групи."
 
 #: toolhub/apps/user/views.py:174
 msgid "Remove a user from this group."
-msgstr "Poista käyttäjä tästä ryhmästä."
+msgstr "Вилучити користувача із цієї групи."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr ""
+msgstr "Версія"
 
 #: toolhub/apps/versioned/exceptions.py:28
 msgid "Failed to apply patch."
-msgstr ""
+msgstr "Не вдалося застосувати виправлення."
 
 #: toolhub/apps/versioned/exceptions.py:35
 msgid "Current revision cannot be hidden."
-msgstr "Nykyistä versiota ei voida piilottaa."
+msgstr "Поточну версію неможливо приховати."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Missing content for one or more revisions."
-msgstr ""
+msgstr "Вміст відсутній для однієї чи кількох редакцій."
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:62
 msgid "Has this revision been marked as hidden?"
-msgstr ""
+msgstr "Ця редакція була позначена як прихована?"
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:68
 msgid "Has this revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Чи перевіряв цей перегляд патрульний?"
 
 #: toolhub/apps/versioned/schema.py:22
 msgid "RFC 6902 application/json-patch+json data"
-msgstr ""
+msgstr "Додаток RFC 6902/json-патч+дані json"
 
 #: toolhub/apps/versioned/schema.py:25
 msgid "RFC 6902 JSON patch operation"
-msgstr ""
+msgstr "Операція виправлення RFC 6902 JSON"
 
 #: toolhub/apps/versioned/schema.py:30
 msgid "The operation to be performed"
-msgstr ""
+msgstr "Операція, яку слід виконати"
 
 #: toolhub/apps/versioned/schema.py:36
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "JSON-Покажчик на розташування в документі, де виконується операція."
 
 #: toolhub/apps/versioned/schema.py:42
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "Значення, яке потрібно додати, замінити або перевірити."
 
 #: toolhub/apps/versioned/schema.py:48
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "Вказівник JSON на розташування в документі, з якого потрібно перемістити або скопіювати значення."
 
 #: toolhub/apps/versioned/serializers.py:44
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "Унікальне ціле значення, що ідентифікує цю версію."
 
 #: toolhub/apps/versioned/serializers.py:56
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "Коментар користувача щодо доопрацювання."
 
 #: toolhub/apps/versioned/serializers.py:82
 msgid "username removed"
-msgstr "käyttäjänimi poistettu"
+msgstr "ім’я користувача видалено"
 
 #: toolhub/apps/versioned/serializers.py:83
 msgid "edit summary removed"
-msgstr "muokkausyhteenveto poistettu"
+msgstr "опис редагування вилучено"
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr ""
+msgstr "Введіть дійсне значення, що відповідає схемі JSON."
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr "API-virhe"
+msgstr "Помилка API"
 
 #: toolhub/serializers.py:112
 msgid "Edit summary"
-msgstr "Muokkausyhteenveto"
+msgstr "Опис редагування"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
-msgstr ""
+msgstr "Опис змін, які ви вносите."
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
-msgstr ""
+msgstr "Коментар, що описує дію."
 
 #: toolhub/settings.py:429
 msgid "Read scope"
-msgstr ""
+msgstr "Прочитати область застосування"
 
 #: toolhub/settings.py:430
 msgid "Write scope"
-msgstr ""
+msgstr "Написати область застосування"
 
 #: toolhub/settings.py:458
 #, optional
@@ -1037,15 +1036,15 @@ msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
-msgstr ""
+msgstr "Додаток потребує наступних дозволів"
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
-msgstr "Peruuta"
+msgstr "Скасувати"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
-msgstr ""
+msgstr "Надати"
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
@@ -1055,33 +1054,33 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
 msgid "Toolhub"
-msgstr "Toolhub"
+msgstr ""
 
 #: vue/serializers.py:26
 msgid "Information used on the Toolhub Home view."
-msgstr ""
+msgstr "Інформація, що використовується у домашньому поданні Toolhub."
 
 #: vue/serializers.py:32
 msgid "Count of tools known to Toolhub."
-msgstr ""
+msgstr "Кількість інструментів, відомих Toolhub."
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
-msgstr ""
+msgstr "Дата та час останнього запуску сканера."
 
 #: vue/serializers.py:41
 msgid "Number of tools added or updated in the most recent crawler run."
-msgstr ""
+msgstr "Кількість інструментів, доданих або оновлених під час останнього запуску сканера."
 
 #: vue/templates/vue/base.html:20
 msgid "Toolhub's user interface requires JavaScript to be enabled."
-msgstr ""
+msgstr "Інтерфейс користувача Toolhub вимагає включення JavaScript."
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
-msgstr "LADATAAN"
+msgstr "ЗАВАНТАЖЕННЯ"
 
 #: vue/views.py:41
 msgid "Get information used on the Toolhub Home view."
-msgstr ""
+msgstr "Отримати інформацію, що використовується у домашньому поданні Toolhub."
 

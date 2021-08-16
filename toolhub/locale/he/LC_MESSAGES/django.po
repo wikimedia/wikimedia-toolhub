@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-12 11:11:40+0000\n"
-"X-POT-Import-Date: 2021-07-29 16:30:40+0000\n"
+"PO-Revision-Date: 2021-08-16 11:12:23+0000\n"
+"X-POT-Import-Date: 2021-08-16 04:27:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
@@ -1031,8 +1031,8 @@ msgid "Toolhub API"
 msgstr "API של Toolhub"
 
 #: toolhub/templates/oauth2_provider/authorize.html:8
-#: toolhub/templates/oauth2_provider/authorize.html:26
-msgid "Authorize"
+#, python-format
+msgid "Authorize %(app_name)s?"
 msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
@@ -1043,9 +1043,13 @@ msgstr ""
 msgid "Cancel"
 msgstr "ביטול"
 
+#: toolhub/templates/oauth2_provider/authorize.html:26
+msgid "Authorize"
+msgstr ""
+
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
-msgid "Error: %(error.error)s"
+msgid "Error: %(message)s"
 msgstr ""
 
 #: toolhub/templates/oauth2_provider/base.html:22
