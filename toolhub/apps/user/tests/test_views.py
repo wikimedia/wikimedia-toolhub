@@ -15,17 +15,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth.models import Group
-from django.test import TestCase
 
-from rest_framework.test import APIClient
-from rest_framework.test import APIRequestFactory
-from rest_framework.test import force_authenticate
+from toolhub.tests import TestCase
 
-from .. import models
 from .. import serializers
-from .. import views
 
 
 class CurrentUserViewTest(TestCase):
@@ -34,18 +28,15 @@ class CurrentUserViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         """Setup for all tests in this TestCase."""
-        cls.user = models.ToolhubUser.objects.create_user(  # nosec: B106
-            username="Demo Unicorn",
-            email="bdavis+dunicorn@wikimedia.org",
-            password="unused",
-        )
+        cls.user = cls._user("user")
 
     def test_get_anon(self):
         """Test get as an un-authenticated user."""
-        req = APIRequestFactory().get("")
-        force_authenticate(req, user=AnonymousUser())
-        view = views.CurrentUserView.as_view()
-        response = view(req)
+        self.client.force_authenticate(user=None)
+
+        url = "/api/user/"
+        response = self.client.get(url)
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("username", response.data)
         self.assertEqual(response.data["username"], "")
@@ -59,10 +50,11 @@ class CurrentUserViewTest(TestCase):
 
     def test_get(self):
         """Test get as an authenticated user."""
-        req = APIRequestFactory().get("")
-        force_authenticate(req, user=self.user)
-        view = views.CurrentUserView.as_view()
-        response = view(req)
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/user/"
+        response = self.client.get(url)
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("username", response.data)
         self.assertEqual(response.data["username"], self.user.username)
@@ -81,44 +73,50 @@ class LocaleViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         """Setup for all tests in this TestCase."""
-        cls.user = models.ToolhubUser.objects.create_user(  # nosec: B106
-            username="Demo Unicorn",
-            email="bdavis+dunicorn@wikimedia.org",
-            password="unused",
-        )
+        cls.user = cls._user("user")
 
     def test_get_as_anon(self):
         """Test get."""
-        client = APIClient()
-        client.force_authenticate(user=None)
-        response = client.get("/api/user/locale/")
+        self.client.force_authenticate(user=None)
+
+        url = "/api/user/locale/"
+        response = self.client.get(url)
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("language", response.data)
         self.assertEqual(response.data["language"], "en")
 
     def test_get(self):
         """Test get."""
-        client = APIClient()
-        client.force_authenticate(user=self.user)
-        response = client.get("/api/user/locale/")
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/user/locale/"
+        response = self.client.get(url)
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("language", response.data)
         self.assertEqual(response.data["language"], "en")
 
     def test_post_as_anon(self):
         """Test post as anon user."""
-        client = APIClient()
-        client.force_authenticate(user=None)
-        response = client.post("/api/user/locale/", {"language": "fj"})
+        self.client.force_authenticate(user=None)
+
+        url = "/api/user/locale/"
+        payload = {"language": "fj"}
+        response = self.client.post(url, payload, format="json")
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("language", response.data)
         self.assertEqual(response.data["language"], "fj")
 
     def test_post(self):
         """Test post."""
-        client = APIClient()
-        client.force_authenticate(user=self.user)
-        response = client.post("/api/user/locale/", {"language": "fj"})
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/user/locale/"
+        payload = {"language": "fj"}
+        response = self.client.post(url, payload, format="json")
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("language", response.data)
         self.assertEqual(response.data["language"], "fj")
@@ -130,18 +128,15 @@ class UserViewSetTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         """Setup for all tests in this TestCase."""
-        cls.user = models.ToolhubUser.objects.create_user(  # nosec: B106
-            username="Demo Unicorn",
-            email="bdavis+dunicorn@wikimedia.org",
-            password="unused",
-        )
+        cls.user = cls._user("user")
 
     def test_list(self):
         """Test list action."""
-        req = APIRequestFactory().get("")
-        force_authenticate(req, user=AnonymousUser())
-        view = views.UserViewSet.as_view({"get": "list"})
-        response = view(req)
+        self.client.force_authenticate(user=None)
+
+        url = "/api/users/"
+        response = self.client.get(url)
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("results", response.data)
         self.assertEqual(len(response.data["results"]), 1)
@@ -155,11 +150,18 @@ class UserViewSetTest(TestCase):
 
     def test_retrieve(self):
         """Test retrieve action."""
-        req = APIRequestFactory().get("")
-        force_authenticate(req, user=AnonymousUser())
-        view = views.UserViewSet.as_view({"get": "retrieve"})
-        response = view(req, pk=self.user.pk)
+        self.client.force_authenticate(user=None)
+
+        url = "/api/users/{id}/".format(id=self.user.pk)
+        response = self.client.get(url)
+
         self.assertEqual(response.status_code, 200)
+        self.assertIn("id", response.data)
+        self.assertEqual(response.data["id"], self.user.pk)
+        self.assertIn("username", response.data)
+        self.assertIn("groups", response.data)
+        self.assertIn("date_joined", response.data)
+        self.assertIn("social_auth", response.data)
 
 
 class GroupMembersViewSetTest(TestCase):
@@ -168,47 +170,45 @@ class GroupMembersViewSetTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         """Setup for all tests in this TestCase."""
-        cls.user = models.ToolhubUser.objects.create_user(  # nosec: B106
-            username="Demo Unicorn",
-            email="bdavis+dunicorn@wikimedia.org",
-            password="unused",
-        )
-        cls.crat = models.ToolhubUser.objects.create_user(  # nosec: B106
-            username="Bureaucrat",
-            email="crat@example.org",
-            password="unused",
-        )
-        Group.objects.get(name="Bureaucrats").user_set.add(cls.crat)
-        cls.admin = models.ToolhubUser.objects.create_user(  # nosec: B106
-            username="Admin",
-            email="admin@example.org",
-            password="unused",
-        )
-        Group.objects.get(name="Administrators").user_set.add(cls.admin)
+        cls.user = cls._user("user")
+        cls.crat = cls._user("Bureaucrat", "Bureaucrats")
+        cls.admin = cls._user("Admin", "Administrators")
         cls.admin_group = Group.objects.get(name="Administrators")
 
     def test_update_requires_auth(self):
         """Assert that update fails for anon user."""
-        req = APIRequestFactory().put("")
-        force_authenticate(req, user=AnonymousUser())
-        view = views.GroupMembersViewSet.as_view({"put": "update"})
-        response = view(req, group_pk=self.admin_group.pk, id=self.user.pk)
-        self.assertEqual(response.status_code, 403)
+        self.client.force_authenticate(user=None)
+
+        url = "/api/groups/{group_pk}/members/{id}/".format(
+            group_pk=self.admin_group.pk,
+            id=self.user.pk,
+        )
+        response = self.client.put(url)
+
+        self.assertEqual(response.status_code, 401)
 
     def test_update_requires_perms(self):
         """Assert that update fails for random user."""
-        req = APIRequestFactory().put("")
-        force_authenticate(req, user=self.user)
-        view = views.GroupMembersViewSet.as_view({"put": "update"})
-        response = view(req, group_pk=self.admin_group.pk, id=self.user.pk)
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/groups/{group_pk}/members/{id}/".format(
+            group_pk=self.admin_group.pk,
+            id=self.user.pk,
+        )
+        response = self.client.put(url)
+
         self.assertEqual(response.status_code, 403)
 
     def test_update_as_bureaucrat(self):
         """Assert that a Bureaucrat can add to a group."""
-        req = APIRequestFactory().put("")
-        force_authenticate(req, user=self.crat)
-        view = views.GroupMembersViewSet.as_view({"put": "update"})
-        response = view(req, group_pk=self.admin_group.pk, id=self.user.pk)
+        self.client.force_authenticate(user=self.crat)
+
+        url = "/api/groups/{group_pk}/members/{id}/".format(
+            group_pk=self.admin_group.pk,
+            id=self.user.pk,
+        )
+        response = self.client.put(url)
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("users", response.data)
         users = response.data["users"]
@@ -222,10 +222,14 @@ class GroupMembersViewSetTest(TestCase):
 
     def test_update_as_admin(self):
         """Assert that an Admin can add to a group."""
-        req = APIRequestFactory().put("")
-        force_authenticate(req, user=self.admin)
-        view = views.GroupMembersViewSet.as_view({"put": "update"})
-        response = view(req, group_pk=self.admin_group.pk, id=self.user.pk)
+        self.client.force_authenticate(user=self.admin)
+
+        url = "/api/groups/{group_pk}/members/{id}/".format(
+            group_pk=self.admin_group.pk,
+            id=self.user.pk,
+        )
+        response = self.client.put(url)
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("users", response.data)
         users = response.data["users"]
@@ -239,26 +243,38 @@ class GroupMembersViewSetTest(TestCase):
 
     def test_destroy_requires_auth(self):
         """Assert that destroy fails for anon user."""
-        req = APIRequestFactory().delete("")
-        force_authenticate(req, user=AnonymousUser())
-        view = views.GroupMembersViewSet.as_view({"delete": "destroy"})
-        response = view(req, group_pk=self.admin_group.pk, id=self.admin.pk)
-        self.assertEqual(response.status_code, 403)
+        self.client.force_authenticate(user=None)
+
+        url = "/api/groups/{group_pk}/members/{id}/".format(
+            group_pk=self.admin_group.pk,
+            id=self.admin.pk,
+        )
+        response = self.client.delete(url)
+
+        self.assertEqual(response.status_code, 401)
 
     def test_destroy_requires_perms(self):
         """Assert that destroy fails for random user."""
-        req = APIRequestFactory().delete("")
-        force_authenticate(req, user=self.user)
-        view = views.GroupMembersViewSet.as_view({"delete": "destroy"})
-        response = view(req, group_pk=self.admin_group.pk, id=self.admin.pk)
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/groups/{group_pk}/members/{id}/".format(
+            group_pk=self.admin_group.pk,
+            id=self.admin.pk,
+        )
+        response = self.client.delete(url)
+
         self.assertEqual(response.status_code, 403)
 
     def test_destroy_as_bureaucrat(self):
         """Assert that a Bureaucrat can remove from a group."""
-        req = APIRequestFactory().delete("")
-        force_authenticate(req, user=self.crat)
-        view = views.GroupMembersViewSet.as_view({"delete": "destroy"})
-        response = view(req, group_pk=self.admin_group.pk, id=self.admin.pk)
+        self.client.force_authenticate(user=self.crat)
+
+        url = "/api/groups/{group_pk}/members/{id}/".format(
+            group_pk=self.admin_group.pk,
+            id=self.admin.pk,
+        )
+        response = self.client.delete(url)
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("users", response.data)
         users = response.data["users"]
@@ -266,10 +282,14 @@ class GroupMembersViewSetTest(TestCase):
 
     def test_destroy_as_admin(self):
         """Assert that an Admin can remove from a group."""
-        req = APIRequestFactory().delete("")
-        force_authenticate(req, user=self.admin)
-        view = views.GroupMembersViewSet.as_view({"delete": "destroy"})
-        response = view(req, group_pk=self.admin_group.pk, id=self.admin.pk)
+        self.client.force_authenticate(user=self.admin)
+
+        url = "/api/groups/{group_pk}/members/{id}/".format(
+            group_pk=self.admin_group.pk,
+            id=self.admin.pk,
+        )
+        response = self.client.delete(url)
+
         self.assertEqual(response.status_code, 200)
         self.assertIn("users", response.data)
         users = response.data["users"]
