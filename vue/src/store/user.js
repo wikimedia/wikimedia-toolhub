@@ -159,6 +159,104 @@ export const actions = {
 				}
 			}
 		);
+	},
+	/**
+	 * Fetch the current user's current authtoken.
+	 *
+	 * @param {Object} context - Vuex context
+	 * @return {Promise}
+	 */
+	getAuthtoken( context ) {
+		const request = {
+			url: '/api/user/authtoken/'
+		};
+
+		return makeApiCall( context, request ).then(
+			( success ) => {
+				context.commit( 'AUTHTOKEN', success.body.token );
+			},
+			( failure ) => {
+				if ( failure.statusCode === 404 ) {
+					context.commit( 'AUTHTOKEN', null );
+					return;
+				}
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
+	},
+	/**
+	 * Create or fetch the current user's authtoken.
+	 *
+	 * @param {Object} context - Vuex context
+	 * @return {Promise}
+	 */
+	newAuthtoken( context ) {
+		const request = {
+			url: '/api/user/authtoken/',
+			method: 'POST'
+		};
+
+		return makeApiCall( context, request ).then(
+			( success ) => {
+				context.commit( 'AUTHTOKEN', success.body.token );
+			},
+			( failure ) => {
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
+	},
+	/**
+	 * Delete the current user's authtoken.
+	 *
+	 * @param {Object} context - Vuex context
+	 * @return {Promise}
+	 */
+	deleteAuthtoken( context ) {
+		const request = {
+			url: '/api/user/authtoken/',
+			method: 'DELETE'
+		};
+
+		return makeApiCall( context, request ).then(
+			() => {
+				context.commit( 'AUTHTOKEN', null );
+			},
+			( failure ) => {
+				if ( failure.statusCode === 404 ) {
+					// Token was already deleted
+					context.commit( 'AUTHTOKEN', null );
+					return;
+				}
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
 	}
 };
 
@@ -184,6 +282,9 @@ export const mutations = {
 		);
 		state.userCreatedUrls.splice( index, 1 );
 		state.numUserCreatedUrls -= 1;
+	},
+	AUTHTOKEN( state, token ) {
+		state.authtoken = token;
 	}
 };
 
@@ -198,7 +299,8 @@ export default {
 		users: [],
 		numUsers: 0,
 		userCreatedUrls: [],
-		numUserCreatedUrls: 0
+		numUserCreatedUrls: 0,
+		authtoken: null
 	},
 	actions: actions,
 	mutations: mutations,

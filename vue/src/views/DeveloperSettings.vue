@@ -46,12 +46,14 @@ import fetchMetaInfo from '@/helpers/metadata';
 import RegisterApp from '@/components/oauth/RegisterApp';
 import ClientApps from '@/components/oauth/ClientApps';
 import AuthorizedApps from '@/components/oauth/AuthorizedApps';
+import AuthToken from '@/components/user/AuthToken';
 
 export default {
 	components: {
 		RegisterApp,
 		ClientApps,
-		AuthorizedApps
+		AuthorizedApps,
+		AuthToken
 	},
 	data() {
 		return {
@@ -70,6 +72,11 @@ export default {
 					href: 'oauth-authorized',
 					label: this.$t( 'authorizedapps' ),
 					component: 'AuthorizedApps'
+				},
+				{
+					href: 'authtoken',
+					label: this.$t( 'authtoken' ),
+					component: 'AuthToken'
 				}
 			]
 		};

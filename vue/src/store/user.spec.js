@@ -180,6 +180,239 @@ describe( 'store/user', () => {
 				expect( stubThis._vm.$notify.error ).to.have.been.called;
 			} );
 		} );
+
+		describe( 'getAuthtoken', () => {
+			it( 'should fetch data', async () => {
+				const response = {
+					ok: true,
+					statusCode: 200,
+					url: '/api/user/authtoken/',
+					headers: {
+						'Content-type': 'application/json'
+					},
+					body: {
+						token: '**token**',
+						user: {
+							id: 1,
+							username: 'user'
+						}
+					}
+				};
+				const expectRequest = addRequestDefaults( {
+					url: '/api/user/authtoken/'
+				}, context );
+				http.resolves( response );
+
+				await actions.getAuthtoken( context );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'AUTHTOKEN', response.body.token
+				);
+			} );
+
+			it( 'should store null on 404', async () => {
+				const response = {
+					ok: false,
+					statusCode: 404,
+					url: '/api/user/authtoken/',
+					headers: {
+						'Content-type': 'application/json'
+					},
+					body: {}
+				};
+				const expectRequest = addRequestDefaults( {
+					url: '/api/user/authtoken/'
+				}, context );
+				http.rejects( response );
+
+				await actions.getAuthtoken( context );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'AUTHTOKEN', null
+				);
+			} );
+
+			it( 'should emit error messages', async () => {
+				const response = {
+					code: 1000,
+					message: 'boom!',
+					status_code: 500,
+					errors: [ {
+						code: 1,
+						field: 'something',
+						message: 'Boom!'
+					} ]
+				};
+				const expectRequest = addRequestDefaults( {
+					url: '/api/user/authtoken/'
+				}, context );
+				http.rejects( response );
+
+				const getAuthtoken = actions.getAuthtoken.bind( stubThis );
+				await getAuthtoken( context );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.not.been.called;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.calledOnce;
+			} );
+		} );
+
+		describe( 'newAuthtoken', () => {
+			it( 'should fetch data', async () => {
+				const response = {
+					ok: true,
+					statusCode: 200,
+					url: '/api/user/authtoken/',
+					headers: {
+						'Content-type': 'application/json'
+					},
+					body: {
+						token: '**token**',
+						user: {
+							id: 1,
+							username: 'user'
+						}
+					}
+				};
+				const expectRequest = addRequestDefaults( {
+					url: '/api/user/authtoken/',
+					method: 'POST'
+				}, context );
+				http.resolves( response );
+
+				await actions.newAuthtoken( context );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'AUTHTOKEN', response.body.token
+				);
+			} );
+
+			it( 'should emit error messages', async () => {
+				const response = {
+					code: 1000,
+					message: 'boom!',
+					status_code: 500,
+					errors: [ {
+						code: 1,
+						field: 'something',
+						message: 'Boom!'
+					} ]
+				};
+				const expectRequest = addRequestDefaults( {
+					url: '/api/user/authtoken/',
+					method: 'POST'
+				}, context );
+				http.rejects( response );
+
+				const newAuthtoken = actions.newAuthtoken.bind( stubThis );
+				await newAuthtoken( context );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.not.been.called;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.calledOnce;
+			} );
+		} );
+
+		describe( 'deleteAuthtoken', () => {
+			it( 'should delete', async () => {
+				const response = {
+					ok: true,
+					statusCode: 204,
+					url: '/api/user/authtoken/',
+					body: {}
+				};
+				const expectRequest = addRequestDefaults( {
+					url: '/api/user/authtoken/',
+					method: 'DELETE'
+				}, context );
+				http.resolves( response );
+
+				await actions.deleteAuthtoken( context );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'AUTHTOKEN', null
+				);
+			} );
+
+			it( 'should store null on 404', async () => {
+				const response = {
+					ok: false,
+					statusCode: 404,
+					url: '/api/user/authtoken/',
+					body: {}
+				};
+				const expectRequest = addRequestDefaults( {
+					url: '/api/user/authtoken/',
+					method: 'DELETE'
+				}, context );
+				http.rejects( response );
+
+				await actions.deleteAuthtoken( context );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'AUTHTOKEN', null
+				);
+			} );
+
+			it( 'should emit error messages', async () => {
+				const response = {
+					code: 1000,
+					message: 'boom!',
+					status_code: 500,
+					errors: [ {
+						code: 1,
+						field: 'something',
+						message: 'Boom!'
+					} ]
+				};
+				const expectRequest = addRequestDefaults( {
+					url: '/api/user/authtoken/',
+					method: 'DELETE'
+				}, context );
+				http.rejects( response );
+
+				const deleteAuthtoken = actions.deleteAuthtoken.bind( stubThis );
+				await deleteAuthtoken( context );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.not.been.called;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.calledOnce;
+			} );
+		} );
 	} );
 
 	describe( 'mutations', () => {
@@ -205,6 +438,18 @@ describe( 'store/user', () => {
 			mutations.UNREGISTER_URL( state, testUrlObj.url );
 			expect( state.userCreatedUrls[ urls.count ] ).to.not.eql( asUrl( testUrlObj ) );
 			expect( state.numUserCreatedUrls ).to.equal( urls.count );
+		} );
+
+		it( 'should store authtokens', () => {
+			const state = {
+				authtoken: null
+			};
+
+			mutations.AUTHTOKEN( state, '**token**' );
+			expect( state.authtoken ).to.equal( '**token**' );
+
+			mutations.AUTHTOKEN( state, null );
+			expect( state.authtoken ).to.equal( null );
 		} );
 	} );
 } );
