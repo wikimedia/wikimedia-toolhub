@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-16 11:12:23+0000\n"
+"PO-Revision-Date: 2021-08-19 11:12:02+0000\n"
 "X-POT-Import-Date: 2021-08-16 04:27:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1036,7 +1036,7 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr ""
+msgstr "是否授权%(app_name)s？"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
@@ -1053,7 +1053,7 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr ""
+msgstr "错误:%(message)s"
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
