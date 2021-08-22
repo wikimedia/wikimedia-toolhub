@@ -18,7 +18,8 @@
 import json
 import logging
 
-import django.db
+from django.core.exceptions import ValidationError
+from django.db import Error
 from django.utils import timezone
 
 import requests
@@ -106,7 +107,10 @@ class Crawler:
                 run_url.tools.add(obj)
                 expected_names.discard(obj.name)
 
-            except django.db.Error:
+            except (
+                Error,
+                ValidationError,
+            ):
                 logger.exception(
                     "Failed to upsert `%s` from %s",
                     toolinfo["name"],
@@ -129,7 +133,7 @@ class Crawler:
                         run_url.url.created_by, reason.format(run_url.url.url)
                     ):
                         Tool.objects.filter(name__in=expected_names).delete()
-                except django.db.Error:
+                except Error:
                     logger.exception(
                         "Failed to delete missing tools: %s", expected_names
                     )
