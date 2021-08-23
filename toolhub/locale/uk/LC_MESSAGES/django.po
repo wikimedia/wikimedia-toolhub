@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-16 11:12:23+0000\n"
+"PO-Revision-Date: 2021-08-23 11:13:25+0000\n"
 "X-POT-Import-Date: 2021-08-16 04:27:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -309,8 +309,8 @@ msgstr "Повторювані значення у списку: %(duplicates)s"
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Невідомий інструмент: %(names)s"
+msgstr[1] "Невідомі інструменти: %(names)s"
 msgstr[2] ""
 
 #: toolhub/apps/lists/validators.py:74
@@ -589,11 +589,11 @@ msgstr "Унікальний ідентифікатор цього інстру�
 
 #: toolhub/apps/toolinfo/models.py:360
 msgid "Human readable tool name. Recommended limit of 25 characters."
-msgstr "Зрозуміла для людини назва інструменту. Рекомендована межа - 25 символів."
+msgstr "Зрозуміла для людини назва інструменту. Рекомендована межа — 25 символів."
 
 #: toolhub/apps/toolinfo/models.py:366
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr "Більш довгий опис інструменту. Рекомендована довжина опису - 3-5 речень."
+msgstr "Більш довгий опис інструменту. Рекомендована довжина опису — 3-5 речень."
 
 #: toolhub/apps/toolinfo/models.py:374
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
@@ -613,7 +613,7 @@ msgstr "Довший за повну назву, але коротший за о
 
 #: toolhub/apps/toolinfo/models.py:411
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
-msgstr "Ідентифікатор проєкту на OpenHub. Враховуючи URL-адресу https://openhub.net/p/foo, ідентифікатор проєкту - `foo`."
+msgstr "Ідентифікатор проєкту на OpenHub. Враховуючи URL-адресу https://openhub.net/p/foo, ідентифікатор проєкту — `foo`."
 
 #: toolhub/apps/toolinfo/models.py:420
 msgid "Alternate links to the tool or install documentation in different natural languages."
@@ -621,11 +621,11 @@ msgstr "Альтернативні посилання на інструмент 
 
 #: toolhub/apps/toolinfo/models.py:431
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
-msgstr "Якщо інструментом є бот, ім’я користувача Вікімедіа бота. Не включайте префікси \"Користувач:\" або подібні до них."
+msgstr "Якщо інструментом є бот, ім’я користувача Вікімедіа бота. Не включайте префікси «Користувач:» або подібні до них."
 
 #: toolhub/apps/toolinfo/models.py:438
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
-msgstr "Якщо це правда, використання цього інструменту офіційно не рекомендується. Параметр `replace_by\" може бути використаний для визначення заміни."
+msgstr "Якщо це правда, використання цього інструменту офіційно не рекомендується. Параметр «replace_by» може бути використаний для визначення заміни."
 
 #: toolhub/apps/toolinfo/models.py:448
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
@@ -645,7 +645,7 @@ msgstr "Посилання на сторінку опису файлу Вікі�
 
 #: toolhub/apps/toolinfo/models.py:490
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
-msgstr "Код інструменту доступний під ліцензією на програмне забезпечення. Використовуйте стандартний ідентифікатор ліцензії SPDX, наприклад \"GPL-3.0 або пізніша\"."
+msgstr "Код інструменту доступний під ліцензією на програмне забезпечення. Використовуйте стандартний ідентифікатор ліцензії SPDX, наприклад «GPL-3.0 або пізніша»."
 
 #: toolhub/apps/toolinfo/models.py:498
 msgid "Organization(s) that sponsored the tool's development."
@@ -717,7 +717,7 @@ msgstr "Повна назва цієї ліцензії"
 
 #: toolhub/apps/toolinfo/serializers.py:52
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr "Чи схвалена ця ліцензія як \"відкритий вихідний код\" OSI?"
+msgstr "Чи схвалена ця ліцензія як «відкритий вихідний код» OSI?"
 
 #: toolhub/apps/toolinfo/serializers.py:57
 msgid "Is this license approved as 'free software' by the FSF?"
@@ -1032,7 +1032,7 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr ""
+msgstr "Авторизувати %(app_name)s?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
@@ -1044,12 +1044,12 @@ msgstr "Скасувати"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
-msgstr "Надати"
+msgstr "Авторизувати"
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr ""
+msgstr "Помилка: %(message)s"
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional

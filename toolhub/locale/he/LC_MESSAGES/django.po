@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-16 11:12:23+0000\n"
+"PO-Revision-Date: 2021-08-23 11:13:25+0000\n"
 "X-POT-Import-Date: 2021-08-16 04:27:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -292,15 +292,15 @@ msgstr "הגרסה אחרי החלת השינויים."
 
 #: toolhub/apps/lists/serializers.py:271
 msgid "Favorites list item."
-msgstr ""
+msgstr "פריט ברשימת המועדפים."
 
 #: toolhub/apps/lists/serializers.py:286
 msgid "Add a favorite tool."
-msgstr ""
+msgstr "הוספת כלי מועדף."
 
 #: toolhub/apps/lists/serializers.py:291
 msgid "Tool name."
-msgstr ""
+msgstr "שם הכלי."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
@@ -317,7 +317,7 @@ msgstr[1] "כלים בלתי־ידועים: %(names)s"
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr ""
+msgstr "הכלי %(name)s כבר ברשימת המועדפים."
 
 #: toolhub/apps/lists/views.py:61
 msgid "Create a new list of tools."
@@ -407,11 +407,11 @@ msgstr "מזהה ייחודי לכלי הזה."
 
 #: toolhub/apps/lists/views.py:501
 msgid "Add a tool to favorites."
-msgstr ""
+msgstr "הוספת כלי למועדפים."
 
 #: toolhub/apps/lists/views.py:506
 msgid "Check to see if a tool is in favorites."
-msgstr ""
+msgstr "בדיקה אם הכלי כבר במועדפים."
 
 #: toolhub/apps/lists/views.py:512
 msgid "Remove a tool from favorites."
@@ -1033,11 +1033,11 @@ msgstr "API של Toolhub"
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr ""
+msgstr "לתת אישור ליישום %(app_name)s?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
-msgstr ""
+msgstr "יישום דורש את ההרשאות הבאות"
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
@@ -1045,12 +1045,12 @@ msgstr "ביטול"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
-msgstr ""
+msgstr "לאשר"
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr ""
+msgstr "שגיאה: %(message)s"
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
