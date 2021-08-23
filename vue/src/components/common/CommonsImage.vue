@@ -1,18 +1,24 @@
 <template>
-	<v-img
+	<a
 		v-if="isImage"
-		:src="imageinfo.thumburl"
-		:srcset="srcset( imageinfo )"
-		:max-height="size"
-		:max-width="size"
-		:alt="commonsUrl"
-		aspect-ratio="1"
-		contain
-		crossorigin="anonymous"
-		decoding="async"
-		loading="lazy"
-		referrerpolicy="origin-when-cross-origin"
-	/>
+		class="inline-flex"
+		target="_blank"
+		:href="commonsUrl"
+	>
+		<v-img
+			:src="imageinfo.thumburl"
+			:srcset="srcset( imageinfo )"
+			:height="size"
+			:width="size"
+			:alt="commonsUrl"
+			aspect-ratio="1"
+			contain
+			crossorigin="anonymous"
+			decoding="async"
+			loading="lazy"
+			referrerpolicy="origin-when-cross-origin"
+		/>
+	</a>
 	<v-icon
 		v-else
 		:size="size"
