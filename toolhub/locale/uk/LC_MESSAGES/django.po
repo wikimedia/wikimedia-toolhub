@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-23 11:13:25+0000\n"
-"X-POT-Import-Date: 2021-08-16 04:27:52+0000\n"
+"PO-Revision-Date: 2021-08-26 11:20:04+0000\n"
+"X-POT-Import-Date: 2021-08-23 20:31:09+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: uk\n"
@@ -892,45 +892,65 @@ msgstr "Детальна інформація про користувача"
 msgid "Detailed group information"
 msgstr "Детальна інформація про групу"
 
+#: toolhub/apps/user/serializers.py:198
+msgid "Owner-only API Token"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:205
+msgid "Authentication token"
+msgstr ""
+
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
 msgstr "Ввести дійсне ім'я користувача. Символи `@` і `:` заборонені."
 
-#: toolhub/apps/user/views.py:57
+#: toolhub/apps/user/views.py:60
 msgid "Get information about the currently logged in user."
 msgstr "Отримати інформацію про поточно зареєстрованого користувача."
 
-#: toolhub/apps/user/views.py:85
+#: toolhub/apps/user/views.py:88
 msgid "Get current locale."
 msgstr "Отримати поточну мову"
 
-#: toolhub/apps/user/views.py:96
+#: toolhub/apps/user/views.py:99
 msgid "Set locale."
 msgstr "Встановити локал."
 
-#: toolhub/apps/user/views.py:114
+#: toolhub/apps/user/views.py:117
 msgid "List all active users."
 msgstr "Список усіх активних користувачів."
 
-#: toolhub/apps/user/views.py:117
+#: toolhub/apps/user/views.py:120
 msgid "Info for a specific user."
 msgstr "Інформація про певного користувача."
 
-#: toolhub/apps/user/views.py:138
+#: toolhub/apps/user/views.py:141
 msgid "List all user groups."
 msgstr "Перелічити всі групи користувачів."
 
-#: toolhub/apps/user/views.py:141
+#: toolhub/apps/user/views.py:144
 msgid "Info for a user group."
 msgstr "Інформація про групу користувачів."
 
-#: toolhub/apps/user/views.py:163
+#: toolhub/apps/user/views.py:166
 msgid "Add a user to this group."
 msgstr "Додати користувача до цієї групи."
 
-#: toolhub/apps/user/views.py:174
+#: toolhub/apps/user/views.py:177
 msgid "Remove a user from this group."
 msgstr "Вилучити користувача із цієї групи."
+
+#: toolhub/apps/user/views.py:222
+msgid "Get authentication token."
+msgstr ""
+
+#: toolhub/apps/user/views.py:225
+msgid "Create authentication token."
+msgstr ""
+
+#: toolhub/apps/user/views.py:228
+msgid "Delete authentication token."
+msgstr ""
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
@@ -1016,15 +1036,15 @@ msgstr "Опис змін, які ви вносите."
 msgid "Comment describing an action."
 msgstr "Коментар, що описує дію."
 
-#: toolhub/settings.py:429
+#: toolhub/settings.py:430
 msgid "Read scope"
 msgstr "Прочитати область застосування"
 
-#: toolhub/settings.py:430
+#: toolhub/settings.py:431
 msgid "Write scope"
 msgstr "Написати область застосування"
 
-#: toolhub/settings.py:458
+#: toolhub/settings.py:460
 #, optional
 msgid "Toolhub API"
 msgstr ""

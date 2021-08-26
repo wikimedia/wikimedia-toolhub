@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-16 11:12:22+0000\n"
-"X-POT-Import-Date: 2021-08-16 04:27:52+0000\n"
+"PO-Revision-Date: 2021-08-26 11:20:02+0000\n"
+"X-POT-Import-Date: 2021-08-23 20:31:09+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de-x-formal\n"
@@ -890,44 +890,64 @@ msgstr ""
 msgid "Detailed group information"
 msgstr ""
 
+#: toolhub/apps/user/serializers.py:198
+msgid "Owner-only API Token"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:205
+msgid "Authentication token"
+msgstr ""
+
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
 msgstr ""
 
-#: toolhub/apps/user/views.py:57
+#: toolhub/apps/user/views.py:60
 msgid "Get information about the currently logged in user."
 msgstr ""
 
-#: toolhub/apps/user/views.py:85
+#: toolhub/apps/user/views.py:88
 msgid "Get current locale."
 msgstr ""
 
-#: toolhub/apps/user/views.py:96
+#: toolhub/apps/user/views.py:99
 msgid "Set locale."
 msgstr ""
 
-#: toolhub/apps/user/views.py:114
+#: toolhub/apps/user/views.py:117
 msgid "List all active users."
 msgstr ""
 
-#: toolhub/apps/user/views.py:117
+#: toolhub/apps/user/views.py:120
 msgid "Info for a specific user."
 msgstr ""
 
-#: toolhub/apps/user/views.py:138
+#: toolhub/apps/user/views.py:141
 msgid "List all user groups."
 msgstr ""
 
-#: toolhub/apps/user/views.py:141
+#: toolhub/apps/user/views.py:144
 msgid "Info for a user group."
 msgstr ""
 
-#: toolhub/apps/user/views.py:163
+#: toolhub/apps/user/views.py:166
 msgid "Add a user to this group."
 msgstr ""
 
-#: toolhub/apps/user/views.py:174
+#: toolhub/apps/user/views.py:177
 msgid "Remove a user from this group."
+msgstr ""
+
+#: toolhub/apps/user/views.py:222
+msgid "Get authentication token."
+msgstr ""
+
+#: toolhub/apps/user/views.py:225
+msgid "Create authentication token."
+msgstr ""
+
+#: toolhub/apps/user/views.py:228
+msgid "Delete authentication token."
 msgstr ""
 
 #: toolhub/apps/versioned/apps.py:26
@@ -1014,15 +1034,15 @@ msgstr ""
 msgid "Comment describing an action."
 msgstr ""
 
-#: toolhub/settings.py:429
+#: toolhub/settings.py:430
 msgid "Read scope"
 msgstr ""
 
-#: toolhub/settings.py:430
+#: toolhub/settings.py:431
 msgid "Write scope"
 msgstr ""
 
-#: toolhub/settings.py:458
+#: toolhub/settings.py:460
 #, optional
 msgid "Toolhub API"
 msgstr ""
