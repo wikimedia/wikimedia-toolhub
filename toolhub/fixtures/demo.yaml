@@ -519,13 +519,6 @@
     - Demo Unicorn
     created_date: 2021-01-01T00:00:00+00:00
 - model: crawler.url
-  pk: 74
-  fields:
-    url: https://raw.githubusercontent.com/simon04/locator-tool/master/toolinfo.json
-    created_by:
-    - Demo Unicorn
-    created_date: 2021-01-01T00:00:00+00:00
-- model: crawler.url
   pk: 75
   fields:
     url: http://sqid.toolforge.org/toolinfo.json
