@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Danniel07",
 			"Hasley",
 			"Jackiezelaya",
 			"Juan t2905",
@@ -61,6 +62,9 @@
 	"authorizedapps": "Aplicaciones autorizadas",
 	"author": "Autor",
 	"authors": "Autor(es)",
+	"authtoken": "Token de autenticación",
+	"authtoken-new": "Crear token de autenticación",
+	"authtoken-token": "Token",
 	"availableuilanguages": "Idiomas disponibles en la Interfaz de Usuario",
 	"basicinfo": "Información básica:",
 	"cancel": "Cancelar",
