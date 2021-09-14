@@ -1,5 +1,37 @@
 <template>
 	<v-container v-if="list">
+		<v-app-bar
+			color="base100"
+			dense
+			flat
+			class="list-app-bar"
+		>
+			<v-spacer />
+			<v-btn
+				v-if="$can( 'change', 'lists/toollist' )"
+				:to="{ name: 'lists-edit', params: { id: list.id } }"
+				color="primary base100--text"
+				:small="$vuetify.breakpoint.smAndDown"
+			>
+				<v-icon class="me-2">
+					mdi-pencil
+				</v-icon>
+				{{ $t( 'lists-editlist' ) }}
+			</v-btn>
+
+			<v-btn
+				v-if="$can( 'delete', 'lists/toollist' )"
+				:small="$vuetify.breakpoint.smAndDown"
+				class="ms-4"
+				color="error"
+				@click="confirmDeleteDialog = true"
+			>
+				<v-icon class="me-2">
+					mdi-delete
+				</v-icon>
+				{{ $t( 'delete' ) }}
+			</v-btn>
+		</v-app-bar>
 		<v-card
 			elevation="0"
 			class="list-card__card"
@@ -101,6 +133,11 @@
 				</v-card>
 			</v-col>
 		</v-row>
+
+		<ConfirmDeleteDialog v-if="list.id"
+			v-model="confirmDeleteDialog"
+			@delete="deleteList"
+		/>
 	</v-container>
 </template>
 
@@ -108,17 +145,21 @@
 import { mapState, mapMutations } from 'vuex';
 import CommonsImage from '@/components/common/CommonsImage';
 import ToolCard from '@/components/tools/ToolCard';
+import ConfirmDeleteDialog from '@/components/common/ConfirmDeleteDialog';
 
 export default {
 	name: 'ListInfo',
 	components: {
 		CommonsImage,
-		ToolCard
+		ToolCard,
+		ConfirmDeleteDialog
+
 	},
 	data() {
 		return {
 			showClipboardMsg: false,
-			id: this.$route.params.id
+			id: this.$route.params.id,
+			confirmDeleteDialog: false
 		};
 	},
 	computed: {
@@ -137,6 +178,14 @@ export default {
 					this.showClipboardMsg = false;
 				}, 20000 );
 			}, this );
+		},
+		deleteList() {
+			this.$store.dispatch( 'lists/deleteList', this.id ).then(
+				() => {
+					this.$router.push( { name: 'lists' } );
+				}
+			);
+			this.confirmDeleteDialog = false;
 		}
 	},
 	beforeMount() {

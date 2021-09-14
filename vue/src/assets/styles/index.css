@@ -49,6 +49,10 @@ div.tool-card__card {
 	border-bottom: 1px solid var( --v-base80-base );
 }
 
+.list-app-bar .v-toolbar__content {
+	padding: 0 !important;
+}
+
 div.list-card__card {
 	display: flex;
 	flex-direction: column;

@@ -222,6 +222,93 @@ describe( 'store/lists', () => {
 
 		} );
 
+		describe( 'editList', () => {
+			const testId = 14;
+			const response = {
+				ok: true,
+				status: 201,
+				url: '/api/lists/' + testId + '/',
+				headers: { 'Content-type': 'application/json' },
+				body: JSON.stringify( listResponse )
+			};
+
+			it( 'should edit list', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testId + '/',
+					method: 'PUT',
+					body: JSON.stringify( listResponse.results[ 0 ] )
+				}, context );
+				http.resolves( response );
+
+				const editList = actions.editList.bind( stubThis );
+				await editList( context, listResponse.results[ 0 ] );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.success ).to.have.been.called;
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( { errors: [ {
+					field: 'comment',
+					message: 'This field may not be null.'
+				} ] } );
+
+				const editList = actions.editList.bind( stubThis );
+				await editList( context, listResponse.results[ 0 ] );
+
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
+
+		} );
+
+		describe( 'deleteList', () => {
+			const testId = 14;
+			const response = {
+				ok: true,
+				status: 201,
+				url: '/api/lists/' + testId + '/',
+				headers: { 'Content-type': 'application/json' },
+				body: {}
+			};
+
+			it( 'should delete list', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testId + '/',
+					method: 'DELETE'
+				}, context );
+				http.resolves( response );
+
+				const deleteList = actions.deleteList.bind( stubThis );
+				await deleteList( context, testId );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.success ).to.have.been.called;
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( { errors: [ {
+					field: 'comment',
+					message: 'This field may not be null.'
+				} ] } );
+
+				const deleteList = actions.deleteList.bind( stubThis );
+				await deleteList( context, testId );
+
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
+
+		} );
+
 		describe( 'getListInfo', () => {
 			const testId = 14;
 			const response = {

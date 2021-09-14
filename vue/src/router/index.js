@@ -57,9 +57,14 @@ const routes = [
 			component: () => import( /* webpackChunkName: "lists-view" */ '../components/lists/ListInfo.vue' )
 		},
 		{
+			name: 'lists-edit',
+			path: '/lists/:id(\\d+)/edit',
+			component: () => import( /* webpackChunkName: "lists-edit" */ '../components/lists/CreateEditList.vue' )
+		},
+		{
 			name: 'lists-create',
 			path: '/lists/create',
-			component: () => import( /* webpackChunkName: "lists-create" */ '../components/lists/CreateNewList.vue' )
+			component: () => import( /* webpackChunkName: "lists-create" */ '../components/lists/CreateEditList.vue' )
 		},
 		{
 			name: 'apidocs',

@@ -108,6 +108,61 @@ export const actions = {
 			}
 		);
 	},
+	editList( context, listinfo ) {
+		const request = {
+			url: '/api/lists/' + listinfo.id + '/',
+			method: 'PUT',
+			body: JSON.stringify( listinfo )
+		};
+
+		return makeApiCall( context, request ).then(
+			( success ) => {
+				const data = success.body;
+
+				this._vm.$notify.success(
+					i18n.t( 'lists-listeditingsuccess', [ data.title ] ), 30000
+				);
+			},
+			( failure ) => {
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
+	},
+	deleteList( context, id ) {
+		const request = {
+			url: '/api/lists/' + id + '/',
+			method: 'DELETE'
+		};
+
+		return makeApiCall( context, request ).then(
+			() => {
+				this._vm.$notify.success(
+					i18n.t( 'lists-listdeletionsuccess' ), 30000
+				);
+			},
+			( failure ) => {
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
+	},
 	getListInfo( context, id ) {
 		const request = {
 			url: '/api/lists/' + id + '/',
