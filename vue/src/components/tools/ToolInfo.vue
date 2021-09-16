@@ -10,7 +10,7 @@
 			<v-spacer />
 			<v-btn
 				v-if="$can( 'change', tool )"
-				:to="`/tool/${tool.name}/edit`"
+				:to="{ name: 'edittool', params: { name: tool.name } }"
 				color="primary base100--text"
 				:small="$vuetify.breakpoint.smAndDown"
 			>
@@ -21,7 +21,7 @@
 			</v-btn>
 
 			<v-btn
-				:to="`/tool/${name}/history`"
+				:to="{ name: 'toolhistory', params: { name: tool.name } }"
 				:small="$vuetify.breakpoint.smAndDown"
 				class="ms-4"
 			>

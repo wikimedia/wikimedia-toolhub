@@ -9,7 +9,7 @@
 
 			<v-col md="3" cols="12">
 				<v-btn
-					:to="`/tool/${name}`"
+					:to="{ name: 'tool', params: { name: name } }"
 					:small="$vuetify.breakpoint.smAndDown"
 				>
 					<v-icon class="me-2">
@@ -29,7 +29,14 @@
 		<v-row>
 			<v-col cols="12" class="py-0">
 				<v-btn
-					:to="`/tool/${name}/history/revision/${selectedId}/diff/${otherSelectedId}`"
+					:to="{
+						name: 'revisionsdiff',
+						params: {
+							name: name,
+							revId: selectedId,
+							otherRevId: otherSelectedId
+						}
+					}"
 					:disabled="!selectedId || !otherSelectedId"
 					:small="$vuetify.breakpoint.smAndDown"
 				>
@@ -85,7 +92,13 @@
 					<dd class="me-2 mt-1 rev-timestamp">
 						<router-link
 							v-if="$can( 'view', rev )"
-							:to="`/tool/${name}/history/revision/${rev.id}`"
+							:to="{
+								name: 'toolrevision',
+								params: {
+									name: name,
+									revId: rev.id
+								}
+							}"
 						>
 							{{ rev.timestamp | moment( "utc", "LT ll" ) }}
 						</router-link>

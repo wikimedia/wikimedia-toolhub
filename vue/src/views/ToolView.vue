@@ -22,7 +22,7 @@
 			</v-col>
 			<v-col md="3" cols="12">
 				<v-btn
-					:to="`/tool/${name}`"
+					:to="{ name: 'tool', params: { name: name } }"
 					:small="$vuetify.breakpoint.smAndDown"
 					@click="backToToolInfo"
 				>

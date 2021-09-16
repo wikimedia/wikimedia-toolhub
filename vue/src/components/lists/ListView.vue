@@ -20,7 +20,7 @@
 				<v-btn
 					class="my-3"
 					icon
-					:to="`/list/${list.id}`"
+					:to="{ name: 'list', params: { id: list.id } }"
 				>
 					<v-icon size="30" color="base20">
 						mdi-link-variant

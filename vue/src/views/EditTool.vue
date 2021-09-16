@@ -9,7 +9,7 @@
 
 			<v-col md="2" cols="12">
 				<v-btn
-					:to="`/tool/${tool.name}`"
+					:to="{ name: 'tool', params: { name: name } }"
 				>
 					<v-icon
 						dark
