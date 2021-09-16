@@ -28,7 +28,8 @@
 				</v-row>
 			</v-form>
 
-			<v-col cols="12" lg="8">
+			<v-col cols="12">
+				<AgreeTerms />
 				<v-btn
 					color="primary base100--text"
 					class="pa-4"
@@ -45,10 +46,12 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import InputWidget from '@/components/common/InputWidget';
+import AgreeTerms from '@/components/common/AgreeTerms';
 
 export default {
 	name: 'CreateNewList',
 	components: {
+		AgreeTerms,
 		InputWidget
 	},
 	data() {

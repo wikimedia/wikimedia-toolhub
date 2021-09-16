@@ -119,7 +119,19 @@
 			</v-container>
 			<Notifications />
 		</v-main>
-		<v-footer app />
+		<v-footer app>
+			<v-col
+				class="py-0 text-center text-caption"
+				cols="12"
+			>
+				<I18nHtml msg="footer-content-license">
+					<a
+						href="https://creativecommons.org/publicdomain/zero/1.0/"
+						target="_blank"
+					>{{ $t( 'link-cc0' ) }}</a>
+				</I18nHtml>
+			</v-col>
+		</v-footer>
 	</v-app>
 </template>
 
@@ -127,11 +139,13 @@
 import { mapState } from 'vuex';
 import UserStatus from '@/components/user/Status';
 import SelectLocale from '@/components/locale/SelectLocale';
+import I18nHtml from '@/components/common/I18nHtml';
 
 export default {
 	components: {
 		UserStatus,
-		SelectLocale
+		SelectLocale,
+		I18nHtml
 	},
 	data() {
 		return {

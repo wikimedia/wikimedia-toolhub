@@ -24,18 +24,18 @@
 								@keydown.enter="saveComment"
 							/>
 						</v-row>
+						<v-row>
+							<AgreeTerms />
+						</v-row>
 					</v-container>
 				</v-card-text>
 
 				<v-card-actions>
 					<v-spacer />
-
 					<v-btn
-						color="accent"
 						@click="show = false"
 					>
 						<v-icon
-							dark
 							class="me-2"
 						>
 							mdi-cancel
@@ -63,8 +63,13 @@
 </template>
 
 <script>
+import AgreeTerms from '@/components/common/AgreeTerms';
+
 export default {
 	name: 'CommentDialog',
+	components: {
+		AgreeTerms
+	},
 	props: {
 		value: {
 			type: Boolean,

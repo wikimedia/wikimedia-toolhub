@@ -123,8 +123,8 @@ div.list-card__card {
 }
 
 #notifications {
-	/* z-index just below the level of our nav menu */
-	z-index: 5;
+	/* z-index just below the level of our static footer */
+	z-index: 2;
 	position: fixed;
 	bottom: 0%;
 }
