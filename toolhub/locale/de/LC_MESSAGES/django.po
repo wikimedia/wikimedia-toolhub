@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-08-26 11:20:02+0000\n"
+"PO-Revision-Date: 2021-09-16 11:10:48+0000\n"
 "X-POT-Import-Date: 2021-08-23 20:31:09+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -777,7 +777,7 @@ msgstr "%(value)s ist kein bekannter SPDX-Lizenz-Identifier."
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
 msgid "Expected a url_multilingual dict but found %(type)s"
-msgstr ""
+msgstr "Erwartete ein url_multilingual Wörterbuch, fand aber %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
@@ -853,7 +853,7 @@ msgstr "Aktion, die der Benutzer ausführen kann"
 
 #: toolhub/apps/user/serializers.py:46
 msgid "Subject type to check user action on"
-msgstr ""
+msgstr "Gegenstandstyp zur Überprüfung der Benutzeraktion"
 
 #: toolhub/apps/user/serializers.py:51
 msgid "Criteria which restricts user action"
@@ -901,7 +901,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
-msgstr ""
+msgstr "Authentifizierungs-Token"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
@@ -945,15 +945,15 @@ msgstr "Enferne einen Benutzer von dieser Gruppe."
 
 #: toolhub/apps/user/views.py:222
 msgid "Get authentication token."
-msgstr ""
+msgstr "Authentifizierungs-Token abrufen."
 
 #: toolhub/apps/user/views.py:225
 msgid "Create authentication token."
-msgstr ""
+msgstr "Authentifizierungs-Token erstellen."
 
 #: toolhub/apps/user/views.py:228
 msgid "Delete authentication token."
-msgstr ""
+msgstr "Authentifizierungs-Token löschen."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
@@ -993,7 +993,7 @@ msgstr "Die auszuführende Aktion"
 
 #: toolhub/apps/versioned/schema.py:36
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "JSON-Pointer auf die Stelle im Dokument, an der der Vorgang ausgeführt wird."
 
 #: toolhub/apps/versioned/schema.py:42
 msgid "The value to add, replace, or test."
@@ -1001,7 +1001,7 @@ msgstr "Der hinzuzufügende, zu ersetzende oder zu testende Wert."
 
 #: toolhub/apps/versioned/schema.py:48
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "JSON-Pointer auf die Stelle im Dokument, von der der Wert verschoben oder kopiert werden soll."
 
 #: toolhub/apps/versioned/serializers.py:44
 msgid "A unique integer value identifying this revision."
@@ -1055,7 +1055,7 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr ""
+msgstr "%(app_name)s autorisieren?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
@@ -1072,7 +1072,7 @@ msgstr "Autorisieren"
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr ""
+msgstr "Fehler: %(message)s"
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
