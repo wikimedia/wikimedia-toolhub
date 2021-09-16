@@ -9,8 +9,6 @@
 
 			<v-col md="2" cols="12">
 				<v-btn
-					color="accent"
-					block
 					:to="`/tool/${tool.name}`"
 				>
 					<v-icon
