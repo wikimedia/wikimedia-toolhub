@@ -1,6 +1,6 @@
 <template>
 	<v-container>
-		<v-row v-if="toolRevision">
+		<v-row v-if="revId && toolRevision">
 			<v-col md="9" cols="12">
 				<h3 class="font-weight-medium">
 					{{ $t( 'toolrevisioninfo', [
