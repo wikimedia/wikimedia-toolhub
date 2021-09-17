@@ -112,7 +112,7 @@ export default {
 				() => {
 					if ( this.listCreated ) {
 						this.$refs.createlistform.reset();
-						this.$router.push( { path: '/lists' } );
+						this.$router.push( { name: 'lists' } );
 					}
 				}
 			);

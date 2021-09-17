@@ -325,7 +325,7 @@ export default {
 				filters: this.filters
 			} ).then( () => {
 				this.$router.push( {
-					path: '/members',
+					name: 'members',
 					query: filterEmpty( this.filters )
 				} ).catch( () => {} );
 			} );

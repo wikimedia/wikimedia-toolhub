@@ -202,7 +202,7 @@ export default {
 			} ).then( () => {
 				this.loading = false;
 				this.$router.push( {
-					path: '/audit-logs',
+					name: 'auditlogs',
 					query: filterEmpty( this.filters )
 				} ).catch( () => {} );
 			} );
