@@ -101,7 +101,7 @@
 					:loading="numCrawlerUrls === 0"
 				>
 					<template #[`item.url.url`]="{ item }">
-						<a :href="`${item.url.url}`" target="_blank">{{ item.url.url }}</a>
+						<a :href="item.url.url" target="_blank">{{ item.url.url }}</a>
 					</template>
 
 					<template #[`item.url.created_by.username`]="{ item }">
