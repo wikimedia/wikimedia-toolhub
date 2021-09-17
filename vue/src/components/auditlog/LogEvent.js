@@ -130,8 +130,10 @@ export function render( createElement ) {
 	if ( target.type === 'toollist' ) {
 		msgArgs.push( dd( [
 			'"',
-			// TODO: replace with link to list detail page
-			target.label,
+			link(
+				{ to: { name: 'list', params: { id: target.id } } },
+				target.label
+			),
 			'"'
 		], { class: 'log-event-toollist' } ) );
 	}
