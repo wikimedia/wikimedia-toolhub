@@ -139,9 +139,11 @@ export default {
 			}, this );
 		}
 	},
-	mounted() {
+	beforeMount() {
 		// Clear any data from a prior view
 		this.LIST( null );
+	},
+	mounted() {
 		this.getListInfo();
 	}
 };

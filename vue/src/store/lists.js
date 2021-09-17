@@ -143,7 +143,7 @@ export default {
 		featuredLists: [],
 		privateLists: [],
 		listCreated: {},
-		list: {}
+		list: null
 	},
 	actions,
 	mutations,
