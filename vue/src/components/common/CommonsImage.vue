@@ -1,6 +1,6 @@
 <template>
 	<a
-		v-if="isImage"
+		v-if="imageinfo"
 		class="inline-flex"
 		target="_blank"
 		:href="commonsUrl"
@@ -50,12 +50,6 @@ export default {
 			default: () => 100
 		}
 	},
-	computed: {
-		isImage() {
-			const m = FILE_RE.exec( this.commonsUrl );
-			return m !== null;
-		}
-	},
 	asyncComputed: {
 		imageinfo: {
 			get() {
@@ -84,8 +78,9 @@ export default {
 						return body.query.pages[ 0 ].imageinfo[ 0 ];
 					} );
 				}
+				return null;
 			},
-			default: {}
+			default: null
 		}
 	},
 	methods: {
