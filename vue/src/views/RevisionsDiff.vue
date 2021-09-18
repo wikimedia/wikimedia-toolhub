@@ -3,13 +3,13 @@
 		<v-row>
 			<v-col md="9" cols="12">
 				<h2 class="text-h4">
-					{{ $t( 'revisionsdiff' ) }}
+					{{ $t( 'tools-diff' ) }}
 				</h2>
 			</v-col>
 
 			<v-col md="3" cols="12">
 				<v-btn
-					:to="`/tool/${name}/history`"
+					:to="{ name: 'tools-history', params: { name: name } }"
 					:small="$vuetify.breakpoint.smAndDown"
 				>
 					<v-icon class="me-2">
@@ -153,7 +153,7 @@ export default {
 		};
 	},
 	metaInfo() {
-		return fetchMetaInfo( 'revisionsdiff', this.name );
+		return fetchMetaInfo( 'tools-diff', this.name );
 	},
 	computed: {
 		...mapState( 'tools', [ 'diffRevision', 'toolRevision' ] ),

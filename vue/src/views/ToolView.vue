@@ -22,14 +22,13 @@
 			</v-col>
 			<v-col md="3" cols="12">
 				<v-btn
-					:to="{ name: 'tool', params: { name: name } }"
+					:to="{ name: 'tools-history', params: { name: name } }"
 					:small="$vuetify.breakpoint.smAndDown"
-					@click="backToToolInfo"
 				>
 					<v-icon class="me-2">
 						mdi-chevron-left
 					</v-icon>
-					{{ $t( 'backtotoolinfo' ) }}
+					{{ $t( 'backtotoolhistory' ) }}
 				</v-btn>
 			</v-col>
 		</v-row>
@@ -59,7 +58,7 @@ export default {
 		};
 	},
 	metaInfo() {
-		return fetchMetaInfo( 'toolview', this.name );
+		return fetchMetaInfo( 'tools-view', this.name );
 	},
 	computed: {
 		...mapState( 'tools', [ 'tool', 'toolRevision' ] )
@@ -70,11 +69,6 @@ export default {
 
 		formatDate( date ) {
 			return this.$moment.utc( date ).format( 'LT ll' );
-		},
-		backToToolInfo() {
-			this.revId = null;
-			this.TOOL_REVISION( null );
-			this.getToolByName( this.name );
 		},
 		patrol( id ) {
 			this.$store.dispatch( 'tools/markRevisionAsPatrolled', {

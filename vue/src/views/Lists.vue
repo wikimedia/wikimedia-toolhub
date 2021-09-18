@@ -12,7 +12,7 @@
 			>
 				<v-btn
 					color="primary base100--text"
-					to="/lists/create"
+					:to="{ name: 'lists-create' }"
 				>
 					<v-icon>
 						mdi-plus

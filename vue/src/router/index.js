@@ -14,29 +14,29 @@ const routes = [
 			}
 		},
 		{
-			name: 'tool',
-			path: '/tool/:name([\\w-]{1,255})',
-			component: () => import( /* webpackChunkName: "tool" */ '../views/ToolView.vue' )
+			name: 'tools-view',
+			path: '/tools/:name([\\w-]{1,255})',
+			component: () => import( /* webpackChunkName: "tools-view" */ '../views/ToolView.vue' )
 		},
 		{
-			name: 'edittool',
-			path: '/tool/:name([\\w-]{1,255})/edit',
-			component: () => import( /* webpackChunkName: "edittool" */ '../views/EditTool.vue' )
+			name: 'tools-edit',
+			path: '/tools/:name([\\w-]{1,255})/edit',
+			component: () => import( /* webpackChunkName: "tools-edit" */ '../views/EditTool.vue' )
 		},
 		{
-			name: 'toolhistory',
-			path: '/tool/:name([\\w-]{1,255})/history',
-			component: () => import( /* webpackChunkName: "toolhistory" */ '../views/ToolHistory.vue' )
+			name: 'tools-history',
+			path: '/tools/:name([\\w-]{1,255})/history',
+			component: () => import( /* webpackChunkName: "tools-history" */ '../views/ToolHistory.vue' )
 		},
 		{
-			name: 'toolrevision',
-			path: '/tool/:name([\\w-]{1,255})/history/revision/:revId',
-			component: () => import( /* webpackChunkName: "toolrevision" */ '../views/ToolView.vue' )
+			name: 'tools-revision',
+			path: '/tools/:name([\\w-]{1,255})/history/revision/:revId(\\d+)',
+			component: () => import( /* webpackChunkName: "tools-revision" */ '../views/ToolView.vue' )
 		},
 		{
-			name: 'revisionsdiff',
-			path: '/tool/:name([\\w-]{1,255})/history/revision/:revId/diff/:otherRevId/',
-			component: () => import( /* webpackChunkName: "revisionsdiff" */ '../views/RevisionsDiff.vue' )
+			name: 'tools-diff',
+			path: '/tools/:name([\\w-]{1,255})/history/revision/:revId(\\d+)/diff/:otherRevId(\\d+)',
+			component: () => import( /* webpackChunkName: "tools-diff" */ '../views/RevisionsDiff.vue' )
 		},
 		{
 			name: 'addremovetools',
@@ -52,14 +52,14 @@ const routes = [
 			component: () => import( /* webpackChunkName: "lists" */ '../views/Lists.vue' )
 		},
 		{
-			name: 'list',
-			path: '/list/:id',
-			component: () => import( /* webpackChunkName: "list" */ '../components/lists/ListInfo.vue' )
+			name: 'lists-view',
+			path: '/lists/:id(\\d+)',
+			component: () => import( /* webpackChunkName: "lists-view" */ '../components/lists/ListInfo.vue' )
 		},
 		{
 			name: 'lists-create',
 			path: '/lists/create',
-			component: () => import( /* webpackChunkName: "createnewlist" */ '../components/lists/CreateNewList.vue' )
+			component: () => import( /* webpackChunkName: "lists-create" */ '../components/lists/CreateNewList.vue' )
 		},
 		{
 			name: 'apidocs',

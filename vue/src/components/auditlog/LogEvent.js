@@ -121,7 +121,7 @@ export function render( createElement ) {
 		msgArgs.push( dd( [
 			'"',
 			link(
-				{ to: { name: 'tool', params: { name: target.label } } },
+				{ to: { name: 'tools-view', params: { name: target.label } } },
 				target.label
 			),
 			'"'
@@ -131,7 +131,7 @@ export function render( createElement ) {
 		msgArgs.push( dd( [
 			'"',
 			link(
-				{ to: { name: 'list', params: { id: target.id } } },
+				{ to: { name: 'lists-view', params: { id: target.id } } },
 				target.label
 			),
 			'"'
@@ -166,7 +166,7 @@ export function render( createElement ) {
 			link(
 				{
 					to: {
-						name: 'toolrevision',
+						name: 'tools-revision',
 						params: {
 							name: params.tool_name,
 							revId: String( target.id )
@@ -179,7 +179,7 @@ export function render( createElement ) {
 		msgArgs.push( dd( [
 			'"',
 			link(
-				{ to: { name: 'tool', params: { name: params.tool_name } } },
+				{ to: { name: 'tools-view', params: { name: params.tool_name } } },
 				[ params.tool_name ]
 			),
 			'"'

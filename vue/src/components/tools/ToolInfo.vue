@@ -10,18 +10,18 @@
 			<v-spacer />
 			<v-btn
 				v-if="$can( 'change', tool )"
-				:to="{ name: 'edittool', params: { name: tool.name } }"
+				:to="{ name: 'tools-edit', params: { name: tool.name } }"
 				color="primary base100--text"
 				:small="$vuetify.breakpoint.smAndDown"
 			>
 				<v-icon class="me-2">
 					mdi-pencil
 				</v-icon>
-				{{ $t( 'edittool' ) }}
+				{{ $t( 'tools-edit' ) }}
 			</v-btn>
 
 			<v-btn
-				:to="{ name: 'toolhistory', params: { name: tool.name } }"
+				:to="{ name: 'tools-history', params: { name: tool.name } }"
 				:small="$vuetify.breakpoint.smAndDown"
 				class="ms-4"
 			>
@@ -289,7 +289,7 @@ export default {
 			default: null
 		},
 		revId: {
-			type: String,
+			type: [ String, Number ],
 			default: null
 		},
 		name: {

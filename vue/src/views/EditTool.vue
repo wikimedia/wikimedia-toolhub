@@ -3,13 +3,13 @@
 		<v-row>
 			<v-col md="6" cols="12">
 				<h2 class="text-h4">
-					{{ $t( 'edittool' ) }}
+					{{ $t( 'tools-edit' ) }}
 				</h2>
 			</v-col>
 
 			<v-col md="2" cols="12">
 				<v-btn
-					:to="{ name: 'tool', params: { name: name } }"
+					:to="{ name: 'tools-view', params: { name: name } }"
 				>
 					<v-icon
 						dark
@@ -396,7 +396,7 @@ export default {
 		};
 	},
 	metaInfo() {
-		return fetchMetaInfo( 'edittool', this.name );
+		return fetchMetaInfo( 'tools-edit', this.name );
 	},
 	computed: {
 		...mapState( 'tools', { toolFromVuex: 'tool' } ),

@@ -2,7 +2,7 @@
 	<v-card
 		class="tool-card__card pa-1"
 		height="250px"
-		:to="{ name: 'tool', params: { name: tool.name } }"
+		:to="{ name: 'tools-view', params: { name: tool.name } }"
 		outlined
 	>
 		<v-card-title class="flex-nowrap">

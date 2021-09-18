@@ -3,13 +3,13 @@
 		<v-row>
 			<v-col md="9" cols="12">
 				<h2 class="text-h4">
-					{{ $t( 'toolhistory' ) }}
+					{{ $t( 'tools-history' ) }}
 				</h2>
 			</v-col>
 
 			<v-col md="3" cols="12">
 				<v-btn
-					:to="{ name: 'tool', params: { name: name } }"
+					:to="{ name: 'tools-view', params: { name: name } }"
 					:small="$vuetify.breakpoint.smAndDown"
 				>
 					<v-icon class="me-2">
@@ -30,14 +30,14 @@
 			<v-col cols="12" class="py-0">
 				<v-btn
 					:to="{
-						name: 'revisionsdiff',
+						name: 'tools-diff',
 						params: {
 							name: name,
 							revId: selectedId,
 							otherRevId: otherSelectedId
 						}
 					}"
-					:disabled="!selectedId || !otherSelectedId"
+					:disabled="!( selectedId && otherSelectedId)"
 					:small="$vuetify.breakpoint.smAndDown"
 				>
 					<v-icon class="me-2">
@@ -93,7 +93,7 @@
 						<router-link
 							v-if="$can( 'view', rev )"
 							:to="{
-								name: 'toolrevision',
+								name: 'tools-revision',
 								params: {
 									name: name,
 									revId: rev.id
@@ -195,13 +195,13 @@ export default {
 			page: 1,
 			itemsPerPage: 10,
 			selectedRevisions: [],
-			selectedId: '',
-			otherSelectedId: '',
+			selectedId: 0,
+			otherSelectedId: 0,
 			checkbox: {}
 		};
 	},
 	metaInfo() {
-		return fetchMetaInfo( 'toolhistory', this.name );
+		return fetchMetaInfo( 'tools-history', this.name );
 	},
 	computed: {
 		...mapState( 'tools', [ 'toolRevisions', 'numRevisions' ] )
@@ -261,8 +261,8 @@ export default {
 				function ( a, b ) { return a - b; }
 			);
 
-			this.selectedId = this.selectedRevisions[ 0 ];
-			this.otherSelectedId = this.selectedRevisions[ 1 ];
+			this.selectedId = this.selectedRevisions[ 0 ] || 0;
+			this.otherSelectedId = this.selectedRevisions[ 1 ] || 0;
 		}
 	},
 	mounted() {

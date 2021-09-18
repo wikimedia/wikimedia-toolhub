@@ -247,6 +247,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import fetchMetaInfo from '@/helpers/metadata';
 import { filterEmpty } from '@/helpers/object';
 
 export default {
@@ -266,6 +267,9 @@ export default {
 			groupFilterForSelectedUser: '',
 			filteredGroupsForSelectedUser: []
 		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'members', this.name );
 	},
 	computed: {
 		...mapState( 'user', [ 'users', 'numUsers' ] ),

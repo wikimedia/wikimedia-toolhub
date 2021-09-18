@@ -34,7 +34,7 @@
 				</v-list-item-content>
 			</v-list-item>
 			<v-list-item
-				to="/developer-settings"
+				:to="{ name: 'developersettings' }"
 			>
 				<v-list-item-icon>
 					<v-icon>mdi-file-code</v-icon>
@@ -46,7 +46,7 @@
 				</v-list-item-content>
 			</v-list-item>
 			<v-list-item
-				to="/lists"
+				:to="{ name: 'lists' }"
 			>
 				<v-list-item-icon>
 					<v-icon>mdi-view-list</v-icon>
