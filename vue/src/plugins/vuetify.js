@@ -22,7 +22,7 @@ export default new Vuetify( {
 				secondary: '#202122', /* WMF: base10 */
 				accent: '#f8f9fa', /* WMF: base90 */
 				error: '#d33', /* WMF: red50 */
-				info: '#fef6e7', /* WMF: yellow90 */
+				info: '#ac6600', /* WMF: yellow30 */
 				success: '#00af89', /* WMF: green50 */
 				warning: '#fc3', /* WMF: yellow50 */
 
