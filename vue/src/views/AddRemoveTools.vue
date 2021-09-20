@@ -12,24 +12,26 @@
 
 		<v-row>
 			<v-col cols="12">
-				<v-tabs
-					v-model="tabs"
-				>
-					<v-tab>{{ $t( 'createnewtool' ) }}</v-tab>
-					<v-tab>{{ $t( 'submitjsonurl' ) }}</v-tab>
+				<v-tabs v-model="tab">
+					<v-tab
+						v-for="item in items"
+						:key="item.label"
+						:href="'#' + item.href"
+					>
+						{{ item.label }}
+					</v-tab>
 				</v-tabs>
 			</v-col>
 		</v-row>
-
 		<v-row>
 			<v-col cols="12">
-				<v-tabs-items v-model="tabs">
-					<v-tab-item>
-						<CreateNewTool />
-					</v-tab-item>
-
-					<v-tab-item>
-						<RegisterToolUrl />
+				<v-tabs-items v-model="tab">
+					<v-tab-item
+						v-for="item in items"
+						:key="item.label"
+						:value="item.href"
+					>
+						<component :is="item.component" />
 					</v-tab-item>
 				</v-tabs-items>
 			</v-col>
@@ -49,8 +51,31 @@ export default {
 	},
 	data() {
 		return {
-			tabs: null
+			items: [
+				{
+					href: 'tool-create',
+					label: this.$t( 'createnewtool' ),
+					component: 'CreateNewTool'
+				},
+				{
+					href: 'urls',
+					label: this.$t( 'submitjsonurl' ),
+					component: 'RegisterToolUrl'
+				}
+			]
 		};
+	},
+	computed: {
+		tab: {
+			set( tab ) {
+				this.$router.replace( {
+					query: { ...this.$route.query, tab }
+				} );
+			},
+			get() {
+				return this.$route.query.tab;
+			}
+		}
 	},
 	metaInfo() {
 		return fetchMetaInfo( 'addremovetools' );
