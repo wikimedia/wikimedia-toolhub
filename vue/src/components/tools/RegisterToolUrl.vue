@@ -2,140 +2,98 @@
 	<v-container>
 		<v-row>
 			<v-col
-				md="8"
-				cols="12"
-				order-md="1"
-				order="2"
+				lg="10"
+				cols="8"
 			>
-				<!--start add or remove tools section-->
-				<v-row>
-					<v-col
-						lg="10"
-						cols="8"
+				<v-text-field
+					ref="url"
+					v-model="fileUrl"
+					:label="$t( 'jsonfileurl' )"
+					prepend-icon="mdi-link-variant"
+					:rules="requiredRule.concat( urlRule )"
+					required
+					:disabled="!$can( 'add', 'crawler/url' )"
+				/>
+			</v-col>
+			<v-col
+				lg="2"
+				cols="4"
+			>
+				<v-btn
+					class="mt-4"
+					color="primary base100--text"
+					width="100%"
+					:disabled="!$can( 'add', 'crawler/url' )"
+					@click="registerUrl(fileUrl)"
+				>
+					{{ $t( 'add' ) }}
+					<v-icon
+						dark
+						right
 					>
-						<v-text-field
-							ref="url"
-							v-model="fileUrl"
-							:label="$t( 'jsonfileurl' )"
-							prepend-icon="mdi-link-variant"
-							:rules="requiredRule.concat( urlRule )"
-							required
-							:disabled="!$can( 'add', 'crawler/url' )"
-						/>
+						mdi-checkbox-marked-circle
+					</v-icon>
+				</v-btn>
+			</v-col>
+		</v-row>
+		<v-row>
+			<v-col cols="12">
+				<v-row v-if="$can( 'add', 'crawler/url' )
+					&& numUserCreatedUrls === 0"
+				>
+					<v-col cols="12">
+						<p class="text-h6 text--secondary">
+							{{ $t( 'nourlsfounderror' ) }}
+						</p>
 					</v-col>
-					<v-col
-						lg="2"
-						cols="4"
-					>
+				</v-row>
+
+				<v-data-table
+					v-if="numUserCreatedUrls > 0"
+					:headers="headers"
+					:page="page"
+					:items-per-page="itemsPerPage"
+					:items="userCreatedUrls"
+					class="elevation-2"
+					hide-default-footer
+					mobile-breakpoint="0"
+					:custom-sort="customSortUrls"
+				>
+					<template #[`item.json_file_url`]="{ item }">
+						<a
+							:href="item.url"
+							target="_blank"
+						>{{ item.url }}</a>
+					</template>
+					<template #[`item.created_date`]="{ item }">
+						{{ item.created_date | moment( 'lll' ) }}
+					</template>
+					<template #[`item.btn_remove_url`]="{ item }">
 						<v-btn
-							class="mt-4"
-							color="primary base100--text"
-							width="100%"
-							:disabled="!$can( 'add', 'crawler/url' )"
-							@click="registerUrl(fileUrl)"
+							v-if="$can( 'delete', item )"
+							class="mt-2 mb-2"
+							color="error"
+							dark
+							@click="unregisterUrl(item)"
 						>
-							{{ $t( 'add' ) }}
 							<v-icon
 								dark
-								right
 							>
-								mdi-checkbox-marked-circle
+								mdi-delete-circle
 							</v-icon>
 						</v-btn>
-					</v-col>
-				</v-row>
-				<v-row>
-					<v-col cols="12">
-						<v-row v-if="$can( 'add', 'crawler/url' )
-							&& numUserCreatedUrls === 0"
-						>
-							<v-col cols="12">
-								<p class="text-h6 text--secondary">
-									{{ $t( 'nourlsfounderror' ) }}
-								</p>
-							</v-col>
-						</v-row>
+					</template>
+				</v-data-table>
 
-						<v-data-table
-							v-if="numUserCreatedUrls > 0"
-							:headers="headers"
-							:page="page"
-							:items-per-page="itemsPerPage"
-							:items="userCreatedUrls"
-							class="elevation-2"
-							hide-default-footer
-							mobile-breakpoint="0"
-							:custom-sort="customSortUrls"
-						>
-							<template #[`item.json_file_url`]="{ item }">
-								<a
-									:href="item.url"
-									target="_blank"
-								>{{ item.url }}</a>
-							</template>
-							<template #[`item.created_date`]="{ item }">
-								{{ item.created_date | moment( 'lll' ) }}
-							</template>
-							<template #[`item.btn_remove_url`]="{ item }">
-								<v-btn
-									v-if="$can( 'delete', item )"
-									class="mt-2 mb-2"
-									color="error"
-									dark
-									@click="unregisterUrl(item)"
-								>
-									<v-icon
-										dark
-									>
-										mdi-delete-circle
-									</v-icon>
-								</v-btn>
-							</template>
-						</v-data-table>
-
-						<v-pagination
-							v-if="numUserCreatedUrls > 0"
-							v-model="page"
-							:length="Math.ceil( numUserCreatedUrls / itemsPerPage )"
-							class="ma-4"
-							total-visible="5"
-							@input="goToNextPage"
-						/>
-					</v-col>
-				</v-row>
-			</v-col> <!--end add or remove tools section-->
-			<v-col
-				md="4"
-				cols="12"
-				order-md="2"
-				order="1"
-			>
-				<!--start how this page works section-->
-				<v-row>
-					<v-col
-						cols="12"
-					>
-						<v-alert
-							color="primary"
-							border="top"
-							colored-border
-							elevation="2"
-						>
-							<h3 class="text-h5">
-								{{ $t( 'addremovetools-summarytitle' ) }}
-							</h3>
-							<v-divider class="pa-2" />
-							<p>
-								{{ $t( 'addremovetools-summary' ) }}
-								<a
-									href="https://meta.wikimedia.org/wiki/Toolhub/Data_model#Version_1.2.0"
-									target="_blank"
-								>{{ $t( 'schemalink' ) }}</a>
-							</p>
-						</v-alert>
-					</v-col>
-				</v-row>
-			</v-col> <!--end how this page works section-->
+				<v-pagination
+					v-if="numUserCreatedUrls > 0"
+					v-model="page"
+					:length="Math.ceil( numUserCreatedUrls / itemsPerPage )"
+					class="ma-4"
+					total-visible="5"
+					@input="goToNextPage"
+				/>
+			</v-col>
 		</v-row>
 	</v-container>
 </template>
