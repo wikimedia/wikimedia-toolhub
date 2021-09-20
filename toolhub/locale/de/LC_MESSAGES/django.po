@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-09-16 11:10:48+0000\n"
+"PO-Revision-Date: 2021-09-20 11:11:52+0000\n"
 "X-POT-Import-Date: 2021-08-23 20:31:09+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -756,12 +756,12 @@ msgstr "Angaben zur Version des Werkzeugs."
 
 #: toolhub/apps/toolinfo/serializers.py:261
 msgid "Tool revision difference."
-msgstr ""
+msgstr "Unterschiedliche Versionen der Werkzeuge."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "%(value)s ist kein anerkannter Sprachcode."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
@@ -885,7 +885,7 @@ msgstr "Informationen zur Gruppe"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr ""
+msgstr "Informationen zur sozialen Authentifizierung für einen Benutzer"
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
@@ -897,7 +897,7 @@ msgstr "Detaillierte Gruppeninformationen"
 
 #: toolhub/apps/user/serializers.py:198
 msgid "Owner-only API Token"
-msgstr ""
+msgstr "API-Token nur für Eigentümer"
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
