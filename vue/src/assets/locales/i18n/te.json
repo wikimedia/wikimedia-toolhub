@@ -5,7 +5,6 @@
 		]
 	},
 	"add": "చేర్చు",
-	"addremovetools-summarytitle": "ఈ సౌలభ్యం ఎలా పనిచేస్తుంది",
 	"authors": "రచయిత(లు)",
 	"basicinfo": "ప్రాథమిక సమాచారం",
 	"cancel": "రద్దుచేయి",
@@ -28,7 +27,7 @@
 	"status": "స్థితి",
 	"system-user": "వ్యవస్థ",
 	"technologyused": "వాడిన సాంకేతికత",
-	"toolhistory": "పనిముట్టు చరిత్ర",
+	"tools-history": "పనిముట్టు చరిత్ర",
 	"tools": "పనిముట్లు",
 	"totaltools": "మొత్తం పనిముట్లు",
 	"tooltype": "పనిముట్టు రకం",

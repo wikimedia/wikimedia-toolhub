@@ -7,7 +7,6 @@
 	"add": "Legg til",
 	"addremovetools": "Legg til eller fjern verktøy",
 	"addremovetools-nologintext": "Du må logge inn på Toolhub for å legge til eller fjerne verktøy",
-	"addremovetools-summarytitle": "Slik virker denne funksjonen",
 	"addremovetools-toolcreationsuccess": "Suksess! Verktøyet «$1» ble opprettet.",
 	"apidocs": "API-dokumentasjon",
 	"apidocumentation": "API-dokumentasjon",

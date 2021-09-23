@@ -4,7 +4,6 @@
 			"Kunokuno"
 		]
 	},
-	"addremovetools-summarytitle": "Pano nag-gagana an feature na ini",
 	"apierror": "Uh oh! Igwa nin salang pangyayari.",
 	"bugtracker": "Tracker nin Bug",
 	"crawlerhistory-pagesubtitle": "An pahinang ini naglilista kan gabos na historic crawler runs",
@@ -17,7 +16,6 @@
 	"jsonfileurl": "JSON File URL",
 	"newtoolsfound": "{{PLURAL:$1|1 gamit |$1 mga gamit}}",
 	"removeurl": "Halion an URL",
-	"schemalink": "Link kan Schema",
 	"sourcecode": "An Source code",
 	"system-user": "Sistema",
 	"tagline-learnmore": "Makanuod pa nin kadakol manungod sa Toolhub sa metawiki",

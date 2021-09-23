@@ -16,7 +16,6 @@
 	"description": "Ibsa",
 	"developerdocsurl": "dagaagsitoota harshima URL",
 	"editsummary": "Gudunfaa gulaali",
-	"edittool": "Mi'a Gulaali",
 	"experimental": "Yaaliidhaan",
 	"feedbackurl": "Duubdeebii URL",
 	"icon": "Sajoo",
@@ -56,6 +55,7 @@
 	"thistoolis": "Meeshaa kun:",
 	"title": "Mataduree",
 	"tooleditingsuccess": "Milkaawwii! miini '$1' gulaalameera.",
+	"tools-edit": "Mi'a Gulaali",
 	"tool-deprecated-error": "Miini kun fayyadamaaf yaada furmaataa miti.",
 	"translateurl": "URL qooqiikuu",
 	"urlalternates": "URL gegeeddaramoo"
