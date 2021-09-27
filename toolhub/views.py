@@ -70,12 +70,18 @@ def csp_report(req):
         return resp
 
     src_file = report.get("source-file", None)
-    if src_file and not any(src_file.startswith(p) for p in ALLOWED_PREFIXES):
+    if src_file is None:
+        # Ignore reports with no source-file supplied. This is a common
+        # signature for errors from client controlled code like browser
+        # plugins that inject content into all pages.
+        logger.debug("Ignoring report without a source-file attribute.")
+        return resp
+    elif not any(src_file.startswith(p) for p in ALLOWED_PREFIXES):
         # Ignore reports from files like moz-extension://...
         logger.debug("Ignoring disallowed source-file prefix: %s", src_file)
         return resp
 
-    if "line-number" in report and int(report["line-number"]) <= 1:
+    if "line-number" not in report or int(report["line-number"]) <= 1:
         # Ignore reports of errors on line 0 & 1. This is a common signature
         # for CSP errors triggered by client controlled code (such as browser
         # plugins which inject CSS/JS into all pages).
