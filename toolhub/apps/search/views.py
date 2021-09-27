@@ -102,7 +102,9 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
         filter_backends.FilteringFilterBackend,
         filter_backends.OrderingFilterBackend,
     ]
-    simple_query_string_search_fields = ()
+    # Copy searchable fields list from document so we don't have two lists to
+    # keep in sync between the index and this view.
+    simple_query_string_search_fields = tuple(ToolDocument.Django.fields)
     simple_query_string_options = {
         "lenient": True,
         "quote_field_suffix": ".exact",
