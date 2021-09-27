@@ -32,7 +32,7 @@
 
 		<v-row>
 			<v-col v-for="list in privateLists.results"
-				:key="list.title"
+				:key="list.id"
 				class="lists"
 				cols="12"
 			>
