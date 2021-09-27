@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DreZhsh",
 			"Florian COLLIN",
 			"Gomoko",
 			"Thibaut120094",
@@ -11,6 +12,7 @@
 	"addremovetools": "Ajouter ou retirer des outils",
 	"addremovetools-nologintext": "Vous devez vous connecter sur Toolhub pour ajouter ou retirer des outils.",
 	"addremovetools-toolcreationsuccess": "Succès ! L’outil « $1 » a été créé.",
+	"agree-terms": "En enregistrant les modifications, vous acceptez $1 et $2, et vous acceptez irrévocablement de publier votre contribution sous $3. Vous acceptez qu'un hyperlien ou une URL soit une attribution suffisante sous la licence Creative Commons.",
 	"apidocs": "Docs de l’API",
 	"apidocumentation": "Documentation de l’API",
 	"apierror": "Oups ! Une erreur s’est produite : $1",
@@ -105,6 +107,7 @@
 	"experimental": "Expérimental",
 	"feedbackurl": "URL pour commenter",
 	"filter": "Filtrer",
+	"footer-content-license": "Toutes les données structurées sont disponibles sous le $1 ; des conditions supplémentaires peuvent s'appliquer.",
 	"forwikis": "Pour les wikis",
 	"helptranslate": "Aider à traduire",
 	"hide": "masquer",
@@ -118,6 +121,7 @@
 	"leavefeedback": "Laisser un commentaire",
 	"license": "Licence",
 	"links": "Liens",
+	"link-cc0": "Déclaration de Creative Commons CC0",
 	"link-coc": "Code de conduite",
 	"link-docs": "Documentation",
 	"link-issues": "Problèmes",
@@ -160,6 +164,7 @@
 	"metadata-developersettings-description": "Visiter cette page pour afficher, enregistrer, autoriser et révoquer les applications OAuth.",
 	"metadata-home-description": "Toolhub est un catalogue fiable et bien connu d’outils Wikimédia. En savoir plus sur plus de cinq cents outils actuellement disponibles.",
 	"metadata-lists-description": "Visiter cette page pour afficher ou créer des listes",
+	"metadata-members-description": "Visitez cette page pour visualiser et modifier les utilisateurs et leurs groupes.",
 	"metadata-search-description": "Visiter cette page pour voir les résultats de recherche pour la requête",
 	"metadata-tools-view-description": "Visiter cette page pour afficher des informations supplémentaires sur l’outil : type d’outil, wikis pour lesquels il est disponible, technologie utilisée, etc.",
 	"metadata-tools-diff-description": "Visiter cette page pour voir les différences entre les révisions de l’outil",
