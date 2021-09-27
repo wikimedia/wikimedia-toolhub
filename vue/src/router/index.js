@@ -15,27 +15,27 @@ const routes = [
 		},
 		{
 			name: 'tools-view',
-			path: '/tools/:name([\\w-]{1,255})',
+			path: '/tools/:name([\\w%-]{1,255})',
 			component: () => import( /* webpackChunkName: "tools-view" */ '../views/ToolView.vue' )
 		},
 		{
 			name: 'tools-edit',
-			path: '/tools/:name([\\w-]{1,255})/edit',
+			path: '/tools/:name([\\w%-]{1,255})/edit',
 			component: () => import( /* webpackChunkName: "tools-edit" */ '../views/EditTool.vue' )
 		},
 		{
 			name: 'tools-history',
-			path: '/tools/:name([\\w-]{1,255})/history',
+			path: '/tools/:name([\\w%-]{1,255})/history',
 			component: () => import( /* webpackChunkName: "tools-history" */ '../views/ToolHistory.vue' )
 		},
 		{
 			name: 'tools-revision',
-			path: '/tools/:name([\\w-]{1,255})/history/revision/:revId(\\d+)',
+			path: '/tools/:name([\\w%-]{1,255})/history/revision/:revId(\\d+)',
 			component: () => import( /* webpackChunkName: "tools-revision" */ '../views/ToolView.vue' )
 		},
 		{
 			name: 'tools-diff',
-			path: '/tools/:name([\\w-]{1,255})/history/revision/:revId(\\d+)/diff/:otherRevId(\\d+)',
+			path: '/tools/:name([\\w%-]{1,255})/history/revision/:revId(\\d+)/diff/:otherRevId(\\d+)',
 			component: () => import( /* webpackChunkName: "tools-diff" */ '../views/RevisionsDiff.vue' )
 		},
 		{
