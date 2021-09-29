@@ -19,7 +19,7 @@
 				</v-icon>
 				{{ $t( 'tools-edit' ) }}
 			</v-btn>
-
+			<FavoriteButton :tool="tool" />
 			<v-btn
 				:to="{ name: 'tools-history', params: { name: tool.name } }"
 				:small="$vuetify.breakpoint.smAndDown"
@@ -274,14 +274,16 @@
 <script>
 import { ensureArray } from '@/helpers/array';
 import { forWikiLabel } from '@/helpers/tools';
-import ToolImage from '@/components/tools/ToolImage';
+import FavoriteButton from '@/components/tools/FavoriteButton';
 import ScrollTop from '@/components/common/ScrollTop';
+import ToolImage from '@/components/tools/ToolImage';
 
 export default {
 	name: 'ToolInfo',
 	components: {
-		ToolImage,
-		ScrollTop
+		FavoriteButton,
+		ScrollTop,
+		ToolImage
 	},
 	props: {
 		tool: {
