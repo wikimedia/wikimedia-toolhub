@@ -41,7 +41,11 @@ class Crawler:
 
     def __init__(self):
         """Initialize a new instance."""
-        self.user_agent = "Toolhub toolinfo crawler"
+        self.user_agent = (
+            "Toolhub/1.0 ("
+            "https://meta.wikimedia.org/wiki/Toolhub; "
+            "toolhub.crawler@toolforge.org)"
+        )
 
     def crawl(self):  # noqa: R0912
         """Crawl all URLs and create/update tool records."""
