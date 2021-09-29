@@ -155,17 +155,17 @@ export default {
 				{
 					icon: 'mdi-security',
 					msg: 'link-privacy-policy',
-					href: 'https://wikimediafoundation.org/wiki/Privacy_policy'
+					href: 'https://foundation.wikimedia.org/wiki/Special:MyLanguage/Privacy_policy'
 				},
 				{
 					icon: 'mdi-book-check-outline',
 					msg: 'link-tou',
-					href: 'https://wikimediafoundation.org/wiki/Terms_of_Use'
+					href: 'https://foundation.wikimedia.org/wiki/Special:MyLanguage/Terms_of_Use'
 				},
 				{
 					icon: 'mdi-police-badge-outline',
 					msg: 'link-coc',
-					href: 'https://www.mediawiki.org/wiki/Code_of_Conduct'
+					href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Code_of_Conduct'
 				},
 				{
 					icon: 'mdi-code-tags',

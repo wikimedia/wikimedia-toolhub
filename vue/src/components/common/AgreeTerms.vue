@@ -5,11 +5,11 @@
 		:tag="tag"
 	>
 		<a
-			href="https://wikimediafoundation.org/wiki/Terms_of_Use"
+			href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Terms_of_Use"
 			target="_blank"
 		>{{ $t( 'link-tou' ) }}</a>
 		<a
-			href="https://www.mediawiki.org/wiki/Code_of_Conduct"
+			href="https://www.mediawiki.org/wiki/Special:MyLanguage/Code_of_Conduct"
 			target="_blank"
 		>{{ $t( 'link-coc' ) }}</a>
 		<a
