@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Danniel07",
+			"Destinid10 2",
 			"Hasley",
 			"Jackiezelaya",
 			"Juan t2905",
@@ -72,6 +73,7 @@
 	"clientid": "Id. de cliente",
 	"clientsecret": "Secreto del Cliente",
 	"close": "Cerrar",
+	"confirmdelete-dialog-title": "Título de diálogo",
 	"createdby": "Creado por",
 	"datecreated": "Fecha de creación",
 	"datepicker-startdate": "Fecha de inicio",
@@ -108,6 +110,9 @@
 	"link-vcs": "Código fuente",
 	"lists": "Listas",
 	"lists-createnewlist": "Crear una lista nueva",
+	"lists-editlist": "Editar lista",
+	"lists-listeditingsuccess": "¡Éxito! La lista '$1' fue actualizada.",
+	"lists-listdeletionsuccess": "¡Éxito! Lista eliminada.",
 	"lists-yourlists": "Tus listas",
 	"locale-select": "Selecciona un idioma",
 	"login": "Iniciar sesión",
