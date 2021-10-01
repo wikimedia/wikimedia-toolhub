@@ -17,7 +17,6 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 import json
 import logging
-import os
 
 from django.core.exceptions import ValidationError
 from django.db import Error
@@ -47,15 +46,6 @@ class Crawler:
             "https://meta.wikimedia.org/wiki/Toolhub; "
             "toolhub.crawler@toolforge.org)"
         )
-        self.session = requests.Session()
-        self.session.headers.update({"user-agent": self.user_agent})
-        # T292027: explictly set proxy configuration
-        self.session.proxies = {
-            "http": os.environ.get(
-                "http_proxy", os.environ.get("HTTP_PROXY", None)
-            ),
-            "no": os.environ.get("no_proxy", os.environ.get("NO_PROXY", None)),
-        }
 
     def crawl(self):  # noqa: R0912
         """Crawl all URLs and create/update tool records."""
@@ -185,8 +175,9 @@ class Crawler:
         raw_url = url.url.url
         url.status_code = 999
         try:
-            r = self.session.get(
+            r = requests.get(
                 raw_url,
+                headers={"user-agent": self.user_agent},
                 # T288536: 5s connect, 13s read (time between bytes)
                 timeout=(5, 13),
             )
