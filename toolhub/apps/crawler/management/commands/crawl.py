@@ -25,10 +25,21 @@ class Command(BaseCommand):
 
     help = "Run the crawler"  # noqa: A003
 
+    def add_arguments(self, parser):
+        """Add CLI arguments."""
+        parser.add_argument(
+            "-q",
+            "--quiet",
+            action="store_false",
+            dest="print_report",
+            help="Do not output run results to stdout.",
+        )
+
     def handle(self, *args, **options):
         """Execute the command."""
         spider = Crawler()
         run = spider.crawl()
-        self.stdout.write(repr(run))
-        for url in run.urls.all():
-            self.stdout.write(repr(url))
+        if options["print_report"]:
+            self.stdout.write(repr(run))
+            for url in run.urls.all():
+                self.stdout.write(repr(url))
