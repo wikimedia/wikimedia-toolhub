@@ -8,6 +8,7 @@
 			"Mediawikitranslator",
 			"Nike",
 			"Pyscowicz",
+			"Rönttönen",
 			"Stryn"
 		]
 	},
@@ -47,6 +48,8 @@
 	"clicktocopy": "Kopioi napsauttamalla",
 	"close": "Sulje",
 	"comparetwoselectedrevisions": "Vertaile valittuja versioita",
+	"confirmdelete-dialog-title": "Dialogin otsikko",
+	"confirmdelete-dialog-subtitle": "Oletko varma, että haluat poistaa tämän merkinnän? Tätä toimintoa ei voi peruuttaa.",
 	"copiedtoclipboard": "Kopioitu leikepöydälle!",
 	"crawlerhistory": "Indeksointihistoria",
 	"crawlerhistory-pagesubtitle": "Tällä sivulla luetellaan kaikki historialliset indeksointiradat",
@@ -85,6 +88,7 @@
 	"lists-create-published": "Tee luettelosta julkinen, jotta se näkyy kaikille Toolhubissa",
 	"lists-create-tools": "Työkalujen nimet",
 	"lists-createnewlist": "Luo uusi luettelo",
+	"lists-editlist": "Muokkaa listaa",
 	"lists-listcreationsuccess": "Onnittelut! Luettelo '$1' on luotu.",
 	"lists-listempty": "Tämä luettelo on tyhjä",
 	"lists-discovernewlists": "Löydä uusia luetteloita",
