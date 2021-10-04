@@ -46,7 +46,7 @@
 						sm="2"
 						cols="12"
 					>
-						<CommonsImage :commons-url="tool.icon" />
+						<ToolImage :tool="tool" />
 					</v-col>
 					<v-col lg="10"
 						md="9"
@@ -274,13 +274,13 @@
 <script>
 import { ensureArray } from '@/helpers/array';
 import { forWikiLabel } from '@/helpers/tools';
-import CommonsImage from '@/components/common/CommonsImage';
+import ToolImage from '@/components/tools/ToolImage';
 import ScrollTop from '@/components/common/ScrollTop';
 
 export default {
 	name: 'ToolInfo',
 	components: {
-		CommonsImage,
+		ToolImage,
 		ScrollTop
 	},
 	props: {

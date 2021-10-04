@@ -6,9 +6,9 @@
 		outlined
 	>
 		<v-card-title class="flex-nowrap">
-			<CommonsImage
+			<ToolImage
 				class="me-2"
-				:commons-url="tool.icon"
+				:tool="tool"
 				:size="50"
 			/>
 			<div class="tool-card__title line-clamp">
@@ -28,12 +28,12 @@
 </template>
 
 <script>
-import CommonsImage from '@/components/common/CommonsImage';
+import ToolImage from '@/components/tools/ToolImage';
 
 export default {
 	name: 'ToolCard',
 	components: {
-		CommonsImage
+		ToolImage
 	},
 	props: {
 		tool: {
