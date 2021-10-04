@@ -124,7 +124,10 @@ export const actions = {
 			( success ) => {
 				const data = success.body;
 				context.commit( 'CREATE_TOOL', data );
-				router.push( { name: 'tool', params: { name: data.name } } );
+				router.push( {
+					name: 'tools-view',
+					params: { name: data.name }
+				} );
 
 				this._vm.$notify.success(
 					i18n.t(
@@ -158,7 +161,10 @@ export const actions = {
 		makeApiCall( context, request ).then(
 			( success ) => {
 				const data = success.body;
-				router.push( { name: 'tool', params: { name: data.name } } );
+				router.push( {
+					name: 'tools-view',
+					params: { name: data.name }
+				} );
 
 				this._vm.$notify.success(
 					i18n.t( 'tooleditingsuccess', [ data.name ] ), 30000
