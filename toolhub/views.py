@@ -21,6 +21,7 @@ import logging
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_POST
 
 
@@ -91,6 +92,18 @@ def csp_report(req):
     return resp
 
 
+@require_GET
 def healthz(req):  # noqa: W0613
     """Trivial 'is this process alive' check."""
     return JsonResponse({"status": "OK"})
+
+
+@require_GET
+def robots_txt(req):
+    """Tell crawlers what we would like them to crawl."""
+    # Inspired by https://adamj.eu/tech/2020/02/10/robots-txt/
+    txt = [
+        "User-Agent: *",
+        "Allow: /",
+    ]
+    return HttpResponse("\n".join(txt), content_type="text/plain")

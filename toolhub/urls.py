@@ -37,6 +37,7 @@ from .routers import root
 from .routers import tool_revisions
 from .views import csp_report
 from .views import healthz
+from .views import robots_txt
 
 
 api_patterns = [
@@ -65,6 +66,7 @@ urlpatterns = [
             (oauth2_patterns, "oauth2_provider"), namespace="oauth2_provider"
         ),
     ),
+    path("robots.txt", robots_txt, name="robots_txt"),
     path("social/", include("social_django.urls", namespace="social")),
     path("user/", include("toolhub.apps.user.urls", namespace="user")),
 ]
