@@ -350,7 +350,12 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# The default is expected to be used everywhere *except* when running tests.
+# Tests should use django.contrib.staticfiles.storage.StaticFilesStorage.
+STATICFILES_STORAGE = env.str(
+    "STATICFILES_STORAGE",
+    default="whitenoise.storage.CompressedManifestStaticFilesStorage",
+)
 WHITENOISE_INDEX_FILE = True
 
 LOCALE_PATHS = [

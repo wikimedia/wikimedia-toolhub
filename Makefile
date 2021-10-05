@@ -127,6 +127,7 @@ test-python-unit:  ## Run unit tests for Python code
 		export DB_ENGINE='django.db.backends.sqlite3'; \
 		export DB_NAME=':memory:'; \
 		export ES_DSL_AUTOSYNC=0; \
+		export STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'; \
 		poetry run coverage erase \
 		&& poetry run coverage run --branch manage.py test \
 		&& poetry run coverage report \

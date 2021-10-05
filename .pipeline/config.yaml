@@ -11,6 +11,7 @@ pipelines:
             WIKIMEDIA_OAUTH2_KEY: NOTAREALOAUTHKEY
             WIKIMEDIA_OAUTH2_SECRET: NOTAREALOAUTHSECRET
             ES_DSL_AUTOSYNC: '0'
+            STATICFILES_STORAGE: django.contrib.staticfiles.storage.StaticFilesStorage
 
       - name: test-python
         build: test-python

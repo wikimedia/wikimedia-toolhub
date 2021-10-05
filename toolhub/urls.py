@@ -16,9 +16,11 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.contrib import admin
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include
 from django.urls import path
+from django.views.generic.base import RedirectView
 
 from drf_spectacular.views import SpectacularAPIView
 
@@ -65,6 +67,13 @@ urlpatterns = [
         include(
             (oauth2_patterns, "oauth2_provider"), namespace="oauth2_provider"
         ),
+    ),
+    path(
+        "favicon.ico",
+        RedirectView.as_view(
+            url=staticfiles_storage.url("img/favicon-outline.ico")
+        ),
+        name="favicon",
     ),
     path("robots.txt", robots_txt, name="robots_txt"),
     path("social/", include("social_django.urls", namespace="social")),
