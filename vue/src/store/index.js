@@ -11,6 +11,7 @@ import UserModule from './user';
 import GroupsModule from './groups';
 import ListsModule from './lists';
 import OauthModule from './oauth';
+import UIModule from './ui';
 
 /* istanbul ignore next: upstream tested */
 Vue.use( Vuex );
@@ -26,7 +27,8 @@ export default new Vuex.Store( {
 		user: UserModule,
 		groups: GroupsModule,
 		lists: ListsModule,
-		oauth: OauthModule
+		oauth: OauthModule,
+		ui: UIModule
 	},
 	// Strict mode in development/testing, but disabled for performance in prod
 	strict: process.env.NODE_ENV !== 'production'

@@ -22,38 +22,28 @@
 							{{ $t( 'tagline-about' ) }}
 						</div>
 
-						<div v-if="lastCrawlerRun" class="text-subtitle-1 ma-1">
+						<div v-if="totalTools" class="text-subtitle-1 ma-1">
 							<v-icon
 								size="20"
 								color="base20"
 							>
 								mdi-update
 							</v-icon>
-							{{ $t(
-								'newtoolsfound',
-								[
-									lastCrawlerRun.new_tools +
-										lastCrawlerRun.updated_tools
-								]
-							) }}
+							{{ $t( 'newtoolsfound', [ lastCrawlChanged ] ) }}
 							{{ $t(
 								'tools-lastupdated',
-								[
-									formatDate(
-										lastCrawlerRun.end_date
-									)
-								]
+								[ formatDate( lastCrawlTime ) ]
 							) }}
 						</div>
 
-						<div v-if="lastCrawlerRun" class="text-subtitle-1 ma-1">
+						<div v-if="totalTools" class="text-subtitle-1 ma-1">
 							<v-icon
 								size="20"
 								color="base20"
 							>
 								mdi-tools
 							</v-icon>
-							{{ $t( 'toolsfound', [ numTools ] ) }}
+							{{ $t( 'toolsfound', [ totalTools ] ) }}
 						</div>
 					</v-col>
 				</v-row>
@@ -89,7 +79,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import '@/assets/styles/index.css';
 import SearchBar from '@/components/search/SearchBar';
 import fetchMetaInfo from '@/helpers/metadata';
@@ -108,25 +98,21 @@ export default {
 		return fetchMetaInfo( 'home' );
 	},
 	computed: {
-		...mapState( 'tools', [ 'numTools' ] ),
-		...mapState( 'crawler', [ 'crawlerHistory', 'lastCrawlerRun', 'numCrawlerRuns' ] ),
+		...mapState( 'ui', [
+			'totalTools', 'lastCrawlTime', 'lastCrawlChanged'
+		] ),
 		...mapState( 'lists', [ 'featuredLists' ] )
 	},
 	methods: {
+		...mapActions( 'ui', [ 'getHomeData' ] ),
 		onSearchBarSearch( query ) {
 			this.$router.push( {
 				name: 'search',
 				query: { q: query }
 			} );
 		},
-		listAllTools() {
-			this.$store.dispatch( 'tools/listAllTools', this.page );
-		},
 		getFeaturedLists() {
 			this.$store.dispatch( 'lists/getFeaturedLists', this.page );
-		},
-		fetchCrawlerHistory() {
-			this.$store.dispatch( 'crawler/fetchCrawlerHistory', 1 );
 		},
 		goToPage( num ) {
 			const query = { page: parseInt( num ) || 1 };
@@ -150,10 +136,7 @@ export default {
 	},
 	mounted() {
 		this.page = parseInt( this.$route.query.page ) || 1;
-		// Obtain the total number of tools currently available
-		this.listAllTools();
-		// Obtain the number of crawler runs and last update
-		this.fetchCrawlerHistory();
+		this.getHomeData();
 		this.getFeaturedLists();
 	}
 };

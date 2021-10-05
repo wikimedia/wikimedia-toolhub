@@ -44,7 +44,7 @@ api_patterns = [
     path("user/", CurrentUserView.as_view(), name="user"),
     path("user/authtoken/", AuthTokenView.as_view(), name="authtoken"),
     path("user/locale/", LocaleView.as_view(), name="locale"),
-    path("ui/home", HomeView.as_view(), name="api_ui_home"),
+    path("ui/home/", HomeView.as_view(), name="api_ui_home"),
     path("", include(root.urls)),
     path("", include(crawler_runs.urls)),
     path("", include(groups.urls)),
