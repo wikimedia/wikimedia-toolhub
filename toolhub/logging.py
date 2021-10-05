@@ -41,7 +41,11 @@ class ECSFormatter(ecs_logging.StdlibFormatter):
 
     def format_to_ecs(self, record):
         """Convert a LogRecord to an ECS record."""
-        return super().format_to_ecs(self._preprocess_record(record))
+        ecs = super().format_to_ecs(self._preprocess_record(record))
+
+        # T292574: Report record as ECS v1.7.0
+        ecs["ecs"]["version"] = "1.7.0"
+        return ecs
 
     def _preprocess_record(self, record):
         """Pre-process LogRecord."""
