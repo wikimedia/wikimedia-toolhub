@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-04 11:12:52+0000\n"
+"PO-Revision-Date: 2021-10-07 11:12:20+0000\n"
 "X-POT-Import-Date: 2021-08-23 20:31:09+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ms\n"
-"X-Generator: MediaWiki 1.36.2; Translate 2021-07-26\n"
+"X-Generator: MediaWiki 1.37.0-beta; Translate 2021-07-26\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: toolhub/apps/auditlog/apps.py:26
