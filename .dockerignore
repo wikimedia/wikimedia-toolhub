@@ -10,8 +10,10 @@
 !.jsonschema-tools.yaml
 !.pipeline
 !COPYING
+!contrib
+contrib/*
+!contrib/cronjob
 !contrib/oauth-client-example
-!Dockerfile
 !docs
 # exclude generated docs
 docs/_build
