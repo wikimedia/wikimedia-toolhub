@@ -22,7 +22,7 @@
 			</v-col>
 		</v-row>
 
-		<v-row v-if="privateLists.count === 0">
+		<v-row v-if="!myLists.results">
 			<v-col cols="12">
 				<p class="text-h6 text--secondary">
 					{{ $t( 'lists-nolistsfoundtext' ) }}
@@ -31,7 +31,7 @@
 		</v-row>
 
 		<v-row>
-			<v-col v-for="list in privateLists.results"
+			<v-col v-for="list in myLists.results"
 				:key="list.id"
 				class="lists"
 				cols="12"
@@ -41,9 +41,9 @@
 		</v-row>
 
 		<v-pagination
-			v-if="privateLists.count > 0"
+			v-if="myLists.count > 0"
 			v-model="page"
-			:length="Math.ceil( privateLists.count / itemsPerPage )"
+			:length="Math.ceil( myLists.count / itemsPerPage )"
 			class="ma-4"
 			total-visible="10"
 			@input="goToPage"
@@ -71,11 +71,11 @@ export default {
 		return fetchMetaInfo( 'lists' );
 	},
 	computed: {
-		...mapState( 'lists', [ 'privateLists' ] )
+		...mapState( 'lists', [ 'myLists' ] )
 	},
 	methods: {
-		getPrivateLists() {
-			this.$store.dispatch( 'lists/getPrivateLists', this.page );
+		getMyLists() {
+			this.$store.dispatch( 'lists/getMyLists', this.page );
 		},
 		goToPage( num ) {
 			const query = { page: parseInt( num ) || 1 };
@@ -90,12 +90,12 @@ export default {
 		 */
 		'$route.query.page'( newValue ) {
 			this.page = parseInt( newValue ) || 1;
-			this.getPrivateLists();
+			this.getMyLists();
 		}
 	},
 	mounted() {
 		this.page = parseInt( this.$route.query.page ) || 1;
-		this.getPrivateLists();
+		this.getMyLists();
 	}
 };
 </script>

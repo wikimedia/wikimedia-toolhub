@@ -10,8 +10,8 @@ export const mutations = {
 	FEATURED_LISTS( state, lists ) {
 		state.featuredLists = asList( lists );
 	},
-	PRIVATE_LISTS( state, lists ) {
-		state.privateLists = asList( lists );
+	MY_LISTS( state, lists ) {
+		state.myLists = asList( lists );
 	},
 	CREATE_LIST( state, list ) {
 		state.listCreated = asList( list );
@@ -49,9 +49,15 @@ export const actions = {
 			}
 		);
 	},
-	getPrivateLists( context, page ) {
+	getMyLists( context, page ) {
+		const params = new URLSearchParams( [
+			// FIXME: we should have a cleaner way to get the current user
+			[ 'user', context.rootState.user.user.username ],
+			[ 'page', page ]
+		] );
+
 		const request = {
-			url: '/api/lists/?published=false&page=' + page,
+			url: '/api/lists/?' + params.toString(),
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
@@ -61,11 +67,10 @@ export const actions = {
 		return makeApiCall( context, request ).then(
 			( success ) => {
 				const data = success.body;
-				context.commit( 'PRIVATE_LISTS', data );
+				context.commit( 'MY_LISTS', data );
 			},
 			( failure ) => {
 				const data = getFailurePayload( failure );
-				context.commit( 'PRIVATE_LIST', false );
 
 				for ( const err in data.errors ) {
 					this._vm.$notify.error(
@@ -197,7 +202,7 @@ export default {
 	namespaced: true,
 	state: {
 		featuredLists: [],
-		privateLists: [],
+		myLists: {},
 		listCreated: {},
 		list: null
 	},

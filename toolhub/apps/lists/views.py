@@ -20,6 +20,8 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 
+from django_filters import rest_framework as filters
+
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import extend_schema
@@ -56,6 +58,26 @@ from .serializers import ToolListRevisionSerializer
 from .serializers import ToolListSerializer
 
 
+class ToolListFilter(filters.FilterSet):
+    """Custom query filters for ToolList endpoints."""
+
+    featured = filters.BooleanFilter(
+        field_name="featured",
+        lookup_expr="exact",
+        help_text=_("Only show lists that are featured."),
+    )
+    published = filters.BooleanFilter(
+        field_name="published",
+        lookup_expr="exact",
+        help_text=_("Only show lists that are published."),
+    )
+    user = filters.CharFilter(
+        field_name="created_by__username",
+        lookup_expr="exact",
+        help_text=_("Only show lists created by the given user."),
+    )
+
+
 @extend_schema_view(
     create=extend_schema(
         description=_("""Create a new list of tools."""),
@@ -87,10 +109,7 @@ class ToolListViewSet(viewsets.ModelViewSet):
     queryset = ToolList.objects.none()
     serializer_class = ToolListSerializer
     permission_classes = [ObjectPermissionsOrAnonReadOnly]
-    filterset_fields = {
-        "featured": ["exact"],
-        "published": ["exact"],
-    }
+    filterset_class = ToolListFilter
     ordering = ["-id"]
 
     def get_queryset(self):

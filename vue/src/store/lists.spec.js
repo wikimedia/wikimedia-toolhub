@@ -59,7 +59,7 @@ describe( 'store/lists', () => {
 		const state = { user: { is_authenticated: true } };
 		const rootState = {
 			locale: { locale: 'en' },
-			user: { user: { csrf_token: 'abcd' } }
+			user: { user: { username: 'unit tester', csrf_token: 'abcd' } }
 		};
 		const context = { commit, dispatch, state, rootState };
 		const stubThis = {
@@ -126,23 +126,23 @@ describe( 'store/lists', () => {
 			} );
 		} );
 
-		describe( 'getPrivateLists', () => {
+		describe( 'getMyLists', () => {
 			const testPage = 1;
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/lists/?published=false&page=' + testPage,
+				url: '/api/lists/?user=unit+tester&page=' + testPage,
 				headers: { 'Content-type': 'application/json' },
 				body: listResponseTwo
 			};
 
 			it( 'should fetch private lists', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/lists/?published=false&page=' + testPage
+					url: '/api/lists/?user=unit+tester&page=' + testPage
 				}, context );
 				http.resolves( response );
 
-				await actions.getPrivateLists( context, testPage );
+				await actions.getMyLists( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
@@ -150,7 +150,7 @@ describe( 'store/lists', () => {
 
 				expect( commit ).to.have.been.calledOnce;
 				expect( commit ).to.have.been.calledWithExactly(
-					'PRIVATE_LISTS', listResponseTwo
+					'MY_LISTS', listResponseTwo
 				);
 			} );
 
@@ -160,14 +160,11 @@ describe( 'store/lists', () => {
 					message: ''
 				} ] } );
 
-				const getPrivateLists = actions.getPrivateLists.bind( stubThis );
-				await getPrivateLists( context, testPage );
+				const getMyLists = actions.getMyLists.bind( stubThis );
+				await getMyLists( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( commit ).to.have.been.calledOnce;
-				expect( commit ).to.have.been.calledWithExactly(
-					'PRIVATE_LIST', false
-				);
+				expect( commit ).to.have.not.been.called;
 				// eslint-disable-next-line no-underscore-dangle
 				expect( stubThis._vm.$notify.error ).to.have.been.called;
 			} );
