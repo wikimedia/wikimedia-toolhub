@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
+import { asList } from '@/helpers/casl';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -364,13 +365,13 @@ describe( 'store/lists', () => {
 			};
 
 			mutations.FEATURED_LISTS( state, listResponse );
-			expect( state.featuredLists ).to.eql( listResponse );
+			expect( state.featuredLists ).to.eql( asList( listResponse ) );
 
 			mutations.CREATE_LIST( state, shortListResponse );
-			expect( state.listCreated ).to.eql( shortListResponse );
+			expect( state.listCreated ).to.eql( asList( shortListResponse ) );
 
 			mutations.LIST( state, listResponse );
-			expect( state.list ).to.eql( listResponse );
+			expect( state.list ).to.eql( asList( listResponse ) );
 		} );
 	} );
 

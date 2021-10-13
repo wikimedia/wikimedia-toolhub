@@ -5,6 +5,7 @@ export const URL_SUBJECT = 'crawler/url';
 export const APP_SUBJECT = 'oauth2_provider/application';
 export const TOKEN_SUBJECT = 'oauth2_provider/accesstoken';
 export const VERSION_SUBJECT = 'reversion/version';
+export const LIST_SUBJECT = 'lists/toollist';
 
 /**
  * Set a CASL subject type on a POJO object or object array.
@@ -68,4 +69,14 @@ export function asToken( pojo ) {
  */
 export function asVersion( pojo ) {
 	return setPOJOSubjectType( VERSION_SUBJECT, pojo );
+}
+
+/**
+ * Mark a POJO or array of POJOs as a list model.
+ *
+ * @param {Object|Object[]} pojo
+ * @return {Object|Object[]}
+ */
+export function asList( pojo ) {
+	return setPOJOSubjectType( LIST_SUBJECT, pojo );
 }

@@ -8,7 +8,7 @@
 		>
 			<v-spacer />
 			<v-btn
-				v-if="$can( 'change', 'lists/toollist' )"
+				v-if="$can( 'change', list )"
 				:to="{ name: 'lists-edit', params: { id: list.id } }"
 				color="primary base100--text"
 				:small="$vuetify.breakpoint.smAndDown"
@@ -20,7 +20,7 @@
 			</v-btn>
 
 			<v-btn
-				v-if="$can( 'delete', 'lists/toollist' )"
+				v-if="$can( 'delete', list )"
 				:small="$vuetify.breakpoint.smAndDown"
 				class="ms-4"
 				color="error"

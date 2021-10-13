@@ -2,21 +2,22 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import i18n from '@/plugins/i18n';
 import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
+import { asList } from '@/helpers/casl';
 
 Vue.use( Vuex );
 
 export const mutations = {
 	FEATURED_LISTS( state, lists ) {
-		state.featuredLists = lists;
+		state.featuredLists = asList( lists );
 	},
 	PRIVATE_LISTS( state, lists ) {
-		state.privateLists = lists;
+		state.privateLists = asList( lists );
 	},
 	CREATE_LIST( state, list ) {
-		state.listCreated = list;
+		state.listCreated = asList( list );
 	},
 	LIST( state, list ) {
-		state.list = list;
+		state.list = asList( list );
 	}
 };
 
