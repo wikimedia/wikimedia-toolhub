@@ -233,3 +233,19 @@ class ToolManagerTest(TestCase):
         cleaned = models.Tool.objects.normalize_toolinfo(fixture)
         self.assertNotIn("__test__should__strip", cleaned)
         self.assertIn("comment", cleaned)
+
+    def test_empty_string_none_eqivalance_T293103(self):
+        """Normalization should treat empty string and None as equal."""
+        obj, created, updated = models.Tool.objects.from_toolinfo(
+            self.toolinfo.copy(), self.user, models.Tool.ORIGIN_CRAWLER
+        )
+
+        fixture = self.toolinfo.copy()
+        fixture["openhub_id"] = ""
+
+        obj, created, updated = models.Tool.objects.from_toolinfo(
+            self.toolinfo.copy(), self.user, models.Tool.ORIGIN_CRAWLER
+        )
+        self.assertFalse(created)
+        self.assertFalse(updated)
+        self.assertToolBasics(obj, self.toolinfo)

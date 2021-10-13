@@ -305,6 +305,11 @@ class ToolManager(SafeDeleteManager):
                             params={"key": key},
                         )
 
+                    if value == "" and prior is None:
+                        # T293103: guard against blank as null storage
+                        # conversion causing infinite empty diffs
+                        continue
+
                     setattr(tool, key, value)
                     has_changes = True
                     logger.debug(
