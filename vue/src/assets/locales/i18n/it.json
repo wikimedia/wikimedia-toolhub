@@ -9,6 +9,7 @@
 		]
 	},
 	"add": "Aggiungi",
+	"apidocumentation": "API",
 	"auditlogs-apierror": "Errore durante il recupero della pagina $1: $2",
 	"auditlogs-clear": "Pulisci",
 	"auditlog-entry-group-added-to": "$1 ha aggiunto $2 al gruppo $3",

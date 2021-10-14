@@ -8,12 +8,12 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-07 11:12:19+0000\n"
-"X-POT-Import-Date: 2021-08-23 20:31:09+0000\n"
+"PO-Revision-Date: 2021-10-14 11:13:08+0000\n"
+"X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
-"X-Generator: MediaWiki 1.37.0-beta; Translate 2021-07-26\n"
+"X-Generator: MediaWiki 1.38.0-alpha; Translate 2021-07-26\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: toolhub/apps/auditlog/apps.py:26
@@ -319,105 +319,117 @@ msgstr[1] "כלים בלתי־ידועים: %(names)s"
 msgid "Tool %(name)s is already favorited."
 msgstr "הכלי %(name)s כבר ברשימת המועדפים."
 
-#: toolhub/apps/lists/views.py:61
+#: toolhub/apps/lists/views.py:67
+msgid "Only show lists that are featured."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:72
+msgid "Only show lists that are published."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:77
+msgid "Only show lists created by the given user."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."
 msgstr "יצירת רשימת כלים חדשה."
 
-#: toolhub/apps/lists/views.py:66
+#: toolhub/apps/lists/views.py:88
 msgid "Details of a specific list of tools."
 msgstr "פרטים של רשימה מסוימת של כלים."
 
-#: toolhub/apps/lists/views.py:70
+#: toolhub/apps/lists/views.py:92
 msgid "Update a list of tools."
 msgstr "עדכון רשימת כלים."
 
-#: toolhub/apps/lists/views.py:78
+#: toolhub/apps/lists/views.py:100
 msgid "Delete a list of tools."
 msgstr "מחיקת רשימת כלים."
 
-#: toolhub/apps/lists/views.py:81
+#: toolhub/apps/lists/views.py:103
 msgid "List all lists of tools."
 msgstr "הצגת כל רשימות הכלים."
 
-#: toolhub/apps/lists/views.py:120
+#: toolhub/apps/lists/views.py:139
 msgid "Mark a list as featured."
 msgstr "סימון הרשימה בתור מומלצת."
 
-#: toolhub/apps/lists/views.py:148
+#: toolhub/apps/lists/views.py:167
 msgid "Remove featured flag from a list."
 msgstr "הסרת דגל ההמלצה מרשימה."
 
-#: toolhub/apps/lists/views.py:180
+#: toolhub/apps/lists/views.py:199
 msgid "A unique integer value identifying this toollist."
 msgstr "ערך שלם ייחודי שמזהה את רשימת הכלים הזאת."
 
-#: toolhub/apps/lists/views.py:186 toolhub/apps/toolinfo/views.py:117
+#: toolhub/apps/lists/views.py:205 toolhub/apps/toolinfo/views.py:117
 msgid "Get revision information."
 msgstr "קבלת מידע על הגרסה."
 
-#: toolhub/apps/lists/views.py:191 toolhub/apps/toolinfo/views.py:122
+#: toolhub/apps/lists/views.py:210 toolhub/apps/toolinfo/views.py:122
 msgid "List revisions."
 msgstr "רשימת גרסאות."
 
-#: toolhub/apps/lists/views.py:196 toolhub/apps/toolinfo/views.py:127
+#: toolhub/apps/lists/views.py:215 toolhub/apps/toolinfo/views.py:127
 msgid "Compare two revisions to find difference."
 msgstr "השוואת שתי גרסאות לשם  מציאת הבדל."
 
-#: toolhub/apps/lists/views.py:204 toolhub/apps/toolinfo/views.py:135
+#: toolhub/apps/lists/views.py:223 toolhub/apps/toolinfo/views.py:135
 msgid "A unique integer value identifying version to diff against."
 msgstr "ערך שלם ייחודי שמזהה את הגרסה שמולה תיעשה ההשוואה."
 
-#: toolhub/apps/lists/views.py:212
+#: toolhub/apps/lists/views.py:231
 msgid "Restore the list to this revision."
 msgstr "שחזור רשימת הכלים לגרסה הזאת."
 
-#: toolhub/apps/lists/views.py:219 toolhub/apps/toolinfo/views.py:151
+#: toolhub/apps/lists/views.py:238 toolhub/apps/toolinfo/views.py:151
 msgid "Undo all changes made between two revisions."
 msgstr "ביטול כל השינויים שנעשו אין שתי גרסאות."
 
-#: toolhub/apps/lists/views.py:227 toolhub/apps/toolinfo/views.py:159
+#: toolhub/apps/lists/views.py:246 toolhub/apps/toolinfo/views.py:159
 msgid "A unique integer value identifying version to undo until."
 msgstr "ערך שלם ייחודי שמזהה את הגרסה שצריך לשחזר אליה."
 
-#: toolhub/apps/lists/views.py:235 toolhub/apps/toolinfo/views.py:168
+#: toolhub/apps/lists/views.py:254 toolhub/apps/toolinfo/views.py:168
 msgid "Hide revision text and edit summary from users."
 msgstr "הסתרת טקסט הגרסה ותקציר העריכה מהמשתמשים."
 
-#: toolhub/apps/lists/views.py:241 toolhub/apps/toolinfo/views.py:174
+#: toolhub/apps/lists/views.py:260 toolhub/apps/toolinfo/views.py:174
 msgid "Reveal a previously hidden revision."
 msgstr "חשיפת גרסה שהוסתרה קודם."
 
-#: toolhub/apps/lists/views.py:247 toolhub/apps/toolinfo/views.py:180
+#: toolhub/apps/lists/views.py:266 toolhub/apps/toolinfo/views.py:180
 msgid "Mark a revision as patrolled."
 msgstr "לסמן את הגרסה בתור מנוטרת."
 
-#: toolhub/apps/lists/views.py:346 toolhub/apps/toolinfo/views.py:277
+#: toolhub/apps/lists/views.py:365 toolhub/apps/toolinfo/views.py:277
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr "שחזור לגרסה %(rev_id)s מתאריך %(datetime)s מאת by %(user)s"
 
-#: toolhub/apps/lists/views.py:387 toolhub/apps/toolinfo/views.py:311
+#: toolhub/apps/lists/views.py:406 toolhub/apps/toolinfo/views.py:311
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr "ביטול גרסאות מ־%(first_id)s עד %(last_id)s"
 
-#: toolhub/apps/lists/views.py:495 toolhub/apps/toolinfo/views.py:111
+#: toolhub/apps/lists/views.py:514 toolhub/apps/toolinfo/views.py:111
 msgid "Unique identifier for this tool."
 msgstr "מזהה ייחודי לכלי הזה."
 
-#: toolhub/apps/lists/views.py:501
+#: toolhub/apps/lists/views.py:520
 msgid "Add a tool to favorites."
 msgstr "הוספת כלי למועדפים."
 
-#: toolhub/apps/lists/views.py:506
+#: toolhub/apps/lists/views.py:525
 msgid "Check to see if a tool is in favorites."
 msgstr "בדיקה אם הכלי כבר במועדפים."
 
-#: toolhub/apps/lists/views.py:512
+#: toolhub/apps/lists/views.py:531
 msgid "Remove a tool from favorites."
 msgstr "הסרת כלי מהמועדפים."
 
-#: toolhub/apps/lists/views.py:518
+#: toolhub/apps/lists/views.py:537
 msgid "Personal favorites."
 msgstr "מועדפים אישיים."
 
@@ -1037,15 +1049,15 @@ msgstr "תיאור השינויים שהתכוונת לבצע."
 msgid "Comment describing an action."
 msgstr "הערה שמתארת פעולה."
 
-#: toolhub/settings.py:430
+#: toolhub/settings.py:439
 msgid "Read scope"
 msgstr "טווח קריאה"
 
-#: toolhub/settings.py:431
+#: toolhub/settings.py:440
 msgid "Write scope"
 msgstr "טווח כתיבה"
 
-#: toolhub/settings.py:460
+#: toolhub/settings.py:469
 #, optional
 msgid "Toolhub API"
 msgstr "API של Toolhub"

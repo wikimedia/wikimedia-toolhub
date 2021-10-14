@@ -13,12 +13,12 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-07 11:12:20+0000\n"
-"X-POT-Import-Date: 2021-08-23 20:31:09+0000\n"
+"PO-Revision-Date: 2021-10-14 11:13:09+0000\n"
+"X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh-Hans\n"
-"X-Generator: MediaWiki 1.37.0-beta; Translate 2021-07-26\n"
+"X-Generator: MediaWiki 1.38.0-alpha; Translate 2021-07-26\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: toolhub/apps/auditlog/apps.py:26
@@ -323,105 +323,117 @@ msgstr[0] ""
 msgid "Tool %(name)s is already favorited."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:61
+#: toolhub/apps/lists/views.py:67
+msgid "Only show lists that are featured."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:72
+msgid "Only show lists that are published."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:77
+msgid "Only show lists created by the given user."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:66
+#: toolhub/apps/lists/views.py:88
 msgid "Details of a specific list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:70
+#: toolhub/apps/lists/views.py:92
 msgid "Update a list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:78
+#: toolhub/apps/lists/views.py:100
 msgid "Delete a list of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:81
+#: toolhub/apps/lists/views.py:103
 msgid "List all lists of tools."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:120
+#: toolhub/apps/lists/views.py:139
 msgid "Mark a list as featured."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:148
+#: toolhub/apps/lists/views.py:167
 msgid "Remove featured flag from a list."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:180
+#: toolhub/apps/lists/views.py:199
 msgid "A unique integer value identifying this toollist."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:186 toolhub/apps/toolinfo/views.py:117
+#: toolhub/apps/lists/views.py:205 toolhub/apps/toolinfo/views.py:117
 msgid "Get revision information."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:191 toolhub/apps/toolinfo/views.py:122
+#: toolhub/apps/lists/views.py:210 toolhub/apps/toolinfo/views.py:122
 msgid "List revisions."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:196 toolhub/apps/toolinfo/views.py:127
+#: toolhub/apps/lists/views.py:215 toolhub/apps/toolinfo/views.py:127
 msgid "Compare two revisions to find difference."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:204 toolhub/apps/toolinfo/views.py:135
+#: toolhub/apps/lists/views.py:223 toolhub/apps/toolinfo/views.py:135
 msgid "A unique integer value identifying version to diff against."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:212
+#: toolhub/apps/lists/views.py:231
 msgid "Restore the list to this revision."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:219 toolhub/apps/toolinfo/views.py:151
+#: toolhub/apps/lists/views.py:238 toolhub/apps/toolinfo/views.py:151
 msgid "Undo all changes made between two revisions."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:227 toolhub/apps/toolinfo/views.py:159
+#: toolhub/apps/lists/views.py:246 toolhub/apps/toolinfo/views.py:159
 msgid "A unique integer value identifying version to undo until."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:235 toolhub/apps/toolinfo/views.py:168
+#: toolhub/apps/lists/views.py:254 toolhub/apps/toolinfo/views.py:168
 msgid "Hide revision text and edit summary from users."
 msgstr "隐藏修订文字并编辑用户的总结。"
 
-#: toolhub/apps/lists/views.py:241 toolhub/apps/toolinfo/views.py:174
+#: toolhub/apps/lists/views.py:260 toolhub/apps/toolinfo/views.py:174
 msgid "Reveal a previously hidden revision."
 msgstr "揭示一个之前被隐藏的修订。"
 
-#: toolhub/apps/lists/views.py:247 toolhub/apps/toolinfo/views.py:180
+#: toolhub/apps/lists/views.py:266 toolhub/apps/toolinfo/views.py:180
 msgid "Mark a revision as patrolled."
 msgstr "将一个修正标为已被巡查。"
 
-#: toolhub/apps/lists/views.py:346 toolhub/apps/toolinfo/views.py:277
+#: toolhub/apps/lists/views.py:365 toolhub/apps/toolinfo/views.py:277
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
 msgstr ""
 
-#: toolhub/apps/lists/views.py:387 toolhub/apps/toolinfo/views.py:311
+#: toolhub/apps/lists/views.py:406 toolhub/apps/toolinfo/views.py:311
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
 msgstr ""
 
-#: toolhub/apps/lists/views.py:495 toolhub/apps/toolinfo/views.py:111
+#: toolhub/apps/lists/views.py:514 toolhub/apps/toolinfo/views.py:111
 msgid "Unique identifier for this tool."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:501
+#: toolhub/apps/lists/views.py:520
 msgid "Add a tool to favorites."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:506
+#: toolhub/apps/lists/views.py:525
 msgid "Check to see if a tool is in favorites."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:512
+#: toolhub/apps/lists/views.py:531
 msgid "Remove a tool from favorites."
 msgstr ""
 
-#: toolhub/apps/lists/views.py:518
+#: toolhub/apps/lists/views.py:537
 msgid "Personal favorites."
 msgstr ""
 
@@ -1041,15 +1053,15 @@ msgstr ""
 msgid "Comment describing an action."
 msgstr "描述行为的评论。"
 
-#: toolhub/settings.py:430
+#: toolhub/settings.py:439
 msgid "Read scope"
 msgstr "读取范围"
 
-#: toolhub/settings.py:431
+#: toolhub/settings.py:440
 msgid "Write scope"
 msgstr "写入范围"
 
-#: toolhub/settings.py:460
+#: toolhub/settings.py:469
 #, optional
 msgid "Toolhub API"
 msgstr ""
