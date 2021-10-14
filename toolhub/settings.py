@@ -138,6 +138,12 @@ OUTGOING_REQUEST_ID_HEADER = env.str(
     "OUTGOING_REQUEST_ID_HEADER", default="X-Request-ID"
 )
 
+if env.bool("URLLIB3_DISABLE_WARNINGS", default=False):
+    # T292025: disable warnings from urllib3 about unverfied TLS connections
+    import urllib3
+
+    urllib3.disable_warnings()
+
 # == Django settings ==
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
