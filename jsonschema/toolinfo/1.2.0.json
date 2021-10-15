@@ -1,7 +1,7 @@
 {
   "title": "toolinfo",
   "description": "A tool is a piece of software that helps facilitate contribution toward, or consumption of, Wikimedia projects and associated data, not including the core MediaWiki software and its extensions.",
-  "$id": "/toolinfo/1.2.0-draft02",
+  "$id": "/toolinfo/1.2.0",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
     "tool": {
