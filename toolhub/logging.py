@@ -45,6 +45,12 @@ class ECSFormatter(ecs_logging.StdlibFormatter):
 
         # T292574: Report record as ECS v1.7.0
         ecs["ecs"]["version"] = "1.7.0"
+
+        # T293541: Add service.type to ECS log events
+        if "service" not in ecs:
+            ecs["service"] = {}
+        ecs["service"]["type"] = "toolhub"
+
         return ecs
 
     def _preprocess_record(self, record):
