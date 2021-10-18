@@ -14,7 +14,7 @@
 	"addremovetools-toolcreationsuccess": "Succès ! L’outil « $1 » a été créé.",
 	"agree-terms": "En enregistrant les modifications, vous acceptez $1 et $2, et vous acceptez irrévocablement de publier votre contribution sous $3. Vous acceptez qu'un hyperlien ou une URL soit une attribution suffisante sous la licence Creative Commons.",
 	"apidocs": "Docs de l’API",
-	"apidocumentation": "Documentation de l’API",
+	"apidocumentation": "API",
 	"apierror": "Oups ! Une erreur s’est produite : $1",
 	"apierrors": "Oups ! Une erreur s’est produite dans « $1 » : $2",
 	"apiurl": "URL de l’API",

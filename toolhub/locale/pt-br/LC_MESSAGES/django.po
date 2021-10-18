@@ -4,10 +4,11 @@
 # Author: Eduardo Addad de Oliveira
 # Author: Eduardoaddad
 # Author: Mariagarbin
+# Author: Svjatysberega
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:09+0000\n"
+"PO-Revision-Date: 2021-10-18 11:12:32+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -320,15 +321,15 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "Mostrar apenas listas destacadas."
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "Mostrar apenas listas publicadas."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "Mostrar apenas listas criadas por esse usuário."
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."
@@ -532,7 +533,7 @@ msgstr "Procure em %(fields)s"
 #: toolhub/apps/search/schema.py:106
 #, optional
 msgid ", "
-msgstr ", "
+msgstr ""
 
 #: toolhub/apps/search/schema.py:191
 msgid "Field to use when ordering results."

@@ -5,6 +5,7 @@
 # Author: 500000000006城
 # Author: Colathewikian
 # Author: GuoPC
+# Author: Lakejason0
 # Author: Si109
 # Author: Wuqianye
 # Author: Yfdyh000
@@ -13,7 +14,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:09+0000\n"
+"PO-Revision-Date: 2021-10-18 11:12:32+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr ""
+msgstr "审计日志"
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "created"
@@ -175,7 +176,7 @@ msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:44
 msgid "A URL to crawl"
-msgstr ""
+msgstr "爬取的URL"
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
@@ -305,7 +306,7 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:291
 msgid "Tool name."
-msgstr ""
+msgstr "工具名称。"
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
@@ -515,7 +516,7 @@ msgstr "废止一个应用程序授权。"
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
 #: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
@@ -574,19 +575,19 @@ msgstr "机器人"
 
 #: toolhub/apps/toolinfo/models.py:333
 msgid "gadget"
-msgstr ""
+msgstr "小工具"
 
 #: toolhub/apps/toolinfo/models.py:334
 msgid "user script"
-msgstr ""
+msgstr "用户脚本"
 
 #: toolhub/apps/toolinfo/models.py:335
 msgid "command line tool"
-msgstr ""
+msgstr "命令行工具"
 
 #: toolhub/apps/toolinfo/models.py:336
 msgid "coding framework"
-msgstr ""
+msgstr "编程框架"
 
 #: toolhub/apps/toolinfo/models.py:337
 msgid "other"
@@ -594,11 +595,11 @@ msgstr "其他"
 
 #: toolhub/apps/toolinfo/models.py:343
 msgid "crawler"
-msgstr ""
+msgstr "爬虫"
 
 #: toolhub/apps/toolinfo/models.py:344
 msgid "api"
-msgstr ""
+msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:352
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
@@ -754,7 +755,7 @@ msgstr "工具概要"
 
 #: toolhub/apps/toolinfo/serializers.py:136
 msgid "Create a tool"
-msgstr ""
+msgstr "创建工具"
 
 #: toolhub/apps/toolinfo/serializers.py:202
 msgid "Update a tool"
@@ -879,7 +880,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
-msgstr ""
+msgstr "数字用户ID"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"

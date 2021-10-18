@@ -11,7 +11,7 @@
 	"addremovetools-nologintext": "Você precisará entrar no Toolhub para adicionar ou remover ferramentas",
 	"addremovetools-toolcreationsuccess": "Sucesso! Ferramenta '$1' criada.",
 	"apidocs": "Docs de API",
-	"apidocumentation": "Documentação de API",
+	"apidocumentation": "API",
 	"apierror": "Ops! Ocorreu um erro: $1",
 	"apierrors": "Oops! Um erro ocorreu em $1: $2",
 	"apiurl": "URL da API",

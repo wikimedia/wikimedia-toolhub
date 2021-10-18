@@ -1,6 +1,7 @@
 # Translation of Toolhub - Backend to French (français)
 # Exported from translatewiki.net
 #
+# Author: DreZhsh
 # Author: Gomoko
 # Author: JenyxGym
 # Author: Raphoraph
@@ -10,7 +11,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:08+0000\n"
+"PO-Revision-Date: 2021-10-18 11:12:31+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -323,15 +324,15 @@ msgstr "L’outil %(name)s est déjà en favori."
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "Afficher uniquement les listes qui sont mises en avant."
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "Afficher uniquement les listes qui sont publiées."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "Afficher uniquement les listes créées par l'utilisateur donné."
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."
@@ -535,7 +536,7 @@ msgstr "Rechercher dans %(fields)s"
 #: toolhub/apps/search/schema.py:106
 #, optional
 msgid ", "
-msgstr ", "
+msgstr ""
 
 #: toolhub/apps/search/schema.py:191
 msgid "Field to use when ordering results."

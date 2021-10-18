@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:08+0000\n"
+"PO-Revision-Date: 2021-10-18 11:12:31+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -321,15 +321,15 @@ msgstr "הכלי %(name)s כבר ברשימת המועדפים."
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "להציג רק רשימות שסומנו כמומלצות."
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "להציג רק רשימות שפורסמו."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "להציג רק רשימות שנוצרו על־ידי משתמש מסוים."
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."

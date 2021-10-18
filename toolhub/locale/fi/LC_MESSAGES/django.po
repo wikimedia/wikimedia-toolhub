@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:08+0000\n"
+"PO-Revision-Date: 2021-10-18 11:12:31+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,15 +54,15 @@ msgstr "partioitu"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr ""
+msgstr "nostettu"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "nosto kumottu"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
-msgstr ""
+msgstr "aikaleima"
 
 #: toolhub/apps/auditlog/models.py:116
 msgid "user"
@@ -74,11 +74,11 @@ msgstr "sisältötyyppi"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr ""
+msgstr "kohteen tunnus"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
-msgstr ""
+msgstr "objektin primaariavain"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
@@ -86,7 +86,7 @@ msgstr "toiminto"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr ""
+msgstr "tarkastuslokin merkintä"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
@@ -94,11 +94,11 @@ msgstr "tarkastuslokin merkinnät"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "Tapahtumat parametrit"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr ""
+msgstr "Muokkaustoiminnon luoma versio"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
@@ -122,11 +122,11 @@ msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
-msgstr ""
+msgstr "Tapahtuman toiminto"
 
 #: toolhub/apps/auditlog/serializers.py:51
 msgid "Event target"
-msgstr ""
+msgstr "Tapahtuman kohde"
 
 #: toolhub/apps/auditlog/serializers.py:102
 msgid "Audit log entry"
@@ -321,11 +321,11 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "Näyttää vain listat, jotka ovat suosittuja."
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "Näyttää vain listat, jotka ovat julkaistu."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."

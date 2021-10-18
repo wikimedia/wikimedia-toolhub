@@ -1,11 +1,12 @@
 # Translation of Toolhub - Backend to British English (British English)
 # Exported from translatewiki.net
 #
+# Author: Bashir Gwanki
 # Author: Reedy
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:08+0000\n"
+"PO-Revision-Date: 2021-10-18 11:12:31+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -318,15 +319,15 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "kawai an nuna jerin yadda abu yake"
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "kawai an nuna jerin wallafaffun littattafai"
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "an nuna jerin kirkirar ma'aikici"
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:09+0000\n"
+"PO-Revision-Date: 2021-10-18 11:12:32+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -532,7 +532,7 @@ msgstr "OpenAPI schema parameter description. Parameters:\n* %(fields)s - list o
 #: toolhub/apps/search/schema.py:106
 #, optional
 msgid ", "
-msgstr "Word list joining token."
+msgstr "Word list joining token. Word list joining token. Used when joining multiple words or phrases into a list to be inserted into another message as a single parameter. This is basically the same thing as [[MediaWiki:Comma-separator]]"
 
 #: toolhub/apps/search/schema.py:191
 msgid "Field to use when ordering results."
