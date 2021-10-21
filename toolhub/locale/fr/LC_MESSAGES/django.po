@@ -1,6 +1,7 @@
 # Translation of Toolhub - Backend to French (français)
 # Exported from translatewiki.net
 #
+# Author: Cantons-de-l'Est
 # Author: DreZhsh
 # Author: Gomoko
 # Author: JenyxGym
@@ -11,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-18 11:12:31+0000\n"
+"PO-Revision-Date: 2021-10-21 11:11:54+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -45,7 +46,7 @@ msgstr "supprimé de"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr "Caché"
+msgstr "caché"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
@@ -113,11 +114,11 @@ msgstr "La révision a-t-elle été relue par un patrouilleur ?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr "Nom de l’outil relatif à la modification"
+msgstr "Nom de l’outil lié à la modification"
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr "Identité de l’utilisateur relatif à la modification"
+msgstr "Identité de l’utilisateur lié à la modification"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
@@ -153,7 +154,7 @@ msgstr "Afficher seulement les traces produites après la date et l’heure four
 
 #: toolhub/apps/auditlog/views.py:82
 msgid "Only show logs for the given user."
-msgstr "Afficher seulement les traces pour l’utilisateur donné."
+msgstr "Afficher seulement les traces de l’utilisateur donné."
 
 #: toolhub/apps/auditlog/views.py:88
 msgid "List all log entries."
@@ -237,7 +238,7 @@ msgstr "Un lien vers la page de description du fichier de Wikimédia Communs pou
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
-msgstr "Si vrai, cette liste est une collection des outils 'favoris' de l’utilisateur propriétaire."
+msgstr "Si vrai, cette liste est une collection des outils « favoris » de l’utilisateur propriétaire."
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
@@ -308,7 +309,7 @@ msgstr "Nom de l’outil."
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr "Valeurs dupliquées dans la liste: %(duplicates)s"
+msgstr "Valeurs dupliquées dans la liste : %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
@@ -384,7 +385,7 @@ msgstr "Une valeur d’entier unique identifiant les versions à comparer."
 
 #: toolhub/apps/lists/views.py:231
 msgid "Restore the list to this revision."
-msgstr "Restaurer la liste à cette révision."
+msgstr "Restaurer la liste de cette révision."
 
 #: toolhub/apps/lists/views.py:238 toolhub/apps/toolinfo/views.py:151
 msgid "Undo all changes made between two revisions."
@@ -426,7 +427,7 @@ msgstr "Ajouter un outil aux favoris."
 
 #: toolhub/apps/lists/views.py:525
 msgid "Check to see if a tool is in favorites."
-msgstr "Vérifier pour voir si un outil est dans les favoris."
+msgstr "Vérifier si un outil est dans les favoris."
 
 #: toolhub/apps/lists/views.py:531
 msgid "Remove a tool from favorites."
@@ -450,7 +451,7 @@ msgstr "Nom de l’application"
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
-msgstr "Quelque chose que les utilisateurs reconnaitront et à laquelle ils auront confiance"
+msgstr "Quelque chose que les utilisateurs reconnaîtront et à laquelle ils auront confiance"
 
 #: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
 msgid "Authorization callback URL"
@@ -569,7 +570,7 @@ msgstr "application de bureau"
 
 #: toolhub/apps/toolinfo/models.py:332
 msgid "bot"
-msgstr "robot"
+msgstr "bot"
 
 #: toolhub/apps/toolinfo/models.py:333
 msgid "gadget"
@@ -609,7 +610,7 @@ msgstr "Nom d’outil lisible par un humain. Limite recommandée de 25 caractè
 
 #: toolhub/apps/toolinfo/models.py:366
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr "Une description plus lingue de l’outil. La longueur recommandée pour une description est de 3 à 5 phrases."
+msgstr "Une description plus longue de l’outil. La longueur recommandée pour une description est de 3 à 5 phrases."
 
 #: toolhub/apps/toolinfo/models.py:374
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
@@ -625,19 +626,19 @@ msgstr "Un lien vers le dépôt qui héberge le code de l’outil."
 
 #: toolhub/apps/toolinfo/models.py:402
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
-msgstr "Plus long que le titre complet mais plus court que la description. Cela devrait ajouter un certain contexte supplémentaire au titre."
+msgstr "Plus long que le titre complet mais plus court que la description. Cela devrait ajouter du contexte supplémentaire au titre."
 
 #: toolhub/apps/toolinfo/models.py:411
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
-msgstr "L’ID du projet sur OpenHub. Pour l’URL donnée « https://openhub.net/p/foo », l’ID du projet serait « foo »."
+msgstr "L’ID du projet sur OpenHub. Pour cet exemple d’URL  « https://openhub.net/p/foo », l’ID du projet est « foo »."
 
 #: toolhub/apps/toolinfo/models.py:420
 msgid "Alternate links to the tool or install documentation in different natural languages."
-msgstr "Liens alternatifs vers l’outil ou la documentation d’installation dans différentes langues humaines."
+msgstr "Liens alternatifs vers l’outil ou la documentation d’installation dans différents langages naturels."
 
 #: toolhub/apps/toolinfo/models.py:431
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
-msgstr "Si l’outil est un robot, le nom d’utilisateur Wikimedia du robot. Ne pas inclure l’espace de noms « Utilisateur: » ou les préfixes similaires."
+msgstr "Si l’outil est un bot, le nom d’utilisateur Wikimedia du robot. Ne pas inclure l’espace de noms « Utilisateur: » ou les préfixes similaires."
 
 #: toolhub/apps/toolinfo/models.py:438
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
@@ -645,7 +646,7 @@ msgstr "Si vrai, l’utilisation de cet outil est officiellement dissuadée. Le 
 
 #: toolhub/apps/toolinfo/models.py:448
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
-msgstr "Si cet outil est déprécié, ce paramètre devrait être utilisé pour indiquer un lien vers l’outil de remplacement."
+msgstr "Si cet outil est obsolète, ce paramètre devrait être utilisé pour indiquer un lien vers l’outil de remplacement."
 
 #: toolhub/apps/toolinfo/models.py:455
 msgid "If true, this tool is unstable and can change or go offline at any time."
@@ -653,7 +654,7 @@ msgstr "Si vrai, cet outil est instable et peut changer ou être arrêté à tou
 
 #: toolhub/apps/toolinfo/models.py:463
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
-msgstr "Une chaîne ou un tableau de chaîne qui décrit le(s) wiki(s) sur le(s)quel(s) cet outil peut être utilisé. Utilisez des noms d’hôte tels que « zh.wiktionary.org ». Utilisez l’astérisque comme caractères génériques. Par exemple, « *.wikisource.org » signifie que cet outil peut être utilisé sur tous les wikis des éditions de Wikisource. « * »  signifie que ceci fonctionne sur tous les wikis, y compris les wikis de Wikimedia."
+msgstr "Une chaîne de caractères ou un tableau de chaînes de caractères qui décrit le(s) wiki(s) sur le(s)quel(s) cet outil peut être utilisé. Utilisez des noms d’hôte tels que « zh.wiktionary.org ». Utilisez l’astérisque comme caractère générique. Par exemple, « *.wikisource.org » signifie que cet outil peut être utilisé sur tous les wikis de Wikisource. « * » signifie que « ceci fonctionne sur tous les wikis, y compris les wikis de Wikimedia »."
 
 #: toolhub/apps/toolinfo/models.py:481
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
@@ -673,7 +674,7 @@ msgstr "La (ou les) langue(s) dans laquelle (ou lesquelles) l’interface utilis
 
 #: toolhub/apps/toolinfo/models.py:516
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
-msgstr "Une chaîne ou un tableau de chaîne qui liste les technologies (langages de programmation, ateliers de développement, etc.) utilisés pour créer l’outil."
+msgstr "Une chaîne de caractères ou un tableau de chaînes de caractères qui liste les technologies (langages de programmation, environnements de développement, etc.) utilisés pour créer l’outil."
 
 #: toolhub/apps/toolinfo/models.py:528
 msgid "The manner in which the tool is used. Select one from the list of options."
@@ -794,11 +795,11 @@ msgstr "Dictionnaire url_multilingue attendu, mais %(type)s trouvé"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
-msgstr "Propriété 'language' manquante à url_multilingue"
+msgstr "Propriété « language » manquante à url_multilingue"
 
 #: toolhub/apps/toolinfo/validators.py:79
 msgid "Url_multilingual missing 'url' property."
-msgstr "Propriété 'url' manquante à url_multilingue."
+msgstr "Propriété « url » manquante à url_multilingue."
 
 #: toolhub/apps/toolinfo/views.py:64
 msgid "Create a new tool."
@@ -1102,11 +1103,11 @@ msgstr "Nombre d’outils connus de Toolhub."
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
-msgstr "Date et heure de l’exécution la plus récente du butineur."
+msgstr "Date et heure de l’exécution la plus récente de l'indexeur."
 
 #: vue/serializers.py:41
 msgid "Number of tools added or updated in the most recent crawler run."
-msgstr "Nombre d’outils ajoutés ou mis à jour lors de l’exécution la plus récente du butineur."
+msgstr "Nombre d’outils ajoutés ou mis à jour lors de l’exécution la plus récente de l'indexeur."
 
 #: vue/templates/vue/base.html:20
 msgid "Toolhub's user interface requires JavaScript to be enabled."

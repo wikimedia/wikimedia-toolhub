@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:08+0000\n"
+"PO-Revision-Date: 2021-10-21 11:11:53+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -323,15 +323,15 @@ msgstr "Das Werkzeug %(name)s wird bereits favorisiert."
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "Nur Listen anzeigen, die vorgestellt werden."
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "Nur Listen anzeigen, die veröffentlicht sind."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "Zeigt nur Listen an, die von dem angegebenen Benutzer erstellt wurden."
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."

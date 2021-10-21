@@ -11,7 +11,7 @@
 	"addremovetools-nologintext": "도구를 추가하거나 제거하려면 툴허브에 로그인해야 합니다",
 	"addremovetools-toolcreationsuccess": "성공했습니다! '$1' 도구가 만들어졌습니다.",
 	"apidocs": "API 문서",
-	"apidocumentation": "API 문서",
+	"apidocumentation": "API",
 	"apierror": "이런! 오류가 발생했습니다: $1",
 	"apierrors": "이런! $1에 오류가 발생했습니다: $2",
 	"apiurl": "API URL",

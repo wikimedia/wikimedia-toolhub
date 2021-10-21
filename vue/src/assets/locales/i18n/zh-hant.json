@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
-			"SiderealArt"
+			"SiderealArt",
+			"Weather Top Wizard"
 		]
 	},
 	"add": "新增",
@@ -37,6 +38,7 @@
 	"learnmore": "了解更多",
 	"leavefeedback": "留下意見回饋",
 	"links": "連結",
+	"lists-editlist": "編輯清單",
 	"locale-select": "選擇語言",
 	"login": "登入",
 	"logout": "登出",

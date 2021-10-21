@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:09+0000\n"
+"PO-Revision-Date: 2021-10-21 11:11:54+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr ""
+msgstr "Audit-logg"
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "created"
@@ -33,31 +33,31 @@ msgstr "raderade"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr ""
+msgstr "tillagd till"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr ""
+msgstr "borttagen från"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr ""
+msgstr "dold"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr ""
+msgstr "visad"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr ""
+msgstr "patrullerad"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr ""
+msgstr "utvald"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "inte längre utvald"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
@@ -81,155 +81,155 @@ msgstr "objekts-PK"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
-msgstr ""
+msgstr "åtgärd"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr ""
+msgstr "Audit-logginlägg"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
-msgstr ""
+msgstr "Audit-logginlägg"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "Evenemangsparametrar"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr ""
+msgstr "Sidversion skapad av redigeringsåtgärd"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr ""
+msgstr "Har sidversionen markerats som dold?"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Har sid versionen granskats av en patrullör?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr ""
+msgstr "Namnet på verktyget som rör ändringen"
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr ""
+msgstr "Identitet för användaren som rör ändringen"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr ""
+msgstr "Verktygslista som rör ändringen"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
-msgstr ""
+msgstr "Evenemangsåtgärd"
 
 #: toolhub/apps/auditlog/serializers.py:51
 msgid "Event target"
-msgstr ""
+msgstr "Evenemangsåtgärd"
 
 #: toolhub/apps/auditlog/serializers.py:102
 msgid "Audit log entry"
-msgstr ""
+msgstr "Audit-logginlägg"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr ""
+msgstr "Visa endast loggar för de angivna åtgärdstyperna."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr ""
+msgstr "Visa endast loggar för de angivna måltyperna."
 
 #: toolhub/apps/auditlog/views.py:72
 msgid "Only show logs occuring before the given date and time."
-msgstr ""
+msgstr "Visa endast loggar som inträffat innan den angivna tiden och datumet."
 
 #: toolhub/apps/auditlog/views.py:77
 msgid "Only show logs occuring after the given date and time."
-msgstr ""
+msgstr "Visa endast loggar som inträffat efter den angivna tiden och datumet."
 
 #: toolhub/apps/auditlog/views.py:82
 msgid "Only show logs for the given user."
-msgstr ""
+msgstr "Visa endast loggar för den angivna användaren."
 
 #: toolhub/apps/auditlog/views.py:88
 msgid "List all log entries."
-msgstr ""
+msgstr "Lista alla logginlägg."
 
 #: toolhub/apps/auditlog/views.py:91
 msgid "Info for a specific log entry."
-msgstr ""
+msgstr "Information om en bestämt logginlägg."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr ""
+msgstr "Toolinfo-webbskrapare"
 
 #: toolhub/apps/crawler/serializers.py:31
 msgid "A URL that has been registered for crawling"
-msgstr ""
+msgstr "En webbadress som registrerats för skrapning"
 
 #: toolhub/apps/crawler/serializers.py:44
 msgid "A URL to crawl"
-msgstr ""
+msgstr "En webbadress att skrapa"
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
-msgstr ""
+msgstr "Information om en enkel webbadress som bearbetats under en skrapomgång"
 
 #: toolhub/apps/crawler/serializers.py:78
 msgid "Summary of a single run of the crawler."
-msgstr ""
+msgstr "Sammanfattning av en enkel omgång skrapning."
 
 #: toolhub/apps/crawler/views.py:42
 msgid "Register a new URL for crawling."
-msgstr ""
+msgstr "Registrera en ny webbadress att skrapa."
 
 #: toolhub/apps/crawler/views.py:46
 msgid "Information about a specific crawled URL."
-msgstr ""
+msgstr "Information om en specifik webbadress som skrapats."
 
 #: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
-msgstr ""
+msgstr "Avregistrera en webbadress."
 
 #: toolhub/apps/crawler/views.py:58
 msgid "List all crawled URLs."
-msgstr ""
+msgstr "Lista över alla skrapade webbadresser."
 
 #: toolhub/apps/crawler/views.py:85
 msgid "Get URLs created by the current user."
-msgstr ""
+msgstr "Hämta webbadresser som skapats av en den nuvarande användaren."
 
 #: toolhub/apps/crawler/views.py:104
 msgid "List all historic crawler runs."
-msgstr ""
+msgstr "Lista alla historiska skrapomgångar."
 
 #: toolhub/apps/crawler/views.py:107
 msgid "Info for a specific crawler run."
-msgstr ""
+msgstr "Information om en specifik skrapomgångar."
 
 #: toolhub/apps/crawler/views.py:130
 msgid "List all urls crawled in a run."
-msgstr ""
+msgstr "Lista alla webbadresser som skrapades i omgången."
 
 #: toolhub/apps/crawler/views.py:133
 msgid "Info for a specific url crawled in a run."
-msgstr ""
+msgstr "Information om en specifik webbadress som skrapades i omgången."
 
 #: toolhub/apps/lists/apps.py:26
 msgid "Lists"
-msgstr ""
+msgstr "Listor"
 
 #: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
-msgstr ""
+msgstr "Titel på denna lista"
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
-msgstr ""
+msgstr "Beskrivning av listornas teman eller innehåll."
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
-msgstr ""
+msgstr "En länk till en filbeskrivningssida på Wikimedia Commons för en ikon som avbildar listan."
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
@@ -253,82 +253,82 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:48
 msgid "List of tools metadata."
-msgstr ""
+msgstr "Lista över verktygsmetadata."
 
 #: toolhub/apps/lists/serializers.py:82
 msgid "Create or update a list."
-msgstr ""
+msgstr "Skapa eller uppdatera en lista."
 
 #: toolhub/apps/lists/serializers.py:90 toolhub/apps/lists/serializers.py:207
 msgid "List of tool names."
-msgstr ""
+msgstr "Lista över verktygsnamn."
 
 #: toolhub/apps/lists/serializers.py:199
 msgid "Historic revision of a list."
-msgstr ""
+msgstr "Historisk sidversion av en lista."
 
 #: toolhub/apps/lists/serializers.py:228
 msgid "Tool list revision."
-msgstr ""
+msgstr "Sidversion av en verktygslista."
 
 #: toolhub/apps/lists/serializers.py:236
 msgid "Tool list revision detail."
-msgstr ""
+msgstr "Sidversionsdetalj hos en verktygslista."
 
 #: toolhub/apps/lists/serializers.py:258
 msgid "Tool list revision difference."
-msgstr ""
+msgstr "Sidversionsskillnad av en verktygslista."
 
 #: toolhub/apps/lists/serializers.py:263
 #: toolhub/apps/toolinfo/serializers.py:266
 msgid "Revision to apply changes to."
-msgstr ""
+msgstr "Sidversion att tillämpa ändringar på."
 
 #: toolhub/apps/lists/serializers.py:267
 #: toolhub/apps/toolinfo/serializers.py:270
 msgid "Revision after applying changes."
-msgstr ""
+msgstr "Sidversion efter att ändringarna tillämpas."
 
 #: toolhub/apps/lists/serializers.py:271
 msgid "Favorites list item."
-msgstr ""
+msgstr "Objekt för favoritlista."
 
 #: toolhub/apps/lists/serializers.py:286
 msgid "Add a favorite tool."
-msgstr ""
+msgstr "Lägg till ett favoritverktyg."
 
 #: toolhub/apps/lists/serializers.py:291
 msgid "Tool name."
-msgstr ""
+msgstr "Verktygsnamn."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr ""
+msgstr "Dubbla värden i lista: %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Okänt verktyg: %(names)s"
+msgstr[1] "Okända verktyg: %(names)s"
 
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr ""
+msgstr "Verktyget %(name)s är redan favorit."
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "Visa endast listor som är utvalda."
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "Visa endast listor som är publicerade."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "Visa endast listor som skapats av den angivna användare."
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."
@@ -336,125 +336,125 @@ msgstr "Skapa en ny lista av verktyg."
 
 #: toolhub/apps/lists/views.py:88
 msgid "Details of a specific list of tools."
-msgstr ""
+msgstr "Detaljer av en specifik lista över verktyg."
 
 #: toolhub/apps/lists/views.py:92
 msgid "Update a list of tools."
-msgstr ""
+msgstr "Uppdatera en lista över verktyg."
 
 #: toolhub/apps/lists/views.py:100
 msgid "Delete a list of tools."
-msgstr ""
+msgstr "Radera en lista över verktyg."
 
 #: toolhub/apps/lists/views.py:103
 msgid "List all lists of tools."
-msgstr ""
+msgstr "Lista alla listor över verktyg."
 
 #: toolhub/apps/lists/views.py:139
 msgid "Mark a list as featured."
-msgstr ""
+msgstr "Markera en lista som utvald."
 
 #: toolhub/apps/lists/views.py:167
 msgid "Remove featured flag from a list."
-msgstr ""
+msgstr "Ta bort utvald-flagga från en lista."
 
 #: toolhub/apps/lists/views.py:199
 msgid "A unique integer value identifying this toollist."
-msgstr ""
+msgstr "En unik heltalsvärde som identifierar denna verktygslista."
 
 #: toolhub/apps/lists/views.py:205 toolhub/apps/toolinfo/views.py:117
 msgid "Get revision information."
-msgstr ""
+msgstr "Hämta sidversionsinformation."
 
 #: toolhub/apps/lists/views.py:210 toolhub/apps/toolinfo/views.py:122
 msgid "List revisions."
-msgstr ""
+msgstr "Lista sidversioner."
 
 #: toolhub/apps/lists/views.py:215 toolhub/apps/toolinfo/views.py:127
 msgid "Compare two revisions to find difference."
-msgstr ""
+msgstr "Jämför två sidversioner för att hitta skillnader."
 
 #: toolhub/apps/lists/views.py:223 toolhub/apps/toolinfo/views.py:135
 msgid "A unique integer value identifying version to diff against."
-msgstr ""
+msgstr "Ett unikt heltalsvärde som identifierar version att jämföra med."
 
 #: toolhub/apps/lists/views.py:231
 msgid "Restore the list to this revision."
-msgstr ""
+msgstr "Återställ listan till denna sidversion."
 
 #: toolhub/apps/lists/views.py:238 toolhub/apps/toolinfo/views.py:151
 msgid "Undo all changes made between two revisions."
-msgstr ""
+msgstr "Återställ alla ändringar mellan två sidversioner."
 
 #: toolhub/apps/lists/views.py:246 toolhub/apps/toolinfo/views.py:159
 msgid "A unique integer value identifying version to undo until."
-msgstr ""
+msgstr "Ett unikt heltalsvärde som identifierar version att återställa till."
 
 #: toolhub/apps/lists/views.py:254 toolhub/apps/toolinfo/views.py:168
 msgid "Hide revision text and edit summary from users."
-msgstr ""
+msgstr "Dölj sidversionstext och redigeringssammanfattning från användare."
 
 #: toolhub/apps/lists/views.py:260 toolhub/apps/toolinfo/views.py:174
 msgid "Reveal a previously hidden revision."
-msgstr ""
+msgstr "Visa en tidigare dold sidversion."
 
 #: toolhub/apps/lists/views.py:266 toolhub/apps/toolinfo/views.py:180
 msgid "Mark a revision as patrolled."
-msgstr ""
+msgstr "Markera en sidversion om patrullerad."
 
 #: toolhub/apps/lists/views.py:365 toolhub/apps/toolinfo/views.py:277
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
-msgstr ""
+msgstr "Återställ till sidversion %(rev_id)s av %(user)s från %(datetime)s"
 
 #: toolhub/apps/lists/views.py:406 toolhub/apps/toolinfo/views.py:311
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
-msgstr ""
+msgstr "Återställ sidversionerna mellan %(first_id)s till %(last_id)s"
 
 #: toolhub/apps/lists/views.py:514 toolhub/apps/toolinfo/views.py:111
 msgid "Unique identifier for this tool."
-msgstr ""
+msgstr "Unik identifierare för detta verktyg."
 
 #: toolhub/apps/lists/views.py:520
 msgid "Add a tool to favorites."
-msgstr ""
+msgstr "Lägg till ett verktyg i favoriter."
 
 #: toolhub/apps/lists/views.py:525
 msgid "Check to see if a tool is in favorites."
-msgstr ""
+msgstr "Kontrollera om ett verktyg ligger i favoriter."
 
 #: toolhub/apps/lists/views.py:531
 msgid "Remove a tool from favorites."
-msgstr ""
+msgstr "Ta bort ett verktyg från favoriter."
 
 #: toolhub/apps/lists/views.py:537
 msgid "Personal favorites."
-msgstr ""
+msgstr "Personliga favoriter."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
-msgstr ""
+msgstr "OAuth 2.0 auktoriseringsserver-API"
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
-msgstr ""
+msgstr "OAuth-klientapplikation."
 
 #: toolhub/apps/oauth2/serializers.py:37
 msgid "Application name"
-msgstr ""
+msgstr "Applikationsnamn"
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
-msgstr ""
+msgstr "Någonting användare kommer känna igen och lita på"
 
 #: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
 msgid "Authorization callback URL"
-msgstr ""
+msgstr "Auktoriseringsåterkallnings-URL"
 
 #: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
 msgid "The application's callback URL."
-msgstr ""
+msgstr "Applikationens återkallnings-URL."
 
 #: toolhub/apps/oauth2/serializers.py:49
 msgid "Public identifier for this application"
@@ -490,19 +490,19 @@ msgstr ""
 
 #: toolhub/apps/oauth2/views.py:53
 msgid "Update a client application."
-msgstr ""
+msgstr "Uppdatera en klientapplikation."
 
 #: toolhub/apps/oauth2/views.py:57
 msgid "Delete a client application."
-msgstr ""
+msgstr "Radera en klientapplikation."
 
 #: toolhub/apps/oauth2/views.py:91
 msgid "List applications authorized by the current user."
-msgstr ""
+msgstr "Lista applikationer som auktoriserats av den nuvarande användaren."
 
 #: toolhub/apps/oauth2/views.py:94
 msgid "Info for an authorized application."
-msgstr ""
+msgstr "Information för en auktoriserad applikation."
 
 #: toolhub/apps/oauth2/views.py:106
 msgid "Revoke an application authorization."
@@ -514,7 +514,7 @@ msgstr "Sök"
 
 #: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr ""
+msgstr "Användarinformation"
 
 #: toolhub/apps/search/schema.py:37
 msgid "Faceted classification"
@@ -527,7 +527,7 @@ msgstr "Söksträng"
 #: toolhub/apps/search/schema.py:104
 #, python-format
 msgid "Search in %(fields)s"
-msgstr ""
+msgstr "Sök i %(fields)s"
 
 #: toolhub/apps/search/schema.py:106
 #, optional
@@ -536,11 +536,11 @@ msgstr ""
 
 #: toolhub/apps/search/schema.py:191
 msgid "Field to use when ordering results."
-msgstr ""
+msgstr "Fält att använda när resultat ordnas."
 
 #: toolhub/apps/search/serializers.py:27
 msgid "Tool search results"
-msgstr ""
+msgstr "Resultat av verktygssökning"
 
 #: toolhub/apps/search/views.py:87
 msgid "Faceted search for tools."
@@ -548,7 +548,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr ""
+msgstr "Toolinfo"
 
 #: toolhub/apps/toolinfo/models.py:301
 #, python-format
@@ -589,7 +589,7 @@ msgstr "övrigt"
 
 #: toolhub/apps/toolinfo/models.py:343
 msgid "crawler"
-msgstr ""
+msgstr "skrapare"
 
 #: toolhub/apps/toolinfo/models.py:344
 msgid "api"
@@ -757,20 +757,20 @@ msgstr "Uppdatera ett verktyg"
 
 #: toolhub/apps/toolinfo/serializers.py:233
 msgid "Tool revision."
-msgstr ""
+msgstr "Verktygssidversion."
 
 #: toolhub/apps/toolinfo/serializers.py:241
 msgid "Tool revision detail."
-msgstr ""
+msgstr "Detalj i verktygssidversion."
 
 #: toolhub/apps/toolinfo/serializers.py:261
 msgid "Tool revision difference."
-msgstr ""
+msgstr "Skillnad i verktygssidversion."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "%(value)s är ingen erkänd språkkod."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
@@ -890,7 +890,7 @@ msgstr "Information om den nuvarande lokalen."
 
 #: toolhub/apps/user/serializers.py:123
 msgid "Group information"
-msgstr ""
+msgstr "Gruppinformation"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
@@ -1081,7 +1081,7 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr ""
+msgstr "Fel: %(message)s"
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
@@ -1110,7 +1110,7 @@ msgstr ""
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
-msgstr ""
+msgstr "LADDAR"
 
 #: vue/views.py:41
 msgid "Get information used on the Toolhub Home view."
