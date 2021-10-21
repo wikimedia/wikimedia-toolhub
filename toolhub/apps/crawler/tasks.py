@@ -85,6 +85,10 @@ class Crawler:
                 toolinfo["name"],
                 run_url.url.url,
             )
+
+            # T294055: normalize name before seen checks
+            toolinfo["name"] = Tool.objects.normalize_name(toolinfo["name"])
+
             if toolinfo["name"] in seen:
                 # T278065: Reject updates from multiple urls in same run
                 logger.error(

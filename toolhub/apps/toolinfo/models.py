@@ -109,10 +109,7 @@ class ToolManager(SafeDeleteManager):
     def normalize_toolinfo(self, record):
         """Normalize incoming record formatting."""
         if "name" in record:
-            if record["name"].startswith("toolforge."):
-                # Fixup tool names made by Striker to work as slugs
-                record["name"] = "toolforge-" + record["name"][10:]
-            record["name"] = name_to_slug(record["name"])
+            record["name"] = self.normalize_name(record["name"])
 
         if "$schema" in record:
             record["_schema"] = record.pop("$schema")
@@ -165,6 +162,13 @@ class ToolManager(SafeDeleteManager):
                     del record[field]
 
         return record
+
+    def normalize_name(self, name):
+        """Normalize the name of a toolinfo record."""
+        if name.startswith("toolforge."):
+            # Fixup tool names made by Striker to work as slugs
+            name = "toolforge-" + name[10:]
+        return name_to_slug(name)
 
     def _normalize_language_code(self, code, unknown=None):
         """Normalize a language code.
