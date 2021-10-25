@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django import shortcuts
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema
@@ -31,7 +32,12 @@ from .serializers import HomeSerializer
 
 def main(request, **kwargs):  # noqa: W0613
     """Serve a page embedding the Vue frontend's main component."""
-    return shortcuts.render(request, "vue/main.html")
+    ctx = {
+        "config": {
+            "isDemo": settings.DEBUG,
+        },
+    }
+    return shortcuts.render(request, "vue/main.html", context=ctx)
 
 
 class HomeView(APIView):

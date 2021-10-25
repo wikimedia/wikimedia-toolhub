@@ -15,6 +15,10 @@
 <link rel="stylesheet" href="{% static "vue/css/loading.css" %}">
 {% endblock css %}
 
+{% block head_js %}
+{{ config|json_script:"toolhub-config" }}
+{% endblock head_js %}
+
 {% block bundles %}
 {{ block.super }}
 {% render_bundle "main" %}

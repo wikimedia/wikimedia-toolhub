@@ -115,6 +115,15 @@
 		</v-navigation-drawer>
 		<v-main>
 			<v-container fluid>
+				<v-alert
+					v-if="config.isDemo"
+					dismissible
+					prominent
+					text
+					type="info"
+				>
+					{{ $t( 'demo-server-notice' ) }}
+				</v-alert>
 				<router-view />
 			</v-container>
 			<Notifications />
@@ -196,6 +205,11 @@ export default {
 		},
 		commitHref() {
 			return this.vcsLink + this.commitHash;
+		},
+		config() {
+			return JSON.parse(
+				document.getElementById( 'toolhub-config' ).textContent
+			);
 		}
 	},
 	created() {

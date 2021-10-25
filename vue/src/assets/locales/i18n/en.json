@@ -89,6 +89,7 @@
 	"datepicker-startdate": "Start date",
 	"datepicker-enddate": "End date",
 	"delete": "Delete",
+	"demo-server-notice": "This is a Toolhub demonstration server.",
 	"deprecated": "Deprecated",
 	"describechanges": "Briefly describe your changes",
 	"description": "Description",

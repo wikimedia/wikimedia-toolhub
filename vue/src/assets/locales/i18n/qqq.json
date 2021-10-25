@@ -96,6 +96,7 @@
 	"datepicker-startdate": "Input label",
 	"datepicker-enddate": "Input label",
 	"delete": "Button label, triggers deleting of an oauth app",
+	"demo-server-notice": "Info message",
 	"deprecated": "Label for tool status",
 	"describechanges": "Label for comment for tool edits",
 	"description": "Label for tool description",
