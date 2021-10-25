@@ -3,7 +3,8 @@
 		"authors": [
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
-			"Mariagarbin"
+			"Mariagarbin",
+			"Svjatysberega"
 		]
 	},
 	"add": "Adicionar",
@@ -61,6 +62,7 @@
 	"close": "Fechar",
 	"comparetwoselectedrevisions": "Compare duas revisões selecionadas",
 	"confirmdelete-dialog-title": "Título da caixa de diálogo",
+	"confirmdelete-dialog-subtitle": "Tem certeza que quer apagar este registro? O processo não pode ser desfeito.",
 	"copiedtoclipboard": "Copiado para a área de transferência!",
 	"crawlerhistory": "Histórico do rastreador",
 	"crawlerhistory-pagesubtitle": "Esta página lista todas as execuções históricas do rastreador",

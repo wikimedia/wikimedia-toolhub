@@ -6,6 +6,7 @@
 	},
 	"add": "Tilføj",
 	"addremovetools": "Tilføj eller fjern værktøjer",
+	"apidocumentation": "API",
 	"auditlog-entry-toollist-created": "$1 oprettede listen $2",
 	"auditlog-entry-user-created": "$1 oprettede brugeren $2",
 	"auditlogs-targettype-group": "gruppe",
