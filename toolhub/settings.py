@@ -372,6 +372,8 @@ LOCALE_PATHS = [
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_SSL_REDIRECT = env.bool("REQUIRE_HTTPS", default=False)
 SECURE_SSL_HOST = env.str("SSL_CANONICAL_HOST", "toolhub.wikimedia.org")
+# T294072: Do not force TLS for health checks
+SECURE_REDIRECT_EXEMPT = [r"^healthz$"]
 
 # === Sessions ===
 # Cache session data in memcached but keep db persistance as backup
