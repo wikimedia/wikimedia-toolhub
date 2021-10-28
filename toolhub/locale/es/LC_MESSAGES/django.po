@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 #
 # Author: Agent
+# Author: Avengium
 # Author: Fitoschido
 # Author: Jackiezelaya
 # Author: Rodney Araujo
@@ -9,12 +10,12 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-14 11:13:08+0000\n"
+"PO-Revision-Date: 2021-10-28 11:14:37+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"X-Generator: MediaWiki 1.38.0-alpha; Translate 2021-07-26\n"
+"X-Generator: MediaWiki 1.38.0-alpha; Translate 2021-10-25\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: toolhub/apps/auditlog/apps.py:26
@@ -322,15 +323,15 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "Mostrar solo listas destacadas."
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "Mostrar solo las listas que están publicadas."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "Mostrar solo las listas creadas por el usuario dado."
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."

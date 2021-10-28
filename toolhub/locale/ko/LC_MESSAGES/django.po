@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-18 11:12:31+0000\n"
+"PO-Revision-Date: 2021-10-28 11:14:37+0000\n"
 "X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
-"X-Generator: MediaWiki 1.38.0-alpha; Translate 2021-07-26\n"
+"X-Generator: MediaWiki 1.38.0-alpha; Translate 2021-10-25\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: toolhub/apps/auditlog/apps.py:26
@@ -318,15 +318,15 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "알찬 목록만 표시합니다."
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "게시된 목록만 표시합니다."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "지정된 사용자가 만든 목록만 표시합니다."
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."

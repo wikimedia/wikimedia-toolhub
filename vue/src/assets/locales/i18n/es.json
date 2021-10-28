@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Avengium",
 			"Danniel07",
 			"Destinid10 2",
 			"Hasley",
@@ -19,7 +20,7 @@
 	"addremovetools-nologintext": "Necesitas iniciar sesión en Toolhub para agregar o quitar herramientas",
 	"addremovetools-toolcreationsuccess": "¡Éxito! herramienta '$1' creada.",
 	"apidocs": "Documentación de la API",
-	"apidocumentation": "Documentación de la API",
+	"apidocumentation": "API",
 	"apierror": "¡Ups! Ha ocurrido un error: $1",
 	"apierrors": "Oops! Un error ha ocurrido en $1:$2",
 	"apiurl": "URL de la API",
