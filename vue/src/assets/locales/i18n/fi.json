@@ -60,6 +60,7 @@
 	"datepicker-startdate": "Aloituspäivämäärä",
 	"datepicker-enddate": "Päättymispäivämäärä",
 	"delete": "Poista",
+	"demo-server-notice": "Tämä on Toolhubin esittelypalvelin.",
 	"developerdocumentation": "Kehittäjän Dokumentaatio",
 	"developersettings": "Kehittäjien asetukset",
 	"editsummary": "Muokkaa yhteenvetoa",
