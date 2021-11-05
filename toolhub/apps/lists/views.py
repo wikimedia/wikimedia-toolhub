@@ -38,6 +38,7 @@ from rest_framework.decorators import action
 from reversion.models import Version
 
 from toolhub.apps.auditlog.models import LogEntry
+from toolhub.apps.toolinfo.serializers import SummaryToolSerializer
 from toolhub.apps.versioned.exceptions import ConflictingState
 from toolhub.apps.versioned.exceptions import CurrentRevision
 from toolhub.apps.versioned.exceptions import SuppressedRevision
@@ -50,7 +51,6 @@ from .models import ToolList
 from .models import ToolListItem
 from .serializers import AddFavoriteSerializer
 from .serializers import EditToolListSerializer
-from .serializers import FavoritesItemSerializer
 from .serializers import ToolListHistoricVersionSerializer
 from .serializers import ToolListRevisionDetailSerializer
 from .serializers import ToolListRevisionDiffSerializer
@@ -519,13 +519,13 @@ path_param_tool_name = OpenApiParameter(
     create=extend_schema(
         description=_("""Add a tool to favorites."""),
         request=AddFavoriteSerializer,
-        responses=FavoritesItemSerializer,
+        responses=SummaryToolSerializer,
     ),
     retrieve=extend_schema(
         description=_("""Check to see if a tool is in favorites."""),
         parameters=[path_param_tool_name],
         request=None,
-        responses=FavoritesItemSerializer,
+        responses=SummaryToolSerializer,
     ),
     destroy=extend_schema(
         description=_("""Remove a tool from favorites."""),
@@ -535,7 +535,7 @@ path_param_tool_name = OpenApiParameter(
     ),
     list=extend_schema(
         description=_("""Personal favorites."""),
-        responses=FavoritesItemSerializer,
+        responses=SummaryToolSerializer,
     ),
     partial_update=extend_schema(exclude=True),
     update=extend_schema(exclude=True),
@@ -545,21 +545,37 @@ class FavoritesViewSet(viewsets.ModelViewSet):
 
     queryset = ToolListItem.objects.none()
     permission_classes = [permissions.IsAuthenticated]
-    lookup_field = "tool__name"
+    lookup_field = "name"
     lookup_url_kwarg = "tool_name"
 
     def get_queryset(self):
         """Get the current user's favorites."""
         user = self.request.user
         favorites = ToolListItem.objects.get_user_favorites(user)
-        qs = ToolListItem.objects.select_related("tool")
-        return qs.filter(toollist=favorites.pk)
+        if self.action == "destroy":
+            # Delete needs to grab a ToolListItem object, not the tool it
+            # points to.
+            return ToolListItem.objects.filter(toollist=favorites.pk)
+        return favorites.tools.all()
+
+    def get_object(self):
+        """Get the object(s) to operate on."""
+        if self.action == "destroy":
+            # No other way to vary lookup_field by action than a full
+            # replacement of get_object.
+            obj = get_object_or_404(
+                self.filter_queryset(self.get_queryset()),
+                tool__name=self.kwargs[self.lookup_url_kwarg],
+            )
+            self.check_object_permissions(self.request, obj)
+            return obj
+        return super().get_object()
 
     def get_serializer_class(self):
         """Use different serializers for input vs output."""
         if self.action == "create":
             return AddFavoriteSerializer
-        return FavoritesItemSerializer
+        return SummaryToolSerializer
 
     def perform_create(self, serializer):
         """Add a tool to this user's favorites."""

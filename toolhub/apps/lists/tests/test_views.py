@@ -748,9 +748,8 @@ class FavoritesViewSetTest(TestCase):
         }
         response = self.client.post(url, payload, format="json")
         self.assertEqual(response.status_code, 201)
-        self.assertIn("tool", response.data)
-        self.assertIn("name", response.data["tool"])
-        self.assertEqual(response.data["tool"]["name"], self.tool.name)
+        self.assertIn("name", response.data)
+        self.assertEqual(response.data["name"], self.tool.name)
 
     def test_create_rejects_duplicates(self):
         """Test create action."""
@@ -803,9 +802,8 @@ class FavoritesViewSetTest(TestCase):
         )
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertIn("tool", response.data)
-        self.assertIn("name", response.data["tool"])
-        self.assertEqual(response.data["tool"]["name"], self.tool.name)
+        self.assertIn("name", response.data)
+        self.assertEqual(response.data["name"], self.tool.name)
 
     def test_delete_requires_auth(self):
         """Assert that anons get a 401 when calling."""

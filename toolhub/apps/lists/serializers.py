@@ -268,21 +268,6 @@ class ToolListRevisionDiffSerializer(serializers.Serializer):
     )
 
 
-@doc(_("""Favorites list item."""))
-class FavoritesItemSerializer(ModelSerializer):
-    """Favorites list item."""
-
-    tool = SummaryToolSerializer(many=False)
-
-    class Meta:
-        """Configure serializer."""
-
-        model = ToolListItem
-        fields = [
-            "tool",
-        ]
-
-
 @doc(_("""Add a favorite tool."""))  # noqa: W0223
 class AddFavoriteSerializer(serializers.Serializer):
     """Add a favorite tool."""
@@ -299,9 +284,10 @@ class AddFavoriteSerializer(serializers.Serializer):
         """Create a new tool list."""
         name = validated_data.pop("name")
         validated_data["tool"] = Tool.objects.get(name=name)
-        return ToolListItem.objects.create(**validated_data)
+        ToolListItem.objects.create(**validated_data)
+        return validated_data["tool"]
 
     def to_representation(self, instance):
-        """Proxy to FavoritesItemSerializer for output."""
-        serializer = FavoritesItemSerializer(instance)
+        """Proxy to SummaryToolSerializer for output."""
+        serializer = SummaryToolSerializer(instance)
         return serializer.data
