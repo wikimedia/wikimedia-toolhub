@@ -109,29 +109,6 @@ services:
         target: /usr/share/elasticsearch/data
         consistency: cached
 
-  oauth-client:
-    build:
-      context: .
-      dockerfile: .pipeline/oauth-client.Dockerfile
-    image: "toolhub:oauth-client"
-    environment:
-      - FLASK_DEBUG=1
-      - FLASK_ENV=development
-      - SECRET_KEY
-      - TOOLHUB_CLIENT_ID
-      - TOOLHUB_CLIENT_SECRET
-    ports:
-      - "${TOOLHUB_CLIENT_PORT:-8002}:8000"
-    volumes:
-      - type: bind
-        source: ./contrib/oauth-client-example
-        target: /srv/app
-        consistency: cached
-    depends_on:
-      - web
-    profiles:
-      - oauth
-
 volumes:
   dbdata:
   esdata:

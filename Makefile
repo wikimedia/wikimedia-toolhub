@@ -64,7 +64,10 @@ search-shell:  ## Get an interactive shell inside the search container
 .PHONY: search-shell
 
 oauth-client: .env $(DOCKERFILES) ## Start the oauth-client app container in the foreground
-	docker-compose --profile oauth up --build oauth-client
+	docker-compose \
+		--file docker-compose.yaml \
+		--file contrib/oauth-client-example/docker-compose.oauth.yaml \
+		up --build oauth-client
 .PHONY: oauth-client
 
 prometheus:  ## Start the prometheus monitoring container
