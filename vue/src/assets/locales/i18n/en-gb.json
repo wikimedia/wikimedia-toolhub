@@ -6,15 +6,8 @@
 			"Samwilson"
 		]
 	},
-	"apidocumentation": "API",
 	"authcallbackurl": "Authorisation Callback URL",
 	"authorizedapps": "Authorised apps",
-	"cancel": "Cancel",
-	"close": "Close",
 	"developersettings-noauthorizedappsfoundtext": "You have not authorised any client apps to use your account",
-	"developersettings-pagesubtitle": "View, register, authorise and revoke oauth applications",
-	"publishchanges": "Publish Changes",
-	"scrolltotop": "Scroll to top",
-	"search-filter-origin": "Origin",
-	"translateurl": "Translate URL"
+	"developersettings-pagesubtitle": "View, register, authorise and revoke oauth applications"
 }
