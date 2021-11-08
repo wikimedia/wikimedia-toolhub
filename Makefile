@@ -68,11 +68,17 @@ oauth-client: .env $(DOCKERFILES) ## Start the oauth-client app container in the
 .PHONY: oauth-client
 
 prometheus:  ## Start the prometheus monitoring container
-	docker-compose --profile monitoring up --detach prometheus
+	docker-compose \
+		--file docker-compose.yaml \
+		--file contrib/prometheus/docker-compose.prometheus.yaml \
+		up --detach prometheus
 .PHONY: prometheus
 
 prometheus-shell: prometheus  ## Get an interactive shell inside the prometheus container
-	docker-compose exec prometheus sh
+	docker-compose \
+		--file docker-compose.yaml \
+		--file contrib/prometheus/docker-compose.prometheus.yaml \
+		exec prometheus sh
 .PHONY: prometheus-shell
 
 tail:  ## Tail logs from the docker-compose stack
