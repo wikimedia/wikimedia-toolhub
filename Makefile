@@ -22,7 +22,8 @@ PIPELINE_DIR := $(PROJECT_DIR)/.pipeline
 BLUBBEROID := https://blubberoid.wikimedia.org
 DOCKERIZE := /srv/dockerize/bin/dockerize
 DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodejs.Dockerfile $(PIPELINE_DIR)/oauth-client.Dockerfile
-ALL_TESTS := test-python test-nodejs-lint test-nodejs-unit
+VOLUMES := toolhub_dbdata toolhub_esdata
+ALL_TESTS := test-python test-nodejs
 
 help:
 	@echo "Make targets:"
@@ -85,7 +86,7 @@ prometheus-shell: prometheus  ## Get an interactive shell inside the prometheus 
 .PHONY: prometheus-shell
 
 tail:  ## Tail logs from the docker-compose stack
-	docker-compose logs -f
+	docker-compose logs --follow
 .PHONY: tail
 
 migrate: ## Run `manage.py migrate`
@@ -190,7 +191,7 @@ clean:  ## Clean up Docker images and containers
 .PHONY: clean
 
 destroy: clean  ## Clean up Docker images, containers, and volumes
-	yes | docker volume rm toolhub_dbdata
+	yes | docker volume rm $(VOLUMES)
 .PHONY: destroy
 
 .env:  ## Generate a .env file for local development
