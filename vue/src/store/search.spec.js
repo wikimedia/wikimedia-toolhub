@@ -38,6 +38,8 @@ describe( 'store/search', () => {
 		}
 	};
 
+	const autoCompleteResponse = [ { name: 'tool1', title: 'tool1 title' }, { name: 'tool2', title: 'tool2 title' } ];
+
 	describe( 'extractFacets', () => {
 		it( 'should accept empty filters', () => {
 			const filters = [];
@@ -108,6 +110,61 @@ describe( 'store/search', () => {
 		afterEach( () => {
 			http.restore();
 			sinon.reset();
+		} );
+
+		describe( 'AutoCompleteTools', () => {
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/autocomplete/tools/',
+				headers: { 'Content-type': 'application/json' },
+				body: autoCompleteResponse
+			};
+
+			it( 'should accept empty payload', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/autocomplete/tools/?'
+				}, context );
+				http.resolves( response );
+
+				await actions.autoCompleteTools( context, {} );
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+				expect( commit ).to.have.been.calledOnce;
+			} );
+
+			it( 'should build query string', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/autocomplete/tools/?q=q'
+				}, context );
+				http.resolves( response );
+
+				await actions.autoCompleteTools( context, {
+					query: 'q'
+				} );
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+				expect( commit ).to.have.been.calledOnce;
+			} );
+
+			it( 'should log failures', async () => {
+				const stubThis = {
+					_vm: {
+						$notify: { error: sinon.stub() }
+					}
+				};
+				http.rejects( { errors: { error1: { field: 'Boom', message: 'Boom Boom' } } } );
+				const autoCompleteTools = actions.autoCompleteTools.bind( stubThis );
+
+				await autoCompleteTools( context, {} );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledOnce;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
 		} );
 
 		describe( 'findTools', () => {

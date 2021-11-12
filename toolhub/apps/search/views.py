@@ -27,6 +27,7 @@ from drf_spectacular.utils import extend_schema_view
 
 from .documents import ToolDocument
 from .schema import FACET_RESPONSE
+from .serializers import AutoCompleteToolDocumentSerializer
 from .serializers import ToolDocumentSerializer
 
 
@@ -84,17 +85,42 @@ def build_term_facet_options(term, missing="--", multi=False):
         exclude=True,
     ),
     list=extend_schema(
+        description=_("""Autocomplete for tools."""),
+    ),
+)
+class AutoCompleteToolDocumentViewSet(BaseDocumentViewSet):
+    """Auto-complete Full Text Search."""
+
+    document = ToolDocument
+    serializer_class = AutoCompleteToolDocumentSerializer
+    pagination_class = None
+    document_uid_field = "name"
+    lookup_field = "name"
+    filter_backends = [QueryStringFilterBackend]
+    simple_query_string_search_fields = (
+        "name",
+        "title",
+    )
+    simple_query_string_options = {
+        "lenient": True,
+        "quote_field_suffix": ".exact",
+        "all_fields": True,
+    }
+
+
+@extend_schema_view(
+    retrieve=extend_schema(
+        exclude=True,
+    ),
+    list=extend_schema(
         description=_("""Faceted search for tools."""),
     ),
 )
-class ToolDocumentViewSet(BaseDocumentViewSet):
+class ToolDocumentViewSet(AutoCompleteToolDocumentViewSet):
     """Full text search."""
 
-    document = ToolDocument
     serializer_class = ToolDocumentSerializer
     pagination_class = Pagination
-    document_uid_field = "name"
-    lookup_field = "name"
     filter_backends = [
         QueryStringFilterBackend,
         filter_backends.DefaultOrderingFilterBackend,
@@ -105,11 +131,7 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
     # Copy searchable fields list from document so we don't have two lists to
     # keep in sync between the index and this view.
     simple_query_string_search_fields = tuple(ToolDocument.Django.fields)
-    simple_query_string_options = {
-        "lenient": True,
-        "quote_field_suffix": ".exact",
-        "all_fields": True,
-    }
+
     filter_fields = {
         "name": {
             "field": "name",

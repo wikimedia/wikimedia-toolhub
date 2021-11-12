@@ -48,6 +48,43 @@
 			deletable-chips
 			small-chips
 		/>
+		<v-combobox
+			v-else-if="widget === 'multi-select-tool'"
+			v-model="model"
+			:loading="toolAutoCompleteLoading"
+			:search-input.sync="toolAutoComplete"
+			:menu-props="menuProps"
+			:items="getToolAutoCompleteResultsArr()"
+			:label="ui.label"
+			:rules="validationRules"
+			:prepend-icon="ui.icon"
+			:hint="schema.description"
+			hide-selected
+			multiple
+			deletable-chips
+			small-chips
+		>
+			<template #item="data">
+				<v-list-item-content>
+					<v-list-item-title>
+						<dl class="row ma-0">
+							<dt class="me-1">{{ data.item }}</dt>
+							<dd>({{ toolAutoCompleteResults[data.item] }})</dd>
+						</dl>
+					</v-list-item-title>
+				</v-list-item-content>
+			</template>
+
+			<template v-if="!toolAutoCompleteLoading" #no-data>
+				<v-list-item>
+					<v-list-item-content>
+						<v-list-item-title>
+							{{ $t( 'tool-not-found', [ toolAutoComplete ] ) }}
+						</v-list-item-title>
+					</v-list-item-content>
+				</v-list-item>
+			</template>
+		</v-combobox>
 		<v-checkbox
 			v-else-if="widget === 'checkbox'"
 			v-model="model"
@@ -130,6 +167,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import urlRegex from '@/plugins/url-regex';
 import patternRegexRule from '@/plugins/pattern-regex';
 
@@ -199,6 +237,22 @@ export const methods = {
 			// TODO: make this configurable
 			data.push( { url: '', language: this.$i18n.locale } );
 		}
+	},
+	performToolAutoComplete( v ) {
+		this.toolAutoCompleteLoading = true;
+		const payload = {
+			query: v
+		};
+		this.$store.dispatch( 'search/autoCompleteTools', payload ).finally(
+			() => {
+				this.toolAutoCompleteLoading = false;
+			}
+		);
+	},
+	getToolAutoCompleteResultsArr() {
+		return this.toolAutoCompleteResults ?
+			Object.keys( this.toolAutoCompleteResults ) :
+			[];
 	}
 };
 
@@ -220,7 +274,9 @@ export default {
 		}
 	},
 	data: () => ( {
-		model: null
+		model: null,
+		toolAutoCompleteLoading: false,
+		toolAutoComplete: null
 	} ),
 	computed: {
 		/**
@@ -242,6 +298,9 @@ export default {
 				return this.schema.maxLength > 2047 ? 'multiline' : 'text';
 			}
 			return this.schema.type;
+		},
+		menuProps() {
+			return !this.toolAutoComplete ? { value: false } : {};
 		},
 		validationRules() {
 			const schema = this.schema;
@@ -266,10 +325,20 @@ export default {
 				rules.push( ( v ) => !!v || this.$t( 'required-field' ) );
 			}
 			return rules;
-		}
+		},
+		...mapState( 'search', {
+			toolAutoCompleteResults: 'toolAutoCompleteResults'
+		} )
 	},
 	methods,
 	watch: {
+		toolAutoComplete: {
+			handler( val ) {
+				if ( val && val !== this.model ) {
+					this.performToolAutoComplete( val );
+				}
+			}
+		},
 		model: {
 			handler( newVal ) {
 				this.$emit( 'input', newVal );

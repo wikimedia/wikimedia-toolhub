@@ -54,6 +54,54 @@ export const getters = { };
 
 export const actions = {
 	/**
+	 * autocomplete for tools.
+	 *
+	 * @param {Object} context - Vuex context
+	 * @param {Object} payload
+	 * @param {string} payload.query - user provided query
+	 * @param {string} payload.ordering - Sort order
+	 * @return {Promise}
+	 */
+	autoCompleteTools( context, payload ) {
+		const params = [
+			[ 'q', payload.query || null ]
+		];
+		const cleanParams = new URLSearchParams(
+			params.filter( ( value ) => {
+				const val = value[ 1 ];
+				return val !== null && val !== undefined;
+			} )
+		);
+		const request = {
+			url: '/api/autocomplete/tools/?' + cleanParams.toString()
+		};
+		return makeApiCall( context, request ).then(
+			( response ) => {
+				const results = {};
+				if ( Array.isArray( response.body ) ) {
+					response.body.forEach( ( tool ) => {
+						results[ tool.name ] = tool.title;
+					} );
+				}
+				context.commit( 'onToolsAutoCompleteResults', results );
+			},
+			( failure ) => {
+				context.commit( 'onToolsAutoCompleteResults', {} );
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
+	},
+
+	/**
 	 * Search for tools.
 	 *
 	 * @param {Object} context - Vuex context
@@ -114,6 +162,15 @@ export const mutations = {
 	onToolsResults( state, { results, qs } ) {
 		state.toolsResponse = results;
 		state.toolsQueryParams = qs;
+	},
+	/**
+	 * Store /api/autocomplete/tools/ results.
+	 *
+	 * @param {Object} state - Vuex state tree.
+	 * @param {Object} payload - mutation payload.
+	 */
+	onToolsAutoCompleteResults( state, payload ) {
+		state.toolAutoCompleteResults = payload;
 	}
 };
 
@@ -121,7 +178,8 @@ export default {
 	namespaced: true,
 	state: {
 		toolsQueryParams: null,
-		toolsResponse: {}
+		toolsResponse: {},
+		toolAutoCompleteResults: {}
 	},
 	getters: getters,
 	actions: actions,

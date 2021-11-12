@@ -44,6 +44,11 @@ class Router(drf_routers.DefaultRouter):
 
 root = Router()
 root.register("auditlogs", auditlog_views.LogEntryViewSet)
+root.register(
+    "autocomplete/tools",
+    search_views.AutoCompleteToolDocumentViewSet,
+    basename="autocomplete-tools",
+)
 root.register("crawler/runs", crawler_views.RunViewSet)
 root.register("crawler/urls", crawler_views.UrlViewSet)
 root.register("groups", user_views.GroupViewSet)

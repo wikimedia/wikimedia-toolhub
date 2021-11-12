@@ -126,7 +126,7 @@ export default {
 					label: this.$t( 'icon' )
 				},
 				tools: {
-					widget: 'multi-select',
+					widget: 'multi-select-tool',
 					icon: 'mdi-tools',
 					label: this.$t( 'lists-create-tools' ),
 					required: true

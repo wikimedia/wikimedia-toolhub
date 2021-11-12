@@ -32,7 +32,9 @@ class ToolDocumentSerializer(DocumentSerializer):
         """Decorate fields with drf_spectacular annotations."""
         field_mapping = super().get_fields()
         for name, field in self.Meta.document._fields.items():
-            if hasattr(field, "_spectacular_annotation"):
+            if name in field_mapping and hasattr(
+                field, "_spectacular_annotation"
+            ):
                 annotations = field._spectacular_annotation  # noqa: W0212
                 field_mapping[  # noqa: W0212
                     name
@@ -45,3 +47,14 @@ class ToolDocumentSerializer(DocumentSerializer):
         document = ToolDocument
         fields = ToolDocument.Django.fields.copy()
         fields.append("created_by")
+
+
+@doc(_("Tool autocomplete results"))
+class AutoCompleteToolDocumentSerializer(ToolDocumentSerializer):
+    """Tool autocomplete results."""
+
+    class Meta:
+        """Configure serializer."""
+
+        document = ToolDocument
+        fields = ["name", "title"]
