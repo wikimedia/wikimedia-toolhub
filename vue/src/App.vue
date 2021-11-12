@@ -24,7 +24,7 @@
 			dark
 			:floating="true"
 			:permanent="$vuetify.breakpoint.mdAndUp"
-			:expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer"
+			:expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer && !prefersReducedMotion"
 			:right="$vuetify.rtl"
 		>
 			<v-list-item class="ms-2 mt-1 ps-1">
@@ -192,6 +192,7 @@ export default {
 					href: 'https://meta.wikimedia.org/wiki/Toolhub'
 				}
 			],
+			prefersReducedMotion: window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches,
 			vcsLink: 'https://gerrit.wikimedia.org/g/wikimedia/toolhub/+/',
 			version: process.env.VUE_APP_VERSION
 		};
