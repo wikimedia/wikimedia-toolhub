@@ -9,10 +9,17 @@ services:
     # T295318: run container as local user to allow Linux mount writes
     user: "${LOCAL_UID}:${LOCAL_GID}"
     working_dir: /srv/app
-    command: >
-      /srv/dockerize/bin/dockerize -wait tcp://db:3306
-      poetry run
-      python3 manage.py runserver --nostatic 0.0.0.0:8000
+    command:
+      # T295318: make a $HOME as $LOCAL_UID user so that python has a place
+      # to cache files with the ownership it expects.
+      - bash
+      - -c
+      - >-
+        mkdir -p /tmp/runtime-home &&
+        export HOME=/tmp/runtime-home &&
+        /srv/dockerize/bin/dockerize -wait tcp://db:3306
+        poetry run
+        python3 manage.py runserver --nostatic 0.0.0.0:8000
     environment:
       - DJANGO_SECRET_KEY
       - DJANGO_DEBUG

@@ -123,6 +123,7 @@ test-python: test-python-lint test-python-unit
 test-python-lint:  ## Run linter checks for Python code
 	@echo "== Lint Python =="
 	docker-compose exec web sh -c " \
+		export HOME=/tmp/runtime-home; \
 		poetry check \
 		&& poetry run flakehell lint \
 		&& poetry run black --check --diff . \
@@ -133,6 +134,7 @@ test-python-lint:  ## Run linter checks for Python code
 test-python-unit:  ## Run unit tests for Python code
 	@echo "== Test Python =="
 	docker-compose exec web sh -c " \
+		export HOME=/tmp/runtime-home; \
 		export DJANGO_SECRET_KEY='this is not really a secret'; \
 		export DB_ENGINE='django.db.backends.sqlite3'; \
 		export DB_NAME=':memory:'; \
@@ -149,12 +151,18 @@ test-nodejs: test-nodejs-lint test-nodejs-unit
 
 test-nodejs-lint:  ## Run linter checks for nodejs code
 	@echo "== Lint Nodejs =="
-	docker-compose exec nodejs npm run-script lint
+	docker-compose exec nodejs sh -c " \
+		export HOME=/tmp/runtime-home; \
+		npm run-script lint \
+	"
 .PHONY: test-nodejs-lint
 
 test-nodejs-unit:  ## Run unit tests for nodejs code
 	@echo "== Test Nodejs =="
-	docker-compose exec nodejs npm run-script unit
+	docker-compose exec nodejs sh -c " \
+		export HOME=/tmp/runtime-home; \
+		npm run-script unit \
+	"
 .PHONY: test-nodejs-unit
 
 schemas:  ## Create/update versioned json schema documents
