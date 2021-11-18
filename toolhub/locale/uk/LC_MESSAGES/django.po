@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-10-28 11:14:38+0000\n"
-"X-POT-Import-Date: 2021-10-13 20:30:26+0000\n"
+"PO-Revision-Date: 2021-11-18 12:16:33+0000\n"
+"X-POT-Import-Date: 2021-11-18 01:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: uk\n"
@@ -542,7 +542,15 @@ msgstr "Поле для використання при замовленні р�
 msgid "Tool search results"
 msgstr "Результати пошуку інструментів"
 
-#: toolhub/apps/search/views.py:87
+#: toolhub/apps/search/serializers.py:52
+msgid "Tool autocomplete results"
+msgstr "Результати автозаповнення інструмента"
+
+#: toolhub/apps/search/views.py:88
+msgid "Autocomplete for tools."
+msgstr "Автозаповнення для інструментів."
+
+#: toolhub/apps/search/views.py:116
 msgid "Faceted search for tools."
 msgstr "Гранчастий пошук інструментів."
 
@@ -550,168 +558,168 @@ msgstr "Гранчастий пошук інструментів."
 msgid "Toolinfo"
 msgstr "Toolinfo"
 
-#: toolhub/apps/toolinfo/models.py:301
+#: toolhub/apps/toolinfo/models.py:305
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
 msgstr "Зміна %(key)s після початкового створення об’єкта не допускається"
 
-#: toolhub/apps/toolinfo/models.py:330
+#: toolhub/apps/toolinfo/models.py:339
 msgid "web app"
 msgstr "веб-додаток"
 
-#: toolhub/apps/toolinfo/models.py:331
+#: toolhub/apps/toolinfo/models.py:340
 msgid "desktop app"
 msgstr "настільний додаток"
 
-#: toolhub/apps/toolinfo/models.py:332
+#: toolhub/apps/toolinfo/models.py:341
 msgid "bot"
 msgstr "бот"
 
-#: toolhub/apps/toolinfo/models.py:333
+#: toolhub/apps/toolinfo/models.py:342
 msgid "gadget"
 msgstr "гаджет"
 
-#: toolhub/apps/toolinfo/models.py:334
+#: toolhub/apps/toolinfo/models.py:343
 msgid "user script"
 msgstr "скрипт користувача"
 
-#: toolhub/apps/toolinfo/models.py:335
+#: toolhub/apps/toolinfo/models.py:344
 msgid "command line tool"
 msgstr "інструмент командного рядка"
 
-#: toolhub/apps/toolinfo/models.py:336
+#: toolhub/apps/toolinfo/models.py:345
 msgid "coding framework"
 msgstr "фреймворк кодування"
 
-#: toolhub/apps/toolinfo/models.py:337
+#: toolhub/apps/toolinfo/models.py:346
 msgid "other"
 msgstr "інші"
 
-#: toolhub/apps/toolinfo/models.py:343
+#: toolhub/apps/toolinfo/models.py:352
 msgid "crawler"
 msgstr "crawler"
 
-#: toolhub/apps/toolinfo/models.py:344
+#: toolhub/apps/toolinfo/models.py:353
 msgid "api"
 msgstr "api"
 
-#: toolhub/apps/toolinfo/models.py:352
+#: toolhub/apps/toolinfo/models.py:361
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
 msgstr "Унікальний ідентифікатор цього інструменту. Повинен бути унікальним для кожного інструменту. Рекомендується додавати префікси до назв інструментів, щоб зменшити ризик зіткнень."
 
-#: toolhub/apps/toolinfo/models.py:360
+#: toolhub/apps/toolinfo/models.py:369
 msgid "Human readable tool name. Recommended limit of 25 characters."
 msgstr "Зрозуміла для людини назва інструменту. Рекомендована межа — 25 символів."
 
-#: toolhub/apps/toolinfo/models.py:366
+#: toolhub/apps/toolinfo/models.py:375
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
 msgstr "Більш довгий опис інструменту. Рекомендована довжина опису — 3-5 речень."
 
-#: toolhub/apps/toolinfo/models.py:374
+#: toolhub/apps/toolinfo/models.py:383
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
 msgstr "Пряме посилання на інструмент або на інструкції щодо використання або встановлення інструменту."
 
-#: toolhub/apps/toolinfo/models.py:389
+#: toolhub/apps/toolinfo/models.py:398
 msgid "The primary tool developer."
 msgstr "Основний розробник інструментів."
 
-#: toolhub/apps/toolinfo/models.py:395
+#: toolhub/apps/toolinfo/models.py:404
 msgid "A link to the repository where the tool code is hosted."
 msgstr "Посилання на сховище, де розміщено код інструменту."
 
-#: toolhub/apps/toolinfo/models.py:402
+#: toolhub/apps/toolinfo/models.py:411
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
 msgstr "Довший за повну назву, але коротший за опис. Він повинен додати до заголовка додатковий контекст."
 
-#: toolhub/apps/toolinfo/models.py:411
+#: toolhub/apps/toolinfo/models.py:420
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
 msgstr "Ідентифікатор проєкту на OpenHub. Враховуючи URL-адресу https://openhub.net/p/foo, ідентифікатор проєкту — `foo`."
 
-#: toolhub/apps/toolinfo/models.py:420
+#: toolhub/apps/toolinfo/models.py:429
 msgid "Alternate links to the tool or install documentation in different natural languages."
 msgstr "Альтернативні посилання на інструмент або інсталяція документації різними природними мовами."
 
-#: toolhub/apps/toolinfo/models.py:431
+#: toolhub/apps/toolinfo/models.py:440
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
 msgstr "Якщо інструментом є бот, ім’я користувача Вікімедіа бота. Не включайте префікси «Користувач:» або подібні до них."
 
-#: toolhub/apps/toolinfo/models.py:438
+#: toolhub/apps/toolinfo/models.py:447
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
 msgstr "Якщо це правда, використання цього інструменту офіційно не рекомендується. Параметр «replace_by» може бути використаний для визначення заміни."
 
-#: toolhub/apps/toolinfo/models.py:448
+#: toolhub/apps/toolinfo/models.py:457
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
 msgstr "Якщо цей інструмент не підтримується, цей параметр слід використовувати для посилання на інструмент заміни."
 
-#: toolhub/apps/toolinfo/models.py:455
+#: toolhub/apps/toolinfo/models.py:464
 msgid "If true, this tool is unstable and can change or go offline at any time."
 msgstr "Якщо це правда, цей інструмент є нестабільним і в будь-який час може змінитись або перейти в автономний режим."
 
-#: toolhub/apps/toolinfo/models.py:463
+#: toolhub/apps/toolinfo/models.py:472
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
 msgstr "Рядок або масив рядків, що описують вікі, на яких можна використовувати цей інструмент. Використовуйте імена хостів, такі як `zh.wiktionary.org`. Використовуйте зірочки як підстановні знаки. Наприклад, `*.wikisource.org` означає, що «цей інструмент працює на всіх вікіджерелах Вікіджерел». `*` означає 'це працює на всіх вікі, включаючи Вікімедіа.'"
 
-#: toolhub/apps/toolinfo/models.py:481
+#: toolhub/apps/toolinfo/models.py:490
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
 msgstr "Посилання на сторінку опису файлу Вікімедіа для піктограми, який зображує інструмент."
 
-#: toolhub/apps/toolinfo/models.py:490
+#: toolhub/apps/toolinfo/models.py:499
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
 msgstr "Код інструменту доступний під ліцензією на програмне забезпечення. Використовуйте стандартний ідентифікатор ліцензії SPDX, наприклад «GPL-3.0 або пізніша»."
 
-#: toolhub/apps/toolinfo/models.py:498
+#: toolhub/apps/toolinfo/models.py:507
 msgid "Organization(s) that sponsored the tool's development."
 msgstr "Організації, які спонсорували розробку інструменту."
 
-#: toolhub/apps/toolinfo/models.py:505
+#: toolhub/apps/toolinfo/models.py:514
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
 msgstr "Мова(и) інтерфейсу інструменту перекладена. Використовуйте мовні коди ISO 639, такі як `zh` та` scn`. Якщо не визначено, інструмент доступний лише англійською мовою."
 
-#: toolhub/apps/toolinfo/models.py:516
+#: toolhub/apps/toolinfo/models.py:525
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
 msgstr "Рядок або масив рядків із переліком технологій (мови програмування, рамки розробки тощо), що використовуються при створенні інструменту."
 
-#: toolhub/apps/toolinfo/models.py:528
+#: toolhub/apps/toolinfo/models.py:537
 msgid "The manner in which the tool is used. Select one from the list of options."
 msgstr "Спосіб використання інструменту. Виберіть один зі списку опцій."
 
-#: toolhub/apps/toolinfo/models.py:537
+#: toolhub/apps/toolinfo/models.py:546
 msgid "A link to the tool's API, if available."
 msgstr "Посилання на API інструменту, якщо воно є."
 
-#: toolhub/apps/toolinfo/models.py:543
+#: toolhub/apps/toolinfo/models.py:552
 msgid "A link to the tool's developer documentation, if available."
 msgstr "Посилання на документацію розробника інструменту, якщо вона є."
 
-#: toolhub/apps/toolinfo/models.py:551
+#: toolhub/apps/toolinfo/models.py:560
 msgid "A link to the tool's user documentation, if available."
 msgstr "Посилання на документацію користувача інструменту, якщо вона є."
 
-#: toolhub/apps/toolinfo/models.py:559
+#: toolhub/apps/toolinfo/models.py:568
 msgid "A link to location where the tool's user can leave feedback."
 msgstr "Посилання на місце, де користувач інструменту може залишити відгук."
 
-#: toolhub/apps/toolinfo/models.py:567
+#: toolhub/apps/toolinfo/models.py:576
 msgid "A link to the tool's privacy policy, if available."
 msgstr "Посилання на політику конфіденційності інструменту, якщо воно є."
 
-#: toolhub/apps/toolinfo/models.py:576
+#: toolhub/apps/toolinfo/models.py:585
 msgid "A link to the tool's translation interface."
 msgstr "Посилання на інтерфейс перекладу інструменту."
 
-#: toolhub/apps/toolinfo/models.py:584
+#: toolhub/apps/toolinfo/models.py:593
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
 msgstr "Посилання на інструмент відстеження помилок на GitHub, Bitbucket, Phabricator тощо."
 
-#: toolhub/apps/toolinfo/models.py:593
+#: toolhub/apps/toolinfo/models.py:602
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
 msgstr "URI, що ідентифікує jsonschema для цього запису toolinfo.json. Це має бути короткий uri, що містить лише ім’я та версію в кінці шляху URI."
 
-#: toolhub/apps/toolinfo/models.py:604
+#: toolhub/apps/toolinfo/models.py:613
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
 msgstr "Мова, якою написано цей запис інформаційної програми. Якщо не встановлено, значенням за замовчуванням є англійська. Використовуйте мовні коди ISO 639."
 
-#: toolhub/apps/toolinfo/models.py:614
+#: toolhub/apps/toolinfo/models.py:623
 msgid "Origin of this tool record."
 msgstr "Походження цього запису інструменту."
 
@@ -1048,15 +1056,15 @@ msgstr "Опис змін, які ви вносите."
 msgid "Comment describing an action."
 msgstr "Коментар, що описує дію."
 
-#: toolhub/settings.py:439
+#: toolhub/settings.py:447
 msgid "Read scope"
 msgstr "Прочитати область застосування"
 
-#: toolhub/settings.py:440
+#: toolhub/settings.py:448
 msgid "Write scope"
 msgstr "Написати область застосування"
 
-#: toolhub/settings.py:469
+#: toolhub/settings.py:477
 #, optional
 msgid "Toolhub API"
 msgstr ""
@@ -1104,7 +1112,7 @@ msgstr "Дата та час останнього запуску сканера.
 msgid "Number of tools added or updated in the most recent crawler run."
 msgstr "Кількість інструментів, доданих або оновлених під час останнього запуску сканера."
 
-#: vue/templates/vue/base.html:20
+#: vue/templates/vue/base.html:21
 msgid "Toolhub's user interface requires JavaScript to be enabled."
 msgstr "Інтерфейс користувача Toolhub вимагає включення JavaScript."
 
@@ -1112,7 +1120,7 @@ msgstr "Інтерфейс користувача Toolhub вимагає вкл�
 msgid "LOADING"
 msgstr "ЗАВАНТАЖЕННЯ"
 
-#: vue/views.py:41
+#: vue/views.py:47
 msgid "Get information used on the Toolhub Home view."
 msgstr "Отримати інформацію, що використовується у домашньому поданні Toolhub."
 
