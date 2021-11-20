@@ -3,11 +3,11 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
-
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
 /* eslint-disable no-unused-expressions */
 
+import { asUrl } from '@/helpers/casl';
 import {
 	actions,
 	mutations
@@ -44,14 +44,23 @@ describe( 'store/crawler', () => {
 		]
 	};
 
+	const testUrlObj = crawlerUrlsResponse.results[ 0 ];
+
 	describe( 'actions', () => {
 		const commit = sinon.spy();
-		const state = {};
-		const rootState = { locale: { locale: 'en' } };
-		const context = { commit, state, rootState };
+		const rootState = {
+			locale: { locale: 'en' },
+			user: { user: { is_authenticated: true, csrf_token: 'abcd' } }
+		};
+		const context = { commit, rootState };
+
 		const stubThis = {
 			_vm: {
-				$notify: { error: sinon.stub() }
+				$notify: {
+					info: sinon.stub(),
+					error: sinon.stub(),
+					success: sinon.stub()
+				}
 			}
 		};
 		let http = 'func';
@@ -144,6 +153,150 @@ describe( 'store/crawler', () => {
 			} );
 		} );
 
+		describe( 'registerUrl', () => {
+
+			const url = '/api/crawler/urls/';
+
+			const response = {
+				ok: true,
+				status: 201,
+				url,
+				headers: { 'Content-type': 'application/json' },
+				body: JSON.stringify( testUrlObj )
+			};
+
+			it( 'should return when user is not logged in', async () => {
+
+				http.resolves( response );
+				context.rootState.user.user.is_authenticated = false;
+				await actions.registerUrl( context, url );
+				expect( http ).to.not.have.been.called;
+				context.rootState.user.user.is_authenticated = true;
+			} );
+
+			it( 'should log success', async () => {
+				http.resolves( response );
+				const registerUrl = actions.registerUrl.bind( stubThis );
+
+				await registerUrl( context, url );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledOnce;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.success ).to.have.been.called;
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( { errors: { error1: { field: 'Boom', message: 'Boom Boom' } } } );
+				const registerUrl = actions.registerUrl.bind( stubThis );
+
+				await registerUrl( context, url );
+
+				expect( http ).to.have.been.calledOnce;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
+		} );
+
+		describe( 'unregisterUrl', () => {
+
+			const url = '/api/crawler/urls/' + testUrlObj.id + '/';
+
+			const response = {
+				ok: true,
+				status: 201,
+				url,
+				headers: { 'Content-type': 'application/json' },
+				body: {}
+			};
+
+			it( 'should return when user is not logged in', async () => {
+
+				http.resolves( response );
+				context.rootState.user.user.is_authenticated = false;
+				await actions.unregisterUrl( context, url );
+				expect( http ).to.not.have.been.called;
+				context.rootState.user.user.is_authenticated = true;
+			} );
+
+			it( 'should log success', async () => {
+				http.resolves( response );
+				const unregisterUrl = actions.unregisterUrl.bind( stubThis );
+
+				await unregisterUrl( context, url );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledOnce;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.success ).to.have.been.called;
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( { errors: { error1: { field: 'Boom', message: 'Boom Boom' } } } );
+				const unregisterUrl = actions.unregisterUrl.bind( stubThis );
+
+				await unregisterUrl( context, url );
+
+				expect( http ).to.have.been.calledOnce;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
+		} );
+
+		describe( 'getUrlsCreatedByUser', () => {
+			const testPage = 1;
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/crawler/urls/self/?page=' + testPage,
+				headers: {
+					'Content-type': 'application/json'
+				},
+				body: crawlerUrlsResponse
+			};
+
+			it( 'should return when user is not logged in', async () => {
+				http.resolves( response );
+				context.rootState.user.user.is_authenticated = false;
+				const getUrlsCreatedByUser = actions.getUrlsCreatedByUser.bind( stubThis );
+				await getUrlsCreatedByUser( context, testPage );
+
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.info ).to.have.been.called;
+				expect( http ).to.not.have.been.called;
+				context.rootState.user.user.is_authenticated = true;
+			} );
+
+			it( 'should fetch urls created by user', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/crawler/urls/self/?page=' + testPage
+				}, context );
+				http.resolves( response );
+
+				await actions.getUrlsCreatedByUser( context, testPage );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'USER_CREATED_URLS', crawlerUrlsResponse
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( { errors: { error1: { field: 'Boom', message: 'Boom Boom' } } } );
+				const getUrlsCreatedByUser = actions.getUrlsCreatedByUser.bind( stubThis );
+				await getUrlsCreatedByUser( context, testPage );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
+		} );
+
 	} );
 
 	describe( 'mutations', () => {
@@ -174,6 +327,30 @@ describe( 'store/crawler', () => {
 			mutations.CRAWLER_URLS( state, urls );
 			expect( state.crawlerUrls ).to.equal( urls.results );
 			expect( state.numCrawlerUrls ).to.equal( urls.count );
+		} );
+
+		it( 'should store, register, and unregister user created urls', () => {
+			const state = {
+				userCreatedUrls: [],
+				numUserCreatedUrls: 0
+			};
+
+			const urls = {
+				results: crawlerUrlsResponse.results,
+				count: crawlerUrlsResponse.count
+			};
+
+			mutations.USER_CREATED_URLS( state, urls );
+			expect( state.userCreatedUrls ).to.eql( asUrl( urls.results ) );
+			expect( state.numUserCreatedUrls ).to.equal( urls.count );
+
+			mutations.REGISTER_URL( state, testUrlObj );
+			expect( state.userCreatedUrls[ urls.count ] ).to.eql( asUrl( testUrlObj ) );
+			expect( state.numUserCreatedUrls ).to.equal( urls.count + 1 );
+
+			mutations.UNREGISTER_URL( state, testUrlObj.url );
+			expect( state.userCreatedUrls[ urls.count ] ).to.not.eql( asUrl( testUrlObj ) );
+			expect( state.numUserCreatedUrls ).to.equal( urls.count );
 		} );
 	} );
 

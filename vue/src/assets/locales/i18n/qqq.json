@@ -287,6 +287,8 @@
 	"tools-lastupdated": "Crawler run statistics label. Parameters:\n* $1 - calendar date",
 	"tool-not-found": "Error message shown when a tool is not found. Parameters:\n* $1 - tool name requested",
 	"toolrevisioninfo": "Tool revision info. Parameters:\n* $1 - timestamp\n* $2 - username\n* $3 - comment",
+	"toolurlregistrationsuccess": "Success message for URL registration request",
+	"toolurlunregistrationsuccess": "Succeess message for URL unregistration request",
 	"translateurl": "Label for translate url for a tool",
 	"undo": "Link label for tool history undo operation",
 	"unpatrolled": "Aria label for tool history unpatrolled edits",

@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import makeApiCall from '@/plugins/swagger.js';
+import { makeApiCall, getFailurePayload } from '@/plugins/swagger';
 import i18n from '@/plugins/i18n';
+import { asUrl } from '@/helpers/casl';
 
 Vue.use( Vuex );
 
@@ -40,6 +41,92 @@ export const actions = {
 				this._vm.$notify.error( i18n.t( 'apierror', [ explanation ] ) );
 			}
 		);
+	},
+	registerUrl( context, url ) {
+		if ( !context.rootState.user.user.is_authenticated ) {
+			return;
+		}
+		const request = {
+			url: '/api/crawler/urls/',
+			method: 'POST',
+			body: JSON.stringify( { url: url } )
+		};
+		makeApiCall( context, request ).then(
+			( success ) => {
+				context.commit( 'REGISTER_URL', success.body );
+				this._vm.$notify.success( i18n.t( 'toolurlregistrationsuccess' ) );
+			},
+			( failure ) => {
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
+	},
+	unregisterUrl( context, urlObj ) {
+		if ( !context.rootState.user.user.is_authenticated ) {
+			return;
+		}
+		const request = {
+			url: '/api/crawler/urls/' + urlObj.id + '/',
+			method: 'DELETE'
+		};
+
+		makeApiCall( context, request ).then(
+			() => {
+				context.commit( 'UNREGISTER_URL', urlObj.url );
+				this._vm.$notify.success( i18n.t( 'toolurlunregistrationsuccess' ) );
+			},
+			( failure ) => {
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
+	},
+	getUrlsCreatedByUser( context, page ) {
+		if ( !context.rootState.user.user.is_authenticated ) {
+			this._vm.$notify.info(
+				i18n.t( 'addremovetools-nologintext' )
+			);
+			return;
+		}
+		const request = {
+			url: '/api/crawler/urls/self/?page=' + page,
+			method: 'GET'
+		};
+
+		makeApiCall( context, request ).then(
+			( success ) => {
+				context.commit( 'USER_CREATED_URLS', success.body );
+			},
+			( failure ) => {
+				const data = getFailurePayload( failure );
+
+				for ( const err in data.errors ) {
+					this._vm.$notify.error(
+						i18n.t( 'apierrors', [
+							data.errors[ err ].field,
+							data.errors[ err ].message
+						] )
+					);
+				}
+			}
+		);
 	}
 };
 
@@ -52,6 +139,21 @@ export const mutations = {
 	CRAWLER_URLS( state, urls ) {
 		state.crawlerUrls = urls.results;
 		state.numCrawlerUrls = urls.count;
+	},
+	USER_CREATED_URLS( state, urls ) {
+		state.userCreatedUrls = asUrl( urls.results );
+		state.numUserCreatedUrls = urls.count;
+	},
+	REGISTER_URL( state, url ) {
+		state.userCreatedUrls.push( asUrl( url ) );
+		state.numUserCreatedUrls += 1;
+	},
+	UNREGISTER_URL( state, url ) {
+		const index = state.userCreatedUrls.findIndex(
+			( obj ) => obj.url === url
+		);
+		state.userCreatedUrls.splice( index, 1 );
+		state.numUserCreatedUrls -= 1;
 	}
 };
 
@@ -61,6 +163,8 @@ export default {
 		crawlerHistory: [],
 		crawlerUrls: [],
 		lastCrawlerRun: [],
+		userCreatedUrls: [],
+		numUserCreatedUrls: 0,
 		numCrawlerRuns: 0,
 		numCrawlerUrls: 0
 	},

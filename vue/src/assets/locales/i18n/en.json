@@ -261,6 +261,8 @@
 	"toolcreationcomment": "Tool with title '$1' created",
 	"tooleditingsuccess": "Success! '$1' tool edited.",
 	"tools-edit": "Edit Tool",
+	"toolurlregistrationsuccess": "Tool URL successfully registered",
+	"toolurlunregistrationsuccess": "Tool URL successfully unregistered",
 	"tools-history": "Tool history",
 	"toolhistory-pagesubtitle": "View history for this tool",
 	"toolhub": "Toolhub",

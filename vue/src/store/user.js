@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { makeApiCall, getFailurePayload } from '@/plugins/swagger';
 import i18n from '@/plugins/i18n';
-import { asUrl } from '@/helpers/casl';
 
 Vue.use( Vuex );
 
@@ -61,79 +60,6 @@ export const actions = {
 		return makeApiCall( context, request ).then(
 			( success ) => {
 				context.commit( 'USERS', success.body );
-			},
-			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
-			}
-		);
-	},
-	registerUrl( context, url ) {
-		if ( !context.state.user.is_authenticated ) {
-			return;
-		}
-		const request = {
-			url: '/api/crawler/urls/',
-			method: 'POST',
-			body: JSON.stringify( { url: url } )
-		};
-
-		makeApiCall( context, request ).then(
-			( success ) => {
-				context.commit( 'REGISTER_URL', success.body );
-			},
-			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
-			}
-		);
-	},
-	unregisterUrl( context, urlObj ) {
-		if ( !context.state.user.is_authenticated ) {
-			return;
-		}
-		const request = {
-			url: '/api/crawler/urls/' + urlObj.id + '/',
-			method: 'DELETE'
-		};
-
-		makeApiCall( context, request ).then(
-			() => {
-				context.commit( 'UNREGISTER_URL', urlObj.url );
-			},
-			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
-			}
-		);
-	},
-	getUrlsCreatedByUser( context, page ) {
-		if ( !context.state.user.is_authenticated ) {
-			this._vm.$notify.info(
-				i18n.t( 'addremovetools-nologintext' )
-			);
-			return;
-		}
-		const request = {
-			url: '/api/crawler/urls/self/?page=' + page,
-			method: 'GET'
-		};
-
-		makeApiCall( context, request ).then(
-			( success ) => {
-				context.commit( 'USER_CREATED_URLS', success.body );
 			},
 			( failure ) => {
 				const explanation = ( 'statusCode' in failure ) ?
@@ -279,21 +205,6 @@ export const mutations = {
 		state.users = users.results;
 		state.numUsers = users.count || users.length;
 	},
-	USER_CREATED_URLS( state, urls ) {
-		state.userCreatedUrls = asUrl( urls.results );
-		state.numUserCreatedUrls = urls.count;
-	},
-	REGISTER_URL( state, url ) {
-		state.userCreatedUrls.push( asUrl( url ) );
-		state.numUserCreatedUrls += 1;
-	},
-	UNREGISTER_URL( state, url ) {
-		const index = state.userCreatedUrls.findIndex(
-			( obj ) => obj.url === url
-		);
-		state.userCreatedUrls.splice( index, 1 );
-		state.numUserCreatedUrls -= 1;
-	},
 	AUTHTOKEN( state, token ) {
 		state.authtoken = token;
 	}
@@ -310,8 +221,6 @@ export default {
 		},
 		users: [],
 		numUsers: 0,
-		userCreatedUrls: [],
-		numUserCreatedUrls: 0,
 		authtoken: null
 	},
 	actions: actions,

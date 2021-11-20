@@ -122,15 +122,7 @@ export default {
 		};
 	},
 	computed: {
-		...mapState( 'user', [
-			'userCreatedUrls',
-			'numUserCreatedUrls'
-		] ),
-
-		isUserAuthenticated() {
-			return this.$store.state.user.user.is_authenticated;
-		},
-
+		...mapState( 'crawler', [ 'userCreatedUrls', 'numUserCreatedUrls' ] ),
 		headers() {
 			return [
 				{
@@ -159,33 +151,32 @@ export default {
 				return;
 			}
 
-			this.$store.dispatch( 'user/registerUrl', url );
+			this.$store.dispatch( 'crawler/registerUrl', url );
 			this.fileUrl = '';
 			this.$refs.url.reset();
 		},
 		unregisterUrl( url ) {
-			this.$store.dispatch( 'user/unregisterUrl', url );
+			this.$store.dispatch( 'crawler/unregisterUrl', url );
 		},
 		goToNextPage( page ) {
 			this.page = page;
 			this.getUrlsCreatedByUser();
 		},
 		getUrlsCreatedByUser() {
-			this.$store.dispatch( 'user/getUrlsCreatedByUser', this.page );
+			this.$store.dispatch( 'crawler/getUrlsCreatedByUser', this.page );
 		},
 		customSortUrls( items, index, isDesc ) {
 			return customSort( items, index, isDesc );
 		}
 	},
-	watch: {
-		isUserAuthenticated( value ) {
-			if ( value ) {
-				this.getUrlsCreatedByUser();
-			}
-		}
-	},
 	mounted() {
-		this.getUrlsCreatedByUser();
+		this.$store.dispatch( 'user/getUserInfo', { vm: this } ).then(
+			( user ) => {
+				if ( user.is_authenticated ) {
+					this.getUrlsCreatedByUser();
+				}
+			}
+		);
 	}
 };
 </script>

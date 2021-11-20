@@ -79,6 +79,17 @@ export default {
 	},
 	metaInfo() {
 		return fetchMetaInfo( 'addremovetools' );
+	},
+	mounted() {
+		this.$store.dispatch( 'user/getUserInfo', { vm: this } ).then(
+			( user ) => {
+				if ( !user.is_authenticated ) {
+					this.$notify.info(
+						this.$t( 'addremovetools-nologintext' )
+					);
+				}
+			}
+		);
 	}
 };
 </script>
