@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-11-18 12:16:32+0000\n"
-"X-POT-Import-Date: 2021-11-18 01:30:22+0000\n"
+"PO-Revision-Date: 2021-11-22 12:43:34+0000\n"
+"X-POT-Import-Date: 2021-11-22 10:09:39+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
@@ -295,14 +295,10 @@ msgid "Revision after applying changes."
 msgstr "Révision après application des modifications."
 
 #: toolhub/apps/lists/serializers.py:271
-msgid "Favorites list item."
-msgstr "Élément de la liste des favoris."
-
-#: toolhub/apps/lists/serializers.py:286
 msgid "Add a favorite tool."
 msgstr "Ajouter un outil favori."
 
-#: toolhub/apps/lists/serializers.py:291
+#: toolhub/apps/lists/serializers.py:276
 msgid "Tool name."
 msgstr "Nom de l’outil."
 
