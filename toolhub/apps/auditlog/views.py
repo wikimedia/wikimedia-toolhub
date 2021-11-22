@@ -69,12 +69,14 @@ class LogEntryFilter(filters.FilterSet):
     before = filters.IsoDateTimeFilter(
         field_name="timestamp",
         lookup_expr="lte",
-        help_text=_("Only show logs occuring before the given date and time."),
+        help_text=_(
+            "Only show logs occurring before the given date and time."
+        ),
     )
     after = filters.IsoDateTimeFilter(
         field_name="timestamp",
         lookup_expr="gte",
-        help_text=_("Only show logs occuring after the given date and time."),
+        help_text=_("Only show logs occurring after the given date and time."),
     )
     user = filters.CharFilter(
         field_name="user__username",
