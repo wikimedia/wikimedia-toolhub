@@ -3,18 +3,20 @@
 		<v-text-field
 			v-if="widget === 'text'"
 			v-model="model"
-			:label="ui.label"
 			:required="ui.required"
 			:rules="validationRules"
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
 			:counter="schema.maxLength"
 			clearable
-		/>
+		>
+			<template #label>
+				<InputLabel :label="ui.label" :required="ui.required" />
+			</template>
+		</v-text-field>
 		<v-textarea
 			v-else-if="widget === 'multiline'"
 			v-model="model"
-			:label="ui.label"
 			:required="ui.required"
 			:rules="validationRules"
 			:prepend-icon="ui.icon"
@@ -23,7 +25,11 @@
 			rows="1"
 			auto-grow
 			clearable
-		/>
+		>
+			<template #label>
+				<InputLabel :label="ui.label" :required="ui.required" />
+			</template>
+		</v-textarea>
 		<v-autocomplete
 			v-else-if="widget === 'select'"
 			v-model="model"
@@ -36,18 +42,25 @@
 			:deletable-chips="ui.multiple || false"
 			:small-chips="ui.multiple || false"
 			:clearable="ui.multiple ? false : true"
-		/>
+		>
+			<template #label>
+				<InputLabel :label="ui.label" :required="ui.required" />
+			</template>
+		</v-autocomplete>
 		<v-combobox
 			v-else-if="widget === 'multi-select'"
 			v-model="model"
-			:label="ui.label"
 			:rules="validationRules"
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
 			multiple
 			deletable-chips
 			small-chips
-		/>
+		>
+			<template #label>
+				<InputLabel :label="ui.label" :required="ui.required" />
+			</template>
+		</v-combobox>
 		<v-combobox
 			v-else-if="widget === 'multi-select-tool'"
 			v-model="model"
@@ -55,7 +68,6 @@
 			:search-input.sync="toolAutoComplete"
 			:menu-props="menuProps"
 			:items="getToolAutoCompleteResultsArr()"
-			:label="ui.label"
 			:rules="validationRules"
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
@@ -64,6 +76,9 @@
 			deletable-chips
 			small-chips
 		>
+			<template #label>
+				<InputLabel :label="ui.label" :required="ui.required" />
+			</template>
 			<template #item="data">
 				<v-list-item-content>
 					<v-list-item-title>
@@ -88,8 +103,11 @@
 		<v-checkbox
 			v-else-if="widget === 'checkbox'"
 			v-model="model"
-			:label="ui.label"
-		/>
+		>
+			<template #label>
+				<InputLabel :label="ui.label" :required="ui.required" />
+			</template>
+		</v-checkbox>
 		<template v-else-if="widget === 'array'">
 			<v-row
 				v-for="( obj, idx ) in value"
@@ -170,6 +188,7 @@
 import { mapState } from 'vuex';
 import urlRegex from '@/plugins/url-regex';
 import patternRegexRule from '@/plugins/pattern-regex';
+import InputLabel from '@/components/common/InputLabel';
 
 export const methods = {
 	/**
@@ -258,6 +277,9 @@ export const methods = {
 
 export default {
 	name: 'InputWidget',
+	components: {
+		InputLabel
+	},
 	props: {
 		schema: {
 			type: Object,

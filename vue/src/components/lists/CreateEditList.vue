@@ -128,8 +128,7 @@ export default {
 				tools: {
 					widget: 'multi-select-tool',
 					icon: 'mdi-tools',
-					label: this.$t( 'lists-create-tools' ),
-					required: true
+					label: this.$t( 'lists-create-tools' )
 				},
 				published: {
 					widget: 'checkbox',

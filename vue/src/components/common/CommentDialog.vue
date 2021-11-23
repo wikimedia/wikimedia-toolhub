@@ -17,12 +17,15 @@
 							<v-text-field
 								ref="comment"
 								v-model="comment"
-								:label="$t( 'describechanges' )"
 								required
 								:rules="requiredRule"
 								autofocus
 								@keydown.enter="saveComment"
-							/>
+							>
+								<template #label>
+									<InputLabel :label="$t( 'describechanges' )" />
+								</template>
+							</v-text-field>
 						</v-row>
 						<v-row>
 							<AgreeTerms />
@@ -64,11 +67,13 @@
 
 <script>
 import AgreeTerms from '@/components/common/AgreeTerms';
+import InputLabel from '@/components/common/InputLabel';
 
 export default {
 	name: 'CommentDialog',
 	components: {
-		AgreeTerms
+		AgreeTerms,
+		InputLabel
 	},
 	props: {
 		value: {

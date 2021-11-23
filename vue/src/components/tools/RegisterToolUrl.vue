@@ -8,12 +8,15 @@
 				<v-text-field
 					ref="url"
 					v-model="fileUrl"
-					:label="$t( 'jsonfileurl' )"
 					prepend-icon="mdi-link-variant"
 					:rules="requiredRule.concat( urlRule )"
 					required
 					:disabled="!$can( 'add', 'crawler/url' )"
-				/>
+				>
+					<template #label>
+						<InputLabel :label="$t( 'jsonfileurl' )" required />
+					</template>
+				</v-text-field>
 			</v-col>
 			<v-col
 				lg="2"
@@ -102,9 +105,13 @@
 import { mapState } from 'vuex';
 import customSort from '@/plugins/sort.js';
 import urlRegex from '@/plugins/url-regex';
+import InputLabel from '@/components/common/InputLabel';
 
 export default {
 	name: 'RegisterToolUrl',
+	components: {
+		InputLabel
+	},
 	data() {
 		return {
 			page: 1,
