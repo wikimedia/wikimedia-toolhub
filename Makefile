@@ -173,7 +173,7 @@ messages:  ## Create/update translatable messages
 	@echo "== Make messages =="
 	docker-compose exec web sh -c " \
 		poetry run ./manage.py makemessages -l en -i node_modules \
-		&& poetry run ./manage.py compilemessages \
+		&& poetry run ./manage.py compilemessages --exclude qqq \
 	"
 .PHONY: messages
 

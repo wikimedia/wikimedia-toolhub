@@ -15,4 +15,4 @@ COPY --chown=65533:65533 [".", "."]
 COPY --chown=65533:65533 [".git/", "./.git/"]
 ENV NODE_ENV="development"
 
-LABEL blubber.variant="dev-nodejs" blubber.version="0.8.0+459234d"
+LABEL blubber.variant="dev-nodejs" blubber.version="0.8.0+a6bf87e"

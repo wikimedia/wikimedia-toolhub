@@ -219,7 +219,7 @@ variants:
           && poetry run ./manage.py collectstatic -c --no-input
           && poetry run python3 -mjson.tool staticfiles/staticfiles.json > /tmp/staticfiles.json
           && mv /tmp/staticfiles.json staticfiles/staticfiles.json
-          && poetry run ./manage.py compilemessages
+          && poetry run ./manage.py compilemessages --exclude qqq
 
   production:
     includes:

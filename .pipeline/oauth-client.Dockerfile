@@ -22,4 +22,4 @@ USER 900
 ENV HOME="/home/runuser"
 ENTRYPOINT ["/bin/bash", "-c", "poetry run python3 -m flask run --host 0.0.0.0 --port 8000"]
 
-LABEL blubber.variant="oauth-client" blubber.version="0.8.0+459234d"
+LABEL blubber.variant="oauth-client" blubber.version="0.8.0+a6bf87e"
