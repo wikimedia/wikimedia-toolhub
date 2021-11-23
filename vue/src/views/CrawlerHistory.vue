@@ -63,13 +63,13 @@
 						md="6"
 						lg="12"
 					>
-						<chart :height="250" :chart-data="crawledUrlsChartData" />
+						<LineChart :height="250" :chart-data="crawledUrlsChartData" />
 					</v-col>
 					<v-col cols="12"
 						md="6"
 						lg="12"
 					>
-						<chart :height="250" :chart-data="totalToolsChartData" />
+						<LineChart :height="250" :chart-data="totalToolsChartData" />
 					</v-col>
 				</v-row>
 			</v-col>
@@ -148,14 +148,14 @@
 
 <script>
 import { mapState } from 'vuex';
-import Chart from '@/components/chart/LineChart.js';
+import LineChart from '@/components/chart/LineChart.js';
 import customSort from '@/plugins/sort.js';
 import fetchMetaInfo from '@/helpers/metadata';
 import ScrollTop from '@/components/common/ScrollTop';
 
 export default {
 	components: {
-		Chart,
+		LineChart,
 		ScrollTop
 	},
 	data() {

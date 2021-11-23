@@ -1,4 +1,4 @@
-// Chart component for line charts.
+// Component for line charts.
 // The chart updates when the data changes.
 import {
 	Line,
@@ -6,6 +6,7 @@ import {
 } from 'vue-chartjs';
 
 export default {
+	name: 'LineChart',
 	extends: Line,
 	mixins: [ mixins.reactiveProp ],
 	data() {
@@ -35,7 +36,7 @@ export default {
 		};
 	},
 	mounted() {
-		// this.chartData is created in the mixin.
+		// this.chartData is a property declared by the reactiveProp mixin.
 		this.renderChart( this.chartData, this.options );
 	}
 };
