@@ -1,3 +1,5 @@
+// Chart component for line charts.
+// The chart updates when the data changes.
 import {
 	Line,
 	mixins
@@ -6,10 +8,9 @@ import {
 export default {
 	extends: Line,
 	mixins: [ mixins.reactiveProp ],
-	props: [ 'chartData' ],
 	data() {
 		return {
-			chartOptions: {
+			options: {
 				scales: {
 					yAxes: [ {
 						ticks: {
@@ -34,6 +35,7 @@ export default {
 		};
 	},
 	mounted() {
-		this.renderChart( this.chartdata, this.chartOptions );
+		// this.chartData is created in the mixin.
+		this.renderChart( this.chartData, this.options );
 	}
 };
