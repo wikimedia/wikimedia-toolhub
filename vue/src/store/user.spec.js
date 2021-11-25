@@ -12,6 +12,15 @@ import { asUrl } from '@/helpers/casl';
 import { actions, mutations } from './user';
 
 describe( 'store/user', () => {
+	const testUserObj = {
+		is_authenticated: true,
+		csrf_token: 'abcd',
+		casl: [ {
+			action: 'view',
+			subject: 'auth/group'
+		} ]
+	};
+
 	const testUsersObj = {
 		count: 2,
 		results: [
@@ -55,7 +64,7 @@ describe( 'store/user', () => {
 		const state = { user: { is_authenticated: true } };
 		const rootState = {
 			locale: { locale: 'en' },
-			user: { user: { csrf_token: 'abcd' } }
+			user: state
 		};
 		const context = { commit, state, rootState };
 		const stubThis = {
@@ -64,6 +73,11 @@ describe( 'store/user', () => {
 					info: sinon.stub(),
 					error: sinon.stub(),
 					success: sinon.stub()
+				}
+			},
+			vm: {
+				$ability: {
+					update: sinon.stub()
 				}
 			}
 		};
@@ -76,6 +90,75 @@ describe( 'store/user', () => {
 		afterEach( () => {
 			http.restore();
 			sinon.reset();
+		} );
+
+		describe( 'getUserInfo', () => {
+
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/user/',
+				headers: {
+					'Content-type': 'application/json'
+				},
+				body: testUserObj
+			};
+
+			it( 'should fetch user info', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/user/'
+				}, context );
+				http.resolves( response );
+
+				const promise = actions.getUserInfo( context, stubThis );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit.getCall( 0 ) ).to.have.been.calledWithExactly(
+					'USER_PROMISE', promise
+				);
+
+				await promise;
+
+				expect( commit ).to.have.been.calledTwice;
+				expect( commit.getCall( 1 ) ).to.have.been.calledWithExactly(
+					'USER', response.body
+				);
+
+				expect( stubThis.vm.$ability.update )
+					.to.have.been.calledWithExactly( testUserObj.casl );
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( { response: { data: 'Boom' } } );
+				const getUserInfo = actions.getUserInfo.bind( stubThis );
+				const promise = getUserInfo( context, stubThis );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'USER_PROMISE', promise
+				);
+
+				await promise;
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.error ).to.have.been.called;
+			} );
+
+			it( 'should return existing promise', async () => {
+				state.userPromise = new Promise( ( resolve ) => {
+					resolve( true );
+				} );
+
+				const promise = actions.getUserInfo( context, stubThis );
+				const resp = await promise;
+
+				expect( http ).to.have.not.been.called;
+				expect( commit ).to.have.not.been.called;
+				expect( resp ).to.be.true;
+			} );
 		} );
 
 		describe( 'listAllUsers', () => {

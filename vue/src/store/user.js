@@ -16,14 +16,19 @@ export const actions = {
 	 * @return {Promise}
 	 */
 	getUserInfo( context, { vm } ) {
+		if ( context.state.userPromise ) {
+			return context.state.userPromise;
+		}
 		const request = {
 			url: '/api/user/'
 		};
-		return makeApiCall( context, request ).then(
+		const promise = makeApiCall( context, request ).then(
 			( success ) => {
-				context.commit( 'USER', success.body );
+				const user = success.body;
+				context.commit( 'USER', user );
 				// Set the user's abilities
-				vm.$ability.update( success.body.casl );
+				vm.$ability.update( user.casl );
+				return user;
 			},
 			( failure ) => {
 				const data = getFailurePayload( failure );
@@ -32,6 +37,9 @@ export const actions = {
 				);
 			}
 		);
+
+		context.commit( 'USER_PROMISE', promise );
+		return promise;
 	},
 	listAllUsers( context, payload ) {
 		const filters = payload.filters;
@@ -261,6 +269,9 @@ export const actions = {
 };
 
 export const mutations = {
+	USER_PROMISE( state, promise ) {
+		state.userPromise = promise;
+	},
 	USER( state, user ) {
 		state.user = user;
 	},
@@ -291,6 +302,7 @@ export const mutations = {
 export default {
 	namespaced: true,
 	state: {
+		userPromise: null,
 		user: {
 			is_authenticated: false,
 			csrf_token: '',
