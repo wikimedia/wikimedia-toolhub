@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-11-22 12:43:34+0000\n"
-"X-POT-Import-Date: 2021-11-22 10:09:39+0000\n"
+"PO-Revision-Date: 2021-11-25 12:14:15+0000\n"
+"X-POT-Import-Date: 2021-11-23 17:39:39+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
@@ -144,23 +144,23 @@ msgstr "Afficher seulement les journaux pour les types d’action fournis."
 msgid "Only show logs for the given target type."
 msgstr "Afficher seulement les journaux pour le type de cible fourni."
 
-#: toolhub/apps/auditlog/views.py:72
-msgid "Only show logs occuring before the given date and time."
+#: toolhub/apps/auditlog/views.py:73
+msgid "Only show logs occurring before the given date and time."
 msgstr "Afficher seulement les traces produites avant la date et l’heure fournies."
 
-#: toolhub/apps/auditlog/views.py:77
-msgid "Only show logs occuring after the given date and time."
+#: toolhub/apps/auditlog/views.py:79
+msgid "Only show logs occurring after the given date and time."
 msgstr "Afficher seulement les traces produites après la date et l’heure fournies."
 
-#: toolhub/apps/auditlog/views.py:82
+#: toolhub/apps/auditlog/views.py:84
 msgid "Only show logs for the given user."
 msgstr "Afficher seulement les traces de l’utilisateur donné."
 
-#: toolhub/apps/auditlog/views.py:88
+#: toolhub/apps/auditlog/views.py:90
 msgid "List all log entries."
 msgstr "Lister toutes les entrées du journal."
 
-#: toolhub/apps/auditlog/views.py:91
+#: toolhub/apps/auditlog/views.py:93
 msgid "Info for a specific log entry."
 msgstr "Infos pour une entrée spécifique du journal."
 
@@ -545,11 +545,11 @@ msgstr "Résultats de la recherche d’outil"
 
 #: toolhub/apps/search/serializers.py:52
 msgid "Tool autocomplete results"
-msgstr ""
+msgstr "Résultat de la complétion automatique d’outil"
 
 #: toolhub/apps/search/views.py:88
 msgid "Autocomplete for tools."
-msgstr ""
+msgstr "Complétion automatique pour les outils."
 
 #: toolhub/apps/search/views.py:116
 msgid "Faceted search for tools."

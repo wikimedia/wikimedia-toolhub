@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-11-22 12:43:36+0000\n"
-"X-POT-Import-Date: 2021-11-22 10:09:39+0000\n"
+"PO-Revision-Date: 2021-11-25 12:14:16+0000\n"
+"X-POT-Import-Date: 2021-11-23 17:39:39+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh-Hant\n"
@@ -137,23 +137,23 @@ msgstr ""
 msgid "Only show logs for the given target type."
 msgstr ""
 
-#: toolhub/apps/auditlog/views.py:72
-msgid "Only show logs occuring before the given date and time."
+#: toolhub/apps/auditlog/views.py:73
+msgid "Only show logs occurring before the given date and time."
 msgstr ""
 
-#: toolhub/apps/auditlog/views.py:77
-msgid "Only show logs occuring after the given date and time."
+#: toolhub/apps/auditlog/views.py:79
+msgid "Only show logs occurring after the given date and time."
 msgstr ""
 
-#: toolhub/apps/auditlog/views.py:82
+#: toolhub/apps/auditlog/views.py:84
 msgid "Only show logs for the given user."
 msgstr ""
 
-#: toolhub/apps/auditlog/views.py:88
+#: toolhub/apps/auditlog/views.py:90
 msgid "List all log entries."
 msgstr "列出所有日誌項目。"
 
-#: toolhub/apps/auditlog/views.py:91
+#: toolhub/apps/auditlog/views.py:93
 msgid "Info for a specific log entry."
 msgstr "指定日誌項目的資訊。"
 

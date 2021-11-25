@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-11-22 12:43:33+0000\n"
-"X-POT-Import-Date: 2021-11-22 10:09:39+0000\n"
+"PO-Revision-Date: 2021-11-25 12:14:14+0000\n"
+"X-POT-Import-Date: 2021-11-23 17:39:39+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
@@ -142,23 +142,23 @@ msgstr "Zeigt nur Protokolle für die angegebenen Aktionstypen an."
 msgid "Only show logs for the given target type."
 msgstr "Zeigt nur Protokolle für den angegebenen Zieltyp an."
 
-#: toolhub/apps/auditlog/views.py:72
-msgid "Only show logs occuring before the given date and time."
+#: toolhub/apps/auditlog/views.py:73
+msgid "Only show logs occurring before the given date and time."
 msgstr "Zeigt nur Protokolle an, die vor dem angegebenen Datum und der angegebenen Uhrzeit aufgetreten sind."
 
-#: toolhub/apps/auditlog/views.py:77
-msgid "Only show logs occuring after the given date and time."
+#: toolhub/apps/auditlog/views.py:79
+msgid "Only show logs occurring after the given date and time."
 msgstr "Zeigt nur Protokolle an, die nach dem angegebenen Datum und der angegebenen Uhrzeit auftreten."
 
-#: toolhub/apps/auditlog/views.py:82
+#: toolhub/apps/auditlog/views.py:84
 msgid "Only show logs for the given user."
 msgstr "Zeigt nur Protokolle für den angegebenen Benutzer an."
 
-#: toolhub/apps/auditlog/views.py:88
+#: toolhub/apps/auditlog/views.py:90
 msgid "List all log entries."
 msgstr "Alle Logbuch-Einträge auflisten."
 
-#: toolhub/apps/auditlog/views.py:91
+#: toolhub/apps/auditlog/views.py:93
 msgid "Info for a specific log entry."
 msgstr "Info für einen bestimmten Lochbucheintrag."
 
@@ -547,7 +547,7 @@ msgstr ""
 
 #: toolhub/apps/search/views.py:88
 msgid "Autocomplete for tools."
-msgstr ""
+msgstr "Autovervollständigung für Werkzeuge."
 
 #: toolhub/apps/search/views.py:116
 msgid "Faceted search for tools."
