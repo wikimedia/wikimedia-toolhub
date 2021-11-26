@@ -8,3 +8,4 @@ shouldSymlinkLatest: false
 ignoreSchemas:
   - /toolinfo/1.0.0
   - /toolinfo/1.1.1
+  - /toolinfo/1.2.0

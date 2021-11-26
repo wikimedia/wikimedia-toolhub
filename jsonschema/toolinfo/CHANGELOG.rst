@@ -1,3 +1,10 @@
+Version 1.2.1
+-------------
+* Add "lua module" and "template" tool types
+
+.. literalinclude:: ../jsonschema/toolinfo/1.2.0.json
+   :language: JSON
+
 Version 1.2.0
 -------------
 * Update syntax for json-schema draft 7

@@ -37,6 +37,10 @@ export default {
 					return 'mdi-console';
 				case 'coding framework':
 					return 'mdi-archive-outline';
+				case 'lua module':
+					return 'mdi-language-lua';
+				case 'template':
+					return 'mdi-iframe-braces-outline';
 				default:
 					return 'mdi-tools';
 			}

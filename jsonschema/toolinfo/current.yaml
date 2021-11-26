@@ -3,7 +3,7 @@ description: >-
   A tool is a piece of software that helps facilitate contribution toward, or
   consumption of, Wikimedia projects and associated data, not including the
   core MediaWiki software and its extensions.
-$id: /toolinfo/1.2.0
+$id: /toolinfo/1.2.1
 $schema: http://json-schema.org/draft-07/schema#
 definitions:
   tool:
@@ -153,6 +153,8 @@ definitions:
           - user script
           - command line tool
           - coding framework
+          - lua module
+          - template
           - other
         description: >-
           The manner in which the tool is used. Select one from the list of
@@ -192,7 +194,7 @@ definitions:
           should be a short uri containing only the name and revision at the
           end of the URI path.
         examples:
-          - /toolinfo/1.2.0
+          - /toolinfo/1.2.1
       _language:
         $ref: "#/definitions/language"
         default: en

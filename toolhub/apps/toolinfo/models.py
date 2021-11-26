@@ -343,6 +343,8 @@ class Tool(ExportModelOperationsMixin("tool"), SafeDeleteModel):
         ("user script", _("user script")),
         ("command line tool", _("command line tool")),
         ("coding framework", _("coding framework")),
+        ("lua module", _("lua module")),
+        ("template", _("template")),
         ("other", _("other")),
     )
 
