@@ -43,6 +43,18 @@ class Url(ExportModelOperationsMixin("url"), models.Model):
     def __str__(self):
         return self.url
 
+    def delete(self, *args, **kwargs):
+        """Overide model delete method to also delete related tools"""
+        self.delete_related_tools()
+        super().delete(*args, **kwargs)
+
+    def delete_related_tools(self):
+        """Delete tools related to the URL about to be deleted"""
+        last_run = self.crawler_runs.order_by("-id").first()
+        print("sdksldkslkdskdksdlks: ", last_run)
+        if last_run:
+            last_run.tools.filter(deleted__isnull=True).distinct().delete()
+
     @property
     def auditlog_label(self):
         """Get label for use in auditlog output."""

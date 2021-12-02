@@ -18,7 +18,9 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from ..models import Url
+from toolhub.apps.toolinfo.models import Tool
+
+from ..models import Run, RunUrl, Url
 
 
 class UrlTestCase(TestCase):
@@ -32,3 +34,32 @@ class UrlTestCase(TestCase):
             created_by=user,
         )
         self.assertEqual(str(url), url.url)
+
+    def test_url_delete(self):
+        """Verify that deleting a url also deletes related tools"""
+        tool_name = "test-tool"
+
+        user = get_user_model().objects.create_user("testing")
+
+        url = Url.objects.create(
+            url="https://example.org/toolinfo.json",
+            created_by=user,
+        )
+
+        run = Run.objects.create()
+
+        tool = Tool.objects.create(
+            name=tool_name,
+            title="test tool",
+            description="test tool",
+            url="https://test-tool.org",
+            created_by=user,
+        )
+
+        runUrl = RunUrl(run=run, url=url, status_code=200)
+        runUrl.save()
+        runUrl.tools.add(tool)
+
+        url.delete()
+        tool = Tool.objects.filter(name=tool_name)
+        self.assertEqual(len(tool), 0)
