@@ -145,7 +145,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import UserStatus from '@/components/user/Status';
 import SelectLocale from '@/components/locale/SelectLocale';
 import I18nHtml from '@/components/common/I18nHtml';
@@ -198,7 +197,6 @@ export default {
 		};
 	},
 	computed: {
-		...mapState( 'user', [] ),
 		routes() {
 			return this.$router.options.routes.filter(
 				( route ) => ( route.meta !== undefined )
