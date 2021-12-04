@@ -105,6 +105,12 @@ index: ## Create and populate search index
 		poetry run python3 manage.py search_index --rebuild -f
 .PHONY: index
 
+crawl: ## Run crawler
+	docker-compose exec web $(DOCKERIZE) \
+		-wait tcp://db:3306 -wait tcp://search:9200 \
+		poetry run python3 manage.py crawl --quiet
+.PHONY: crawl
+
 make-admin-user:
 	docker-compose exec web  $(DOCKERIZE) -wait tcp://db:3306 sh -c " \
 		poetry run python3 manage.py shell -c \"import os; from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'admin@localhost', os.environ['DJANGO_SUPERUSER_PASSWORD']);\" \
