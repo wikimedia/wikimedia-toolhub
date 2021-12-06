@@ -261,6 +261,8 @@
 	"toolcreationcomment": "Outil de titre « $1 » créé",
 	"tooleditingsuccess": "Succès ! L’outil « $1 » a été modifié.",
 	"tools-edit": "Modifier l’outil",
+	"toolurlregistrationsuccess": "URL de l’outil bien enregistrée",
+	"toolurlunregistrationsuccess": "URL de l’outil bien désenregistrée",
 	"tools-history": "Historique de l’outil",
 	"toolhistory-pagesubtitle": "Voir l’historique pour cet outil",
 	"toolhub": "Toolhub",

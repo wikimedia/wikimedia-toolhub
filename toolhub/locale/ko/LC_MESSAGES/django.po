@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-12-02 12:12:38+0000\n"
+"PO-Revision-Date: 2021-12-06 12:12:26+0000\n"
 "X-POT-Import-Date: 2021-11-30 17:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -587,11 +587,11 @@ msgstr "코딩 프레임워크"
 
 #: toolhub/apps/toolinfo/models.py:346
 msgid "lua module"
-msgstr ""
+msgstr "루아 모듈"
 
 #: toolhub/apps/toolinfo/models.py:347
 msgid "template"
-msgstr ""
+msgstr "틀"
 
 #: toolhub/apps/toolinfo/models.py:348
 msgid "other"
