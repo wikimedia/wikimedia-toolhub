@@ -17,7 +17,8 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.test import SimpleTestCase
 
-from ..utils import LanguageData, language_data
+from ..utils import LanguageData
+from ..utils import language_data
 
 
 class LanguageDataTest(SimpleTestCase):

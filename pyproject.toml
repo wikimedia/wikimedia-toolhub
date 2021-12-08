@@ -75,6 +75,7 @@ requests-mock = "^1.8.0"
 Flask = "^2.0.1"  # contrib/oauth-client-example
 envparse = "^0.2.0"  # contrib/oauth-client-example
 Authlib = "^0.15.4"  # contrib/oauth-client-example
+flake8-import-single = "^0.1.5"
 
 [tool.flakehell]
 exclude = [

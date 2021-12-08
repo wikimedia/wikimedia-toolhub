@@ -20,7 +20,9 @@ from django.test import TestCase
 
 from toolhub.apps.toolinfo.models import Tool
 
-from ..models import Run, RunUrl, Url
+from ..models import Run
+from ..models import RunUrl
+from ..models import Url
 
 
 class UrlTestCase(TestCase):
