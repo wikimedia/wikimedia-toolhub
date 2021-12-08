@@ -102,9 +102,9 @@ class AutoCompleteToolDocumentViewSet(BaseDocumentViewSet):
         "title",
     )
     simple_query_string_options = {
+        "analyze_wildcard": True,
         "lenient": True,
         "quote_field_suffix": ".exact",
-        "all_fields": True,
     }
 
 

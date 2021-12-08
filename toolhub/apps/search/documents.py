@@ -25,6 +25,7 @@ from django_elasticsearch_dsl.registries import registry
 from drf_spectacular.drainage import set_override
 
 from elasticsearch_dsl import analyzer
+from elasticsearch_dsl import token_filter
 
 from toolhub.apps.toolinfo.models import Tool
 from toolhub.fields import JSONSchemaField
@@ -46,8 +47,16 @@ class SearchDocument(Document):
         "number": fields.DoubleField,
     }
 
+    en_stem_filter = token_filter(type="stemmer", name_or_instance="english")
+
+    en_analyzer = analyzer(
+        "en_analyzer",
+        tokenizer="standard",
+        filter=["standard", "lowercase", en_stem_filter],
+    )
+
     exact_analyzer = analyzer(
-        "exact",
+        "exact_analyzer",
         tokenizer="standard",
         filter=["standard", "lowercase"],
     )
@@ -60,6 +69,8 @@ class SearchDocument(Document):
                 "exact": fields.TextField(analyzer=cls.exact_analyzer),
                 "keyword": fields.KeywordField(ignore_above=256),
             }
+        if "analyzer" not in kwargs:
+            kwargs["analyzer"] = cls.en_analyzer
         return fields.TextField(**kwargs)
 
     @classmethod
