@@ -264,6 +264,8 @@
 	"toolcreationcomment": "Werkzeug mit dem Titel '$1' erstellt",
 	"tooleditingsuccess": "Erfolgreich! Das Werkzeug '$1' wurde bearbeitet.",
 	"tools-edit": "Bearbeitungswerkzeug",
+	"toolurlregistrationsuccess": "Tool-URL erfolgreich registriert",
+	"toolurlunregistrationsuccess": "Tool-URL erfolgreich deregistriert.",
 	"tools-history": "Werkzeug-Historie",
 	"toolhistory-pagesubtitle": "Historie für dieses Tool anzeigen",
 	"toolhub": "Toolhub",
