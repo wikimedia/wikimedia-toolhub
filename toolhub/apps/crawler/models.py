@@ -51,7 +51,6 @@ class Url(ExportModelOperationsMixin("url"), models.Model):
     def delete_related_tools(self):
         """Delete tools related to the URL about to be deleted"""
         last_run = self.crawler_runs.order_by("-id").first()
-        print("sdksldkslkdskdksdlks: ", last_run)
         if last_run:
             last_run.tools.filter(deleted__isnull=True).distinct().delete()
 

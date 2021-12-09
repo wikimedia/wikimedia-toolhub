@@ -187,7 +187,6 @@ def parse_model(  # noqa: R0912, R0914, R0915
         model_str = imports + model_str
         did_imports = True
 
-    print(model_str, end="")
     return did_imports
 
 
