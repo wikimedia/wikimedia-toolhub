@@ -15,7 +15,7 @@
 				<v-tabs v-model="tab">
 					<v-tab
 						v-for="item in items"
-						:key="item.label"
+						:key="item.href"
 						:href="'#' + item.href"
 					>
 						{{ item.label }}
@@ -28,7 +28,7 @@
 				<v-tabs-items v-model="tab">
 					<v-tab-item
 						v-for="item in items"
-						:key="item.label"
+						:key="item.href"
 						:value="item.href"
 					>
 						<component :is="item.component" />
@@ -49,22 +49,6 @@ export default {
 		CreateNewTool,
 		RegisterToolUrl
 	},
-	data() {
-		return {
-			items: [
-				{
-					href: 'tool-create',
-					label: this.$t( 'createnewtool' ),
-					component: 'CreateNewTool'
-				},
-				{
-					href: 'urls',
-					label: this.$t( 'submitjsonurl' ),
-					component: 'RegisterToolUrl'
-				}
-			]
-		};
-	},
 	computed: {
 		tab: {
 			set( tab ) {
@@ -75,6 +59,20 @@ export default {
 			get() {
 				return this.$route.query.tab;
 			}
+		},
+		items() {
+			return [
+				{
+					href: 'tool-create',
+					label: this.$t( 'createnewtool' ),
+					component: 'CreateNewTool'
+				},
+				{
+					href: 'urls',
+					label: this.$t( 'submitjsonurl' ),
+					component: 'RegisterToolUrl'
+				}
+			];
 		}
 	},
 	metaInfo() {
@@ -91,5 +89,6 @@ export default {
 			}
 		);
 	}
+
 };
 </script>

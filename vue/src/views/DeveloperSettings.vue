@@ -17,7 +17,7 @@
 				<v-tabs v-model="tab">
 					<v-tab
 						v-for="item in items"
-						:key="item.label"
+						:key="item.href"
 						:href="'#' + item.href"
 					>
 						{{ item.label }}
@@ -30,7 +30,7 @@
 				<v-tabs-items v-model="tab">
 					<v-tab-item
 						v-for="item in items"
-						:key="item.label"
+						:key="item.href"
 						:value="item.href"
 					>
 						<component :is="item.component" />
@@ -55,9 +55,19 @@ export default {
 		AuthorizedApps,
 		AuthToken
 	},
-	data() {
-		return {
-			items: [
+	computed: {
+		tab: {
+			set( tab ) {
+				this.$router.replace( {
+					query: { ...this.$route.query, tab }
+				} );
+			},
+			get() {
+				return this.$route.query.tab;
+			}
+		},
+		items() {
+			return [
 				{
 					href: 'oauth-register',
 					label: this.$t( 'registerapps' ),
@@ -78,19 +88,7 @@ export default {
 					label: this.$t( 'authtoken' ),
 					component: 'AuthToken'
 				}
-			]
-		};
-	},
-	computed: {
-		tab: {
-			set( tab ) {
-				this.$router.replace( {
-					query: { ...this.$route.query, tab }
-				} );
-			},
-			get() {
-				return this.$route.query.tab;
-			}
+			];
 		}
 	},
 	metaInfo() {
