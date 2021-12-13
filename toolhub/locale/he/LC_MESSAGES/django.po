@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2021-12-02 12:12:37+0000\n"
+"PO-Revision-Date: 2021-12-13 12:13:03+0000\n"
 "X-POT-Import-Date: 2021-11-30 17:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -541,11 +541,11 @@ msgstr "תוצאות חיפוש כלים"
 
 #: toolhub/apps/search/serializers.py:52
 msgid "Tool autocomplete results"
-msgstr ""
+msgstr "תוצאות השלמה אוטומטית של כלים"
 
 #: toolhub/apps/search/views.py:88
 msgid "Autocomplete for tools."
-msgstr ""
+msgstr "השלמה אוטומטית לכלים."
 
 #: toolhub/apps/search/views.py:116
 msgid "Faceted search for tools."
@@ -590,11 +590,11 @@ msgstr "מסגרות קידוד"
 
 #: toolhub/apps/toolinfo/models.py:346
 msgid "lua module"
-msgstr ""
+msgstr "יחידת לואה"
 
 #: toolhub/apps/toolinfo/models.py:347
 msgid "template"
-msgstr ""
+msgstr "תבנית"
 
 #: toolhub/apps/toolinfo/models.py:348
 msgid "other"
