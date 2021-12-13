@@ -56,7 +56,32 @@ export default {
 				bugtracker_url: null,
 				user_docs_url: [ { language: this.$i18n.locale, url: null } ]
 			},
-			layout: {
+			valid: false
+		};
+	},
+	computed: {
+		...mapState( 'user', [ 'toolCreated' ] ),
+		...mapState( 'locale', [ 'localeMap' ] ),
+		...mapState( 'tools', [ 'spdxLicenses' ] ),
+
+		_localeMap() {
+			const localeArr = [];
+			Object.keys( this.localeMap ).forEach( ( key ) => {
+				localeArr.push( {
+					name: this.localeMap[ key ],
+					code: key
+				} );
+			} );
+
+			return localeArr;
+		},
+
+		_toolCreated() {
+			return this.toolCreated;
+		},
+
+		layout() {
+			return {
 				name: {
 					icon: 'mdi-identifier',
 					label: this.$t( 'name' ),
@@ -131,29 +156,7 @@ export default {
 						}
 					}
 				}
-			},
-			valid: false
-		};
-	},
-	computed: {
-		...mapState( 'user', [ 'toolCreated' ] ),
-		...mapState( 'locale', [ 'localeMap' ] ),
-		...mapState( 'tools', [ 'spdxLicenses' ] ),
-
-		_localeMap() {
-			const localeArr = [];
-			Object.keys( this.localeMap ).forEach( ( key ) => {
-				localeArr.push( {
-					name: this.localeMap[ key ],
-					code: key
-				} );
-			} );
-
-			return localeArr;
-		},
-
-		_toolCreated() {
-			return this.toolCreated;
+			};
 		}
 	},
 	asyncComputed: {

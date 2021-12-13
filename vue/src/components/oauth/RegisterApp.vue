@@ -158,7 +158,14 @@ export default {
 				name: null,
 				redirect_url: null
 			},
-			layout: {
+			isAppCreated: false
+		};
+	},
+	computed: {
+		...mapState( 'oauth', [ 'clientAppCreated' ] ),
+
+		layout() {
+			return {
 				name: {
 					icon: 'mdi-pencil-outline',
 					label: this.$t( 'appname' ),
@@ -169,12 +176,8 @@ export default {
 					label: this.$t( 'authcallbackurl' ),
 					required: true
 				}
-			},
-			isAppCreated: false
-		};
-	},
-	computed: {
-		...mapState( 'oauth', [ 'clientAppCreated' ] )
+			};
+		}
 	},
 	asyncComputed: {
 		schema: {

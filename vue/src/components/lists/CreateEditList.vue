@@ -111,7 +111,14 @@ export default {
 				tools: [],
 				published: false
 			},
-			layout: {
+			commentDialog: false
+		};
+	},
+	computed: {
+		...mapState( 'lists', [ 'listCreated', 'list' ] ),
+
+		layout() {
+			return {
 				title: {
 					icon: 'mdi-pencil-outline',
 					label: this.$t( 'title' ),
@@ -134,12 +141,8 @@ export default {
 					widget: 'checkbox',
 					label: this.$t( 'lists-create-published' )
 				}
-			},
-			commentDialog: false
-		};
-	},
-	computed: {
-		...mapState( 'lists', [ 'listCreated', 'list' ] )
+			};
+		}
 	},
 	asyncComputed: {
 		schema: {
