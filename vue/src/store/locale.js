@@ -145,7 +145,9 @@ export const actions = {
 
 			// Show the locale in the query string if it changed
 			if ( !initial && vm.$route.query.uselang !== locale ) {
-				vm.$router.push( { query: { uselang: locale } } );
+				vm.$router.push( {
+					query: { ...vm.$route.query, uselang: locale }
+				} );
 			}
 
 			// Update our OpenAPI schema using the new locale, but only if the
