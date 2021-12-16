@@ -96,7 +96,7 @@ class RunUrl(ExportModelOperationsMixin("runurl"), models.Model):
     valid = models.BooleanField(default=False)
     tools = models.ManyToManyField(
         Tool,
-        related_name="crawer_runs",
+        related_name="crawler_runs",
     )
     logs = models.TextField(blank=True)
 
