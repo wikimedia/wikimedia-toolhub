@@ -5,6 +5,7 @@
 			"DreZhsh",
 			"Florian COLLIN",
 			"Gomoko",
+			"Paraboule",
 			"Thibaut120094",
 			"Verdy p"
 		]
@@ -261,8 +262,8 @@
 	"toolcreationcomment": "Outil de titre « $1 » créé",
 	"tooleditingsuccess": "Succès ! L’outil « $1 » a été modifié.",
 	"tools-edit": "Modifier l’outil",
-	"toolurlregistrationsuccess": "URL de l’outil bien enregistrée",
-	"toolurlunregistrationsuccess": "URL de l’outil bien désenregistrée",
+	"toolurlregistrationsuccess": "URL de l'outil enregistré",
+	"toolurlunregistrationsuccess": "URL de l'outil non enregistré",
 	"tools-history": "Historique de l’outil",
 	"toolhistory-pagesubtitle": "Voir l’historique pour cet outil",
 	"toolhub": "Toolhub",
