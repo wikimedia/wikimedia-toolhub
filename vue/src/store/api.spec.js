@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
+import * as notifications from '@/helpers/notifications';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -44,13 +45,16 @@ describe( 'store/api', () => {
 		const context = { commit, dispatch, state, rootState };
 
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 

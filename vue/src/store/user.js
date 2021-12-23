@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { makeApiCall, getFailurePayload } from '@/plugins/swagger';
-import i18n from '@/plugins/i18n';
+import { makeApiCall } from '@/plugins/swagger';
+import { displayErrorNotification } from '@/helpers/notifications';
 
 Vue.use( Vuex );
 
@@ -30,10 +30,7 @@ export const actions = {
 				return user;
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ data ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 
@@ -62,12 +59,7 @@ export const actions = {
 				context.commit( 'USERS', success.body );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -114,16 +106,7 @@ export const actions = {
 					context.commit( 'AUTHTOKEN', null );
 					return;
 				}
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -144,16 +127,7 @@ export const actions = {
 				context.commit( 'AUTHTOKEN', success.body.token );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -179,16 +153,7 @@ export const actions = {
 					context.commit( 'AUTHTOKEN', null );
 					return;
 				}
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	}

@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
+import * as notifications from '@/helpers/notifications';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -27,6 +28,13 @@ describe( 'store/favorites', () => {
 	};
 	const toolResponse = favoritesResponse.results[ 0 ];
 
+	const apiError = {
+		errors: [ {
+			field: 'test field1',
+			message: 'something went wrong'
+		} ]
+	};
+
 	describe( 'actions', () => {
 		// FIXME: can we extract this boilerplate to some shared location
 		const commit = sinon.spy();
@@ -36,23 +44,17 @@ describe( 'store/favorites', () => {
 			user: { user: { csrf_token: 'abcd' } }
 		};
 		const context = { commit, state, rootState };
-		const stubThis = {
-			_vm: {
-				$notify: {
-					info: sinon.stub(),
-					error: sinon.stub(),
-					success: sinon.stub()
-				}
-			}
-		};
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 
@@ -84,17 +86,12 @@ describe( 'store/favorites', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'detail',
-					message: 'Not found'
-				} ] } );
-				const getFavoriteTools = actions.getFavoriteTools.bind( stubThis );
-				await getFavoriteTools( context, testPage );
+				http.rejects( apiError );
+				await actions.getFavoriteTools( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -127,17 +124,12 @@ describe( 'store/favorites', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'detail',
-					message: 'Not found'
-				} ] } );
-				const addTool = actions.addTool.bind( stubThis );
-				await addTool( context, 'test-tool' );
+				http.rejects( apiError );
+				await actions.addTool( context, 'test-tool' );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -168,17 +160,12 @@ describe( 'store/favorites', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'detail',
-					message: 'Not found'
-				} ] } );
-				const removeTool = actions.removeTool.bind( stubThis );
-				await removeTool( context, 'test-tool' );
+				http.rejects( apiError );
+				await actions.removeTool( context, 'test-tool' );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -225,17 +212,12 @@ describe( 'store/favorites', () => {
 			} );
 
 			it( 'should log non-404 failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'detail',
-					message: 'Not found'
-				} ] } );
-				const isFavorite = actions.isFavorite.bind( stubThis );
-				const resp = await isFavorite( context, 'test-tool' );
+				http.rejects( apiError );
+				const resp = await actions.isFavorite( context, 'test-tool' );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 				expect( resp ).to.equal( false );
 			} );
 		} );

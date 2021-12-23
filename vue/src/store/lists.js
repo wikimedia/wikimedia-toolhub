@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import i18n from '@/plugins/i18n';
-import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
+import { makeApiCall } from '@/plugins/swagger.js';
+import { displayErrorNotification } from '@/helpers/notifications';
 import { asList } from '@/helpers/casl';
 
 Vue.use( Vuex );
@@ -37,15 +38,7 @@ export const actions = {
 				context.commit( 'FEATURED_LISTS', data );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -70,16 +63,7 @@ export const actions = {
 				context.commit( 'MY_LISTS', data );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -100,17 +84,8 @@ export const actions = {
 				);
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
 				context.commit( 'CREATE_LIST', false );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -130,16 +105,7 @@ export const actions = {
 				);
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -156,16 +122,7 @@ export const actions = {
 				);
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -184,15 +141,7 @@ export const actions = {
 				context.commit( 'LIST', data );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	}

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import i18n from '@/plugins/i18n';
-import { makeApiCall, getFailurePayload } from '@/plugins/swagger';
+import { makeApiCall } from '@/plugins/swagger';
+import { displayErrorNotification } from '@/helpers/notifications';
 
 Vue.use( Vuex );
 
@@ -87,16 +87,7 @@ export const actions = {
 			},
 			( failure ) => {
 				context.commit( 'onToolsAutoCompleteResults', {} );
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -141,10 +132,7 @@ export const actions = {
 				} );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ data ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	}

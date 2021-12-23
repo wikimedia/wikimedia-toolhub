@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
+import { displayErrorNotification } from '@/helpers/notifications';
 import i18n from '@/plugins/i18n';
 
 Vue.use( Vuex );
@@ -17,11 +18,7 @@ export const actions = {
 				context.commit( 'GROUPS', success.body );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ data ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},

@@ -4,6 +4,7 @@ import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
 import i18n from '@/plugins/i18n';
+import * as notifications from '@/helpers/notifications';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -47,6 +48,13 @@ describe( 'store/groups', () => {
 		users: testUsers
 	};
 
+	const apiError = {
+		errors: [ {
+			field: 'test field1',
+			message: 'something went wrong'
+		} ]
+	};
+
 	describe( 'actions', () => {
 		const commit = sinon.spy();
 		const state = { user: { is_authenticated: true } };
@@ -60,23 +68,17 @@ describe( 'store/groups', () => {
 			}
 		};
 		const context = { commit, state, rootState };
-		const stubThis = {
-			_vm: {
-				$notify: {
-					error: sinon.stub(),
-					success: sinon.stub()
-				}
-
-			}
-		};
 
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 
@@ -109,14 +111,12 @@ describe( 'store/groups', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const listAllUserGroups = actions.listAllUserGroups.bind( stubThis );
-				await listAllUserGroups( context, testPage );
+				http.rejects( apiError );
+				await actions.listAllUserGroups( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );

@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
+import * as notifications from '@/helpers/notifications';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -20,24 +21,29 @@ describe( 'store/ui', () => {
 		last_crawl_changed: 58
 	};
 
+	const apiError = {
+		errors: [ {
+			field: 'test field1',
+			message: 'something went wrong'
+		} ]
+	};
+
 	describe( 'actions', () => {
 		const commit = sinon.spy();
 		const state = {};
 		const rootState = { locale: { locale: 'en' } };
 		const context = { commit, state, rootState };
-		const stubThis = {
-			_vm: {
-				$notify: { error: sinon.stub() }
-			}
-		};
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 
@@ -67,17 +73,13 @@ describe( 'store/ui', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: '',
-					message: ''
-				} ] } );
-				const getHomeData = actions.getHomeData.bind( stubThis );
-				await getHomeData( context );
+				http.rejects( apiError );
+
+				await actions.getHomeData( context );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 	} );

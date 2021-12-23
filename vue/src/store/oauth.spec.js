@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
+import * as notifications from '@/helpers/notifications';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -40,6 +41,13 @@ describe( 'store/oauth', () => {
 		]
 	};
 
+	const apiError = {
+		errors: [ {
+			field: 'test field1',
+			message: 'something went wrong'
+		} ]
+	};
+
 	describe( 'actions', () => {
 		const commit = sinon.spy();
 		const state = { user: { is_authenticated: true } };
@@ -51,20 +59,22 @@ describe( 'store/oauth', () => {
 		const stubThis = {
 			_vm: {
 				$notify: {
-					info: sinon.stub(),
-					error: sinon.stub(),
-					success: sinon.stub()
+					success: sinon.stub(),
+					error: sinon.stub()
 				}
 			}
 		};
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 
@@ -97,14 +107,12 @@ describe( 'store/oauth', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const listClientApps = actions.listClientApps.bind( stubThis );
-				await listClientApps( context, testPage );
+				http.rejects( apiError );
+				await actions.listClientApps( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -144,20 +152,15 @@ describe( 'store/oauth', () => {
 			} );
 
 			it( 'should log failure when error occurs', async () => {
-				http.rejects( { errors: [ {
-					field: '',
-					message: ''
-				} ] } );
-				const registerApp = actions.registerApp.bind( stubThis );
-				await registerApp( context, app );
+				http.rejects( apiError );
+				await actions.registerApp( context, app );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.been.calledOnce;
 				expect( commit ).to.have.been.calledWithExactly(
 					'REGISTER_APP', false
 				);
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -191,14 +194,12 @@ describe( 'store/oauth', () => {
 			} );
 
 			it( 'should log failure when error occures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const deleteClientApp = actions.deleteClientApp.bind( stubThis );
-				await deleteClientApp( context, testClientId );
+				http.rejects( apiError );
+				await actions.deleteClientApp( context, testClientId );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -230,14 +231,12 @@ describe( 'store/oauth', () => {
 			} );
 
 			it( 'should log failure when error occures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const updateClientApp = actions.updateClientApp.bind( stubThis );
-				await updateClientApp( context, app );
+				http.rejects( apiError );
+				await actions.updateClientApp( context, app );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -269,14 +268,12 @@ describe( 'store/oauth', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const listAuthorizedApps = actions.listAuthorizedApps.bind( stubThis );
-				await listAuthorizedApps( context, testPage );
+				http.rejects( apiError );
+				await actions.listAuthorizedApps( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -309,14 +306,12 @@ describe( 'store/oauth', () => {
 			} );
 
 			it( 'should log failure when error occures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const deleteAuthorizedApp = actions.deleteAuthorizedApp.bind( stubThis );
-				await deleteAuthorizedApp( context, testAuthAppId );
+				http.rejects( apiError );
+				await actions.deleteAuthorizedApp( context, testAuthAppId );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 

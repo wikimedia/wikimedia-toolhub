@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
+import * as notifications from '@/helpers/notifications';
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
 /* eslint-disable no-unused-expressions */
@@ -44,6 +45,13 @@ describe( 'store/crawler', () => {
 		]
 	};
 
+	const apiError = {
+		errors: [ {
+			field: 'test field1',
+			message: 'something went wrong'
+		} ]
+	};
+
 	const testUrlObj = crawlerUrlsResponse.results[ 0 ];
 
 	describe( 'actions', () => {
@@ -58,18 +66,20 @@ describe( 'store/crawler', () => {
 			_vm: {
 				$notify: {
 					info: sinon.stub(),
-					error: sinon.stub(),
 					success: sinon.stub()
 				}
 			}
 		};
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 
@@ -100,14 +110,12 @@ describe( 'store/crawler', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const fetchCrawlerHistory = actions.fetchCrawlerHistory.bind( stubThis );
-				await fetchCrawlerHistory( context, testPage );
+				http.rejects( apiError );
+				await actions.fetchCrawlerHistory( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -142,14 +150,12 @@ describe( 'store/crawler', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const fetchCrawlerUrls = actions.fetchCrawlerUrls.bind( stubThis );
-				await fetchCrawlerUrls( context, testData );
+				http.rejects( apiError );
+				await actions.fetchCrawlerUrls( context, testData );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -187,14 +193,12 @@ describe( 'store/crawler', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: { error1: { field: 'Boom', message: 'Boom Boom' } } } );
-				const registerUrl = actions.registerUrl.bind( stubThis );
+				http.rejects( apiError );
 
-				await registerUrl( context, url );
+				await actions.registerUrl( context, url );
 
 				expect( http ).to.have.been.calledOnce;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -232,14 +236,11 @@ describe( 'store/crawler', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: { error1: { field: 'Boom', message: 'Boom Boom' } } } );
-				const unregisterUrl = actions.unregisterUrl.bind( stubThis );
-
-				await unregisterUrl( context, url );
+				http.rejects( apiError );
+				await actions.unregisterUrl( context, url );
 
 				expect( http ).to.have.been.calledOnce;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -286,14 +287,12 @@ describe( 'store/crawler', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: { error1: { field: 'Boom', message: 'Boom Boom' } } } );
-				const getUrlsCreatedByUser = actions.getUrlsCreatedByUser.bind( stubThis );
-				await getUrlsCreatedByUser( context, testPage );
+				http.rejects( apiError );
+				await actions.getUrlsCreatedByUser( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 

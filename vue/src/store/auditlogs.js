@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
-import i18n from '@/plugins/i18n';
+import { makeApiCall } from '@/plugins/swagger.js';
+import { displayErrorNotification } from '@/helpers/notifications';
 
 Vue.use( Vuex );
 
@@ -31,15 +31,7 @@ export const actions = {
 				context.commit( 'AUDIT_LOGS', success.body );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	}

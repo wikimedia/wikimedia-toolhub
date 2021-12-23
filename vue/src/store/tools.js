@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import i18n from '@/plugins/i18n';
 import router from '@/router';
 import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
+import { displayErrorNotification } from '@/helpers/notifications';
 import { asTool, asVersion } from '@/helpers/casl';
 
 Vue.use( Vuex );
@@ -49,12 +50,7 @@ export const actions = {
 				context.commit( 'TOOLS_LIST', data );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -82,9 +78,7 @@ export const actions = {
 						i18n.t( 'tool-not-found', [ name ] )
 					);
 				} else {
-					this._vm.$notify.error(
-						i18n.t( 'apierror', [ data.message ] )
-					);
+					displayErrorNotification.call( this, failure );
 				}
 			}
 		);
@@ -104,12 +98,7 @@ export const actions = {
 				context.commit( 'SPDX_LICENSES', data );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -138,16 +127,7 @@ export const actions = {
 				);
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -171,17 +151,7 @@ export const actions = {
 				);
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'editformerror', [
-							data.message,
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -198,11 +168,7 @@ export const actions = {
 				context.commit( 'TOOL_REVISIONS', data );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ data ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -235,12 +201,7 @@ export const actions = {
 				context.commit( 'TOOL_REVISION', response.body );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -261,12 +222,7 @@ export const actions = {
 				context.commit( 'DIFF_REVISION', data );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -296,16 +252,7 @@ export const actions = {
 					otherId = results[ 0 ].id; // Get rev id from the first element
 				},
 				( failure ) => {
-					const data = getFailurePayload( failure );
-
-					for ( const err in data.errors ) {
-						this._vm.$notify.error(
-							i18n.t( 'apierrors', [
-								data.errors[ err ].field,
-								data.errors[ err ].message
-							] )
-						);
-					}
+					displayErrorNotification.call( this, failure );
 				}
 			);
 		} else {
@@ -329,12 +276,7 @@ export const actions = {
 				} );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -358,12 +300,7 @@ export const actions = {
 				} );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -387,16 +324,7 @@ export const actions = {
 				} );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -420,16 +348,7 @@ export const actions = {
 				} );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	}

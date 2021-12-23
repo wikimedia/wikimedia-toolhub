@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
+import * as notifications from '@/helpers/notifications';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -148,6 +149,13 @@ describe( 'store/tools', () => {
 		}
 	};
 
+	const apiError = {
+		errors: [ {
+			field: 'test field1',
+			message: 'something went wrong'
+		} ]
+	};
+
 	describe( 'actions', () => {
 		const commit = sinon.spy();
 		const dispatch = sinon.stub();
@@ -160,7 +168,6 @@ describe( 'store/tools', () => {
 		const stubThis = {
 			_vm: {
 				$notify: {
-					error: sinon.stub(),
 					success: sinon.stub()
 				}
 
@@ -168,12 +175,15 @@ describe( 'store/tools', () => {
 		};
 
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 
@@ -206,14 +216,12 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const listAllTools = actions.listAllTools.bind( stubThis );
-				await listAllTools( context, testPage );
+				http.rejects( apiError );
+				await actions.listAllTools( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -247,14 +255,12 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const getToolByName = actions.getToolByName.bind( stubThis );
-				await getToolByName( context, testName );
+				http.rejects( apiError );
+				await actions.getToolByName( context, testName );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -287,14 +293,12 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const getSpdxLicenses = actions.getSpdxLicenses.bind( stubThis );
-				await getSpdxLicenses( context );
+				http.rejects( apiError );
+				await actions.getSpdxLicenses( context );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -329,18 +333,13 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'name',
-					message: 'Tool with this title already exists'
-				} ] } );
+				http.rejects( apiError );
 
-				const createTool = actions.createTool.bind( stubThis );
-				await createTool( context, shortToolResponse );
+				await actions.createTool( context, shortToolResponse );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -380,18 +379,13 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'name',
-					message: 'Tool with this title already exists'
-				} ] } );
+				http.rejects( apiError );
 
-				const editTool = actions.editTool.bind( stubThis );
-				await editTool( context, toolResponse );
+				await actions.editTool( context, toolResponse );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -427,10 +421,9 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				dispatch.onFirstCall().rejects( { response: { data: 'Boom' } } );
+				dispatch.onFirstCall().rejects( { errors: { error1: { field: 'Boom', message: 'Boom Boom' } } } );
 
-				const updateToolRevisions = actions.updateToolRevisions.bind( stubThis );
-				await updateToolRevisions( context, testTool );
+				await actions.updateToolRevisions( context, testTool );
 
 				expect( dispatch ).to.have.been.calledOnce;
 				expect( dispatch ).to.have.been.calledBefore( commit );
@@ -439,8 +432,7 @@ describe( 'store/tools', () => {
 				);
 
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.calledOnce;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -478,14 +470,12 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const getToolRevision = actions.getToolRevision.bind( stubThis );
-				await getToolRevision( context, testTool );
+				http.rejects( apiError );
+				await actions.getToolRevision( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -524,14 +514,12 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const getRevisionsDiff = actions.getRevisionsDiff.bind( stubThis );
-				await getRevisionsDiff( context, testTool );
+				http.rejects( apiError );
+				await actions.getRevisionsDiff( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -585,16 +573,13 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
+				http.rejects( apiError );
 
 				context.state.toolRevisions = toolRevisionsResponse.results;
-				const undoChangesBetweenRevisions = actions.undoChangesBetweenRevisions
-					.bind( stubThis );
-				await undoChangesBetweenRevisions( context, testTool );
+				await actions.undoChangesBetweenRevisions( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.calledOnce;
+				expect( displayErrorNotification ).to.have.been.called;
 
 				context.state.toolRevisions = [];
 			} );
@@ -639,15 +624,13 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
+				http.rejects( apiError );
 
-				const restoreToolToRevision = actions.restoreToolToRevision.bind( stubThis );
-				await restoreToolToRevision( context, testTool );
+				await actions.restoreToolToRevision( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -691,18 +674,13 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'detail',
-					message: 'Current revision cannot be hidden'
-				} ] } );
+				http.rejects( apiError );
 
-				const hideRevealRevision = actions.hideRevealRevision.bind( stubThis );
-				await hideRevealRevision( context, testTool );
+				await actions.hideRevealRevision( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -745,18 +723,13 @@ describe( 'store/tools', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'detail',
-					message: 'Not found.'
-				} ] } );
+				http.rejects( apiError );
 
-				const markRevisionAsPatrolled = actions.markRevisionAsPatrolled.bind( stubThis );
-				await markRevisionAsPatrolled( context, testTool );
+				await actions.markRevisionAsPatrolled( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );

@@ -2,12 +2,11 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import SwaggerClient from 'swagger-client';
 
-import i18n from '@/plugins/i18n';
 import {
 	OPENAPI_SCHEMA_URL,
-	getFailurePayload,
 	makeApiCall
 } from '@/plugins/swagger';
+import { displayErrorNotification } from '@/helpers/notifications';
 
 Vue.use( Vuex );
 
@@ -27,8 +26,7 @@ export const actions = {
 				return SwaggerClient.resolve( { spec } );
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
-				this._vm.$notify.error( i18n.t( 'apierror', [ data ] ) );
+				displayErrorNotification.call( this, failure );
 			}
 		).then(
 			( { spec } ) => {

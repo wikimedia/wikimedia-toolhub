@@ -4,6 +4,7 @@ import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
 import { asList } from '@/helpers/casl';
+import * as notifications from '@/helpers/notifications';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -53,6 +54,13 @@ describe( 'store/lists', () => {
 		} ]
 	};
 
+	const apiError = {
+		errors: [ {
+			field: 'test field1',
+			message: 'something went wrong'
+		} ]
+	};
+
 	describe( 'actions', () => {
 		const commit = sinon.spy();
 		const dispatch = sinon.stub();
@@ -65,7 +73,6 @@ describe( 'store/lists', () => {
 		const stubThis = {
 			_vm: {
 				$notify: {
-					error: sinon.stub(),
 					success: sinon.stub()
 				}
 
@@ -73,12 +80,15 @@ describe( 'store/lists', () => {
 		};
 
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 
@@ -111,18 +121,13 @@ describe( 'store/lists', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: '',
-					message: ''
-				} ] } );
+				http.rejects( apiError );
 
-				const getFeaturedLists = actions.getFeaturedLists.bind( stubThis );
-				await getFeaturedLists( context, testPage );
+				await actions.getFeaturedLists( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -155,18 +160,13 @@ describe( 'store/lists', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: '',
-					message: ''
-				} ] } );
+				http.rejects( apiError );
 
-				const getMyLists = actions.getMyLists.bind( stubThis );
-				await getMyLists( context, testPage );
+				await actions.getMyLists( context, testPage );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -201,21 +201,16 @@ describe( 'store/lists', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'comment',
-					message: 'This field may not be null.'
-				} ] } );
+				http.rejects( apiError );
 
-				const createNewList = actions.createNewList.bind( stubThis );
-				await createNewList( context, shortListResponse );
+				await actions.createNewList( context, shortListResponse );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.been.calledOnce;
 				expect( commit ).to.have.been.calledWithExactly(
 					'CREATE_LIST', false
 				);
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -250,16 +245,10 @@ describe( 'store/lists', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'comment',
-					message: 'This field may not be null.'
-				} ] } );
+				http.rejects( apiError );
 
-				const editList = actions.editList.bind( stubThis );
-				await editList( context, listResponse.results[ 0 ] );
-
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				await actions.editList( context, listResponse.results[ 0 ] );
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -293,16 +282,10 @@ describe( 'store/lists', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: 'comment',
-					message: 'This field may not be null.'
-				} ] } );
+				http.rejects( apiError );
 
-				const deleteList = actions.deleteList.bind( stubThis );
-				await deleteList( context, testId );
-
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				await actions.deleteList( context, testId );
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 		} );
@@ -336,18 +319,13 @@ describe( 'store/lists', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { errors: [ {
-					field: '',
-					message: ''
-				} ] } );
+				http.rejects( apiError );
 
-				const getListInfo = actions.getListInfo.bind( stubThis );
-				await getListInfo( context, testId );
+				await actions.getListInfo( context, testId );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 

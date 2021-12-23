@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
+import * as notifications from '@/helpers/notifications';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -35,18 +36,28 @@ describe( 'store/auditlogs', () => {
 		]
 	};
 
+	const apiError = {
+		errors: [ {
+			field: 'test field1',
+			message: 'something went wrong'
+		} ]
+	};
+
 	describe( 'actions', () => {
 		const commit = sinon.spy();
 		const state = {};
 		const rootState = { locale: { locale: 'en' } };
 		const context = { commit, state, rootState };
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 
@@ -92,23 +103,13 @@ describe( 'store/auditlogs', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				const stubThis = {
-					_vm: {
-						$notify: { error: sinon.stub() }
-					}
-				};
-				http.rejects( { errors: [ {
-					field: 'before',
-					message: 'Enter a valid date/time'
-				} ] } );
+				http.rejects( apiError );
 
-				const fetchAuditLogs = actions.fetchAuditLogs.bind( stubThis );
-				await fetchAuditLogs( context, testPayload1 );
+				await actions.fetchAuditLogs( context, testPayload1 );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 			it( 'should remove null or undefined filters', async () => {

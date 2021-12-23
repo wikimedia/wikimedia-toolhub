@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { makeApiCall, getFailurePayload } from '@/plugins/swagger';
+import { makeApiCall } from '@/plugins/swagger';
+import { displayErrorNotification } from '@/helpers/notifications';
 import i18n from '@/plugins/i18n';
 import { asApp, asToken } from '@/helpers/casl';
 
@@ -23,17 +24,8 @@ export const actions = {
 				);
 			},
 			( failure ) => {
-				const data = getFailurePayload( failure );
 				context.commit( 'REGISTER_APP', false );
-
-				for ( const err in data.errors ) {
-					this._vm.$notify.error(
-						i18n.t( 'apierrors', [
-							data.errors[ err ].field,
-							data.errors[ err ].message
-						] )
-					);
-				}
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -48,12 +40,7 @@ export const actions = {
 				context.commit( 'CLIENT_APPS', success.body );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -70,10 +57,8 @@ export const actions = {
 					i18n.t( 'developersettings-appupdatesuccess', [ app.clientId ] )
 				);
 			},
-			() => {
-				this._vm.$notify.error(
-					i18n.t( 'developersettings-appupdateerror', [ app.clientId ] )
-				);
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -92,12 +77,7 @@ export const actions = {
 				);
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					failure.response.statusText : failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -112,13 +92,7 @@ export const actions = {
 				context.commit( 'AUTHORIZED_APPS', success.body );
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					JSON.parse( failure.response.data ) :
-					failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	},
@@ -137,13 +111,7 @@ export const actions = {
 				);
 			},
 			( failure ) => {
-				const explanation = ( 'statusCode' in failure ) ?
-					JSON.parse( failure.response.data ) :
-					failure;
-
-				this._vm.$notify.error(
-					i18n.t( 'apierror', [ explanation ] )
-				);
+				displayErrorNotification.call( this, failure );
 			}
 		);
 	}

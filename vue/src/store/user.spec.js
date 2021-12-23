@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
+import * as notifications from '@/helpers/notifications';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -41,6 +42,13 @@ describe( 'store/user', () => {
 		]
 	};
 
+	const apiError = {
+		errors: [ {
+			field: 'test field1',
+			message: 'something went wrong'
+		} ]
+	};
+
 	describe( 'actions', () => {
 		const commit = sinon.spy();
 		const state = { user: { is_authenticated: true } };
@@ -51,11 +59,6 @@ describe( 'store/user', () => {
 		const context = { commit, state, rootState };
 
 		const stubThis = {
-			_vm: {
-				$notify: {
-					error: sinon.stub()
-				}
-			},
 			vm: {
 				$ability: {
 					update: sinon.stub()
@@ -63,13 +66,16 @@ describe( 'store/user', () => {
 			}
 		};
 		let http = 'func';
+		let displayErrorNotification = 'func';
 
 		beforeEach( () => {
 			http = sinon.stub( SwaggerClient, 'http' );
+			displayErrorNotification = sinon.stub( notifications, 'displayErrorNotification' );
 		} );
 
 		afterEach( () => {
 			http.restore();
+			displayErrorNotification.restore();
 			sinon.reset();
 		} );
 
@@ -113,9 +119,8 @@ describe( 'store/user', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const getUserInfo = actions.getUserInfo.bind( stubThis );
-				const promise = getUserInfo( context, stubThis );
+				http.rejects( apiError );
+				const promise = actions.getUserInfo( context, stubThis );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.been.calledOnce;
@@ -124,8 +129,7 @@ describe( 'store/user', () => {
 				);
 
 				await promise;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
 			it( 'should return existing promise', async () => {
@@ -180,14 +184,12 @@ describe( 'store/user', () => {
 			} );
 
 			it( 'should log failures', async () => {
-				http.rejects( { response: { data: 'Boom' } } );
-				const listAllUsers = actions.listAllUsers.bind( stubThis );
-				await listAllUsers( context, testPayload );
+				http.rejects( apiError );
+				await actions.listAllUsers( context, testPayload );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -253,30 +255,18 @@ describe( 'store/user', () => {
 			} );
 
 			it( 'should emit error messages', async () => {
-				const response = {
-					code: 1000,
-					message: 'boom!',
-					status_code: 500,
-					errors: [ {
-						code: 1,
-						field: 'something',
-						message: 'Boom!'
-					} ]
-				};
 				const expectRequest = addRequestDefaults( {
 					url: '/api/user/authtoken/'
 				}, context );
-				http.rejects( response );
+				http.rejects( apiError );
 
-				const getAuthtoken = actions.getAuthtoken.bind( stubThis );
-				await getAuthtoken( context );
+				await actions.getAuthtoken( context );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledWith( expectRequest );
 
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.calledOnce;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -316,31 +306,19 @@ describe( 'store/user', () => {
 			} );
 
 			it( 'should emit error messages', async () => {
-				const response = {
-					code: 1000,
-					message: 'boom!',
-					status_code: 500,
-					errors: [ {
-						code: 1,
-						field: 'something',
-						message: 'Boom!'
-					} ]
-				};
 				const expectRequest = addRequestDefaults( {
 					url: '/api/user/authtoken/',
 					method: 'POST'
 				}, context );
-				http.rejects( response );
+				http.rejects( apiError );
 
-				const newAuthtoken = actions.newAuthtoken.bind( stubThis );
-				await newAuthtoken( context );
+				await actions.newAuthtoken( context );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledWith( expectRequest );
 
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.calledOnce;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 
@@ -396,31 +374,19 @@ describe( 'store/user', () => {
 			} );
 
 			it( 'should emit error messages', async () => {
-				const response = {
-					code: 1000,
-					message: 'boom!',
-					status_code: 500,
-					errors: [ {
-						code: 1,
-						field: 'something',
-						message: 'Boom!'
-					} ]
-				};
 				const expectRequest = addRequestDefaults( {
 					url: '/api/user/authtoken/',
 					method: 'DELETE'
 				}, context );
-				http.rejects( response );
+				http.rejects( apiError );
 
-				const deleteAuthtoken = actions.deleteAuthtoken.bind( stubThis );
-				await deleteAuthtoken( context );
+				await actions.deleteAuthtoken( context );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledWith( expectRequest );
 
 				expect( commit ).to.have.not.been.called;
-				// eslint-disable-next-line no-underscore-dangle
-				expect( stubThis._vm.$notify.error ).to.have.been.calledOnce;
+				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
 	} );

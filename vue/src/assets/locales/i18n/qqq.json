@@ -110,7 +110,6 @@
 	"developersettings-nologintext": "Info message to show to users not logged in.",
 	"developersettings-noclientappsfoundtext": "Info message for no client apps found",
 	"developersettings-pagesubtitle": "Page Subtitle",
-	"editformerror": "Error message for edit form validation failure. Parameters:\n* $1 - message\n* $2 - field\n* $3 - error",
 	"editsummary": "Dialog title",
 	"experimental": "Label for tool status",
 	"favorite": "Button label",

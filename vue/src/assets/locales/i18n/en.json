@@ -103,7 +103,6 @@
 	"developersettings-nologintext": "You will need to log in to Toolhub to view authorized apps",
 	"developersettings-noclientappsfoundtext": "No client apps found",
 	"developersettings-pagesubtitle": "View, register, authorize and revoke oauth applications",
-	"editformerror": "Oops! '$1' error occurred in '$2': $3",
 	"editsummary": "Edit Summary",
 	"experimental": "Experimental",
 	"favorite": "Favorite",
