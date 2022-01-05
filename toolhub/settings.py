@@ -272,6 +272,7 @@ CACHES = {
 ELASTICSEARCH_DSL = {
     "default": {
         "hosts": env.list("ES_HOSTS", default="localhost:9200"),
+        "verify_certs": env.bool("ES_VERIFY_CERTS", default=True),
     }
 }
 ELASTICSEARCH_DSL_INDEX_SETTINGS = {
