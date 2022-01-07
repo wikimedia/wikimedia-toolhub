@@ -153,6 +153,7 @@ div.list-card__card {
 
 #notifications .v-alert {
 	border: thin solid currentColor !important;
+	overflow-wrap: anywhere !important;
 }
 
 div.v-slide-group.compact-arrows > .v-slide-group__next,
