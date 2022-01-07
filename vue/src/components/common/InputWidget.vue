@@ -186,9 +186,9 @@
 
 <script>
 import { mapState } from 'vuex';
-import urlRegex from '@/plugins/url-regex';
 import patternRegexRule from '@/plugins/pattern-regex';
 import InputLabel from '@/components/common/InputLabel';
+import { isValidHttpUrl } from '@/helpers/validation';
 
 export const methods = {
 	/**
@@ -339,7 +339,7 @@ export default {
 			}
 			if ( schema.format === 'uri' ) {
 				rules.push(
-					( v ) => !v ? true : urlRegex.test( v ) ||
+					( v ) => !v ? true : isValidHttpUrl( v ) ||
 					this.$t( 'urlinvalid' )
 				);
 			}

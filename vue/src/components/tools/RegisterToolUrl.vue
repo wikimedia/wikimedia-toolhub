@@ -104,8 +104,8 @@
 <script>
 import { mapState } from 'vuex';
 import customSort from '@/plugins/sort.js';
-import urlRegex from '@/plugins/url-regex';
 import InputLabel from '@/components/common/InputLabel';
+import { isValidHttpUrl } from '@/helpers/validation';
 
 export default {
 	name: 'RegisterToolUrl',
@@ -117,7 +117,7 @@ export default {
 			page: 1,
 			itemsPerPage: 10,
 			fileUrl: '',
-			urlRule: [ ( v ) => !v ? true : urlRegex.test( v ) || this.$t( 'urlinvalid' ) ],
+			urlRule: [ ( v ) => !v ? true : isValidHttpUrl( v ) || this.$t( 'urlinvalid' ) ],
 			requiredRule: [ ( v ) => !!v || 'This field is required' ]
 		};
 	},
@@ -146,7 +146,7 @@ export default {
 	},
 	methods: {
 		registerUrl( url ) {
-			if ( !this.fileUrl || !urlRegex.test( this.fileUrl ) ) {
+			if ( !this.fileUrl || !isValidHttpUrl( this.fileUrl ) ) {
 				this.$refs.url.validate( true );
 				return;
 			}
