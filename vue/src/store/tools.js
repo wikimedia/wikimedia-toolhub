@@ -91,7 +91,7 @@ export const actions = {
 	},
 	getSpdxLicenses( context ) {
 		const request = {
-			url: '/api/spdx/',
+			url: '/api/spdx/?deprecated=false',
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'

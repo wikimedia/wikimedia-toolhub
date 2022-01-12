@@ -263,14 +263,14 @@ describe( 'store/tools', () => {
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/spdx/',
+				url: '/api/spdx/?deprecated=false',
 				headers: { 'Content-type': 'application/json' },
 				body: spdxLicensesResponse
 			};
 
 			it( 'should fetch spdx licenses', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/spdx/'
+					url: '/api/spdx/?deprecated=false'
 				}, context );
 				http.resolves( response );
 
