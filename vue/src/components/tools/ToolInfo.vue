@@ -61,9 +61,19 @@
 							{{ tool.description }}
 						</div>
 
-						<dl class="row mx-0 mt-4 text-subtitle-1">
+						<dl class="tool-info__authors row mx-0 mt-4 text-subtitle-1">
 							<dt class="me-1">{{ $t( 'authors' ) }}:</dt>
-							<dd>{{ tool.author }}</dd>
+							<dd>
+								<v-btn
+									text
+									small
+									rounded
+									:ripple="false"
+									:to="{ name: 'search', query: { 'author__term': tool.author } }"
+								>
+									{{ tool.author }}
+								</v-btn>
+							</dd>
 						</dl>
 
 						<div
@@ -73,8 +83,8 @@
 							<v-chip
 								v-for="tt in tool.keywords.filter(e => e)"
 								:key="tt"
+								:to="{ name: 'search', query: { 'keywords__term': tt } }"
 								:ripple="false"
-								disabled
 								class="ma-1 opacity-1"
 							>
 								{{ tt }}

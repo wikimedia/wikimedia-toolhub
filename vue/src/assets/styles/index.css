@@ -44,6 +44,12 @@ div.tool-card__card {
 	-webkit-line-clamp: 1;
 }
 
+.tool-info__authors dd .v-btn {
+	text-transform: none !important;
+	font-size: inherit !important;
+	letter-spacing: inherit;
+}
+
 .lists .box-header {
 	background-color: var( --v-accent-base );
 	border-bottom: 1px solid var( --v-base80-base );
