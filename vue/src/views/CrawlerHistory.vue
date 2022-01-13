@@ -163,8 +163,6 @@ export default {
 			runsPage: 1,
 			urlsPage: 1,
 			itemsPerPage: 10,
-			totalToolsChartData: null,
-			crawledUrlsChartData: null,
 			crawlerRunEndDate: null,
 			crawlerRunId: 0,
 			firstRowActive: true,
@@ -176,6 +174,30 @@ export default {
 		return fetchMetaInfo( 'crawlerhistory' );
 	},
 	computed: {
+		crawledUrlsChartData() {
+			return {
+				labels: this.crawlEndDates,
+				datasets: [
+					{
+						label: this.$t( 'urlscrawled' ),
+						backgroundColor: this.$vuetify.theme.themes.light.accent,
+						data: this.crawlUrlsCrawled
+					}
+				]
+			};
+		},
+		totalToolsChartData() {
+			return {
+				labels: this.crawlEndDates,
+				datasets: [
+					{
+						label: this.$t( 'totaltools' ),
+						backgroundColor: this.$vuetify.theme.themes.light.primary,
+						data: this.crawlTotalTools
+					}
+				]
+			};
+		},
 		...mapState( 'crawler', [
 			'crawlerHistory',
 			'numCrawlerRuns',
@@ -255,29 +277,6 @@ export default {
 			const sortedItems = customSort( items, index, isDesc );
 			return sortedItems;
 		},
-		fillChartsData() {
-			this.crawledUrlsChartData = {
-				labels: this.crawlEndDates,
-				datasets: [
-					{
-						label: this.$t( 'urlscrawled' ),
-						backgroundColor: this.$vuetify.theme.themes.light.accent,
-						data: this.crawlUrlsCrawled
-					}
-				]
-			};
-
-			this.totalToolsChartData = {
-				labels: this.crawlEndDates,
-				datasets: [
-					{
-						label: this.$t( 'totaltools' ),
-						backgroundColor: this.$vuetify.theme.themes.light.primary,
-						data: this.crawlTotalTools
-					}
-				]
-			};
-		},
 		changeUrlsCrawled( item ) {
 			this.crawlerRunEndDate = this.$moment.utc( item.end_date ).format( 'lll' );
 			this.crawlerRunId = item.id;
@@ -295,7 +294,6 @@ export default {
 	watch: {
 		crawlerHistory( newVal, oldVal ) {
 			if ( oldVal !== newVal ) {
-				this.fillChartsData();
 				this.changeUrlsCrawled( this.crawlerHistory[ 0 ] );
 			}
 		}
