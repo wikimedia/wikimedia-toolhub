@@ -88,7 +88,6 @@
 	"developersettings-nologintext": "Você precisará entrar no Toolhub para ver os aplicativos autorizados",
 	"developersettings-noclientappsfoundtext": "Nenhum aplicativo cliente encontrado",
 	"developersettings-pagesubtitle": "Visualize, registre, autorize e revogue aplicativos oauth",
-	"editformerror": "Ops! Ocorreu um erro '$1' em '$2': $3",
 	"editsummary": "Editar resumo",
 	"experimental": "Experimental",
 	"feedbackurl": "URL de feedback",

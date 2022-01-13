@@ -102,7 +102,6 @@
 	"developersettings-nologintext": "Щоб переглянути авторизовані програми, вам потрібно буде увійти в Toolhub",
 	"developersettings-noclientappsfoundtext": "Клієнтські програми не знайдені",
 	"developersettings-pagesubtitle": "Перегляд, реєстрація, авторизація та скасування програм oauth",
-	"editformerror": "На жаль! Помилка «$1» сталася в «$2»: $3",
 	"editsummary": "Опис редагування",
 	"experimental": "Експериментально",
 	"favorite": "Улюблені",

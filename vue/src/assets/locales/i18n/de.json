@@ -109,7 +109,6 @@
 	"developersettings-nologintext": "Du musst dich bei Toolhub anmelden, um autorisierte Apps anzuzeigen",
 	"developersettings-noclientappsfoundtext": "Keine Client-Apps gefunden",
 	"developersettings-pagesubtitle": "Oauth-Anwendungen anzeigen, registrieren, autorisieren und widerrufen",
-	"editformerror": "Ups! Der Fehler '$1' ist in '$2' aufgetreten: $3",
 	"editsummary": "Bearbeitungszusammenfassung",
 	"experimental": "Experimentell",
 	"favorite": "Favorit",

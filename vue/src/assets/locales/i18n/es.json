@@ -86,7 +86,6 @@
 	"description": "Descripción",
 	"developerdocumentation": "Documentación para desarrolladores",
 	"developersettings": "Configuración del desarrollador",
-	"editformerror": "¡Uy! Ocurrió un error '$1' en '$2': $3",
 	"editsummary": "Editar resumen",
 	"experimental": "Experimental",
 	"feedbackurl": "URL de comentarios",

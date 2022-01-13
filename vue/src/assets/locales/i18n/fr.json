@@ -107,7 +107,6 @@
 	"developersettings-nologintext": "Vous devrez vous connecter à Toolhub pour afficher les applications autorisées",
 	"developersettings-noclientappsfoundtext": "Aucune application cliente trouvée",
 	"developersettings-pagesubtitle": "Afficher, enregistrer, autoriser et révoquer les applications OAuth",
-	"editformerror": "Oups ! L’erreur « $1 » s’est produite dans « $2 » : $3",
 	"editsummary": "Modifier le résumé",
 	"experimental": "Expérimental",
 	"favorite": "Favori",

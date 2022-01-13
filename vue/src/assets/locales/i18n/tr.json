@@ -64,7 +64,6 @@
 	"developersettings-noauthorizedappsfoundtext": "Hiçbir istemci uygulamasının hesabınızı kullanmasına yetki vermediniz",
 	"developersettings-noclientappsfoundtext": "Hiçbir istemci uygulaması bulunamadı",
 	"developersettings-pagesubtitle": "Oauth uygulamalarını görüntüle, kaydet, yetkilendir ve geri çek",
-	"editformerror": "Eyvah! '$2' içinde '$1' hatası oluştu: $3",
 	"editsummary": "Değişiklik Özeti",
 	"experimental": "Deneysel",
 	"feedbackurl": "Geri bildirim URLsi",
