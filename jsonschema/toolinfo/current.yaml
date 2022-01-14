@@ -3,7 +3,7 @@ description: >-
   A tool is a piece of software that helps facilitate contribution toward, or
   consumption of, Wikimedia projects and associated data, not including the
   core MediaWiki software and its extensions.
-$id: /toolinfo/1.2.1
+$id: /toolinfo/1.2.2
 $schema: http://json-schema.org/draft-07/schema#
 definitions:
   tool:
@@ -44,9 +44,13 @@ definitions:
           deprecated and will be removed in the next major version.
         $comment: Remove in version 2.
       author:
-        type: string
-        maxLength: 255
-        description: The primary tool developer.
+        oneOf:
+          - type: string
+            maxLength: 255
+          - type: array
+            items:
+              $ref: "#/definitions/person"
+        description: The primary tool developers.
       repository:
         $ref: "#/definitions/url"
         description: A link to the repository where the tool code is hosted.
@@ -243,6 +247,31 @@ definitions:
         items:
           type: string
           maxLength: 255
+  person:
+    type: object
+    properties:
+      name:
+        type: string
+        maxLength: 255
+        description: The full/formatted name of the person.
+      wiki_username:
+        type: string
+        maxLength: 255
+        description: The person's Wikimedia username.
+      developer_username:
+        type: string
+        maxLength: 255
+        description: The person's Wikimedia Developer account username.
+      email:
+        type: string
+        maxLength: 255
+        format: email
+        description: Email address
+      url:
+        $ref: "#/definitions/url"
+        description: Home page or other URL representing the person.
+    required:
+      - name
 oneOf:
   - type: array
     items:
