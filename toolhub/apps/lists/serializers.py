@@ -20,6 +20,8 @@ import logging
 from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 
+from drf_spectacular.utils import extend_schema_field
+
 from rest_framework import serializers
 
 import reversion
@@ -27,6 +29,7 @@ import reversion
 from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.toolinfo.models import Tool
 from toolhub.apps.toolinfo.serializers import SummaryToolSerializer
+from toolhub.apps.user.models import ToolhubUser
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.apps.versioned.models import RevisionMetadata
 from toolhub.apps.versioned.serializers import JSONPatchField
@@ -200,13 +203,8 @@ class EditToolListSerializer(ModelSerializer, EditCommentFieldMixin):
 class ToolListHistoricVersionSerializer(ModelSerializer):
     """Historic revision of a list."""
 
-    tools = serializers.ListField(
-        child=serializers.CharField(required=False),
-        allow_empty=True,
-        max_length=128,
-        help_text=_("""List of tool names."""),
-        source="tool_names",
-    )
+    tools = serializers.SerializerMethodField()
+    created_by = serializers.SerializerMethodField()
 
     class Meta:
         """Configure serializer."""
@@ -221,8 +219,26 @@ class ToolListHistoricVersionSerializer(ModelSerializer):
             "published",
             "featured",
             "tools",
+            "created_by",
+            "created_date",
         ]
         read_only_fields = fields
+
+    @extend_schema_field(SummaryToolSerializer(many=True))
+    def get_tools(self, obj):
+        """Get full tool objects"""
+        serializer = SummaryToolSerializer(
+            Tool.objects.filter(name__in=obj["tool_names"]), many=True
+        )
+        return serializer.data
+
+    @extend_schema_field(UserSerializer)
+    def get_created_by(self, obj):
+        """Get list creator object."""
+        serializer = UserSerializer(
+            ToolhubUser.objects.get(id=obj["created_by_id"])
+        )
+        return serializer.data
 
 
 @doc(_("""Tool list revision."""))
