@@ -152,7 +152,7 @@ class ToolDocumentViewSet(AutoCompleteToolDocumentViewSet):
             ],
         },
         "author": {
-            "field": "author.keyword",
+            "field": "author.name.keyword",
             "lookups": [
                 constants.LOOKUP_FILTER_TERM,
                 constants.LOOKUP_QUERY_ISNULL,
@@ -207,7 +207,7 @@ class ToolDocumentViewSet(AutoCompleteToolDocumentViewSet):
             "enabled": True,
         },
         "author": {
-            "field": "author.keyword",
+            "field": "author.name.keyword",
             "options": build_term_facet_options("author"),
             "enabled": True,
         },

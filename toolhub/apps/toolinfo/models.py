@@ -153,6 +153,12 @@ class ToolManager(SafeDeleteManager):
             )
             record["available_ui_languages"] = clean_ui_langs
 
+        # Convert legacy author information to array of people
+        if "author" in record and isinstance(record["author"], str):
+            record["author"] = [
+                {"name": name.strip()} for name in record["author"].split(",")
+            ]
+
         # Strip out any unknown fields. We are trying really, really hard to
         # keep any data that we can salvage even if the input is messed up.
         for field in list(record):
@@ -393,11 +399,11 @@ class Tool(ExportModelOperationsMixin("tool"), SafeDeleteModel):
         default=list,
         schema=schema.KEYWORDS,
     )
-    author = BlankAsNullCharField(
+    author = JSONSchemaField(
         blank=True,
-        max_length=255,
-        null=True,
-        help_text=_("The primary tool developer."),
+        default=list,
+        help_text=_("The primary tool developers."),
+        schema=schema.schema_for("author", oneof=1),
     )
     repository = BlankAsNullCharField(
         blank=True,

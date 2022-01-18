@@ -4,7 +4,7 @@
 	"description": "Toolhub provides both an API and a user interface for documenting and browsing a community curated collection of information about tools used by the Wikimedia movement.",
 	"url": "https://toolhub.wikimedia.org",
 	"keywords": [ "test" ],
-	"author": "Wikimedia Foundation",
+	"author": [ { "name": "Wikimedia Foundation" } ],
 	"repository": "https://gerrit.wikimedia.org/r/plugins/gitiles/wikimedia/toolhub/",
 	"subtitle": "An authoritative and well promoted catalog of Wikimedia tools.",
 	"deprecated": false,

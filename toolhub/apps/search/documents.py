@@ -20,6 +20,7 @@ from django.db.models import TextField
 
 from django_elasticsearch_dsl import Document
 from django_elasticsearch_dsl import fields
+from django_elasticsearch_dsl.exceptions import VariableLookupError
 from django_elasticsearch_dsl.registries import registry
 
 from drf_spectacular.drainage import set_override
@@ -34,6 +35,31 @@ from toolhub.apps.toolinfo.models import Tool
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.fields import JSONSchemaField
 from toolhub.serializers import JSONSchemaField as JSONSchemaFieldSerializer
+
+
+# Monkey patch django_elasticsearch_dsl.fields.DEDField to work around not
+# having django-elasticsearch-dsl@11a7b87 which introduces support for
+# non-required fields when exporting a document. That functionality is in
+# django-elasticsearch-dsl >=7.2.1.
+upstream_get_value_from_instance = fields.DEDField.get_value_from_instance
+
+
+def our_get_value_from_instance(self, instance, field_value_to_ignore=None):
+    """Allow missing values when indexing."""
+    try:
+        return upstream_get_value_from_instance(
+            self,
+            instance,
+            field_value_to_ignore,
+        )
+    except VariableLookupError as err:
+        if self._required:
+            raise err
+        return None
+
+
+fields.DEDField.get_value_from_instance = our_get_value_from_instance
+# End monkey patch
 
 
 JSONSCHEMA_TYPE_TO_DSL = {

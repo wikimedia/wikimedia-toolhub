@@ -26,7 +26,7 @@ from drf_spectacular.extensions import OpenApiSerializerFieldExtension
 
 
 SCHEMA_FILE_PATTERN = "jsonschema/toolinfo/{}.json"
-CURRENT_SCHEMA = "1.2.0"
+CURRENT_SCHEMA = "1.2.2"
 
 
 KEYWORDS = {

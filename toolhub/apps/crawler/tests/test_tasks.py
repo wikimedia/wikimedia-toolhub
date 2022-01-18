@@ -248,5 +248,5 @@ class CrawlerTestCase(TestCase):
         self.assertUrlStatus(run.urls.all()[1])
         self.assertEqual(
             self.v0_single["author"],
-            Tool.objects.get(name=self.v0_single["name"]).author,
+            Tool.objects.get(name=self.v0_single["name"]).author[0]["name"],
         )
