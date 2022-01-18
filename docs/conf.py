@@ -33,6 +33,7 @@ django.setup()
 
 
 extensions = [
+    "sphinx_copybutton",
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
@@ -72,3 +73,6 @@ htmlhelp_basename = "Toolhubdoc"
 
 autodoc_default_flags = ["members", "private-members", "special-members"]
 autodoc_memeber_order = "groupwise"
+
+copybutton_prompt_text = r">>> |\.\.\. |\$ "
+copybutton_prompt_is_regexp = True

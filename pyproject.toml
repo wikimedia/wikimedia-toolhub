@@ -66,6 +66,7 @@ django-coverage-plugin = "^2.0.0"
 bandit = "^1.6.2"
 Sphinx = "^4.1.2"
 sphinxcontrib-django = "^0.5.1"
+sphinx-copybutton = "^0.4.0"
 sphinx-rtd-theme = "^1.0.0"
 coverage = {extras = ["toml"], version = "^5.3"}
 httpretty = "^1.0.2"

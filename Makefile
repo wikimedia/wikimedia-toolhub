@@ -187,7 +187,7 @@ docs:  ## Build sphinx docs
 	docker-compose exec web sh -c " \
 		poetry run sphinx-apidoc -f -o docs/source toolhub \
 		&& rm docs/source/modules.rst \
-		&& poetry run sphinx-build -W -b html docs/ docs/_build/html \
+		&& poetry run sphinx-build -b html docs/ docs/_build/html \
 	"
 .PHONY: docs
 
