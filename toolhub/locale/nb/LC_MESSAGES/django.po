@@ -1,17 +1,7 @@
-# Translation of Toolhub - Backend to Simplified Chinese (中文（简体）)
+# Translation of Toolhub - Backend to Norwegian Bokmål (norsk bokmål)
 # Exported from translatewiki.net
 #
-# Author: )8
-# Author: 500000000006城
-# Author: Colathewikian
-# Author: GuoPC
-# Author: Interestinghe
-# Author: Lakejason0
-# Author: Si109
-# Author: Wuqianye
-# Author: Yfdyh000
-# Author: Zhang8569
-# Author: ZhuofanWu
+# Author: Premeditated
 msgid ""
 msgstr ""
 ""
@@ -19,49 +9,49 @@ msgstr ""
 "X-POT-Import-Date: 2021-11-30 17:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh-Hans\n"
+"Language: nb\n"
 "X-Generator: MediaWiki 1.38.0-alpha; Translate 2022-01-19\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr "审计日志"
+msgstr "Revisjonslogg"
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "created"
-msgstr "已创建"
+msgstr "opprettet"
 
 #: toolhub/apps/auditlog/models.py:95
 msgid "updated"
-msgstr "已更新"
+msgstr "oppdatert"
 
 #: toolhub/apps/auditlog/models.py:96
 msgid "deleted"
-msgstr "已删除"
+msgstr "slettet"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr ""
+msgstr "lagt til"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr ""
+msgstr "fjernet fra"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr "已隐藏"
+msgstr "skjul"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr "揭示"
+msgstr ""
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr "已巡查"
+msgstr "patruljert"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr ""
+msgstr "framhevet"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
@@ -69,31 +59,31 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
-msgstr "时间戳记"
+msgstr "tidsstempel"
 
 #: toolhub/apps/auditlog/models.py:116
 msgid "user"
-msgstr "用户"
+msgstr "bruker"
 
 #: toolhub/apps/auditlog/models.py:124
 msgid "content type"
-msgstr "内容类型"
+msgstr "innholdstype"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr "对象id"
+msgstr "objekt-ID"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
-msgstr ""
+msgstr "objekts-PK"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
-msgstr "操作"
+msgstr "handling"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr ""
+msgstr "Revisjonslogg-innlegg"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
@@ -109,11 +99,11 @@ msgstr ""
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr ""
+msgstr "Har revisjonen blitt merket som skjult?"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Har revisjonen blitt vurdert av en patrulje?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
@@ -141,31 +131,31 @@ msgstr ""
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr ""
+msgstr "Kun vis logger for de angitte handlingene."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr ""
+msgstr "Kun vis logger for de angitte handlingene."
 
 #: toolhub/apps/auditlog/views.py:73
 msgid "Only show logs occurring before the given date and time."
-msgstr "仅显示在指定日期和时间之前发生的日志。"
+msgstr ""
 
 #: toolhub/apps/auditlog/views.py:79
 msgid "Only show logs occurring after the given date and time."
-msgstr "仅显示在指定日期和时间之后发生的日志。"
+msgstr ""
 
 #: toolhub/apps/auditlog/views.py:84
 msgid "Only show logs for the given user."
-msgstr ""
+msgstr "Vis bare logger for brukeren."
 
 #: toolhub/apps/auditlog/views.py:90
 msgid "List all log entries."
-msgstr "列举所有日志记录"
+msgstr "Vis alle loggoppføringer."
 
 #: toolhub/apps/auditlog/views.py:93
 msgid "Info for a specific log entry."
-msgstr ""
+msgstr "Info for en bestemt loggoppføring."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
@@ -177,7 +167,7 @@ msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:44
 msgid "A URL to crawl"
-msgstr "爬取的URL"
+msgstr ""
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
@@ -197,7 +187,7 @@ msgstr ""
 
 #: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
-msgstr ""
+msgstr "Avregistrere en URL."
 
 #: toolhub/apps/crawler/views.py:58
 msgid "List all crawled URLs."
@@ -225,11 +215,11 @@ msgstr ""
 
 #: toolhub/apps/lists/apps.py:26
 msgid "Lists"
-msgstr ""
+msgstr "Lister"
 
 #: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
-msgstr ""
+msgstr "Tittel på listen"
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
@@ -253,27 +243,27 @@ msgstr ""
 
 #: toolhub/apps/lists/models.py:90
 msgid "List of the names of the tools in this list."
-msgstr ""
+msgstr "Liste over navnene på verktøyene i denne listen."
 
 #: toolhub/apps/lists/models.py:169
 msgid "Position of this tool in the list."
-msgstr ""
+msgstr "Plasseringen av dette verktøyet i listen."
 
 #: toolhub/apps/lists/serializers.py:48
 msgid "List of tools metadata."
-msgstr ""
+msgstr "Liste over tools metadata."
 
 #: toolhub/apps/lists/serializers.py:82
 msgid "Create or update a list."
-msgstr ""
+msgstr "Opprett eller oppdater en liste."
 
 #: toolhub/apps/lists/serializers.py:90 toolhub/apps/lists/serializers.py:207
 msgid "List of tool names."
-msgstr ""
+msgstr "Liste over tools navn."
 
 #: toolhub/apps/lists/serializers.py:199
 msgid "Historic revision of a list."
-msgstr ""
+msgstr "Historisk revisjon av en liste."
 
 #: toolhub/apps/lists/serializers.py:228
 msgid "Tool list revision."
@@ -299,27 +289,28 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:271
 msgid "Add a favorite tool."
-msgstr ""
+msgstr "Legg til ett favorittverktøy."
 
 #: toolhub/apps/lists/serializers.py:276
 msgid "Tool name."
-msgstr "工具名称。"
+msgstr "Verktøysnavn."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr ""
+msgstr "Duplikate verdier i listen: %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
 msgstr[0] ""
+msgstr[1] ""
 
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr ""
+msgstr "Verktøyet %(name)s er allerede lagt i favoritter."
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
@@ -335,7 +326,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."
-msgstr ""
+msgstr "Opprett en ny liste av verktøy."
 
 #: toolhub/apps/lists/views.py:88
 msgid "Details of a specific list of tools."
@@ -371,7 +362,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:210 toolhub/apps/toolinfo/views.py:122
 msgid "List revisions."
-msgstr ""
+msgstr "Siste revisjoner."
 
 #: toolhub/apps/lists/views.py:215 toolhub/apps/toolinfo/views.py:127
 msgid "Compare two revisions to find difference."
@@ -395,15 +386,15 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:254 toolhub/apps/toolinfo/views.py:168
 msgid "Hide revision text and edit summary from users."
-msgstr "隐藏修订文字并编辑用户的总结。"
+msgstr ""
 
 #: toolhub/apps/lists/views.py:260 toolhub/apps/toolinfo/views.py:174
 msgid "Reveal a previously hidden revision."
-msgstr "揭示一个之前被隐藏的修订。"
+msgstr ""
 
 #: toolhub/apps/lists/views.py:266 toolhub/apps/toolinfo/views.py:180
 msgid "Mark a revision as patrolled."
-msgstr "将一个修正标为已被巡查。"
+msgstr ""
 
 #: toolhub/apps/lists/views.py:365 toolhub/apps/toolinfo/views.py:277
 #, python-format
@@ -433,39 +424,39 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:537
 msgid "Personal favorites."
-msgstr ""
+msgstr "Personlige favoritter."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
-msgstr "OAuth 2.0身份验证的服务器API"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
-msgstr "OAuth客户端应用程序。"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:37
 msgid "Application name"
-msgstr "应用程序名称"
+msgstr "Applikasjonsnavn"
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
-msgstr "用户能识别和信任的东西"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
 msgid "Authorization callback URL"
-msgstr "授权回调网址"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
 msgid "The application's callback URL."
-msgstr "该应用程序的回调网址。"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:49
 msgid "Public identifier for this application"
-msgstr "此应用程序的公共标识符"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:66
 msgid "OAuth Client application registration."
-msgstr "OAuth客户端应用程序注册。"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:74
 msgid "Secret known only to the application and the authorization server"
@@ -473,51 +464,51 @@ msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:92
 msgid "OAuth Client application update."
-msgstr "OAuth客户端应用程序更新。"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:117
 msgid "Authorized OAuth client application."
-msgstr "已授权的OAuth客户端应用程序。"
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:39
 msgid "List all client applications."
-msgstr "列出所有客户端应用程序。"
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:42
 msgid "Info for a client application."
-msgstr "客户端应用程序的信息。"
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:45
 msgid "Register a new client application."
-msgstr "注册新的客户端应用程序。"
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:53
 msgid "Update a client application."
-msgstr "更新一个客户端应用程序。"
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:57
 msgid "Delete a client application."
-msgstr "删除一个客户端应用程序。"
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:91
 msgid "List applications authorized by the current user."
-msgstr "列出当前用户已授权的应用程序。"
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:94
 msgid "Info for an authorized application."
-msgstr "已授权应用程序的信息。"
+msgstr ""
 
 #: toolhub/apps/oauth2/views.py:106
 msgid "Revoke an application authorization."
-msgstr "废止一个应用程序授权。"
+msgstr ""
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr "搜索"
+msgstr "Søk"
 
 #: toolhub/apps/search/schema.py:29 toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr "基本信息"
+msgstr "Brukerinformasjon"
 
 #: toolhub/apps/search/schema.py:37
 msgid "Faceted classification"
@@ -525,7 +516,7 @@ msgstr ""
 
 #: toolhub/apps/search/schema.py:79
 msgid "Search string"
-msgstr "搜寻字串"
+msgstr "Søkestreng"
 
 #: toolhub/apps/search/schema.py:104
 #, python-format
@@ -568,47 +559,47 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:339
 msgid "web app"
-msgstr ""
+msgstr "webapplikasjon"
 
 #: toolhub/apps/toolinfo/models.py:340
 msgid "desktop app"
-msgstr "桌面应用程式"
+msgstr "skrivebordsapplikasjon"
 
 #: toolhub/apps/toolinfo/models.py:341
 msgid "bot"
-msgstr "机器人"
+msgstr "bot"
 
 #: toolhub/apps/toolinfo/models.py:342
 msgid "gadget"
-msgstr "小工具"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:343
 msgid "user script"
-msgstr "用户脚本"
+msgstr "brukerskript"
 
 #: toolhub/apps/toolinfo/models.py:344
 msgid "command line tool"
-msgstr "命令行工具"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:345
 msgid "coding framework"
-msgstr "编程框架"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:346
 msgid "lua module"
-msgstr "lua模块"
+msgstr "lua-modul"
 
 #: toolhub/apps/toolinfo/models.py:347
 msgid "template"
-msgstr "模板"
+msgstr "mal"
 
 #: toolhub/apps/toolinfo/models.py:348
 msgid "other"
-msgstr "其他"
+msgstr "annet"
 
 #: toolhub/apps/toolinfo/models.py:354
 msgid "crawler"
-msgstr "爬虫"
+msgstr "skrapare"
 
 #: toolhub/apps/toolinfo/models.py:355
 msgid "api"
@@ -620,7 +611,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:371
 msgid "Human readable tool name. Recommended limit of 25 characters."
-msgstr "人类可读的工具名.建议限制25个字"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:377
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
@@ -740,11 +731,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:42
 msgid "SPDX license ID"
-msgstr "SPDX许可证ID"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:47
 msgid "Full name of this license"
-msgstr "该许可证的全名"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:52
 msgid "Is this license approved as 'open source' by the OSI?"
@@ -760,19 +751,19 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:66
 msgid "Description of a tool"
-msgstr "工具描述"
+msgstr "Beskrivelse av et verktøy"
 
 #: toolhub/apps/toolinfo/serializers.py:116
 msgid "Summary of a tool"
-msgstr "工具概要"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:136
 msgid "Create a tool"
-msgstr "创建工具"
+msgstr "Opprett et verktøy"
 
 #: toolhub/apps/toolinfo/serializers.py:202
 msgid "Update a tool"
-msgstr ""
+msgstr "Oppdater et verktøy"
 
 #: toolhub/apps/toolinfo/serializers.py:233
 msgid "Tool revision."
@@ -817,7 +808,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:64
 msgid "Create a new tool."
-msgstr ""
+msgstr "Opprett et nytt verktøy."
 
 #: toolhub/apps/toolinfo/views.py:69
 msgid "Info for a specific tool."
@@ -833,7 +824,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:83
 msgid "List all tools."
-msgstr "列举所有工具"
+msgstr "Liste over alle verktøy."
 
 #: toolhub/apps/toolinfo/views.py:143
 msgid "Restore the tool to this revision."
@@ -849,31 +840,31 @@ msgstr ""
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
-msgstr "个人信息"
+msgstr "Personlig informasjon"
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr "许可"
+msgstr "Tillatelser"
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
-msgstr "重要日期"
+msgstr "Viktige datoer"
 
 #: toolhub/apps/user/apps.py:26
 msgid "Toolhub user"
-msgstr ""
+msgstr "Toolhub-bruker"
 
 #: toolhub/apps/user/models.py:36
 msgid "username"
-msgstr "用户名"
+msgstr "brukernavn"
 
 #: toolhub/apps/user/models.py:39
 msgid "Required. 255 characters or fewer."
-msgstr "必填.不得多于255个字"
+msgstr "Krever 255 tegn eller færre."
 
 #: toolhub/apps/user/models.py:42
 msgid "A user with that username already exists."
-msgstr "用户名已占用"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:41
 msgid "Action that the user can take"
@@ -893,7 +884,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
-msgstr "数字用户ID"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
@@ -909,7 +900,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:123
 msgid "Group information"
-msgstr "小组信息"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
@@ -917,7 +908,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
-msgstr "用户信息细节"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
@@ -929,7 +920,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
-msgstr "验证令牌"
+msgstr ""
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
@@ -949,15 +940,15 @@ msgstr ""
 
 #: toolhub/apps/user/views.py:117
 msgid "List all active users."
-msgstr "列举所有活跃用户"
+msgstr ""
 
 #: toolhub/apps/user/views.py:120
 msgid "Info for a specific user."
-msgstr "特定用户的信息"
+msgstr ""
 
 #: toolhub/apps/user/views.py:141
 msgid "List all user groups."
-msgstr "列举所有用户组"
+msgstr ""
 
 #: toolhub/apps/user/views.py:144
 msgid "Info for a user group."
@@ -973,11 +964,11 @@ msgstr ""
 
 #: toolhub/apps/user/views.py:222
 msgid "Get authentication token."
-msgstr "获取验证令牌"
+msgstr ""
 
 #: toolhub/apps/user/views.py:225
 msgid "Create authentication token."
-msgstr "创建验证令牌"
+msgstr ""
 
 #: toolhub/apps/user/views.py:228
 msgid "Delete authentication token."
@@ -985,7 +976,7 @@ msgstr ""
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr "版本化"
+msgstr ""
 
 #: toolhub/apps/versioned/exceptions.py:28
 msgid "Failed to apply patch."
@@ -993,19 +984,19 @@ msgstr ""
 
 #: toolhub/apps/versioned/exceptions.py:35
 msgid "Current revision cannot be hidden."
-msgstr "当前修订不可被隐藏。"
+msgstr ""
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Missing content for one or more revisions."
-msgstr "一个或多个修订版本缺少内容。"
+msgstr ""
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:62
 msgid "Has this revision been marked as hidden?"
-msgstr "该修订版本是否已被标记为隐藏？"
+msgstr ""
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:68
 msgid "Has this revision been reviewed by a patroller?"
-msgstr "该修订版本是否已被巡查员复核？"
+msgstr ""
 
 #: toolhub/apps/versioned/schema.py:22
 msgid "RFC 6902 application/json-patch+json data"
@@ -1041,23 +1032,23 @@ msgstr ""
 
 #: toolhub/apps/versioned/serializers.py:82
 msgid "username removed"
-msgstr "（用户名已移除）"
+msgstr "brukernavn fjernet"
 
 #: toolhub/apps/versioned/serializers.py:83
 msgid "edit summary removed"
-msgstr "编辑摘要已移除"
+msgstr ""
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr "请输入一个用于符合JOSN Schema的有效值"
+msgstr ""
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr ""
+msgstr "API-feil"
 
 #: toolhub/serializers.py:112
 msgid "Edit summary"
-msgstr "编辑摘要"
+msgstr "Redigeringsforklaring"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
@@ -1065,15 +1056,15 @@ msgstr ""
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
-msgstr "描述行为的评论。"
+msgstr ""
 
 #: toolhub/settings.py:447
 msgid "Read scope"
-msgstr "读取范围"
+msgstr ""
 
 #: toolhub/settings.py:448
 msgid "Write scope"
-msgstr "写入范围"
+msgstr ""
 
 #: toolhub/settings.py:477
 #, optional
@@ -1083,7 +1074,7 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr "是否授权%(app_name)s？"
+msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
@@ -1091,7 +1082,7 @@ msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
@@ -1100,7 +1091,7 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr "错误:%(message)s"
+msgstr ""
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
@@ -1129,7 +1120,7 @@ msgstr ""
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
-msgstr "加载"
+msgstr "LASTER"
 
 #: vue/views.py:47
 msgid "Get information used on the Toolhub Home view."
