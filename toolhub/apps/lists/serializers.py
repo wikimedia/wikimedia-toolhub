@@ -52,9 +52,9 @@ logger = logging.getLogger(__name__)
 class ToolListSerializer(ModelSerializer):
     """List of tools."""
 
+    tools = serializers.SerializerMethodField()
     created_by = UserSerializer(many=False)
     modified_by = UserSerializer(many=False)
-    tools = SummaryToolSerializer(many=True)
 
     class Meta:
         """Configure serializer."""
@@ -80,6 +80,14 @@ class ToolListSerializer(ModelSerializer):
             "modified_by",
             "modified_date",
         ]
+
+    @extend_schema_field(SummaryToolSerializer(many=True))
+    def get_tools(self, obj):
+        """Get ordered list of tools in toollist."""
+        serializer = SummaryToolSerializer(
+            obj.tools.all().order_by("toollistitem__order"), many=True
+        )
+        return serializer.data
 
 
 @doc(_("""Create or update a list."""))
