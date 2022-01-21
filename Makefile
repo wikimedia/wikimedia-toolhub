@@ -191,6 +191,14 @@ docs:  ## Build sphinx docs
 	"
 .PHONY: docs
 
+serve-docs:  ## Live-serve sphinx docs
+	docker-compose exec web sh -c " \
+		poetry run sphinx-autobuild -b \
+		html --host 0.0.0.0 --port 8080 docs docs/_build/html \
+	"
+
+.PHONY: serve-docs
+
 artifacts: schemas messages docs  ## Generate code & doc artifacts
 .PHONY: artifacts
 

@@ -49,6 +49,7 @@ services:
         consistency: cached
     ports:
       - "${TOOLHUB_HTTP_PORT:-8000}:8000"
+      - "${DOCS_HTTP_PORT:-8080}:8080"
     restart: always
     depends_on:
       - db
