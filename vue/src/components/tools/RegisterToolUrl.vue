@@ -54,15 +54,15 @@
 				<v-data-table
 					v-if="numUserCreatedUrls > 0"
 					:headers="headers"
-					:page="page"
-					:items-per-page="itemsPerPage"
 					:items="userCreatedUrls"
+					:options.sync="options"
+					:server-items-length="numUserCreatedUrls"
 					class="elevation-2"
 					hide-default-footer
 					mobile-breakpoint="0"
-					:custom-sort="customSortUrls"
+					:loading="urlsLoading"
 				>
-					<template #[`item.json_file_url`]="{ item }">
+					<template #[`item.url`]="{ item }">
 						<a
 							:href="item.url"
 							target="_blank"
@@ -103,9 +103,9 @@
 
 <script>
 import { mapState } from 'vuex';
-import customSort from '@/plugins/sort.js';
 import InputLabel from '@/components/common/InputLabel';
 import { isValidHttpUrl } from '@/helpers/validation';
+import { filterEmpty } from '@/helpers/object';
 
 export default {
 	name: 'RegisterToolUrl',
@@ -116,7 +116,12 @@ export default {
 		return {
 			page: 1,
 			itemsPerPage: 10,
-			fileUrl: ''
+			fileUrl: '',
+			urlsLoading: null,
+			filters: {
+				ordering: null
+			},
+			options: {}
 		};
 	},
 	computed: {
@@ -125,8 +130,8 @@ export default {
 			return [
 				{
 					text: this.$t( 'jsonfileurl' ),
-					value: 'json_file_url',
-					sortable: false
+					value: 'url',
+					sortable: true
 				},
 				{
 					text: this.$t( 'datecreated' ),
@@ -165,14 +170,94 @@ export default {
 			this.page = page;
 			this.getUrlsCreatedByUser();
 		},
-		getUrlsCreatedByUser() {
-			this.$store.dispatch( 'crawler/getUrlsCreatedByUser', this.page );
+		setRouteQueryParams() {
+			this.$router.push( {
+				name: 'addremovetools',
+				query: {
+					tab: 'urls',
+					...filterEmpty( {
+						page: this.page, ...this.filters } ) }
+			} ).catch( () => {} );
 		},
-		customSortUrls( items, index, isDesc ) {
-			return customSort( items, index, isDesc );
+		getUrlsCreatedByUser() {
+			this.urlsLoading = true;
+			const res = this.$store.dispatch( 'crawler/getUrlsCreatedByUser',
+				{ page: this.page, filters: this.filters } );
+			if ( res === undefined ) { // TODO: force all actions that make api call to always
+				this.setRouteQueryParams();// return a promise, so this if else block can be removed
+				this.urlsLoading = false;
+			} else {
+				res.then( this.setRouteQueryParams )
+					.finally( () => {
+						this.urlsLoading = false;
+					} );
+			}
+		},
+		/**
+		 * Allow deep linking to filtered results by reconstructing internal
+		 * state based on data provided in the current query string.
+		 *
+		 * @return {boolean} True if state was updated. False otherwise.
+		 */
+		loadStateFromQueryString() {
+			const params = new URLSearchParams(
+				document.location.search.substring( 1 )
+			);
+			let gotQueryData = false;
+			for ( const [ key, value ] of params ) {
+				if ( value === undefined ) {
+					continue;
+				}
+				switch ( key ) {
+					case 'ordering':
+						this.filters.ordering = value;
+
+						if ( value[ 0 ] === '-' ) {
+							this.options.sortBy = [ value.replace( '-', '' ) ];
+							this.options.sortDesc = [ true ];
+						} else {
+							this.options.sortBy = [ value ];
+							this.options.sortDesc = [ false ];
+						}
+
+						gotQueryData = true;
+						break;
+					case 'page':
+						this.page = parseInt( value, 10 );
+						gotQueryData = true;
+						break;
+					default:
+						// ignore this param
+						break;
+				}
+			}
+			return gotQueryData;
+		}
+	},
+	watch: {
+		options: {
+			handler( _, oldVal ) {
+				const {
+					sortBy,
+					sortDesc
+				} = this.options;
+				if ( sortBy.length === 1 && sortDesc.length === 1 ) {
+					if ( sortDesc[ 0 ] === false ) {
+						this.filters.ordering = sortBy[ 0 ];
+					} else {
+						this.filters.ordering = `-${sortBy[ 0 ]}`;
+					}
+					this.getUrlsCreatedByUser();
+				} else if ( oldVal.sortBy ) {
+					this.filters.ordering = null;
+					this.getUrlsCreatedByUser();
+				}
+			},
+			deep: true
 		}
 	},
 	mounted() {
+		this.loadStateFromQueryString();
 		this.$store.dispatch( 'user/getUserInfo', { vm: this } ).then(
 			( user ) => {
 				if ( user.is_authenticated ) {

@@ -151,14 +151,18 @@ describe( 'store/user', () => {
 				page: 1,
 				filters: {
 					username: 'Srish',
-					groups_id: 1
+					groups_id: 1,
+					ordering: '-username'
 				}
 			};
+
+			const url = '/api/users/?page=1&username__contains=Srish' +
+            '&groups__id=1&ordering=-username';
 
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/users/?page=1&username__contains=Srish&groups__id=1',
+				url,
 				headers: {
 					'Content-type': 'application/json'
 				},
@@ -166,9 +170,7 @@ describe( 'store/user', () => {
 			};
 
 			it( 'should fetch users', async () => {
-				const expectRequest = addRequestDefaults( {
-					url: '/api/users/?page=1&username__contains=Srish&groups__id=1'
-				}, context );
+				const expectRequest = addRequestDefaults( { url }, context );
 				http.resolves( response );
 
 				await actions.listAllUsers( context, testPayload );

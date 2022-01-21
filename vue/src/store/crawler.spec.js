@@ -84,22 +84,29 @@ describe( 'store/crawler', () => {
 		} );
 
 		describe( 'fetchCrawlerHistory', () => {
-			const testPage = 2;
+			const testPayload = {
+				page: 2,
+				filters: {
+					runs_ordering: '-crawled_urls'
+				}
+			};
+
+			const url = '/api/crawler/runs/?page=2&ordering=-crawled_urls';
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/crawler/runs/?page=' + testPage,
+				url,
 				headers: { 'Content-type': 'application/json' },
 				body: crawlerHistoryResponse
 			};
 
 			it( 'should fetch history', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/crawler/runs/?page=' + testPage
+					url
 				}, context );
 				http.resolves( response );
 
-				await actions.fetchCrawlerHistory( context, testPage );
+				await actions.fetchCrawlerHistory( context, testPayload );
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
@@ -111,7 +118,7 @@ describe( 'store/crawler', () => {
 
 			it( 'should log failures', async () => {
 				http.rejects( apiError );
-				await actions.fetchCrawlerHistory( context, testPage );
+				await actions.fetchCrawlerHistory( context, testPayload );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
@@ -120,26 +127,32 @@ describe( 'store/crawler', () => {
 		} );
 
 		describe( 'fetchCrawlerUrls', () => {
-			const testData = {
+
+			const testPayload = {
+				page: 1,
 				runId: 7,
-				page: 1
+				filters: {
+					urls_ordering: '-url__url'
+				}
 			};
+
+			const url = '/api/crawler/runs/7/urls/?page=1&ordering=-url__url';
 
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/crawler/runs/' + testData.runId + '/urls/?page=' + testData.page,
+				url,
 				headers: { 'Content-type': 'application/json' },
 				body: crawlerUrlsResponse
 			};
 
 			it( 'should fetch urls', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/crawler/runs/' + testData.runId + '/urls/?page=' + testData.page
+					url
 				}, context );
 				http.resolves( response );
 
-				await actions.fetchCrawlerUrls( context, testData );
+				await actions.fetchCrawlerUrls( context, testPayload );
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
@@ -151,7 +164,7 @@ describe( 'store/crawler', () => {
 
 			it( 'should log failures', async () => {
 				http.rejects( apiError );
-				await actions.fetchCrawlerUrls( context, testData );
+				await actions.fetchCrawlerUrls( context, testPayload );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
@@ -245,11 +258,18 @@ describe( 'store/crawler', () => {
 		} );
 
 		describe( 'getUrlsCreatedByUser', () => {
-			const testPage = 1;
+			const testPayload = {
+				page: 1,
+				filters: {
+					ordering: '-created_date'
+				}
+			};
+
+			const url = '/api/crawler/urls/self/?page=1&ordering=-created_date';
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/crawler/urls/self/?page=' + testPage,
+				url,
 				headers: {
 					'Content-type': 'application/json'
 				},
@@ -260,7 +280,7 @@ describe( 'store/crawler', () => {
 				http.resolves( response );
 				context.rootState.user.user.is_authenticated = false;
 				const getUrlsCreatedByUser = actions.getUrlsCreatedByUser.bind( stubThis );
-				await getUrlsCreatedByUser( context, testPage );
+				await getUrlsCreatedByUser( context, testPayload );
 
 				// eslint-disable-next-line no-underscore-dangle
 				expect( stubThis._vm.$notify.info ).to.have.been.called;
@@ -269,12 +289,10 @@ describe( 'store/crawler', () => {
 			} );
 
 			it( 'should fetch urls created by user', async () => {
-				const expectRequest = addRequestDefaults( {
-					url: '/api/crawler/urls/self/?page=' + testPage
-				}, context );
+				const expectRequest = addRequestDefaults( { url }, context );
 				http.resolves( response );
 
-				await actions.getUrlsCreatedByUser( context, testPage );
+				await actions.getUrlsCreatedByUser( context, testPayload );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
@@ -288,7 +306,7 @@ describe( 'store/crawler', () => {
 
 			it( 'should log failures', async () => {
 				http.rejects( apiError );
-				await actions.getUrlsCreatedByUser( context, testPage );
+				await actions.getUrlsCreatedByUser( context, testPayload );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;

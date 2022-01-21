@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { makeApiCall } from '@/plugins/swagger';
+import { makeApiCall, makeURLQueryParams } from '@/plugins/swagger';
 import i18n from '@/plugins/i18n';
 import { asUrl } from '@/helpers/casl';
 import { displayErrorNotification } from '@/helpers/notifications';
@@ -8,11 +8,20 @@ import { displayErrorNotification } from '@/helpers/notifications';
 Vue.use( Vuex );
 
 export const actions = {
-	async fetchCrawlerHistory( context, page ) {
-		let history = [];
-		const request1 = { url: '/api/crawler/runs/?page=' + page };
+	async fetchCrawlerHistory( context, payload ) {
 
-		makeApiCall( context, request1 ).then(
+		const filters = payload.filters;
+		const params = [
+			[ 'page', payload.page ],
+			[ 'ordering', filters.runs_ordering ]
+		];
+
+		const cleanParams = makeURLQueryParams( params );
+
+		let history = [];
+		const request1 = { url: '/api/crawler/runs/?' + cleanParams.toString() };
+
+		return makeApiCall( context, request1 ).then(
 			( success1 ) => {
 				history = success1.body;
 				context.commit( 'CRAWLER_HISTORY', history );
@@ -23,12 +32,21 @@ export const actions = {
 		);
 	},
 
-	fetchCrawlerUrls( context, data ) {
+	fetchCrawlerUrls( context, payload ) {
+
+		const filters = payload.filters;
+		const params = [
+			[ 'page', payload.page ],
+			[ 'ordering', filters.urls_ordering ]
+		];
+
+		const cleanParams = makeURLQueryParams( params );
+
 		const request = {
-			url: '/api/crawler/runs/' + data.runId + '/urls/?page=' + data.page
+			url: '/api/crawler/runs/' + payload.runId + '/urls/?' + cleanParams.toString()
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				context.commit( 'CRAWLER_URLS', success.body );
 			},
@@ -75,19 +93,28 @@ export const actions = {
 			}
 		);
 	},
-	getUrlsCreatedByUser( context, page ) {
+	getUrlsCreatedByUser( context, payload ) {
 		if ( !context.rootState.user.user.is_authenticated ) {
 			this._vm.$notify.info(
 				i18n.t( 'addremovetools-nologintext' )
 			);
 			return;
 		}
+
+		const filters = payload.filters;
+		const params = [
+			[ 'page', payload.page ],
+			[ 'ordering', filters.ordering ]
+		];
+
+		const cleanParams = makeURLQueryParams( params );
+
 		const request = {
-			url: '/api/crawler/urls/self/?page=' + page,
+			url: '/api/crawler/urls/self/?' + cleanParams.toString(),
 			method: 'GET'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				context.commit( 'USER_CREATED_URLS', success.body );
 			},

@@ -132,7 +132,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
         "date_joined": ["date__gt", "date__gte", "date__lt", "date__lte"],
         "groups__id": ["exact"],
     }
-    ordering_fields = ["id", "username"]
+    ordering_fields = ["id", "username", "date_joined"]
     ordering = ["-date_joined"]
 
 

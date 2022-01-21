@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { makeApiCall } from '@/plugins/swagger.js';
+import { makeApiCall, makeURLQueryParams } from '@/plugins/swagger.js';
 import { displayErrorNotification } from '@/helpers/notifications';
 
 Vue.use( Vuex );
@@ -17,12 +17,7 @@ export const actions = {
 			[ 'page', payload.page ]
 		];
 
-		const cleanParams = new URLSearchParams(
-			params.filter( ( value ) => {
-				const val = value[ 1 ];
-				return val !== null && val !== undefined;
-			} )
-		);
+		const cleanParams = makeURLQueryParams( params );
 
 		const request = { url: '/api/auditlogs/?' + cleanParams.toString() };
 

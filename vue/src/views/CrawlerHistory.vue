@@ -25,19 +25,18 @@
 			<v-col
 				lg="6"
 				cols="12"
-				:class="{ active: firstRowActive, selected: rowSelected }"
 			>
 				<v-data-table
+					v-model="crawlerRunSelected"
 					:headers="crawlerRunsHeaders"
-					:page="runsPage"
-					:items-per-page="itemsPerPage"
 					:items="crawlerHistory"
+					:options.sync="crawlerHistoryOptions"
+					:server-items-length="numCrawlerRuns"
 					class="elevation-0 mt-2 table-striped"
 					hide-default-footer
 					mobile-breakpoint="0"
-					:custom-sort="customSortHistory"
 					single-select
-					:loading="numCrawlerRuns === 0"
+					:loading="crawlerHistoryLoading"
 					@click:row="crawlerRunRowClicked"
 				>
 					<template #[`item.end_date`]="{ item }">
@@ -87,9 +86,9 @@
 			<v-col cols="12">
 				<v-data-table
 					:headers="urlsCrawledHeaders"
-					:page="urlsPage"
-					:items-per-page="itemsPerPage"
 					:items="crawlerUrls"
+					:options.sync="crawlerUrlsOptions"
+					:server-items-length="numCrawlerUrls"
 					:expanded.sync="expanded"
 					item-key="url.url"
 					show-expand
@@ -97,8 +96,7 @@
 					class="elevation-0 mt-2 table-striped"
 					hide-default-footer
 					mobile-breakpoint="0"
-					:custom-sort="customSortHistory"
-					:loading="numCrawlerUrls === 0"
+					:loading="crawlerUrlsLoading"
 				>
 					<template #[`item.url.url`]="{ item }">
 						<a :href="item.url.url" target="_blank">{{ item.url.url }}</a>
@@ -149,8 +147,8 @@
 <script>
 import { mapState } from 'vuex';
 import LineChart from '@/components/chart/LineChart.js';
-import customSort from '@/plugins/sort.js';
 import fetchMetaInfo from '@/helpers/metadata';
+import { filterEmpty } from '@/helpers/object';
 import ScrollTop from '@/components/common/ScrollTop';
 
 export default {
@@ -165,9 +163,18 @@ export default {
 			itemsPerPage: 10,
 			crawlerRunEndDate: null,
 			crawlerRunId: 0,
-			firstRowActive: true,
-			rowSelected: false,
-			expanded: []
+			crawlerRunSelected: [],
+			expanded: [],
+			crawlerUrlsLoading: null,
+			crawlerHistoryLoading: null,
+			crawlerUrlsFilters: {
+				urls_ordering: null
+			},
+			crawlerHistoryFilters: {
+				runs_ordering: null
+			},
+			crawlerUrlsOptions: {},
+			crawlerHistoryOptions: {}
 		};
 	},
 	metaInfo() {
@@ -258,47 +265,171 @@ export default {
 	},
 	methods: {
 		fetchCrawlerHistory() {
-			this.$store.dispatch( 'crawler/fetchCrawlerHistory', this.runsPage );
+			this.crawlerHistoryLoading = true;
+			this.$store.dispatch( 'crawler/fetchCrawlerHistory', {
+				page: this.runsPage,
+				filters: this.crawlerHistoryFilters
+			} )
+				.finally( () => { this.crawlerHistoryLoading = false; } );
 		},
 		fetchCrawlerUrls() {
-			this.$store.dispatch( 'crawler/fetchCrawlerUrls', { page: this.urlsPage, runId: this.crawlerRunId } );
+			this.crawlerUrlsLoading = true;
+			this.$store.dispatch( 'crawler/fetchCrawlerUrls',
+				{ page: this.urlsPage,
+					runId: this.crawlerRunId,
+					filters: this.crawlerUrlsFilters
+				} )
+				.then( () => {
+					this.$router.push( {
+						path: document.location.pathname,
+						query: filterEmpty( {
+							runs_page: this.runsPage,
+							urls_page: this.urlsPage,
+							runs_id: this.crawlerRunId,
+							...this.crawlerHistoryFilters,
+							...this.crawlerUrlsFilters } )
+					} ).catch( () => {} );
+				} )
+				.finally( () => { this.crawlerUrlsLoading = false; } );
 		},
 		goToRunsPage( page ) {
 			this.runsPage = page;
 			this.fetchCrawlerHistory();
-			this.firstRowActive = true;
-			this.rowSelected = false;
 		},
 		goToUrlsPage( page ) {
 			this.urlsPage = page;
 			this.fetchCrawlerUrls();
 		},
-		customSortHistory( items, index, isDesc ) {
-			const sortedItems = customSort( items, index, isDesc );
-			return sortedItems;
-		},
-		changeUrlsCrawled( item ) {
-			this.crawlerRunEndDate = this.$moment.utc( item.end_date ).format( 'lll' );
-			this.crawlerRunId = item.id;
+		changeUrlsCrawled() {
+			let item = this.crawlerHistory.filter( ( run ) => run.id === this.crawlerRunId );
+			if ( item.length === 0 ) {
+				item = [ this.crawlerHistory[ 0 ] ];
+				this.crawlerRunId = item[ 0 ].id;
+			}
+			this.crawlerRunEndDate = this.$moment.utc( item[ 0 ].end_date ).format( 'lll' );
+			this.crawlerRunSelected = item;
 			this.fetchCrawlerUrls();
 		},
-		crawlerRunRowClicked( item, row ) {
-			row.select( true );
-			this.rowSelected = true;
-			this.firstRowActive = false;
+		crawlerRunRowClicked( item ) {
+			this.crawlerRunId = item.id;
 			this.urlsPage = 1;
-			this.changeUrlsCrawled( item );
+			this.changeUrlsCrawled();
 			this.$vuetify.goTo( this.$refs.crawldetails );
+		},
+		/**
+		 * Allow deep linking to filtered results by reconstructing internal
+		 * state based on data provided in the current query string.
+		 *
+		 * @return {boolean} True if state was updated. False otherwise.
+		 */
+		loadStateFromQueryString() {
+			const params = new URLSearchParams(
+				document.location.search.substring( 1 )
+			);
+			let gotQueryData = false;
+			for ( const [ key, value ] of params ) {
+				if ( value === undefined ) {
+					continue;
+				}
+				switch ( key ) {
+					case 'runs_page':
+						this.runsPage = parseInt( value, 10 );
+						gotQueryData = true;
+						break;
+					case 'urls_page':
+						this.urlsPage = parseInt( value, 10 );
+						gotQueryData = true;
+						break;
+					case 'runs_id':
+						this.crawlerRunId = parseInt( value, 10 );
+						gotQueryData = true;
+						break;
+					case 'runs_ordering':
+						this.crawlerHistoryFilters.runs_ordering = value;
+
+						if ( value[ 0 ] === '-' ) {
+							this.crawlerHistoryOptions.sortBy = [ value.replace( '-', '' ) ];
+							this.crawlerHistoryOptions.sortDesc = [ true ];
+						} else {
+							this.crawlerHistoryOptions.sortBy = [ value ];
+							this.crawlerHistoryOptions.sortDesc = [ false ];
+						}
+
+						gotQueryData = true;
+						break;
+					case 'urls_ordering':
+						this.crawlerUrlsFilters.urls_ordering = value;
+
+						if ( value[ 0 ] === '-' ) {
+							this.crawlerUrlsOptions.sortBy = [
+								value.replace( '-', '' ).split( '__' ).join( '.' ) ];
+							this.crawlerUrlsOptions.sortDesc = [ true ];
+						} else {
+							this.crawlerUrlsOptions.sortBy = [ value.split( '__' ).join( '.' ) ];
+							this.crawlerUrlsOptions.sortDesc = [ false ];
+						}
+
+						gotQueryData = true;
+						break;
+					default:
+						// ignore this param
+						break;
+				}
+			}
+			return gotQueryData;
 		}
 	},
 	watch: {
 		crawlerHistory( newVal, oldVal ) {
 			if ( oldVal !== newVal ) {
-				this.changeUrlsCrawled( this.crawlerHistory[ 0 ] );
+				this.changeUrlsCrawled();
 			}
+		},
+		crawlerHistoryOptions: {
+			handler( _, oldVal ) {
+				const {
+					sortBy,
+					sortDesc
+				} = this.crawlerHistoryOptions;
+				if ( sortBy.length === 1 && sortDesc.length === 1 ) {
+					if ( sortDesc[ 0 ] === false ) {
+						this.crawlerHistoryFilters.runs_ordering = sortBy[ 0 ];
+					} else {
+						this.crawlerHistoryFilters.runs_ordering = `-${sortBy[ 0 ]}`;
+					}
+					this.fetchCrawlerHistory();
+				} else if ( oldVal.sortBy ) {
+					this.crawlerHistoryFilters.runs_ordering = null;
+					this.fetchCrawlerHistory();
+				}
+			},
+			deep: true
+		},
+		crawlerUrlsOptions: {
+			handler( _, oldVal ) {
+				const {
+					sortBy,
+					sortDesc
+				} = this.crawlerUrlsOptions;
+				if ( oldVal.sortBy && sortBy.length === 1 && sortDesc.length === 1 ) {
+					if ( sortDesc[ 0 ] === false ) {
+						this.crawlerUrlsFilters
+							.urls_ordering = sortBy[ 0 ].split( '.' ).join( '__' );
+					} else {
+						this.crawlerUrlsFilters
+							.urls_ordering = `-${sortBy[ 0 ].split( '.' ).join( '__' )}`;
+					}
+					this.fetchCrawlerUrls();
+				} else if ( oldVal.sortBy ) {
+					this.crawlerUrlsFilters.urls_ordering = null;
+					this.fetchCrawlerUrls();
+				}
+			},
+			deep: true
 		}
 	},
 	mounted() {
+		this.loadStateFromQueryString();
 		this.fetchCrawlerHistory();
 	}
 };

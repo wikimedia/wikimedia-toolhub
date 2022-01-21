@@ -82,13 +82,14 @@
 		>
 			<v-col cols="12">
 				<v-data-table
-					:items-per-page="itemsPerPage"
 					:headers="usersListHeaders"
 					:items="users"
+					:options.sync="options"
+					:server-items-length="numUsers"
 					class="elevation-2 mt-2"
 					hide-default-footer
 					mobile-breakpoint="0"
-					:loading="numUsers === 0"
+					:loading="usersLoading"
 				>
 					<template #[`item.username`]="{ item }">
 						<a :href="`http://meta.wikimedia.org/wiki/User:${item.username}`" target="_blank">{{ item.username
@@ -256,16 +257,19 @@ export default {
 		return {
 			page: 1,
 			itemsPerPage: 10,
+			usersLoading: null,
 			dialog: {
 				user: {},
 				open: false
 			},
 			filters: {
 				username: null,
-				groups_id: null
+				groups_id: null,
+				ordering: null
 			},
 			groupFilterForSelectedUser: '',
-			filteredGroupsForSelectedUser: []
+			filteredGroupsForSelectedUser: [],
+			options: {}
 		};
 	},
 	metaInfo() {
@@ -273,7 +277,7 @@ export default {
 	},
 	computed: {
 		...mapState( 'user', [ 'users', 'numUsers' ] ),
-		...mapState( 'groups', [ 'groups', 'numGroups', 'notification' ] ),
+		...mapState( 'groups', [ 'groups', 'notification' ] ),
 
 		usersListHeaders() {
 			const headers = [
@@ -324,6 +328,7 @@ export default {
 	},
 	methods: {
 		listAllUsers() {
+			this.usersLoading = true;
 			this.$store.dispatch( 'user/listAllUsers', {
 				page: this.page,
 				filters: this.filters
@@ -331,7 +336,10 @@ export default {
 				this.$router.push( {
 					name: 'members',
 					query: filterEmpty( this.filters )
-				} ).catch( () => {} );
+				}
+				).catch( () => {} );
+			} ).finally( () => {
+				this.usersLoading = false;
 			} );
 		},
 		listAllUserGroups() {
@@ -410,6 +418,19 @@ export default {
 						this.filters.groups_id = value;
 						gotQueryData = true;
 						break;
+					case 'ordering':
+						this.filters.ordering = value;
+
+						if ( value[ 0 ] === '-' ) {
+							this.options.sortBy = [ value.replace( '-', '' ) ];
+							this.options.sortDesc = [ true ];
+						} else {
+							this.options.sortBy = [ value ];
+							this.options.sortDesc = [ false ];
+						}
+
+						gotQueryData = true;
+						break;
 					case 'page':
 						this.page = parseInt( value, 10 );
 						gotQueryData = true;
@@ -432,6 +453,26 @@ export default {
 			},
 			deep: true,
 			immediate: true
+		},
+		options: {
+			handler( _, oldVal ) {
+				const {
+					sortBy,
+					sortDesc
+				} = this.options;
+				if ( sortBy.length === 1 && sortDesc.length === 1 ) {
+					if ( sortDesc[ 0 ] === false ) {
+						this.filters.ordering = sortBy[ 0 ];
+					} else {
+						this.filters.ordering = `-${sortBy[ 0 ]}`;
+					}
+					this.listAllUsers();
+				} else if ( oldVal.sortBy ) {
+					this.filters.ordering = null;
+					this.listAllUsers();
+				}
+			},
+			deep: true
 		}
 	},
 	mounted() {

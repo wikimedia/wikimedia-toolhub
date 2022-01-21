@@ -116,8 +116,7 @@ div.list-card__card {
 	cursor: pointer;
 }
 
-.table-crawler-history .selected tr.v-data-table__selected,
-.table-crawler-history .active tbody tr:first-child {
+.table-crawler-history tr.v-data-table__selected {
 	background: var( --v-primary-base ) !important;
 	color: var( --v-base100-base );
 }

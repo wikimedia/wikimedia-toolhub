@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { makeApiCall } from '@/plugins/swagger';
+import { makeApiCall, makeURLQueryParams } from '@/plugins/swagger';
 import { displayErrorNotification } from '@/helpers/notifications';
 
 Vue.use( Vuex );
@@ -66,12 +66,7 @@ export const actions = {
 		const params = [
 			[ 'q', payload.query || null ]
 		];
-		const cleanParams = new URLSearchParams(
-			params.filter( ( value ) => {
-				const val = value[ 1 ];
-				return val !== null && val !== undefined;
-			} )
-		);
+		const cleanParams = makeURLQueryParams( params );
 		const request = {
 			url: '/api/autocomplete/tools/?' + cleanParams.toString()
 		};
@@ -113,12 +108,7 @@ export const actions = {
 			[ 'page', payload.page || null ],
 			[ 'page_size', payload.pageSize || null ]
 		];
-		const cleanParams = new URLSearchParams(
-			params.filter( ( value ) => {
-				const val = value[ 1 ];
-				return val !== null && val !== undefined;
-			} )
-		);
+		const cleanParams = makeURLQueryParams( params );
 		const request = {
 			url: '/api/search/tools/?' + cleanParams.toString()
 		};

@@ -74,7 +74,7 @@ class UrlViewSet(viewsets.ModelViewSet):
         ],
         "url": ["contains"],
     }
-    ordering_fields = ["id", "url"]
+    ordering_fields = ["id", "url", "created_date"]
     ordering = ["id"]
 
     def perform_create(self, serializer):
@@ -120,7 +120,13 @@ class RunViewSet(viewsets.ReadOnlyModelViewSet):
         "start_date": ["date__gt", "date__gte", "date__lt", "date__lte"],
         "end_date": ["date__gt", "date__gte", "date__lt", "date__lte"],
     }
-    ordering_fields = ["id", "start_date", "end_date"]
+    ordering_fields = [
+        "id",
+        "start_date",
+        "end_date",
+        "crawled_urls",
+        "total_tools",
+    ]
     ordering = ["-start_date"]
     lookup_field = "id"
 
@@ -139,7 +145,14 @@ class RunUrlViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = RunUrl.objects.none()
     serializer_class = RunUrlSerializer
     permission_classes = [ObjectPermissionsOrAnonReadOnly]
-    ordering_fields = ["id", "url_id", "url__url", "status_code", "valid"]
+    ordering_fields = [
+        "id",
+        "url_id",
+        "url__url",
+        "status_code",
+        "url__created_by__username",
+        "valid",
+    ]
     ordering = ["valid", "status_code", "id"]
 
     def get_queryset(self):

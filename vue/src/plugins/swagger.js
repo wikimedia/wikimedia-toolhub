@@ -58,6 +58,23 @@ export function getFailurePayload( err ) {
 }
 
 /**
+ * Construct a URLSearchParams object from a sequence of [key, value] parameters.
+ *
+ * Items where the value is null or undefined are filtered out of the input.
+ *
+ * @param {string[][]} params - Sequence of [key, value] parameters
+ * @return {URLSearchParams}
+ */
+export function makeURLQueryParams( params ) {
+	return new URLSearchParams(
+		params.filter( ( value ) => {
+			const val = value[ 1 ];
+			return val !== null && val !== undefined;
+		} )
+	);
+}
+
+/**
  * @typedef SwaggerResponse
  * @property {boolean} ok - was response successful (200-299) or not
  * @property {number} status - status code
