@@ -23,6 +23,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core import validators
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
@@ -336,7 +337,7 @@ class ToolManager(SafeDeleteManager):
         return tool, False, has_changes
 
 
-@reversion.register()
+@reversion.register(follow=("annotations",))
 @registry.register()
 class Tool(ExportModelOperationsMixin("tool"), SafeDeleteModel):
     """Description of a tool."""
@@ -687,3 +688,32 @@ def add_revision_to_tool(sender, revision, versions, **kwargs):  # noqa: W0613
             # Decorate with the revision id
             log_entry.params["revision"] = version.id
             log_entry.save(update_fields=["params"])
+
+
+@reversion.register()
+class Annotations(ExportModelOperationsMixin("annotations"), SafeDeleteModel):
+    """Annotations added to a tool."""
+
+    tool = models.OneToOneField(
+        Tool,
+        on_delete=models.CASCADE,
+        related_name="annotations",
+    )
+
+    wikidata_qid = BlankAsNullCharField(
+        max_length=32,
+        null=True,
+        validators=[validators.RegexValidator(regex=r"^Q\d+$")],
+        help_text=_("Wikidata item ID for the tool."),
+    )
+
+    def __str__(self):
+        """Str repr"""
+        return "annotations for {}".format(self.tool.name)
+
+
+@receiver(post_save, sender=Tool)
+def create_annotations(sender, instance, created, **kwargs):
+    """Create a new Annotations instance for each new Tool instance on save."""
+    if created:
+        Annotations.objects.create(tool=instance)
