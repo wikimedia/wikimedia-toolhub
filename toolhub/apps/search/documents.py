@@ -33,6 +33,64 @@ from toolhub.fields import JSONSchemaField
 from . import schema
 
 
+JSONSCHEMA_TYPE_TO_DSL = {
+    "boolean": fields.BooleanField,
+    "integer": fields.LongField,
+    "number": fields.DoubleField,
+}
+
+
+en_stem_filter = token_filter(type="stemmer", name_or_instance="english")
+en_analyzer = analyzer(
+    "en_analyzer",
+    tokenizer="standard",
+    filter=["standard", "lowercase", en_stem_filter],
+)
+exact_analyzer = analyzer(
+    "exact_analyzer",
+    tokenizer="standard",
+    filter=["standard", "lowercase"],
+)
+
+
+def build_string_field(**kwargs):
+    """Add Elasticsearch schema customizations to strings."""
+    if "fields" not in kwargs:
+        kwargs["fields"] = {
+            "exact": fields.TextField(analyzer=exact_analyzer),
+            "keyword": fields.KeywordField(ignore_above=256),
+        }
+    if "analyzer" not in kwargs:
+        kwargs["analyzer"] = en_analyzer
+    return fields.TextField(**kwargs)
+
+
+def build_field_from_schema(schema_, attr):
+    """Generate a document field mapping from a JSONSchema description."""
+    type_ = schema_["type"]
+    if type_ == "object":
+        properties = {}
+        for key, value in schema_["properties"].items():
+            properties[key] = build_field_from_schema(value, None)
+        obj = fields.ObjectField(properties=properties, attr=attr)
+        # Decorate new field with schema for OpenAPI documentation
+        set_override(obj, "field", schema_)
+        return obj
+
+    if type_ == "array":
+        arr = fields.ListField(
+            build_field_from_schema(schema_["items"], attr=attr)
+        )
+        # Decorate new field with schema for OpenAPI documentation
+        set_override(arr, "field", schema_)
+        return arr
+
+    if type_ == "string":
+        return build_string_field(attr=attr)
+
+    return JSONSCHEMA_TYPE_TO_DSL[type_](attr=attr)
+
+
 class SearchDocument(Document):
     """Extension of django_elasticsearch_dsl.Document.
 
@@ -41,79 +99,16 @@ class SearchDocument(Document):
     customizations to typed fields.
     """
 
-    JSONSCHEMA_TYPE_TO_DSL = {
-        "boolean": fields.BooleanField,
-        "integer": fields.LongField,
-        "number": fields.DoubleField,
-    }
-
-    en_stem_filter = token_filter(type="stemmer", name_or_instance="english")
-
-    en_analyzer = analyzer(
-        "en_analyzer",
-        tokenizer="standard",
-        filter=["standard", "lowercase", en_stem_filter],
-    )
-
-    exact_analyzer = analyzer(
-        "exact_analyzer",
-        tokenizer="standard",
-        filter=["standard", "lowercase"],
-    )
-
-    @classmethod
-    def build_string_field(cls, **kwargs):
-        """Add Elasticsearch schema customizations to strings."""
-        if "fields" not in kwargs:
-            kwargs["fields"] = {
-                "exact": fields.TextField(analyzer=cls.exact_analyzer),
-                "keyword": fields.KeywordField(ignore_above=256),
-            }
-        if "analyzer" not in kwargs:
-            kwargs["analyzer"] = cls.en_analyzer
-        return fields.TextField(**kwargs)
-
-    @classmethod
-    def add_schema_to_field(cls, obj, schema_):
-        """Attach a JSON Schema to a field."""
-        if schema_:
-            set_override(obj, "field", schema_)
-        return obj
-
-    @classmethod
-    def field_from_schema(cls, schema_, attr):
-        """Generate a document field mapping from a JSONSchema description."""
-        type_ = schema_["type"]
-        if type_ == "object":
-            properties = {}
-            for key, value in schema_["properties"].items():
-                properties[key] = cls.field_from_schema(value, None)
-            obj = fields.ObjectField(properties=properties, attr=attr)
-            cls.add_schema_to_field(obj, schema_)
-            return obj
-
-        if type_ == "array":
-            arr = fields.ListField(
-                cls.field_from_schema(schema_["items"], attr=attr)
-            )
-            cls.add_schema_to_field(arr, schema_)
-            return arr
-
-        if type_ == "string":
-            return cls.build_string_field(attr=attr)
-
-        return cls.JSONSCHEMA_TYPE_TO_DSL[type_](attr=attr)
-
     @classmethod
     def to_field(cls, field_name, model_field):
         """Get the es field instance approriate for the model field class."""
         if isinstance(model_field, JSONSchemaField):
-            return cls.field_from_schema(
+            return build_field_from_schema(
                 model_field._schema, field_name  # noqa: W0212
             )
 
         if isinstance(model_field, (CharField, TextField)):
-            return cls.build_string_field(attr=field_name)
+            return build_string_field(attr=field_name)
 
         return super().to_field(field_name, model_field)
 
