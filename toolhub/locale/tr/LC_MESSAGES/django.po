@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 #
 # Author: Agaafd
+# Author: Can
 # Author: Hedda
 # Author: Joseph
 # Author: Melissadilara
@@ -9,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-01-20 12:13:02+0000\n"
+"PO-Revision-Date: 2022-01-24 12:13:55+0000\n"
 "X-POT-Import-Date: 2021-11-30 17:30:26+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +44,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr ""
+msgstr "gizli"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
@@ -51,15 +52,15 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr ""
+msgstr "denetlenmiş"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr ""
+msgstr "öne çıkan"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "öne çıkmayan"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
@@ -95,7 +96,7 @@ msgstr "denetim günlüğü girdileri"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "Etkinlik parametreleri"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
@@ -103,11 +104,11 @@ msgstr ""
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr ""
+msgstr "Revizyon gizli olarak işaretli mi?"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Revizyon bir denetçi tarafından incelendi mi?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
@@ -219,15 +220,15 @@ msgstr "Bir çalıştırmada taranan belirli bir url için bilgi."
 
 #: toolhub/apps/lists/apps.py:26
 msgid "Lists"
-msgstr ""
+msgstr "Listeler"
 
 #: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
-msgstr ""
+msgstr "Bu listenin başlığı"
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
-msgstr ""
+msgstr "Listenin teması veya içeriklerinin açıklaması."
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
@@ -239,7 +240,7 @@ msgstr ""
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
-msgstr ""
+msgstr "Doğruysa, bu liste herkese görünür olacak."
 
 #: toolhub/apps/lists/models.py:78
 msgid "If true, this list has been marked as featured."
@@ -259,15 +260,15 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:82
 msgid "Create or update a list."
-msgstr ""
+msgstr "Bir liste oluştur veya güncelle."
 
 #: toolhub/apps/lists/serializers.py:90 toolhub/apps/lists/serializers.py:207
 msgid "List of tool names."
-msgstr ""
+msgstr "Araç adlarının listesi."
 
 #: toolhub/apps/lists/serializers.py:199
 msgid "Historic revision of a list."
-msgstr ""
+msgstr "Bir listenin geçmiş revizyonu."
 
 #: toolhub/apps/lists/serializers.py:228
 msgid "Tool list revision."
@@ -293,11 +294,11 @@ msgstr "Değişiklikleri uyguladıktan sonraki sürüm."
 
 #: toolhub/apps/lists/serializers.py:271
 msgid "Add a favorite tool."
-msgstr ""
+msgstr "Favori araç ekle."
 
 #: toolhub/apps/lists/serializers.py:276
 msgid "Tool name."
-msgstr ""
+msgstr "Araç adı."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
@@ -317,11 +318,11 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:67
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "Sadece öne çıkan listeleri göster."
 
 #: toolhub/apps/lists/views.py:72
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "Sadece yayımlanmış listeleri göster."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
@@ -329,7 +330,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."
-msgstr ""
+msgstr "Yeni araçlar listesi oluştur."
 
 #: toolhub/apps/lists/views.py:88
 msgid "Details of a specific list of tools."
@@ -345,7 +346,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:103
 msgid "List all lists of tools."
-msgstr ""
+msgstr "Tüm araçların listelerini listele."
 
 #: toolhub/apps/lists/views.py:139
 msgid "Mark a list as featured."
@@ -427,7 +428,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:537
 msgid "Personal favorites."
-msgstr ""
+msgstr "Kişisel favoriler."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
@@ -590,11 +591,11 @@ msgstr "kodlama çerçevesi"
 
 #: toolhub/apps/toolinfo/models.py:346
 msgid "lua module"
-msgstr ""
+msgstr "lua modülü"
 
 #: toolhub/apps/toolinfo/models.py:347
 msgid "template"
-msgstr ""
+msgstr "şablon"
 
 #: toolhub/apps/toolinfo/models.py:348
 msgid "other"
@@ -923,7 +924,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
-msgstr ""
+msgstr "Doğrulama tokeni"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
@@ -967,15 +968,15 @@ msgstr "Kullanıcıyı bu gruptan kaldır."
 
 #: toolhub/apps/user/views.py:222
 msgid "Get authentication token."
-msgstr ""
+msgstr "Doğrulama tokeni edinin."
 
 #: toolhub/apps/user/views.py:225
 msgid "Create authentication token."
-msgstr ""
+msgstr "Doğrulama tokeni oluştur."
 
 #: toolhub/apps/user/views.py:228
 msgid "Delete authentication token."
-msgstr ""
+msgstr "Doğrulama tokenini sil."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
@@ -987,7 +988,7 @@ msgstr "Yama uygulanamadı."
 
 #: toolhub/apps/versioned/exceptions.py:35
 msgid "Current revision cannot be hidden."
-msgstr ""
+msgstr "Mevcut revizyon gizlenemez."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Missing content for one or more revisions."
@@ -995,11 +996,11 @@ msgstr ""
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:62
 msgid "Has this revision been marked as hidden?"
-msgstr ""
+msgstr "Bu revizyon gizli olarak işaretli mi?"
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:68
 msgid "Has this revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Bu revizyon bir denetçi tarafından incelendi mi?"
 
 #: toolhub/apps/versioned/schema.py:22
 msgid "RFC 6902 application/json-patch+json data"
@@ -1035,7 +1036,7 @@ msgstr "Sürüm için kullanıcı yorumu."
 
 #: toolhub/apps/versioned/serializers.py:82
 msgid "username removed"
-msgstr ""
+msgstr "kullanıcı adı kaldırıldı"
 
 #: toolhub/apps/versioned/serializers.py:83
 msgid "edit summary removed"
@@ -1055,7 +1056,7 @@ msgstr "Değişiklik özeti"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
-msgstr ""
+msgstr "Yapmakta olduğunuz değişikliklerin açıklaması."
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
@@ -1081,20 +1082,20 @@ msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
-msgstr ""
+msgstr "Uygulama şu izinleri gerektirir"
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
-msgstr ""
+msgstr "Yetkilendir"
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr ""
+msgstr "Hata: %(message)s"
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
