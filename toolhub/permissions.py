@@ -194,6 +194,12 @@ MODEL_PERMISSIONS = {
         },
     },
     "toolinfo": {
+        "annotations": {
+            "add": is_authed,
+            "change": is_authed,
+            "delete": is_administrator,
+            "view": rules.always_allow,
+        },
         "tool": {
             "add": is_authed,
             "change": is_creator_or_oversighter,

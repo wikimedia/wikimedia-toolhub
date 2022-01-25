@@ -103,6 +103,9 @@ class CASLForUserTest(TestCase):
             self.assertIn(action, ["view", "add", "change", "delete"])
             if action == "view" and subject == "reversion/version":
                 self.assertRuleViewUnsuppressed(rule)
+            elif action == "change" and subject == "toolinfo/annotations":
+                # Anyone can edit annotations
+                self.assertNotIn("conditions", rule)
             elif action in ["change", "delete"]:
                 self.assertRuleChangeDelete(rule, self.user.id)
 
@@ -143,6 +146,12 @@ class CASLForUserTest(TestCase):
                 if subject == "auth/group":
                     # Bureaucrats get unconditional ability to edit groups
                     self.assertNotIn("conditions", rule)
+                elif subject == "toolinfo/annotations":
+                    if action == "change":
+                        # Anyone can edit annotations
+                        self.assertNotIn("conditions", rule)
+                    else:
+                        self.assertRuleChangeDelete(rule, self.bureaucrat.id)
                 else:
                     self.assertRuleChangeDelete(rule, self.bureaucrat.id)
 
@@ -163,6 +172,7 @@ class CASLForUserTest(TestCase):
                 if subject in (
                     "lists/toollist",
                     "reversion/version",
+                    "toolinfo/annotations",
                 ):
                     # Oversighters get unconditional ability to change user
                     # created content so that they can remove harmful content
@@ -196,7 +206,13 @@ class CASLForUserTest(TestCase):
             )
             if action == "view" and subject == "reversion/version":
                 self.assertRuleViewUnsuppressed(rule)
-            elif action in ["change", "delete"]:
+            elif action == "change":
+                if subject == "toolinfo/annotations":
+                    # Anyone can edit annotations
+                    self.assertNotIn("conditions", rule)
+                else:
+                    self.assertRuleChangeDelete(rule, self.patroller.id)
+            elif action == "delete":
                 self.assertRuleChangeDelete(rule, self.patroller.id)
             elif action == "patrol":
                 self.assertEqual(subject, "reversion/version")
