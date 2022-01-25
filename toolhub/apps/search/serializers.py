@@ -46,6 +46,7 @@ class ToolDocumentSerializer(DocumentSerializer):
 
         document = ToolDocument
         fields = ToolDocument.Django.fields.copy()
+        fields.insert(fields.index("bugtracker_url") + 1, "annotations")
         fields.insert(fields.index("origin") + 1, "created_by")
         fields.insert(fields.index("created_date") + 1, "modified_by")
 

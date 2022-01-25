@@ -31,7 +31,9 @@ from elasticsearch_dsl import token_filter
 
 from rest_framework import serializers
 
+from toolhub.apps.toolinfo.models import Annotations
 from toolhub.apps.toolinfo.models import Tool
+from toolhub.apps.toolinfo.serializers import AnnotationsSerializer
 from toolhub.apps.user.serializers import UserSerializer
 from toolhub.fields import JSONSchemaField
 from toolhub.serializers import JSONSchemaField as JSONSchemaFieldSerializer
@@ -196,6 +198,9 @@ class SearchDocument(Document):
 class ToolDocument(SearchDocument):
     """Tool Elasticsearch document."""
 
+    annotations = build_field_from_serializer(
+        AnnotationsSerializer, "annotations"
+    )
     created_by = build_field_from_serializer(UserSerializer, "created_by")
     modified_by = build_field_from_serializer(UserSerializer, "modified_by")
 
@@ -237,6 +242,7 @@ class ToolDocument(SearchDocument):
             "privacy_policy_url",
             "translate_url",
             "bugtracker_url",
+            # "annotations",
             "_schema",
             "_language",
             "origin",
@@ -245,3 +251,13 @@ class ToolDocument(SearchDocument):
             # "modified_by",
             "modified_date",
         ]
+        related_models = [Annotations]
+
+    def get_queryset(self):
+        """Select related models."""
+        return super().get_queryset().select_related("annotations")
+
+    def get_instances_from_related(self, related_instance):
+        """Retrieve the Tool from related models."""
+        if isinstance(related_instance, Annotations):
+            return related_instance.tool

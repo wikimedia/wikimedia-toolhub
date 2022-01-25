@@ -28,6 +28,7 @@ from toolhub.decorators import doc
 from toolhub.serializers import EditCommentFieldMixin
 from toolhub.serializers import ModelSerializer
 
+from .models import Annotations
 from .models import Tool
 
 
@@ -63,10 +64,24 @@ class SpdxLicenseSerializer(serializers.Serializer):
     )
 
 
+@doc(_("Community added information for a tool"))
+class AnnotationsSerializer(ModelSerializer):
+    """Community added information for a tool."""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = Annotations
+        fields = [
+            "wikidata_qid",
+        ]
+
+
 @doc(_("""Description of a tool"""))
 class ToolSerializer(ModelSerializer):
     """Description of a tool."""
 
+    annotations = AnnotationsSerializer(many=False, read_only=True)
     created_by = UserSerializer(many=False, read_only=True)
     modified_by = UserSerializer(many=False, read_only=True)
 
@@ -103,6 +118,7 @@ class ToolSerializer(ModelSerializer):
             "privacy_policy_url",
             "translate_url",
             "bugtracker_url",
+            "annotations",
             "_schema",
             "_language",
             "origin",
