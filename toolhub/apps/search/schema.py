@@ -24,15 +24,6 @@ from drf_spectacular.plumbing import build_object_type
 from drf_spectacular.plumbing import build_parameter_type
 
 
-USER = {
-    "type": "object",
-    "description": _("User information"),
-    "properties": {
-        "id": {"type": "integer"},
-        "username": {"type": "string"},
-    },
-}
-
 FACET_RESPONSE = build_object_type(
     description=_("Faceted classification"),
     additionalProperties=build_object_type(

@@ -46,7 +46,8 @@ class ToolDocumentSerializer(DocumentSerializer):
 
         document = ToolDocument
         fields = ToolDocument.Django.fields.copy()
-        fields.append("created_by")
+        fields.insert(fields.index("origin") + 1, "created_by")
+        fields.insert(fields.index("created_date") + 1, "modified_by")
 
 
 @doc(_("Tool autocomplete results"))

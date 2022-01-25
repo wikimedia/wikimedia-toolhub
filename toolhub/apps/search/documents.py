@@ -23,20 +23,40 @@ from django_elasticsearch_dsl import fields
 from django_elasticsearch_dsl.registries import registry
 
 from drf_spectacular.drainage import set_override
+from drf_spectacular.plumbing import force_instance
 
 from elasticsearch_dsl import analyzer
 from elasticsearch_dsl import token_filter
 
-from toolhub.apps.toolinfo.models import Tool
-from toolhub.fields import JSONSchemaField
+from rest_framework import serializers
 
-from . import schema
+from toolhub.apps.toolinfo.models import Tool
+from toolhub.apps.user.serializers import UserSerializer
+from toolhub.fields import JSONSchemaField
+from toolhub.serializers import JSONSchemaField as JSONSchemaFieldSerializer
 
 
 JSONSCHEMA_TYPE_TO_DSL = {
     "boolean": fields.BooleanField,
     "integer": fields.LongField,
     "number": fields.DoubleField,
+}
+
+
+SERIALIZER_FIELD_TO_ES_FIELD = {
+    serializers.BooleanField: fields.BooleanField,
+    serializers.DateField: fields.DateField,
+    serializers.DateTimeField: fields.DateField,
+    serializers.EmailField: fields.TextField,
+    serializers.FileField: fields.FileField,
+    serializers.FilePathField: fields.KeywordField,
+    serializers.FloatField: fields.DoubleField,
+    serializers.ImageField: fields.FileField,
+    serializers.IntegerField: fields.IntegerField,
+    serializers.SlugField: fields.KeywordField,
+    serializers.TimeField: fields.LongField,
+    serializers.URLField: fields.TextField,
+    serializers.UUIDField: fields.KeywordField,
 }
 
 
@@ -91,6 +111,39 @@ def build_field_from_schema(schema_, attr):
     return JSONSCHEMA_TYPE_TO_DSL[type_](attr=attr)
 
 
+def build_field_from_serializer_field(name, field):
+    """Generate a document field mapping from a serializer field."""
+    if isinstance(field, JSONSchemaFieldSerializer):
+        return build_field_from_schema(field._schema, name)  # noqa: W0212
+
+    if isinstance(field, serializers.CharField):
+        return build_string_field(attr=name)
+
+    try:
+        clazz = SERIALIZER_FIELD_TO_ES_FIELD[field.__class__]
+        return clazz(attr=name)
+    except KeyError:
+        raise RuntimeError(
+            "Unknown field type {} for {}".format(
+                field.__class__.__name__, name
+            )
+        )
+
+
+def build_field_from_serializer(serializer, attr):
+    """Generate a document field mapping from a DRF serializer."""
+    properties = {}
+    for name, field in force_instance(serializer).fields.items():
+        if isinstance(field, serializers.Serializer):
+            properties[name] = build_field_from_serializer(field, name)
+        else:
+            properties[name] = build_field_from_serializer_field(name, field)
+    obj = fields.ObjectField(properties=properties, attr=attr)
+    # Decorate new field with schema for OpenAPI documentation
+    set_override(obj, "field", serializer)
+    return obj
+
+
 class SearchDocument(Document):
     """Extension of django_elasticsearch_dsl.Document.
 
@@ -117,13 +170,8 @@ class SearchDocument(Document):
 class ToolDocument(SearchDocument):
     """Tool Elasticsearch document."""
 
-    created_by = fields.ObjectField(
-        properties={
-            "id": fields.IntegerField(),
-            "username": fields.TextField(),
-        }
-    )
-    set_override(created_by, "field", schema.USER)
+    created_by = build_field_from_serializer(UserSerializer, "created_by")
+    modified_by = build_field_from_serializer(UserSerializer, "modified_by")
 
     class Index:
         """Configure index."""
