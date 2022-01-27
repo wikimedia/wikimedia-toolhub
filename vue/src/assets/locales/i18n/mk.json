@@ -7,6 +7,7 @@
 	"add": "Додај",
 	"addremovetools": "Додај или отстрани алатки",
 	"addremovetools-nologintext": "Ќе треба да се најавите на Toolhub за да додавате или отстранувате алатки",
+	"addremovetools-toolcreationsuccess": "Успех! Алатката „$1“ е создадена.",
 	"apidocs": "Приложнички документи",
 	"apidocumentation": "Приложничка документација",
 	"apierror": "Ах! Нешто не е во ред.",
