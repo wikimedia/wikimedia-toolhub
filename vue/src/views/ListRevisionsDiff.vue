@@ -3,35 +3,36 @@
 		<v-row>
 			<v-col md="9" cols="12">
 				<h2 class="text-h4">
-					{{ $t( 'tools-diff' ) }}
+					{{ $t( 'lists-diff' ) }}
 				</h2>
 			</v-col>
 
 			<v-col md="3" cols="12">
 				<v-btn
-					:to="{ name: 'tools-history', params: { name: name } }"
+					:to="{ name: 'lists-history', params: { id: id } }"
 					:small="$vuetify.breakpoint.smAndDown"
 				>
 					<v-icon class="me-2">
 						mdi-chevron-left
 					</v-icon>
-					{{ $t( 'backtotoolhistory' ) }}
+					{{ $t( 'backtolisthistory' ) }}
 				</v-btn>
 			</v-col>
 		</v-row>
 
 		<v-row>
 			<v-col cols="12" class="py-0">
-				{{ $t( 'viewrevisionsdiff', [
-					name
+				{{ $t( 'viewlistrevisionsdiff', [
+					id
 				] ) }}
+				"{{ listRevision.toollist.title }}"
 			</v-col>
 		</v-row>
 
 		<v-row class="my-8">
 			<v-col cols="6">
 				<h3 class="font-weight-medium">
-					{{ $t( 'toolrevisioninfo', [
+					{{ $t( 'listrevisioninfo', [
 						formatDate( diffRevision.original.timestamp ),
 						diffRevision.original.user.username,
 						diffRevision.original.comment
@@ -41,7 +42,7 @@
 
 			<v-col cols="6">
 				<h3 class="font-weight-medium">
-					{{ $t( 'toolrevisioninfo', [
+					{{ $t( 'listrevisioninfo', [
 						formatDate( diffRevision.result.timestamp ),
 						diffRevision.result.user.username,
 						diffRevision.result.comment
@@ -144,19 +145,19 @@ import { mapState, mapMutations } from 'vuex';
 import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
-	name: 'RevisionsDiff',
+	name: 'ListRevisionsDiff',
 	data() {
 		return {
-			name: this.$route.params.name,
+			id: this.$route.params.id,
 			revId: this.$route.params.revId,
 			otherRevId: this.$route.params.otherRevId
 		};
 	},
 	metaInfo() {
-		return fetchMetaInfo( 'tools-diff', this.name );
+		return fetchMetaInfo( 'lists-diff', this.id );
 	},
 	computed: {
-		...mapState( 'tools', [ 'diffRevision', 'toolRevision' ] ),
+		...mapState( 'lists', [ 'diffRevision', 'listRevision' ] ),
 		/**
 		 * @typedef {Object} ChangeInfo
 		 * @property {?string} label - Display label
@@ -230,17 +231,17 @@ export default {
 		}
 	},
 	methods: {
-		...mapMutations( 'tools', [ 'DIFF_REVISION' ] ),
-		getRevisionsDiff() {
-			this.$store.dispatch( 'tools/getRevisionsDiff', {
-				name: this.name,
-				id: this.revId,
+		...mapMutations( 'lists', [ 'DIFF_REVISION' ] ),
+		getListRevisionsDiff() {
+			this.$store.dispatch( 'lists/getListRevisionsDiff', {
+				id: this.id,
+				revId: this.revId,
 				otherId: this.otherRevId
 			} );
 		},
-		getToolRevision() {
-			this.$store.dispatch( 'tools/getToolRevision', {
-				name: this.name,
+		getListRevision() {
+			this.$store.dispatch( 'lists/getListRevision', {
+				id: this.id,
 				revId: this.revId
 			} );
 		},
@@ -258,9 +259,9 @@ export default {
 			};
 		},
 		/**
-		 * Compute a localized label for a toolinfo property.
+		 * Compute a localized label for a toollist property.
 		 *
-		 * @param {string} name - Property name (e.g. 'tool_type')
+		 * @param {string} name - Property name (e.g. 'description')
 		 * @return {string} Localized label for property
 		 */
 		propertyLabel( name ) {
@@ -300,8 +301,8 @@ export default {
 		 */
 		valueForPath( path ) {
 			const { property, index } = this.parsePath( path );
-			const value = this.toolRevision &&
-				this.toolRevision.toolinfo[ property ];
+			const value = this.listRevision &&
+				this.listRevision.toollist[ property ];
 			if ( Array.isArray( value ) && index !== null ) {
 				return value[ index ];
 			}
@@ -315,17 +316,10 @@ export default {
 		 * @return {string|null}
 		 */
 		displayFormat( property, value ) {
-			const linkTypes = [
-				'user_docs_url', 'developer_docs_url', 'privacy_policy_url',
-				'feedback_url', 'url_alternates'
-			];
-			if ( linkTypes.indexOf( property ) !== -1 ) {
+			if ( property === 'tools' ) {
 				if ( !!value && typeof value === 'object' ) {
-					value = value.url + ' (' + value.language + ')';
+					value = value.name;
 				}
-			}
-			if ( property.indexOf( 'date' ) !== -1 ) {
-				value = this.formatDate( value );
 			}
 			return this.normalizeEmpty( value );
 		},
@@ -336,9 +330,8 @@ export default {
 	mounted() {
 		// Clear any data from a prior view
 		this.DIFF_REVISION( null );
-
-		this.getRevisionsDiff();
-		this.getToolRevision();
+		this.getListRevisionsDiff();
+		this.getListRevision();
 	}
 };
 </script>

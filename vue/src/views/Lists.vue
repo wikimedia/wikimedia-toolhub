@@ -36,7 +36,7 @@
 				class="lists"
 				cols="12"
 			>
-				<ListView :list="list" />
+				<ListCard :list="list" />
 			</v-col>
 		</v-row>
 
@@ -54,11 +54,11 @@
 <script>
 import fetchMetaInfo from '@/helpers/metadata';
 import { mapState } from 'vuex';
-import ListView from '@/components/lists/ListView';
+import ListCard from '@/components/lists/ListCard';
 
 export default {
 	components: {
-		ListView
+		ListCard
 	},
 	data() {
 		return {

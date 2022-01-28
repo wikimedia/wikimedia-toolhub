@@ -211,7 +211,7 @@ export const actions = {
 	 * @param {Object} context - vuex context
 	 * @param {Object} tool - tool info
 	 */
-	getRevisionsDiff( context, tool ) {
+	getToolRevisionsDiff( context, tool ) {
 		const request = {
 			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/diff/' + tool.otherId + '/'
 		};
@@ -369,6 +369,11 @@ export default {
 	},
 	actions,
 	mutations,
-	// Strict mode in development/testing, but disabled for performance in prod
+	/* In strict mode, whenever Vuex state is mutated
+	outside of mutation handlers, an error will be
+	thrown. This ensures that all state mutations can
+    be explicitly tracked by debugging tools.
+	Disable strict mode in production to avoid the
+    performance cost. */
 	strict: process.env.NODE_ENV !== 'production'
 };

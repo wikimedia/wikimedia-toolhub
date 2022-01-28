@@ -36,7 +36,7 @@ const routes = [
 		{
 			name: 'tools-diff',
 			path: '/tools/:name([\\w%-]{1,255})/history/revision/:revId(\\d+)/diff/:otherRevId(\\d+)',
-			component: () => import( /* webpackChunkName: "tools-diff" */ '../views/RevisionsDiff.vue' )
+			component: () => import( /* webpackChunkName: "tools-diff" */ '../views/ToolRevisionsDiff.vue' )
 		},
 		{
 			name: 'addremovetools',
@@ -59,7 +59,7 @@ const routes = [
 		{
 			name: 'lists-view',
 			path: '/lists/:id(\\d+)',
-			component: () => import( /* webpackChunkName: "lists-view" */ '../components/lists/ListInfo.vue' )
+			component: () => import( /* webpackChunkName: "lists-view" */ '../views/ListView.vue' )
 		},
 		{
 			name: 'lists-edit',
@@ -70,6 +70,21 @@ const routes = [
 			name: 'lists-create',
 			path: '/lists/create',
 			component: () => import( /* webpackChunkName: "lists-create" */ '../components/lists/CreateEditList.vue' )
+		},
+		{
+			name: 'lists-history',
+			path: '/lists/:id(\\d+)/history',
+			component: () => import( /* webpackChunkName: "lists-history" */ '../views/ListHistory.vue' )
+		},
+		{
+			name: 'lists-revision',
+			path: '/lists/:id(\\d+)/history/revision/:revId(\\d+)',
+			component: () => import( /* webpackChunkName: "lists-view" */ '../views/ListView.vue' )
+		},
+		{
+			name: 'lists-diff',
+			path: '/lists/:id(\\d+)/history/revision/:revId(\\d+)/diff/:otherRevId(\\d+)',
+			component: () => import( /* webpackChunkName: "lists-diff" */ '../views/ListRevisionsDiff.vue' )
 		},
 		{
 			name: 'apidocs',

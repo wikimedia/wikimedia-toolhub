@@ -3,8 +3,8 @@ import chai from 'chai';
 import sinon from 'sinon';
 import SwaggerClient from 'swagger-client';
 import { addRequestDefaults } from '@/plugins/swagger';
-import { asList } from '@/helpers/casl';
 import * as notifications from '@/helpers/notifications';
+import { asList, asVersion } from '@/helpers/casl';
 
 chai.use( require( 'sinon-chai' ) );
 const expect = chai.expect;
@@ -59,6 +59,66 @@ describe( 'store/lists', () => {
 			field: 'test field1',
 			message: 'something went wrong'
 		} ]
+	};
+
+	const listRevisionResponse1 = {
+		comment: 'This is a test edit!!',
+		id: 596,
+		timestamp: '2021-04-27T20:12:08.025365Z',
+		user: {
+			id: 3,
+			username: 'Alice'
+		}
+	};
+
+	const listRevisionResponse2 = {
+		comment: 'This is a test edit!!',
+		id: 598,
+		timestamp: '2021-04-28T20:12:08.025365Z',
+		user: {
+			id: 3,
+			username: 'Alice'
+		}
+	};
+
+	const listRevisionsResponse = {
+		count: 1,
+		results: [
+			listRevisionResponse1, listRevisionResponse2
+		]
+	};
+
+	const diffRevisionResponse = {
+		original: {
+			id: 593,
+			timestamp: '2021-04-28T19:49:31.735437Z',
+			user: {
+				id: 3,
+				username: 'Alice'
+			},
+			comment: 'Test comment'
+		},
+		operations: [
+			{
+				op: 'replace',
+				path: '/description',
+				value: 'Coolest list ever'
+			},
+			{
+				op: 'replace',
+				path: '/title',
+				value: 'super-cool-list'
+			}
+		],
+		result: {
+			id: 596,
+			timestamp: '2021-04-28T20:12:08.025365Z',
+			user: {
+				id: 3,
+				username: 'Alice'
+			},
+			comment: 'Another test comment'
+		}
 	};
 
 	describe( 'actions', () => {
@@ -290,7 +350,7 @@ describe( 'store/lists', () => {
 
 		} );
 
-		describe( 'getListInfo', () => {
+		describe( 'getListById', () => {
 			const testId = 14;
 			const response = {
 				ok: true,
@@ -306,7 +366,7 @@ describe( 'store/lists', () => {
 				}, context );
 				http.resolves( response );
 
-				await actions.getListInfo( context, testId );
+				await actions.getListById( context, testId );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
@@ -321,14 +381,354 @@ describe( 'store/lists', () => {
 			it( 'should log failures', async () => {
 				http.rejects( apiError );
 
-				await actions.getListInfo( context, testId );
+				await actions.getListById( context, testId );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
 				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
+		describe( 'updateListRevisions', () => {
+			const testList = {
+				id: 14,
+				page: 1
+			};
 
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/lists/' + testList.id + '/revisions/?page=' + testList.page,
+				headers: { 'Content-type': 'application/json' },
+				body: listRevisionsResponse
+			};
+
+			it( 'should fetch and update list revisions', async () => {
+				dispatch.onFirstCall().returns( { then: sinon.stub().yields( response ) } );
+				actions.updateListRevisions( context, testList );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledBefore( commit );
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'getRevisions', testList
+				);
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'LIST_REVISIONS', listRevisionsResponse
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				dispatch.onFirstCall().rejects( { errors: { error1: { field: 'Boom', message: 'Boom Boom' } } } );
+
+				await actions.updateListRevisions( context, testList );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledBefore( commit );
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'getRevisions', testList
+				);
+
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+
+		} );
+		describe( 'getListRevision', () => {
+			const testList = {
+				id: 14,
+				revId: 596
+			};
+
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/',
+				headers: { 'Content-type': 'application/json' },
+				body: listRevisionResponse1
+			};
+
+			it( 'should fetch list revision', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/'
+				}, context );
+				http.resolves( response );
+
+				await actions.getListRevision( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'LIST_REVISION', listRevisionResponse1
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+				await actions.getListRevision( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+
+		} );
+		describe( 'getListRevisionsDiff', () => {
+			const testList = {
+				id: 14,
+				revId: 593,
+				otherId: 596
+			};
+
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/diff/' + testList.otherId + '/',
+				headers: { 'Content-type': 'application/json' },
+				body: diffRevisionResponse
+			};
+
+			it( 'should fetch diff between revisions', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/diff/' + testList.otherId + '/'
+				}, context );
+				http.resolves( response );
+
+				await actions.getListRevisionsDiff( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'DIFF_REVISION', diffRevisionResponse
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+				await actions.getListRevisionsDiff( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+
+		} );
+
+		describe( 'undoChangesBetweenRevisions', () => {
+			const testList = {
+				id: 14,
+				revId: '596',
+				page: 1
+			};
+
+			const id = testList.revId,
+				listRevisions = listRevisionsResponse.results,
+				revIndex = listRevisions.findIndex( ( revision ) => revision.id === id ),
+				nextIndex = parseInt( revIndex ) + 1;
+
+			const otherId = listRevisions[ nextIndex ] && listRevisions[ nextIndex ].id;
+
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/undo/' + otherId + '/',
+				headers: { 'Content-type': 'application/json' },
+				body: listResponse
+			};
+
+			it( 'should undo between revisions', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testList.id + '/revisions/' + id + '/undo/' + otherId + '/',
+					method: 'POST'
+				}, context );
+
+				http.resolves( response );
+
+				context.state.listRevisions = listRevisionsResponse.results;
+				await actions.undoChangesBetweenRevisions( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( dispatch );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'updateListRevisions', {
+						page: testList.page,
+						id: testList.id
+					}
+				);
+
+				context.state.listRevisions = [];
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				context.state.listRevisions = listRevisionsResponse.results;
+				await actions.undoChangesBetweenRevisions( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( displayErrorNotification ).to.have.been.called;
+
+				context.state.listRevisions = [];
+			} );
+
+		} );
+
+		describe( 'restoreListToRevision', () => {
+			const testList = {
+				id: 14,
+				revId: '596',
+				page: 1
+			};
+
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/revert/',
+				headers: { 'Content-type': 'application/json' }
+			};
+
+			it( 'should restore list to a revision', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/revert/',
+					method: 'POST'
+				}, context );
+				http.resolves( response );
+
+				const restoreListToRevision = actions.restoreListToRevision.bind( stubThis );
+				await restoreListToRevision( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'updateListRevisions', {
+						page: testList.page,
+						id: testList.id
+					}
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				await actions.restoreListToRevision( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+
+		} );
+
+		describe( 'hideRevealRevision', () => {
+			const testList = {
+				id: 14,
+				revId: '596',
+				page: 1,
+				action: 'hide'
+			};
+
+			const response = {
+				ok: true,
+				status: 204,
+				url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/' + testList.action + '/',
+				headers: { 'Content-type': 'application/json' }
+			};
+
+			it( 'should hide a revision', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/' + testList.action + '/',
+					method: 'PATCH'
+				}, context );
+				http.resolves( response );
+
+				const hideRevealRevision = actions.hideRevealRevision.bind( stubThis );
+				await hideRevealRevision( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'updateListRevisions', {
+						page: testList.page,
+						id: testList.id
+					}
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				await actions.hideRevealRevision( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+
+		} );
+
+		describe( 'markRevisionAsPatrolled', () => {
+			const testList = {
+				id: 14,
+				revId: '596',
+				page: 1
+			};
+
+			const response = {
+				ok: true,
+				status: 204,
+				url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/patrol/',
+				headers: { 'Content-type': 'application/json' }
+			};
+
+			it( 'should patrol a revision', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/patrol/',
+					method: 'PATCH'
+				}, context );
+				http.resolves( response );
+
+				const markRevisionAsPatrolled = actions.markRevisionAsPatrolled.bind( stubThis );
+				await markRevisionAsPatrolled( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'updateListRevisions', {
+						page: testList.page,
+						id: testList.id
+					}
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				await actions.markRevisionAsPatrolled( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+
+		} );
 	} );
 
 	describe( 'mutations', () => {
@@ -347,6 +747,25 @@ describe( 'store/lists', () => {
 
 			mutations.LIST( state, listResponse );
 			expect( state.list ).to.eql( asList( listResponse ) );
+		} );
+
+		it( 'should store diff and list revisions', () => {
+			const state = {
+				listRevisions: [],
+				numRevisions: 0,
+				diffRevision: null,
+				listRevision: null
+			};
+
+			mutations.LIST_REVISIONS( state, listRevisionsResponse );
+			expect( state.listRevisions ).to.eql( asVersion( listRevisionsResponse.results ) );
+			expect( state.numRevisions ).to.equal( listRevisionsResponse.count );
+
+			mutations.LIST_REVISION( state, listRevisionResponse1 );
+			expect( state.listRevision ).to.eql( asVersion( listRevisionResponse1 ) );
+
+			mutations.DIFF_REVISION( state, diffRevisionResponse );
+			expect( state.diffRevision ).to.equal( diffRevisionResponse );
 		} );
 	} );
 

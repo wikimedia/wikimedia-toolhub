@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import i18n from '@/plugins/i18n';
 import { makeApiCall } from '@/plugins/swagger.js';
 import { displayErrorNotification } from '@/helpers/notifications';
-import { asList } from '@/helpers/casl';
+import { asList, asVersion } from '@/helpers/casl';
 
 Vue.use( Vuex );
 
@@ -19,6 +19,16 @@ export const mutations = {
 	},
 	LIST( state, list ) {
 		state.list = asList( list );
+	},
+	LIST_REVISIONS( state, revisions ) {
+		state.listRevisions = asVersion( revisions.results );
+		state.numRevisions = revisions.count;
+	},
+	LIST_REVISION( state, revision ) {
+		state.listRevision = asVersion( revision );
+	},
+	DIFF_REVISION( state, revision ) {
+		state.diffRevision = revision;
 	}
 };
 
@@ -126,7 +136,7 @@ export const actions = {
 			}
 		);
 	},
-	getListInfo( context, id ) {
+	getListById( context, id ) {
 		const request = {
 			url: '/api/lists/' + id + '/',
 			method: 'GET',
@@ -144,6 +154,203 @@ export const actions = {
 				displayErrorNotification.call( this, failure );
 			}
 		);
+	},
+	/**
+	 * Update list revisions state with the results obtained via the API.
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} list - list info
+	 */
+	updateListRevisions( context, list ) {
+		context.dispatch( 'getRevisions', list ).then(
+			( success ) => {
+				const data = success.body;
+				context.commit( 'LIST_REVISIONS', data );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+	/**
+	 * Fetch list revisions via the API.
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} list - list info
+	 * @return {Promise} Promise object with revisions data
+	 */
+	getRevisions( context, list ) {
+		const request = {
+			url: '/api/lists/' + list.id + '/revisions/?page=' + list.page
+		};
+		return makeApiCall( context, request );
+	},
+	/**
+	 * Fetch list revision information from the API.
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} list - list info
+	 */
+	getListRevision( context, list ) {
+		const request = {
+			url: '/api/lists/' + list.id + '/revisions/' + list.revId + '/'
+		};
+
+		makeApiCall( context, request ).then(
+			( response ) => {
+				context.commit( 'LIST_REVISION', response.body );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+	/**
+	 * Fetch differences between revisions from the API.
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} list - list info
+	 */
+	getListRevisionsDiff( context, list ) {
+		const request = {
+			url: '/api/lists/' + list.id + '/revisions/' + list.revId + '/diff/' + list.otherId + '/'
+		};
+
+		makeApiCall( context, request ).then(
+			( success ) => {
+				const data = success.body;
+				context.commit( 'DIFF_REVISION', data );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+	/**
+	 * Undo changes between two revisions via the API
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} list - list info
+	 */
+	async undoChangesBetweenRevisions( context, list ) {
+		const id = list.revId,
+			nextPage = list.page + 1,
+			listRevisions = context.state.listRevisions,
+			revIndex = listRevisions.findIndex( ( revision ) => revision.id === id ),
+			nextIndex = parseInt( revIndex ) + 1;
+
+		let otherId = '';
+
+		if ( nextIndex === listRevisions.length ) {
+			// Fetch more revisions to obtain other id if the revision
+			// selected for an undo is last in the current list
+			await context.dispatch( 'getRevisions', {
+				name: tool.name, page: nextPage
+			} ).then(
+				( success ) => {
+					const results = success.body.results;
+					otherId = results[ 0 ].id; // Get rev id from the first element
+				},
+				( failure ) => {
+					displayErrorNotification.call( this, failure );
+				}
+			);
+		} else {
+			otherId = listRevisions[ nextIndex ] && listRevisions[ nextIndex ].id;
+		}
+
+		if ( !( !!id && !!otherId ) ) {
+			return;
+		}
+
+		const request = {
+			url: '/api/lists/' + list.id + '/revisions/' + id + '/undo/' + otherId + '/',
+			method: 'POST'
+		};
+
+		makeApiCall( context, request ).then(
+			() => {
+				context.dispatch( 'updateListRevisions', {
+					page: list.page,
+					id: list.id
+				} );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+	/**
+	 * Restore list to a particular revision via the API
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} list - list info
+	 */
+	restoreListToRevision( context, list ) {
+		const request = {
+			url: '/api/lists/' + list.id + '/revisions/' + list.revId + '/revert/',
+			method: 'POST'
+		};
+
+		makeApiCall( context, request ).then(
+			() => {
+				context.dispatch( 'updateListRevisions', {
+					page: list.page,
+					id: list.id
+				} );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+	/**
+	 * Hide or reveal a particular revision via the API
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} list - list info
+	 */
+	hideRevealRevision( context, list ) {
+		const request = {
+			url: '/api/lists/' + list.id + '/revisions/' + list.revId + '/' + list.action + '/',
+			method: 'PATCH'
+		};
+
+		makeApiCall( context, request ).then(
+			() => {
+				context.dispatch( 'updateListRevisions', {
+					page: list.page,
+					id: list.id
+				} );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+	/**
+	 * Mark a revision as patrolled via the API
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} list - list info
+	 */
+	markRevisionAsPatrolled( context, list ) {
+		const request = {
+			url: '/api/lists/' + list.id + '/revisions/' + list.revId + '/patrol/',
+			method: 'PATCH'
+		};
+
+		makeApiCall( context, request ).then(
+			() => {
+				context.dispatch( 'updateListRevisions', {
+					page: list.page,
+					id: list.id
+				} );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
 	}
 };
 
@@ -153,7 +360,10 @@ export default {
 		featuredLists: [],
 		myLists: {},
 		listCreated: {},
-		list: null
+		list: null,
+		listRevisions: [],
+		listRevision: 0,
+		diffRevision: null
 	},
 	actions,
 	mutations,

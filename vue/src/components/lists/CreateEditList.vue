@@ -189,7 +189,7 @@ export default {
 		},
 
 		getListInfo( id ) {
-			this.$store.dispatch( 'lists/getListInfo', id ).then(
+			this.$store.dispatch( 'lists/getListById', id ).then(
 				() => {
 					if ( this.list ) {
 						this.listinfo = JSON.parse( JSON.stringify( this.list ) );

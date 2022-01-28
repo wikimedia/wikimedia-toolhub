@@ -1,6 +1,7 @@
 <template>
 	<v-container v-if="list">
 		<v-app-bar
+			v-if="!revId"
 			color="base100"
 			dense
 			flat
@@ -30,6 +31,16 @@
 					mdi-delete
 				</v-icon>
 				{{ $t( 'delete' ) }}
+			</v-btn>
+			<v-btn
+				:to="{ name: 'lists-history', params: { id: list.id } }"
+				:small="$vuetify.breakpoint.smAndDown"
+				class="ms-4"
+			>
+				<v-icon class="me-2">
+					mdi-history
+				</v-icon>
+				{{ $t( 'viewhistory' ) }}
 			</v-btn>
 		</v-app-bar>
 		<v-card
@@ -142,7 +153,6 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
 import CommonsImage from '@/components/common/CommonsImage';
 import ToolCard from '@/components/tools/ToolCard';
 import ConfirmDeleteDialog from '@/components/common/ConfirmDeleteDialog';
@@ -155,45 +165,33 @@ export default {
 		ConfirmDeleteDialog
 
 	},
+	props: {
+		list: {
+			type: Object,
+			default: null
+		},
+		revId: {
+			type: [ String, Number ],
+			default: null
+		},
+		showClipboardMsg: {
+			type: Boolean
+		}
+	},
 	data() {
 		return {
-			showClipboardMsg: false,
 			id: this.$route.params.id,
 			confirmDeleteDialog: false
 		};
 	},
-	computed: {
-		...mapState( 'lists', [ 'list' ] )
-	},
 	methods: {
-		...mapMutations( 'lists', [ 'LIST' ] ),
-		getListInfo() {
-			this.$store.dispatch( 'lists/getListInfo', this.id );
-		},
 		copyToClipboard() {
-			const fullUrl = window.location.origin + this.$route.path;
-			this.$copyText( fullUrl ).then( () => {
-				this.showClipboardMsg = true;
-				setTimeout( () => {
-					this.showClipboardMsg = false;
-				}, 20000 );
-			}, this );
+			this.$emit( 'copy-to-clipboard' );
 		},
 		deleteList() {
-			this.$store.dispatch( 'lists/deleteList', this.id ).then(
-				() => {
-					this.$router.push( { name: 'lists' } );
-				}
-			);
+			this.$emit( 'delete-list' );
 			this.confirmDeleteDialog = false;
 		}
-	},
-	beforeMount() {
-		// Clear any data from a prior view
-		this.LIST( null );
-	},
-	mounted() {
-		this.getListInfo();
 	}
 };
 </script>

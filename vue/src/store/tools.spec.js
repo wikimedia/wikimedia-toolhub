@@ -480,7 +480,7 @@ describe( 'store/tools', () => {
 
 		} );
 
-		describe( 'getRevisionsDiff', () => {
+		describe( 'getToolRevisionsDiff', () => {
 			const testTool = {
 				name: 'Awesome',
 				id: 593,
@@ -501,7 +501,7 @@ describe( 'store/tools', () => {
 				}, context );
 				http.resolves( response );
 
-				await actions.getRevisionsDiff( context, testTool );
+				await actions.getToolRevisionsDiff( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
@@ -515,7 +515,7 @@ describe( 'store/tools', () => {
 
 			it( 'should log failures', async () => {
 				http.rejects( apiError );
-				await actions.getRevisionsDiff( context, testTool );
+				await actions.getToolRevisionsDiff( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;

@@ -63,7 +63,7 @@
 				cols="12"
 				class="featured-lists"
 			>
-				<ListView :list="list" />
+				<ListCard :list="list" />
 			</v-col>
 		</v-row>
 
@@ -83,12 +83,12 @@ import { mapActions, mapState } from 'vuex';
 import '@/assets/styles/index.css';
 import SearchBar from '@/components/search/SearchBar';
 import fetchMetaInfo from '@/helpers/metadata';
-import ListView from '@/components/lists/ListView';
+import ListCard from '@/components/lists/ListCard';
 
 export default {
 	components: {
 		SearchBar,
-		ListView
+		ListCard
 	},
 	data: () => ( {
 		page: 1,
