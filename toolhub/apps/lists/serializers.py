@@ -207,12 +207,17 @@ class EditToolListSerializer(ModelSerializer, EditCommentFieldMixin):
         return instance
 
 
-@doc(_("""Historic revision of a list."""))
-class ToolListHistoricVersionSerializer(ModelSerializer):
-    """Historic revision of a list."""
+@doc(_("""Historic revision of a list for generating diffs."""))
+class ToolListDiffSerializer(ModelSerializer):
+    """Historic revision of a list for generating diffs."""
 
-    tools = serializers.SerializerMethodField()
-    created_by = serializers.SerializerMethodField()
+    tools = serializers.ListField(
+        child=serializers.CharField(required=False),
+        allow_empty=True,
+        max_length=128,
+        help_text=_("""List of tool names."""),
+        source="tool_names",
+    )
 
     class Meta:
         """Configure serializer."""
@@ -227,9 +232,23 @@ class ToolListHistoricVersionSerializer(ModelSerializer):
             "published",
             "featured",
             "tools",
-            "created_by",
-            "created_date",
         ]
+        read_only_fields = fields
+
+
+@doc(_("""Historic revision of a list."""))
+class ToolListHistoricVersionSerializer(ToolListDiffSerializer):
+    """Historic revision of a list."""
+
+    tools = serializers.SerializerMethodField()
+    created_by = serializers.SerializerMethodField()
+
+    class Meta(ToolListDiffSerializer.Meta):
+        """Configure serializer."""
+
+        fields = list(ToolListDiffSerializer.Meta.fields)
+        fields.append("created_by")
+        fields.append("created_date")
         read_only_fields = fields
 
     @extend_schema_field(SummaryToolSerializer(many=True))

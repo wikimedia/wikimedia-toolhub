@@ -51,7 +51,7 @@ from .models import ToolList
 from .models import ToolListItem
 from .serializers import AddFavoriteSerializer
 from .serializers import EditToolListSerializer
-from .serializers import ToolListHistoricVersionSerializer
+from .serializers import ToolListDiffSerializer
 from .serializers import ToolListRevisionDetailSerializer
 from .serializers import ToolListRevisionDiffSerializer
 from .serializers import ToolListRevisionSerializer
@@ -307,8 +307,8 @@ class ToolListRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         if right.revision.meta.suppressed and not user.has_perms(perms, right):
             raise SuppressedRevision()
 
-        data_left = ToolListHistoricVersionSerializer(left.field_dict).data
-        data_right = ToolListHistoricVersionSerializer(right.field_dict).data
+        data_left = ToolListDiffSerializer(left.field_dict).data
+        data_right = ToolListDiffSerializer(right.field_dict).data
         return jsonpatch.make_patch(data_left, data_right)
 
     def _update_list(self, data, request):
