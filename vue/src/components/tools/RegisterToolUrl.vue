@@ -9,7 +9,7 @@
 					ref="url"
 					v-model="fileUrl"
 					prepend-icon="mdi-link-variant"
-					:rules="requiredRule.concat( urlRule )"
+					:rules="validationRules"
 					required
 					:disabled="!$can( 'add', 'crawler/url' )"
 				>
@@ -116,9 +116,7 @@ export default {
 		return {
 			page: 1,
 			itemsPerPage: 10,
-			fileUrl: '',
-			urlRule: [ ( v ) => !v ? true : isValidHttpUrl( v ) || this.$t( 'urlinvalid' ) ],
-			requiredRule: [ ( v ) => !!v || 'This field is required' ]
+			fileUrl: ''
 		};
 	},
 	computed: {
@@ -142,6 +140,11 @@ export default {
 					align: 'right'
 				}
 			];
+		},
+		validationRules() {
+			const urlRule = ( v ) => !v ? true : isValidHttpUrl( v ) || this.$t( 'urlinvalid' );
+			const requiredRule = ( v ) => !!v || this.$t( 'required-field' );
+			return [ urlRule, requiredRule ];
 		}
 	},
 	methods: {

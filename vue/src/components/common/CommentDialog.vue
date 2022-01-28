@@ -83,8 +83,7 @@ export default {
 	},
 	data() {
 		return {
-			comment: null,
-			requiredRule: [ ( v ) => !!v || this.$t( 'required-field' ) ]
+			comment: null
 		};
 	},
 	computed: {
@@ -95,7 +94,8 @@ export default {
 			set( value ) {
 				this.$emit( 'input', value );
 			}
-		}
+		},
+		requiredRule() { return [ ( v ) => !!v || this.$t( 'required-field' ) ]; }
 	},
 	methods: {
 		saveComment() {
