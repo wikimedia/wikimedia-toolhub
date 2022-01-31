@@ -1,8 +1,17 @@
+Version 1.2.2
+-------------
+* New "person" type for describing a human.
+* "author" can now be either the legacy string value or an array of "person"
+  records.
+
+.. literalinclude:: ../jsonschema/toolinfo/1.2.2.json
+   :language: JSON
+
 Version 1.2.1
 -------------
 * Add "lua module" and "template" tool types
 
-.. literalinclude:: ../jsonschema/toolinfo/1.2.0.json
+.. literalinclude:: ../jsonschema/toolinfo/1.2.1.json
    :language: JSON
 
 Version 1.2.0
