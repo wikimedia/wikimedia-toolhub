@@ -263,7 +263,7 @@
 	"userdocsurl": "URL dos documentos do usuário",
 	"valid": "válido",
 	"viewhistory": "Ver histórico",
-	"viewrevisionsdiff": "Ver diferença entre revisões de ferramentas $1",
+	"viewtoolrevisionsdiff": "Ver diferença entre revisões de ferramentas $1",
 	"viewmore": "Ver mais",
 	"welcomemessage": "Bem-vindo ao Toolhub"
 }

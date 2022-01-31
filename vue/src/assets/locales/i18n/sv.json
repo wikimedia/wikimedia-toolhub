@@ -224,7 +224,7 @@
 	"urlrequired": "URL är obligatoriskt",
 	"valid": "giltig",
 	"viewhistory": "Visa historik",
-	"viewrevisionsdiff": "Visa skillnad mellan versioner av verktyget $1",
+	"viewtoolrevisionsdiff": "Visa skillnad mellan versioner av verktyget $1",
 	"viewmore": "Fisa fler",
 	"welcomemessage": "Toolhub är en gemenskapsstyrd katalog över Wikimedia-verktyg."
 }

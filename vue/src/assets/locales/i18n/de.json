@@ -298,7 +298,7 @@
 	"userdocsurl": "Benutzerdokumentations-URL",
 	"valid": "gültig",
 	"viewhistory": "Versionsgeschichte ansehen",
-	"viewrevisionsdiff": "Unterschied zwischen den Versionen des Werkzeugs $1 anzeigen",
+	"viewtoolrevisionsdiff": "Unterschied zwischen den Versionen des Werkzeugs $1 anzeigen",
 	"viewmore": "Mehr anzeigen",
 	"welcomemessage": "Toolhub ist ein von der Community erstellter Katalog von Wikimedia-Werkzeugen."
 }

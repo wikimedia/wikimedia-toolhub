@@ -226,7 +226,7 @@
 	"userdocsurl": "사용자 문서 URL",
 	"valid": "유효함",
 	"viewhistory": "역사 보기",
-	"viewrevisionsdiff": "도구 $1의 판 차이 보기",
+	"viewtoolrevisionsdiff": "도구 $1의 판 차이 보기",
 	"viewmore": "더 보기",
 	"welcomemessage": "툴허브에 오신 것을 환영합니다"
 }

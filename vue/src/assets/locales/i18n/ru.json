@@ -7,6 +7,7 @@
 			"Nastua Buldakova",
 			"Okras",
 			"Rivka Silinsky",
+			"Tanzun",
 			"Wileyfoxyx"
 		]
 	},
@@ -38,6 +39,7 @@
 	"auditlogs-username": "Имя участника",
 	"author": "Автор",
 	"authors": "Автор(ы)",
+	"backtolisthistory": "Вернуться к истории списка",
 	"basicinfo": "Основные сведения",
 	"cancel": "Отмена",
 	"clear": "Очистить",
@@ -78,6 +80,7 @@
 	"lists-discovernewlists": "Откройте для себя новые списки",
 	"lists-nolistsfoundtext": "Списки не найдены",
 	"lists-yourlists": "Ваши списки",
+	"lists-view": "Список",
 	"locale-select": "Выберите язык",
 	"login": "Войти",
 	"logout": "Выйти",
@@ -91,6 +94,7 @@
 	"members-userslist-header-groups": "Группы",
 	"members-userslist-header-membersince": "Участник с",
 	"message-close": "Закрыть сообщение",
+	"metadata-lists-view-description": "Посетите эту страницу, чтобы просмотреть дополнительную информацию о списке",
 	"moreinfo": "Подробнее",
 	"my-account": "Моя учётная запись",
 	"name": "Имя",

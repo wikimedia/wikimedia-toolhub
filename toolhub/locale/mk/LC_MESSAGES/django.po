@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-01-20 12:13:01+0000\n"
-"X-POT-Import-Date: 2021-11-30 17:30:26+0000\n"
+"PO-Revision-Date: 2022-01-31 12:11:56+0000\n"
+"X-POT-Import-Date: 2022-01-28 21:30:23+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: mk\n"
@@ -249,49 +249,53 @@ msgstr ""
 msgid "Position of this tool in the list."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:48
+#: toolhub/apps/lists/serializers.py:51
 msgid "List of tools metadata."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:82
+#: toolhub/apps/lists/serializers.py:93
 msgid "Create or update a list."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:90 toolhub/apps/lists/serializers.py:207
+#: toolhub/apps/lists/serializers.py:101 toolhub/apps/lists/serializers.py:218
 msgid "List of tool names."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:199
+#: toolhub/apps/lists/serializers.py:210
+msgid "Historic revision of a list for generating diffs."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:239
 msgid "Historic revision of a list."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:228
+#: toolhub/apps/lists/serializers.py:271
 msgid "Tool list revision."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:236
+#: toolhub/apps/lists/serializers.py:279
 msgid "Tool list revision detail."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:258
+#: toolhub/apps/lists/serializers.py:301
 msgid "Tool list revision difference."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:263
+#: toolhub/apps/lists/serializers.py:306
 #: toolhub/apps/toolinfo/serializers.py:266
 msgid "Revision to apply changes to."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:267
+#: toolhub/apps/lists/serializers.py:310
 #: toolhub/apps/toolinfo/serializers.py:270
 msgid "Revision after applying changes."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:271
+#: toolhub/apps/lists/serializers.py:314
 msgid "Add a favorite tool."
 msgstr ""
 
-#: toolhub/apps/lists/serializers.py:276
+#: toolhub/apps/lists/serializers.py:319
 msgid "Tool name."
 msgstr ""
 
@@ -1059,15 +1063,15 @@ msgstr ""
 msgid "Comment describing an action."
 msgstr ""
 
-#: toolhub/settings.py:447
+#: toolhub/settings.py:448
 msgid "Read scope"
 msgstr ""
 
-#: toolhub/settings.py:448
+#: toolhub/settings.py:449
 msgid "Write scope"
 msgstr ""
 
-#: toolhub/settings.py:477
+#: toolhub/settings.py:478
 #, optional
 msgid "Toolhub API"
 msgstr "Приложник на Toolhub"
