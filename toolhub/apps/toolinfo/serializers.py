@@ -16,12 +16,17 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.core.exceptions import ValidationError
+from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 
 from rest_framework import serializers
 from rest_framework.exceptions import PermissionDenied
 
+import reversion
+
+from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.user.serializers import UserSerializer
+from toolhub.apps.versioned.models import RevisionMetadata
 from toolhub.apps.versioned.serializers import JSONPatchField
 from toolhub.apps.versioned.serializers import RevisionSerializer
 from toolhub.decorators import doc
@@ -75,6 +80,51 @@ class AnnotationsSerializer(ModelSerializer):
         fields = [
             "wikidata_qid",
         ]
+
+
+@doc(_("""Update annotations"""))
+class UpdateAnnotationsSerializer(ModelSerializer, EditCommentFieldMixin):
+    """Update a tool's annotations"""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = Annotations
+        fields = [
+            "wikidata_qid",
+            "comment",
+        ]
+
+    @transaction.atomic
+    def update(self, instance, validated_data):
+        """Update an annotations record."""
+        user = self.context["request"].user
+        comment = validated_data.pop("comment", None)
+
+        has_changes = False
+        for key, value in validated_data.items():
+            prior = getattr(instance, key)
+            if value != prior:
+                setattr(instance, key, value)
+                has_changes = True
+
+        with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
+            reversion.set_user(user)
+            if comment is not None:
+                reversion.set_comment(comment)
+
+            with auditlog_context(user, comment):
+                if has_changes:
+                    instance.save()
+                    instance.tool.modified_by = user
+                    instance.tool.save()
+        return instance
+
+    def to_representation(self, instance):
+        """Proxy to AnnotationsSerializer for output."""
+        serializer = AnnotationsSerializer(instance)
+        return serializer.data
 
 
 @doc(_("""Description of a tool"""))
@@ -227,7 +277,7 @@ class UpdateToolSerializer(CreateToolSerializer):
             obj, _, _ = Tool.objects.from_toolinfo(
                 validated_data,
                 self.context["request"].user,
-                Tool.ORIGIN_API,
+                instance.origin,
                 comment,
             )
         except ValidationError as e:

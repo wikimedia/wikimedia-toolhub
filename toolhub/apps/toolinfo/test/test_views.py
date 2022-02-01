@@ -34,10 +34,16 @@ class ToolViewSetTest(TestCase):
         cls.administrator = cls._user("admin", group="Administrators")
         cls.toolinfo = cls._load_json("toolinfo_fixture.json")
         cls.fixture = cls._load_json("view_fixture.json")
+        cls.annotations = cls._load_json("view_annotations.json")
 
-        cls.tool, _, _ = models.Tool.objects.from_toolinfo(
-            cls.toolinfo, cls.user, models.Tool.ORIGIN_API
+    def setUp(self):
+        """Setup before each test."""
+        self.tool, _, _ = models.Tool.objects.from_toolinfo(
+            self.toolinfo, self.user, models.Tool.ORIGIN_API
         )
+        for key, value in self.annotations.items():
+            setattr(self.tool.annotations, key, value)
+        self.tool.annotations.save()
 
     def test_create_requires_auth(self):
         """Assert that create fails for anon."""
@@ -132,16 +138,54 @@ class ToolViewSetTest(TestCase):
         self.assertIn("name", tool)
         self.assertEqual(tool["name"], self.tool.name)
 
+    def test_get_annotations(self):
+        """Test GET annotations."""
+        self.client.force_authenticate(user=None)
+
+        url = "/api/tools/{name}/annotations/".format(name=self.tool.name)
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("wikidata_qid", response.data)
+        self.assertEqual(
+            response.data["wikidata_qid"], self.annotations["wikidata_qid"]
+        )
+
+    def test_put_annotations_requires_auth(self):
+        """Assert that edit fails for anon."""
+        self.client.force_authenticate(user=None)
+
+        url = "/api/tools/{name}/annotations/".format(name=self.tool.name)
+        response = self.client.put(url, {}, format="json")
+
+        self.assertEqual(response.status_code, 401)
+
+    def test_put_annotations(self):
+        """Test PUT annotations."""
+        self.client.force_authenticate(user=self.user)
+
+        url = "/api/tools/{name}/annotations/".format(name=self.tool.name)
+        payload = {
+            "wikidata_qid": "Q42",
+            "comment": "test_put_annotations",
+        }
+        response = self.client.put(url, payload, format="json")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("wikidata_qid", response.data)
+        self.assertEqual(
+            response.data["wikidata_qid"], payload["wikidata_qid"]
+        )
+
 
 class ToolRevisionViewSetTest(TestCase):
     """Test ToolRevisionViewSet."""
 
-    @classmethod
-    def versions(cls, tool=None):
+    def versions(self, tool=None):
         """Get queryset over versions."""
         if tool is None:
-            tool = cls.tool
-        return Version.objects.get_for_object(tool)
+            tool = self.tool
+        return Version.objects.order_by("-id").get_for_object(tool)
 
     @classmethod
     def setUpTestData(cls):
@@ -152,10 +196,22 @@ class ToolRevisionViewSetTest(TestCase):
         cls.patroller = cls._user("patroller", group="Patrollers")
 
         cls.toolinfo = cls._load_json("toolinfo_fixture.json")
+        cls.annotations = cls._load_json("view_annotations.json")
 
-        cls.tool, _, _ = models.Tool.objects.from_toolinfo(
-            cls.toolinfo, cls.user, models.Tool.ORIGIN_API
+    def setUp(self):
+        """Setup before each test."""
+        self.tool, _, _ = models.Tool.objects.from_toolinfo(
+            self.toolinfo, self.user, models.Tool.ORIGIN_API
         )
+        with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
+            reversion.set_user(self.user)
+            reversion.set_comment("ToolRevisionViewSetTest::setUpTestData")
+            for key, value in self.annotations.items():
+                setattr(self.tool.annotations, key, value)
+            self.tool.annotations.save()
+            self.tool.modified_by = self.administrator
+            self.tool.save()
 
     def test_list(self):
         """Test list action."""
@@ -166,7 +222,7 @@ class ToolRevisionViewSetTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertIn("results", response.data)
-        self.assertEqual(len(response.data["results"]), 1)
+        self.assertEqual(len(response.data["results"]), 2)
 
     def test_retrieve(self):
         """Test retrieve action."""
@@ -185,8 +241,10 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=None)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "Changed"
+            reversion.set_user(self.user)
+            self.tool.title = "test_diff"
             self.tool.save()
+
         diff_from = self.versions().first().pk
         diff_to = self.versions().last().pk
 
@@ -203,16 +261,48 @@ class ToolRevisionViewSetTest(TestCase):
         self.assertIn("operations", response.data)
         self.assertIn("result", response.data)
 
+    def test_diff_annotations(self):
+        """Test diff with annotations changes."""
+        self.client.force_authenticate(user=None)
+        with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
+            reversion.set_user(self.user)
+            self.tool.annotations.wikidata_qid = "Q42"
+            self.tool.annotations.save()
+            self.tool.modified_by = self.user
+            self.tool.save()
+
+        diff_from = self.versions()[1].pk
+        diff_to = self.versions()[0].pk
+
+        url = "/api/tools/{name}/revisions/{id}/diff/{other_id}/".format(
+            name=self.tool.name,
+            id=diff_from,
+            other_id=diff_to,
+        )
+        response = self.client.get(url)
+
+        self.assertNotEqual(diff_from, diff_to)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("original", response.data)
+        self.assertIn("operations", response.data)
+        ops = list(response.data["operations"])
+        self.assertEqual(1, len(ops))
+        self.assertEqual("/annotations/wikidata_qid", ops[0]["path"])
+        self.assertIn("result", response.data)
+
     def test_diff_suppressed_anon(self):
         """Test diff with suppressed start/end as anon."""
         self.client.force_authenticate(user=None)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "BAD FAITH"
+            reversion.set_user(self.user)
+            self.tool.title = "test_diff_suppressed_anon"
             self.tool.save()
-        bad_faith = self.versions().last()
+        bad_faith = self.versions().first()
         bad_faith.revision.meta.suppressed = True
         bad_faith.revision.meta.save()
+
         diff_from = self.versions().first().pk
         diff_to = self.versions().last().pk
 
@@ -223,7 +313,7 @@ class ToolRevisionViewSetTest(TestCase):
         )
         response = self.client.get(url)
 
-        self.assertTrue(self.versions().last().revision.meta.suppressed)
+        self.assertTrue(self.versions().first().revision.meta.suppressed)
         self.assertNotEqual(diff_from, diff_to)
         self.assertEqual(response.status_code, 403)
 
@@ -232,7 +322,8 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=self.oversighter)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "BAD FAITH"
+            reversion.set_user(self.user)
+            self.tool.title = "test_diff_suppressed_priv"
             self.tool.save()
         bad_faith = self.versions().last()
         bad_faith.revision.meta.suppressed = True
@@ -269,28 +360,61 @@ class ToolRevisionViewSetTest(TestCase):
     def test_revert(self):
         """Test revert action."""
         self.client.force_authenticate(user=self.user)
+
+        # Make a new revision
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "Changed"
+            reversion.set_user(self.user)
+            self.tool.title = "test_revert"
             self.tool.save()
 
+        # Revert to the prior revision
         url = "/api/tools/{name}/revisions/{id}/revert/".format(
             name=self.tool.name,
-            id=self.versions().last().pk,
+            id=self.versions()[1].pk,
         )
         response = self.client.post(url)
 
-        self.assertEqual(self.tool.title, "Changed")
+        self.assertEqual(self.tool.title, "test_revert")
         self.assertEqual(response.status_code, 200)
         self.assertIn("title", response.data)
-        self.assertNotEqual(response.data["title"], "Changed")
+        self.assertNotEqual(response.data["title"], "test_revert")
+
+    def test_revert_annotations(self):
+        """Test revert action with annotations changes."""
+        self.client.force_authenticate(user=self.user)
+
+        # Make a new revision
+        with reversion.create_revision():
+            reversion.add_meta(RevisionMetadata)
+            reversion.set_user(self.user)
+            self.tool.annotations.wikidata_qid = "Q42"
+            self.tool.annotations.save()
+            self.tool.modified_by = self.user
+            self.tool.save()
+
+        # Revert to the prior revision
+        url = "/api/tools/{name}/revisions/{id}/revert/".format(
+            name=self.tool.name,
+            id=self.versions()[1].pk,
+        )
+        response = self.client.post(url)
+
+        self.assertEqual(self.tool.annotations.wikidata_qid, "Q42")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("annotations", response.data)
+        self.assertIn("wikidata_qid", response.data["annotations"])
+        self.assertNotEqual(
+            response.data["annotations"]["wikidata_qid"], "Q42"
+        )
 
     def test_revert_as_oversighter(self):
         """Oversighters can revert any edit."""
         self.client.force_authenticate(user=self.oversighter)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "Changed"
+            reversion.set_user(self.user)
+            self.tool.title = "test_revert_as_oversighter"
             self.tool.save()
 
         url = "/api/tools/{name}/revisions/{id}/revert/".format(
@@ -299,17 +423,20 @@ class ToolRevisionViewSetTest(TestCase):
         )
         response = self.client.post(url)
 
-        self.assertEqual(self.tool.title, "Changed")
+        self.assertEqual(self.tool.title, "test_revert_as_oversighter")
         self.assertEqual(response.status_code, 200)
         self.assertIn("title", response.data)
-        self.assertNotEqual(response.data["title"], "Changed")
+        self.assertNotEqual(
+            response.data["title"], "test_revert_as_oversighter"
+        )
 
     def test_undo_requires_auth(self):
         """Test undo action."""
         self.client.force_authenticate(user=None)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "Changed"
+            reversion.set_user(self.user)
+            self.tool.title = "test_undo_requires_auth"
             self.tool.save()
         undo_from = self.versions().first().pk
         undo_to = self.versions().last().pk
@@ -321,7 +448,7 @@ class ToolRevisionViewSetTest(TestCase):
         )
         response = self.client.post(url)
 
-        self.assertEqual(self.tool.title, "Changed")
+        self.assertEqual(self.tool.title, "test_undo_requires_auth")
         self.assertNotEqual(undo_from, undo_to)
         self.assertEqual(response.status_code, 401)
 
@@ -330,7 +457,8 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=self.user)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "Changed"
+            reversion.set_user(self.user)
+            self.tool.title = "test_undo"
             self.tool.save()
         undo_from = self.versions().first().pk
         undo_to = self.versions().last().pk
@@ -342,18 +470,19 @@ class ToolRevisionViewSetTest(TestCase):
         )
         response = self.client.post(url)
 
-        self.assertEqual(self.tool.title, "Changed")
+        self.assertEqual(self.tool.title, "test_undo")
         self.assertNotEqual(undo_from, undo_to)
         self.assertEqual(response.status_code, 200)
         self.assertIn("title", response.data)
-        self.assertNotEqual(response.data["title"], "Changed")
+        self.assertNotEqual(response.data["title"], "test_undo")
 
     def test_undo_as_oversighter(self):
         """Oversighters should be able to undo anything."""
         self.client.force_authenticate(user=self.oversighter)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "Changed"
+            reversion.set_user(self.user)
+            self.tool.title = "test_undo_as_oversighter"
             self.tool.save()
         undo_from = self.versions().first().pk
         undo_to = self.versions().last().pk
@@ -365,17 +494,18 @@ class ToolRevisionViewSetTest(TestCase):
         )
         response = self.client.post(url)
 
-        self.assertEqual(self.tool.title, "Changed")
+        self.assertEqual(self.tool.title, "test_undo_as_oversighter")
         self.assertNotEqual(undo_from, undo_to)
         self.assertEqual(response.status_code, 200)
         self.assertIn("title", response.data)
-        self.assertNotEqual(response.data["title"], "Changed")
+        self.assertNotEqual(response.data["title"], "test_undo_as_oversighter")
 
     def test_undo_invalid(self):
         """Test undo action."""
         self.client.force_authenticate(user=self.user)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
+            reversion.set_user(self.user)
             self.tool.technology_used = []
             self.tool.save()
         # Prepare an undo that tries to empty an already empty array
@@ -398,7 +528,8 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=None)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "REVERTED"
+            reversion.set_user(self.user)
+            self.tool.title = "test_hide_requires_auth"
             self.tool.save()
 
         url = "/api/tools/{name}/revisions/{id}/hide/".format(
@@ -414,7 +545,8 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=self.user)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "REVERTED"
+            reversion.set_user(self.user)
+            self.tool.title = "test_hide_requires_special_rights"
             self.tool.save()
 
         url = "/api/tools/{name}/revisions/{id}/hide/".format(
@@ -431,7 +563,8 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=self.oversighter)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "REVERTED"
+            reversion.set_user(self.user)
+            self.tool.title = "test_hide"
             self.tool.save()
 
         url = "/api/tools/{name}/revisions/{id}/hide/".format(
@@ -441,7 +574,7 @@ class ToolRevisionViewSetTest(TestCase):
         response = self.client.patch(url)
 
         self.assertEqual(response.status_code, 204)
-        self.assertTrue(self.versions()[1].revision.meta.suppressed)
+        self.assertTrue(self.versions()[2].revision.meta.suppressed)
 
     def test_hide_forbids_head(self):
         """Test hide action."""
@@ -449,7 +582,7 @@ class ToolRevisionViewSetTest(TestCase):
 
         url = "/api/tools/{name}/revisions/{id}/hide/".format(
             name=self.tool.name,
-            id=self.versions().last().pk,
+            id=self.versions().first().pk,
         )
         response = self.client.patch(url)
 
@@ -461,7 +594,8 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=None)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "REVERTED"
+            reversion.set_user(self.user)
+            self.tool.title = "test_reveal_requires_auth"
             self.tool.save()
         bad_faith = self.versions().last()
         bad_faith.revision.meta.suppressed = True
@@ -480,7 +614,8 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=self.user)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "REVERTED"
+            reversion.set_user(self.user)
+            self.tool.title = "test_reveal_requires_special_rights"
             self.tool.save()
         bad_faith = self.versions().last()
         bad_faith.revision.meta.suppressed = True
@@ -499,7 +634,8 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=self.oversighter)
         with reversion.create_revision():
             reversion.add_meta(RevisionMetadata)
-            self.tool.title = "REVERTED"
+            reversion.set_user(self.user)
+            self.tool.title = "test_reveal"
             self.tool.save()
         bad_faith = self.versions().last()
         bad_faith.revision.meta.suppressed = True

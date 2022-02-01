@@ -46,13 +46,16 @@ from toolhub.permissions import ObjectPermissions
 from toolhub.permissions import ObjectPermissionsOrAnonReadOnly
 from toolhub.serializers import CommentSerializer
 
+from .models import Annotations
 from .models import Tool
+from .serializers import AnnotationsSerializer
 from .serializers import CreateToolSerializer
 from .serializers import SpdxLicenseSerializer
 from .serializers import ToolRevisionDetailSerializer
 from .serializers import ToolRevisionDiffSerializer
 from .serializers import ToolRevisionSerializer
 from .serializers import ToolSerializer
+from .serializers import UpdateAnnotationsSerializer
 from .serializers import UpdateToolSerializer
 
 
@@ -86,7 +89,7 @@ logger = logging.getLogger(__name__)
 class ToolViewSet(viewsets.ModelViewSet):
     """Tools."""
 
-    queryset = Tool.objects.all()
+    queryset = Tool.objects.select_related("annotations").all()
     lookup_field = "name"
     filterset_fields = {
         "name": ["exact", "contains", "startswith", "endswith"],
@@ -102,6 +105,60 @@ class ToolViewSet(viewsets.ModelViewSet):
         if self.request.method == "PUT":
             return UpdateToolSerializer
         return ToolSerializer
+
+    def _get_annotations_object(self):
+        """Get the annotations object for the current tool."""
+        qs = self.filter_queryset(self.get_queryset())
+        tool = get_object_or_404(qs, name=self.kwargs["name"])
+        obj = tool.annotations
+
+        permission = ObjectPermissionsOrAnonReadOnly()
+        required_perms = permission.get_required_object_permissions(
+            self.request.method, obj.__class__
+        )
+        if not self.request.user.has_perms(required_perms, obj):
+            self.permission_denied(
+                self.request,
+                message=getattr(permission, "message", None),
+                code=getattr(permission, "code", None),
+            )
+        return obj
+
+    @extend_schema(
+        description=_("""Additional information for a tool."""),
+        responses=AnnotationsSerializer,
+    )
+    @action(detail=True, methods=["GET"])
+    def annotations(self, request, **kwargs):
+        """Read the annotations model."""
+        instance = self._get_annotations_object()
+        serializer = AnnotationsSerializer(
+            instance,
+            context=self.get_serializer_context(),
+        )
+        return response.Response(serializer.data)
+
+    @extend_schema(
+        description=_("""Update annotations for a specific tool."""),
+        request=UpdateAnnotationsSerializer,
+        responses=AnnotationsSerializer,
+    )
+    @annotations.mapping.put
+    def edit_annotations(self, request, **kwargs):
+        """Edit the annotations model."""
+        # Largely copied from rest_framework.mixins.UpdateModelMixin
+        instance = self._get_annotations_object()
+        serializer = UpdateAnnotationsSerializer(
+            instance,
+            data=request.data,
+            partial=False,
+            context=self.get_serializer_context(),
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        if getattr(instance, "_prefetched_objects_cache", None):
+            instance._prefetched_objects_cache = {}
+        return response.Response(serializer.data)
 
 
 path_param_tool_name = OpenApiParameter(
@@ -207,6 +264,18 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
             return ToolRevisionDetailSerializer
         return ToolRevisionSerializer
 
+    def _get_historic_data(self, tool_version):
+        """Get historic data for a given Tool version."""
+        data = tool_version.field_dict
+
+        data["annotations"] = {}
+        qs = tool_version.revision.version_set.get_for_model(Annotations)
+        ann = qs.first()
+        if ann is not None:
+            data["annotations"] = ann.field_dict
+
+        return data
+
     def _get_patch(self, left, right, request):
         """Compute the JSON Patch between revisions."""
         # Our built-in permissions checking doesn't trigger on GET/HEAD
@@ -219,21 +288,38 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         if right.revision.meta.suppressed and not user.has_perms(perms, right):
             raise SuppressedRevision()
 
-        data_left = ToolSerializer(left.field_dict).data
-        data_right = ToolSerializer(right.field_dict).data
+        data_left = ToolSerializer(self._get_historic_data(left)).data
+        data_right = ToolSerializer(self._get_historic_data(right)).data
         # T279484: exclude modified_date from diff
         del data_left["modified_date"]
         del data_right["modified_date"]
         return jsonpatch.make_patch(data_left, data_right)
 
+    @transaction.atomic
     def _update_tool(self, data, request):
         """Update our toolinfo record."""
-        tool = get_object_or_404(Tool, name=self.kwargs["tool_name"])
-        serializer = UpdateToolSerializer(
-            tool, data=data, context={"request": request}
+        ctx = {"request": request}
+        instance = get_object_or_404(Tool, name=self.kwargs["tool_name"])
+
+        # Separate out annotations
+        ann_data = data.pop("annotations", {})
+        ann_data["comment"] = data["comment"]
+
+        # Validate tool changes
+        tool_ser = UpdateToolSerializer(instance, data=data, context=ctx)
+        tool_ser.is_valid(raise_exception=True)
+
+        # Validate annotations changes
+        ann_ser = UpdateAnnotationsSerializer(
+            instance.annotations, data=ann_data, context=ctx
         )
-        serializer.is_valid(raise_exception=True)
-        tool = serializer.save()
+        ann_ser.is_valid(raise_exception=True)
+
+        # Save both serializers. This may or may not save both models
+        # depending on the diff of data to database state.
+        tool = tool_ser.save()
+        tool.annotations = ann_ser.save()
+
         return response.Response(ToolSerializer(tool).data)
 
     @action(
@@ -272,7 +358,7 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         rev_id = kwargs["pk"]
         qs = self.get_queryset()
         rev = get_object_or_404(qs, pk=rev_id)
-        data = rev.field_dict
+        data = self._get_historic_data(rev)
         data["comment"] = _(
             "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
         ) % {
@@ -299,8 +385,8 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         version_right = get_object_or_404(qs, pk=id_right)
         patch = self._get_patch(version_left, version_right, request)
 
-        head = qs.first()
-        data = head.field_dict
+        head = qs.first()  # Most recent version
+        data = self._get_historic_data(head)
 
         try:
             jsonpatch.apply_patch(data, patch, in_place=True)
