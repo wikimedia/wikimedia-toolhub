@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-01-31 12:11:56+0000\n"
+"PO-Revision-Date: 2022-02-03 12:13:25+0000\n"
 "X-POT-Import-Date: 2022-01-28 21:30:23+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -266,7 +266,7 @@ msgstr "רשימת שמות כלים."
 
 #: toolhub/apps/lists/serializers.py:210
 msgid "Historic revision of a list for generating diffs."
-msgstr ""
+msgstr "גרסאות היסטוריות של הרשימה ליצירת הבדלים."
 
 #: toolhub/apps/lists/serializers.py:239
 msgid "Historic revision of a list."
