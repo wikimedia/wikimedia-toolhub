@@ -63,15 +63,21 @@
 
 						<dl class="tool-info__authors row mx-0 mt-4 text-subtitle-1">
 							<dt class="me-1">{{ $t( 'authors' ) }}:</dt>
-							<dd>
+							<dd
+								v-for="author in tool.author"
+								:key="author.name"
+								class="me-2"
+							>
 								<v-btn
-									text
 									small
 									rounded
 									:ripple="false"
-									:to="{ name: 'search', query: { 'author__term': tool.author } }"
+									:to="{
+										name: 'search',
+										query: { 'author__term': author.name }
+									}"
 								>
-									{{ tool.author }}
+									{{ author.name }}
 								</v-btn>
 							</dd>
 						</dl>

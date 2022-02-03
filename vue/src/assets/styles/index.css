@@ -210,3 +210,11 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 .v-application--is-rtl .log-event dd {
 	margin-left: 4px !important;
 }
+
+.span-comma-list span:after {
+	content: ', ';
+}
+
+.span-comma-list span:last-child:after {
+	content: '';
+}

@@ -102,6 +102,7 @@
 	"deprecated": "Label for tool status",
 	"describechanges": "Label for comment for tool edits",
 	"description": "Label for tool description",
+	"developer-username": "Label for developer username",
 	"developerdocsurl": "Label for developer docs URL for a tool",
 	"developerdocumentation": "Link label, links to developer documentation for a tool.",
 	"developersettings": "Page title",
@@ -113,6 +114,7 @@
 	"developersettings-noclientappsfoundtext": "Info message for no client apps found",
 	"developersettings-pagesubtitle": "Page Subtitle",
 	"editsummary": "Dialog title",
+	"email": "Label for Email",
 	"experimental": "Label for tool status",
 	"favorite": "Button label",
 	"favorited": "Button label",
@@ -316,5 +318,6 @@
 	"viewlistrevisionsdiff": "Revisions diff page subtitle. Parameters:\n* $1 - list id",
 	"viewtoolrevisionsdiff": "Revisions diff page subtitle. Parameters:\n* $1 - list id",
 	"viewmore": "Table column label.",
-	"welcomemessage": "Home page content."
+	"welcomemessage": "Home page content.",
+	"wiki-username": "Label for Wiki Username"
 }

@@ -21,7 +21,12 @@
 			</div>
 			<dl class="tool-card__authors row mx-0 my-4 text-subtitle-1">
 				<dt class="me-1">{{ $t( 'authors' ) }}:</dt>
-				<dd class="line-clamp">{{ tool.author }}</dd>
+				<dd class="line-clamp span-comma-list">
+					<span
+						v-for="author in tool.author"
+						:key="author.name"
+					>{{ author.name }}</span>
+				</dd>
 			</dl>
 		</v-card-text>
 	</v-card>

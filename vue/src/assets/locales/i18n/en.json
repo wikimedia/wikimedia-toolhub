@@ -95,6 +95,7 @@
 	"deprecated": "Deprecated",
 	"describechanges": "Briefly describe your changes",
 	"description": "Description",
+	"developer-username": "Developer Username",
 	"developerdocsurl": "Developer docs URL",
 	"developerdocumentation": "Developer Documentation",
 	"developersettings": "Developer settings",
@@ -106,6 +107,7 @@
 	"developersettings-noclientappsfoundtext": "No client apps found",
 	"developersettings-pagesubtitle": "View, register, authorize and revoke oauth applications",
 	"editsummary": "Edit Summary",
+	"email": "Email",
 	"experimental": "Experimental",
 	"favorite": "Favorite",
 	"favorited": "Favorited",
@@ -309,5 +311,6 @@
 	"viewlistrevisionsdiff": "View difference between revisions of list $1",
 	"viewtoolrevisionsdiff": "View difference between revisions of tool $1",
 	"viewmore": "View More",
-	"welcomemessage": "Toolhub is a community-authored catalog of Wikimedia tools."
+	"welcomemessage": "Toolhub is a community-authored catalog of Wikimedia tools.",
+	"wiki-username": "Wiki Username"
 }

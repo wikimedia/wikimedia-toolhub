@@ -100,6 +100,38 @@
 				</v-list-item>
 			</template>
 		</v-combobox>
+		<template v-else-if="widget === 'authors'">
+			<v-combobox
+				v-model="model"
+				:hint="schema.description"
+				:prepend-icon="ui.icon"
+				:append-icon="ui.appendIcon"
+				multiple
+				readonly
+				@click:append="addAuthor"
+				@click="addAuthor"
+			>
+				<template #label>
+					<InputLabel :label="ui.label" :required="ui.required" />
+				</template>
+				<template #selection="{ item,parent }">
+					<v-chip
+						class="ma-2"
+						close
+						@click:close="parent.selectItem(item)"
+						@click="addAuthor(item)"
+					>
+						{{ item.name }}
+					</v-chip>
+				</template>
+			</v-combobox>
+			<AuthorDialog
+				:ui-schema="ui.items"
+				:schema="schema.items"
+				:authors.sync="model"
+				:author-edit.sync="authorEdit"
+			/>
+		</template>
 		<v-checkbox
 			v-else-if="widget === 'checkbox'"
 			v-model="model"
@@ -272,13 +304,20 @@ export const methods = {
 		return this.toolAutoCompleteResults ?
 			Object.keys( this.toolAutoCompleteResults ) :
 			[];
+	},
+	addAuthor( author = null ) {
+		this.authorEdit.author = author;
+		this.authorEdit.authorDialogOpen = true;
 	}
 };
 
 export default {
 	name: 'InputWidget',
 	components: {
-		InputLabel
+		InputLabel,
+		// Import via function to work around circular dependency between
+		// AuthorDialog and InputWidget components.
+		AuthorDialog: () => import( '@/components/common/AuthorDialog' )
 	},
 	props: {
 		schema: {
@@ -298,6 +337,10 @@ export default {
 	data: () => ( {
 		model: null,
 		toolAutoCompleteLoading: false,
+		authorEdit: {
+			author: null,
+			authorDialogOpen: false
+		},
 		toolAutoComplete: null
 	} ),
 	computed: {

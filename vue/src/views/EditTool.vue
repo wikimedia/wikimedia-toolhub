@@ -179,7 +179,7 @@ export default {
 				icon: null,
 				title: null,
 				description: null,
-				author: null,
+				author: [],
 				repository: null,
 				url: null,
 				api_url: null,
@@ -200,7 +200,20 @@ export default {
 				experimental: false,
 				replaced_by: null
 			},
-			basicInfoLayout: {
+			commentDialog: false,
+			links: [ 'user_docs_url', 'developer_docs_url', 'privacy_policy_url', 'feedback_url', 'url_alternates' ],
+			valid: false
+		};
+	},
+	metaInfo() {
+		return fetchMetaInfo( 'tools-edit', this.name );
+	},
+	computed: {
+		...mapState( 'tools', { toolFromVuex: 'tool' } ),
+		...mapState( 'locale', [ 'localeSelect' ] ),
+		...mapState( 'tools', [ 'spdxLicenses' ] ),
+		basicInfoLayout() {
+			return {
 				icon: {
 					icon: 'mdi-tools',
 					label: this.$t( 'icon' )
@@ -216,8 +229,33 @@ export default {
 					required: true
 				},
 				author: {
-					icon: 'mdi-account-outline',
-					label: this.$t( 'author' )
+					widget: 'authors',
+					icon: 'mdi-account-multiple-outline',
+					appendIcon: 'mdi-plus',
+					label: this.$t( 'authors' ),
+					items: {
+						name: {
+							icon: 'mdi-account-outline',
+							label: this.$t( 'name' ),
+							required: true
+						},
+						wiki_username: {
+							icon: 'mdi-card-account-details-outline',
+							label: this.$t( 'wiki-username' )
+						},
+						developer_username: {
+							icon: 'mdi-card-account-details-outline',
+							label: this.$t( 'developer-username' )
+						},
+						email: {
+							icon: 'mdi-email-outline',
+							label: this.$t( 'email' )
+						},
+						url: {
+							icon: 'mdi-web',
+							label: this.$t( 'url' )
+						}
+					}
 				},
 				repository: {
 					icon: 'mdi-source-branch',
@@ -227,8 +265,10 @@ export default {
 					icon: 'mdi-link-variant',
 					label: this.$t( 'url' )
 				}
-			},
-			linksLayout: {
+			};
+		},
+		linksLayout() {
+			return {
 				api_url: {
 					icon: 'mdi-bug-outline',
 					label: this.$t( 'apiurl' )
@@ -241,8 +281,10 @@ export default {
 					icon: 'mdi-bug-outline',
 					label: this.$t( 'bugtrackerurl' )
 				}
-			},
-			multiLingualLinksLayout: {
+			};
+		},
+		multiLingualLinksLayout() {
+			return {
 				user_docs_url: {
 					items: {
 						widget: 'url-multilingual',
@@ -328,8 +370,10 @@ export default {
 						}
 					}
 				}
-			},
-			moreInfoLayout: {
+			};
+		},
+		moreInfoLayout() {
+			return {
 				tool_type: {
 					select: {
 						items: () => this.schema.properties.tool_type.enum
@@ -374,8 +418,10 @@ export default {
 					icon: 'mdi-wikipedia',
 					label: this.$t( 'forwikis' )
 				}
-			},
-			toolStatusLayout: {
+			};
+		},
+		toolStatusLayout() {
+			return {
 				deprecated: {
 					widget: 'checkbox',
 					label: this.$t( 'deprecated' )
@@ -388,20 +434,11 @@ export default {
 					icon: 'mdi-find-replace',
 					label: this.$t( 'replacedby' )
 				}
-			},
-			commentDialog: false,
-			requiredRule: [ ( v ) => !!v || this.$t( 'required-field' ) ],
-			links: [ 'user_docs_url', 'developer_docs_url', 'privacy_policy_url', 'feedback_url', 'url_alternates' ],
-			valid: false
-		};
-	},
-	metaInfo() {
-		return fetchMetaInfo( 'tools-edit', this.name );
-	},
-	computed: {
-		...mapState( 'tools', { toolFromVuex: 'tool' } ),
-		...mapState( 'locale', [ 'localeSelect' ] ),
-		...mapState( 'tools', [ 'spdxLicenses' ] )
+			};
+		},
+		requiredRule() {
+			return [ ( v ) => !!v || this.$t( 'required-field' ) ];
+		}
 	},
 	asyncComputed: {
 		schema: {

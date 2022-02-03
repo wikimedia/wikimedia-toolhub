@@ -49,7 +49,7 @@ export default {
 				title: null,
 				description: null,
 				url: null,
-				author: null,
+				author: [],
 				tool_type: null,
 				license: null,
 				repository: null,
@@ -103,8 +103,33 @@ export default {
 					required: true
 				},
 				author: {
-					icon: 'mdi-account-outline',
-					label: this.$t( 'author' )
+					widget: 'authors',
+					icon: 'mdi-account-multiple-outline',
+					appendIcon: 'mdi-plus',
+					label: this.$t( 'authors' ),
+					items: {
+						name: {
+							icon: 'mdi-account-outline',
+							label: this.$t( 'name' ),
+							required: true
+						},
+						wiki_username: {
+							icon: 'mdi-card-account-details-outline',
+							label: this.$t( 'wiki-username' )
+						},
+						developer_username: {
+							icon: 'mdi-card-account-details-outline',
+							label: this.$t( 'developer-username' )
+						},
+						email: {
+							icon: 'mdi-email-outline',
+							label: this.$t( 'email' )
+						},
+						url: {
+							icon: 'mdi-web',
+							label: this.$t( 'url' )
+						}
+					}
 				},
 				tool_type: {
 					select: {
