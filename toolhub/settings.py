@@ -51,7 +51,8 @@ LOGGING = {
     "disable_existing_loggers": False,
     "incremental": False,
     "filters": {
-        "request_id": {"()": "log_request_id.filters.RequestIDFilter"}
+        "request_id": {"()": "log_request_id.filters.RequestIDFilter"},
+        "silence_during_tests": {"()": lambda: lambda _: not TEST_MODE},
     },
     "formatters": {
         "ecs": {
@@ -85,6 +86,7 @@ LOGGING = {
             "propagate": False,
         },
         "django.request": {
+            "filters": ["silence_during_tests"],
             "handlers": LOGGING_HANDLERS,
             "level": LOGGING_LEVEL,
             "propagate": False,
@@ -105,6 +107,12 @@ LOGGING = {
             "propagate": False,
         },
         "elasticsearch.trace": {
+            "handlers": LOGGING_HANDLERS,
+            "level": LOGGING_LEVEL,
+            "propagate": False,
+        },
+        "httpretty.core": {
+            "filters": ["silence_during_tests"],
             "handlers": LOGGING_HANDLERS,
             "level": LOGGING_LEVEL,
             "propagate": False,
