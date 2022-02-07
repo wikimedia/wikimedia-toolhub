@@ -188,8 +188,11 @@ describe( 'store/crawler', () => {
 
 				http.resolves( response );
 				context.rootState.user.user.is_authenticated = false;
+
 				await actions.registerUrl( context, url );
+
 				expect( http ).to.not.have.been.called;
+
 				context.rootState.user.user.is_authenticated = true;
 			} );
 
@@ -200,7 +203,9 @@ describe( 'store/crawler', () => {
 				await registerUrl( context, url );
 
 				expect( http ).to.have.been.calledOnce;
+
 				expect( commit ).to.have.been.calledOnce;
+
 				// eslint-disable-next-line no-underscore-dangle
 				expect( stubThis._vm.$notify.success ).to.have.been.called;
 			} );
@@ -211,6 +216,7 @@ describe( 'store/crawler', () => {
 				await actions.registerUrl( context, url );
 
 				expect( http ).to.have.been.calledOnce;
+
 				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
@@ -231,8 +237,11 @@ describe( 'store/crawler', () => {
 
 				http.resolves( response );
 				context.rootState.user.user.is_authenticated = false;
+
 				await actions.unregisterUrl( context, url );
+
 				expect( http ).to.not.have.been.called;
+
 				context.rootState.user.user.is_authenticated = true;
 			} );
 
@@ -280,6 +289,7 @@ describe( 'store/crawler', () => {
 				http.resolves( response );
 				context.rootState.user.user.is_authenticated = false;
 				const getUrlsCreatedByUser = actions.getUrlsCreatedByUser.bind( stubThis );
+
 				await getUrlsCreatedByUser( context, testPayload );
 
 				// eslint-disable-next-line no-underscore-dangle

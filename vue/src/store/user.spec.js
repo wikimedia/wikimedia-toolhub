@@ -133,9 +133,7 @@ describe( 'store/user', () => {
 			} );
 
 			it( 'should return existing promise', async () => {
-				state.userPromise = new Promise( ( resolve ) => {
-					resolve( true );
-				} );
+				state.userPromise = Promise.resolve( true );
 
 				const promise = actions.getUserInfo( context, stubThis );
 				const resp = await promise;

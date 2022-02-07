@@ -60,7 +60,7 @@ export const actions = {
 	 * @param {Object} payload
 	 * @param {string} payload.query - user provided query
 	 * @param {string} payload.ordering - Sort order
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	autoCompleteTools( context, payload ) {
 		const params = [
@@ -97,7 +97,7 @@ export const actions = {
 	 * @param {number} payload.pageSize - number of tools per page
 	 * @param {string} payload.ordering - Sort order
 	 * @param {string[][]} payload.filters - filters to add to query
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	findTools( context, payload ) {
 		const filters = payload.filters || [];

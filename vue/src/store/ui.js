@@ -10,7 +10,7 @@ export const actions = {
 	 * Get data specially chosen for the home screen.
 	 *
 	 * @param {Object} context - Vuex context
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	getHomeData( context ) {
 		const request = { url: '/api/ui/home/' };

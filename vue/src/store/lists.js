@@ -160,9 +160,10 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} list - list info
+	 * @return {Promise<undefined>}
 	 */
 	updateListRevisions( context, list ) {
-		context.dispatch( 'getRevisions', list ).then(
+		return context.dispatch( 'getRevisions', list ).then(
 			( success ) => {
 				const data = success.body;
 				context.commit( 'LIST_REVISIONS', data );
@@ -190,13 +191,14 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} list - list info
+	 * @return {Promise<undefined>}
 	 */
 	getListRevision( context, list ) {
 		const request = {
 			url: '/api/lists/' + list.id + '/revisions/' + list.revId + '/'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( response ) => {
 				context.commit( 'LIST_REVISION', response.body );
 			},
@@ -210,13 +212,14 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} list - list info
+	 * @return {Promise<undefined>}
 	 */
 	getListRevisionsDiff( context, list ) {
 		const request = {
 			url: '/api/lists/' + list.id + '/revisions/' + list.revId + '/diff/' + list.otherId + '/'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				const data = success.body;
 				context.commit( 'DIFF_REVISION', data );
@@ -231,6 +234,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} list - list info
+	 * @return {Promise<undefined>}
 	 */
 	async undoChangesBetweenRevisions( context, list ) {
 		const id = list.revId,
@@ -268,7 +272,7 @@ export const actions = {
 			method: 'POST'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {
 				context.dispatch( 'updateListRevisions', {
 					page: list.page,
@@ -285,6 +289,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} list - list info
+	 * @return {Promise<undefined>}
 	 */
 	restoreListToRevision( context, list ) {
 		const request = {
@@ -292,7 +297,7 @@ export const actions = {
 			method: 'POST'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {
 				context.dispatch( 'updateListRevisions', {
 					page: list.page,
@@ -309,6 +314,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} list - list info
+	 * @return {Promise<undefined>}
 	 */
 	hideRevealRevision( context, list ) {
 		const request = {
@@ -316,7 +322,7 @@ export const actions = {
 			method: 'PATCH'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {
 				context.dispatch( 'updateListRevisions', {
 					page: list.page,
@@ -333,6 +339,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} list - list info
+	 * @return {Promise<undefined>}
 	 */
 	markRevisionAsPatrolled( context, list ) {
 		const request = {
@@ -340,7 +347,7 @@ export const actions = {
 			method: 'PATCH'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {
 				context.dispatch( 'updateListRevisions', {
 					page: list.page,

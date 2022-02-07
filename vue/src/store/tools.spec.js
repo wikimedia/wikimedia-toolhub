@@ -320,7 +320,8 @@ describe( 'store/tools', () => {
 				}, context );
 				http.resolves( response );
 
-				await actions.createTool( context, shortToolResponse );
+				const createTool = actions.createTool.bind( stubThis );
+				await createTool( context, shortToolResponse );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
@@ -330,6 +331,9 @@ describe( 'store/tools', () => {
 				expect( commit ).to.have.been.calledWithExactly(
 					'CREATE_TOOL', JSON.stringify( toolResponse )
 				);
+
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.success ).to.have.been.called;
 			} );
 
 			it( 'should log failures', async () => {

@@ -57,14 +57,14 @@ export const actions = {
 	},
 	registerUrl( context, url ) {
 		if ( !context.rootState.user.user.is_authenticated ) {
-			return;
+			return Promise.resolve();
 		}
 		const request = {
 			url: '/api/crawler/urls/',
 			method: 'POST',
 			body: JSON.stringify( { url: url } )
 		};
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				context.commit( 'REGISTER_URL', success.body );
 				this._vm.$notify.success( i18n.t( 'toolurlregistrationsuccess' ) );
@@ -76,14 +76,14 @@ export const actions = {
 	},
 	unregisterUrl( context, urlObj ) {
 		if ( !context.rootState.user.user.is_authenticated ) {
-			return;
+			return Promise.resolve();
 		}
 		const request = {
 			url: '/api/crawler/urls/' + urlObj.id + '/',
 			method: 'DELETE'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {
 				context.commit( 'UNREGISTER_URL', urlObj.url );
 				this._vm.$notify.success( i18n.t( 'toolurlunregistrationsuccess' ) );
@@ -98,7 +98,7 @@ export const actions = {
 			this._vm.$notify.info(
 				i18n.t( 'addremovetools-nologintext' )
 			);
-			return;
+			return Promise.resolve();
 		}
 
 		const filters = payload.filters;

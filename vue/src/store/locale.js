@@ -105,7 +105,7 @@ export const actions = {
 	 * @param {Object} context - Vuex context
 	 * @param {Object} payload
 	 * @param {Object} payload.vm - Vue
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	initializeLocale( context, payload ) {
 		payload.initial = true;
@@ -125,7 +125,7 @@ export const actions = {
 	 * @param {string} payload.locale - ISO 639-1 code
 	 * @param {Object} payload.vm - Vue
 	 * @param {boolean} payload.initial - Are we being called by the intializer?
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	setLocale( context, payload ) {
 		const locale = santizeLocale( payload.locale );

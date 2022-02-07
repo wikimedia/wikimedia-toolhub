@@ -44,7 +44,7 @@ export const actions = {
 			}
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				const data = success.body;
 				context.commit( 'TOOLS_LIST', data );
@@ -60,7 +60,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {string} name - tool name
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	getToolByName( context, name ) {
 		const request = {
@@ -92,7 +92,7 @@ export const actions = {
 			}
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				const data = success.body;
 				context.commit( 'SPDX_LICENSES', data );
@@ -109,7 +109,7 @@ export const actions = {
 			body: JSON.stringify( toolInfo )
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				const data = success.body;
 				context.commit( 'CREATE_TOOL', data );
@@ -138,7 +138,7 @@ export const actions = {
 			body: JSON.stringify( tool.info )
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				const data = success.body;
 				router.push( {
@@ -160,9 +160,10 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} tool - tool info
+	 * @return {Promise<undefined>}
 	 */
 	updateToolRevisions( context, tool ) {
-		context.dispatch( 'getRevisions', tool ).then(
+		return context.dispatch( 'getRevisions', tool ).then(
 			( success ) => {
 				const data = success.body;
 				context.commit( 'TOOL_REVISIONS', data );
@@ -190,13 +191,14 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} tool - tool info
+	 * @return {Promise<undefined>}
 	 */
 	getToolRevision( context, tool ) {
 		const request = {
 			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.revId + '/'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( response ) => {
 				context.commit( 'TOOL_REVISION', response.body );
 			},
@@ -210,13 +212,14 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} tool - tool info
+	 * @return {Promise<undefined>}
 	 */
 	getToolRevisionsDiff( context, tool ) {
 		const request = {
 			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/diff/' + tool.otherId + '/'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			( success ) => {
 				const data = success.body;
 				context.commit( 'DIFF_REVISION', data );
@@ -231,6 +234,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} tool - tool info
+	 * @return {Promise<undefined>|undefined}
 	 */
 	async undoChangesBetweenRevisions( context, tool ) {
 		const id = tool.id,
@@ -268,7 +272,7 @@ export const actions = {
 			method: 'POST'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {
 				context.dispatch( 'updateToolRevisions', {
 					page: tool.page,
@@ -285,6 +289,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} tool - tool info
+	 * @return {Promise<undefined>}
 	 */
 	restoreToolToRevision( context, tool ) {
 		const request = {
@@ -292,7 +297,7 @@ export const actions = {
 			method: 'POST'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {
 				context.dispatch( 'updateToolRevisions', {
 					page: tool.page,
@@ -309,6 +314,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} tool - tool info
+	 * @return {Promise<undefined>}
 	 */
 	hideRevealRevision( context, tool ) {
 		const request = {
@@ -316,7 +322,7 @@ export const actions = {
 			method: 'PATCH'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {
 				context.dispatch( 'updateToolRevisions', {
 					page: tool.page,
@@ -333,6 +339,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - vuex context
 	 * @param {Object} tool - tool info
+	 * @return {Promise<undefined>}
 	 */
 	markRevisionAsPatrolled( context, tool ) {
 		const request = {
@@ -340,7 +347,7 @@ export const actions = {
 			method: 'PATCH'
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {
 				context.dispatch( 'updateToolRevisions', {
 					page: tool.page,

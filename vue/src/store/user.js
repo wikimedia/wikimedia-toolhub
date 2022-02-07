@@ -12,7 +12,7 @@ export const actions = {
 	 * @param {Object} context - Vuex context
 	 * @param {Object} payload
 	 * @param {Object} payload.vm - Vue
-	 * @return {Promise}
+	 * @return {Promise<Object>} Promise with user data
 	 */
 	getUserInfo( context, { vm } ) {
 		if ( context.state.userPromise ) {
@@ -67,7 +67,7 @@ export const actions = {
 			body: JSON.stringify( { language: locale } )
 		};
 
-		makeApiCall( context, request ).then(
+		return makeApiCall( context, request ).then(
 			() => {},
 			( failure ) => {
 				if ( failure.status === 403 ) {
@@ -86,7 +86,7 @@ export const actions = {
 	 * Fetch the current user's current authtoken.
 	 *
 	 * @param {Object} context - Vuex context
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	getAuthtoken( context ) {
 		const request = {
@@ -110,7 +110,7 @@ export const actions = {
 	 * Create or fetch the current user's authtoken.
 	 *
 	 * @param {Object} context - Vuex context
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	newAuthtoken( context ) {
 		const request = {
@@ -131,7 +131,7 @@ export const actions = {
 	 * Delete the current user's authtoken.
 	 *
 	 * @param {Object} context - Vuex context
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	deleteAuthtoken( context ) {
 		const request = {

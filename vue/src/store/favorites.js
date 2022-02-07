@@ -11,7 +11,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - Vuex context
 	 * @param {number} page - page number
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	getFavoriteTools( context, page ) {
 		const request = {
@@ -31,7 +31,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - Vuex context
 	 * @param {string} toolname - name of the tool number
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	addTool( context, toolname ) {
 		const request = {
@@ -53,7 +53,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - Vuex context
 	 * @param {string} toolname - name of the tool number
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	removeTool( context, toolname ) {
 		const request = {
@@ -74,7 +74,7 @@ export const actions = {
 	 *
 	 * @param {Object} context - Vuex context
 	 * @param {string} toolname - name of the tool number
-	 * @return {Promise}
+	 * @return {Promise<undefined>}
 	 */
 	isFavorite( context, toolname ) {
 		const request = {

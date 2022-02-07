@@ -181,17 +181,11 @@ export default {
 		},
 		getUrlsCreatedByUser() {
 			this.urlsLoading = true;
-			const res = this.$store.dispatch( 'crawler/getUrlsCreatedByUser',
-				{ page: this.page, filters: this.filters } );
-			if ( res === undefined ) { // TODO: force all actions that make api call to always
-				this.setRouteQueryParams();// return a promise, so this if else block can be removed
-				this.urlsLoading = false;
-			} else {
-				res.then( this.setRouteQueryParams )
-					.finally( () => {
-						this.urlsLoading = false;
-					} );
-			}
+			this.$store.dispatch( 'crawler/getUrlsCreatedByUser', {
+				page: this.page,
+				filters: this.filters
+			} ).then( this.setRouteQueryParams )
+				.finally( () => { this.urlsLoading = false; } );
 		},
 		/**
 		 * Allow deep linking to filtered results by reconstructing internal
