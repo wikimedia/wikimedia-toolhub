@@ -42,6 +42,14 @@ class QueryStringFilterBackend(  # noqa: W0223
     ]
 
 
+class CustomMultiMatchSearchFilterBackend(
+    filter_backends.MultiMatchSearchFilterBackend
+):
+    """Custom multi-match search filter backend"""
+
+    search_param = "q"
+
+
 class Pagination(pagination.QueryFriendlyPageNumberPagination):
     """Custom pagination for OpenAPI response generation."""
 
@@ -89,23 +97,28 @@ def build_term_facet_options(term, missing="--", multi=False):
     ),
 )
 class AutoCompleteToolDocumentViewSet(BaseDocumentViewSet):
-    """Auto-complete Full Text Search."""
+    """Auto-complete Search."""
 
     document = ToolDocument
     serializer_class = AutoCompleteToolDocumentSerializer
     pagination_class = None
     document_uid_field = "name"
     lookup_field = "name"
-    filter_backends = [QueryStringFilterBackend]
-    simple_query_string_search_fields = (
+    filter_backends = [
+        filter_backends.DefaultOrderingFilterBackend,
+        CustomMultiMatchSearchFilterBackend,
+    ]
+    multi_match_search_fields = (
         "name",
+        "name.gram2",
+        "name.gram3",
         "title",
+        "title.gram2",
+        "title.gram3",
     )
-    simple_query_string_options = {
-        "analyze_wildcard": True,
-        "lenient": True,
-        "quote_field_suffix": ".exact",
-    }
+    multi_match_options = {"type": "phrase_prefix"}
+
+    ordering = "name.keyword"
 
 
 @extend_schema_view(
@@ -131,6 +144,11 @@ class ToolDocumentViewSet(AutoCompleteToolDocumentViewSet):
     # Copy searchable fields list from document so we don't have two lists to
     # keep in sync between the index and this view.
     simple_query_string_search_fields = tuple(ToolDocument.Django.fields)
+    simple_query_string_options = {
+        "analyze_wildcard": True,
+        "lenient": True,
+        "quote_field_suffix": ".exact",
+    }
 
     filter_fields = {
         "name": {

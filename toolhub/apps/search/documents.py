@@ -87,17 +87,42 @@ SERIALIZER_FIELD_TO_ES_FIELD = {
     serializers.UUIDField: fields.KeywordField,
 }
 
+en_stem_filter = token_filter("english", type="stemmer")
+gram2_filter = token_filter(
+    "gram2_shingle",
+    type="shingle",
+    max_shingle_size=2,
+    min_shingle_size=2,
+    output_unigrams=True,
+)
+gram3_filter = token_filter(
+    "gram3_shingle",
+    type="shingle",
+    max_shingle_size=3,
+    min_shingle_size=2,
+    output_unigrams=True,
+)
 
-en_stem_filter = token_filter(type="stemmer", name_or_instance="english")
+exact_analyzer = analyzer(
+    "exact_analyzer", tokenizer="standard", filter=["standard", "lowercase"]
+)
+
 en_analyzer = analyzer(
     "en_analyzer",
     tokenizer="standard",
     filter=["standard", "lowercase", en_stem_filter],
 )
-exact_analyzer = analyzer(
-    "exact_analyzer",
+
+gram2_analyzer = analyzer(
+    "gram2_analyzer",
     tokenizer="standard",
-    filter=["standard", "lowercase"],
+    filter=["standard", "lowercase", "stop", gram2_filter],
+)
+
+gram3_analyzer = analyzer(
+    "gram3_analyzer",
+    tokenizer="standard",
+    filter=["standard", "lowercase", "stop", gram3_filter],
 )
 
 
@@ -107,6 +132,8 @@ def build_string_field(**kwargs):
         kwargs["fields"] = {
             "exact": fields.TextField(analyzer=exact_analyzer),
             "keyword": fields.KeywordField(ignore_above=256),
+            "gram2": fields.TextField(analyzer=gram2_analyzer),
+            "gram3": fields.TextField(analyzer=gram3_analyzer),
         }
     if "analyzer" not in kwargs:
         kwargs["analyzer"] = en_analyzer
