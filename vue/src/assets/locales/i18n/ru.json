@@ -50,8 +50,10 @@
 	"datepicker-enddate": "Дата окончания",
 	"delete": "Удалить",
 	"description": "Описание",
+	"developer-username": "Имя участника-разработчика",
 	"developerdocumentation": "Документация для разработчиков",
 	"developersettings": "Настройки для разработчиков",
+	"email": "Электронная почта",
 	"experimental": "Экспериментальный",
 	"filter": "Фильтр",
 	"helptranslate": "Помочь с переводом",
@@ -122,5 +124,6 @@
 	"tools-lastupdated": "последний раз обновлялись на $1",
 	"undo": "отменить",
 	"unpatrolled": "непатрулированные",
-	"welcomemessage": "Toolhub - это каталог инструментов Викимедиа, созданный сообществом."
+	"welcomemessage": "Toolhub - это каталог инструментов Викимедиа, созданный сообществом.",
+	"wiki-username": "Имя пользователя вики"
 }

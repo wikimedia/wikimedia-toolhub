@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-01-31 12:11:56+0000\n"
+"PO-Revision-Date: 2022-02-10 12:13:08+0000\n"
 "X-POT-Import-Date: 2022-01-28 21:30:23+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -986,7 +986,7 @@ msgstr ""
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr "Versionado"
+msgstr ""
 
 #: toolhub/apps/versioned/exceptions.py:28
 msgid "Failed to apply patch."
@@ -998,15 +998,15 @@ msgstr ""
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Missing content for one or more revisions."
-msgstr "Falta contenido para una o más revisiones."
+msgstr ""
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:62
 msgid "Has this revision been marked as hidden?"
-msgstr "¿Esta revisión se ha marcado como oculta?"
+msgstr ""
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:68
 msgid "Has this revision been reviewed by a patroller?"
-msgstr "¿La revisión ha sido revisada por un patrullero?"
+msgstr ""
 
 #: toolhub/apps/versioned/schema.py:22
 msgid "RFC 6902 application/json-patch+json data"

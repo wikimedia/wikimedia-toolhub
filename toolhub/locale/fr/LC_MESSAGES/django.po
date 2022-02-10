@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-01-31 12:11:56+0000\n"
+"PO-Revision-Date: 2022-02-10 12:13:09+0000\n"
 "X-POT-Import-Date: 2022-01-28 21:30:23+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -234,11 +234,11 @@ msgstr "Description du thème ou du contenu de la liste."
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
-msgstr "Un lien vers la page de description du fichier de Wikimédia Communs pour une icône qui dépeint la liste."
+msgstr "Un lien vers la page de description du fichier sur Wikimedia Commons pour une icône qui dépeint la liste."
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
-msgstr "Si vrai, cette liste est une collection des outils « favoris » de l’utilisateur propriétaire."
+msgstr "Si vrai, cette liste est une collection des outils « favoris » de l’utilisateur propriétaire."
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
@@ -309,14 +309,14 @@ msgstr "Nom de l’outil."
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr "Valeurs dupliquées dans la liste : %(duplicates)s"
+msgstr "Valeurs dupliquées dans la liste : %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
-msgstr[0] "Outil inconnu : %(names)s"
-msgstr[1] "Outils inconnus : %(names)s"
+msgstr[0] "Outil inconnu : %(names)s"
+msgstr[1] "Outils inconnus : %(names)s"
 
 #: toolhub/apps/lists/validators.py:74
 #, python-format
@@ -333,7 +333,7 @@ msgstr "Afficher uniquement les listes qui sont publiées."
 
 #: toolhub/apps/lists/views.py:77
 msgid "Only show lists created by the given user."
-msgstr "Afficher uniquement les listes créées par l'utilisateur donné."
+msgstr "Afficher uniquement les listes créées par l’utilisateur donné."
 
 #: toolhub/apps/lists/views.py:83
 msgid "Create a new list of tools."
@@ -431,7 +431,7 @@ msgstr "Vérifier si un outil est dans les favoris."
 
 #: toolhub/apps/lists/views.py:531
 msgid "Remove a tool from favorites."
-msgstr "Supprimer un outil des favoris."
+msgstr "Enlever un outil des favoris."
 
 #: toolhub/apps/lists/views.py:537
 msgid "Personal favorites."
@@ -578,7 +578,7 @@ msgstr "application de bureau"
 
 #: toolhub/apps/toolinfo/models.py:341
 msgid "bot"
-msgstr "bot"
+msgstr "robot"
 
 #: toolhub/apps/toolinfo/models.py:342
 msgid "gadget"
@@ -598,7 +598,7 @@ msgstr "environnement de programmation"
 
 #: toolhub/apps/toolinfo/models.py:346
 msgid "lua module"
-msgstr "module lua"
+msgstr "module Lua"
 
 #: toolhub/apps/toolinfo/models.py:347
 msgid "template"
@@ -646,15 +646,15 @@ msgstr "Plus long que le titre complet mais plus court que la description. Cela 
 
 #: toolhub/apps/toolinfo/models.py:422
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
-msgstr "L’ID du projet sur OpenHub. Pour cet exemple d’URL  « https://openhub.net/p/foo », l’ID du projet est « foo »."
+msgstr "L’identifiant du projet sur OpenHub. Par exemple pour l’URL « https://openhub.net/p/foo », l’identifiant du projet est « foo »."
 
 #: toolhub/apps/toolinfo/models.py:431
 msgid "Alternate links to the tool or install documentation in different natural languages."
-msgstr "Liens alternatifs vers l’outil ou la documentation d’installation dans différents langages naturels."
+msgstr "Liens alternatifs vers l’outil ou la documentation d’installation dans différentes langues naturelles."
 
 #: toolhub/apps/toolinfo/models.py:442
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
-msgstr "Si l’outil est un bot, le nom d’utilisateur Wikimedia du robot. Ne pas inclure l’espace de noms « Utilisateur: » ou les préfixes similaires."
+msgstr "Si l’outil est un robot, le nom d’utilisateur Wikimedia du robot. Ne pas inclure l’espace de noms « Utilisateur: » ou les préfixes similaires."
 
 #: toolhub/apps/toolinfo/models.py:449
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."

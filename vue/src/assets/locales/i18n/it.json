@@ -44,6 +44,7 @@
 	"delete": "Cancella",
 	"deprecated": "Deprecato",
 	"description": "Descrizione",
+	"email": "Email",
 	"experimental": "Sperimentale",
 	"filter": "Filtro",
 	"forwikis": "Per wiki",
@@ -145,5 +146,6 @@
 	"unpatrolled": "non verificata",
 	"valid": "valido",
 	"viewhistory": "Visualizza cronologia",
-	"welcomemessage": "Toolhub è un catalogo di strumenti Wikimedia creato dalla comunità."
+	"welcomemessage": "Toolhub è un catalogo di strumenti Wikimedia creato dalla comunità.",
+	"wiki-username": "Nome utente wiki"
 }

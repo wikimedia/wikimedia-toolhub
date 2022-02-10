@@ -99,6 +99,7 @@
 	"deprecated": "Obsolète",
 	"describechanges": "Décrire brièvement vos modifications",
 	"description": "Description",
+	"developer-username": "Nom d’utilisateur développeur",
 	"developerdocsurl": "URL de la documentation développeur",
 	"developerdocumentation": "Documentation pour les développeurs",
 	"developersettings": "Paramètres du développeur",
@@ -110,6 +111,7 @@
 	"developersettings-noclientappsfoundtext": "Aucune application cliente trouvée",
 	"developersettings-pagesubtitle": "Afficher, enregistrer, autoriser et révoquer les applications OAuth",
 	"editsummary": "Modifier le résumé",
+	"email": "Courriel",
 	"experimental": "Expérimental",
 	"favorite": "Favori",
 	"favorited": "Favorisé",
@@ -198,7 +200,7 @@
 	"name": "Nom",
 	"newtoolsfound": "{{PLURAL:$1|1 outil|$1 outils}}",
 	"nourlsfounderror": "Aucune URL de fichier toolinfo.json trouvée dans le système Toolhub.",
-	"ok": "Ok",
+	"ok": "OK",
 	"patrolled": "patrouillé",
 	"privacypolicy": "Politique de confidentialité",
 	"privacypolicyurl": "URL de la politique de confidentialité",
@@ -310,5 +312,6 @@
 	"viewlistrevisionsdiff": "Afficher la différence entre des versions de la liste $1",
 	"viewtoolrevisionsdiff": "Afficher la différence entre les versions de l’outil $1",
 	"viewmore": "Voir plus",
-	"welcomemessage": "Toolhub est un catalogue d’outils Wikimedia géré par la communauté."
+	"welcomemessage": "Toolhub est un catalogue d’outils Wikimedia géré par la communauté.",
+	"wiki-username": "Nom d’utilisateur sur le wiki"
 }
