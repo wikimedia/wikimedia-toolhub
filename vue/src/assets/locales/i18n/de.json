@@ -101,6 +101,7 @@
 	"deprecated": "Veraltet",
 	"describechanges": "Beschreibe deine Änderungen kurz",
 	"description": "Beschreibung",
+	"developer-username": "Benutzername des Entwicklers",
 	"developerdocsurl": "URL der Programmierer-Dokumentation",
 	"developerdocumentation": "Entwicklerdokumentation",
 	"developersettings": "Entwicklereinstellungen",
@@ -112,6 +113,7 @@
 	"developersettings-noclientappsfoundtext": "Keine Client-Apps gefunden",
 	"developersettings-pagesubtitle": "Oauth-Anwendungen anzeigen, registrieren, autorisieren und widerrufen",
 	"editsummary": "Bearbeitungszusammenfassung",
+	"email": "E-Mail-Adresse",
 	"experimental": "Experimentell",
 	"favorite": "Favorit",
 	"favorited": "Favorisiert",
@@ -311,5 +313,6 @@
 	"viewlistrevisionsdiff": "Unterschied zwischen den Versionen der Liste $1 anzeigen",
 	"viewtoolrevisionsdiff": "Unterschied zwischen den Versionen des Werkzeugs $1 anzeigen",
 	"viewmore": "Mehr anzeigen",
-	"welcomemessage": "Toolhub ist ein von der Community erstellter Katalog von Wikimedia-Werkzeugen."
+	"welcomemessage": "Toolhub ist ein von der Community erstellter Katalog von Wikimedia-Werkzeugen.",
+	"wiki-username": "Wiki-Benutzername"
 }

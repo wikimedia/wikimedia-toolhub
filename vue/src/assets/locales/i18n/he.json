@@ -95,6 +95,7 @@
 	"deprecated": "מיושן",
 	"describechanges": "נא לתאר בקצרה את השינויים שלך",
 	"description": "תיאור",
+	"developer-username": "שם המשתמש של המפתח",
 	"developerdocsurl": "ה־URL של מסמכים למפתחים",
 	"developerdocumentation": "תיעוד למפתחים",
 	"developersettings": "הגדרות מפתח",
@@ -106,6 +107,7 @@
 	"developersettings-noclientappsfoundtext": "לא נמצאו יישומי לקוח",
 	"developersettings-pagesubtitle": "הצגה, רישום, ושלילה של יישומי OAuth",
 	"editsummary": "תקציר העריכה",
+	"email": "דואר אלקטרוני",
 	"experimental": "ניסיוני",
 	"favorite": "מועדף",
 	"favorited": "מועדפים",
@@ -305,5 +307,6 @@
 	"viewlistrevisionsdiff": "נא לצפות בהבדלים בין הגרסאות של הרשימה $1",
 	"viewtoolrevisionsdiff": "הצגת ההבדל בין גרסאות הכלי $1",
 	"viewmore": "להציג עוד",
-	"welcomemessage": "Toolhub הוא קטלוג קהילתי של כלי ויקימדיה."
+	"welcomemessage": "Toolhub הוא קטלוג קהילתי של כלי ויקימדיה.",
+	"wiki-username": "שם משתמש בוויקי"
 }

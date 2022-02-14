@@ -94,6 +94,7 @@
 	"deprecated": "Застаріло",
 	"describechanges": "Коротко опишіть свої зміни",
 	"description": "Опис",
+	"developer-username": "Ім'я користувача-розробника",
 	"developerdocsurl": "URL-адреса документів розробників",
 	"developerdocumentation": "Документація для розробників",
 	"developersettings": "Налаштування для розробників",
@@ -105,6 +106,7 @@
 	"developersettings-noclientappsfoundtext": "Клієнтські програми не знайдені",
 	"developersettings-pagesubtitle": "Перегляд, реєстрація, авторизація та скасування програм oauth",
 	"editsummary": "Опис редагування",
+	"email": "Ел. пошта",
 	"experimental": "Експериментально",
 	"favorite": "Улюблені",
 	"favorited": "Вибране",
@@ -304,5 +306,6 @@
 	"viewlistrevisionsdiff": "Перегляньте різницю між редакціями списку $1",
 	"viewtoolrevisionsdiff": "Переглянути різницю між версіями інструменту $1",
 	"viewmore": "Дивитись більше",
-	"welcomemessage": "Toolhub — це каталог інструментів Вікімедіа, створений спільнотою."
+	"welcomemessage": "Toolhub — це каталог інструментів Вікімедіа, створений спільнотою.",
+	"wiki-username": "Ім'я користувача вікі"
 }
