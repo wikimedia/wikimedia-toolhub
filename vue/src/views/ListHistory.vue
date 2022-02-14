@@ -201,7 +201,7 @@ export default {
 		};
 	},
 	metaInfo() {
-		return fetchMetaInfo( 'lists-history', String( this.id ) );
+		return fetchMetaInfo( 'lists-history', this.id );
 	},
 	computed: {
 		...mapState( 'lists', [ 'listRevisions', 'numRevisions' ] )

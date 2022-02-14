@@ -5,7 +5,7 @@ export function getMetaTitle( pagekey, suffix = false ) {
 	// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
 	const params = [ i18n.t( pagekey ) ];
 	if ( suffix ) {
-		params.push( suffix );
+		params.push( String( suffix ) );
 	}
 
 	// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
