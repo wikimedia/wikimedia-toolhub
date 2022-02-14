@@ -218,3 +218,12 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 .span-comma-list span:last-child:after {
 	content: '';
 }
+
+.diff-path dt {
+	font-size: smaller;
+	font-weight: bold;
+}
+
+.diff-value .v-alert__content {
+	overflow-wrap: anywhere !important;
+}

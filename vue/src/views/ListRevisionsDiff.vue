@@ -20,16 +20,18 @@
 			</v-col>
 		</v-row>
 
-		<v-row>
+		<v-row v-if="listRevision">
 			<v-col cols="12" class="py-0">
 				{{ $t( 'viewlistrevisionsdiff', [
-					id
+					id,
+					listRevision.toollist.title
 				] ) }}
-				"{{ listRevision.toollist.title }}"
 			</v-col>
 		</v-row>
 
-		<v-row class="my-8">
+		<v-row v-if="diffRevision"
+			class="my-4"
+		>
 			<v-col cols="6">
 				<h3 class="font-weight-medium">
 					{{ $t( 'listrevisioninfo', [
@@ -39,7 +41,6 @@
 					] ) }}
 				</h3>
 			</v-col>
-
 			<v-col cols="6">
 				<h3 class="font-weight-medium">
 					{{ $t( 'listrevisioninfo', [
@@ -50,89 +51,22 @@
 				</h3>
 			</v-col>
 		</v-row>
-
 		<v-row>
-			<v-col cols="12" class="my-4">
+			<v-col cols="12" class="my-2">
 				<v-row v-for="(op, idx) in changes"
 					:key="idx"
 				>
 					<v-col cols="6">
-						<v-row
-							v-if="op.label"
-							class="ms-2 cols"
-						>
-							{{ op.label }}
+						<v-row class="ms-2 cols">
+							<DiffPath :path="op.path" />
 						</v-row>
-
-						<v-row v-if="op.oldValue !== null"
-							class="cols"
-						>
-							<v-col cols="1">
-								<v-icon
-									class="mt-3"
-									color="base20"
-									small
-								>
-									mdi-minus
-								</v-icon>
-							</v-col>
-
-							<v-col cols="11" class="ps-0">
-								<v-alert
-									border="left"
-									colored-border
-									color="red lighten-1"
-									elevation="2"
-									dense
-								>
-									<template
-										v-if="op.index !== null"
-									>
-										{{ op.index }})
-									</template>
-									{{ op.oldValue }}
-								</v-alert>
-							</v-col>
-						</v-row>
+						<DiffValue op="remove" :value="op.oldValue" />
 					</v-col>
-
 					<v-col cols="6">
-						<v-row
-							v-if="op.label"
-							class="ms-2 cols"
-						>
-							{{ op.label }}
+						<v-row class="ms-2 cols">
+							<DiffPath :path="op.path" />
 						</v-row>
-						<v-row v-if="op.newValue !== null"
-							class="cols"
-						>
-							<v-col cols="1">
-								<v-icon
-									color="base20"
-									class="mt-3"
-									small
-								>
-									mdi-plus
-								</v-icon>
-							</v-col>
-
-							<v-col cols="11" class="ps-0">
-								<v-alert
-									border="left"
-									colored-border
-									color="green lighten-1"
-									elevation="2"
-									dense
-								>
-									<template
-										v-if="op.index !== null"
-									>
-										{{ op.index }})
-									</template>
-									{{ op.newValue }}
-								</v-alert>
-							</v-col>
-						</v-row>
+						<DiffValue op="add" :value="op.newValue" />
 					</v-col>
 				</v-row>
 			</v-col>
@@ -142,10 +76,17 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import { normalizeEmpty, computeChangeInfo } from '@/helpers/diff';
 import fetchMetaInfo from '@/helpers/metadata';
+import DiffPath from '@/components/diff/DiffPath';
+import DiffValue from '@/components/diff/DiffValue';
 
 export default {
 	name: 'ListRevisionsDiff',
+	components: {
+		DiffPath,
+		DiffValue
+	},
 	data() {
 		return {
 			id: this.$route.params.id,
@@ -159,169 +100,50 @@ export default {
 	computed: {
 		...mapState( 'lists', [ 'diffRevision', 'listRevision' ] ),
 		/**
-		 * @typedef {Object} ChangeInfo
-		 * @property {?string} label - Display label
-		 * @property {?number} index - List index position (1-based)
-		 * @property {(number|string|boolean|null)} oldValue - Old field value
-		 * @property {(number|string|boolean|null)} newValue - New field value
-		 */
-		/**
 		 * Compute changes to render as diff based on JSON Patch from API.
 		 *
-		 * @return {ChangeInfo[]}
+		 * @return {Object[]}
 		 */
 		changes() {
-			if ( !this.diffRevision ) {
-				return false;
+			if ( !this.diffRevision || !this.listRevision ) {
+				return [];
 			}
-			const priorRevOps = [ 'remove', 'replace', 'move' ];
-			const newRevOps = [ 'add', 'replace', 'move', 'copy' ];
-			const normalOps = [];
-
-			// Clone operations with move/copy normalized to remove+add/add
-			this.diffRevision.operations.forEach( ( op ) => {
-				if ( op.op === 'move' ) {
-					normalOps.push( { op: 'remove', path: op.from } );
-				}
-				if ( op.op === 'copy' || op.op === 'move' ) {
-					const value = this.valueForPath( op.from );
-					normalOps.push( { op: 'add', path: op.path, value: value } );
-				} else {
-					normalOps.push( op );
-				}
-			} );
-
-			let lastProp = null;
-			return normalOps.map( ( op ) => {
-				const { property, index } = this.parsePath( op.path );
-				const change = {
-					label: null,
-					// Report 1-based indexes in UI
-					index: index !== null ? index + 1 : index,
-					oldValue: null,
-					newValue: null
-				};
-
-				// Compute left hand side (old revision change)
-				if ( priorRevOps.indexOf( op.op ) !== -1 ) {
-					change.oldValue = this.displayFormat(
-						property, this.valueForPath( op.path )
-					);
-				}
-
-				// Compute right hand side (new revision change)
-				if ( newRevOps.indexOf( op.op ) !== -1 ) {
-					change.newValue = this.displayFormat( property, op.value );
-				}
-
-				// Only set label if different from last operation
-				// and oldValue or newValue is non-empty.
-				if (
-					property !== lastProp &&
-					(
-						change.oldValue !== null ||
-						change.newValue !== null
-					)
-				) {
-					change.label = this.propertyLabel( property );
-				}
-				lastProp = property;
-				return change;
-			} );
+			return computeChangeInfo(
+				this.diffRevision.operations,
+				this.listRevision.toollist,
+				this.formatProperty
+			);
 		}
 	},
 	methods: {
 		...mapMutations( 'lists', [ 'DIFF_REVISION' ] ),
-		getListRevisionsDiff() {
+		getDiff() {
 			this.$store.dispatch( 'lists/getListRevisionsDiff', {
 				id: this.id,
 				revId: this.revId,
 				otherId: this.otherRevId
 			} );
 		},
-		getListRevision() {
+		getRevision() {
 			this.$store.dispatch( 'lists/getListRevision', {
 				id: this.id,
 				revId: this.revId
 			} );
 		},
 		/**
-		 * Parse a JSON Pointer from a JSON Patch instruction.
-		 *
-		 * @param {string} path - JSON Pointer (like '/foo/bar/0')
-		 * @return {{property: string, index: number|null}}
-		 */
-		parsePath( path ) {
-			const pArr = path.split( '/' );
-			return {
-				property: pArr[ 1 ],
-				index: pArr[ 2 ] ? parseInt( pArr[ 2 ] ) : null
-			};
-		},
-		/**
-		 * Compute a localized label for a toollist property.
-		 *
-		 * @param {string} name - Property name (e.g. 'description')
-		 * @return {string} Localized label for property
-		 */
-		propertyLabel( name ) {
-			// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
-			return this.$i18n.t( name.replace( /_/g, '' ) );
-		},
-		/**
-		 * Normalize "empty" values to null.
-		 *
-		 * Values considered empty:
-		 * - undefined
-		 * - null
-		 * - '' (empty string)
-		 * - {} (empty object)
-		 *
-		 * @param {*} value
-		 * @return {*|null} Normalized value
-		 */
-		normalizeEmpty( value ) {
-			if ( value === '' || value === null || value === undefined ) {
-				return null;
-			}
-			if (
-				typeof value === 'object' &&
-				value.constructor === Object &&
-				Object.keys( value ).length === 0
-			) {
-				return null;
-			}
-			return value;
-		},
-		/**
-		 * Find the prior revision value associated with a JSON Pointer.
-		 *
-		 * @param {string} path - JSON Pointer
-		 * @return {*}
-		 */
-		valueForPath( path ) {
-			const { property, index } = this.parsePath( path );
-			const value = this.listRevision &&
-				this.listRevision.toollist[ property ];
-			if ( Array.isArray( value ) && index !== null ) {
-				return value[ index ];
-			}
-			return value;
-		},
-		/**
 		 * Format a property value for display to the user.
 		 *
-		 * @param {string} property - Property name
+		 * @param {string} pointer - JSON-Pointer to property
 		 * @param {*} value - property value
-		 * @return {string|null}
+		 * @return {*}
 		 */
-		displayFormat( property, value ) {
-			if ( property === 'tools' ) {
+		formatProperty( pointer, value ) {
+			if ( pointer.indexOf( '/tools/' ) !== -1 ) {
 				if ( !!value && typeof value === 'object' ) {
 					value = value.name;
 				}
 			}
-			return this.normalizeEmpty( value );
+			return normalizeEmpty( value );
 		},
 		formatDate( date ) {
 			return this.$moment.utc( date ).format( 'lll' );
@@ -330,8 +152,8 @@ export default {
 	mounted() {
 		// Clear any data from a prior view
 		this.DIFF_REVISION( null );
-		this.getListRevisionsDiff();
-		this.getListRevision();
+		this.getDiff();
+		this.getRevision();
 	}
 };
 </script>

@@ -308,7 +308,7 @@ export const methods = {
 	/**
 	 * Populate and open the AuthorDialog.
 	 *
-	 * @param {?object} author - Author information to display
+	 * @param {?Object} author - Author information to display
 	 */
 	showAuthorDialog( author ) {
 		this.authorEdit.author = author;
