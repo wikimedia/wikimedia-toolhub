@@ -1,6 +1,6 @@
 version: v4
 
-base: docker-registry.wikimedia.org/python3-buster:0.0.1-20220206
+base: docker-registry.wikimedia.org/python3-buster:latest
 
 runs:
   environment:
