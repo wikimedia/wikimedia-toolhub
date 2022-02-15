@@ -100,9 +100,9 @@ class AutoCompleteToolDocumentViewSet(BaseDocumentViewSet):
     """Auto-complete Search."""
 
     document = ToolDocument
+    document_uid_field = "name"
     serializer_class = AutoCompleteToolDocumentSerializer
     pagination_class = None
-    document_uid_field = "name"
     lookup_field = "name"
     filter_backends = [
         filter_backends.DefaultOrderingFilterBackend,
@@ -129,9 +129,11 @@ class AutoCompleteToolDocumentViewSet(BaseDocumentViewSet):
         description=_("""Faceted search for tools."""),
     ),
 )
-class ToolDocumentViewSet(AutoCompleteToolDocumentViewSet):
+class ToolDocumentViewSet(BaseDocumentViewSet):
     """Full text search."""
 
+    document = ToolDocument
+    document_uid_field = "name"
     serializer_class = ToolDocumentSerializer
     pagination_class = Pagination
     filter_backends = [
