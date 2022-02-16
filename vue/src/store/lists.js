@@ -77,6 +77,34 @@ export const actions = {
 			}
 		);
 	},
+	featureList( context, id ) {
+		const request = {
+			url: '/api/lists/' + id + '/feature/',
+			method: 'PATCH'
+		};
+		return makeApiCall( context, request ).then(
+			() => {
+				context.dispatch( 'getListById', id );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+	unfeatureList( context, id ) {
+		const request = {
+			url: '/api/lists/' + id + '/unfeature/',
+			method: 'PATCH'
+		};
+		return makeApiCall( context, request ).then(
+			() => {
+				context.dispatch( 'getListById', id );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
 	createNewList( context, listinfo ) {
 		const request = {
 			url: '/api/lists/',

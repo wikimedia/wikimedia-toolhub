@@ -32,6 +32,7 @@
 				</v-icon>
 				{{ $t( 'delete' ) }}
 			</v-btn>
+			<FeatureButton v-if="list.published" :list="list" />
 			<v-btn
 				:to="{ name: 'lists-history', params: { id: list.id } }"
 				:small="$vuetify.breakpoint.smAndDown"
@@ -68,7 +69,6 @@
 					{{ $t( 'listinfo-featuredlist' ) }}
 				</v-chip>
 			</v-card-title>
-
 			<v-card-text>
 				<v-row>
 					<v-col cols="12" class="px-0">
@@ -154,6 +154,7 @@
 
 <script>
 import CommonsImage from '@/components/common/CommonsImage';
+import FeatureButton from '@/components/lists/FeatureButton';
 import ToolCard from '@/components/tools/ToolCard';
 import ConfirmDeleteDialog from '@/components/common/ConfirmDeleteDialog';
 
@@ -161,6 +162,7 @@ export default {
 	name: 'ListInfo',
 	components: {
 		CommonsImage,
+		FeatureButton,
 		ToolCard,
 		ConfirmDeleteDialog
 

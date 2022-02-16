@@ -50,7 +50,7 @@ describe( 'store/lists', () => {
 			...shortListResponseTwo,
 			id: 14,
 			favorites: false,
-			featured: true
+			featured: false
 		} ]
 	};
 
@@ -223,6 +223,84 @@ describe( 'store/lists', () => {
 				http.rejects( apiError );
 
 				await actions.getMyLists( context, testPage );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+		} );
+
+		describe( 'featureList', () => {
+			const testId = 14;
+			const response = {
+				ok: true,
+				status: 204,
+				url: '/api/lists/' + testId + '/feature/',
+				headers: { 'Content-type': 'application/json' }
+			};
+
+			it( 'should mark a list as featured', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testId + '/feature/',
+					method: 'PATCH'
+				}, context );
+				http.resolves( response );
+
+				const featureList = actions.featureList.bind( stubThis );
+				await featureList( context, testId );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'getListById', testId );
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				await actions.featureList( context, testId );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+		} );
+
+		describe( 'unfeatureList', () => {
+			const testId = 14;
+			const response = {
+				ok: true,
+				status: 204,
+				url: '/api/lists/' + testId + '/unfeature/',
+				headers: { 'Content-type': 'application/json' }
+			};
+
+			it( 'should mark a list as unfeatured', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testId + '/unfeature/',
+					method: 'PATCH'
+				}, context );
+				http.resolves( response );
+
+				const unfeatureList = actions.unfeatureList.bind( stubThis );
+				await unfeatureList( context, testId );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'getListById', testId );
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				await actions.unfeatureList( context, testId );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;

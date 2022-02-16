@@ -120,6 +120,8 @@
 	"favorited": "Button label",
 	"favorites-pagetitle": "Page title",
 	"favorites-notoolsfoundtext": "Info message shown when the user's favorite tools list is empty.",
+	"feature": "Button label",
+	"featured": "Button label",
 	"feedbackurl": "Label for feedback url for a tool",
 	"filter": "Button label\n{{identical|Filter}}",
 	"footer-content-license": "Content licensing message. Parameters:\n* $1 - License name",
