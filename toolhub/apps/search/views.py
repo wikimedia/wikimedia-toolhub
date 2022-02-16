@@ -22,12 +22,17 @@ from django_elasticsearch_dsl_drf import filter_backends
 from django_elasticsearch_dsl_drf import pagination
 from django_elasticsearch_dsl_drf.viewsets import BaseDocumentViewSet
 
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
+from .documents import ListDocument
 from .documents import ToolDocument
 from .schema import FACET_RESPONSE
+from .serializers import AutoCompleteListDocumentSerializer
 from .serializers import AutoCompleteToolDocumentSerializer
+from .serializers import ListDocumentSerializer
 from .serializers import ToolDocumentSerializer
 
 
@@ -48,6 +53,14 @@ class CustomMultiMatchSearchFilterBackend(
     """Custom multi-match search filter backend"""
 
     search_param = "q"
+
+
+query_param_q = OpenApiParameter(
+    "q",
+    type=OpenApiTypes.STR,
+    location=OpenApiParameter.QUERY,
+    description=_("""Search string"""),
+)
 
 
 class Pagination(pagination.QueryFriendlyPageNumberPagination):
@@ -94,10 +107,11 @@ def build_term_facet_options(term, missing="--", multi=False):
     ),
     list=extend_schema(
         description=_("""Autocomplete for tools."""),
+        parameters=[query_param_q],
     ),
 )
 class AutoCompleteToolDocumentViewSet(BaseDocumentViewSet):
-    """Auto-complete Search."""
+    """Tools Auto-complete Search."""
 
     document = ToolDocument
     document_uid_field = "name"
@@ -130,7 +144,7 @@ class AutoCompleteToolDocumentViewSet(BaseDocumentViewSet):
     ),
 )
 class ToolDocumentViewSet(BaseDocumentViewSet):
-    """Full text search."""
+    """Tools Full text search."""
 
     document = ToolDocument
     document_uid_field = "name"
@@ -252,3 +266,81 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
             "enabled": True,
         },
     }
+
+
+@extend_schema_view(
+    retrieve=extend_schema(
+        exclude=True,
+    ),
+    list=extend_schema(
+        description=_("""Autocomplete for toollists."""),
+        parameters=[query_param_q],
+    ),
+)
+class AutoCompleteListDocumentViewSet(BaseDocumentViewSet):
+    """ToolLists Auto-complete Search."""
+
+    document = ListDocument
+    document_uid_field = "id"
+    serializer_class = AutoCompleteListDocumentSerializer
+    pagination_class = None
+    lookup_field = "id"
+    filter_backends = [
+        filter_backends.DefaultOrderingFilterBackend,
+        CustomMultiMatchSearchFilterBackend,
+    ]
+    multi_match_search_fields = (
+        "title",
+        "title.gram2",
+        "title.gram3",
+        "description",
+        "description.gram2",
+        "description.gram3",
+        "tools.name",
+        "tools.name.gram2",
+        "tools.name.gram3",
+        "tools.title",
+        "tools.title.gram2",
+        "tools.title.gram3",
+    )
+    multi_match_options = {"type": "phrase_prefix"}
+
+    ordering = "title.keyword"
+
+
+@extend_schema_view(
+    retrieve=extend_schema(
+        exclude=True,
+    ),
+    list=extend_schema(
+        description=_("""Full text search for toollists."""),
+    ),
+)
+class ListDocumentViewSet(BaseDocumentViewSet):
+    """ToolLists Full text search."""
+
+    document = ListDocument
+    document_uid_field = "id"
+    serializer_class = ListDocumentSerializer
+    pagination_class = Pagination
+    filter_backends = [
+        QueryStringFilterBackend,
+        filter_backends.DefaultOrderingFilterBackend,
+        filter_backends.OrderingFilterBackend,
+    ]
+    # Copy searchable fields list from document so we don't have two lists to
+    # keep in sync between the index and this view.
+    simple_query_string_search_fields = tuple(ListDocument.Django.fields)
+    simple_query_string_options = {
+        "analyze_wildcard": True,
+        "lenient": True,
+        "quote_field_suffix": ".exact",
+    }
+
+    ordering_fields = {
+        "score": "_score",
+        "title": "title.keyword",
+        "created_date": "created_date",
+        "modified_date": "modified_date",
+    }
+    ordering = ("_score", "-created_date", "title.keyword")

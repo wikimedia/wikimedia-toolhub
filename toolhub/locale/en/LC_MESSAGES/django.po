@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-08 23:28+0000\n"
+"POT-Creation-Date: 2022-02-23 20:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -522,7 +522,7 @@ msgstr ""
 msgid "Faceted classification"
 msgstr ""
 
-#: toolhub/apps/search/schema.py:70
+#: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
 msgid "Search string"
 msgstr ""
 
@@ -539,20 +539,32 @@ msgstr ""
 msgid "Field to use when ordering results."
 msgstr ""
 
-#: toolhub/apps/search/serializers.py:27
+#: toolhub/apps/search/serializers.py:47 toolhub/apps/search/serializers.py:72
 msgid "Tool search results"
 msgstr ""
 
-#: toolhub/apps/search/serializers.py:54
+#: toolhub/apps/search/serializers.py:61
 msgid "Tool autocomplete results"
 msgstr ""
 
-#: toolhub/apps/search/views.py:88
+#: toolhub/apps/search/serializers.py:86
+msgid "ToolList autocomplete results"
+msgstr ""
+
+#: toolhub/apps/search/views.py:109
 msgid "Autocomplete for tools."
 msgstr ""
 
-#: toolhub/apps/search/views.py:116
+#: toolhub/apps/search/views.py:143
 msgid "Faceted search for tools."
+msgstr ""
+
+#: toolhub/apps/search/views.py:276
+msgid "Autocomplete for toollists."
+msgstr ""
+
+#: toolhub/apps/search/views.py:316
+msgid "Full text search for toollists."
 msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26

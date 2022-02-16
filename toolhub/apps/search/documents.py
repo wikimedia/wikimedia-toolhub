@@ -31,6 +31,8 @@ from elasticsearch_dsl import token_filter
 
 from rest_framework import serializers
 
+from toolhub.apps.lists.models import ToolList
+from toolhub.apps.lists.serializers import SummaryToolSerializer
 from toolhub.apps.toolinfo.models import Annotations
 from toolhub.apps.toolinfo.models import Tool
 from toolhub.apps.toolinfo.serializers import AnnotationsSerializer
@@ -169,7 +171,7 @@ def build_field_from_schema(schema_, attr):
 def build_field_from_serializer_field(name, field):
     """Generate a document field mapping from a serializer field."""
     if isinstance(field, JSONSchemaFieldSerializer):
-        return build_field_from_schema(field._schema, name)  # noqa: W0212
+        return build_field_from_schema(field.model_field.schema, name)
 
     if isinstance(field, serializers.CharField):
         return build_string_field(attr=name)
@@ -288,3 +290,37 @@ class ToolDocument(SearchDocument):
         """Retrieve the Tool from related models."""
         if isinstance(related_instance, Annotations):
             return related_instance.tool
+
+
+@registry.register_document
+class ListDocument(SearchDocument):
+    """Tool List Elasticsearch document."""
+
+    tools = build_field_from_serializer(SummaryToolSerializer, "tools")
+    created_by = build_field_from_serializer(UserSerializer, "created_by")
+    modified_by = build_field_from_serializer(UserSerializer, "modified_by")
+
+    class Index:
+        """Configure index."""
+
+        name = "toolhub_lists"
+
+    class Django:
+        """Configure document."""
+
+        model = ToolList
+        fields = [
+            "id",
+            "title",
+            "description",
+            "icon",
+            "favorites",
+            "published",
+            "featured",
+            "created_date",
+            "modified_date",
+        ]
+
+    def get_queryset(self):
+        """Filter out unpublished lists"""
+        return super().get_queryset().filter(published=True)

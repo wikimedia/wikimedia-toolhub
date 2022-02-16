@@ -49,6 +49,11 @@ root.register(
     search_views.AutoCompleteToolDocumentViewSet,
     basename="autocomplete-tools",
 )
+root.register(
+    "autocomplete/lists",
+    search_views.AutoCompleteListDocumentViewSet,
+    basename="autocomplete-lists",
+)
 root.register("crawler/runs", crawler_views.RunViewSet)
 root.register("crawler/urls", crawler_views.UrlViewSet)
 root.register("groups", user_views.GroupViewSet)
@@ -61,6 +66,9 @@ root.register(
 )
 root.register(
     "search/tools", search_views.ToolDocumentViewSet, basename="search-tools"
+)
+root.register(
+    "search/lists", search_views.ListDocumentViewSet, basename="search-lists"
 )
 root.register("spdx", toolinfo_views.SpdxViewSet, basename="spdx")
 root.register("tools", toolinfo_views.ToolViewSet, basename="tool")

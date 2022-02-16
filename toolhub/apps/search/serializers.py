@@ -21,12 +21,14 @@ from django_elasticsearch_dsl_drf.serializers import DocumentSerializer
 
 from toolhub.decorators import doc
 
+from .documents import ListDocument
 from .documents import ToolDocument
 
 
-@doc(_("Tool search results"))
-class ToolDocumentSerializer(DocumentSerializer):
-    """Tool search results."""
+class AnnotatedDocumentSerializer(DocumentSerializer):
+    """Document serializer with drf_spectacular annotations."""
+
+    _abstract = True
 
     def get_fields(self):
         """Decorate fields with drf_spectacular annotations."""
@@ -41,6 +43,11 @@ class ToolDocumentSerializer(DocumentSerializer):
                 ]._spectacular_annotation = annotations
         return field_mapping
 
+
+@doc(_("Tool search results"))
+class ToolDocumentSerializer(AnnotatedDocumentSerializer):
+    """Tool search results."""
+
     class Meta:
         """Configure serializer."""
 
@@ -52,7 +59,7 @@ class ToolDocumentSerializer(DocumentSerializer):
 
 
 @doc(_("Tool autocomplete results"))
-class AutoCompleteToolDocumentSerializer(ToolDocumentSerializer):
+class AutoCompleteToolDocumentSerializer(AnnotatedDocumentSerializer):
     """Tool autocomplete results."""
 
     class Meta:
@@ -60,3 +67,32 @@ class AutoCompleteToolDocumentSerializer(ToolDocumentSerializer):
 
         document = ToolDocument
         fields = ["name", "title"]
+
+
+@doc(_("Tool search results"))
+class ListDocumentSerializer(AnnotatedDocumentSerializer):
+    """ToolList search results."""
+
+    class Meta:
+        """Configure serializer."""
+
+        document = ListDocument
+        fields = ListDocument.Django.fields.copy()
+        fields.insert(fields.index("featured") + 1, "tools")
+        fields.insert(fields.index("tools") + 1, "created_by")
+        fields.insert(fields.index("created_date") + 1, "modified_by")
+
+
+@doc(_("ToolList autocomplete results"))
+class AutoCompleteListDocumentSerializer(AnnotatedDocumentSerializer):
+    """Tool autocomplete results."""
+
+    class Meta:
+        """Configure serializer."""
+
+        document = ListDocument
+        fields = [
+            "id",
+            "title",
+            "description",
+        ]
