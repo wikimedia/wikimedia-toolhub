@@ -6,6 +6,7 @@
 			"Kareyac",
 			"Nastua Buldakova",
 			"Okras",
+			"Pacha Tchernof",
 			"Rivka Silinsky",
 			"Tanzun",
 			"Wileyfoxyx"
@@ -110,6 +111,7 @@
 	"search-filter-tool-type-bot": "бот",
 	"search-filter-tool-type-gadget": "гаджет",
 	"search-filter-tool-type-template": "шаблон",
+	"search-filter-wiki-commons": "Викисклад",
 	"sourcecode": "Исходный код",
 	"status": "Состояние",
 	"system-user": "Система",
