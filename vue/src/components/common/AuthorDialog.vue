@@ -150,10 +150,12 @@ export default {
 	watch: {
 		authorEdit: {
 			handler( newVal ) {
-				if ( newVal.author ) {
-					this.authorFields = { ...this.authorFields, ...newVal.author };
+				if ( newVal.author && !( newVal.author instanceof Event ) ) {
+					this.authorFields = {
+						...this.authorFields,
+						...newVal.author
+					};
 				}
-
 			},
 			deep: true,
 			immediate: true

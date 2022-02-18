@@ -108,18 +108,18 @@
 				:append-icon="ui.appendIcon"
 				multiple
 				readonly
-				@click:append="addAuthor"
-				@click="addAuthor"
+				@click:append="showAuthorDialog( null )"
+				@click="showAuthorDialog( null )"
 			>
 				<template #label>
 					<InputLabel :label="ui.label" :required="ui.required" />
 				</template>
-				<template #selection="{ item,parent }">
+				<template #selection="{ item, parent }">
 					<v-chip
 						class="ma-2"
 						close
 						@click:close="parent.selectItem(item)"
-						@click="addAuthor(item)"
+						@click="showAuthorDialog( item )"
 					>
 						{{ item.name }}
 					</v-chip>
@@ -305,7 +305,12 @@ export const methods = {
 			Object.keys( this.toolAutoCompleteResults ) :
 			[];
 	},
-	addAuthor( author = null ) {
+	/**
+	 * Populate and open the AuthorDialog.
+	 *
+	 * @param {?object} author - Author information to display
+	 */
+	showAuthorDialog( author ) {
 		this.authorEdit.author = author;
 		this.authorEdit.authorDialogOpen = true;
 	}
