@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-02-14 12:12:51+0000\n"
+"PO-Revision-Date: 2022-02-21 12:13:30+0000\n"
 "X-POT-Import-Date: 2022-02-11 16:41:00+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -627,9 +627,8 @@ msgid "A direct link to the tool or to instructions on how to use or install the
 msgstr "Ein direkter Link zum Tool oder zu Anweisungen, wie das Tool zu verwenden oder zu installieren ist."
 
 #: toolhub/apps/toolinfo/models.py:406
-#, fuzzy
 msgid "The primary tool developers."
-msgstr "Der primäre Werkzeugentwickler."
+msgstr "Die Hauptentwickler der Werkzeuge."
 
 #: toolhub/apps/toolinfo/models.py:413
 msgid "A link to the repository where the tool code is hosted."
@@ -761,11 +760,11 @@ msgstr "Gilt diese Lizenz als veraltet?"
 
 #: toolhub/apps/toolinfo/serializers.py:72
 msgid "Community added information for a tool"
-msgstr ""
+msgstr "Von der Gemeinschaft hinzugefügte Informationen für ein Werkzeug"
 
 #: toolhub/apps/toolinfo/serializers.py:85
 msgid "Update annotations"
-msgstr ""
+msgstr "Anmerkungen aktualisieren"
 
 #: toolhub/apps/toolinfo/serializers.py:130
 msgid "Description of a tool"
@@ -850,7 +849,7 @@ msgstr "Zusätzliche Informationen für ein Werkzeug."
 
 #: toolhub/apps/toolinfo/views.py:142
 msgid "Update annotations for a specific tool."
-msgstr ""
+msgstr "Aktualisierung der Anmerkungen für ein bestimmtes Werkzeug."
 
 #: toolhub/apps/toolinfo/views.py:200
 msgid "Restore the tool to this revision."
