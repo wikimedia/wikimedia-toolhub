@@ -252,7 +252,7 @@ export default {
 	},
 	mounted() {
 		this.loadStateFromQueryString();
-		this.$store.dispatch( 'user/getUserInfo', { vm: this } ).then(
+		this.$store.dispatch( 'user/getUserInfo' ).then(
 			( user ) => {
 				if ( user.is_authenticated ) {
 					this.getUrlsCreatedByUser();

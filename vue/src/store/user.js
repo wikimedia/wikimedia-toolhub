@@ -10,11 +10,9 @@ export const actions = {
 	 * Get information about the current user.
 	 *
 	 * @param {Object} context - Vuex context
-	 * @param {Object} payload
-	 * @param {Object} payload.vm - Vue
 	 * @return {Promise<Object>} Promise with user data
 	 */
-	getUserInfo( context, { vm } ) {
+	getUserInfo( context ) {
 		if ( context.state.userPromise ) {
 			return context.state.userPromise;
 		}
@@ -25,8 +23,6 @@ export const actions = {
 			( success ) => {
 				const user = success.body;
 				context.commit( 'USER', user );
-				// Set the user's abilities
-				vm.$ability.update( user.casl );
 				return user;
 			},
 			( failure ) => {
@@ -161,6 +157,8 @@ export const mutations = {
 	},
 	USER( state, user ) {
 		state.user = user;
+		// Set the user's abilities
+		this._vm.$ability.update( user.casl );
 	},
 	USERS( state, users ) {
 		state.users = users.results;

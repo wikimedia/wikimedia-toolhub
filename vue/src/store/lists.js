@@ -53,29 +53,32 @@ export const actions = {
 		);
 	},
 	getMyLists( context, page ) {
-		const params = new URLSearchParams( [
-			// FIXME: we should have a cleaner way to get the current user
-			[ 'user', context.rootState.user.user.username ],
-			[ 'page', page ]
-		] );
+		return context.dispatch(
+			'user/getUserInfo', null, { root: true }
+		).then( () => {
+			const params = new URLSearchParams( [
+				[ 'user', context.rootState.user.user.username ],
+				[ 'page', page ]
+			] );
 
-		const request = {
-			url: '/api/lists/?' + params.toString(),
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		};
+			const request = {
+				url: '/api/lists/?' + params.toString(),
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			};
 
-		return makeApiCall( context, request ).then(
-			( success ) => {
-				const data = success.body;
-				context.commit( 'MY_LISTS', data );
-			},
-			( failure ) => {
-				displayErrorNotification.call( this, failure );
-			}
-		);
+			return makeApiCall( context, request ).then(
+				( success ) => {
+					const data = success.body;
+					context.commit( 'MY_LISTS', data );
+				},
+				( failure ) => {
+					displayErrorNotification.call( this, failure );
+				}
+			);
+		} );
 	},
 	featureList( context, id ) {
 		const request = {

@@ -212,7 +212,7 @@ export default {
 		}
 	},
 	created() {
-		this.$store.dispatch( 'user/getUserInfo', { vm: this } ).then( () => {
+		this.$store.dispatch( 'user/getUserInfo' ).then( () => {
 			this.$store.dispatch( 'locale/initializeLocale', { vm: this } );
 		} );
 	}

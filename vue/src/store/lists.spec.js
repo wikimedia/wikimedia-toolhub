@@ -205,9 +205,15 @@ describe( 'store/lists', () => {
 				const expectRequest = addRequestDefaults( {
 					url: '/api/lists/?user=unit+tester&page=' + testPage
 				}, context );
+				dispatch.resolves( null );
 				http.resolves( response );
 
 				await actions.getMyLists( context, testPage );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWith(
+					'user/getUserInfo', null, { root: true }
+				);
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
@@ -220,10 +226,15 @@ describe( 'store/lists', () => {
 			} );
 
 			it( 'should log failures', async () => {
+				dispatch.resolves( null );
 				http.rejects( apiError );
 
 				await actions.getMyLists( context, testPage );
 
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWith(
+					'user/getUserInfo', null, { root: true }
+				);
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
 				expect( displayErrorNotification ).to.have.been.called;

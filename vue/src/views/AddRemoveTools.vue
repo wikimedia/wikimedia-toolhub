@@ -79,7 +79,7 @@ export default {
 		return fetchMetaInfo( 'addremovetools' );
 	},
 	mounted() {
-		this.$store.dispatch( 'user/getUserInfo', { vm: this } ).then(
+		this.$store.dispatch( 'user/getUserInfo' ).then(
 			( user ) => {
 				if ( !user.is_authenticated ) {
 					this.$notify.info(

@@ -58,13 +58,6 @@ describe( 'store/user', () => {
 		};
 		const context = { commit, state, rootState };
 
-		const stubThis = {
-			vm: {
-				$ability: {
-					update: sinon.stub()
-				}
-			}
-		};
 		let http = 'func';
 		let displayErrorNotification = 'func';
 
@@ -97,7 +90,7 @@ describe( 'store/user', () => {
 				}, context );
 				http.resolves( response );
 
-				const promise = actions.getUserInfo( context, stubThis );
+				const promise = actions.getUserInfo( context );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
@@ -113,14 +106,11 @@ describe( 'store/user', () => {
 				expect( commit.getCall( 1 ) ).to.have.been.calledWithExactly(
 					'USER', response.body
 				);
-
-				expect( stubThis.vm.$ability.update )
-					.to.have.been.calledWithExactly( testUserObj.casl );
 			} );
 
 			it( 'should log failures', async () => {
 				http.rejects( apiError );
-				const promise = actions.getUserInfo( context, stubThis );
+				const promise = actions.getUserInfo( context );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.been.calledOnce;
@@ -135,7 +125,7 @@ describe( 'store/user', () => {
 			it( 'should return existing promise', async () => {
 				state.userPromise = Promise.resolve( true );
 
-				const promise = actions.getUserInfo( context, stubThis );
+				const promise = actions.getUserInfo( context );
 				const resp = await promise;
 
 				expect( http ).to.have.not.been.called;
@@ -403,6 +393,29 @@ describe( 'store/user', () => {
 
 			mutations.AUTHTOKEN( state, null );
 			expect( state.authtoken ).to.equal( null );
+		} );
+
+		it( 'should store user', () => {
+			const stubThis = {
+				_vm: {
+					$ability: {
+						update: sinon.stub()
+					}
+				}
+			};
+			const state = {
+				user: {
+					is_authenticated: false,
+					csrf_token: '',
+					casl: []
+				}
+			};
+			const USER = mutations.USER.bind( stubThis );
+			USER( state, testUserObj );
+			expect( state.user ).to.eql( testUserObj );
+			// eslint-disable-next-line no-underscore-dangle
+			expect( stubThis._vm.$ability.update )
+				.to.have.been.calledWithExactly( testUserObj.casl );
 		} );
 	} );
 } );
