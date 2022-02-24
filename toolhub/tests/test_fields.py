@@ -91,6 +91,16 @@ class JSONSchemaValidatorTest(SimpleTestCase):
         fixture = (
             ({"type": "string", "maxLength": 255}, 1337),
             ({"type": "array", "items": {"type": "string"}}, [13, 37]),
+            (
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": {"type": "string"},
+                    },
+                    "additionalProperties": False,
+                },
+                {"name": "test", "extra_property": "boom?"},
+            ),
         )
 
         for schema, value in fixture:

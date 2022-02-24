@@ -233,6 +233,7 @@ definitions:
         $ref: "#/definitions/language"
       url:
         $ref: "#/definitions/url"
+    additionalProperties: false
   url_multilingual_or_array:
       oneOf:
         - type: array
@@ -272,6 +273,7 @@ definitions:
         description: Home page or other URL representing the person.
     required:
       - name
+    additionalProperties: false
 oneOf:
   - type: array
     items:

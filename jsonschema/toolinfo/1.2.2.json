@@ -245,7 +245,8 @@
         "url": {
           "$ref": "#/definitions/url"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "url_multilingual_or_array": {
       "oneOf": [
@@ -306,7 +307,8 @@
       },
       "required": [
         "name"
-      ]
+      ],
+      "additionalProperties": false
     }
   },
   "oneOf": [

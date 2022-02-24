@@ -3,6 +3,7 @@ Version 1.2.2
 * New "person" type for describing a human.
 * "author" can now be either the legacy string value or an array of "person"
   records.
+* "url_multilingual" and "person" types no longer allow additional properties.
 
 .. literalinclude:: ../jsonschema/toolinfo/1.2.2.json
    :language: JSON
