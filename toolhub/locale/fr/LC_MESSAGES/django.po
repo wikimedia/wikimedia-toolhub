@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-02-14 12:12:52+0000\n"
-"X-POT-Import-Date: 2022-02-11 16:41:00+0000\n"
+"PO-Revision-Date: 2022-02-24 12:14:23+0000\n"
+"X-POT-Import-Date: 2022-02-23 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
@@ -521,7 +521,7 @@ msgstr "Rechercher"
 msgid "Faceted classification"
 msgstr "Classification à facettes"
 
-#: toolhub/apps/search/schema.py:70
+#: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
 msgid "Search string"
 msgstr "Chaîne de recherche"
 
@@ -539,21 +539,33 @@ msgstr ""
 msgid "Field to use when ordering results."
 msgstr "Champ à utiliser pour ordonner les résultats."
 
-#: toolhub/apps/search/serializers.py:27
+#: toolhub/apps/search/serializers.py:47 toolhub/apps/search/serializers.py:72
 msgid "Tool search results"
 msgstr "Résultats de la recherche d’outil"
 
-#: toolhub/apps/search/serializers.py:54
+#: toolhub/apps/search/serializers.py:61
 msgid "Tool autocomplete results"
 msgstr "Résultat de la complétion automatique d’outil"
 
-#: toolhub/apps/search/views.py:88
+#: toolhub/apps/search/serializers.py:86
+msgid "ToolList autocomplete results"
+msgstr "Résultats de la complétude automatique de ToolList"
+
+#: toolhub/apps/search/views.py:109
 msgid "Autocomplete for tools."
 msgstr "Complétion automatique pour les outils."
 
-#: toolhub/apps/search/views.py:116
+#: toolhub/apps/search/views.py:143
 msgid "Faceted search for tools."
 msgstr "Recherche à facettes pour les outils."
+
+#: toolhub/apps/search/views.py:276
+msgid "Autocomplete for toollists."
+msgstr "Complétude automatique pour les listes d’outils."
+
+#: toolhub/apps/search/views.py:316
+msgid "Full text search for toollists."
+msgstr "Recherche en plein texte pour les listes d’outils."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"

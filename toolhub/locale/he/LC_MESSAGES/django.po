@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-02-14 12:12:52+0000\n"
-"X-POT-Import-Date: 2022-02-11 16:41:00+0000\n"
+"PO-Revision-Date: 2022-02-24 12:14:23+0000\n"
+"X-POT-Import-Date: 2022-02-23 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
@@ -517,7 +517,7 @@ msgstr "חיפוש"
 msgid "Faceted classification"
 msgstr "מיון לפי היבטים"
 
-#: toolhub/apps/search/schema.py:70
+#: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
 msgid "Search string"
 msgstr "מחרוזת חיפוש"
 
@@ -535,21 +535,33 @@ msgstr ""
 msgid "Field to use when ordering results."
 msgstr "באיזה שדה לחפש בעת מיון התוצאות."
 
-#: toolhub/apps/search/serializers.py:27
+#: toolhub/apps/search/serializers.py:47 toolhub/apps/search/serializers.py:72
 msgid "Tool search results"
 msgstr "תוצאות חיפוש כלים"
 
-#: toolhub/apps/search/serializers.py:54
+#: toolhub/apps/search/serializers.py:61
 msgid "Tool autocomplete results"
 msgstr "תוצאות השלמה אוטומטית של כלים"
 
-#: toolhub/apps/search/views.py:88
+#: toolhub/apps/search/serializers.py:86
+msgid "ToolList autocomplete results"
+msgstr "תוצאות השלמה אוטומטית של ToolList"
+
+#: toolhub/apps/search/views.py:109
 msgid "Autocomplete for tools."
 msgstr "השלמה אוטומטית לכלים."
 
-#: toolhub/apps/search/views.py:116
+#: toolhub/apps/search/views.py:143
 msgid "Faceted search for tools."
 msgstr "חיפוש רב־פנים של כלים."
+
+#: toolhub/apps/search/views.py:276
+msgid "Autocomplete for toollists."
+msgstr "השלמה אוטומטית של toollists."
+
+#: toolhub/apps/search/views.py:316
+msgid "Full text search for toollists."
+msgstr "תוצאות חיפוש טקסט מלאות עבור toollists."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
