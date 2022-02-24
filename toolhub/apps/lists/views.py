@@ -309,6 +309,9 @@ class ToolListRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
         data_left = ToolListDiffSerializer(left.field_dict).data
         data_right = ToolListDiffSerializer(right.field_dict).data
+        # T302418: exclude 'featured' field from List diff
+        del data_right["featured"]
+        del data_left["featured"]
         return jsonpatch.make_patch(data_left, data_right)
 
     def _update_list(self, data, request):
