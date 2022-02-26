@@ -20,20 +20,17 @@ export const actions = {
 	 * @return {Promise<Object>}
 	 */
 	fetchOpenAPISchema( context ) {
-		return makeApiCall( context, { url: OPENAPI_SCHEMA_URL } ).then(
-			( response ) => {
-				const spec = response.body;
-				return SwaggerClient.resolve( { spec } );
-			},
-			( failure ) => {
-				displayErrorNotification.call( this, failure );
-			}
-		).then(
-			( { spec } ) => {
-				context.commit( 'onSpecChanged', { spec } );
-				return spec;
-			}
-		);
+		return makeApiCall(
+			context, { url: OPENAPI_SCHEMA_URL }
+		).then( ( response ) => {
+			const spec = response.body;
+			return SwaggerClient.resolve( { spec } );
+		} ).then( ( { spec } ) => {
+			context.commit( 'onSpecChanged', { spec } );
+			return spec;
+		} ).catch( ( failure ) => {
+			displayErrorNotification.call( this, failure );
+		} );
 	},
 
 	/**

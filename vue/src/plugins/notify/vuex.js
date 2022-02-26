@@ -25,7 +25,7 @@ export const actions = {
 			id: mid,
 			message: payload.message,
 			type: payload.type,
-			prominent: payload.prominent,
+			prominent: payload.prominent || false,
 			timeoutID: payload.timeout || null
 		} );
 		return mid;

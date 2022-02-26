@@ -61,6 +61,62 @@ describe( 'notify/vuex', () => {
 			);
 		} );
 
+		it( 'success', () => {
+			const dispatch = sinon.stub();
+			const payload = {
+				message: 'test-message'
+			};
+			actions.success( { dispatch }, payload );
+
+			expect( dispatch ).to.have.been.calledOnce;
+			expect( dispatch ).to.have.been.calledWithExactly(
+				'message',
+				Object.assign( payload, { timeout: null, type: 'success' } )
+			);
+		} );
+
+		it( 'info', () => {
+			const dispatch = sinon.stub();
+			const payload = {
+				message: 'test-message'
+			};
+			actions.info( { dispatch }, payload );
+
+			expect( dispatch ).to.have.been.calledOnce;
+			expect( dispatch ).to.have.been.calledWithExactly(
+				'message',
+				Object.assign( payload, { timeout: null, type: 'info' } )
+			);
+		} );
+
+		it( 'warning', () => {
+			const dispatch = sinon.stub();
+			const payload = {
+				message: 'test-message'
+			};
+			actions.warning( { dispatch }, payload.message );
+
+			expect( dispatch ).to.have.been.calledOnce;
+			expect( dispatch ).to.have.been.calledWithExactly(
+				'message',
+				Object.assign( payload, { type: 'warning', prominent: true } )
+			);
+		} );
+
+		it( 'error', () => {
+			const dispatch = sinon.stub();
+			const payload = {
+				message: 'test-message'
+			};
+			actions.error( { dispatch }, payload.message );
+
+			expect( dispatch ).to.have.been.calledOnce;
+			expect( dispatch ).to.have.been.calledWithExactly(
+				'message',
+				Object.assign( payload, { type: 'error', prominent: true } )
+			);
+		} );
+
 		it( 'clearMessage', () => {
 			const commit = sinon.spy();
 

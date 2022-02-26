@@ -44,6 +44,13 @@ describe( 'store/api', () => {
 		const rootState = { locale: { locale: 'en' } };
 		const context = { commit, dispatch, state, rootState };
 
+		const apiError = {
+			errors: [ {
+				field: 'test field1',
+				message: 'something went wrong'
+			} ]
+		};
+
 		let http = 'func';
 		let displayErrorNotification = 'func';
 
@@ -84,23 +91,59 @@ describe( 'store/api', () => {
 				);
 			} );
 
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+				await actions.fetchOpenAPISchema( context );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.not.have.been.calledOnce;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+
 		} );
 
 		describe( 'getOperationSchema', () => {
 			it( 'should fetch an api operation schema', async () => {
 				expect( state.specLoaded ).to.equal( false );
 
-				dispatch.onFirstCall().returns( { then: sinon.stub().yields( spec ) } );
-				const operation = await actions.getOperationSchema( context, 'auditlogs_list' );
+				dispatch.onFirstCall().returns(
+					{ then: sinon.stub().yields( spec ) }
+				);
+				const operation = await actions.getOperationSchema(
+					context, 'auditlogs_list'
+				);
 
 				expect( dispatch ).to.have.been.calledOnce;
 				expect( dispatch ).to.have.been.calledWithExactly(
 					'fetchOpenAPISchema'
 				);
-				expect( operation ).to.equal( spec.paths[ '/api/auditlogs/' ].get );
+				expect( operation ).to.equal(
+					spec.paths[ '/api/auditlogs/' ].get
+				);
+			} );
+
+			it( 'should fail on unknown operations', async () => {
+				expect( state.specLoaded ).to.equal( false );
+
+				dispatch.onFirstCall().returns(
+					{ then: sinon.stub().yields( spec ) }
+				);
+				let operation;
+				try {
+					operation = await actions.getOperationSchema(
+						context, 'this-does-not-exist'
+					);
+				} catch ( err ) {
+					operation = err;
+				}
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'fetchOpenAPISchema'
+				);
+				expect( operation ).to.be.an.instanceof( Error );
 			} );
 		} );
-
 	} );
 
 	describe( 'mutations', () => {

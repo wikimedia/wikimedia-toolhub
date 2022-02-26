@@ -51,12 +51,13 @@ describe( 'store/user', () => {
 
 	describe( 'actions', () => {
 		const commit = sinon.spy();
+		const dispatch = sinon.stub();
 		const state = { user: { is_authenticated: true } };
 		const rootState = {
 			locale: { locale: 'en' },
 			user: state
 		};
-		const context = { commit, state, rootState };
+		const context = { commit, dispatch, state, rootState };
 
 		let http = 'func';
 		let displayErrorNotification = 'func';
@@ -73,7 +74,6 @@ describe( 'store/user', () => {
 		} );
 
 		describe( 'getUserInfo', () => {
-
 			const response = {
 				ok: true,
 				status: 200,
@@ -180,6 +180,19 @@ describe( 'store/user', () => {
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
 				expect( displayErrorNotification ).to.have.been.called;
+			} );
+		} );
+
+		describe( 'setLocale', () => {
+			it( 'should retry on 403', async () => {
+				dispatch.resolves( null );
+				http.rejects( { ok: false, status: 403 } );
+				await actions.setLocale( context, 'en-US' );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledTwice;
+				expect( dispatch ).to.have.been.calledWith( 'getUserInfo' );
+				expect( dispatch ).to.have.been.calledWith( 'setLocale', 'en-US' );
 			} );
 		} );
 

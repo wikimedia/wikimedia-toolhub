@@ -521,8 +521,36 @@ describe( 'store/lists', () => {
 				expect( commit ).to.have.not.been.called;
 				expect( displayErrorNotification ).to.have.been.called;
 			} );
-
 		} );
+
+		describe( 'getRevisions', () => {
+			const testList = {
+				id: 14,
+				page: 1
+			};
+
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/lists/' + testList.id + '/revisions/?page=' + testList.page,
+				headers: { 'Content-type': 'application/json' },
+				body: listRevisionsResponse
+			};
+
+			it( 'should return a promise', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: `/api/lists/${testList.id}/revisions/?page=${testList.page}`
+				}, context );
+				http.resolves( response );
+
+				const promise = actions.getRevisions( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledWith( expectRequest );
+				expect( promise ).to.be.an.instanceof( Promise );
+			} );
+		} );
+
 		describe( 'getListRevision', () => {
 			const testList = {
 				id: 14,

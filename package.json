@@ -112,10 +112,10 @@
 		"report-dir": "./.nyc_output/coverage",
 		"per-file": false,
 		"skip-full": true,
-		"lines": 75,
-		"functions": 75,
-		"branches": 60,
-		"statements": 75,
+		"lines": 85,
+		"functions": 85,
+		"branches": 75,
+		"statements": 85,
 		"check-coverage": true,
 		"watermarks": {
 			"lines": [
