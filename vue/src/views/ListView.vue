@@ -34,7 +34,7 @@
 		</v-row>
 
 		<ListInfo
-			:list="revId ? listRevision && listRevision.toollist : list"
+			:list="( revId && listRevision ) ? listRevision.toollist : list"
 			:rev-id="revId"
 			:show-clipboard-msg="showClipboardMsg"
 			@copy-to-clipboard="copyToClipboard"
@@ -78,6 +78,8 @@ export default {
 				id: this.id,
 				revId: revId,
 				page: 1
+			} ).then( () => {
+				this.getListInfo();
 			} );
 		},
 		getListInfo() {
@@ -102,13 +104,6 @@ export default {
 					this.$router.push( { name: 'lists' } );
 				}
 			);
-		}
-	},
-	watch: {
-		listRevision: {
-			handler() {
-				this.getListInfo();
-			}
 		}
 	},
 	mounted() {

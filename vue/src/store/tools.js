@@ -349,13 +349,23 @@ export const actions = {
 
 		return makeApiCall( context, request ).then(
 			() => {
-				context.dispatch( 'updateToolRevisions', {
+				return context.dispatch( 'updateToolRevisions', {
 					page: tool.page,
 					name: tool.name
 				} );
 			},
 			( failure ) => {
-				displayErrorNotification.call( this, failure );
+				const data = getFailurePayload( failure );
+				if ( data.code === 4093 ) {
+					// T301870: treat already marked as patrolled error as
+					// success.
+					return context.dispatch( 'updateToolRevisions', {
+						page: tool.page,
+						name: tool.name
+					} );
+				} else {
+					displayErrorNotification.call( this, failure );
+				}
 			}
 		);
 	}

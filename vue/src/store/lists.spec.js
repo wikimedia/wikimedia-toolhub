@@ -55,6 +55,7 @@ describe( 'store/lists', () => {
 	};
 
 	const apiError = {
+		code: 4000,
 		errors: [ {
 			field: 'test field1',
 			message: 'something went wrong'
@@ -833,6 +834,39 @@ describe( 'store/lists', () => {
 						id: testList.id
 					}
 				);
+			} );
+
+			it( 'should ignore error 4093', async () => {
+				const error4093 = {
+					code: 4093,
+					message: 'Revision is already marked as patrolled.',
+					status_code: 400,
+					errors: [ {
+						field: 'detail',
+						message: 'Revision is already marked as patrolled.'
+					} ]
+				};
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/patrol/',
+					method: 'PATCH'
+				}, context );
+				http.resolves( error4093 );
+
+				const markRevisionAsPatrolled = actions.markRevisionAsPatrolled.bind( stubThis );
+				await markRevisionAsPatrolled( context, testList );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( dispatch ).to.have.been.calledOnce;
+				expect( dispatch ).to.have.been.calledWithExactly(
+					'updateListRevisions', {
+						page: testList.page,
+						id: testList.id
+					}
+				);
+				expect( displayErrorNotification ).to.have.not.been.called;
 			} );
 
 			it( 'should log failures', async () => {

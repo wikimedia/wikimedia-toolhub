@@ -34,7 +34,7 @@
 		</v-row>
 
 		<ToolInfo
-			:tool="revId ? toolRevision && toolRevision.toolinfo : tool"
+			:tool="( revId && toolRevision ) ? toolRevision.toolinfo : tool"
 			:rev-id="revId"
 			:name="name"
 		/>
@@ -75,6 +75,8 @@ export default {
 				name: this.name,
 				id: id,
 				page: 1
+			} ).then( () => {
+				this.getToolInfo();
 			} );
 		},
 		getToolInfo() {
@@ -82,13 +84,6 @@ export default {
 				this.getToolRevision( { name: this.name, revId: this.revId } );
 			} else {
 				this.getToolByName( this.name );
-			}
-		}
-	},
-	watch: {
-		toolRevision: {
-			handler() {
-				this.getToolInfo();
 			}
 		}
 	},

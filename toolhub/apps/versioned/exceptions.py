@@ -36,6 +36,14 @@ class CurrentRevision(APIException):
     default_code = "current_revision"
 
 
+class PatrolledRevision(APIException):
+    """Revision is already marked as patrolled."""
+
+    status_code = status.HTTP_400_BAD_REQUEST
+    default_detail = _("Revision is already marked as patrolled.")
+    default_code = "patrolled_revision"
+
+
 class SuppressedRevision(APIException):
     """Diff failed due to a suppressed revision."""
 

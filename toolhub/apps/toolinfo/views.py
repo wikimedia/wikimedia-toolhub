@@ -40,6 +40,7 @@ import spdx_license_list
 from toolhub.apps.auditlog.models import LogEntry
 from toolhub.apps.versioned.exceptions import ConflictingState
 from toolhub.apps.versioned.exceptions import CurrentRevision
+from toolhub.apps.versioned.exceptions import PatrolledRevision
 from toolhub.apps.versioned.exceptions import SuppressedRevision
 from toolhub.permissions import CustomModelPermission
 from toolhub.permissions import ObjectPermissions
@@ -468,8 +469,10 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
     def patrol(self, request, **kwargs):
         """Mark a revision as patrolled."""
         rev_id = kwargs["pk"]
-        qs = self.get_queryset().filter(revision__meta__patrolled=False)
+        qs = self.get_queryset()
         rev = get_object_or_404(qs, pk=rev_id)
+        if rev.revision.meta.patrolled:
+            raise PatrolledRevision()
         comment = request.data.get("comment", None)
         with transaction.atomic():
             rev.revision.meta.patrolled = True

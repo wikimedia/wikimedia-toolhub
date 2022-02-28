@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import i18n from '@/plugins/i18n';
-import { makeApiCall } from '@/plugins/swagger.js';
+import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
 import { displayErrorNotification } from '@/helpers/notifications';
 import { asList, asVersion } from '@/helpers/casl';
 
@@ -380,13 +380,23 @@ export const actions = {
 
 		return makeApiCall( context, request ).then(
 			() => {
-				context.dispatch( 'updateListRevisions', {
+				return context.dispatch( 'updateListRevisions', {
 					page: list.page,
 					id: list.id
 				} );
 			},
 			( failure ) => {
-				displayErrorNotification.call( this, failure );
+				const data = getFailurePayload( failure );
+				if ( data.code === 4093 ) {
+					// T301870: treat already marked as patrolled error as
+					// success.
+					return context.dispatch( 'updateListRevisions', {
+						page: list.page,
+						id: list.id
+					} );
+				} else {
+					displayErrorNotification.call( this, failure );
+				}
 			}
 		);
 	}

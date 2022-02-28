@@ -696,7 +696,7 @@ class ToolListRevisionViewSetTest(TestCase):
             id=self.versions().first().pk,
         )
         response = self.client.patch(url)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 400)
 
 
 class FavoritesViewSetTest(TestCase):

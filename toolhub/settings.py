@@ -529,5 +529,6 @@ FRIENDLY_ERRORS = {
         "ConflictingState": 4090,
         "CurrentRevision": 4091,
         "SuppressedRevision": 4092,
+        "PatrolledRevision": 4093,
     },
 }
