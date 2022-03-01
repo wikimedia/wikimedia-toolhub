@@ -13,10 +13,10 @@ services:
       - /bin/bash
       - -c
       - >-
-        poetry run python3 manage.py migrate
-        && poetry run python3 manage.py createinitialrevisions
-        && poetry run python3 manage.py search_index --rebuild -f
-        && poetry run python3 manage.py runserver --noreload --nostatic 0.0.0.0:8000
+          poetry run python3 manage.py migrate
+          && poetry run python3 manage.py createinitialrevisions
+          && poetry run python3 manage.py search_index --rebuild -f
+          && poetry run python3 manage.py runserver --noreload --nostatic 0.0.0.0:8000
     environment:
       - DJANGO_SECRET_KEY
       - DJANGO_DEBUG
@@ -50,8 +50,8 @@ services:
     image: mariadb:10.4
     restart: always
     command:
-      - "--character-set-server=utf8mb4"
-      - "--collation-server=utf8mb4_unicode_ci"
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}

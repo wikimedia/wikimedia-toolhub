@@ -235,11 +235,11 @@ definitions:
         $ref: "#/definitions/url"
     additionalProperties: false
   url_multilingual_or_array:
-      oneOf:
-        - type: array
-          items:
-            $ref: "#/definitions/url_multilingual"
-        - $ref: "#/definitions/url"
+    oneOf:
+      - type: array
+        items:
+          $ref: "#/definitions/url_multilingual"
+      - $ref: "#/definitions/url"
   string_or_string_array:
     oneOf:
       - type: string
