@@ -83,8 +83,8 @@
 				<v-list-item-content>
 					<v-list-item-title>
 						<dl class="row ma-0">
-							<dt class="me-1">{{ data.item }}</dt>
-							<dd>({{ toolAutoCompleteResults[data.item] }})</dd>
+							<dt class="me-1">{{ toolAutoCompleteResults[data.item][0] }}</dt>
+							<dd>({{ toolAutoCompleteResults[data.item][1] }})</dd>
 						</dl>
 					</v-list-item-title>
 				</v-list-item-content>
@@ -291,10 +291,7 @@ export const methods = {
 	},
 	performToolAutoComplete( v ) {
 		this.toolAutoCompleteLoading = true;
-		const payload = {
-			query: v
-		};
-		this.$store.dispatch( 'search/autoCompleteTools', payload ).finally(
+		this.$store.dispatch( 'search/autoCompleteTools', v ).finally(
 			() => {
 				this.toolAutoCompleteLoading = false;
 			}

@@ -12,7 +12,9 @@
 				<template v-if="$can( 'patrol', 'reversion/version' )">
 					<h3 class="font-weight-medium">
 						<template v-if="!listRevision.patrolled">
-							(<a @click="patrol( listRevision.id )">{{ $t( 'markaspatrolled' ) }}</a>)
+							(<a @click="patrol( listRevision.id )">
+								{{ $t( 'markaspatrolled' ) }}
+							</a>)
 						</template>
 						<template v-else>
 							(<span>{{ $t( 'patrolled' ) }}</span>)

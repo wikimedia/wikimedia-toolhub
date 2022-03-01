@@ -192,6 +192,45 @@ describe( 'store/lists', () => {
 			} );
 		} );
 
+		describe( 'getPublishedLists', () => {
+			const testPage = 1;
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/lists/?published=true&page=' + testPage,
+				headers: { 'Content-type': 'application/json' },
+				body: listResponse
+			};
+
+			it( 'should fetch published lists', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/lists/?published=true&page=' + testPage
+				}, context );
+				http.resolves( response );
+
+				await actions.getPublishedLists( context, testPage );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'PUBLISHED_LISTS', listResponse
+				);
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				await actions.getFeaturedLists( context, testPage );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+		} );
+
 		describe( 'getMyLists', () => {
 			const testPage = 1;
 			const response = {

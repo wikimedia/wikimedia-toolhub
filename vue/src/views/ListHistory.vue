@@ -134,11 +134,15 @@
 
 					<template v-if="$can( 'view', rev )">
 						<dd class="me-1 mt-1">
-							(<a @click="undoChangesBetweenRevisions( rev.id )">{{ $t( 'undo' ) }}</a>)
+							(<a @click="undoChangesBetweenRevisions( rev.id )">
+								{{ $t( 'undo' ) }}
+							</a>)
 						</dd>
 
 						<dd class="me-1 mt-1">
-							(<a @click="restoreListToRevision( rev.id )">{{ $t( 'revert' ) }}</a>)
+							(<a @click="restoreListToRevision( rev.id )">
+								{{ $t( 'revert' ) }}
+							</a>)
 						</dd>
 					</template>
 

@@ -2,17 +2,17 @@
 	<v-combobox
 		v-model="query"
 		class="searchbar"
-		:label="$t( 'search-label' )"
-		:loading="loading || toolAutoCompleteLoading"
+		:label="getLabel()"
+		:loading="loading || autoCompleteLoading"
 		:search-input.sync="query"
 		:menu-props="menuProps"
-		:items="getToolAutoCompleteResultsArr()"
+		:items="getAutoCompleteResultsArr()"
 		solo
 		clearable
 		hide-details
 		@keyup.enter="onSearch"
-		@change="routeToToolsView"
 		@click:clear="onClear"
+		@change="routeToView"
 	>
 		<template #append>
 			<v-btn
@@ -34,18 +34,18 @@
 			<v-list-item-content>
 				<v-list-item-title>
 					<dl class="row ma-0">
-						<dt class="me-1">{{ data.item }}</dt>
-						<dd>({{ toolAutoCompleteResults[data.item] }})</dd>
+						<dt class="me-1">{{ autoCompleteResults[data.item][0] }}</dt>
+						<dd>({{ autoCompleteResults[data.item][1] }})</dd>
 					</dl>
 				</v-list-item-title>
 			</v-list-item-content>
 		</template>
 
-		<template v-if="!toolAutoCompleteLoading" #no-data>
+		<template v-if="!autoCompleteLoading" #no-data>
 			<v-list-item>
 				<v-list-item-content>
 					<v-list-item-title>
-						{{ $t( 'tool-not-found', [ query ] ) }}
+						{{ getNoDataString() }}
 					</v-list-item-title>
 				</v-list-item-content>
 			</v-list-item>
@@ -56,11 +56,31 @@
 <script>
 import { mapState } from 'vuex';
 
+const LIST = 'list';
+const TOOL = 'tool';
+
+function getLabel() {
+	if ( this.target === TOOL ) {
+		return this.$t( 'tools-search-label' );
+	} else if ( this.target === LIST ) {
+		return this.$t( 'lists-search-label' );
+	}
+}
+
+function getNoDataString() {
+	if ( this.target === TOOL ) {
+		return this.$t( 'tool-not-found', [ this.query ] );
+	} else if ( this.target === LIST ) {
+		return this.$t( 'list-not-found', [ this.query ] );
+	}
+}
+
 function onSearch() {
 	this.$emit( 'search', this.query );
 }
 
-function onClear() {
+function onClear( e ) {
+	e.preventDefault();
 	this.query = '';
 	this.$emit( 'search', this.query );
 }
@@ -69,25 +89,38 @@ function setQuery( query ) {
 	this.query = query;
 }
 
-function performToolAutoComplete( v ) {
-	this.toolAutoCompleteLoading = true;
-	const payload = {
-		query: v
-	};
-	this.$store.dispatch( 'search/autoCompleteTools', payload ).finally(
+function performAutoComplete( query ) {
+	this.autoCompleteLoading = true;
+	const vuexMethod = this.target === TOOL ?
+		'search/autoCompleteTools' :
+		'search/autoCompleteLists';
+	this.$store.dispatch( vuexMethod, query ).finally(
 		() => {
-			this.toolAutoCompleteLoading = false;
+			this.autoCompleteLoading = false;
 		}
 	);
 }
 
-function routeToToolsView( name ) {
-	this.$router.push( { name: 'tools-view', params: { name } } );
+function routeToView( id ) {
+	if ( id === null ) {
+		return;
+	}
+	const params = {};
+	let routeName;
+	if ( this.target === TOOL ) {
+		params.name = id;
+		routeName = 'tools-view';
+	} else if ( this.target === LIST ) {
+		params.id = id;
+		routeName = 'lists-view';
+	}
+
+	this.$router.push( { name: routeName, params } );
 }
 
-function getToolAutoCompleteResultsArr() {
-	return this.toolAutoCompleteResults ?
-		Object.keys( this.toolAutoCompleteResults ) :
+function getAutoCompleteResultsArr() {
+	return this.autoCompleteResults ?
+		Object.keys( this.autoCompleteResults ) :
 		[];
 }
 
@@ -96,33 +129,44 @@ export default {
 	props: {
 		loading: {
 			type: Boolean
+		},
+		target: {
+			type: String,
+			required: true,
+			validator: function ( value ) {
+				return [ LIST, TOOL ].indexOf( value ) !== -1;
+			}
 		}
 	},
 	data: () => ( {
 		query: '',
-		toolAutoCompleteLoading: false
+		autoCompleteLoading: false
 	} ),
 	computed: {
 		menuProps() {
 			return !this.query ? { value: false } : {};
 		},
 		...mapState( 'search', {
-			toolAutoCompleteResults: 'toolAutoCompleteResults'
+			autoCompleteResults: function ( state ) {
+				return state[ `${this.target}AutoCompleteResults` ];
+			}
 		} )
 	},
 	methods: {
+		getLabel,
+		getNoDataString,
 		onSearch,
 		onClear,
 		// eslint-disable-next-line vue/no-unused-properties
 		setQuery,
-		performToolAutoComplete,
-		getToolAutoCompleteResultsArr,
-		routeToToolsView
+		performAutoComplete,
+		getAutoCompleteResultsArr,
+		routeToView
 	},
 	watch: {
 		query: {
 			handler( val ) {
-				this.performToolAutoComplete( val );
+				this.performAutoComplete( val );
 			}
 		}
 	}

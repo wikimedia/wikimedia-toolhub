@@ -134,21 +134,29 @@
 
 					<template v-if="$can( 'view', rev )">
 						<dd class="me-1 mt-1">
-							(<a @click="undoChangesBetweenRevisions( rev.id )">{{ $t( 'undo' ) }}</a>)
+							(<a @click="undoChangesBetweenRevisions( rev.id )">
+								{{ $t( 'undo' ) }}
+							</a>)
 						</dd>
 
 						<dd class="me-1 mt-1">
-							(<a @click="restoreToolToRevision( rev.id )">{{ $t( 'revert' ) }}</a>)
+							(<a @click="restoreToolToRevision( rev.id )">
+								{{ $t( 'revert' ) }}
+							</a>)
 						</dd>
 					</template>
 
 					<template v-if="$can( 'change', 'reversion/version' )">
 						<dd class="me-1 mt-1">
 							<template v-if="rev.suppressed">
-								(<a @click="suppress( rev.id, 'reveal' )">{{ $t( 'reveal' ) }}</a>)
+								(<a @click="suppress( rev.id, 'reveal' )">
+									{{ $t( 'reveal' ) }}
+								</a>)
 							</template>
 							<template v-else>
-								(<a @click="suppress( rev.id, 'hide' )">{{ $t( 'hide' ) }}</a>)
+								(<a @click="suppress( rev.id, 'hide' )">
+									{{ $t( 'hide' ) }}
+								</a>)
 							</template>
 						</dd>
 					</template>
@@ -156,7 +164,9 @@
 					<template v-if="$can( 'patrol', 'reversion/version' )">
 						<dd class="me-1 mt-1">
 							<template v-if="!rev.patrolled">
-								(<a @click="patrol( rev.id )">{{ $t( 'markaspatrolled' ) }}</a>)
+								(<a @click="patrol( rev.id )">
+									{{ $t( 'markaspatrolled' ) }}
+								</a>)
 							</template>
 							<template v-else>
 								(<span>{{ $t( 'patrolled' ) }}</span>)
@@ -207,7 +217,9 @@ export default {
 	},
 	methods: {
 		getRevisions() {
-			this.$store.dispatch( 'tools/updateToolRevisions', { page: this.page, name: this.name } );
+			this.$store.dispatch( 'tools/updateToolRevisions', {
+				page: this.page, name: this.name
+			} );
 		},
 		goToPage( page ) {
 			this.page = page;

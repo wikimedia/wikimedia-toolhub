@@ -57,14 +57,12 @@ export const actions = {
 	 * autocomplete for tools.
 	 *
 	 * @param {Object} context - Vuex context
-	 * @param {Object} payload
-	 * @param {string} payload.query - user provided query
-	 * @param {string} payload.ordering - Sort order
+	 * @param {string} query - user provided query
 	 * @return {Promise<undefined>}
 	 */
-	autoCompleteTools( context, payload ) {
+	autoCompleteTools( context, query ) {
 		const params = [
-			[ 'q', payload.query || null ]
+			[ 'q', query || null ]
 		];
 		const cleanParams = makeURLQueryParams( params );
 		const request = {
@@ -75,13 +73,45 @@ export const actions = {
 				const results = {};
 				if ( Array.isArray( response.body ) ) {
 					response.body.forEach( ( tool ) => {
-						results[ tool.name ] = tool.title;
+						results[ tool.name ] = [ tool.name, tool.title ];
 					} );
 				}
 				context.commit( 'onToolsAutoCompleteResults', results );
 			},
 			( failure ) => {
 				context.commit( 'onToolsAutoCompleteResults', {} );
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+
+	/**
+	 * autocomplete for lists.
+	 *
+	 * @param {Object} context - Vuex context
+	 * @param {string} query - user provided query
+	 * @return {Promise<undefined>}
+	 */
+	autoCompleteLists( context, query ) {
+		const params = [
+			[ 'q', query || null ]
+		];
+		const cleanParams = makeURLQueryParams( params );
+		const request = {
+			url: '/api/autocomplete/lists/?' + cleanParams.toString()
+		};
+		return makeApiCall( context, request ).then(
+			( response ) => {
+				const results = {};
+				if ( Array.isArray( response.body ) ) {
+					response.body.forEach( ( list ) => {
+						results[ list.id ] = [ list.title, list.description ];
+					} );
+				}
+				context.commit( 'onListsAutoCompleteResults', results );
+			},
+			( failure ) => {
+				context.commit( 'onListsAutoCompleteResults', {} );
 				displayErrorNotification.call( this, failure );
 			}
 		);
@@ -125,7 +155,41 @@ export const actions = {
 				displayErrorNotification.call( this, failure );
 			}
 		);
+	},
+
+	/**
+	 * Search for lists.
+	 *
+	 * @param {Object} context - Vuex context
+	 * @param {Object} payload
+	 * @param {string} payload.query - user provided query
+	 * @param {number} payload.page - page number within results
+	 * @param {number} payload.pageSize - number of lists per page
+	 * @param {string} payload.ordering - Sort order
+	 * @return {Promise<undefined>}
+	 */
+	findLists( context, payload ) {
+		const params = [
+			[ 'q', payload.query || null ],
+			[ 'page', payload.page || null ],
+			[ 'page_size', payload.pageSize || null ],
+			[ 'ordering', payload.ordering || null ]
+		];
+		const cleanParams = makeURLQueryParams( params );
+		const request = {
+			url: '/api/search/lists/?' + cleanParams.toString()
+		};
+		return makeApiCall( context, request ).then(
+			( response ) => {
+				const results = response.body;
+				context.commit( 'onListsResults', results );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
 	}
+
 };
 
 export const mutations = {
@@ -149,6 +213,24 @@ export const mutations = {
 	 */
 	onToolsAutoCompleteResults( state, payload ) {
 		state.toolAutoCompleteResults = payload;
+	},
+	/**
+	 * Store /api/search/lists/ results.
+	 *
+	 * @param {Object} state - Vuex state tree.
+	 * @param {Object} payload - API response.
+	 */
+	onListsResults( state, payload ) {
+		state.listsResponse = payload;
+	},
+	/**
+	 * Store /api/autocomplete/lists/ results.
+	 *
+	 * @param {Object} state - Vuex state tree.
+	 * @param {Object} payload - API response.
+	 */
+	onListsAutoCompleteResults( state, payload ) {
+		state.listAutoCompleteResults = payload;
 	}
 };
 
@@ -157,7 +239,9 @@ export default {
 	state: {
 		toolsQueryParams: null,
 		toolsResponse: {},
-		toolAutoCompleteResults: {}
+		toolAutoCompleteResults: {},
+		listsResponse: {},
+		listAutoCompleteResults: {}
 	},
 	getters: getters,
 	actions: actions,

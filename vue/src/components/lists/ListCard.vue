@@ -76,6 +76,19 @@
 					</v-card>
 				</v-slide-item>
 			</v-slide-group>
+			<v-card v-if="listFooter"
+				class="text-body-2 rounded-0 elevation-0"
+			>
+				<v-divider />
+				<v-col md="9" cols="12">
+					<h3 class="font-weight-light">
+						{{ $t( 'listinfo', [
+							list.created_by.username,
+							formatDate( list.created_date )
+						] ) }}
+					</h3>
+				</v-col>
+			</v-card>
 		</v-sheet>
 	</v-card>
 </template>
@@ -94,14 +107,22 @@ export default {
 			type: Object,
 			default: null,
 			required: true
+		},
+		listFooter: {
+			type: Boolean
 		}
 	},
-	data: () => ( {
-		listInfo: false
-	} ),
+	data() {
+		return {
+			listInfo: false
+		};
+	},
 	methods: {
 		closeListInfo() {
 			this.listInfo = false;
+		},
+		formatDate( date ) {
+			return this.$moment.utc( date ).format( 'lll' );
 		}
 	}
 };

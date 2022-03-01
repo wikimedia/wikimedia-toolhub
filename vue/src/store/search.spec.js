@@ -132,28 +132,13 @@ describe( 'store/search', () => {
 				body: autoCompleteResponse
 			};
 
-			it( 'should accept empty payload', async () => {
-				const expectRequest = addRequestDefaults( {
-					url: '/api/autocomplete/tools/?'
-				}, context );
-				http.resolves( response );
-
-				await actions.autoCompleteTools( context, {} );
-				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
-				expect( http ).to.have.been.calledWith( expectRequest );
-				expect( commit ).to.have.been.calledOnce;
-			} );
-
 			it( 'should build query string', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/autocomplete/tools/?q=q'
+					url: '/api/autocomplete/tools/?q=wiki'
 				}, context );
 				http.resolves( response );
 
-				await actions.autoCompleteTools( context, {
-					query: 'q'
-				} );
+				await actions.autoCompleteTools( context, 'wiki' );
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
@@ -163,7 +148,40 @@ describe( 'store/search', () => {
 			it( 'should log failures', async () => {
 				http.rejects( apiError );
 
-				await actions.autoCompleteTools( context, {} );
+				await actions.autoCompleteTools( context, '' );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledOnce;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+		} );
+
+		describe( 'AutoCompleteLists', () => {
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/autocomplete/lists/',
+				headers: { 'Content-type': 'application/json' },
+				body: autoCompleteResponse
+			};
+
+			it( 'should build query string', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/autocomplete/lists/?q=wiki'
+				}, context );
+				http.resolves( response );
+
+				await actions.autoCompleteLists( context, 'wiki' );
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+				expect( commit ).to.have.been.calledOnce;
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				await actions.autoCompleteLists( context, '' );
 
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.been.calledOnce;
@@ -219,6 +237,57 @@ describe( 'store/search', () => {
 				expect( displayErrorNotification ).to.have.been.called;
 			} );
 		} );
+
+		describe( 'findLists', () => {
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/search/lists/',
+				headers: { 'Content-type': 'application/json' },
+				body: facetResponse
+			};
+
+			it( 'should accept empty payload', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/search/lists/?'
+				}, context );
+				http.resolves( response );
+
+				await actions.findLists( context, {} );
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+				expect( commit ).to.have.been.calledOnce;
+			} );
+
+			it( 'should build query string', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/search/lists/?q=q&page=1&page_size=10&ordering=-score'
+				}, context );
+				http.resolves( response );
+
+				await actions.findLists( context, {
+					query: 'q',
+					page: 1,
+					pageSize: 10,
+					ordering: '-score'
+				} );
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledBefore( commit );
+				expect( http ).to.have.been.calledWith( expectRequest );
+				expect( commit ).to.have.been.calledOnce;
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				await actions.findLists( context, {} );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+		} );
 	} );
 
 	describe( 'mutations', () => {
@@ -226,15 +295,24 @@ describe( 'store/search', () => {
 			it( 'should store inputs', () => {
 				const state = {
 					toolsQueryParams: null,
-					toolsResponse: {}
+					toolsResponse: {},
+					toolAutoCompleteResults: {},
+					listsResponse: {},
+					listAutoCompleteResults: {}
 				};
 
 				const results = 'whatever';
 				const qs = 'something';
 				mutations.onToolsResults( state, { results, qs } );
+				mutations.onToolsAutoCompleteResults( state, results );
+				mutations.onListsResults( state, results );
+				mutations.onListsAutoCompleteResults( state, results );
 
 				expect( state.toolsQueryParams ).to.equal( qs );
 				expect( state.toolsResponse ).to.equal( results );
+				expect( state.toolAutoCompleteResults ).to.equal( results );
+				expect( state.listsResponse ).to.equal( results );
+				expect( state.listAutoCompleteResults ).to.equal( results );
 			} );
 		} );
 	} );

@@ -22,24 +22,9 @@
 			</v-col>
 		</v-row>
 
-		<v-row v-if="!myLists.results">
-			<v-col cols="12">
-				<p class="text-h6 text--secondary">
-					{{ $t( 'lists-nolistsfoundtext' ) }}
-				</p>
-			</v-col>
-		</v-row>
-
-		<v-row>
-			<v-col v-for="list in myLists.results"
-				:key="list.id"
-				class="lists"
-				cols="12"
-			>
-				<ListCard :list="list" />
-			</v-col>
-		</v-row>
-
+		<Lists
+			:lists="myLists"
+		/>
 		<v-pagination
 			v-if="myLists.count > 0"
 			v-model="page"
@@ -54,11 +39,11 @@
 <script>
 import fetchMetaInfo from '@/helpers/metadata';
 import { mapState } from 'vuex';
-import ListCard from '@/components/lists/ListCard';
+import Lists from '@/components/lists/Lists';
 
 export default {
 	components: {
-		ListCard
+		Lists
 	},
 	data() {
 		return {

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import i18n from '@/plugins/i18n';
-import { makeApiCall, getFailurePayload } from '@/plugins/swagger.js';
+import { makeApiCall, getFailurePayload } from '@/plugins/swagger';
 import { displayErrorNotification } from '@/helpers/notifications';
 import { asList, asVersion } from '@/helpers/casl';
 
@@ -13,6 +13,9 @@ export const mutations = {
 	},
 	MY_LISTS( state, lists ) {
 		state.myLists = asList( lists );
+	},
+	PUBLISHED_LISTS( state, lists ) {
+		state.publishedLists = asList( lists );
 	},
 	CREATE_LIST( state, list ) {
 		state.listCreated = asList( list );
@@ -46,6 +49,19 @@ export const actions = {
 			( success ) => {
 				const data = success.body;
 				context.commit( 'FEATURED_LISTS', data );
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+	getPublishedLists( context, page ) {
+		const request = { url: '/api/lists/?published=true&page=' + page };
+
+		return makeApiCall( context, request ).then(
+			( success ) => {
+				const data = success.body;
+				context.commit( 'PUBLISHED_LISTS', data );
 			},
 			( failure ) => {
 				displayErrorNotification.call( this, failure );
@@ -407,6 +423,7 @@ export default {
 	state: {
 		featuredLists: [],
 		myLists: {},
+		publishedLists: {},
 		listCreated: {},
 		list: null,
 		listRevisions: [],

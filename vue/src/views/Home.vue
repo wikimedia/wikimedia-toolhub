@@ -52,6 +52,7 @@
 		<v-row>
 			<v-col cols="12">
 				<SearchBar
+					:target="searchTarget"
 					@search="onSearchBarSearch"
 				/>
 			</v-col>
@@ -87,10 +88,11 @@ import ListCard from '@/components/lists/ListCard';
 
 export default {
 	components: {
-		SearchBar,
-		ListCard
+		ListCard,
+		SearchBar
 	},
 	data: () => ( {
+		searchTarget: 'tool',
 		page: 1,
 		itemsPerPage: 10
 	} ),

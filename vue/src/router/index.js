@@ -15,7 +15,8 @@ const Favorites = () => import( /* webpackChunkName: "favorites" */ '../views/Fa
 const ListHistory = () => import( /* webpackChunkName: "lists-history" */ '../views/ListHistory.vue' );
 const ListRevisionsDiff = () => import( /* webpackChunkName: "lists-diff" */ '../views/ListRevisionsDiff.vue' );
 const ListView = () => import( /* webpackChunkName: "lists-view" */ '../views/ListView.vue' );
-const Lists = () => import( /* webpackChunkName: "lists" */ '../views/Lists.vue' );
+const Lists = () => import( /* webpackChunkName: "lists" */ '../views/MyLists.vue' );
+const PublishedLists = () => import( /* webpackChunkName: "publishedlists" */ '../views/PublishedLists.vue' );
 const Members = () => import( /* webpackChunkName: "members" */ '../views/Members.vue' );
 const Search = () => import( /* webpackChunkName: "search" */ '../views/Search.vue' );
 const ToolHistory = () => import( /* webpackChunkName: "tools-history" */ '../views/ToolHistory.vue' );
@@ -103,6 +104,14 @@ export const routes = [
 		name: 'lists-diff',
 		path: '/lists/:id(\\d+)/history/revision/:revId(\\d+)/diff/:otherRevId(\\d+)',
 		component: ListRevisionsDiff
+	},
+	{
+		name: 'publishedlists',
+		path: '/published-lists',
+		component: PublishedLists,
+		meta: {
+			icon: 'mdi-view-list'
+		}
 	},
 	{
 		name: 'apidocs',

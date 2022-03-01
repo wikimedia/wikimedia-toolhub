@@ -5,6 +5,7 @@
 				<SearchBar
 					ref="searchbar"
 					:loading="searching"
+					:target="searchTarget"
 					@search="onSearchBarSearch"
 				/>
 			</v-col>
@@ -84,11 +85,12 @@ export default {
 	name: 'Search',
 	components: {
 		Filters,
+		ToolCard,
 		SearchBar,
-		Sort,
-		ToolCard
+		Sort
 	},
 	data: () => ( {
+		searchTarget: 'tool',
 		query: '',
 		page: 1,
 		pageSize: 12,
