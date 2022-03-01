@@ -34,9 +34,9 @@ process.env.VUE_APP_GIT_HASH = ( function () {
 			const branch = HEAD.split( ': ' )[ 1 ].trim();
 			return fs.readFileSync(
 				path.resolve( __dirname, '.git/' + branch ), 'utf8'
-			).substr( 0, 7 );
+			).slice( 0, 6 );
 		} else {
-			return HEAD.substr( 0, 7 );
+			return HEAD.slice( 0, 6 );
 		}
 	} catch ( e ) {
 		// eslint-disable-next-line no-console
@@ -58,6 +58,12 @@ module.exports = {
 		resolve: {
 			alias: {
 				'@': path.resolve( __dirname, 'vue/src' )
+			},
+			fallback: {
+				// Empty 'stream' polyfill that would be used by
+				// swagger-client to handle file uploads.
+				// https://gist.github.com/ef4/d2cf5672a93cf241fd47c020b9b3066a
+				stream: false
 			}
 		},
 		// Prevent webpack from puting `eval`s into generated files
@@ -106,10 +112,14 @@ module.exports = {
 		config.plugin( 'copy' )
 			.use( require( 'copy-webpack-plugin' ) )
 			.tap( ( [ pathConfigs ] ) => {
-				const conf = [ {
-					from: path.resolve( __dirname, 'vue/public' ),
-					to: path.resolve( __dirname, 'vue/static/vue' )
-				} ];
+				const conf = {
+					patterns: [
+						{
+							from: path.resolve( __dirname, 'vue/public' ),
+							to: path.resolve( __dirname, 'vue/static/vue' )
+						}
+					]
+				};
 				if ( !pathConfigs ) {
 					pathConfigs = conf;
 				} else {
@@ -117,19 +127,21 @@ module.exports = {
 				}
 				return [ pathConfigs ];
 			} );
-
-		// Configure the dev-mode http server for hot reloading
-		config.devServer
-			.public( `http://0.0.0.0:${PORT}` )
-			.host( '0.0.0.0' )
-			.port( PORT )
-			.hotOnly( true )
-			.watchOptions( { poll: 1000 } )
-			.https( false )
-			.headers( { 'Access-Control-Allow-Origin': [ '*' ] } );
 	},
 	devServer: {
-		contentBase: path.join( __dirname, 'vue/public' )
+		headers: {
+			'Access-Control-Allow-Origin': [ '*' ]
+		},
+		host: '0.0.0.0',
+		hot: 'only',
+		https: false,
+		port: PORT,
+		static: {
+			directory: path.resolve( __dirname, 'vue/public' ),
+			watch: {
+				poll: 1000
+			}
+		}
 	},
 	lintOnSave: false
 };

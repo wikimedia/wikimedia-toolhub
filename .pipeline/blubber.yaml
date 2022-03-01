@@ -76,12 +76,16 @@ variants:
   base-nodejs:
     # Provides the basic foundation for all other nodejs runtime containers
     # needed to develop and test Toolhub.
-    base: docker-registry.wikimedia.org/nodejs10-devel
+    base: docker-registry.wikimedia.org/releng/node14
     node:
       requirements:
         - package.json
         - package-lock.json
       env: development
+    entrypoint:
+      # Replace the upstream "npm" entrypoint with something that will act as
+      # though there is no custom entry point at all.
+      - /usr/bin/env
 
   dev-nodejs:
     # Development/testing shared base for nodejs runtime containers

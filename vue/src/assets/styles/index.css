@@ -157,7 +157,7 @@ div.list-card__card {
 }
 
 #notifications .v-alert {
-	border: thin solid currentColor !important;
+	border: thin solid currentcolor !important;
 	overflow-wrap: anywhere !important;
 }
 
