@@ -1,6 +1,5 @@
 <template>
 	<v-menu
-		ref="menu"
 		v-model="menu"
 		:close-on-content-click="false"
 		transition="scale-transition"

@@ -87,7 +87,7 @@
 							class="mt-4"
 						>
 							<v-chip
-								v-for="tt in tool.keywords.filter(e => e)"
+								v-for="tt in tool.keywords.filter( e => e )"
 								:key="tt"
 								:to="{ name: 'search', query: { 'keywords__term': tt } }"
 								:ripple="false"
@@ -159,10 +159,10 @@
 									</v-list-item-title>
 
 									<template
-										v-if="Array.isArray(link.url)"
+										v-if="Array.isArray( link.url )"
 									>
 										<v-list-item
-											v-for="(url, idx) in link.url"
+											v-for="( url, idx ) in link.url"
 											:key="idx"
 											class="pa-0 tool-links"
 										>
@@ -172,8 +172,8 @@
 												>
 													{{ url.url }}</a>
 												<template
-													v-if="url.language && url.language
-														!== $i18n.locale"
+													v-if="url.language &&
+														url.language !== $i18n.locale"
 												>
 													({{ url.language }})
 												</template>
@@ -223,7 +223,7 @@
 									<td>{{ item.name }}</td>
 									<td>
 										<div
-											v-if="Array.isArray(item.value)"
+											v-if="Array.isArray( item.value )"
 										>
 											<v-chip
 												v-for="iv in item.value"
@@ -308,10 +308,6 @@ export default {
 		},
 		revId: {
 			type: [ String, Number ],
-			default: null
-		},
-		name: {
-			type: String,
 			default: null
 		}
 	},

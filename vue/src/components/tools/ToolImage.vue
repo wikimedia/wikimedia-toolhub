@@ -14,6 +14,7 @@ export default {
 	components: {
 		CommonsImage
 	},
+	inheritAttrs: false,
 	props: {
 		tool: {
 			type: Object,

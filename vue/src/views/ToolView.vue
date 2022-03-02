@@ -12,7 +12,7 @@
 				<template v-if="$can( 'patrol', 'reversion/version' )">
 					<h3 class="font-weight-medium">
 						<template v-if="!toolRevision.patrolled">
-							(<a @click="patrol(toolRevision.id)">{{ $t( 'markaspatrolled' ) }}</a>)
+							(<a @click="patrol( toolRevision.id )">{{ $t( 'markaspatrolled' ) }}</a>)
 						</template>
 						<template v-else>
 							(<span>{{ $t( 'patrolled' ) }}</span>)
@@ -67,9 +67,6 @@ export default {
 		...mapActions( 'tools', [ 'getToolByName', 'getToolRevision' ] ),
 		...mapMutations( 'tools', [ 'TOOL', 'TOOL_REVISION' ] ),
 
-		formatDate( date ) {
-			return this.$moment.utc( date ).format( 'LT ll' );
-		},
 		patrol( id ) {
 			this.$store.dispatch( 'tools/markRevisionAsPatrolled', {
 				name: this.name,

@@ -118,7 +118,7 @@
 					<v-chip
 						class="ma-2"
 						close
-						@click:close="parent.selectItem(item)"
+						@click:close="parent.selectItem( item )"
 						@click="showAuthorDialog( item )"
 					>
 						{{ item.name }}

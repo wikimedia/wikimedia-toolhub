@@ -45,7 +45,6 @@
 						md="2"
 					>
 						<DatePicker
-							ref="after"
 							v-model="filters.after"
 							:label="$t( 'datepicker-startdate' )"
 							suffix="T00:00Z"
@@ -56,7 +55,6 @@
 						md="2"
 					>
 						<DatePicker
-							ref="before"
 							v-model="filters.before"
 							:label="$t( 'datepicker-enddate' )"
 							suffix="T23:59:59.999Z"

@@ -27,7 +27,7 @@
 					color="primary base100--text"
 					width="100%"
 					:disabled="!$can( 'add', 'crawler/url' )"
-					@click="registerUrl(fileUrl)"
+					@click="registerUrl( fileUrl )"
 				>
 					{{ $t( 'add' ) }}
 					<v-icon
@@ -41,8 +41,8 @@
 		</v-row>
 		<v-row>
 			<v-col cols="12">
-				<v-row v-if="$can( 'add', 'crawler/url' )
-					&& numUserCreatedUrls === 0"
+				<v-row v-if="$can( 'add', 'crawler/url' ) &&
+					numUserCreatedUrls === 0"
 				>
 					<v-col cols="12">
 						<p class="text-h6 text--secondary">
@@ -77,7 +77,7 @@
 							class="mt-2 mb-2"
 							color="error"
 							dark
-							@click="unregisterUrl(item)"
+							@click="unregisterUrl( item )"
 						>
 							<v-icon
 								dark

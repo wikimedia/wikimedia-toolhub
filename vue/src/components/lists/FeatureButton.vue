@@ -35,7 +35,6 @@ export default {
 	},
 	data() {
 		return {
-			page: 1,
 			userAuthed: this.$can( 'feature', 'lists/toollist' )
 		};
 	},

@@ -19,7 +19,7 @@
 					] ) }}
 				</p>
 				<p v-if="!searching && response.count === 0">
-					{{ $t( 'search-no-results-message') }}
+					{{ $t( 'search-no-results-message' ) }}
 				</p>
 			</v-col>
 			<v-col cols="6">

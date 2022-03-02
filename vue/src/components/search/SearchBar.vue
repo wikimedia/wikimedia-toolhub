@@ -113,6 +113,7 @@ export default {
 	methods: {
 		onSearch,
 		onClear,
+		// eslint-disable-next-line vue/no-unused-properties
 		setQuery,
 		performToolAutoComplete,
 		getToolAutoCompleteResultsArr,

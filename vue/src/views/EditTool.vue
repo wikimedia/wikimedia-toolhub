@@ -435,9 +435,6 @@ export default {
 					label: this.$t( 'replacedby' )
 				}
 			};
-		},
-		requiredRule() {
-			return [ ( v ) => !!v || this.$t( 'required-field' ) ];
 		}
 	},
 	asyncComputed: {

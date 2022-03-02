@@ -62,7 +62,6 @@ export default {
 	},
 	data() {
 		return {
-			tabs: null,
 			page: 1,
 			itemsPerPage: 10
 		};

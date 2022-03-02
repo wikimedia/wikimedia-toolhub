@@ -51,7 +51,7 @@
 			>
 				<v-list>
 					<v-list-item
-						v-for="(autonym, code) in filteredLocales || localeMap"
+						v-for="( autonym, code ) in filteredLocales || localeMap"
 						:key="code"
 						selectable
 						link

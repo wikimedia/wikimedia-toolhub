@@ -135,7 +135,6 @@
 		</v-row>
 
 		<v-dialog
-			ref="dialog"
 			v-model="dialog.open"
 			persistent
 			max-width="600px"

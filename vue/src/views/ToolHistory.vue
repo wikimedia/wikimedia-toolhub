@@ -37,7 +37,7 @@
 							otherRevId: otherSelectedId
 						}
 					}"
-					:disabled="!( selectedId && otherSelectedId)"
+					:disabled="!( selectedId && otherSelectedId )"
 					:small="$vuetify.breakpoint.smAndDown"
 				>
 					<v-icon class="me-2">
@@ -57,12 +57,11 @@
 				>
 					<dd class="me-1">
 						<v-checkbox
-							ref="rev.id"
-							v-model="checkbox[rev.id]"
+							v-model="checkbox[ rev.id ]"
 							class="ma-0"
 							hide-details
 							:disabled="!$can( 'view', rev )"
-							@change="selectToolRevision($event, rev.id)"
+							@change="selectToolRevision( $event, rev.id )"
 						/>
 					</dd>
 
@@ -135,21 +134,21 @@
 
 					<template v-if="$can( 'view', rev )">
 						<dd class="me-1 mt-1">
-							(<a @click="undoChangesBetweenRevisions(rev.id)">{{ $t( 'undo' ) }}</a>)
+							(<a @click="undoChangesBetweenRevisions( rev.id )">{{ $t( 'undo' ) }}</a>)
 						</dd>
 
 						<dd class="me-1 mt-1">
-							(<a @click="restoreToolToRevision(rev.id)">{{ $t( 'revert' ) }}</a>)
+							(<a @click="restoreToolToRevision( rev.id )">{{ $t( 'revert' ) }}</a>)
 						</dd>
 					</template>
 
 					<template v-if="$can( 'change', 'reversion/version' )">
 						<dd class="me-1 mt-1">
 							<template v-if="rev.suppressed">
-								(<a @click="suppress(rev.id, 'reveal')">{{ $t( 'reveal' ) }}</a>)
+								(<a @click="suppress( rev.id, 'reveal' )">{{ $t( 'reveal' ) }}</a>)
 							</template>
 							<template v-else>
-								(<a @click="suppress(rev.id, 'hide')">{{ $t( 'hide' ) }}</a>)
+								(<a @click="suppress( rev.id, 'hide' )">{{ $t( 'hide' ) }}</a>)
 							</template>
 						</dd>
 					</template>
@@ -157,7 +156,7 @@
 					<template v-if="$can( 'patrol', 'reversion/version' )">
 						<dd class="me-1 mt-1">
 							<template v-if="!rev.patrolled">
-								(<a @click="patrol(rev.id)">{{ $t( 'markaspatrolled' ) }}</a>)
+								(<a @click="patrol( rev.id )">{{ $t( 'markaspatrolled' ) }}</a>)
 							</template>
 							<template v-else>
 								(<span>{{ $t( 'patrolled' ) }}</span>)

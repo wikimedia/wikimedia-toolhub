@@ -53,7 +53,7 @@
 		</v-row>
 		<v-row>
 			<v-col cols="12" class="my-2">
-				<v-row v-for="(op, idx) in changes"
+				<v-row v-for="( op, idx ) in changes"
 					:key="idx"
 				>
 					<v-col cols="6">

@@ -106,11 +106,11 @@ export function render( createElement ) {
 	 * Emit a <dd> node.
 	 *
 	 * @param {Object[]} children - child nodes for the <dd>
-	 * @param {?Object} params - extra params for node
+	 * @param {?Object} parameters - extra parameters for node
 	 * @return {Object}
 	 */
-	const dd = function ( children, params = {} ) {
-		return createElement( 'dd', params, children );
+	const dd = function ( children, parameters = {} ) {
+		return createElement( 'dd', parameters, children );
 	};
 
 	const target = this.log.target;

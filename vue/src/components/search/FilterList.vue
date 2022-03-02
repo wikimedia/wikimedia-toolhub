@@ -120,7 +120,7 @@ export const methods = {
 				);
 				break;
 			default:
-				throw TypeError(
+				throw new TypeError(
 					`Unknown type '${ftype}' for facet '${fname}'`
 				);
 		}
@@ -158,6 +158,7 @@ export default {
 		outlined: Boolean
 	},
 	data: () => ( {
+		// eslint-disable-next-line vue/no-unused-properties
 		model: undefined,
 		value: undefined
 	} ),

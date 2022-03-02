@@ -1,6 +1,6 @@
 <template>
 	<dl class="row diff-path">
-		<template v-for="(value, idx) in path">
+		<template v-for="( value, idx ) in path">
 			<dt
 				:key="idx"
 				class="me-1"

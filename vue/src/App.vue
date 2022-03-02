@@ -22,7 +22,7 @@
 			app
 			color="secondary"
 			dark
-			:floating="true"
+			floating
 			:permanent="$vuetify.breakpoint.mdAndUp"
 			:expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer && !prefersReducedMotion"
 			:right="$vuetify.rtl"
