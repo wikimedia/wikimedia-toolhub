@@ -310,7 +310,7 @@ describe( 'store/tools', () => {
 				status: 201,
 				url: '/api/tools/',
 				headers: { 'Content-type': 'application/json' },
-				body: JSON.stringify( toolResponse )
+				body: toolResponse
 			};
 
 			it( 'should create tool', async () => {
@@ -330,7 +330,7 @@ describe( 'store/tools', () => {
 
 				expect( commit ).to.have.been.calledOnce;
 				expect( commit ).to.have.been.calledWithExactly(
-					'CREATE_TOOL', JSON.stringify( toolResponse )
+					'CREATE_TOOL', toolResponse
 				);
 
 				// eslint-disable-next-line no-underscore-dangle
@@ -351,7 +351,7 @@ describe( 'store/tools', () => {
 
 		describe( 'editTool', () => {
 			const testTool = {
-				info: JSON.stringify( toolResponse ),
+				info: toolResponse,
 				name: 'Hellotool'
 			};
 
@@ -360,7 +360,7 @@ describe( 'store/tools', () => {
 				status: 200,
 				url: '/api/tools/' + testTool.name + '/',
 				headers: { 'Content-type': 'application/json' },
-				body: JSON.stringify( toolResponse )
+				body: toolResponse
 			};
 
 			it( 'should edit tool', async () => {
