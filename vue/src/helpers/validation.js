@@ -1,3 +1,6 @@
+// Django's regex validation expects all whitespace to be encoded
+const RE_URL_VALID_BASIC = /^https?:\/\/[^\s]+$/;
+
 /**
  * Is the given input a valid HTTP URL?
  *
@@ -5,17 +8,15 @@
  * @return {boolean} True if URL is valid, false otherwise
  */
 export function isValidHttpUrl( input ) {
-	// Django's regex validation expects all whitespace to be encoded
-	if ( /\s/.test( input ) ) {
+	if ( !RE_URL_VALID_BASIC.test( input ) ) {
 		return false;
 	}
 
-	let url;
 	try {
-		url = new URL( input );
+		// eslint-disable-next-line no-unused-vars
+		const url = new URL( input );
+		return true;
 	} catch ( _ ) {
 		return false;
 	}
-
-	return url.protocol === 'https:' || url.protocol === 'http:';
 }
