@@ -167,7 +167,7 @@ describe( 'store/groups', () => {
 
 			} );
 
-			it( 'should log failure when error occures', async () => {
+			it( 'should log failure when error occurs', async () => {
 				const error = {
 					field: 'add',
 					message: 'Cannot add member to the group'
@@ -234,7 +234,7 @@ describe( 'store/groups', () => {
 				] );
 			} );
 
-			it( 'should log failure when error occures', async () => {
+			it( 'should log failure when error occurs', async () => {
 				const error = {
 					field: 'remove',
 					message: 'Cannot remove member to the group'

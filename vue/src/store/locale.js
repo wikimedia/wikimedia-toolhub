@@ -25,7 +25,7 @@ export const LOCALE_KEY = 'locale';
  * @param {string} locale
  * @return {string}
  */
-export function santizeLocale( locale ) {
+export function sanitizeLocale( locale ) {
 	if ( languageData.isKnown( locale ) ) {
 		return languageData.isRedirect( locale ) || locale;
 	}
@@ -41,7 +41,7 @@ export function santizeLocale( locale ) {
 }
 
 export const initialLocale = ( () => {
-	return santizeLocale(
+	return sanitizeLocale(
 		window.localStorage.getItem( LOCALE_KEY ) ||
 		window.navigator.language ||
 		DEFAULT_LOCALE
@@ -50,7 +50,7 @@ export const initialLocale = ( () => {
 
 const localeMap = ( () => {
 	const preferedLocales = navigator.languages.map( ( x ) => {
-		return santizeLocale( x );
+		return sanitizeLocale( x );
 	} );
 	const languageNameMap = languageData.getAutonyms();
 
@@ -112,7 +112,7 @@ export const actions = {
 		payload.locale = initialLocale;
 		const qs = payload.vm.$route.query;
 		if ( qs.uselang ) {
-			payload.locale = santizeLocale( qs.uselang );
+			payload.locale = sanitizeLocale( qs.uselang );
 		}
 		return context.dispatch( 'setLocale', payload );
 	},
@@ -128,7 +128,7 @@ export const actions = {
 	 * @return {Promise<undefined>}
 	 */
 	setLocale( context, payload ) {
-		const locale = santizeLocale( payload.locale );
+		const locale = sanitizeLocale( payload.locale );
 		const vm = payload.vm;
 		const initial = payload.initial || false;
 

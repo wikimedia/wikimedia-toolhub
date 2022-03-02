@@ -193,7 +193,7 @@ describe( 'store/oauth', () => {
 
 			} );
 
-			it( 'should log failure when error occures', async () => {
+			it( 'should log failure when error occurs', async () => {
 				http.rejects( apiError );
 				await actions.deleteClientApp( context, testClientId );
 
@@ -230,7 +230,7 @@ describe( 'store/oauth', () => {
 				expect( stubThis._vm.$notify.success ).to.have.been.called;
 			} );
 
-			it( 'should log failure when error occures', async () => {
+			it( 'should log failure when error occurs', async () => {
 				http.rejects( apiError );
 				await actions.updateClientApp( context, app );
 
@@ -305,7 +305,7 @@ describe( 'store/oauth', () => {
 				expect( commit ).to.have.been.calledWithExactly( 'DELETE_AUTHORIZED_APP', testAuthAppId );
 			} );
 
-			it( 'should log failure when error occures', async () => {
+			it( 'should log failure when error occurs', async () => {
 				http.rejects( apiError );
 				await actions.deleteAuthorizedApp( context, testAuthAppId );
 

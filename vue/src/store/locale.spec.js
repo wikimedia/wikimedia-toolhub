@@ -9,36 +9,36 @@ const expect = chai.expect;
 import {
 	DEFAULT_LOCALE,
 	LOCALE_KEY,
-	santizeLocale,
+	sanitizeLocale,
 	initialLocale,
 	actions,
 	mutations
 } from './locale';
 
 describe( 'store/locale', () => {
-	describe( 'santizeLocale', () => {
+	describe( 'sanitizeLocale', () => {
 		it( 'should return DEFAULT_LOCALE if given garbage', () => {
-			expect( santizeLocale( undefined ) ).to.equal( DEFAULT_LOCALE );
-			expect( santizeLocale( null ) ).to.equal( DEFAULT_LOCALE );
-			expect( santizeLocale( false ) ).to.equal( DEFAULT_LOCALE );
-			expect( santizeLocale( true ) ).to.equal( DEFAULT_LOCALE );
-			expect( santizeLocale( {} ) ).to.equal( DEFAULT_LOCALE );
-			expect( santizeLocale( [] ) ).to.equal( DEFAULT_LOCALE );
-			expect( santizeLocale( '' ) ).to.equal( DEFAULT_LOCALE );
-			expect( santizeLocale( 'xyzzy' ) ).to.equal( DEFAULT_LOCALE );
+			expect( sanitizeLocale( undefined ) ).to.equal( DEFAULT_LOCALE );
+			expect( sanitizeLocale( null ) ).to.equal( DEFAULT_LOCALE );
+			expect( sanitizeLocale( false ) ).to.equal( DEFAULT_LOCALE );
+			expect( sanitizeLocale( true ) ).to.equal( DEFAULT_LOCALE );
+			expect( sanitizeLocale( {} ) ).to.equal( DEFAULT_LOCALE );
+			expect( sanitizeLocale( [] ) ).to.equal( DEFAULT_LOCALE );
+			expect( sanitizeLocale( '' ) ).to.equal( DEFAULT_LOCALE );
+			expect( sanitizeLocale( 'xyzzy' ) ).to.equal( DEFAULT_LOCALE );
 		} );
 
 		it( 'should convert BCP47 codes', () => {
-			expect( santizeLocale( 'en-US' ) ).to.equal( 'en' );
-			expect( santizeLocale( 'en-GB' ) ).to.equal( 'en-gb' );
-			expect( santizeLocale( 'en-CA' ) ).to.equal( 'en-ca' );
-			expect( santizeLocale( 'en-SimPle' ) ).to.equal( 'en-simple' );
+			expect( sanitizeLocale( 'en-US' ) ).to.equal( 'en' );
+			expect( sanitizeLocale( 'en-GB' ) ).to.equal( 'en-gb' );
+			expect( sanitizeLocale( 'en-CA' ) ).to.equal( 'en-ca' );
+			expect( sanitizeLocale( 'en-SimPle' ) ).to.equal( 'en-simple' );
 		} );
 
 		it( 'should resolve aliases', () => {
-			expect( santizeLocale( 'zh-classical' ) ).to.equal( 'lzh' );
-			expect( santizeLocale( 'bbc' ) ).to.equal( 'bbc-latn' );
-			expect( santizeLocale( 'cbk-zam' ) ).to.equal( 'cbk' );
+			expect( sanitizeLocale( 'zh-classical' ) ).to.equal( 'lzh' );
+			expect( sanitizeLocale( 'bbc' ) ).to.equal( 'bbc-latn' );
+			expect( sanitizeLocale( 'cbk-zam' ) ).to.equal( 'cbk' );
 		} );
 	} );
 
