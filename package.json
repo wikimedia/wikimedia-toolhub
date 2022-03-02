@@ -215,7 +215,7 @@
 							"ignoreNodes": [
 								"v-icon"
 							],
-							"ignorePattern": "^\\s*[:()\"/]+$",
+							"ignorePattern": "^\\s*[:()\\[\\]\"/]+$",
 							"ignoreText": []
 						}
 					],

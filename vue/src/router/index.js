@@ -18,6 +18,7 @@ const ListView = () => import( /* webpackChunkName: "lists-view" */ '../views/Li
 const Lists = () => import( /* webpackChunkName: "lists" */ '../views/MyLists.vue' );
 const PublishedLists = () => import( /* webpackChunkName: "publishedlists" */ '../views/PublishedLists.vue' );
 const Members = () => import( /* webpackChunkName: "members" */ '../views/Members.vue' );
+const RecentChanges = () => import( /* webpackChunkName: "recentchanges" */ '../views/RecentChanges.vue' );
 const Search = () => import( /* webpackChunkName: "search" */ '../views/Search.vue' );
 const ToolHistory = () => import( /* webpackChunkName: "tools-history" */ '../views/ToolHistory.vue' );
 const ToolRevisionsDiff = () => import( /* webpackChunkName: "tools-diff" */ '../views/ToolRevisionsDiff.vue' );
@@ -30,6 +31,62 @@ export const routes = [
 		component: Home,
 		meta: {
 			icon: 'mdi-home-circle'
+		}
+	},
+	{
+		name: 'addremovetools',
+		path: '/add-or-remove-tools',
+		component: AddRemoveTools,
+		meta: {
+			icon: 'mdi-folder-multiple-plus-outline'
+		}
+	},
+	{
+		name: 'publishedlists',
+		path: '/published-lists',
+		component: PublishedLists,
+		meta: {
+			icon: 'mdi-view-list'
+		}
+	},
+	{
+		name: 'apidocs',
+		path: '/api-docs',
+		component: ApiDocs,
+		meta: {
+			icon: 'mdi-api'
+		}
+	},
+	{
+		name: 'crawlerhistory',
+		path: '/crawler-history',
+		component: CrawlerHistory,
+		meta: {
+			icon: 'mdi-history'
+		}
+	},
+	{
+		name: 'recentchanges',
+		path: '/recent',
+		component: RecentChanges,
+		meta: {
+			icon: 'mdi-file-search-outline'
+		}
+	},
+	{
+		name: 'auditlogs',
+		path: '/audit-logs',
+		component: AuditLogs,
+		meta: {
+			icon: 'mdi-data-matrix'
+		}
+	},
+	{
+		name: 'members',
+		path: '/members',
+		component: Members,
+		meta: {
+			icon: 'mdi-account-group'
 		}
 	},
 	{
@@ -56,14 +113,6 @@ export const routes = [
 		name: 'tools-diff',
 		path: '/tools/:name([\\w%-]{1,255})/history/revision/:revId(\\d+)/diff/:otherRevId(\\d+)',
 		component: ToolRevisionsDiff
-	},
-	{
-		name: 'addremovetools',
-		path: '/add-or-remove-tools',
-		component: AddRemoveTools,
-		meta: {
-			icon: 'mdi-folder-multiple-plus-outline'
-		}
 	},
 	{
 		name: 'favorites',
@@ -104,46 +153,6 @@ export const routes = [
 		name: 'lists-diff',
 		path: '/lists/:id(\\d+)/history/revision/:revId(\\d+)/diff/:otherRevId(\\d+)',
 		component: ListRevisionsDiff
-	},
-	{
-		name: 'publishedlists',
-		path: '/published-lists',
-		component: PublishedLists,
-		meta: {
-			icon: 'mdi-view-list'
-		}
-	},
-	{
-		name: 'apidocs',
-		path: '/api-docs',
-		component: ApiDocs,
-		meta: {
-			icon: 'mdi-api'
-		}
-	},
-	{
-		name: 'crawlerhistory',
-		path: '/crawler-history',
-		component: CrawlerHistory,
-		meta: {
-			icon: 'mdi-history'
-		}
-	},
-	{
-		name: 'auditlogs',
-		path: '/audit-logs',
-		component: AuditLogs,
-		meta: {
-			icon: 'mdi-data-matrix'
-		}
-	},
-	{
-		name: 'members',
-		path: '/members',
-		component: Members,
-		meta: {
-			icon: 'mdi-account-group'
-		}
 	},
 	{
 		name: 'developersettings',

@@ -117,7 +117,7 @@ export default {
 		getDiff() {
 			this.$store.dispatch( 'tools/getToolRevisionsDiff', {
 				name: this.name,
-				id: this.revId,
+				revId: this.revId,
 				otherId: this.otherRevId
 			} );
 		},

@@ -9,6 +9,7 @@ import GroupsModule from './groups';
 import ListsModule from './lists';
 import LocaleModule from './locale';
 import OauthModule from './oauth';
+import RecentChangesModule from './recentchanges';
 import SearchModule from './search';
 import ToolsModule from './tools';
 import UIModule from './ui';
@@ -27,6 +28,7 @@ export default new Vuex.Store( {
 		lists: ListsModule,
 		locale: LocaleModule,
 		oauth: OauthModule,
+		recentchanges: RecentChangesModule,
 		search: SearchModule,
 		tools: ToolsModule,
 		ui: UIModule,

@@ -69,10 +69,10 @@ export default {
 		...mapActions( 'tools', [ 'getToolByName', 'getToolRevision' ] ),
 		...mapMutations( 'tools', [ 'TOOL', 'TOOL_REVISION' ] ),
 
-		patrol( id ) {
+		patrol( revId ) {
 			this.$store.dispatch( 'tools/markRevisionAsPatrolled', {
 				name: this.name,
-				id: id,
+				revId: revId,
 				page: 1
 			} ).then( () => {
 				this.getToolInfo();

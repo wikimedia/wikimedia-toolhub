@@ -33,6 +33,7 @@ urlpatterns = [
     path("lists/create", main, name="lists-create"),
     path("members", main, name="members"),
     path("published-lists", main, name="published-lists"),
+    path("recent", main, name="recent-changes"),
     path("search", main, name="search"),
     path("tools/<path:path>", main, name="tools-view"),
 ]

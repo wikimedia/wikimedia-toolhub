@@ -64,7 +64,7 @@ describe( 'store/lists', () => {
 
 	const listRevisionResponse1 = {
 		comment: 'This is a test edit!!',
-		id: 596,
+		id: '596',
 		timestamp: '2021-04-27T20:12:08.025365Z',
 		user: {
 			id: 3,
@@ -74,7 +74,7 @@ describe( 'store/lists', () => {
 
 	const listRevisionResponse2 = {
 		comment: 'This is a test edit!!',
-		id: 598,
+		id: '598',
 		timestamp: '2021-04-28T20:12:08.025365Z',
 		user: {
 			id: 3,
@@ -701,7 +701,7 @@ describe( 'store/lists', () => {
 
 			it( 'should undo between revisions', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/lists/' + testList.id + '/revisions/' + id + '/undo/' + otherId + '/',
+					url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/undo/' + otherId + '/',
 					method: 'POST'
 				}, context );
 
@@ -711,16 +711,7 @@ describe( 'store/lists', () => {
 				await actions.undoChangesBetweenRevisions( context, testList );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( dispatch );
 				expect( http ).to.have.been.calledWith( expectRequest );
-
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateListRevisions', {
-						page: testList.page,
-						id: testList.id
-					}
-				);
 
 				context.state.listRevisions = [];
 			} );
@@ -764,16 +755,8 @@ describe( 'store/lists', () => {
 				await restoreListToRevision( context, testList );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
 
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateListRevisions', {
-						page: testList.page,
-						id: testList.id
-					}
-				);
 			} );
 
 			it( 'should log failures', async () => {
@@ -814,16 +797,8 @@ describe( 'store/lists', () => {
 				await hideRevealRevision( context, testList );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
 
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateListRevisions', {
-						page: testList.page,
-						id: testList.id
-					}
-				);
 			} );
 
 			it( 'should log failures', async () => {
@@ -863,16 +838,8 @@ describe( 'store/lists', () => {
 				await markRevisionAsPatrolled( context, testList );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
 
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateListRevisions', {
-						page: testList.page,
-						id: testList.id
-					}
-				);
 			} );
 
 			it( 'should ignore error 4093', async () => {
@@ -895,16 +862,7 @@ describe( 'store/lists', () => {
 				await markRevisionAsPatrolled( context, testList );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
-
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateListRevisions', {
-						page: testList.page,
-						id: testList.id
-					}
-				);
 				expect( displayErrorNotification ).to.have.not.been.called;
 			} );
 

@@ -90,7 +90,7 @@ describe( 'store/tools', () => {
 
 	const toolRevisionResponse1 = {
 		comment: 'This is a test edit',
-		id: 596,
+		id: '596',
 		timestamp: '2021-04-28T20:12:08.025365Z',
 		user: {
 			id: 2,
@@ -100,7 +100,7 @@ describe( 'store/tools', () => {
 
 	const toolRevisionResponse2 = {
 		comment: 'This is a test edit!!',
-		id: 598,
+		id: '598',
 		timestamp: '2021-04-27T20:12:08.025365Z',
 		user: {
 			id: 2,
@@ -488,21 +488,21 @@ describe( 'store/tools', () => {
 		describe( 'getToolRevisionsDiff', () => {
 			const testTool = {
 				name: 'Awesome',
-				id: 593,
+				revId: 593,
 				otherId: 596
 			};
 
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/diff/' + testTool.otherId + '/',
+				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/diff/' + testTool.otherId + '/',
 				headers: { 'Content-type': 'application/json' },
 				body: diffRevisionResponse
 			};
 
 			it( 'should fetch diff between revisions', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/diff/' + testTool.otherId + '/'
+					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/diff/' + testTool.otherId + '/'
 				}, context );
 				http.resolves( response );
 
@@ -532,11 +532,11 @@ describe( 'store/tools', () => {
 		describe( 'undoChangesBetweenRevisions', () => {
 			const testTool = {
 				name: 'Hellotool',
-				id: '596',
+				revId: '596',
 				page: 1
 			};
 
-			const id = testTool.id,
+			const id = testTool.revId,
 				toolRevisions = toolRevisionsResponse.results,
 				revIndex = toolRevisions.findIndex( ( revision ) => revision.id === id ),
 				nextIndex = parseInt( revIndex ) + 1;
@@ -546,14 +546,14 @@ describe( 'store/tools', () => {
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/undo/' + otherId + '/',
+				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/undo/' + otherId + '/',
 				headers: { 'Content-type': 'application/json' },
 				body: toolResponse
 			};
 
 			it( 'should undo between revisions', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/tools/' + testTool.name + '/revisions/' + id + '/undo/' + otherId + '/',
+					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/undo/' + otherId + '/',
 					method: 'POST'
 				}, context );
 
@@ -563,16 +563,7 @@ describe( 'store/tools', () => {
 				await actions.undoChangesBetweenRevisions( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( dispatch );
 				expect( http ).to.have.been.calledWith( expectRequest );
-
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateToolRevisions', {
-						page: testTool.page,
-						name: testTool.name
-					}
-				);
 
 				context.state.toolRevisions = [];
 			} );
@@ -594,20 +585,20 @@ describe( 'store/tools', () => {
 		describe( 'restoreToolToRevision', () => {
 			const testTool = {
 				name: 'Hellotool',
-				id: '596',
+				revId: '596',
 				page: 1
 			};
 
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/revert/',
+				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/revert/',
 				headers: { 'Content-type': 'application/json' }
 			};
 
 			it( 'should restore tool to a revision', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/revert/',
+					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/revert/',
 					method: 'POST'
 				}, context );
 				http.resolves( response );
@@ -616,16 +607,8 @@ describe( 'store/tools', () => {
 				await restoreToolToRevision( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
 
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateToolRevisions', {
-						page: testTool.page,
-						name: testTool.name
-					}
-				);
 			} );
 
 			it( 'should log failures', async () => {
@@ -643,7 +626,7 @@ describe( 'store/tools', () => {
 		describe( 'hideRevealRevision', () => {
 			const testTool = {
 				name: 'Hellotool',
-				id: '596',
+				revId: '596',
 				page: 1,
 				action: 'hide'
 			};
@@ -651,13 +634,13 @@ describe( 'store/tools', () => {
 			const response = {
 				ok: true,
 				status: 204,
-				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/' + testTool.action + '/',
+				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/' + testTool.action + '/',
 				headers: { 'Content-type': 'application/json' }
 			};
 
 			it( 'should hide a revision', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/' + testTool.action + '/',
+					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/' + testTool.action + '/',
 					method: 'PATCH'
 				}, context );
 				http.resolves( response );
@@ -666,16 +649,8 @@ describe( 'store/tools', () => {
 				await hideRevealRevision( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
 
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateToolRevisions', {
-						page: testTool.page,
-						name: testTool.name
-					}
-				);
 			} );
 
 			it( 'should log failures', async () => {
@@ -693,20 +668,20 @@ describe( 'store/tools', () => {
 		describe( 'markRevisionAsPatrolled', () => {
 			const testTool = {
 				name: 'Hellotool',
-				id: '596',
+				revId: '596',
 				page: 1
 			};
 
 			const response = {
 				ok: true,
 				status: 204,
-				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/patrol/',
+				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/patrol/',
 				headers: { 'Content-type': 'application/json' }
 			};
 
 			it( 'should patrol a revision', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/patrol/',
+					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/patrol/',
 					method: 'PATCH'
 				}, context );
 				http.resolves( response );
@@ -715,16 +690,8 @@ describe( 'store/tools', () => {
 				await markRevisionAsPatrolled( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
 
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateToolRevisions', {
-						page: testTool.page,
-						name: testTool.name
-					}
-				);
 			} );
 
 			it( 'should ignore error 4093', async () => {
@@ -738,7 +705,7 @@ describe( 'store/tools', () => {
 					} ]
 				};
 				const expectRequest = addRequestDefaults( {
-					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.id + '/patrol/',
+					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/patrol/',
 					method: 'PATCH'
 				}, context );
 				http.resolves( error4093 );
@@ -747,16 +714,7 @@ describe( 'store/tools', () => {
 				await markRevisionAsPatrolled( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
-
-				expect( dispatch ).to.have.been.calledOnce;
-				expect( dispatch ).to.have.been.calledWithExactly(
-					'updateToolRevisions', {
-						page: testTool.page,
-						name: testTool.name
-					}
-				);
 				expect( displayErrorNotification ).to.have.not.been.called;
 			} );
 

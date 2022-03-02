@@ -216,7 +216,7 @@ export const actions = {
 	 */
 	getToolRevisionsDiff( context, tool ) {
 		const request = {
-			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/diff/' + tool.otherId + '/'
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.revId + '/diff/' + tool.otherId + '/'
 		};
 
 		return makeApiCall( context, request ).then(
@@ -237,7 +237,7 @@ export const actions = {
 	 * @return {Promise<undefined>|undefined}
 	 */
 	async undoChangesBetweenRevisions( context, tool ) {
-		const id = tool.id,
+		const id = tool.revId,
 			nextPage = tool.page + 1,
 			toolRevisions = context.state.toolRevisions,
 			revIndex = toolRevisions.findIndex( ( revision ) => revision.id === id ),
@@ -272,13 +272,7 @@ export const actions = {
 			method: 'POST'
 		};
 
-		return makeApiCall( context, request ).then(
-			() => {
-				context.dispatch( 'updateToolRevisions', {
-					page: tool.page,
-					name: tool.name
-				} );
-			},
+		return makeApiCall( context, request ).catch(
 			( failure ) => {
 				displayErrorNotification.call( this, failure );
 			}
@@ -293,17 +287,11 @@ export const actions = {
 	 */
 	restoreToolToRevision( context, tool ) {
 		const request = {
-			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/revert/',
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.revId + '/revert/',
 			method: 'POST'
 		};
 
-		return makeApiCall( context, request ).then(
-			() => {
-				context.dispatch( 'updateToolRevisions', {
-					page: tool.page,
-					name: tool.name
-				} );
-			},
+		return makeApiCall( context, request ).catch(
 			( failure ) => {
 				displayErrorNotification.call( this, failure );
 			}
@@ -318,17 +306,11 @@ export const actions = {
 	 */
 	hideRevealRevision( context, tool ) {
 		const request = {
-			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/' + tool.action + '/',
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.revId + '/' + tool.action + '/',
 			method: 'PATCH'
 		};
 
-		return makeApiCall( context, request ).then(
-			() => {
-				context.dispatch( 'updateToolRevisions', {
-					page: tool.page,
-					name: tool.name
-				} );
-			},
+		return makeApiCall( context, request ).catch(
 			( failure ) => {
 				displayErrorNotification.call( this, failure );
 			}
@@ -343,26 +325,17 @@ export const actions = {
 	 */
 	markRevisionAsPatrolled( context, tool ) {
 		const request = {
-			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.id + '/patrol/',
+			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + tool.revId + '/patrol/',
 			method: 'PATCH'
 		};
 
-		return makeApiCall( context, request ).then(
-			() => {
-				return context.dispatch( 'updateToolRevisions', {
-					page: tool.page,
-					name: tool.name
-				} );
-			},
+		return makeApiCall( context, request ).catch(
 			( failure ) => {
 				const data = getFailurePayload( failure );
 				if ( data.code === 4093 ) {
 					// T301870: treat already marked as patrolled error as
-					// success.
-					return context.dispatch( 'updateToolRevisions', {
-						page: tool.page,
-						name: tool.name
-					} );
+					// success and return
+					return;
 				} else {
 					displayErrorNotification.call( this, failure );
 				}

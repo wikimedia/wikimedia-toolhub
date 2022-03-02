@@ -278,7 +278,7 @@ export const actions = {
 			// Fetch more revisions to obtain other id if the revision
 			// selected for an undo is last in the current list
 			await context.dispatch( 'getRevisions', {
-				name: tool.name, page: nextPage
+				id: list.id, page: nextPage
 			} ).then(
 				( success ) => {
 					const results = success.body.results;
@@ -301,13 +301,7 @@ export const actions = {
 			method: 'POST'
 		};
 
-		return makeApiCall( context, request ).then(
-			() => {
-				context.dispatch( 'updateListRevisions', {
-					page: list.page,
-					id: list.id
-				} );
-			},
+		return makeApiCall( context, request ).catch(
 			( failure ) => {
 				displayErrorNotification.call( this, failure );
 			}
@@ -326,13 +320,7 @@ export const actions = {
 			method: 'POST'
 		};
 
-		return makeApiCall( context, request ).then(
-			() => {
-				context.dispatch( 'updateListRevisions', {
-					page: list.page,
-					id: list.id
-				} );
-			},
+		return makeApiCall( context, request ).catch(
 			( failure ) => {
 				displayErrorNotification.call( this, failure );
 			}
@@ -351,13 +339,7 @@ export const actions = {
 			method: 'PATCH'
 		};
 
-		return makeApiCall( context, request ).then(
-			() => {
-				context.dispatch( 'updateListRevisions', {
-					page: list.page,
-					id: list.id
-				} );
-			},
+		return makeApiCall( context, request ).catch(
 			( failure ) => {
 				displayErrorNotification.call( this, failure );
 			}
@@ -376,22 +358,13 @@ export const actions = {
 			method: 'PATCH'
 		};
 
-		return makeApiCall( context, request ).then(
-			() => {
-				return context.dispatch( 'updateListRevisions', {
-					page: list.page,
-					id: list.id
-				} );
-			},
+		return makeApiCall( context, request ).catch(
 			( failure ) => {
 				const data = getFailurePayload( failure );
 				if ( data.code === 4093 ) {
 					// T301870: treat already marked as patrolled error as
-					// success.
-					return context.dispatch( 'updateListRevisions', {
-						page: list.page,
-						id: list.id
-					} );
+					// success and return
+					return;
 				} else {
 					displayErrorNotification.call( this, failure );
 				}
@@ -410,6 +383,7 @@ export default {
 		list: null,
 		listRevisions: [],
 		listRevision: 0,
+		numRevisions: 0,
 		diffRevision: null
 	},
 	actions,
