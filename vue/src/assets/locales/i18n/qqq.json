@@ -63,6 +63,7 @@
 	"authorizedapps": "Tab label",
 	"author": "Label for tool author\n{{identical|Author}}",
 	"authors": "Tool information label.",
+	"author-menu-search-name": "Search filter author string.",
 	"authtoken": "Tab label.",
 	"authtoken-new": "Button label.",
 	"authtoken-token": "Table column label.",

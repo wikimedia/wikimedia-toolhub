@@ -108,18 +108,18 @@
 				:append-icon="ui.appendIcon"
 				multiple
 				readonly
-				@click:append="showAuthorDialog( null )"
-				@click="showAuthorDialog( null )"
+				@click:append="showAuthorDialog( null, null )"
+				@click="showAuthorDialog( null, null )"
 			>
 				<template #label>
 					<InputLabel :label="ui.label" :required="ui.required" />
 				</template>
-				<template #selection="{ item, parent }">
+				<template #selection="{ item, index, parent }">
 					<v-chip
 						class="ma-2"
 						close
 						@click:close="parent.selectItem( item )"
-						@click="showAuthorDialog( item )"
+						@click="showAuthorDialog( item, index )"
 					>
 						{{ item.name }}
 					</v-chip>
@@ -306,9 +306,11 @@ export const methods = {
 	 * Populate and open the AuthorDialog.
 	 *
 	 * @param {?Object} author - Author information to display
+	 * @param {?number} index - Author position in the authors array;
 	 */
-	showAuthorDialog( author ) {
+	showAuthorDialog( author, index ) {
 		this.authorEdit.author = author;
+		this.authorEdit.index = index;
 		this.authorEdit.authorDialogOpen = true;
 	}
 };
@@ -340,6 +342,7 @@ export default {
 		model: null,
 		toolAutoCompleteLoading: false,
 		authorEdit: {
+			index: null,
 			author: null,
 			authorDialogOpen: false
 		},

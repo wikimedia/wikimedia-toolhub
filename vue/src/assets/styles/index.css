@@ -189,6 +189,12 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 
 .tool-app-bar .v-toolbar__content {
 	padding: 0 !important;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+.tool-app-bar.tool-app-bar-xs .v-toolbar__content {
+	justify-content: flex-start;
 }
 
 .v-chip--disabled.opacity-1 {

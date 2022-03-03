@@ -2,7 +2,7 @@
 	<v-btn
 		v-if="userAuthed && favorite"
 		:small="$vuetify.breakpoint.smAndDown"
-		class="ms-4"
+		class="my-1 mx-2"
 		color="yellow50"
 		@click="removeFavorite"
 	>
@@ -14,7 +14,7 @@
 	<v-btn
 		v-else-if="userAuthed"
 		:small="$vuetify.breakpoint.smAndDown"
-		class="ms-4"
+		class="my-1 mx-2"
 		@click="addFavorite"
 	>
 		<v-icon class="me-2">

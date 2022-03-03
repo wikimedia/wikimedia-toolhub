@@ -101,8 +101,8 @@ export default {
 			let replaced = false;
 			const authors = [ ...this.authors ];
 
-			authors.some( ( author, index ) => {
-				if ( author.name === this.authorEdit.author?.name ) {
+			authors.some( ( _, index ) => {
+				if ( index === this.authorEdit.index ) {
 					authors[ index ] = this.cleanAuthorFields();
 					replaced = true;
 					return replaced;
