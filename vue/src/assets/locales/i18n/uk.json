@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"DDPAT",
+			"Ice bulldog",
 			"Kareyac"
 		]
 	},
@@ -99,11 +100,11 @@
 	"developerdocumentation": "Документація для розробників",
 	"developersettings": "Налаштування для розробників",
 	"developersettings-appregistersuccesstext": "Успіх! Зареєстровано додаток «$1». Не забудьте скопіювати секрет свого клієнта зараз. Ви не зможете побачити це знову.",
-	"developersettings-appupdatesuccess": "Додаток з ідентифікатором клієнта «$1» оновлено!",
 	"developersettings-appupdateerror": "Сталася помилка під час оновлення програми з ідентифікатором клієнта «$1»",
+	"developersettings-appupdatesuccess": "Додаток з ідентифікатором клієнта «$1» оновлено!",
 	"developersettings-noauthorizedappsfoundtext": "Ви не дозволили жодному клієнтському додатку використовувати ваш обліковий запис",
-	"developersettings-nologintext": "Щоб переглянути авторизовані програми, вам потрібно буде увійти в Toolhub",
 	"developersettings-noclientappsfoundtext": "Клієнтські програми не знайдені",
+	"developersettings-nologintext": "Щоб переглянути авторизовані програми, вам потрібно буде увійти в Toolhub",
 	"developersettings-pagesubtitle": "Перегляд, реєстрація, авторизація та скасування програм oauth",
 	"editsummary": "Опис редагування",
 	"email": "Ел. пошта",
@@ -112,6 +113,8 @@
 	"favorited": "Вибране",
 	"favorites-pagetitle": "Ваші улюблені інструменти",
 	"favorites-notoolsfoundtext": "Вибраних інструментів не знайдено",
+	"feature": "Функція",
+	"featured": "Вибрані",
 	"feedbackurl": "URL-адреса зворотного зв'язку",
 	"filter": "Фільтр",
 	"footer-content-license": "Усі структуровані дані, доступні згідно з пунктом $1; можуть застосовуватися додаткові умови.",

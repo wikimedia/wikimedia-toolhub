@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Avengium",
+			"Chopan050",
 			"Danniel07",
 			"Destinid10 2",
 			"Hasley",
@@ -69,6 +70,7 @@
 	"authtoken-token": "Token",
 	"availableuilanguages": "Idiomas disponibles en la Interfaz de Usuario",
 	"basicinfo": "Información básica:",
+	"botusername": "Nombre de usuario del bot",
 	"cancel": "Cancelar",
 	"clear": "Limpiar",
 	"clicktocopy": "Clic para copiar",
@@ -86,6 +88,7 @@
 	"description": "Descripción",
 	"developerdocumentation": "Documentación para desarrolladores",
 	"developersettings": "Configuración del desarrollador",
+	"developerusername": "Nombre de usuario del desarrollador",
 	"editsummary": "Editar resumen",
 	"experimental": "Experimental",
 	"feedbackurl": "URL de comentarios",
@@ -125,6 +128,7 @@
 	"name": "Nombre",
 	"newtoolsfound": "{{PLURAL:$1|1 herramienta|$1 herramientas}}",
 	"ok": "Aceptar",
+	"openhubid": "ID de proyecto de OpenHub",
 	"patrolled": "patrullada",
 	"privacypolicy": "Política de privacidad",
 	"privacypolicyurl": "URL de la política de privacidad",
@@ -179,7 +183,7 @@
 	"title": "Título",
 	"tools-edit": "Editar Herramienta",
 	"toolhub": "Toolhub",
-	"tools": "herramientas",
+	"tools": "Herramientas",
 	"toolsfound": "{{PLURAL:$1|1 herramienta encontrada|$1 herramientas encontradas}}",
 	"tooluilangs-pattern-regex": "El idioma debe usar códigos ISO 639 como `zh` y `scn`",
 	"tools-view": "Herramienta",
@@ -197,5 +201,7 @@
 	"urlscrawled": "Urls Rastreadas",
 	"valid": "válido",
 	"viewhistory": "Ver historial",
-	"viewmore": "Ver más"
+	"viewlistrevisionsdiff": "Ver diferencias entre revisiones de la lista $1 \"{{bidi:$2}}\"",
+	"viewmore": "Ver más",
+	"wikiusername": "Nombre de usuario de la wiki"
 }

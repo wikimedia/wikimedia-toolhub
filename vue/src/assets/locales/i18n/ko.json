@@ -78,14 +78,16 @@
 	"demo-server-notice": "툴허브 데모 서버입니다.",
 	"deprecated": "구식",
 	"description": "설명",
+	"developer-username": "개발자 사용자 이름",
 	"developerdocumentation": "개발자 문서",
 	"developersettings": "개발자 설정",
-	"developersettings-appupdatesuccess": "클라이언트 ID '$1'의 앱이 업데이트되었습니다!",
 	"developersettings-appupdateerror": "클라이언트 ID '$1'의 앱을 업데이트하는 동안 오류가 발생했습니다",
+	"developersettings-appupdatesuccess": "클라이언트 ID '$1'의 앱이 업데이트되었습니다!",
 	"developersettings-noauthorizedappsfoundtext": "계정 사용을 위해 클라이언트 앱에 권한을 부여하지 않았습니다",
-	"developersettings-nologintext": "인가된 앱을 보려면 툴허브에 로그인해야 합니다",
 	"developersettings-noclientappsfoundtext": "클라이언트 앱이 없습니다",
+	"developersettings-nologintext": "인가된 앱을 보려면 툴허브에 로그인해야 합니다",
 	"editsummary": "편집 요약",
+	"email": "이메일",
 	"experimental": "실험 기능",
 	"favorite": "즐겨찾기에 추가",
 	"favorited": "즐겨찾기에 추가됨",
@@ -228,5 +230,6 @@
 	"viewhistory": "역사 보기",
 	"viewtoolrevisionsdiff": "도구 $1의 판 차이 보기",
 	"viewmore": "더 보기",
-	"welcomemessage": "툴허브에 오신 것을 환영합니다"
+	"welcomemessage": "툴허브에 오신 것을 환영합니다",
+	"wiki-username": "위키 사용자 이름"
 }

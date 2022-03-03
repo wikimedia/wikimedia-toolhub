@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-02-24 12:14:23+0000\n"
+"PO-Revision-Date: 2022-03-03 12:13:03+0000\n"
 "X-POT-Import-Date: 2022-02-23 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -634,7 +634,6 @@ msgid "A direct link to the tool or to instructions on how to use or install the
 msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:406
-#, fuzzy
 msgid "The primary tool developers."
 msgstr "주 도구 개발자입니다."
 
@@ -740,7 +739,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:707
 msgid "Wikidata item ID for the tool."
-msgstr ""
+msgstr "도구의 위키데이터 항목 ID입니다."
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"
@@ -853,7 +852,7 @@ msgstr "모든 도구를 나열합니다."
 
 #: toolhub/apps/toolinfo/views.py:128
 msgid "Additional information for a tool."
-msgstr ""
+msgstr "도구의 추가 정보입니다."
 
 #: toolhub/apps/toolinfo/views.py:142
 msgid "Update annotations for a specific tool."

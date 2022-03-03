@@ -11,6 +11,7 @@
 	"auditlogs-username": "Benotzernumm",
 	"author": "Auteur",
 	"authors": "Auteur(en)",
+	"botusername": "Benotzernumm vum Bot",
 	"cancel": "Ofbriechen",
 	"clear": "Eidel maachen",
 	"close": "Zoumaachen",
@@ -21,6 +22,7 @@
 	"description": "Beschreiwung",
 	"experimental": "Experimentell",
 	"favorite": "Favorit",
+	"featured": "Bemierkenswäert",
 	"filter": "Filter",
 	"forwikis": "Fir Wikien",
 	"helptranslate": "Hëlleft iwwersetzen",
@@ -96,5 +98,6 @@
 	"valid": "valabel",
 	"viewhistory": "Versioune weisen",
 	"viewmore": "Méi weisen",
-	"welcomemessage": "Wëllkomm op Toolhub"
+	"welcomemessage": "Wëllkomm op Toolhub",
+	"wikiusername": "Wiki Benotzernumm"
 }

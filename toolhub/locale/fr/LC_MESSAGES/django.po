@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-02-24 12:14:23+0000\n"
+"PO-Revision-Date: 2022-03-03 12:13:02+0000\n"
 "X-POT-Import-Date: 2022-02-23 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -549,7 +549,7 @@ msgstr "Résultat de la complétion automatique d’outil"
 
 #: toolhub/apps/search/serializers.py:86
 msgid "ToolList autocomplete results"
-msgstr "Résultats de la complétude automatique de ToolList"
+msgstr "Résultats de complétion automatique de ToolList"
 
 #: toolhub/apps/search/views.py:109
 msgid "Autocomplete for tools."
@@ -561,7 +561,7 @@ msgstr "Recherche à facettes pour les outils."
 
 #: toolhub/apps/search/views.py:276
 msgid "Autocomplete for toollists."
-msgstr "Complétude automatique pour les listes d’outils."
+msgstr "Complétion automatique pour les listes d’outils."
 
 #: toolhub/apps/search/views.py:316
 msgid "Full text search for toollists."

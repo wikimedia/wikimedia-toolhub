@@ -137,7 +137,7 @@
 	"thistoolis": "Questo strumento è:",
 	"title": "Titolo",
 	"toolhub": "Toolhub",
-	"tools": "strumenti",
+	"tools": "Strumenti",
 	"toolsfound": "{{PLURAL:$1|1 strumento trovato|$1 strumenti trovati}}",
 	"tools-lastupdated": "ultimo aggiornamento il $1",
 	"tool-not-found": "Nessuno strumento di nome \"$1\" trovato.",
@@ -147,5 +147,6 @@
 	"valid": "valido",
 	"viewhistory": "Visualizza cronologia",
 	"welcomemessage": "Toolhub è un catalogo di strumenti Wikimedia creato dalla comunità.",
-	"wiki-username": "Nome utente wiki"
+	"wiki-username": "Nome utente wiki",
+	"wikiusername": "Nome utente wiki"
 }
