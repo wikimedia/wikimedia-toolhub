@@ -9,13 +9,13 @@
 		"lint:banana": "banana-checker vue/src/assets/locales/i18n/",
 		"lint:css-rtl": "bash -c \"if grep -rnHIE --color '\\b[mp][lr]-(n?[0-9][0-6]?|auto)\\b' vue/src; then echo 'ERROR: Use S and E helper classes, not L and R. (T269056)'; echo; exit 1; fi\"",
 		"lint:eslint": "eslint .",
-		"lint:stylelint": "stylelint -f verbose '**/*.{css,scss,sass,vue}'",
+		"lint:stylelint": "stylelint -f verbose '{toolhub,vue}/**/*.{css,scss,sass,vue}'",
 		"lint:vue": "vue-cli-service lint",
 		"schemas:generate": "jsonschema-tools materialize-all",
 		"serve:vue": "vue-cli-service serve",
 		"unit": "npm run unit:jsonschema && npm run unit:vue",
 		"unit:jsonschema": "mocha tests/jsonschema",
-		"unit:vue": "NODE_ENV=test nyc vue-cli-service test:unit --colors 'vue/src/**/*.spec.js'",
+		"unit:vue": "NODE_ENV=test nyc vue-cli-service test:unit --slow=5 --timeout=1000 'vue/src/**/*.spec.js'",
 		"test": "npm run lint && npm run unit"
 	},
 	"dependencies": {
