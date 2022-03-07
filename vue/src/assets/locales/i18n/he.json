@@ -65,6 +65,7 @@
 	"backtotoolhistory": "חזרה להיסטוריה של הכלי",
 	"backtotoolinfo": "חזרה למידע על הכלי",
 	"basicinfo": "מידע בסיסי",
+	"botusername": "שם המשתמש של הבוט",
 	"bugtracker": "כלי מעקב תקלות",
 	"bugtrackerurl": "כתובת URL לכלי מעקב באגים",
 	"browsetool": "עיון בכלי",
@@ -106,6 +107,7 @@
 	"developersettings-noclientappsfoundtext": "לא נמצאו יישומי לקוח",
 	"developersettings-nologintext": "חובה להיכנס ל־Toolhub כדי לצפות ביישומים בעלי אישור",
 	"developersettings-pagesubtitle": "הצגה, רישום, ושלילה של יישומי OAuth",
+	"developerusername": "שם המשתמש של המפתח",
 	"editsummary": "תקציר העריכה",
 	"email": "דואר אלקטרוני",
 	"experimental": "ניסיוני",
@@ -199,6 +201,7 @@
 	"newtoolsfound": "{{PLURAL:$1|כלי אחד|$1 כלים}}",
 	"nourlsfounderror": "לא נמצאו כתובות URL של קובץ toolinfo.json במערכת Toolhub.",
 	"ok": "אישור",
+	"openhubid": "מזהה מיזם ב־OpenHub",
 	"patrolled": "בדוקות",
 	"privacypolicy": "מדיניות פרטיות",
 	"privacypolicyurl": "ה־URL למדיניות הפרטיות",
@@ -306,9 +309,10 @@
 	"userdocsurl": "כתובת URL לתיעוד משתמש",
 	"valid": "תקין",
 	"viewhistory": "הצגת היסטוריה",
-	"viewlistrevisionsdiff": "נא לצפות בהבדלים בין הגרסאות של הרשימה $1",
+	"viewlistrevisionsdiff": "נא לצפות בהבדלים בין הגרסאות של הרשימה $1 \"{{bidi:$2}}\"",
 	"viewtoolrevisionsdiff": "הצגת ההבדל בין גרסאות הכלי $1",
 	"viewmore": "להציג עוד",
 	"welcomemessage": "Toolhub הוא קטלוג קהילתי של כלי ויקימדיה.",
-	"wiki-username": "שם משתמש בוויקי"
+	"wiki-username": "שם משתמש בוויקי",
+	"wikiusername": "שם משתמש בוויקי"
 }

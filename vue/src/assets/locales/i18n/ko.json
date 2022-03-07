@@ -52,6 +52,7 @@
 	"backtotoolhistory": "도구 역사로 돌아가기",
 	"backtotoolinfo": "도구 정보로 돌아가기",
 	"basicinfo": "기본 정보",
+	"botusername": "봇 사용자 이름",
 	"bugtracker": "버그 트래커",
 	"bugtrackerurl": "버그 추적기 URL",
 	"browsetool": "도구 찾아보기",
@@ -86,6 +87,7 @@
 	"developersettings-noauthorizedappsfoundtext": "계정 사용을 위해 클라이언트 앱에 권한을 부여하지 않았습니다",
 	"developersettings-noclientappsfoundtext": "클라이언트 앱이 없습니다",
 	"developersettings-nologintext": "인가된 앱을 보려면 툴허브에 로그인해야 합니다",
+	"developerusername": "개발자 사용자 이름",
 	"editsummary": "편집 요약",
 	"email": "이메일",
 	"experimental": "실험 기능",
@@ -93,6 +95,7 @@
 	"favorited": "즐겨찾기에 추가됨",
 	"favorites-pagetitle": "내가 즐겨찾는 도구",
 	"favorites-notoolsfoundtext": "즐겨찾는 도구가 없습니다",
+	"feature": "기능",
 	"filter": "필터",
 	"forwikis": "위키의 경우",
 	"helptranslate": "변역 돕기",
@@ -130,6 +133,7 @@
 	"name": "이름",
 	"newtoolsfound": "{{PLURAL:$1|1개 도구|$1개 도구}}",
 	"nourlsfounderror": "툴허브 시스템에서 toolinfo.json 파일 URL을 찾지 못했습니다.",
+	"openhubid": "오픈허브 프로젝트 ID",
 	"privacypolicy": "개인정보처리방침",
 	"privacypolicyurl": "개인정보보호정책 URL",
 	"publishchanges": "변경사항 게시",
@@ -231,5 +235,6 @@
 	"viewtoolrevisionsdiff": "도구 $1의 판 차이 보기",
 	"viewmore": "더 보기",
 	"welcomemessage": "툴허브에 오신 것을 환영합니다",
-	"wiki-username": "위키 사용자 이름"
+	"wiki-username": "위키 사용자 이름",
+	"wikiusername": "위키 사용자 이름"
 }
