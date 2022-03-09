@@ -50,7 +50,7 @@
 			</v-col>
 		</v-row>
 		<v-row>
-			<v-col cols="12">
+			<v-col cols="12" class="pb-8">
 				<SearchBar
 					:target="searchTarget"
 					@search="onSearchBarSearch"
@@ -58,15 +58,9 @@
 			</v-col>
 		</v-row>
 
-		<v-row>
-			<v-col v-for="list in featuredLists.results"
-				:key="list.title"
-				cols="12"
-				class="featured-lists"
-			>
-				<ListCard :list="list" />
-			</v-col>
-		</v-row>
+		<Lists v-if="featuredLists.count"
+			:lists="featuredLists"
+		/>
 
 		<v-pagination
 			v-if="featuredLists.count > 0"
@@ -84,11 +78,11 @@ import { mapActions, mapState } from 'vuex';
 import '@/assets/styles/index.css';
 import SearchBar from '@/components/search/SearchBar';
 import fetchMetaInfo from '@/helpers/metadata';
-import ListCard from '@/components/lists/ListCard';
+import Lists from '@/components/lists/Lists';
 
 export default {
 	components: {
-		ListCard,
+		Lists,
 		SearchBar
 	},
 	data: () => ( {

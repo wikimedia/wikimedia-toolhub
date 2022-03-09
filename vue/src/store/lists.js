@@ -37,13 +37,7 @@ export const mutations = {
 
 export const actions = {
 	getFeaturedLists( context, page ) {
-		const request = {
-			url: '/api/lists/?featured=true&page=' + page,
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		};
+		const request = { url: '/api/lists/?featured=true&page=' + page };
 
 		return makeApiCall( context, request ).then(
 			( success ) => {
@@ -77,13 +71,7 @@ export const actions = {
 				[ 'page', page ]
 			] );
 
-			const request = {
-				url: '/api/lists/?' + params.toString(),
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			};
+			const request = { url: '/api/lists/?' + params.toString() };
 
 			return makeApiCall( context, request ).then(
 				( success ) => {
@@ -184,13 +172,7 @@ export const actions = {
 		);
 	},
 	getListById( context, id ) {
-		const request = {
-			url: '/api/lists/' + id + '/',
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		};
+		const request = { url: '/api/lists/' + id + '/' };
 
 		return makeApiCall( context, request ).then(
 			( success ) => {
