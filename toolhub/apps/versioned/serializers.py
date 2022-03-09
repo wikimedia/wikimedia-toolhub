@@ -67,6 +67,14 @@ class RevisionSerializer(ModelSerializer):
         default=False,
         help_text=_("Has this revision been reviewed by a patroller?"),
     )
+    content_type = serializers.CharField(
+        source="content_type.model",
+        read_only=True,
+        default="",
+        help_text=_("Content type of the revision."),
+    )
+    content_id = serializers.SerializerMethodField()
+    content_title = serializers.SerializerMethodField()
 
     def _should_hide_details(self, instance):
         """Should the details of this revision be hidden?"""
@@ -83,6 +91,19 @@ class RevisionSerializer(ModelSerializer):
             ret["comment"] = _("edit summary removed")
         return ret
 
+    @extend_schema_field(schema.CONTENT_ID)
+    def get_content_id(self, instance):
+        """Get the identifier of the content being versioned"""
+        if instance.content_type.model == "tool":
+            return instance._local_field_dict["name"]
+        elif instance.content_type.model == "toollist":
+            return instance._local_field_dict["id"]
+
+    @extend_schema_field(schema.CONTENT_TITLE)
+    def get_content_title(self, instance):
+        """Get the title of the content being versioned"""
+        return instance._local_field_dict["title"]
+
     class Meta:
         """Configure serializer."""
 
@@ -94,6 +115,9 @@ class RevisionSerializer(ModelSerializer):
             "comment",
             "suppressed",
             "patrolled",
+            "content_type",
+            "content_id",
+            "content_title",
         ]
 
 

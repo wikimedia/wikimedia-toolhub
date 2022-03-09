@@ -17,6 +17,15 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.utils.translation import gettext_lazy as _
 
+CONTENT_ID = {
+    "description": _("unique identifier of the content being versioned"),
+    "type": "string",
+}
+
+CONTENT_TITLE = {
+    "description": _("title describing the content being versioned"),
+    "type": "string",
+}
 
 JSONPATCH = {
     "description": _("RFC 6902 application/json-patch+json data"),

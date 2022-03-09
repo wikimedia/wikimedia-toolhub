@@ -26,6 +26,7 @@ import toolhub.apps.oauth2.views as oauth_views
 import toolhub.apps.search.views as search_views
 import toolhub.apps.toolinfo.views as toolinfo_views
 import toolhub.apps.user.views as user_views
+import toolhub.apps.versioned.views as versioned_views
 
 
 class ToolhubApiRootView(drf_routers.APIRootView):
@@ -74,6 +75,9 @@ root.register("spdx", toolinfo_views.SpdxViewSet, basename="spdx")
 root.register("tools", toolinfo_views.ToolViewSet, basename="tool")
 root.register("users", user_views.UserViewSet)
 root.register("user/favorites", lists_views.FavoritesViewSet)
+root.register(
+    "recent", versioned_views.RecentChangesViewSet, basename="recent-changes"
+)
 
 crawler_runs = nested_routers.NestedSimpleRouter(
     root,
