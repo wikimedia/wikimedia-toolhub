@@ -1,14 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chaduvari",
 			"Veeven"
 		]
 	},
 	"add": "చేర్చు",
 	"authors": "రచయిత(లు)",
 	"basicinfo": "ప్రాథమిక సమాచారం",
+	"botusername": "బాట్ వాడుకరిపేరు",
 	"cancel": "రద్దుచేయి",
 	"close": "మూసివేయి",
+	"developerusername": "డెవలపరు వాడుకరిపేరు",
 	"experimental": "ప్రయోగాత్మకం",
 	"helptranslate": "అనువదించడానికి తోడ్పడండి",
 	"home": "ముంగిలి",
@@ -17,21 +20,30 @@
 	"learnmore": "మరింత తెలుసుకోండి",
 	"leavefeedback": "ప్రతిస్పందనను తెలియజేయండి",
 	"links": "లంకెలు",
+	"listinfo": "$2 న $1 సృష్టించిన జాబితా",
+	"list-not-found": "\"$1\" అనే పేరుగల జాబితా ఏదీ కనబడలేదు.",
+	"lists-search-label": "జాబితాల్లో వెతకండి",
 	"login": "ప్రవేశించండి",
+	"metadata-publishedlists-description": "వాడుకరి సృష్టించిన బహిరంగంగా కనిపించే జాబితాల కోసం ఈ పేజీ చూడండి",
 	"modifieddate": "మార్చిన తేదీ",
 	"moreinfo": "మరింత సమాచారం",
 	"my-account": "నా ఖాతా",
 	"newtoolsfound": "1 పనిముట్టు | {n} పనిముట్లు",
+	"openhubid": "OpenHub ప్రాజెక్టు ఐడీ",
 	"privacypolicy": "అంతరంగికతా విధానం",
 	"publishchanges": "మార్పులను ప్రచురించు",
+	"publishedlists": "ప్రచురించిన జాబితాలు",
+	"publishedlists-pagetitle": "ప్రచురించిన జాబితాలను చూడండి, శోధించండి",
 	"status": "స్థితి",
 	"system-user": "వ్యవస్థ",
 	"technologyused": "వాడిన సాంకేతికత",
 	"tools-history": "పనిముట్టు చరిత్ర",
-	"tools": "పనిముట్లు",
+	"tools": "పరికరాలు",
 	"totaltools": "మొత్తం పనిముట్లు",
 	"tooltype": "పనిముట్టు రకం",
 	"urlrequired": "చిరునామా తప్పనిసరి",
 	"viewhistory": "చరిత్రను చూడండి",
-	"viewmore": "ఇంకా చూడండి"
+	"viewlistrevisionsdiff": "$1 జాబితా కూర్పుల మధ్య తేడాను చూడండి\"{{bidi:$2}}\"",
+	"viewmore": "ఇంకా చూడండి",
+	"wikiusername": "వికీ వాడుకరిపేరు"
 }

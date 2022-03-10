@@ -7,10 +7,11 @@
 # Author: Joseph
 # Author: Melissadilara
 # Author: MuratTheTurkish
+# Author: SaldırganSincap
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-02-24 12:14:24+0000\n"
+"PO-Revision-Date: 2022-03-10 12:14:21+0000\n"
 "X-POT-Import-Date: 2022-02-23 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -638,9 +639,8 @@ msgid "A direct link to the tool or to instructions on how to use or install the
 msgstr "Araca veya aletin nasıl kullanılacağına veya kurulacağına ilişkin talimatlara doğrudan bağlantı."
 
 #: toolhub/apps/toolinfo/models.py:406
-#, fuzzy
 msgid "The primary tool developers."
-msgstr "Birincil araç geliştiricisi."
+msgstr "Birincil araç geliştiricileri."
 
 #: toolhub/apps/toolinfo/models.py:413
 msgid "A link to the repository where the tool code is hosted."
