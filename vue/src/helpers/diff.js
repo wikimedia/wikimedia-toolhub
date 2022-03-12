@@ -114,6 +114,20 @@ export function parsePath( path ) {
 }
 
 /**
+ * Get a value from a JSON-Pointer or null if not found.
+ *
+ * @param {Object} ptr - JSON-Pointer object
+ * @param {string} path - Path to get
+ * @return {*}
+ */
+export function safePointerGet( ptr, path ) {
+	if ( ptr.has( path ) ) {
+		return ptr.get( path );
+	}
+	return null;
+}
+
+/**
  * Expand ChangeInfo with complex changed data.
  *
  * Check for an array or object (or array of objects) and convert to a list of
@@ -192,7 +206,7 @@ export function computeChange( op, basisPtr, formatProp ) {
 		// Check for array element removal and show new value if removed
 		// element was not array tail.
 		const parentPath = path.slice( 0, -1 );
-		const parent = basisPtr.get( parentPath );
+		const parent = safePointerGet( basisPtr, parentPath );
 		const curIdx = path[ path.length - 1 ];
 		if (
 			Array.isArray( parent ) &&
@@ -201,14 +215,17 @@ export function computeChange( op, basisPtr, formatProp ) {
 		) {
 			const nextPath = [ ...parentPath, curIdx + 1 ];
 			newValue = formatProp(
-				pointer.compile( nextPath ), basisPtr.get( nextPath )
+				pointer.compile( nextPath ),
+				safePointerGet( basisPtr, nextPath )
 			);
 		}
 
 		ret.push( ...expandObjects(
 			{
 				path: path,
-				oldValue: formatProp( op.path, basisPtr.get( op.path ) ),
+				oldValue: formatProp(
+					op.path, safePointerGet( basisPtr, op.path )
+				),
 				newValue: newValue
 			}
 		) );
@@ -218,18 +235,24 @@ export function computeChange( op, basisPtr, formatProp ) {
 		ret.push( ...expandObjects(
 			{
 				path: path,
-				oldValue: formatProp( op.path, basisPtr.get( op.path ) ),
+				oldValue: formatProp(
+					op.path, safePointerGet( basisPtr, op.path )
+				),
 				newValue: formatProp( op.path, op.value )
 			}
 		) );
 		basisPtr.set( op.path, op.value );
 
 	} else if ( op.op === 'move' ) {
-		const fromProp = formatProp( op.from, basisPtr.get( op.from ) );
+		const fromProp = formatProp(
+			op.from, safePointerGet( basisPtr, op.from )
+		);
 		ret.push( ...expandObjects(
 			{
 				path: path,
-				oldValue: formatProp( op.path, basisPtr.get( op.path ) ),
+				oldValue: formatProp(
+					op.path, safePointerGet( basisPtr, op.path )
+				),
 				newValue: fromProp
 			}
 		) );
@@ -240,15 +263,14 @@ export function computeChange( op, basisPtr, formatProp ) {
 				newValue: null
 			}
 		) );
-		basisPtr.set( op.path, basisPtr.get( op.from ) );
+		basisPtr.set( op.path, safePointerGet( basisPtr, op.from ) );
 		basisPtr.remove( op.from );
 
 	} else if ( op.op === 'copy' ) {
-		const fromVal = basisPtr.get( op.from );
-		let oldValue = null;
-		if ( basisPtr.has( op.path ) ) {
-			oldValue = formatProp( op.path, basisPtr.get( op.path ) );
-		}
+		const fromVal = safePointerGet( basisPtr, op.from );
+		const oldValue = formatProp(
+			op.path, safePointerGet( basisPtr, op.path )
+		);
 		ret.push( ...expandObjects(
 			{
 				path: path,

@@ -134,6 +134,23 @@ describe( 'helpers/diff', () => {
 			const ci = computeChangeInfo( ops, basis, formatProp );
 			expect( ci ).to.eql( expected );
 		} );
+		it( 'should handle missing basis values', () => {
+			const basis = {
+				tools: [ 'tool1' ]
+			};
+			const ops = [
+				{ op: 'replace', path: '/annotations/a_new_thing', value: '1' }
+			];
+			const expected = [
+				{
+					path: [ 'annotations', 'a_new_thing' ],
+					oldValue: null,
+					newValue: '1'
+				}
+			];
+			const ci = computeChangeInfo( ops, basis, formatProp );
+			expect( ci ).to.eql( expected );
+		} );
 	} );
 
 	describe( 'normalizeEmpty', () => {
