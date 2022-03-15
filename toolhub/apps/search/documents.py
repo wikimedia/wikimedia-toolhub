@@ -90,6 +90,20 @@ SERIALIZER_FIELD_TO_ES_FIELD = {
     serializers.UUIDField: fields.KeywordField,
 }
 
+
+# Fields that should have a `copy_to` property added in the generated
+# mappings. Key is the field name. Value is the copy_to target field.
+# FIXME: it would be nicer to keep this configuration inside of SearchDocument
+# subclasses instead of as this global config, but so far we have not found
+# a reasonable place to insert the necessary logic to make this happen as
+# a post-processing step.
+COPY_TO_FIELDS = {
+    "available_ui_languages": "x_merged_ui_lang",
+    "for_wikis": "x_merged_wiki",
+    "tool_type": "x_merged_type",
+}
+
+
 en_stem_filter = token_filter("english", type="stemmer")
 gram2_filter = token_filter(
     "gram2_shingle",
@@ -140,6 +154,9 @@ def build_string_field(**kwargs):
         }
     if "analyzer" not in kwargs:
         kwargs["analyzer"] = en_analyzer
+    name = kwargs.get("attr", None)
+    if name in COPY_TO_FIELDS:
+        kwargs["copy_to"] = COPY_TO_FIELDS[name]
     return fields.TextField(**kwargs)
 
 
@@ -166,7 +183,10 @@ def build_field_from_schema(schema_, attr):
     if type_ == "string":
         return build_string_field(attr=attr)
 
-    return JSONSCHEMA_TYPE_TO_DSL[type_](attr=attr)
+    field = JSONSCHEMA_TYPE_TO_DSL[type_](attr=attr)
+    if attr in COPY_TO_FIELDS:
+        field.copy_to = COPY_TO_FIELDS[attr]
+    return field
 
 
 def build_field_from_serializer_field(name, field):
@@ -179,7 +199,13 @@ def build_field_from_serializer_field(name, field):
 
     try:
         clazz = SERIALIZER_FIELD_TO_ES_FIELD[field.__class__]
-        return clazz(attr=name)
+        if issubclass(clazz, serializers.CharField):
+            return build_string_field(attr=name)
+
+        field = clazz(attr=name)
+        if name in COPY_TO_FIELDS:
+            field.copy_to = COPY_TO_FIELDS[name]
+        return field
     except KeyError:
         raise RuntimeError(
             "Unknown field type {} for {}".format(
@@ -213,15 +239,21 @@ class SearchDocument(Document):
     @classmethod
     def to_field(cls, field_name, model_field):
         """Get the es field instance approriate for the model field class."""
+        field = None
         if isinstance(model_field, JSONSchemaField):
-            return build_field_from_schema(
+            field = build_field_from_schema(
                 model_field._schema, field_name  # noqa: W0212
             )
 
-        if isinstance(model_field, (CharField, TextField)):
-            return build_string_field(attr=field_name)
+        elif isinstance(model_field, (CharField, TextField)):
+            field = build_string_field(attr=field_name)
 
-        return super().to_field(field_name, model_field)
+        else:
+            field = super().to_field(field_name, model_field)
+
+        if field_name in COPY_TO_FIELDS:
+            field.copy_to = COPY_TO_FIELDS[field_name]
+        return field
 
 
 @registry.register_document
@@ -233,6 +265,10 @@ class ToolDocument(SearchDocument):
     )
     created_by = build_field_from_serializer(UserSerializer, "created_by")
     modified_by = build_field_from_serializer(UserSerializer, "modified_by")
+
+    x_merged_ui_lang = fields.KeywordField(ignore_above=256)
+    x_merged_wiki = fields.KeywordField(ignore_above=256)
+    x_merged_type = fields.KeywordField(ignore_above=256)
 
     class Index:
         """Configure index."""

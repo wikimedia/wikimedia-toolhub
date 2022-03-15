@@ -172,14 +172,14 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
             "lookups": constants.STRING_LOOKUP_FILTERS,
         },
         "wiki": {
-            "field": "for_wikis.keyword",
+            "field": "x_merged_wiki",
             "lookups": [
                 constants.LOOKUP_FILTER_TERM,
                 constants.LOOKUP_QUERY_ISNULL,
             ],
         },
         "tool_type": {
-            "field": "tool_type.keyword",
+            "field": "x_merged_type",
             "lookups": [
                 constants.LOOKUP_FILTER_TERM,
                 constants.LOOKUP_QUERY_ISNULL,
@@ -200,7 +200,7 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
             ],
         },
         "ui_language": {
-            "field": "available_ui_languages.keyword",
+            "field": "x_merged_ui_lang",
             "lookups": [
                 constants.LOOKUP_FILTER_TERM,
                 constants.LOOKUP_QUERY_ISNULL,
@@ -231,12 +231,12 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
     ordering = ("_score", "-created_date", "name.keyword")
     faceted_search_fields = {
         "wiki": {
-            "field": "for_wikis.keyword",
+            "field": "x_merged_wiki",
             "options": build_term_facet_options("wiki", multi=True),
             "enabled": True,
         },
         "tool_type": {
-            "field": "tool_type.keyword",
+            "field": "x_merged_type",
             "options": build_term_facet_options("tool_type"),
             "enabled": True,
         },
@@ -251,7 +251,7 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
             "enabled": True,
         },
         "ui_language": {
-            "field": "available_ui_languages.keyword",
+            "field": "x_merged_ui_lang",
             "options": build_term_facet_options("ui_language", multi=True),
             "enabled": True,
         },
