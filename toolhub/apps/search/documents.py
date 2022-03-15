@@ -75,6 +75,7 @@ JSONSCHEMA_TYPE_TO_DSL = {
 
 SERIALIZER_FIELD_TO_ES_FIELD = {
     serializers.BooleanField: fields.BooleanField,
+    serializers.ChoiceField: fields.TextField,
     serializers.DateField: fields.DateField,
     serializers.DateTimeField: fields.DateField,
     serializers.EmailField: fields.TextField,

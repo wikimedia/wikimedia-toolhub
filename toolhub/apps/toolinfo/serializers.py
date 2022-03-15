@@ -79,6 +79,21 @@ class AnnotationsSerializer(ModelSerializer):
         model = Annotations
         fields = [
             "wikidata_qid",
+            # Fields from CommonFieldsMixin
+            "deprecated",
+            "replaced_by",
+            "experimental",
+            "for_wikis",
+            "icon",
+            "available_ui_languages",
+            "tool_type",
+            "api_url",
+            "developer_docs_url",
+            "user_docs_url",
+            "feedback_url",
+            "privacy_policy_url",
+            "translate_url",
+            "bugtracker_url",
         ]
 
 
@@ -90,10 +105,8 @@ class UpdateAnnotationsSerializer(ModelSerializer, EditCommentFieldMixin):
         """Configure serializer."""
 
         model = Annotations
-        fields = [
-            "wikidata_qid",
-            "comment",
-        ]
+        fields = list(AnnotationsSerializer.Meta.fields)
+        fields.append("comment")
 
     @transaction.atomic
     def update(self, instance, validated_data):

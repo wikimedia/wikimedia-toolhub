@@ -60,6 +60,156 @@ def name_to_slug(name):
     return slugify(name, allow_unicode=True)
 
 
+class CommonFieldsMixin(models.Model):
+    """Fields that should be present in both Tool and Annotations models."""
+
+    TOOL_TYPE_CHOICES = (
+        ("web app", _("web app")),
+        ("desktop app", _("desktop app")),
+        ("bot", _("bot")),
+        ("gadget", _("gadget")),
+        ("user script", _("user script")),
+        ("command line tool", _("command line tool")),
+        ("coding framework", _("coding framework")),
+        ("lua module", _("lua module")),
+        ("template", _("template")),
+        ("other", _("other")),
+    )
+
+    deprecated = models.BooleanField(
+        default=False,
+        help_text=_(
+            "If true, the use of this tool is officially discouraged. "
+            "The `replaced_by` parameter can be used to define a replacement."
+        ),
+    )
+    replaced_by = BlankAsNullTextField(
+        blank=True,
+        max_length=2047,
+        null=True,
+        validators=[validators.URLValidator(schemes=["http", "https"])],
+        help_text=_(
+            "If this tool is deprecated, this parameter should be used to "
+            "link to the replacement tool."
+        ),
+    )
+    experimental = models.BooleanField(
+        default=False,
+        help_text=_(
+            "If true, this tool is unstable and can change or "
+            "go offline at any time."
+        ),
+    )
+    for_wikis = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_(
+            "A string or array of strings describing the wiki(s) this tool "
+            "can be used on. Use hostnames such as `zh.wiktionary.org`. Use "
+            "asterisks as wildcards. For example, `*.wikisource.org` means "
+            "'this tool works on all Wikisource wikis.' `*` means "
+            "'this works on all wikis, including Wikimedia wikis.'"
+        ),
+        schema=schema.schema_for("for_wikis", oneof=0),
+    )
+    icon = BlankAsNullCharField(
+        blank=True,
+        max_length=2047,
+        null=True,
+        validators=[
+            validators.RegexValidator(
+                regex=r"^https://commons\.wikimedia\.org/wiki/File:.+\..+$"
+            ),
+        ],
+        help_text=_(
+            "A link to a Wikimedia Commons file description page for an icon "
+            "that depicts the tool."
+        ),
+    )
+    available_ui_languages = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_(
+            "The language(s) the tool's interface has been translated into. "
+            "Use ISO 639 language codes like `zh` and `scn`. If not defined "
+            "it is assumed the tool is only available in English."
+        ),
+        schema=schema.schema_for("available_ui_languages", oneof=0),
+        validators=[validate_language_code_list],
+    )
+    tool_type = BlankAsNullCharField(
+        choices=TOOL_TYPE_CHOICES,
+        blank=True,
+        max_length=32,
+        null=True,
+        help_text=_(
+            "The manner in which the tool is used. "
+            "Select one from the list of options."
+        ),
+    )
+    api_url = BlankAsNullTextField(
+        blank=True,
+        max_length=2047,
+        null=True,
+        validators=[validators.URLValidator(schemes=["http", "https"])],
+        help_text=_("A link to the tool's API, if available."),
+    )
+    developer_docs_url = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_(
+            "A link to the tool's developer documentation, if available."
+        ),
+        schema=schema.schema_for("developer_docs_url", oneof=0),
+        validators=[validate_url_mutilingual_list],
+    )
+    user_docs_url = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_("A link to the tool's user documentation, if available."),
+        schema=schema.schema_for("user_docs_url", oneof=0),
+        validators=[validate_url_mutilingual_list],
+    )
+    feedback_url = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_(
+            "A link to location where the tool's user can leave feedback."
+        ),
+        schema=schema.schema_for("feedback_url", oneof=0),
+        validators=[validate_url_mutilingual_list],
+    )
+    privacy_policy_url = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_("A link to the tool's privacy policy, if available."),
+        schema=schema.schema_for("privacy_policy_url", oneof=0),
+        validators=[validate_url_mutilingual_list],
+    )
+    translate_url = BlankAsNullTextField(
+        blank=True,
+        max_length=2047,
+        null=True,
+        validators=[validators.URLValidator(schemes=["http", "https"])],
+        help_text=_("A link to the tool's translation interface."),
+    )
+    bugtracker_url = BlankAsNullTextField(
+        blank=True,
+        max_length=2047,
+        null=True,
+        validators=[validators.URLValidator(schemes=["http", "https"])],
+        help_text=_(
+            "A link to the tool's bug tracker on GitHub, Bitbucket, "
+            "Phabricator, etc."
+        ),
+    )
+
+    class Meta:
+        """Mark as abstract."""
+
+        abstract = True
+
+
 class ToolManager(SafeDeleteManager):
     """Custom manager for Tool models."""
 
@@ -339,21 +489,12 @@ class ToolManager(SafeDeleteManager):
 
 @reversion.register(follow=("annotations",))
 @registry.register()
-class Tool(ExportModelOperationsMixin("tool"), SafeDeleteModel):
+class Tool(
+    CommonFieldsMixin,
+    ExportModelOperationsMixin("tool"),
+    SafeDeleteModel,
+):
     """Description of a tool."""
-
-    TOOL_TYPE_CHOICES = (
-        ("web app", _("web app")),
-        ("desktop app", _("desktop app")),
-        ("bot", _("bot")),
-        ("gadget", _("gadget")),
-        ("user script", _("user script")),
-        ("command line tool", _("command line tool")),
-        ("coding framework", _("coding framework")),
-        ("lua module", _("lua module")),
-        ("template", _("template")),
-        ("other", _("other")),
-    )
 
     ORIGIN_CRAWLER = "crawler"
     ORIGIN_API = "api"
@@ -450,56 +591,6 @@ class Tool(ExportModelOperationsMixin("tool"), SafeDeleteModel):
             "Do not include 'User:' or similar prefixes."
         ),
     )
-    deprecated = models.BooleanField(
-        default=False,
-        help_text=_(
-            "If true, the use of this tool is officially discouraged. "
-            "The `replaced_by` parameter can be used to define a replacement."
-        ),
-    )
-    replaced_by = BlankAsNullTextField(
-        blank=True,
-        max_length=2047,
-        null=True,
-        validators=[validators.URLValidator(schemes=["http", "https"])],
-        help_text=_(
-            "If this tool is deprecated, this parameter should be used to "
-            "link to the replacement tool."
-        ),
-    )
-    experimental = models.BooleanField(
-        default=False,
-        help_text=_(
-            "If true, this tool is unstable and can change or "
-            "go offline at any time."
-        ),
-    )
-    for_wikis = JSONSchemaField(
-        blank=True,
-        default=list,
-        help_text=_(
-            "A string or array of strings describing the wiki(s) this tool "
-            "can be used on. Use hostnames such as `zh.wiktionary.org`. Use "
-            "asterisks as wildcards. For example, `*.wikisource.org` means "
-            "'this tool works on all Wikisource wikis.' `*` means "
-            "'this works on all wikis, including Wikimedia wikis.'"
-        ),
-        schema=schema.schema_for("for_wikis", oneof=0),
-    )
-    icon = BlankAsNullCharField(
-        blank=True,
-        max_length=2047,
-        null=True,
-        validators=[
-            validators.RegexValidator(
-                regex=r"^https://commons\.wikimedia\.org/wiki/File:.+\..+$"
-            ),
-        ],
-        help_text=_(
-            "A link to a Wikimedia Commons file description page for an icon "
-            "that depicts the tool."
-        ),
-    )
     license = BlankAsNullCharField(  # noqa: A003
         blank=True,
         max_length=255,
@@ -516,17 +607,6 @@ class Tool(ExportModelOperationsMixin("tool"), SafeDeleteModel):
         help_text=_("Organization(s) that sponsored the tool's development."),
         schema=schema.schema_for("sponsor", oneof=1),
     )
-    available_ui_languages = JSONSchemaField(
-        blank=True,
-        default=list,
-        help_text=_(
-            "The language(s) the tool's interface has been translated into. "
-            "Use ISO 639 language codes like `zh` and `scn`. If not defined "
-            "it is assumed the tool is only available in English."
-        ),
-        schema=schema.schema_for("available_ui_languages", oneof=0),
-        validators=[validate_language_code_list],
-    )
     technology_used = JSONSchemaField(
         blank=True,
         default=list,
@@ -536,72 +616,6 @@ class Tool(ExportModelOperationsMixin("tool"), SafeDeleteModel):
             "creating the tool."
         ),
         schema=schema.schema_for("technology_used", oneof=1),
-    )
-    tool_type = BlankAsNullCharField(
-        choices=TOOL_TYPE_CHOICES,
-        blank=True,
-        max_length=32,
-        null=True,
-        help_text=_(
-            "The manner in which the tool is used. "
-            "Select one from the list of options."
-        ),
-    )
-    api_url = BlankAsNullTextField(
-        blank=True,
-        max_length=2047,
-        null=True,
-        validators=[validators.URLValidator(schemes=["http", "https"])],
-        help_text=_("A link to the tool's API, if available."),
-    )
-    developer_docs_url = JSONSchemaField(
-        blank=True,
-        default=list,
-        help_text=_(
-            "A link to the tool's developer documentation, if available."
-        ),
-        schema=schema.schema_for("developer_docs_url", oneof=0),
-        validators=[validate_url_mutilingual_list],
-    )
-    user_docs_url = JSONSchemaField(
-        blank=True,
-        default=list,
-        help_text=_("A link to the tool's user documentation, if available."),
-        schema=schema.schema_for("user_docs_url", oneof=0),
-        validators=[validate_url_mutilingual_list],
-    )
-    feedback_url = JSONSchemaField(
-        blank=True,
-        default=list,
-        help_text=_(
-            "A link to location where the tool's user can leave feedback."
-        ),
-        schema=schema.schema_for("feedback_url", oneof=0),
-        validators=[validate_url_mutilingual_list],
-    )
-    privacy_policy_url = JSONSchemaField(
-        blank=True,
-        default=list,
-        help_text=_("A link to the tool's privacy policy, if available."),
-        schema=schema.schema_for("privacy_policy_url", oneof=0),
-        validators=[validate_url_mutilingual_list],
-    )
-    translate_url = BlankAsNullTextField(
-        blank=True,
-        max_length=2047,
-        null=True,
-        validators=[validators.URLValidator(schemes=["http", "https"])],
-        help_text=_("A link to the tool's translation interface."),
-    )
-    bugtracker_url = BlankAsNullTextField(
-        blank=True,
-        max_length=2047,
-        null=True,
-        validators=[validators.URLValidator(schemes=["http", "https"])],
-        help_text=_(
-            "A link to the tool's bug tracker on GitHub, Bitbucket, "
-            "Phabricator, etc."
-        ),
     )
     _schema = BlankAsNullCharField(
         blank=True,
@@ -691,7 +705,11 @@ def add_revision_to_tool(sender, revision, versions, **kwargs):  # noqa: W0613
 
 
 @reversion.register()
-class Annotations(ExportModelOperationsMixin("annotations"), SafeDeleteModel):
+class Annotations(
+    CommonFieldsMixin,
+    ExportModelOperationsMixin("annotations"),
+    SafeDeleteModel,
+):
     """Annotations added to a tool."""
 
     tool = models.OneToOneField(
