@@ -43,11 +43,11 @@ django-elasticsearch-dsl-drf = "^0.22.1"
 django-safedelete = "^1.0.0"
 rules = "^3.0"
 django-csp = "^3.7"
-django-prometheus = "^2.1.0"
+django-prometheus = "^2.2.0"
 ecs-logging = "^1.0.1"
-python-memcached = "^1.59"
 # Pin flake8 to 3.x pending https://github.com/flakehell/flakehell/pull/23
 flake8 = "^3.9.2"
+pylibmc = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"
