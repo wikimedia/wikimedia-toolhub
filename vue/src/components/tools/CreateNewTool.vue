@@ -54,27 +54,15 @@ export default {
 				license: null,
 				repository: null,
 				bugtracker_url: null,
-				user_docs_url: [ { language: this.$i18n.locale, url: null } ]
+				user_docs_url: []
 			},
 			valid: false
 		};
 	},
 	computed: {
 		...mapState( 'user', [ 'toolCreated' ] ),
-		...mapState( 'locale', [ 'localeMap' ] ),
+		...mapState( 'locale', [ 'localeSelect' ] ),
 		...mapState( 'tools', [ 'spdxLicenses' ] ),
-
-		_localeMap() {
-			const localeArr = [];
-			Object.keys( this.localeMap ).forEach( ( key ) => {
-				localeArr.push( {
-					name: this.localeMap[ key ],
-					code: key
-				} );
-			} );
-
-			return localeArr;
-		},
 
 		_toolCreated() {
 			return this.toolCreated;
@@ -160,21 +148,19 @@ export default {
 					label: this.$t( 'bugtrackerurl' )
 				},
 				user_docs_url: {
+					widget: 'url-multilingual',
+					icon: 'mdi-file-document-multiple-outline',
+					appendIcon: 'mdi-plus',
+					label: this.$t( 'userdocsurl' ),
 					items: {
-						widget: 'url-multilingual',
 						url: {
-							icon: 'mdi-file-document-multiple-outline',
-							label: this.$t( 'userdocsurl' )
+							icon: 'mdi-file-document-outline',
+							label: this.$t( 'url' )
 						},
 						language: {
 							widget: 'select',
 							select: {
-								items: () => this._localeMap.map( ( x ) => {
-									return {
-										text: `${x.name} (${x.code})`,
-										value: x.code
-									};
-								} )
+								items: () => this.localeSelect
 							},
 							icon: 'mdi-web',
 							label: this.$t( 'language' )
@@ -200,7 +186,7 @@ export default {
 		createTool() {
 			const newtool = { ...this.toolinfo };
 			newtool.user_docs_url = newtool.user_docs_url.filter( ( u ) => {
-				return u.url !== null && u.url !== '';
+				return u.url !== undefined && u.url !== null && u.url !== '';
 			} );
 			newtool.comment = this.$t(
 				'toolcreationcomment', [ newtool.title ]

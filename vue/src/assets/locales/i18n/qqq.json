@@ -234,6 +234,8 @@
 	"privacypolicy": "Link label, links to privacy policy for a tool.",
 	"privacypolicyurl": "Label for privacy policy url for a tool",
 	"publishchanges": "Button label",
+	"back": "Button label",
+	"continue": "Button label",
 	"publishedlists": "Navigation menu label, links to Published lists page.",
 	"publishedlists-pagetitle": "Page title",
 	"redirecturl": "Table column label",

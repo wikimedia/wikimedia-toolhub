@@ -12,8 +12,7 @@
 					:to="{ name: 'tools-view', params: { name: name } }"
 				>
 					<v-icon
-						dark
-						class="me-2"
+						left
 					>
 						mdi-cancel
 					</v-icon>
@@ -30,7 +29,7 @@
 				>
 					<v-icon
 						dark
-						class="me-2"
+						left
 					>
 						mdi-content-save-edit
 					</v-icon>
@@ -39,113 +38,210 @@
 			</v-col>
 		</v-row>
 
-		<v-form v-model="valid">
-			<v-row dense class="my-4">
-				<v-col md="7"
-					cols="12"
-					class="pe-4"
-				>
-					<v-row class="cols">
-						<v-col cols="12" class="text-h5 mt-4">
+		<v-row>
+			<v-col cols="12">
+				<v-form v-model="valid">
+					<v-stepper
+						v-model="step"
+						non-linear
+						vertical
+						:elevation="0"
+					>
+						<v-stepper-step
+							step="1"
+							editable
+							:rules="[ () => stepIsValid.stepOne ]"
+						>
 							{{ $t( 'basicinfo' ) }}
-						</v-col>
-					</v-row>
-
-					<v-row class="cols">
-						<v-col
-							v-for="( uischema, id ) in basicInfoLayout"
-							:key="id"
-							cols="12"
-						>
-							<InputWidget
-								v-model="tool[ id ]"
-								:schema="schema.properties[ id ]"
-								:ui-schema="uischema"
-							/>
-						</v-col>
-					</v-row>
-
-					<v-row class="cols">
-						<v-col cols="12" class="text-h5 mt-4">
-							{{ $t( 'links' ) }}
-						</v-col>
-					</v-row>
-
-					<v-row class="cols">
-						<v-col
-							v-for="( uischema, id ) in linksLayout"
-							:key="id"
-							cols="12"
-						>
-							<InputWidget
-								v-model="tool[ id ]"
-								:schema="schema.properties[ id ]"
-								:ui-schema="uischema"
-							/>
-						</v-col>
-					</v-row>
-
-					<v-row>
-						<v-col
-							v-for="( uischema, id ) in multiLingualLinksLayout"
-							:key="id"
-							cols="12"
-						>
-							<v-row>
+						</v-stepper-step>
+						<v-stepper-content step="1">
+							<v-row dense class="my-4">
 								<v-col cols="12">
-									<InputWidget
-										v-model="tool[ id ]"
-										:schema="schema.properties[ id ]"
-										:ui-schema="uischema"
-									/>
+									<v-row class="cols">
+										<v-col
+											v-for="( uischema, id ) in basicInfoLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="tool[ id ]"
+												:schema="schema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
 								</v-col>
 							</v-row>
-						</v-col>
-					</v-row>
-				</v-col>
+						</v-stepper-content>
 
-				<v-col md="5"
-					cols="12"
-					class="ps-4"
-				>
-					<div class="text-h5 mt-4">
-						{{ $t( 'moreinfo' ) }}
-					</div>
-
-					<v-row>
-						<v-col
-							v-for="( uischema, id ) in moreInfoLayout"
-							:key="id"
-							cols="12"
+						<v-stepper-step
+							step="2"
+							editable
+							:rules="[ () => stepIsValid.stepTwo ]"
 						>
-							<InputWidget
-								v-model="tool[ id ]"
-								:schema="schema.properties[ id ]"
-								:ui-schema="uischema"
-							/>
-						</v-col>
-					</v-row>
+							{{ $t( 'links' ) }}
+						</v-stepper-step>
+						<v-stepper-content step="2">
+							<v-row dense class="my-4">
+								<v-col cols="12">
+									<v-row class="cols">
+										<v-col
+											v-for="( uischema, id ) in linksLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="tool[ id ]"
+												:schema="schema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
 
-					<div class="text-h5 mt-4">
-						{{ $t( 'thistoolis' ) }}
-					</div>
+									<v-row>
+										<v-col
+											v-for="( uischema, id ) in multiLingualLinksLayout"
+											:key="id"
+											cols="12"
+										>
+											<v-row>
+												<v-col cols="12">
+													<InputWidget
+														v-model="tool[ id ]"
+														:schema="schema.properties[ id ]"
+														:ui-schema="uischema"
+														@is-valid="storeValidity( $event, id )"
+													/>
+												</v-col>
+											</v-row>
+										</v-col>
+									</v-row>
+								</v-col>
+							</v-row>
+						</v-stepper-content>
 
-					<v-row>
-						<v-col
-							v-for="( uischema, id ) in toolStatusLayout"
-							:key="id"
-							cols="12"
+						<v-stepper-step
+							step="3"
+							editable
+							:rules="[ () => stepIsValid.stepThree ]"
 						>
-							<InputWidget
-								v-model="tool[ id ]"
-								:schema="schema.properties[ id ]"
-								:ui-schema="uischema"
-							/>
-						</v-col>
-					</v-row>
-				</v-col>
-			</v-row>
-		</v-form>
+							{{ $t( 'moreinfo' ) }}
+						</v-stepper-step>
+						<v-stepper-content step="3">
+							<v-row dense class="my-4">
+								<v-col md="12"
+									cols="12"
+								>
+									<v-row>
+										<v-col
+											v-for="( uischema, id ) in moreInfoLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="tool[ id ]"
+												:schema="schema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
+
+									<div class="text-h5 mt-4">
+										{{ $t( 'thistoolis' ) }}
+									</div>
+
+									<v-row class="ps-3">
+										<v-col
+											v-for="( uischema, id ) in toolStatusLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="tool[ id ]"
+												:schema="schema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
+								</v-col>
+							</v-row>
+						</v-stepper-content>
+					</v-stepper>
+				</v-form>
+
+				<v-row class="justify-space-between mt-4">
+					<v-col cols="6">
+						<v-btn
+							block
+							:disabled="step === minStep"
+							@click="stepBack"
+						>
+							<v-icon
+								v-if="$vuetify.rtl === false"
+								left
+							>
+								mdi-chevron-left
+							</v-icon>
+							{{ $t( 'back' ) }}
+							<v-icon
+								v-if="$vuetify.rtl === true"
+								rigth
+							>
+								mdi-chevron-right
+							</v-icon>
+						</v-btn>
+					</v-col>
+
+					<v-col v-if="step < maxStep"
+						cols="6"
+					>
+						<v-btn
+							color="primary base100--text"
+							block
+							@click="stepContinue"
+						>
+							<v-icon
+								v-if="$vuetify.rtl === true"
+								dark
+								left
+							>
+								mdi-chevron-left
+							</v-icon>
+							{{ $t( 'continue' ) }}
+							<v-icon
+								v-if="$vuetify.rtl === false"
+								dark
+								right
+							>
+								mdi-chevron-right
+							</v-icon>
+						</v-btn>
+					</v-col>
+					<v-col v-else
+						cols="6"
+					>
+						<v-btn
+							color="primary base100--text"
+							block
+							:disabled="!valid || !$can( 'change', tool )"
+							@click="commentDialog = true"
+						>
+							<v-icon
+								dark
+								left
+							>
+								mdi-content-save-edit
+							</v-icon>
+							{{ $t( 'publishchanges' ) }}
+						</v-btn>
+					</v-col>
+				</v-row>
+			</v-col>
+		</v-row>
 
 		<v-row>
 			<v-col cols="12">
@@ -175,6 +271,9 @@ export default {
 	data() {
 		return {
 			name: this.$route.params.name,
+			step: 1,
+			minStep: 1,
+			maxStep: 3,
 			tool: {
 				icon: null,
 				title: null,
@@ -185,24 +284,25 @@ export default {
 				api_url: null,
 				translate_url: null,
 				bugtracker_url: null,
-				user_docs_url: [ { language: this.$i18n.locale, url: null } ],
-				developer_docs_url: [ { language: this.$i18n.locale, url: null } ],
-				feedback_url: [ { language: this.$i18n.locale, url: null } ],
-				privacy_policy_url: [ { language: this.$i18n.locale, url: null } ],
-				url_alternates: [ { language: this.$i18n.locale, url: null } ],
+				user_docs_url: [],
+				developer_docs_url: [],
+				feedback_url: [],
+				privacy_policy_url: [],
+				url_alternates: [],
 				tool_type: null,
 				license: null,
 				available_ui_languages: [],
 				technology_used: [],
 				sponsor: [],
 				for_wikis: [],
-				deprecated: false,
 				experimental: false,
+				deprecated: false,
 				replaced_by: null
 			},
 			commentDialog: false,
 			links: [ 'user_docs_url', 'developer_docs_url', 'privacy_policy_url', 'feedback_url', 'url_alternates' ],
-			valid: false
+			valid: false,
+			validityPerField: {}
 		};
 	},
 	metaInfo() {
@@ -286,11 +386,14 @@ export default {
 		multiLingualLinksLayout() {
 			return {
 				user_docs_url: {
+					widget: 'url-multilingual',
+					icon: 'mdi-file-document-multiple-outline',
+					appendIcon: 'mdi-plus',
+					label: this.$t( 'userdocsurl' ),
 					items: {
-						widget: 'url-multilingual',
 						url: {
-							icon: 'mdi-file-document-multiple-outline',
-							label: this.$t( 'userdocsurl' )
+							icon: 'mdi-file-document-outline',
+							label: this.$t( 'url' )
 						},
 						language: {
 							widget: 'select',
@@ -303,11 +406,14 @@ export default {
 					}
 				},
 				developer_docs_url: {
+					widget: 'url-multilingual',
+					icon: 'mdi-code-tags',
+					appendIcon: 'mdi-plus',
+					label: this.$t( 'developerdocsurl' ),
 					items: {
-						widget: 'url-multilingual',
 						url: {
 							icon: 'mdi-code-tags',
-							label: this.$t( 'developerdocsurl' )
+							label: this.$t( 'url' )
 						},
 						language: {
 							widget: 'select',
@@ -320,11 +426,14 @@ export default {
 					}
 				},
 				feedback_url: {
+					widget: 'url-multilingual',
+					icon: 'mdi-comment-processing-outline',
+					appendIcon: 'mdi-plus',
+					label: this.$t( 'feedbackurl' ),
 					items: {
-						widget: 'url-multilingual',
 						url: {
 							icon: 'mdi-comment-processing-outline',
-							label: this.$t( 'feedbackurl' )
+							label: this.$t( 'url' )
 						},
 						language: {
 							widget: 'select',
@@ -337,11 +446,14 @@ export default {
 					}
 				},
 				privacy_policy_url: {
+					widget: 'url-multilingual',
+					icon: 'mdi-shield-lock-outline',
+					appendIcon: 'mdi-plus',
+					label: this.$t( 'privacypolicyurl' ),
 					items: {
-						widget: 'url-multilingual',
 						url: {
 							icon: 'mdi-shield-lock-outline',
-							label: this.$t( 'privacypolicyurl' )
+							label: this.$t( 'url' )
 						},
 						language: {
 							widget: 'select',
@@ -354,11 +466,14 @@ export default {
 					}
 				},
 				url_alternates: {
+					widget: 'url-multilingual',
+					icon: 'mdi-link-variant',
+					appendIcon: 'mdi-plus',
+					label: this.$t( 'urlalternates' ),
 					items: {
-						widget: 'url-multilingual',
 						url: {
 							icon: 'mdi-link-variant',
-							label: this.$t( 'urlalternates' )
+							label: this.$t( 'url' )
 						},
 						language: {
 							widget: 'select',
@@ -422,19 +537,58 @@ export default {
 		},
 		toolStatusLayout() {
 			return {
-				deprecated: {
-					widget: 'checkbox',
-					label: this.$t( 'deprecated' )
-				},
 				experimental: {
 					widget: 'checkbox',
 					label: this.$t( 'experimental' )
+				},
+				deprecated: {
+					widget: 'checkbox',
+					label: this.$t( 'deprecated' )
 				},
 				replaced_by: {
 					icon: 'mdi-find-replace',
 					label: this.$t( 'replacedby' )
 				}
 			};
+		},
+		stepIsValid() {
+			const valid = {
+				stepOne: true,
+				stepTwo: true,
+				stepThree: true
+			};
+
+			Object.keys( this.basicInfoLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.stepOne = false;
+				}
+			} );
+
+			Object.keys( this.linksLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.stepTwo = false;
+				}
+			} );
+
+			Object.keys( this.multiLingualLinksLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.stepTwo = false;
+				}
+			} );
+
+			Object.keys( this.moreInfoLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.stepThree = false;
+				}
+			} );
+
+			Object.keys( this.toolStatusLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.stepThree = false;
+				}
+			} );
+
+			return valid;
 		}
 	},
 	asyncComputed: {
@@ -448,14 +602,32 @@ export default {
 	methods: {
 		...mapActions( 'api', [ 'getRequestSchema' ] ),
 		...mapActions( 'tools', [ 'getToolByName', 'getSpdxLicenses' ] ),
-
+		stepBack() {
+			this.step = Math.max( this.step - 1, this.minStep );
+		},
+		stepContinue() {
+			this.step = Math.min( this.step + 1, this.maxStep );
+		},
+		/**
+		 * Save the current valid status of a field in a reactive manner.
+		 *
+		 * @param {boolean} isValid - Is the field valid?
+		 * @param {string} field - field name
+		 */
+		storeValidity( isValid, field ) {
+			// validityPerField is dynamically built and therefore not reactive
+			// if the properties are added the usual way i.e a["key"] = value
+			// this syntax does the same thing except that it also makes
+			// the added properties reactive
+			this.$set( this.validityPerField, field, !isValid );
+		},
 		publishChanges( comment ) {
 			const newtool = { ...this.tool };
 			newtool.comment = comment;
 
 			this.links.forEach( ( field ) => {
 				newtool[ field ] = newtool[ field ].filter( ( u ) => {
-					return u.url !== null && u.url !== '';
+					return u.url !== undefined && u.url !== null && u.url !== '';
 				} );
 			} );
 
@@ -470,13 +642,6 @@ export default {
 			handler( newVal ) {
 				// Deep clone the new state
 				this.tool = asTool( JSON.parse( JSON.stringify( newVal ) ) );
-				// Inject placeholders in empty link arrays
-				for ( const lk in this.links ) {
-					const items = this.tool[ this.links[ lk ] ];
-					if ( items.length === 0 ) {
-						items.push( { url: '', language: this.$i18n.locale } );
-					}
-				}
 			},
 			deep: true
 		}

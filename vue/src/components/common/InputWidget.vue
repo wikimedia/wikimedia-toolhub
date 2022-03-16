@@ -9,6 +9,7 @@
 			:hint="schema.description"
 			:counter="schema.maxLength"
 			clearable
+			@update:error="emitIsValid"
 		>
 			<template #label>
 				<InputLabel :label="ui.label" :required="ui.required" />
@@ -25,6 +26,7 @@
 			rows="1"
 			auto-grow
 			clearable
+			@update:error="emitIsValid"
 		>
 			<template #label>
 				<InputLabel :label="ui.label" :required="ui.required" />
@@ -42,6 +44,7 @@
 			:deletable-chips="ui.multiple || false"
 			:small-chips="ui.multiple || false"
 			:clearable="ui.multiple ? false : true"
+			@update:error="emitIsValid"
 		>
 			<template #label>
 				<InputLabel :label="ui.label" :required="ui.required" />
@@ -56,6 +59,7 @@
 			multiple
 			deletable-chips
 			small-chips
+			@update:error="emitIsValid"
 		>
 			<template #label>
 				<InputLabel :label="ui.label" :required="ui.required" />
@@ -75,6 +79,7 @@
 			multiple
 			deletable-chips
 			small-chips
+			@update:error="emitIsValid"
 		>
 			<template #label>
 				<InputLabel :label="ui.label" :required="ui.required" />
@@ -100,7 +105,7 @@
 				</v-list-item>
 			</template>
 		</v-combobox>
-		<template v-else-if="widget === 'authors'">
+		<template v-else-if="widget === 'authors' || widget === 'url-multilingual'">
 			<v-combobox
 				v-model="model"
 				:hint="schema.description"
@@ -108,8 +113,9 @@
 				:append-icon="ui.appendIcon"
 				multiple
 				readonly
-				@click:append="showAuthorDialog( null, null )"
-				@click="showAuthorDialog( null, null )"
+				@click:append="showItemDialog( null, null )"
+				@click="showItemDialog( null, null )"
+				@update:error="emitIsValid"
 			>
 				<template #label>
 					<InputLabel :label="ui.label" :required="ui.required" />
@@ -119,97 +125,33 @@
 						class="ma-2"
 						close
 						@click:close="parent.selectItem( item )"
-						@click="showAuthorDialog( item, index )"
+						@click="showItemDialog( item, index )"
 					>
-						{{ item.name }}
+						<span v-if="widget === 'authors'">
+							{{ item.name }}
+						</span>
+						<span v-else-if="widget === 'url-multilingual'">
+							{{ `${getLocaleText( item.language )}: ` }}{{ item.url }}
+						</span>
 					</v-chip>
 				</template>
 			</v-combobox>
-			<AuthorDialog
+			<ItemDialog
 				:ui-schema="ui.items"
 				:schema="schema.items"
-				:authors.sync="model"
-				:author-edit.sync="authorEdit"
+				:items.sync="model"
+				:item-edit.sync="itemEdit"
 			/>
 		</template>
 		<v-checkbox
 			v-else-if="widget === 'checkbox'"
 			v-model="model"
+			@update:error="emitIsValid"
 		>
 			<template #label>
 				<InputLabel :label="ui.label" :required="ui.required" />
 			</template>
 		</v-checkbox>
-		<template v-else-if="widget === 'array'">
-			<v-row
-				v-for="( obj, idx ) in value"
-				:key="idx"
-			>
-				<v-col sm="11"
-					cols="10"
-				>
-					<InputWidget
-						v-model="model[ idx ]"
-						:schema="schema.items"
-						:ui-schema="ui.items"
-					/>
-				</v-col>
-
-				<template
-					v-if="ui.items.widget === 'url-multilingual'"
-				>
-					<v-col v-if="idx === 0"
-						sm="1"
-						cols="2"
-					>
-						<v-btn
-							elevation="2"
-							icon
-							class="mt-2"
-							color="primary base100--text"
-							@click="alterArray( 'add', value )"
-						>
-							<v-icon>
-								mdi-plus
-							</v-icon>
-						</v-btn>
-					</v-col>
-
-					<v-col v-else
-						sm="1"
-						cols="2"
-					>
-						<v-btn
-							elevation="2"
-							icon
-							class="mt-2"
-							color="error"
-							@click="alterArray( 'remove', value, idx )"
-						>
-							<v-icon>
-								mdi-minus
-							</v-icon>
-						</v-btn>
-					</v-col>
-				</template>
-			</v-row>
-		</template>
-		<template v-else-if="widget === 'url-multilingual'">
-			<v-col cols="12">
-				<InputWidget
-					v-model="model.url"
-					:schema="schema.properties.url"
-					:ui-schema="ui.url"
-				/>
-			</v-col>
-			<v-col cols="12">
-				<InputWidget
-					v-model="model.language"
-					:schema="schema.properties.language"
-					:ui-schema="ui.language"
-				/>
-			</v-col>
-		</template>
 		<pre v-else>
 			{{ schema }}
 		</pre>
@@ -271,24 +213,6 @@ export const methods = {
 				return null;
 		}
 	},
-
-	/**
-	 * Grow/shrink an array type.
-	 *
-	 * @param {string} op - operation to perform ('add' or 'remove')
-	 * @param {Array} data - Array to modify
-	 * @param {number?} index - Index of item to remove
-	 */
-	alterArray( op, data, index ) {
-		if ( op === 'remove' ) {
-			if ( data.length > 1 ) {
-				data.splice( index, 1 );
-			}
-		} else if ( op === 'add' ) {
-			// TODO: make this configurable
-			data.push( { url: '', language: this.$i18n.locale } );
-		}
-	},
 	performToolAutoComplete( v ) {
 		this.toolAutoCompleteLoading = true;
 		this.$store.dispatch( 'search/autoCompleteTools', v ).finally(
@@ -303,15 +227,35 @@ export const methods = {
 			[];
 	},
 	/**
-	 * Populate and open the AuthorDialog.
+	 * Populate and open the showItemDialog.
 	 *
-	 * @param {?Object} author - Author information to display
-	 * @param {?number} index - Author position in the authors array;
+	 * @param {?Object} item - item representing an entry in array field.
+	 * @param {?number} index - Author position in the authors array.
 	 */
-	showAuthorDialog( author, index ) {
-		this.authorEdit.author = author;
-		this.authorEdit.index = index;
-		this.authorEdit.authorDialogOpen = true;
+	showItemDialog( item, index ) {
+		this.itemEdit.item = item;
+		this.itemEdit.index = index;
+
+		if ( !item && this.widget === 'url-multilingual' ) {
+			this.itemEdit.item = { language: this.$i18n.locale, url: null };
+		}
+
+		this.itemEdit.itemDialogOpen = true;
+	},
+	getLocaleText( code ) {
+		this.localeSelect.some(
+			( locale ) => {
+				if ( locale.value === code ) {
+					code = locale.text;
+					return true;
+				}
+				return false;
+			}
+		);
+		return code;
+	},
+	emitIsValid( val ) {
+		this.$emit( 'is-valid', val );
 	}
 };
 
@@ -320,8 +264,8 @@ export default {
 	components: {
 		InputLabel,
 		// Import via function to work around circular dependency between
-		// AuthorDialog and InputWidget components.
-		AuthorDialog: () => import( '@/components/common/AuthorDialog' )
+		// ItemDialog and InputWidget components.
+		ItemDialog: () => import( '@/components/common/ItemDialog' )
 	},
 	props: {
 		schema: {
@@ -341,10 +285,10 @@ export default {
 	data: () => ( {
 		model: null,
 		toolAutoCompleteLoading: false,
-		authorEdit: {
+		itemEdit: {
 			index: null,
-			author: null,
-			authorDialogOpen: false
+			item: null,
+			itemDialogOpen: false
 		},
 		toolAutoComplete: null
 	} ),
@@ -398,7 +342,8 @@ export default {
 		},
 		...mapState( 'search', {
 			toolAutoCompleteResults: 'toolAutoCompleteResults'
-		} )
+		} ),
+		...mapState( 'locale', [ 'localeSelect' ] )
 	},
 	methods,
 	watch: {

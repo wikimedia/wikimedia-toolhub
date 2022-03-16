@@ -1,13 +1,13 @@
 <template>
 	<v-row justify="center">
 		<v-dialog
-			v-model="authorEditComputed.authorDialogOpen"
+			v-model="itemEditComputed.itemDialogOpen"
 			persistent
 			max-width="600px"
 		>
 			<v-card>
 				<v-form
-					ref="authorform"
+					ref="itemform"
 					v-model="valid"
 					:disabled="!$can( 'add', 'toolinfo/tool' )"
 				>
@@ -20,7 +20,7 @@
 									cols="12"
 								>
 									<InputWidget
-										v-model="authorFields[ id ]"
+										v-model="itemFields[ id ]"
 										:schema="schema.properties[ id ]"
 										:ui-schema="uischema"
 									/>
@@ -40,7 +40,7 @@
 							color="primary base100--text"
 							class="pa-4 mb-4"
 							:disabled="!valid || !$can( 'add', 'toolinfo/tool' )"
-							@click="addAuthor"
+							@click="addItem"
 						>
 							{{ $t( 'add' ) }}
 						</v-btn>
@@ -56,7 +56,7 @@
 import InputWidget from '@/components/common/InputWidget';
 
 export default {
-	name: 'AuthorDialog',
+	name: 'ItemDialog',
 	components: {
 		InputWidget
 	},
@@ -70,40 +70,33 @@ export default {
 			type: Object,
 			default: () => {}
 		},
-		authors: {
+		items: {
 			type: [ Array ],
 			default: null
 		},
-		authorEdit: {
+		itemEdit: {
 			type: Object,
 			default: () => {}
 		}
 	},
 	data() {
 		return {
-			authorFields: {
-				name: null,
-				wiki_username: null,
-				developer_username: null,
-				email: null,
-				url: null
-			},
+			itemFields: { ...this.buildEmptyItemFields() },
 			valid: false
 		};
 	},
 	computed: {
-		authorEditComputed() {
-			return { ...this.authorEdit };
+		itemEditComputed() {
+			return { ...this.itemEdit };
 		}
 	},
 	methods: {
-		addAuthor() {
+		addItem() {
 			let replaced = false;
-			const authors = [ ...this.authors ];
-
-			authors.some( ( _, index ) => {
-				if ( index === this.authorEdit.index ) {
-					authors[ index ] = this.cleanAuthorFields();
+			const items = [ ...this.items ];
+			items.some( ( _, index ) => {
+				if ( index === this.itemEdit.index ) {
+					items[ index ] = this.cleanItemFields();
 					replaced = true;
 					return replaced;
 				}
@@ -111,25 +104,19 @@ export default {
 			} );
 
 			if ( !replaced ) {
-				authors.push( this.cleanAuthorFields() );
+				items.push( this.cleanItemFields() );
 			}
 
-			this.$emit( 'update:authors', authors );
+			this.$emit( 'update:items', items );
 			this.cancel();
 		},
 		cancel() {
-			this.authorFields = {
-				name: null,
-				wiki_username: null,
-				developer_username: null,
-				email: null,
-				url: null
-			};
+			this.itemFields = { ...this.buildEmptyItemFields() };
 
-			this.$refs.authorform.reset();
-			this.$emit( 'update:author-edit', {
-				authorDialogOpen: false,
-				author: null
+			this.$refs.itemform.reset();
+			this.$emit( 'update:item-edit', {
+				itemDialogOpen: false,
+				item: null
 			} );
 		},
 		/**
@@ -137,23 +124,30 @@ export default {
 		 *
 		 * @return {Object}
 		 */
-		cleanAuthorFields() {
-			return Object.keys( this.authorFields )
+		cleanItemFields() {
+			return Object.keys( this.itemFields )
 				.reduce( ( obj, key ) => {
-					if ( this.authorFields[ key ] ) {
-						obj[ key ] = this.authorFields[ key ];
+					if ( this.itemFields[ key ] ) {
+						obj[ key ] = this.itemFields[ key ];
 					}
 					return obj;
 				}, {} );
+		},
+		buildEmptyItemFields() {
+			const emptyItemFields = {};
+			Object.keys( this.uiSchema ).forEach( ( key ) => {
+				emptyItemFields[ key ] = null;
+			} );
+			return emptyItemFields;
 		}
 	},
 	watch: {
-		authorEdit: {
+		itemEdit: {
 			handler( newVal ) {
-				if ( newVal.author && !( newVal.author instanceof Event ) ) {
-					this.authorFields = {
-						...this.authorFields,
-						...newVal.author
+				if ( newVal.item && !( newVal.item instanceof Event ) ) {
+					this.itemFields = {
+						...this.itemFields,
+						...newVal.item
 					};
 				}
 			},
