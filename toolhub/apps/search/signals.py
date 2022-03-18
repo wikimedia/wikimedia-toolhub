@@ -15,10 +15,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django_elasticsearch_dsl.registries import registry
 from django_elasticsearch_dsl.signals import RealTimeSignalProcessor
 
 from safedelete.models import SafeDeleteModel
 from safedelete.signals import post_softdelete
+
+from toolhub.apps.lists.models import ToolList
 
 
 class SignalProcessor(RealTimeSignalProcessor):
@@ -30,6 +33,13 @@ class SignalProcessor(RealTimeSignalProcessor):
             if instance.deleted is not None:
                 # Ignore if instance is soft deleted
                 return
+
+        if isinstance(instance, ToolList) and not instance.published:
+            registry.delete(instance)
+            # avoid calling super().handle_save because that will call
+            # registry.update which will reindex what we just deleted.
+            return
+
         super().handle_save(sender, instance, **kwargs)
 
     def setup(self):
