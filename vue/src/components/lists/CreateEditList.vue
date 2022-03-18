@@ -41,7 +41,7 @@
 				<template v-if="listId">
 					<v-btn
 						class="ma-4 pa-4"
-						:to="{ name: 'lists-view', params: { id: list.id } }"
+						@click="cancelEdit"
 					>
 						<v-icon
 							dark
@@ -178,16 +178,15 @@ export default {
 
 			this.$store.dispatch( 'lists/editList', newlist ).then(
 				() => {
-					this.$router.push( {
-						name: 'lists-view',
-						params: { id: this.listinfo.id }
-					} );
+					this.$router.back();
 				}
 			);
 
 			this.commentDialog = false;
 		},
-
+		cancelEdit() {
+			this.$router.back();
+		},
 		getListInfo( id ) {
 			this.$store.dispatch( 'lists/getListById', id ).then(
 				() => {

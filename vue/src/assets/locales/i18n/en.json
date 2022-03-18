@@ -91,7 +91,7 @@
 	"clientsecret": "Client Secret",
 	"close": "Close",
 	"comparetwoselectedrevisions": "Compare two selected revisions",
-	"confirmdelete-dialog-title": "Dialog title",
+	"confirmdelete-dialog-title": "Delete record",
 	"confirmdelete-dialog-subtitle": "Are you sure you want to delete this record? This process cannot be undone.",
 	"copiedtoclipboard": "Copied to clipboard!",
 	"crawlerhistory": "Crawler history",

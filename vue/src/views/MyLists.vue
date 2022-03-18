@@ -24,7 +24,16 @@
 
 		<Lists
 			:lists="myLists"
+			@delete-list="deleteList( $event )"
 		/>
+		<v-row v-if="!myLists.count">
+			<v-col cols="12">
+				<p class="text-h6 text--secondary">
+					{{ $t( 'lists-nolistsfoundtext' ) }}
+				</p>
+			</v-col>
+		</v-row>
+
 		<v-pagination
 			v-if="myLists.count > 0"
 			v-model="page"
@@ -64,6 +73,20 @@ export default {
 		goToPage( num ) {
 			const query = { page: parseInt( num ) || 1 };
 			this.$router.push( { query } ).catch( () => {} );
+		},
+		deleteList( id ) {
+			this.$store.dispatch( 'lists/deleteList', id ).then(
+				() => {
+					const currentPage = this.page;
+					const lastPage = this.page === 1 ? 1 : Math.ceil(
+						( this.myLists.count - 1 ) / this.itemsPerPage );
+					this.page = Math.min( this.page, lastPage );
+					if ( this.page !== currentPage ) {
+						this.$router.push( { path: 'lists', query: { page: this.page } } );
+					}
+					this.getMyLists();
+				}
+			);
 		}
 	},
 	watch: {

@@ -8,7 +8,7 @@
 			>
 				<ListCard :list="list"
 					:list-footer="listFooter"
-				/>
+					v-on="$listeners" />
 			</v-col>
 		</v-row>
 	</v-container>
