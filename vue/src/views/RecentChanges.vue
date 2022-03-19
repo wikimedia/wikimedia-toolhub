@@ -153,7 +153,6 @@
 			<v-col cols="12">
 				<Revisions
 					:revisions="recentChanges"
-					:page="filters.page"
 					aggregate
 					@update-revisions="fetchRecentChanges"
 				/>

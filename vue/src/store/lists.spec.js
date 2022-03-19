@@ -681,28 +681,24 @@ describe( 'store/lists', () => {
 		describe( 'undoChangesBetweenRevisions', () => {
 			const testList = {
 				id: 14,
-				revId: '596',
-				page: 1
+				revId: 596,
+				prevRevId: 595
 			};
 
-			const id = testList.revId,
-				listRevisions = listRevisionsResponse.results,
-				revIndex = listRevisions.findIndex( ( revision ) => revision.id === id ),
-				nextIndex = parseInt( revIndex ) + 1;
-
-			const otherId = listRevisions[ nextIndex ] && listRevisions[ nextIndex ].id;
+			const id = testList.revId;
+			const prevId = testList.prevRevId;
 
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/undo/' + otherId + '/',
+				url: '/api/lists/' + testList.id + '/revisions/' + id + '/undo/' + prevId + '/',
 				headers: { 'Content-type': 'application/json' },
 				body: listResponse
 			};
 
 			it( 'should undo between revisions', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/lists/' + testList.id + '/revisions/' + testList.revId + '/undo/' + otherId + '/',
+					url: '/api/lists/' + testList.id + '/revisions/' + id + '/undo/' + prevId + '/',
 					method: 'POST'
 				}, context );
 
@@ -734,8 +730,7 @@ describe( 'store/lists', () => {
 		describe( 'restoreListToRevision', () => {
 			const testList = {
 				id: 14,
-				revId: '596',
-				page: 1
+				revId: 596
 			};
 
 			const response = {
@@ -775,8 +770,7 @@ describe( 'store/lists', () => {
 		describe( 'hideRevealRevision', () => {
 			const testList = {
 				id: 14,
-				revId: '596',
-				page: 1,
+				revId: 596,
 				action: 'hide'
 			};
 
@@ -817,8 +811,7 @@ describe( 'store/lists', () => {
 		describe( 'markRevisionAsPatrolled', () => {
 			const testList = {
 				id: 14,
-				revId: '596',
-				page: 1
+				revId: 596
 			};
 
 			const response = {

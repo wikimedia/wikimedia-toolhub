@@ -532,28 +532,24 @@ describe( 'store/tools', () => {
 		describe( 'undoChangesBetweenRevisions', () => {
 			const testTool = {
 				name: 'Hellotool',
-				revId: '596',
-				page: 1
+				revId: 596,
+				prevRevId: 595
 			};
 
-			const id = testTool.revId,
-				toolRevisions = toolRevisionsResponse.results,
-				revIndex = toolRevisions.findIndex( ( revision ) => revision.id === id ),
-				nextIndex = parseInt( revIndex ) + 1;
-
-			const otherId = toolRevisions[ nextIndex ] && toolRevisions[ nextIndex ].id;
+			const id = testTool.revId;
+			const prevId = testTool.prevRevId;
 
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/undo/' + otherId + '/',
+				url: '/api/tools/' + testTool.name + '/revisions/' + id + '/undo/' + prevId + '/',
 				headers: { 'Content-type': 'application/json' },
 				body: toolResponse
 			};
 
 			it( 'should undo between revisions', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/tools/' + testTool.name + '/revisions/' + testTool.revId + '/undo/' + otherId + '/',
+					url: '/api/tools/' + testTool.name + '/revisions/' + id + '/undo/' + prevId + '/',
 					method: 'POST'
 				}, context );
 
@@ -585,8 +581,7 @@ describe( 'store/tools', () => {
 		describe( 'restoreToolToRevision', () => {
 			const testTool = {
 				name: 'Hellotool',
-				revId: '596',
-				page: 1
+				revId: 596
 			};
 
 			const response = {
@@ -626,8 +621,7 @@ describe( 'store/tools', () => {
 		describe( 'hideRevealRevision', () => {
 			const testTool = {
 				name: 'Hellotool',
-				revId: '596',
-				page: 1,
+				revId: 596,
 				action: 'hide'
 			};
 
@@ -668,8 +662,7 @@ describe( 'store/tools', () => {
 		describe( 'markRevisionAsPatrolled', () => {
 			const testTool = {
 				name: 'Hellotool',
-				revId: '596',
-				page: 1
+				revId: 596
 			};
 
 			const response = {

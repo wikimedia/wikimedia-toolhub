@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+from django.apps import apps
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema_field
@@ -74,6 +75,8 @@ class RevisionSerializer(ModelSerializer):
         help_text=_("Content type of the revision."),
     )
     content_id = serializers.SerializerMethodField()
+    parent_id = serializers.SerializerMethodField()
+    child_id = serializers.SerializerMethodField()
     content_title = serializers.SerializerMethodField()
 
     def _should_hide_details(self, instance):
@@ -82,6 +85,38 @@ class RevisionSerializer(ModelSerializer):
         return instance.revision.meta.suppressed and not (
             is_oversighter(user) or is_administrator(user)
         )
+
+    def _get_revision_ids(self, instance):
+        """Get a list of revision ids associated with the instance's model."""
+        ctx_key = "revision_ids({}, {}, {})".format(
+            instance.content_type.app_label,
+            instance.content_type.model,
+            instance.object_id,
+        )
+        if ctx_key in self.context:
+            return self.context[ctx_key]
+
+        target = apps.get_model(
+            instance.content_type.app_label, instance.content_type.model
+        ).objects.get(pk=instance.object_id)
+
+        qs = Version.objects.get_for_object(target)
+        qs = qs.order_by("id").values_list("id", flat=True)
+
+        self.context[ctx_key] = list(qs)
+        return self.context[ctx_key]
+
+    def _get_parent_and_child_ids(self, instance):
+        """Get the id of the previous and next versions."""
+        ids = self._get_revision_ids(instance)
+
+        current_idx = ids.index(instance.id)
+        parent_idx = current_idx - 1
+        parent_id = ids[parent_idx] if parent_idx >= 0 else None
+        child_idx = current_idx + 1
+        child_id = ids[child_idx] if child_idx < len(ids) else None
+
+        return (parent_id, child_id)
 
     def to_representation(self, instance):
         """Generate primative representation of a model instance."""
@@ -98,6 +133,16 @@ class RevisionSerializer(ModelSerializer):
             return instance._local_field_dict["name"]
         elif instance.content_type.model == "toollist":
             return instance._local_field_dict["id"]
+
+    @extend_schema_field(schema.VERSION_ID)
+    def get_parent_id(self, instance):
+        """Get the id of the previous version"""
+        return self._get_parent_and_child_ids(instance)[0]
+
+    @extend_schema_field(schema.VERSION_ID)
+    def get_child_id(self, instance):
+        """Get the id of the next version"""
+        return self._get_parent_and_child_ids(instance)[1]
 
     @extend_schema_field(schema.CONTENT_TITLE)
     def get_content_title(self, instance):
@@ -117,6 +162,8 @@ class RevisionSerializer(ModelSerializer):
             "patrolled",
             "content_type",
             "content_id",
+            "parent_id",
+            "child_id",
             "content_title",
         ]
 

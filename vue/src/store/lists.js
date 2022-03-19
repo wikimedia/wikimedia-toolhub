@@ -272,42 +272,19 @@ export const actions = {
 	 * Undo changes between two revisions via the API
 	 *
 	 * @param {Object} context - vuex context
-	 * @param {Object} list - list info
+	 * @param {Object} payload
+	 * @param {number} payload.id - list id
+	 * @param {number} payload.revId - starting revision id
+	 * @param {number} payload.prevRevId - ending revision id
 	 * @return {Promise<undefined>}
 	 */
-	async undoChangesBetweenRevisions( context, list ) {
-		const id = list.revId,
-			nextPage = list.page + 1,
-			listRevisions = context.state.listRevisions,
-			revIndex = listRevisions.findIndex( ( revision ) => revision.id === id ),
-			nextIndex = parseInt( revIndex ) + 1;
-
-		let otherId = '';
-
-		if ( nextIndex === listRevisions.length ) {
-			// Fetch more revisions to obtain other id if the revision
-			// selected for an undo is last in the current list
-			await context.dispatch( 'getRevisions', {
-				id: list.id, page: nextPage
-			} ).then(
-				( success ) => {
-					const results = success.body.results;
-					otherId = results[ 0 ].id; // Get rev id from the first element
-				},
-				( failure ) => {
-					displayErrorNotification.call( this, failure );
-				}
-			);
-		} else {
-			otherId = listRevisions[ nextIndex ] && listRevisions[ nextIndex ].id;
-		}
-
-		if ( !( !!id && !!otherId ) ) {
+	undoChangesBetweenRevisions( context, { id, revId, prevRevId } ) {
+		if ( !( !!revId && !!prevRevId ) ) {
 			return;
 		}
 
 		const request = {
-			url: '/api/lists/' + list.id + '/revisions/' + id + '/undo/' + otherId + '/',
+			url: '/api/lists/' + id + '/revisions/' + revId + '/undo/' + prevRevId + '/',
 			method: 'POST'
 		};
 

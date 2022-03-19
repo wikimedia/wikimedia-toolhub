@@ -19,7 +19,9 @@ describe( 'store/tools', () => {
 
 	const change1 = {
 		comment: 'This is a test edit',
-		id: '568',
+		id: 568,
+		parent_id: 567,
+		child_id: 569,
 		content_type: 'tool',
 		content_id: 'this-is-name',
 		timestamp: '2021-04-28T20:12:08.025365Z',
@@ -31,7 +33,9 @@ describe( 'store/tools', () => {
 
 	const change2 = {
 		comment: 'This is a test edit!!',
-		id: '598',
+		id: 598,
+		parent_id: 597,
+		child_id: 599,
 		content_type: 'toollist',
 		content_id: 1,
 		timestamp: '2021-04-27T20:12:08.025365Z',
@@ -114,124 +118,6 @@ describe( 'store/tools', () => {
 				expect( http ).to.have.been.calledOnce;
 				expect( commit ).to.have.not.been.called;
 				expect( displayErrorNotification ).to.have.been.called;
-			} );
-
-		} );
-
-		describe( 'getNextRevision', () => {
-			const id = 91;
-
-			const response = {
-				ok: true,
-				status: 200,
-				url: '/api/recent/' + id + '/next/',
-				headers: { 'Content-type': 'application/json' },
-				body: change2
-			};
-
-			it( 'should get next revision', async () => {
-				const expectRequest = addRequestDefaults( {
-					url: '/api/recent/' + id + '/next/'
-				}, context );
-				http.resolves( response );
-
-				await actions.getNextRevision( context, id );
-
-				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledWith( expectRequest );
-
-			} );
-
-		} );
-
-		describe( 'undoChangesBetweenRevisions', () => {
-			const testchange1 = {
-				...change1,
-				revId: change1.id
-			};
-
-			const testchange2 = {
-				...change2,
-				revId: change2.id
-			};
-
-			const response1 = {
-				ok: true,
-				status: 200,
-				url: '/api/tools/' + testchange1.name + '/revisions/' + testchange1.revId + '/undo/' + testchange2.revId + '/',
-				headers: { 'Content-type': 'application/json' },
-				body: recentChangesResponse
-			};
-
-			const response2 = {
-				ok: true,
-				status: 200,
-				url: '/api/lists/' + testchange2.id + '/revisions/' + testchange2.revId + '/undo/' + testchange1.revId + '/',
-				headers: { 'Content-type': 'application/json' },
-				body: recentChangesResponse
-			};
-
-			const response_next_1 = {
-				ok: true,
-				status: 200,
-				url: '/api/recent/' + testchange1.revId + '/next/',
-				headers: { 'Content-type': 'application/json' },
-				body: change2
-			};
-
-			const response_next_2 = {
-				ok: true,
-				status: 200,
-				url: '/api/recent/' + testchange2.revId + '/next/',
-				headers: { 'Content-type': 'application/json' },
-				body: change1
-			};
-
-			it( 'should undo revision between tools', async () => {
-
-				const expectRequest = addRequestDefaults( {
-					url: '/api/tools/' + testchange1.name + '/revisions/' + testchange1.revId + '/undo/' + testchange2.revId + '/',
-					method: 'POST'
-				}, context );
-
-				dispatch.onFirstCall().returns( { then: sinon.stub().yields( response_next_1 ) } );
-
-				http.resolves( response1 );
-
-				await actions.undoChangesBetweenRevisions( context, testchange1 );
-
-				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledWith( expectRequest );
-
-			} );
-
-			it( 'should undo revision between lists', async () => {
-				dispatch.onFirstCall().returns( { then: sinon.stub().yields( response_next_2 ) } );
-
-				const expectRequest = addRequestDefaults( {
-					url: '/api/lists/' + testchange2.id + '/revisions/' + testchange2.revId + '/undo/' + testchange1.revId + '/',
-					method: 'POST'
-				}, context );
-
-				http.resolves( response2 );
-
-				await actions.undoChangesBetweenRevisions( context, testchange2 );
-
-				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledWith( expectRequest );
-
-			} );
-
-			it( 'should log failures', async () => {
-				dispatch.onFirstCall().returns( { then: sinon.stub().yields( response_next_2 ) } );
-
-				http.rejects( apiError );
-
-				await actions.undoChangesBetweenRevisions( context, testchange1 );
-
-				expect( http ).to.have.been.calledOnce;
-				expect( displayErrorNotification ).to.have.been.called;
-
 			} );
 
 		} );

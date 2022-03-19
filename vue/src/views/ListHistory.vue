@@ -30,7 +30,6 @@
 			<v-col cols="12">
 				<Revisions
 					:revisions="listRevisions"
-					:page="page"
 					@update-revisions="getRevisions"
 				/>
 			</v-col>

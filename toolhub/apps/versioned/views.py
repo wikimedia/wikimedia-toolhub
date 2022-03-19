@@ -16,25 +16,17 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 
 from django_filters import rest_framework as filters
 
-from drf_spectacular.types import OpenApiTypes
-from drf_spectacular.utils import OpenApiParameter
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
 from rest_framework import viewsets
-from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
 
 from reversion.models import Version
-
-from toolhub.apps.lists.models import ToolList
-from toolhub.apps.toolinfo.models import Tool
 
 from .serializers import RevisionSerializer
 
@@ -73,26 +65,7 @@ class RecentChangesFilter(filters.FilterSet):
 
 
 @extend_schema_view(
-    list=extend_schema(
-        description=_("Get a paginated list of all revisions.")
-    ),
-    retrieve_next=extend_schema(
-        description=_(
-            "Get the next revision immediately after the one with "
-            "the provided id. Must be of the same tool/list."
-        ),
-        parameters=[
-            OpenApiParameter(
-                "id",
-                type=OpenApiTypes.NUMBER,
-                location=OpenApiParameter.PATH,
-                description=_(
-                    "A unique integer value identifying the target revision."
-                ),
-            ),
-        ],
-        request=None,
-    ),
+    list=extend_schema(description=_("Get a paginated list of all revisions."))
 )
 class RecentChangesViewSet(viewsets.ReadOnlyModelViewSet):
     """Historical revisions of a tool list."""
@@ -114,26 +87,3 @@ class RecentChangesViewSet(viewsets.ReadOnlyModelViewSet):
         qs = qs.exclude(revision__meta__revision_id__isnull=True)
 
         return qs.order_by("-revision__date_created")
-
-    @action(
-        detail=True,
-        methods=["GET"],
-        url_path=r"next",
-    )
-    def retrieve_next(self, request, **kwargs):
-        """Retrieve the next version of the same content_type."""
-        pk = kwargs["pk"]
-        qs = self.get_queryset()
-
-        version = get_object_or_404(qs, pk=pk)
-
-        if version.content_type.model == "tool":
-            target = get_object_or_404(Tool, pk=version.object_id)
-        elif version.content_type.model == "toollist":
-            target = get_object_or_404(ToolList, pk=version.object_id)
-
-        qs = qs.get_for_object(target)
-        next_version = qs.filter(id__lt=version.id).first()
-
-        res = RevisionSerializer(next_version, context={"request": request})
-        return Response(res.data)

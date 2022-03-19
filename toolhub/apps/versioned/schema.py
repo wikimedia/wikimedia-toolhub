@@ -17,6 +17,11 @@
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 from django.utils.translation import gettext_lazy as _
 
+VERSION_ID = {
+    "description": _("unique identifier of the version"),
+    "type": "integer",
+}
+
 CONTENT_ID = {
     "description": _("unique identifier of the content being versioned"),
     "type": "string",

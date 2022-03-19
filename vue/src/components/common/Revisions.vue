@@ -165,7 +165,7 @@ const TOOL = 'tool';
 const LIST = 'toollist';
 
 export default {
-	name: 'RevisionItem',
+	name: 'Revisions',
 	props: {
 		/**
 		 * Array of tool and/or toollist revisions
@@ -173,14 +173,6 @@ export default {
 		revisions: {
 			type: Array,
 			required: true
-		},
-		/**
-		 * The current revisions page. defaults to 1.
-		 */
-		page: {
-			type: Number,
-			default: 1,
-			required: false
 		},
 		/**
 		 * Revision arrays can be of tool type, toollist type or an aggregate
@@ -242,7 +234,7 @@ export default {
 
 				if ( content_type === TOOL ) {
 					routeName = 'tools-diff';
-				} else if ( rev.content_type === LIST ) {
+				} else if ( content_type === LIST ) {
 					routeName = 'lists-diff';
 				}
 
@@ -257,34 +249,19 @@ export default {
 			}
 		},
 		undoChangesBetweenRevisions( rev ) {
-			// if revisions are a mix of tools and list revisions,
-			// use recentchanges/undoChangesBetweenRevisions
 			let vuexMethod;
 
-			if ( this.aggregate ) {
-				vuexMethod = 'recentchanges/undoChangesBetweenRevisions';
-
-				this.$store.dispatch( vuexMethod, {
-					...this.getUniqueIdentifier( rev ),
-					revId: rev.id,
-					page: this.page,
-					content_type: rev.content_type
-				} ).then( this.updateRevisions );
-
-			} else {
-				if ( rev.content_type === TOOL ) {
-					vuexMethod = 'tools/undoChangesBetweenRevisions';
-				} else if ( rev.content_type === LIST ) {
-					vuexMethod = 'lists/undoChangesBetweenRevisions';
-				}
-
-				this.$store.dispatch( vuexMethod, {
-					...this.getUniqueIdentifier( rev ),
-					revId: rev.id,
-					page: this.page
-				} ).then( this.updateRevisions );
-
+			if ( rev.content_type === TOOL ) {
+				vuexMethod = 'tools/undoChangesBetweenRevisions';
+			} else if ( rev.content_type === LIST ) {
+				vuexMethod = 'lists/undoChangesBetweenRevisions';
 			}
+
+			this.$store.dispatch( vuexMethod, {
+				...this.getUniqueIdentifier( rev ),
+				revId: rev.id,
+				prevRevId: rev.parent_id
+			} ).then( this.updateRevisions );
 
 		},
 		restoreToRevision( rev ) {
@@ -297,8 +274,7 @@ export default {
 
 			this.$store.dispatch( vuexMethod, {
 				...this.getUniqueIdentifier( rev ),
-				revId: rev.id,
-				page: this.page
+				revId: rev.id
 			} ).then( this.updateRevisions );
 		},
 		suppress( rev, action ) {
@@ -312,7 +288,6 @@ export default {
 			this.$store.dispatch( vuexMethod, {
 				...this.getUniqueIdentifier( rev ),
 				revId: rev.id,
-				page: this.page,
 				action: action
 			} ).then( this.updateRevisions );
 		},
@@ -326,8 +301,7 @@ export default {
 
 			this.$store.dispatch( vuexMethod, {
 				...this.getUniqueIdentifier( rev ),
-				revId: rev.id,
-				page: this.page
+				revId: rev.id
 			} ).then( this.updateRevisions );
 		},
 		/**

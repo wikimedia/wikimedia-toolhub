@@ -233,42 +233,19 @@ export const actions = {
 	 * Undo changes between two revisions via the API
 	 *
 	 * @param {Object} context - vuex context
-	 * @param {Object} tool - tool info
+	 * @param {Object} payload
+	 * @param {string} payload.name - tool name
+	 * @param {number} payload.revId - starting revision id
+	 * @param {number} payload.prevRevId - ending revision id
 	 * @return {Promise<undefined>|undefined}
 	 */
-	async undoChangesBetweenRevisions( context, tool ) {
-		const id = tool.revId,
-			nextPage = tool.page + 1,
-			toolRevisions = context.state.toolRevisions,
-			revIndex = toolRevisions.findIndex( ( revision ) => revision.id === id ),
-			nextIndex = parseInt( revIndex ) + 1;
-
-		let otherId = '';
-
-		if ( nextIndex === toolRevisions.length ) {
-			// Fetch more revisions to obtain other id if the revision
-			// selected for an undo is last in the current list
-			await context.dispatch( 'getRevisions', {
-				name: tool.name, page: nextPage
-			} ).then(
-				( success ) => {
-					const results = success.body.results;
-					otherId = results[ 0 ].id; // Get rev id from the first element
-				},
-				( failure ) => {
-					displayErrorNotification.call( this, failure );
-				}
-			);
-		} else {
-			otherId = toolRevisions[ nextIndex ] && toolRevisions[ nextIndex ].id;
-		}
-
-		if ( !( !!id && !!otherId ) ) {
+	undoChangesBetweenRevisions( context, { name, revId, prevRevId } ) {
+		if ( !( !!revId && !!prevRevId ) ) {
 			return;
 		}
 
 		const request = {
-			url: '/api/tools/' + encodeURI( tool.name ) + '/revisions/' + id + '/undo/' + otherId + '/',
+			url: '/api/tools/' + encodeURI( name ) + '/revisions/' + revId + '/undo/' + prevRevId + '/',
 			method: 'POST'
 		};
 

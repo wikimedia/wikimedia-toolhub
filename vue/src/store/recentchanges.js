@@ -53,67 +53,6 @@ export const actions = {
 				displayErrorNotification.call( this, failure );
 			}
 		);
-	},
-	/**
-	 *  Get the next revision immediately after the one with the provided id.
-	 *  Must be of the same tool/list.
-	 *
-	 * @param {Object} context
-	 * @param {number} id
-	 * @return {Promise} Promise object with revision data
-	 */
-	getNextRevision( context, id ) {
-		const request = { url: '/api/recent/' + id + '/next/' };
-		return makeApiCall( context, request );
-	},
-	/**
-	 * Undo changes between two revisions via the API
-	 *
-	 * @param {Object} context - vuex context
-	 * @param {Object} revision - revision info
-	 * @return {Promise<undefined>}
-	 */
-	async undoChangesBetweenRevisions( context, revision ) {
-		const id = revision.revId;
-
-		let otherId = '';
-
-		// call backend to fetch the next revision that is
-		// of the same tool as one selected for an undo.
-		await context.dispatch( 'getNextRevision', id )
-			.then(
-				( success ) => {
-					const version = success.body;
-					otherId = version.id;
-				},
-				( failure ) => {
-					displayErrorNotification.call( this, failure );
-				} );
-
-		if ( !( !!id && !!otherId ) ) {
-			return new Promise( () => {} );
-		}
-
-		let request;
-
-		// select request url based on revision content_type
-		if ( revision.content_type === 'tool' ) {
-			request = {
-				url: '/api/tools/' + encodeURI( revision.name ) + '/revisions/' + id + '/undo/' + otherId + '/',
-				method: 'POST'
-			};
-		} else if ( revision.content_type === 'toollist' ) {
-			request = {
-				url: '/api/lists/' + revision.id + '/revisions/' + id + '/undo/' + otherId + '/',
-				method: 'POST'
-			};
-		}
-
-		return makeApiCall( context, request ).catch(
-			( failure ) => {
-				displayErrorNotification.call( this, failure );
-			}
-		);
 	}
 };
 
