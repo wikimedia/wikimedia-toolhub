@@ -4,6 +4,7 @@
 		"message-documentation": "qqq",
 		"authors": [
 			"Abijeet Patro",
+			"AnupamM",
 			"Srishti Sethi"
 		]
 	},
@@ -18,6 +19,11 @@
 	"auditlogs-targettype-group": "समूह",
 	"auditlogs-targettype-user": "सदस्य",
 	"auditlogs-type": "प्रकार",
+	"recentchanges": "हाल में हुए बदलाव",
+	"recentchanges-nochangesfoundtext": "कोई ताज़ा बदलाव नहीं मिला",
+	"recentchanges-targettype-tool": "उपकरण",
+	"recentchanges-targettype-toollist": "सूची",
+	"recentchanges-action": "कार्य",
 	"authors": "लेखक (रों)",
 	"bugtracker": "बग ट्रैकर",
 	"browsetool": "टूल ब्राउज़ करें",
@@ -58,6 +64,8 @@
 	"tagline-learnmore": "मेटा विकी पर टूलहब के बारे में अधिक जानें",
 	"talk": "बात",
 	"technologyused": "तकनीक का इस्तेमाल किया",
+	"tool": "उपकरण",
+	"toollist": "सूची",
 	"tools": "टूल्स",
 	"tooltype": "टूल का प्रकार",
 	"tool-deprecated-error": "इइस उपकरण का उपयोग करने की अनुशंसा नहीं की जाती है",
