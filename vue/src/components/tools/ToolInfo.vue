@@ -30,6 +30,7 @@
 				</v-icon>
 				{{ $t( 'viewhistory' ) }}
 			</v-btn>
+			<ToolMenu :tool="tool" :smallicon="false" />
 		</v-app-bar>
 
 		<v-row
@@ -357,13 +358,15 @@ import { isValidHttpUrl } from '@/helpers/validation';
 import FavoriteButton from '@/components/tools/FavoriteButton';
 import ScrollTop from '@/components/common/ScrollTop';
 import ToolImage from '@/components/tools/ToolImage';
+import ToolMenu from '@/components/tools/ToolMenu';
 
 export default {
 	name: 'ToolInfo',
 	components: {
 		FavoriteButton,
 		ScrollTop,
-		ToolImage
+		ToolImage,
+		ToolMenu
 	},
 	props: {
 		tool: {

@@ -4,13 +4,17 @@ div.tool-card__card {
 }
 
 .tool-card__card.v-card {
-	background-color: var( --v-accent-base );
+	background-color: var( --lt-color-white );
 	border-bottom: 1px solid var( --v-base80-base );
 	box-shadow: none;
 }
 
 .tool-card__card > div {
 	flex: 1 1 auto;
+}
+
+.tool-card__card .v-toolbar__content {
+	padding: 0 !important;
 }
 
 .tool-card__card .v-card__title {

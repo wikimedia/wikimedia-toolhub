@@ -173,6 +173,7 @@
 	"lists-nolistsfoundtext": "No lists found",
 	"list-not-found": "No list named '$1' found.",
 	"lists-search-label": "Search lists",
+	"lists-nouserlists": "You have no lists",
 	"lists-yourlists": "Your lists",
 	"lists-view": "List",
 	"locale-select": "Select language",

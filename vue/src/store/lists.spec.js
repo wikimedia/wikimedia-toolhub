@@ -233,22 +233,23 @@ describe( 'store/lists', () => {
 
 		describe( 'getMyLists', () => {
 			const testPage = 1;
+			const testPageSize = 10;
 			const response = {
 				ok: true,
 				status: 200,
-				url: '/api/lists/?user=unit+tester&page=' + testPage,
+				url: '/api/lists/?user=unit+tester&page=' + testPage + '&page_size=' + testPageSize,
 				headers: { 'Content-type': 'application/json' },
 				body: listResponseTwo
 			};
 
 			it( 'should fetch private lists', async () => {
 				const expectRequest = addRequestDefaults( {
-					url: '/api/lists/?user=unit+tester&page=' + testPage
+					url: '/api/lists/?user=unit+tester&page=' + testPage + '&page_size=' + testPageSize
 				}, context );
 				dispatch.resolves( null );
 				http.resolves( response );
 
-				await actions.getMyLists( context, testPage );
+				await actions.getMyLists( context, { page: testPage, pageSize: testPageSize } );
 
 				expect( dispatch ).to.have.been.calledOnce;
 				expect( dispatch ).to.have.been.calledWith(
@@ -269,7 +270,7 @@ describe( 'store/lists', () => {
 				dispatch.resolves( null );
 				http.rejects( apiError );
 
-				await actions.getMyLists( context, testPage );
+				await actions.getMyLists( context, { page: testPage, pageSize: testPageSize } );
 
 				expect( dispatch ).to.have.been.calledOnce;
 				expect( dispatch ).to.have.been.calledWith(

@@ -62,13 +62,23 @@ export const actions = {
 			}
 		);
 	},
-	getMyLists( context, page ) {
+	/**
+	 * Fetch a user's lists
+	 *
+	 * @param {Object} context - vuex context
+	 * @param {Object} list - list info
+	 * @param {number} list.page - a page number within the paginated result set
+	 * @param {number} list.pageSize - number of lists to return per page
+	 * @return {Promise<undefined>}
+	 */
+	getMyLists( context, { page, pageSize } ) {
 		return context.dispatch(
 			'user/getUserInfo', null, { root: true }
 		).then( () => {
 			const params = new URLSearchParams( [
 				[ 'user', context.rootState.user.user.username ],
-				[ 'page', page ]
+				[ 'page', page ],
+				[ 'page_size', pageSize ]
 			] );
 
 			const request = { url: '/api/lists/?' + params.toString() };

@@ -68,7 +68,7 @@ export default {
 	},
 	methods: {
 		getMyLists() {
-			this.$store.dispatch( 'lists/getMyLists', this.page );
+			this.$store.dispatch( 'lists/getMyLists', { page: this.page, pageSize: this.itemsPerPage } );
 		},
 		goToPage( num ) {
 			const query = { page: parseInt( num ) || 1 };

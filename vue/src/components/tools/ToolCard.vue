@@ -1,10 +1,22 @@
 <template>
 	<v-card
-		class="tool-card__card pa-1"
-		height="250px"
+		class="tool-card__card pa-0"
+		height="280px"
 		:to="{ name: 'tools-view', params: { name: tool.name } }"
 		outlined
 	>
+		<v-toolbar
+			dense
+			color="accent base"
+			class="ps-4 ma-0"
+			elevation="0"
+		>
+			<v-spacer />
+			<ToolMenu :tool="tool"
+				:smallicon="true"
+				@click.stop
+			/>
+		</v-toolbar>
 		<v-card-title class="flex-nowrap">
 			<ToolImage
 				class="me-2"
@@ -34,11 +46,13 @@
 
 <script>
 import ToolImage from '@/components/tools/ToolImage';
+import ToolMenu from '@/components/tools/ToolMenu';
 
 export default {
 	name: 'ToolCard',
 	components: {
-		ToolImage
+		ToolImage,
+		ToolMenu
 	},
 	props: {
 		tool: {

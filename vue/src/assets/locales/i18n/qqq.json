@@ -180,6 +180,7 @@
 	"lists-nolistsfoundtext": "Message to show when no lists are found",
 	"list-not-found": "Error message shown when a list is not found. Parameters:\n* $1 - list title requested",
 	"lists-search-label": "Input label.",
+	"lists-nouserlists": "Message to show when no user lists are found",
 	"lists-yourlists": "Tab label",
 	"lists-view": "Page title",
 	"locale-select": "Input label.",
