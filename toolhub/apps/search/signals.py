@@ -18,6 +18,8 @@
 from django_elasticsearch_dsl.registries import registry
 from django_elasticsearch_dsl.signals import RealTimeSignalProcessor
 
+from elasticsearch.helpers.errors import BulkIndexError
+
 from safedelete.models import SafeDeleteModel
 from safedelete.signals import post_softdelete
 
@@ -35,8 +37,14 @@ class SignalProcessor(RealTimeSignalProcessor):
                 return
 
         if isinstance(instance, ToolList) and not instance.published:
-            registry.delete(instance)
-            # avoid calling super().handle_save because that will call
+            # T303892: ensure that unpublished lists are not included in the
+            # search index.
+            try:
+                registry.delete(instance)
+            except BulkIndexError:
+                # Expected when instance is not currently in the index.
+                pass
+            # Avoid calling super().handle_save because that will call
             # registry.update which will reindex what we just deleted.
             return
 
