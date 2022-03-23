@@ -35,7 +35,7 @@ export function buildNodes( log, msgArgs, wrap, rtl ) {
 	const msgKey = 'auditlog-entry-' + log.target.type + '-' + action;
 	// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
 	const msg = i18n.t( msgKey );
-	const msgParts = msg.split( /(\$\d+)/ );
+	const msgParts = msg.split( /(\$\d+) ?/ );
 	if ( rtl ) {
 		// Flip array when in an RTL locale so that our re-wrapping maintains
 		// RTL order when rendered as HTML. Note that this would not be
@@ -162,28 +162,76 @@ export function render( createElement ) {
 		], { class: 'log-event-group' } ) );
 	}
 	if ( target.type === 'version' ) {
-		msgArgs.push( dd( [
-			link(
-				{
-					to: {
-						name: 'tools-revision',
-						params: {
-							name: params.tool_name,
-							revId: String( target.id )
+		if ( 'tool_name' in params ) {
+			msgArgs.push( dd( [
+				link(
+					{
+						to: {
+							name: 'tools-revision',
+							params: {
+								name: params.tool_name,
+								revId: String( target.id )
+							}
 						}
-					}
-				},
-				[ target.id ]
-			)
-		], { class: 'log-event-version' } ) );
-		msgArgs.push( dd( [
-			'"',
-			link(
-				{ to: { name: 'tools-view', params: { name: params.tool_name } } },
-				[ params.tool_name ]
-			),
-			'"'
-		], { class: 'log-event-tool' } ) );
+					},
+					[ target.id ]
+				)
+			], { class: 'log-event-version' } ) );
+			msgArgs.push( dd( [
+				'"',
+				link(
+					{
+						to: {
+							name: 'tools-view',
+							params: {
+								name: params.tool_name
+							}
+						}
+					},
+					[ params.tool_name ]
+				),
+				'"'
+			], { class: 'log-event-tool' } ) );
+			msgArgs.push( dd(
+				[ i18n.t( 'auditlogs-targettype-tool' ) ],
+				{ class: 'log-event-text' }
+			) );
+
+		} else if ( 'toollist' in params ) {
+			msgArgs.push( dd( [
+				link(
+					{
+						to: {
+							name: 'lists-revision',
+							params: {
+								id: params.toollist.id,
+								revId: String( target.id )
+							}
+						}
+					},
+					[ target.id ]
+				)
+			], { class: 'log-event-version' } ) );
+			msgArgs.push( dd( [
+				'"',
+				link(
+					{
+						to: {
+							name: 'lists-view',
+							params: {
+								id: params.toollist.id
+							}
+						}
+					},
+					[ params.toollist.title ]
+				),
+				'"'
+			], { class: 'log-event-toollist' } ) );
+			msgArgs.push( dd(
+				[ i18n.t( 'auditlogs-targettype-toollist' ) ],
+				{ class: 'log-event-text' }
+			) );
+		}
 	}
 
 	return createElement(

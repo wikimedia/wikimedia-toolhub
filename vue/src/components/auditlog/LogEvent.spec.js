@@ -65,7 +65,7 @@ describe( 'components/auditlog', () => {
 			expectCommonStructure( wrapper, event );
 
 			const tools = wrapper.findAll( '.log-event-tool' );
-			expect( tools.length ).to.equal( 1 );
+			expect( tools ).to.have.lengthOf( 1 );
 			expect( tools.at( 0 ).html() ).to.contain( event.target.label );
 		} );
 		it( 'toollist-updated', () => {
@@ -90,7 +90,7 @@ describe( 'components/auditlog', () => {
 			expectCommonStructure( wrapper, event );
 
 			const lists = wrapper.findAll( '.log-event-toollist' );
-			expect( lists.length ).to.equal( 1 );
+			expect( lists ).to.have.lengthOf( 1 );
 			expect( lists.at( 0 ).html() ).to.contain( event.target.label );
 		} );
 		it( 'url-created', () => {
@@ -115,7 +115,7 @@ describe( 'components/auditlog', () => {
 			expectCommonStructure( wrapper, event );
 
 			const urls = wrapper.findAll( '.log-event-url' );
-			expect( urls.length ).to.equal( 1 );
+			expect( urls ).to.have.lengthOf( 1 );
 			expect( urls.at( 0 ).html() ).to.contain( event.target.label );
 		} );
 		it( 'user-created', () => {
@@ -163,10 +163,10 @@ describe( 'components/auditlog', () => {
 			expectCommonStructure( wrapper, event );
 
 			const groups = wrapper.findAll( '.log-event-group' );
-			expect( groups.length ).to.equal( 1 );
+			expect( groups ).to.have.lengthOf( 1 );
 			expect( groups.at( 0 ).html() ).to.contain( event.target.label );
 		} );
-		it( 'version-patrolled', () => {
+		it( 'version-patrolled-tool', () => {
 			const event = {
 				id: 9697,
 				timestamp: '2022-02-14T03:12:25.268690Z',
@@ -190,12 +190,46 @@ describe( 'components/auditlog', () => {
 			expectCommonStructure( wrapper, event );
 
 			const revisions = wrapper.findAll( '.log-event-version' );
-			expect( revisions.length ).to.equal( 1 );
+			expect( revisions ).to.have.lengthOf( 1 );
 			expect( revisions.at( 0 ).html() ).to.contain( event.target.id );
 
 			const tools = wrapper.findAll( '.log-event-tool' );
-			expect( tools.length ).to.equal( 1 );
+			expect( tools ).to.have.lengthOf( 1 );
 			expect( tools.at( 0 ).html() ).to.contain( event.params.tool_name );
+		} );
+		it( 'version-patrolled-toollist', () => {
+			const event = {
+				id: 9697,
+				timestamp: '2022-02-14T03:12:25.268690Z',
+				user: {
+					id: 2,
+					username: 'BDavis (WMF)'
+				},
+				target: {
+					type: 'version',
+					id: 3798,
+					label: ''
+				},
+				action: 'patrolled',
+				params: {
+					toollist: {
+						id: 1234,
+						title: 'test-list-a'
+					}
+				},
+				message: null
+			};
+			const wrapper = buildWrapper( event );
+
+			expectCommonStructure( wrapper, event );
+
+			const revisions = wrapper.findAll( '.log-event-version' );
+			expect( revisions ).to.have.lengthOf( 1 );
+			expect( revisions.at( 0 ).html() ).to.contain( event.target.id );
+
+			const lists = wrapper.findAll( '.log-event-toollist' );
+			expect( lists ).to.have.lengthOf( 1 );
+			expect( lists.at( 0 ).html() ).to.contain( event.params.toollist.title );
 		} );
 	} );
 } );
