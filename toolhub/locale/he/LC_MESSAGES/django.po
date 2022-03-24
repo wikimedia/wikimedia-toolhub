@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-03-21 12:14:15+0000\n"
+"PO-Revision-Date: 2022-03-24 12:13:04+0000\n"
 "X-POT-Import-Date: 2022-03-18 03:35:13+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1027,7 +1027,7 @@ msgstr "לא ניתן להסתיר את הגרסה הנוכחית."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr ""
+msgstr "הגרסה הזאת כבר סומנה כבדוקה."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
@@ -1043,11 +1043,11 @@ msgstr "האם הגרסה הזאת נסקרה על־ידי מנטר?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the content being versioned"
-msgstr ""
+msgstr "מזהה ייחודי של תוכן שהגרסאות שלו מטופלות"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "title describing the content being versioned"
-msgstr ""
+msgstr "כותרת שמתארת את התוכן שהגרסאות שלו מטופלות"
 
 #: toolhub/apps/versioned/schema.py:31
 msgid "RFC 6902 application/json-patch+json data"
@@ -1083,7 +1083,7 @@ msgstr "הערה של המשתמש עבור הגרסה."
 
 #: toolhub/apps/versioned/serializers.py:74
 msgid "Content type of the revision."
-msgstr ""
+msgstr "סוג התוכן של הגרסה."
 
 #: toolhub/apps/versioned/serializers.py:90
 msgid "username removed"
@@ -1095,35 +1095,35 @@ msgstr "תקציר העריכה הוסר"
 
 #: toolhub/apps/versioned/views.py:48
 msgid "Only show recent changes by the given user."
-msgstr ""
+msgstr "להציג רק את השינויים האחרונים מאת המשתמש הנתון."
 
 #: toolhub/apps/versioned/views.py:53
 msgid "Only show recent changes for the given target type."
-msgstr ""
+msgstr "להציג רק את השינויים האחרונים עבור סוג היעד הנתון."
 
 #: toolhub/apps/versioned/views.py:58
 msgid "Only show recent changes where suppressed field is either true or false"
-msgstr ""
+msgstr "להציג רק את השינויים האחרונים שבהם השדה המועלם הוא אמת או שקר"
 
 #: toolhub/apps/versioned/views.py:65
 msgid "Only show recent changes where patrolled field is either true or false"
-msgstr ""
+msgstr "להציג רק את השינויים האחרונים שבהם השדה הבדוק הוא אמת או שקר"
 
 #: toolhub/apps/versioned/views.py:71
 msgid "Only show recent changes within this time range"
-msgstr ""
+msgstr "להציג רק את השינויים האחרונים בטווח הזמן הזה"
 
 #: toolhub/apps/versioned/views.py:77
 msgid "Get a paginated list of all revisions."
-msgstr ""
+msgstr "לקבל רשימה מחולקת לדפים של כל הגרסאות."
 
 #: toolhub/apps/versioned/views.py:81
 msgid "Get the next revision immediately after the one with the provided id. Must be of the same tool/list."
-msgstr ""
+msgstr "לקבל את הגרסה הבאה מייד אחרי הזאת עם המזהה שנתין. חייב להיות מאותו הכלי או הרשימה."
 
 #: toolhub/apps/versioned/views.py:90
 msgid "A unique integer value identifying the target revision."
-msgstr ""
+msgstr "ערך מספרי שלם ייחודי שמזהה את גרסה היעד."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."

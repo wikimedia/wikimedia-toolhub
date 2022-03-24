@@ -4,7 +4,8 @@
 			"Kly",
 			"SiderealArt",
 			"Weather Top Wizard",
-			"Winston Sung"
+			"Winston Sung",
+			"列维劳德"
 		]
 	},
 	"add": "新增",
@@ -41,6 +42,7 @@
 	"leavefeedback": "留下意見回饋",
 	"links": "連結",
 	"lists-editlist": "編輯清單",
+	"lists-nouserlists": "您沒有任何清單",
 	"locale-select": "選擇語言",
 	"login": "登入",
 	"logout": "登出",
