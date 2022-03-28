@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-03-21 12:14:16+0000\n"
-"X-POT-Import-Date: 2022-03-18 03:35:13+0000\n"
+"PO-Revision-Date: 2022-03-28 11:14:51+0000\n"
+"X-POT-Import-Date: 2022-03-28 08:06:38+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr\n"
@@ -1035,96 +1035,92 @@ msgstr ""
 msgid "Missing content for one or more revisions."
 msgstr ""
 
-#: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:62
+#: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:63
 msgid "Has this revision been marked as hidden?"
 msgstr "Bu revizyon gizli olarak işaretli mi?"
 
-#: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:68
+#: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:69
 msgid "Has this revision been reviewed by a patroller?"
 msgstr "Bu revizyon bir denetçi tarafından incelendi mi?"
 
 #: toolhub/apps/versioned/schema.py:21
-msgid "unique identifier of the content being versioned"
+msgid "unique identifier of the version"
 msgstr ""
 
 #: toolhub/apps/versioned/schema.py:26
-msgid "title describing the content being versioned"
+msgid "unique identifier of the content being versioned"
 msgstr ""
 
 #: toolhub/apps/versioned/schema.py:31
+msgid "title describing the content being versioned"
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:36
 msgid "RFC 6902 application/json-patch+json data"
 msgstr "RFC 6902 application/json-patch+json verisi"
 
-#: toolhub/apps/versioned/schema.py:34
+#: toolhub/apps/versioned/schema.py:39
 msgid "RFC 6902 JSON patch operation"
 msgstr "RFC 6902 JSON yama işlemi"
 
-#: toolhub/apps/versioned/schema.py:39
+#: toolhub/apps/versioned/schema.py:44
 msgid "The operation to be performed"
 msgstr "Yapılacak işlem"
 
-#: toolhub/apps/versioned/schema.py:45
+#: toolhub/apps/versioned/schema.py:50
 msgid "JSON-Pointer to location within document where operation is performed."
 msgstr "JSON-Belgenin içinde işlemin yapılacağı yere işaretçi."
 
-#: toolhub/apps/versioned/schema.py:51
+#: toolhub/apps/versioned/schema.py:56
 msgid "The value to add, replace, or test."
 msgstr "Eklenecek, değiştirilecek, ya da denenecek değer."
 
-#: toolhub/apps/versioned/schema.py:57
+#: toolhub/apps/versioned/schema.py:62
 msgid "JSON-Pointer to location within document to move or copy the value from."
 msgstr "JSON-Belgenin içinde değerin taşınacağı ya da kopyalanacağı yere işaretçi."
 
-#: toolhub/apps/versioned/serializers.py:44
+#: toolhub/apps/versioned/serializers.py:45
 msgid "A unique integer value identifying this revision."
 msgstr "Bu sürümü tanımlayan benzersiz bir tamsayı değeri."
 
-#: toolhub/apps/versioned/serializers.py:56
+#: toolhub/apps/versioned/serializers.py:57
 msgid "Comment by the user for the revision."
 msgstr "Sürüm için kullanıcı yorumu."
 
-#: toolhub/apps/versioned/serializers.py:74
+#: toolhub/apps/versioned/serializers.py:75
 msgid "Content type of the revision."
 msgstr ""
 
-#: toolhub/apps/versioned/serializers.py:90
+#: toolhub/apps/versioned/serializers.py:127
 msgid "username removed"
 msgstr "kullanıcı adı kaldırıldı"
 
-#: toolhub/apps/versioned/serializers.py:91
+#: toolhub/apps/versioned/serializers.py:128
 msgid "edit summary removed"
 msgstr ""
 
-#: toolhub/apps/versioned/views.py:48
+#: toolhub/apps/versioned/views.py:40
 msgid "Only show recent changes by the given user."
 msgstr ""
 
-#: toolhub/apps/versioned/views.py:53
+#: toolhub/apps/versioned/views.py:45
 msgid "Only show recent changes for the given target type."
 msgstr ""
 
-#: toolhub/apps/versioned/views.py:58
+#: toolhub/apps/versioned/views.py:50
 msgid "Only show recent changes where suppressed field is either true or false"
 msgstr ""
 
-#: toolhub/apps/versioned/views.py:65
+#: toolhub/apps/versioned/views.py:57
 msgid "Only show recent changes where patrolled field is either true or false"
 msgstr ""
 
-#: toolhub/apps/versioned/views.py:71
+#: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
 msgstr ""
 
-#: toolhub/apps/versioned/views.py:77
+#: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."
-msgstr ""
-
-#: toolhub/apps/versioned/views.py:81
-msgid "Get the next revision immediately after the one with the provided id. Must be of the same tool/list."
-msgstr ""
-
-#: toolhub/apps/versioned/views.py:90
-msgid "A unique integer value identifying the target revision."
 msgstr ""
 
 #: toolhub/fields.py:40

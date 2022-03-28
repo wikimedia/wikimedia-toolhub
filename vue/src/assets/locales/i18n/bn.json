@@ -5,6 +5,7 @@
 			"MdsShakil",
 			"R4356th",
 			"Tahmid",
+			"Yahya",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -25,8 +26,11 @@
 	"auditlogs-type": "ধরন",
 	"auditlogs-username": "ব্যবহারকারী নাম",
 	"recentchanges": "সাম্প্রতিক পরিবর্তন",
+	"recentchanges-filter": "ছাঁকনি",
 	"recentchanges-targettype-tool": "সরঞ্জাম",
 	"recentchanges-targettype-toollist": "তালিকা",
+	"recentchanges-type": "ধরন",
+	"recentchanges-action-unpatrolled": "অপরীক্ষিত",
 	"recentchanges-username": "ব্যবহারকারী নাম",
 	"author": "স্রষ্টা",
 	"authtoken-token": "টোকেন",
@@ -79,6 +83,8 @@
 	"name": "নাম",
 	"privacypolicyurl": "গোপনীয়তা নীতি ইউআরএল",
 	"publishchanges": "পরিবর্তনগুলি প্রকাশ করুন",
+	"back": "পিছনে",
+	"continue": "অব্যাহত",
 	"required-field": "এই ঘরটি পূরণ করা আবশ্যক।",
 	"scrolltotop": "উপরে যান",
 	"search": "অনুসন্ধান",

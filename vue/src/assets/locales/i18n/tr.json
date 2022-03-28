@@ -5,6 +5,7 @@
 			"Joseph",
 			"Melissadilara",
 			"MuratTheTurkish",
+			"Oyuncu",
 			"SaldırganSincap"
 		]
 	},
@@ -124,6 +125,7 @@
 	"lists-listempty": "Bu liste boş",
 	"lists-discovernewlists": "Yeni listeler keşfet",
 	"lists-nolistsfoundtext": "Hiçbir liste bulunamadı",
+	"lists-nouserlists": "Liste yok.",
 	"lists-yourlists": "Listeleriniz",
 	"lists-view": "Liste",
 	"locale-select": "Dil seç",

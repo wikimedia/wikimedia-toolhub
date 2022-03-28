@@ -54,6 +54,8 @@
 	"newtoolsfound": "{{PLURAL:$1|1 件のツール|$1 件のツール}}",
 	"ok": "OK",
 	"patrolled": "パトロール済み",
+	"back": "戻る",
+	"continue": "続行",
 	"publishedlists": "公開されたリスト",
 	"required-field": "この欄は必須です。",
 	"search": "検索",

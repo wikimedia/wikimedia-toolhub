@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-03-24 12:13:04+0000\n"
-"X-POT-Import-Date: 2022-03-18 03:35:13+0000\n"
+"PO-Revision-Date: 2022-03-28 11:14:51+0000\n"
+"X-POT-Import-Date: 2022-03-28 08:06:38+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
@@ -1027,103 +1027,100 @@ msgstr "לא ניתן להסתיר את הגרסה הנוכחית."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr "הגרסה הזאת כבר סומנה כבדוקה."
+msgstr "הגרסה הזאת כבר סומנה כמנוטרת."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
 msgstr "תוכן חסר בגרסה אחת או יותר."
 
-#: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:62
+#: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:63
 msgid "Has this revision been marked as hidden?"
 msgstr "האם הגרסה הזאת סומנה בתור מוסתרת?"
 
-#: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:68
+#: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:69
 msgid "Has this revision been reviewed by a patroller?"
 msgstr "האם הגרסה הזאת נסקרה על־ידי מנטר?"
 
 #: toolhub/apps/versioned/schema.py:21
+#, fuzzy
+msgid "unique identifier of the version"
+msgstr "ערך מספרי שלם ייחודי שמזהה את גרסה היעד."
+
+#: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
 msgstr "מזהה ייחודי של תוכן שהגרסאות שלו מטופלות"
 
-#: toolhub/apps/versioned/schema.py:26
+#: toolhub/apps/versioned/schema.py:31
 msgid "title describing the content being versioned"
 msgstr "כותרת שמתארת את התוכן שהגרסאות שלו מטופלות"
 
-#: toolhub/apps/versioned/schema.py:31
+#: toolhub/apps/versioned/schema.py:36
 msgid "RFC 6902 application/json-patch+json data"
 msgstr "נתוני application/json-patch+json לפי RFC 6902"
 
-#: toolhub/apps/versioned/schema.py:34
+#: toolhub/apps/versioned/schema.py:39
 msgid "RFC 6902 JSON patch operation"
 msgstr "פעולת JSON patch לפי RFC 6902"
 
-#: toolhub/apps/versioned/schema.py:39
+#: toolhub/apps/versioned/schema.py:44
 msgid "The operation to be performed"
 msgstr "הפעולה שצריך לבצע"
 
-#: toolhub/apps/versioned/schema.py:45
+#: toolhub/apps/versioned/schema.py:50
 msgid "JSON-Pointer to location within document where operation is performed."
 msgstr "JSON-Pointer למיקום בתוך המסמך שהפעולה מתבצעת בו."
 
-#: toolhub/apps/versioned/schema.py:51
+#: toolhub/apps/versioned/schema.py:56
 msgid "The value to add, replace, or test."
 msgstr "הערך להוסיף, להחליף, או לבדוק."
 
-#: toolhub/apps/versioned/schema.py:57
+#: toolhub/apps/versioned/schema.py:62
 msgid "JSON-Pointer to location within document to move or copy the value from."
 msgstr "JSON-Pointer למיקום בתוך המסמך שהערך יועבר או יועתק ממנו."
 
-#: toolhub/apps/versioned/serializers.py:44
+#: toolhub/apps/versioned/serializers.py:45
 msgid "A unique integer value identifying this revision."
 msgstr "ערך שלם ייחודי שמזהה את הגרסה הזאת."
 
-#: toolhub/apps/versioned/serializers.py:56
+#: toolhub/apps/versioned/serializers.py:57
 msgid "Comment by the user for the revision."
 msgstr "הערה של המשתמש עבור הגרסה."
 
-#: toolhub/apps/versioned/serializers.py:74
+#: toolhub/apps/versioned/serializers.py:75
 msgid "Content type of the revision."
 msgstr "סוג התוכן של הגרסה."
 
-#: toolhub/apps/versioned/serializers.py:90
+#: toolhub/apps/versioned/serializers.py:127
 msgid "username removed"
 msgstr "שם המשתמש הוסר"
 
-#: toolhub/apps/versioned/serializers.py:91
+#: toolhub/apps/versioned/serializers.py:128
 msgid "edit summary removed"
 msgstr "תקציר העריכה הוסר"
 
-#: toolhub/apps/versioned/views.py:48
+#: toolhub/apps/versioned/views.py:40
 msgid "Only show recent changes by the given user."
 msgstr "להציג רק את השינויים האחרונים מאת המשתמש הנתון."
 
-#: toolhub/apps/versioned/views.py:53
+#: toolhub/apps/versioned/views.py:45
 msgid "Only show recent changes for the given target type."
 msgstr "להציג רק את השינויים האחרונים עבור סוג היעד הנתון."
 
-#: toolhub/apps/versioned/views.py:58
+#: toolhub/apps/versioned/views.py:50
 msgid "Only show recent changes where suppressed field is either true or false"
 msgstr "להציג רק את השינויים האחרונים שבהם השדה המועלם הוא אמת או שקר"
 
-#: toolhub/apps/versioned/views.py:65
+#: toolhub/apps/versioned/views.py:57
 msgid "Only show recent changes where patrolled field is either true or false"
-msgstr "להציג רק את השינויים האחרונים שבהם השדה הבדוק הוא אמת או שקר"
+msgstr "להציג רק את השינויים האחרונים שבהם השדה המנוטר הוא אמת או שקר"
 
-#: toolhub/apps/versioned/views.py:71
+#: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
 msgstr "להציג רק את השינויים האחרונים בטווח הזמן הזה"
 
-#: toolhub/apps/versioned/views.py:77
+#: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."
 msgstr "לקבל רשימה מחולקת לדפים של כל הגרסאות."
-
-#: toolhub/apps/versioned/views.py:81
-msgid "Get the next revision immediately after the one with the provided id. Must be of the same tool/list."
-msgstr "לקבל את הגרסה הבאה מייד אחרי הזאת עם המזהה שנתין. חייב להיות מאותו הכלי או הרשימה."
-
-#: toolhub/apps/versioned/views.py:90
-msgid "A unique integer value identifying the target revision."
-msgstr "ערך מספרי שלם ייחודי שמזהה את גרסה היעד."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
