@@ -1,7 +1,7 @@
 <template>
 	<CommonsImage
 		v-bind="$attrs"
-		:commons-url="tool.icon"
+		:commons-url="tool.icon || tool.annotations.icon"
 		:fallback="fallbackIcon"
 	/>
 </template>
@@ -23,7 +23,7 @@ export default {
 	},
 	computed: {
 		fallbackIcon() {
-			switch ( this.tool.tool_type ) {
+			switch ( this.tool.tool_type || this.tool.annotations.tool_type ) {
 				case 'web app':
 					return 'mdi-web';
 				case 'desktop app':

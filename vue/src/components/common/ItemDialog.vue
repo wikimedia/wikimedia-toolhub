@@ -9,7 +9,7 @@
 				<v-form
 					ref="itemform"
 					v-model="valid"
-					:disabled="!$can( 'add', 'toolinfo/tool' )"
+					:disabled="!$can( 'add', 'toolinfo/annotations' )"
 				>
 					<v-card-text>
 						<v-container>
@@ -39,7 +39,7 @@
 						<v-btn
 							color="primary base100--text"
 							class="pa-4 mb-4"
-							:disabled="!valid || !$can( 'add', 'toolinfo/tool' )"
+							:disabled="!valid || !$can( 'add', 'toolinfo/annotations' )"
 							@click="addItem"
 						>
 							{{ $t( 'add' ) }}

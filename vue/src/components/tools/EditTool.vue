@@ -1,5 +1,6 @@
 <template>
-	<v-container v-if="schema">
+	<!-- eslint-disable vue/no-mutating-props -- events handled locally -->
+	<v-container>
 		<v-row>
 			<v-col md="6" cols="12">
 				<h2 class="text-h4">
@@ -9,7 +10,8 @@
 
 			<v-col md="2" cols="12">
 				<v-btn
-					:to="{ name: 'tools-view', params: { name: name } }"
+					v-if="value.name"
+					:to="{ name: 'tools-view', params: { name: value.name } }"
 				>
 					<v-icon
 						left
@@ -24,7 +26,7 @@
 				<v-btn
 					color="primary base100--text"
 					block
-					:disabled="!valid || !$can( 'change', tool )"
+					:disabled="!valid || !$can( 'change', value )"
 					@click="commentDialog = true"
 				>
 					<v-icon
@@ -64,8 +66,8 @@
 											cols="12"
 										>
 											<InputWidget
-												v-model="tool[ id ]"
-												:schema="schema.properties[ id ]"
+												v-model="value[ id ]"
+												:schema="toolSchema.properties[ id ]"
 												:ui-schema="uischema"
 												@is-valid="storeValidity( $event, id )"
 											/>
@@ -92,8 +94,8 @@
 											cols="12"
 										>
 											<InputWidget
-												v-model="tool[ id ]"
-												:schema="schema.properties[ id ]"
+												v-model="value[ id ]"
+												:schema="toolSchema.properties[ id ]"
 												:ui-schema="uischema"
 												@is-valid="storeValidity( $event, id )"
 											/>
@@ -109,8 +111,8 @@
 											<v-row>
 												<v-col cols="12">
 													<InputWidget
-														v-model="tool[ id ]"
-														:schema="schema.properties[ id ]"
+														v-model="value[ id ]"
+														:schema="toolSchema.properties[ id ]"
 														:ui-schema="uischema"
 														@is-valid="storeValidity( $event, id )"
 													/>
@@ -141,8 +143,23 @@
 											cols="12"
 										>
 											<InputWidget
-												v-model="tool[ id ]"
-												:schema="schema.properties[ id ]"
+												v-model="value[ id ]"
+												:schema="toolSchema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
+
+									<v-row>
+										<v-col
+											v-for="( uischema, id ) in annotationsFieldsLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="value.annotations[ id ]"
+												:schema="annotationsSchema.properties[ id ]"
 												:ui-schema="uischema"
 												@is-valid="storeValidity( $event, id )"
 											/>
@@ -160,8 +177,8 @@
 											cols="12"
 										>
 											<InputWidget
-												v-model="tool[ id ]"
-												:schema="schema.properties[ id ]"
+												v-model="value[ id ]"
+												:schema="toolSchema.properties[ id ]"
 												:ui-schema="uischema"
 												@is-valid="storeValidity( $event, id )"
 											/>
@@ -227,7 +244,7 @@
 						<v-btn
 							color="primary base100--text"
 							block
-							:disabled="!valid || !$can( 'change', tool )"
+							:disabled="!valid || !$can( 'change', value )"
 							@click="commentDialog = true"
 						>
 							<v-icon
@@ -242,74 +259,52 @@
 				</v-row>
 			</v-col>
 		</v-row>
-
-		<v-row>
-			<v-col cols="12">
-				<ScrollTop />
-			</v-col>
-		</v-row>
-
 		<CommentDialog v-model="commentDialog" @save="publishChanges" />
 	</v-container>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import _ from 'lodash';
 import InputWidget from '@/components/common/InputWidget';
-import ScrollTop from '@/components/common/ScrollTop';
 import CommentDialog from '@/components/common/CommentDialog';
-import fetchMetaInfo from '@/helpers/metadata';
-import { asTool } from '@/helpers/casl';
 
 export default {
-	name: 'Tool',
+	name: 'EditTool',
 	components: {
 		InputWidget,
-		ScrollTop,
 		CommentDialog
+	},
+	props: {
+		value: {
+			type: Object,
+			required: true
+		},
+		toolSchema: {
+			type: Object,
+			required: true
+		},
+		annotationsSchema: {
+			type: Object,
+			required: true
+		},
+		links: {
+			type: Array,
+			required: true
+		}
 	},
 	data() {
 		return {
-			name: this.$route.params.name,
 			step: 1,
 			minStep: 1,
 			maxStep: 3,
-			tool: {
-				icon: null,
-				title: null,
-				description: null,
-				author: [],
-				repository: null,
-				url: null,
-				api_url: null,
-				translate_url: null,
-				bugtracker_url: null,
-				user_docs_url: [],
-				developer_docs_url: [],
-				feedback_url: [],
-				privacy_policy_url: [],
-				url_alternates: [],
-				tool_type: null,
-				license: null,
-				available_ui_languages: [],
-				technology_used: [],
-				sponsor: [],
-				for_wikis: [],
-				experimental: false,
-				deprecated: false,
-				replaced_by: null
-			},
+			initialValue: null,
 			commentDialog: false,
-			links: [ 'user_docs_url', 'developer_docs_url', 'privacy_policy_url', 'feedback_url', 'url_alternates' ],
 			valid: false,
 			validityPerField: {}
 		};
 	},
-	metaInfo() {
-		return fetchMetaInfo( 'tools-edit', this.name );
-	},
 	computed: {
-		...mapState( 'tools', { toolFromVuex: 'tool' } ),
 		...mapState( 'locale', [ 'localeSelect' ] ),
 		...mapState( 'tools', [ 'spdxLicenses' ] ),
 		basicInfoLayout() {
@@ -491,7 +486,7 @@ export default {
 			return {
 				tool_type: {
 					select: {
-						items: () => this.schema.properties.tool_type.enum
+						items: () => this.toolSchema.properties.tool_type.enum
 					},
 					icon: 'mdi-toolbox-outline',
 					label: this.$t( 'tooltype' )
@@ -532,6 +527,14 @@ export default {
 					widget: 'multi-select',
 					icon: 'mdi-wikipedia',
 					label: this.$t( 'forwikis' )
+				}
+			};
+		},
+		annotationsFieldsLayout() {
+			return {
+				wikidata_qid: {
+					icon: 'mdi-identifier',
+					label: this.$t( 'wikidataqid' )
 				}
 			};
 		},
@@ -582,6 +585,12 @@ export default {
 				}
 			} );
 
+			Object.keys( this.annotationsFieldsLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.stepThree = false;
+				}
+			} );
+
 			Object.keys( this.toolStatusLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
 					valid.stepThree = false;
@@ -591,17 +600,8 @@ export default {
 			return valid;
 		}
 	},
-	asyncComputed: {
-		schema: {
-			get() {
-				return this.getRequestSchema( 'tools_update' );
-			},
-			default: false
-		}
-	},
 	methods: {
-		...mapActions( 'api', [ 'getRequestSchema' ] ),
-		...mapActions( 'tools', [ 'getToolByName', 'getSpdxLicenses' ] ),
+		...mapActions( 'tools', [ 'getSpdxLicenses' ] ),
 		stepBack() {
 			this.step = Math.max( this.step - 1, this.minStep );
 		},
@@ -616,38 +616,70 @@ export default {
 		 */
 		storeValidity( isValid, field ) {
 			// validityPerField is dynamically built and therefore not reactive
-			// if the properties are added the usual way i.e a["key"] = value
-			// this syntax does the same thing except that it also makes
-			// the added properties reactive
+			// if the properties are added the usual way i.e a["key"] = value.
+			// This syntax does the same thing except that it also makes
+			// the added properties reactive.
 			this.$set( this.validityPerField, field, !isValid );
 		},
 		publishChanges( comment ) {
-			const newtool = { ...this.tool };
-			newtool.comment = comment;
+			const annotations = this.value.annotations;
+			const newtool = { ...this.value };
 
 			this.links.forEach( ( field ) => {
 				newtool[ field ] = newtool[ field ].filter( ( u ) => {
-					return u.url !== undefined && u.url !== null && u.url !== '';
+					return u.url !== undefined &&
+						u.url !== null &&
+						u.url !== '';
 				} );
 			} );
 
-			this.$store.dispatch(
-				'tools/editTool', { info: newtool, name: this.name }
-			);
+			let response = Promise.resolve();
+
+			if ( !_.isEqual( annotations, this.initialValue.annotations ) ) {
+				// Update annotations
+				response = response.then( () => {
+					return this.$store.dispatch( 'tools/editAnnotations', {
+						annotations: { ...annotations, comment },
+						name: this.value.name
+					} );
+				} );
+			}
+
+			delete newtool.annotations;
+			delete this.initialValue.annotations;
+
+			if ( !_.isEqual( newtool, this.initialValue ) ) {
+				// Update core tool info
+				response = response.then( () => {
+					return this.$store.dispatch( 'tools/editTool', {
+						info: { ...newtool, comment },
+						name: this.value.name
+					} );
+				} );
+			}
+
+			response.then( () => {
+				this.$router.push( {
+					name: 'tools-view',
+					params: { name: this.value.name }
+				} ).catch( () => {} );
+			} );
+
 			this.commentDialog = false;
 		}
 	},
 	watch: {
-		toolFromVuex: {
+		value: {
 			handler( newVal ) {
-				// Deep clone the new state
-				this.tool = asTool( JSON.parse( JSON.stringify( newVal ) ) );
+				if ( !this.initialValue && newVal.name ) {
+					this.initialValue = JSON.parse( JSON.stringify( newVal ) );
+				}
 			},
-			deep: true
+			deep: true,
+			immediate: true
 		}
 	},
 	mounted() {
-		this.getToolByName( this.name );
 		this.getSpdxLicenses();
 	}
 };

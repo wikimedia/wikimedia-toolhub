@@ -9,7 +9,7 @@
 			:class="{ 'tool-app-bar-xs': $vuetify.breakpoint.xs }"
 		>
 			<v-btn
-				v-if="$can( 'change', tool )"
+				v-if="$can( 'change', 'toolinfo/annotations' )"
 				:to="{ name: 'tools-edit', params: { name: tool.name } }"
 				color="primary base100--text my-1 mx-2"
 				:small="$vuetify.breakpoint.smAndDown"
@@ -312,24 +312,25 @@
 				</v-card>
 
 				<v-alert
-					v-if="tool.experimental || tool.deprecated"
+					v-if="( tool.experimental || tool.deprecated ||
+						tool.annotations.experimental || tool.annotations.deprecated )"
 					border="left"
 					type="error"
 					elevation="2"
 					width="100%"
 					class="mt-4"
 				>
-					<template v-if="tool.experimental">
+					<template v-if="tool.experimental || tool.annotations.experimental">
 						{{ $t( 'tool-experimental-error' ) }}
 					</template>
 
-					<template v-if="tool.deprecated">
+					<template v-if="tool.deprecated || tool.annotations.deprecated">
 						{{ $t( 'tool-deprecated-error' ) }}
 					</template>
 				</v-alert>
 
 				<v-alert
-					v-if="tool.replaced_by"
+					v-if="tool.replaced_by || tool.annotations.replaced_by"
 					border="left"
 					color="primary base100--text"
 					dark
@@ -338,7 +339,8 @@
 					width="100%"
 					class="mt-4"
 				>
-					{{ $t( 'tool-replacement-link', [ tool.replaced_by ] ) }}
+					{{ $t( 'tool-replacement-link',
+						[ tool.replaced_by || tool.annotations.replaced_by ] ) }}
 				</v-alert>
 			</v-col>
 		</v-row>
@@ -383,31 +385,31 @@ export default {
 			const links = [
 				{
 					title: this.$t( 'apidocumentation' ),
-					url: this.tool.api_url
+					url: this.tool.api_url || this.tool.annotations.api_url
 				},
 				{
 					title: this.$t( 'helptranslate' ),
-					url: this.tool.translate_url
+					url: this.tool.translate_url || this.tool.annotations.translate_url
 				},
 				{
 					title: this.$t( 'bugtracker' ),
-					url: this.tool.bugtracker_url
+					url: this.tool.bugtracker_url || this.tool.annotations.bugtracker_url
 				},
 				{
 					title: this.$t( 'howtouse' ),
-					url: this.tool.user_docs_url
+					url: this.getArray( this.tool, 'user_docs_url' )
 				},
 				{
 					title: this.$t( 'developerdocumentation' ),
-					url: this.tool.developer_docs_url
+					url: this.getArray( this.tool, 'developer_docs_url' )
 				},
 				{
 					title: this.$t( 'leavefeedback' ),
-					url: this.tool.feedback_url
+					url: this.getArray( this.tool, 'feedback_url' )
 				},
 				{
 					title: this.$t( 'privacypolicy' ),
-					url: this.tool.privacy_policy_url
+					url: this.getArray( this.tool, 'privacy_policy_url' )
 				},
 				{
 					title: this.$t( 'urlalternates' ),
@@ -467,7 +469,7 @@ export default {
 			const items = [
 				{
 					name: this.$t( 'tooltype' ),
-					value: this.tool.tool_type
+					value: this.tool.tool_type || this.tool.annotations.tool_type
 				},
 				{
 					name: this.$t( 'license' ),
@@ -475,7 +477,7 @@ export default {
 				},
 				{
 					name: this.$t( 'availableuilanguages' ),
-					value: this.tool.available_ui_languages
+					value: this.getArray( this.tool, 'available_ui_languages' )
 				},
 				{
 					name: this.$t( 'technologyused' ),
@@ -487,8 +489,11 @@ export default {
 				},
 				{
 					name: this.$t( 'forwikis' ),
-					value: ensureArray(
-						this.tool.for_wikis ).map( forWikiLabel )
+					value: this.getArray( this.tool, 'for_wikis' ).map( forWikiLabel )
+				},
+				{
+					name: this.$t( 'wikidataqid' ),
+					value: this.tool.annotations.wikidata_qid
 				}
 			];
 
@@ -504,6 +509,14 @@ export default {
 	methods: {
 		isValidUrl( value ) {
 			return isValidHttpUrl( value );
+		},
+		getArray( tool, key ) {
+			const tool_array = ensureArray( tool[ key ] );
+			const annotations_array = ensureArray( tool.annotations[ key ] );
+
+			const array = tool_array.length > 0 ? tool_array : annotations_array;
+
+			return array;
 		}
 	}
 };

@@ -10,7 +10,7 @@ const AuditLogs = () => import( /* webpackChunkName: "auditlogs" */ '../views/Au
 const CrawlerHistory = () => import( /* webpackChunkName: "crawlerhistory" */ '../views/CrawlerHistory.vue' );
 const CreateEditList = () => import( /* webpackChunkName: "lists-edit" */ '../components/lists/CreateEditList.vue' );
 const DeveloperSettings = () => import( /* webpackChunkName: "developersettings" */ '../views/DeveloperSettings.vue' );
-const EditTool = () => import( /* webpackChunkName: "tools-edit" */ '../views/EditTool.vue' );
+const EditToolOrAnnotations = () => import( /* webpackChunkName: "tools-edit" */ '../views/EditToolOrAnnotations.vue' );
 const Favorites = () => import( /* webpackChunkName: "favorites" */ '../views/Favorites.vue' );
 const ListHistory = () => import( /* webpackChunkName: "lists-history" */ '../views/ListHistory.vue' );
 const ListRevisionsDiff = () => import( /* webpackChunkName: "lists-diff" */ '../views/ListRevisionsDiff.vue' );
@@ -97,7 +97,7 @@ export const routes = [
 	{
 		name: 'tools-edit',
 		path: '/tools/:name([\\w%-]{1,255})/edit',
-		component: EditTool
+		component: EditToolOrAnnotations
 	},
 	{
 		name: 'tools-history',

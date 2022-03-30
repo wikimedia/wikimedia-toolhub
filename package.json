@@ -26,6 +26,7 @@
 		"chart.js": "^2.9.4",
 		"core-js": "^3.19.2",
 		"json-pointer": "^0.6.1",
+		"lodash": "^4.17.21",
 		"swagger-client": "^3.18.4",
 		"vue": "^2.6.14",
 		"vue-async-computed": "^3.9.0",

@@ -131,23 +131,51 @@ export const actions = {
 			}
 		);
 	},
-	editTool( context, tool ) {
+	/**
+	 * @param {Object} context - vuex context
+	 * @param {Object} payload
+	 * @param {string} payload.name - tool name
+	 * @param {Object} payload.info - toolinfo
+	 * @return {Promise<undefined>}
+	 */
+	editTool( context, payload ) {
 		const request = {
-			url: '/api/tools/' + encodeURI( tool.name ) + '/',
+			url: '/api/tools/' + encodeURI( payload.name ) + '/',
 			method: 'PUT',
-			body: JSON.stringify( tool.info )
+			body: JSON.stringify( payload.info )
 		};
 
 		return makeApiCall( context, request ).then(
 			( success ) => {
 				const data = success.body;
-				router.push( {
-					name: 'tools-view',
-					params: { name: data.name }
-				} );
-
 				this._vm.$notify.success(
 					i18n.t( 'tooleditingsuccess', [ data.name ] ), 30000
+				);
+			},
+			( failure ) => {
+				displayErrorNotification.call( this, failure );
+			}
+		);
+	},
+	/**
+	 * @param {Object} context - vuex context
+	 * @param {Object} payload
+	 * @param {string} payload.name - tool name
+	 * @param {Object} payload.annotations - annotations
+	 * @return {Promise<undefined>}
+	 */
+	editAnnotations( context, payload ) {
+		const request = {
+			url: '/api/tools/' + encodeURI( payload.name ) + '/annotations/',
+			method: 'PUT',
+			body: JSON.stringify( payload.annotations )
+		};
+
+		return makeApiCall( context, request ).then(
+			() => {
+				this._vm.$notify.success(
+					i18n.t( 'annotationseditingsuccess', [ payload.name ] ),
+					30000
 				);
 			},
 			( failure ) => {

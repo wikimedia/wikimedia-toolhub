@@ -16,6 +16,7 @@ import {
 } from './tools';
 
 describe( 'store/tools', () => {
+
 	const shortToolResponse = {
 		author: 'Srish',
 		bugtracker_url: 'http://testtracker.com',
@@ -33,8 +34,27 @@ describe( 'store/tools', () => {
 		} ]
 	};
 
+	const annotationsResponse = {
+		icon: null,
+		api_url: null,
+		translate_url: null,
+		bugtracker_url: null,
+		user_docs_url: Array( 0 ),
+		developer_docs_url: Array( 0 ),
+		feedback_url: Array( 0 ),
+		privacy_policy_url: Array( 0 ),
+		tool_type: null,
+		available_ui_languages: Array( 0 ),
+		for_wikis: Array( 0 ),
+		deprecated: false,
+		experimental: false,
+		replaced_by: null,
+		wikidata_qid: null
+	};
+
 	const toolResponse = {
 		...shortToolResponse,
+		...annotationsResponse,
 		api_url: null,
 		available_ui_languages: Array( 0 ),
 		bot_username: null,
@@ -375,7 +395,6 @@ describe( 'store/tools', () => {
 				await editTool( context, testTool );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
 
 				// eslint-disable-next-line no-underscore-dangle
@@ -389,7 +408,50 @@ describe( 'store/tools', () => {
 				await actions.editTool( context, toolResponse );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( commit ).to.have.not.been.called;
+				expect( displayErrorNotification ).to.have.been.called;
+			} );
+
+		} );
+
+		describe( 'editAnnotations', () => {
+			const testTool = {
+				annotations: annotationsResponse,
+				name: 'Hellotool'
+			};
+
+			const response = {
+				ok: true,
+				status: 200,
+				url: '/api/tools/' + testTool.name + '/annotations/',
+				headers: { 'Content-type': 'application/json' },
+				body: annotationsResponse
+			};
+
+			it( 'should edit annotations', async () => {
+				const expectRequest = addRequestDefaults( {
+					url: '/api/tools/' + testTool.name + '/annotations/',
+					method: 'PUT',
+					body: JSON.stringify( testTool.annotations )
+				}, context );
+				http.resolves( response );
+
+				const editAnnotations = actions.editAnnotations.bind( stubThis );
+				await editAnnotations( context, testTool );
+
+				expect( http ).to.have.been.calledOnce;
+				expect( http ).to.have.been.calledWith( expectRequest );
+
+				// eslint-disable-next-line no-underscore-dangle
+				expect( stubThis._vm.$notify.success ).to.have.been.called;
+
+			} );
+
+			it( 'should log failures', async () => {
+				http.rejects( apiError );
+
+				await actions.editAnnotations( context, testTool );
+
+				expect( http ).to.have.been.calledOnce;
 				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
