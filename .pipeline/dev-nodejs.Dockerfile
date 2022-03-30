@@ -16,4 +16,4 @@ COPY --chown=65533:65533 [".git/", "./.git/"]
 ENV NODE_ENV="development"
 ENTRYPOINT ["/usr/bin/env"]
 
-LABEL blubber.variant="dev-nodejs" blubber.version="0.8.0+eb01fc1"
+LABEL blubber.variant="dev-nodejs" blubber.version="0.9.0+73d3d2c"

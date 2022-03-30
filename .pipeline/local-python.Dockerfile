@@ -19,8 +19,8 @@ FROM docker-registry.wikimedia.org/python3-buster:latest AS local-python
 USER 0
 ENV HOME="/root"
 ENV DEBIAN_FRONTEND="noninteractive"
-RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "git" "python3-dev" "python3-venv" && rm -rf /var/lib/apt/lists/*
-RUN python3 "-m" "easy_install" "pip" && python3 "-m" "pip" "install" "-U" "setuptools!=60.9.0" "wheel" "tox" "pip"
+RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "git" "python3-dev" "python3-pip" "python3-venv" && rm -rf /var/lib/apt/lists/*
+RUN python3 "-m" "pip" "install" "-U" "setuptools!=60.9.0" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
 RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.7"
 RUN (getent group "65533" || groupadd -o -g "65533" -r "somebody") && (getent passwd "65533" || useradd -l -o -m -d "/home/somebody" -r -g "65533" -u "65533" "somebody") && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
@@ -35,4 +35,4 @@ RUN poetry "install" "--no-root"
 COPY --chown=65533:65533 [".", "."]
 COPY --chown=65533:65533 --from=dockerize ["/srv/dockerize", "/srv/dockerize"]
 
-LABEL blubber.variant="local-python" blubber.version="0.8.0+eb01fc1"
+LABEL blubber.variant="local-python" blubber.version="0.9.0+73d3d2c"
