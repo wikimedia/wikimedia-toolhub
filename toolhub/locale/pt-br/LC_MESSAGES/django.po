@@ -6,10 +6,11 @@
 # Author: Mariagarbin
 # Author: Svjatysberega
 # Author: Wiiformii
+# Author: YuriNikolai
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-03-28 11:14:51+0000\n"
+"PO-Revision-Date: 2022-03-31 11:14:24+0000\n"
 "X-POT-Import-Date: 2022-03-28 08:06:38+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1029,7 +1030,7 @@ msgstr "A revisão atual não pode ser ocultada."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr ""
+msgstr "Revisão já marcada como patrulhada."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
@@ -1117,7 +1118,7 @@ msgstr ""
 
 #: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
-msgstr ""
+msgstr "Só mostrar mudanças recentes dentro desta faixa de tempo"
 
 #: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."

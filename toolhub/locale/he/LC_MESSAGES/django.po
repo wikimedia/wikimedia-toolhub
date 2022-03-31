@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-03-28 11:14:51+0000\n"
+"PO-Revision-Date: 2022-03-31 11:14:24+0000\n"
 "X-POT-Import-Date: 2022-03-28 08:06:38+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1042,9 +1042,8 @@ msgid "Has this revision been reviewed by a patroller?"
 msgstr "האם הגרסה הזאת נסקרה על־ידי מנטר?"
 
 #: toolhub/apps/versioned/schema.py:21
-#, fuzzy
 msgid "unique identifier of the version"
-msgstr "ערך מספרי שלם ייחודי שמזהה את גרסה היעד."
+msgstr "מזהה ייחודי של הגרסה"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
