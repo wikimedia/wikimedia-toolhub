@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-03-28 11:14:50+0000\n"
+"PO-Revision-Date: 2022-04-04 11:13:21+0000\n"
 "X-POT-Import-Date: 2022-03-28 08:06:38+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -547,7 +547,7 @@ msgstr ""
 
 #: toolhub/apps/search/serializers.py:86
 msgid "ToolList autocomplete results"
-msgstr ""
+msgstr "Autovervollständigungsergebnisse der Werkzeugliste"
 
 #: toolhub/apps/search/views.py:109
 msgid "Autocomplete for tools."
@@ -559,11 +559,11 @@ msgstr "Facettensuche für Werkzeuge."
 
 #: toolhub/apps/search/views.py:276
 msgid "Autocomplete for toollists."
-msgstr ""
+msgstr "Autovervollständigung für Werkzeugliste."
 
 #: toolhub/apps/search/views.py:316
 msgid "Full text search for toollists."
-msgstr ""
+msgstr "Volltextsuche für Werkzeuglisten."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -744,7 +744,7 @@ msgstr "Ursprung dieses Werkzeugsatzes."
 
 #: toolhub/apps/toolinfo/models.py:725
 msgid "Wikidata item ID for the tool."
-msgstr ""
+msgstr "Wikidata-ID für das Werkzeug."
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"
@@ -1029,7 +1029,7 @@ msgstr "Die aktuelle Version kann nicht versteckt werden."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr ""
+msgstr "Die Version ist bereits als kontrolliert markiert."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
@@ -1045,15 +1045,15 @@ msgstr "Wurde diese Version von einem Kontrolleur überprüft?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the version"
-msgstr ""
+msgstr "eindeutiger Bezeichner der Version"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
-msgstr ""
+msgstr "eindeutiger Bezeichner des zu versionierenden Inhalts"
 
 #: toolhub/apps/versioned/schema.py:31
 msgid "title describing the content being versioned"
-msgstr ""
+msgstr "Titel, der den zu versionierenden Inhalt beschreibt"
 
 #: toolhub/apps/versioned/schema.py:36
 msgid "RFC 6902 application/json-patch+json data"
@@ -1089,7 +1089,7 @@ msgstr "Kommentar des Benutzers für die Version."
 
 #: toolhub/apps/versioned/serializers.py:75
 msgid "Content type of the revision."
-msgstr ""
+msgstr "Inhaltstyp der Version."
 
 #: toolhub/apps/versioned/serializers.py:127
 msgid "username removed"
@@ -1101,23 +1101,23 @@ msgstr "Zusammenfassung entfernt"
 
 #: toolhub/apps/versioned/views.py:40
 msgid "Only show recent changes by the given user."
-msgstr ""
+msgstr "Nur die letzten Änderungen des angegebenen Benutzers anzeigen."
 
 #: toolhub/apps/versioned/views.py:45
 msgid "Only show recent changes for the given target type."
-msgstr ""
+msgstr "Zeigt nur die jüngsten Änderungen für den angegebenen Zieltyp an."
 
 #: toolhub/apps/versioned/views.py:50
 msgid "Only show recent changes where suppressed field is either true or false"
-msgstr ""
+msgstr "Zeigt nur die letzten Änderungen an, wenn das Feld „suppressed“ entweder true oder false ist."
 
 #: toolhub/apps/versioned/views.py:57
 msgid "Only show recent changes where patrolled field is either true or false"
-msgstr ""
+msgstr "Zeigt nur die letzten Änderungen an, wenn das Feld „patrolled“ entweder true oder false ist."
 
 #: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
-msgstr ""
+msgstr "Nur die letzten Änderungen innerhalb dieses Zeitraums anzeigen"
 
 #: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."
