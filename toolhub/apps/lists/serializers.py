@@ -85,7 +85,8 @@ class ToolListSerializer(ModelSerializer):
     def get_tools(self, obj):
         """Get ordered list of tools in toollist."""
         serializer = SummaryToolSerializer(
-            obj.tools.all().order_by("toollistitem__order"), many=True
+            obj.tools.all().order_by("toollistitem__order").distinct(),
+            many=True,
         )
         return serializer.data
 
@@ -255,7 +256,10 @@ class ToolListHistoricVersionSerializer(ToolListDiffSerializer):
     def get_tools(self, obj):
         """Get full tool objects"""
         serializer = SummaryToolSerializer(
-            Tool.objects.filter(name__in=obj["tool_names"]), many=True
+            Tool.objects.filter(name__in=obj["tool_names"])
+            .order_by("toollistitem__order")
+            .distinct(),
+            many=True,
         )
         return serializer.data
 
