@@ -17,10 +17,16 @@ export const actions = {
 	 * Load the backend server's OpenAPI spec.
 	 *
 	 * @param {Object} context - Vuex context
+	 * @param {boolean} invalidateCache - Force fetching schema if true
 	 * @return {Promise<Object>}
 	 */
-	fetchOpenAPISchema( context ) {
-		return makeApiCall(
+	fetchOpenAPISchema( context, invalidateCache = false ) {
+		// Avoid loading the raw schema if we already have it in cache
+		if ( !invalidateCache && context.state.schemaPromise ) {
+			return context.state.schemaPromise;
+		}
+
+		const promise = makeApiCall(
 			context, { url: OPENAPI_SCHEMA_URL }
 		).then( ( response ) => {
 			const spec = response.body;
@@ -31,6 +37,9 @@ export const actions = {
 		} ).catch( ( failure ) => {
 			displayErrorNotification.call( this, failure );
 		} );
+
+		context.commit( 'SCHEMA_PROMISE', promise );
+		return promise;
 	},
 
 	/**
@@ -41,19 +50,7 @@ export const actions = {
 	 * @return {Promise<Object|undefined>}
 	 */
 	getOperationSchema( context, opId ) {
-		// Avoid loading the raw schema if we already have it in cache
-		const loader = new Promise( ( resolve, reject ) => {
-			if ( context.state.specLoaded ) {
-				resolve( context.state.apispec );
-			} else {
-				context.dispatch( 'fetchOpenAPISchema' ).then(
-					( apispec ) => resolve( apispec ),
-					( err ) => reject( err )
-				);
-			}
-		} );
-
-		return loader.then( ( api ) => {
+		return context.dispatch( 'fetchOpenAPISchema' ).then( ( api ) => {
 			for ( const pathName in api.paths ) {
 				const path = api.paths[ pathName ];
 				for ( const method in path ) {
@@ -94,15 +91,17 @@ export const mutations = {
 	 */
 	onSpecChanged( state, { spec } ) {
 		state.apispec = spec;
-		state.specLoaded = true;
+	},
+	SCHEMA_PROMISE( state, promise ) {
+		state.schemaPromise = promise;
 	}
 };
 
 export default {
 	namespaced: true,
 	state: {
-		apispec: {},
-		specLoaded: false
+		apispec: null,
+		schemaPromise: null
 	},
 	getters: getters,
 	actions: actions,

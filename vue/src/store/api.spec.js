@@ -40,7 +40,10 @@ describe( 'store/api', () => {
 	describe( 'actions', () => {
 		const commit = sinon.spy();
 		const dispatch = sinon.stub();
-		const state = { specLoaded: false };
+		const state = {
+			apispec: null,
+			schemaPromise: null
+		};
 		const rootState = { locale: { locale: 'en' } };
 		const context = { commit, dispatch, state, rootState };
 
@@ -80,23 +83,35 @@ describe( 'store/api', () => {
 				}, context );
 				http.resolves( response );
 
-				await actions.fetchOpenAPISchema( context );
+				const promise = actions.fetchOpenAPISchema( context );
 				expect( http ).to.have.been.calledOnce;
 				expect( http ).to.have.been.calledBefore( commit );
 				expect( http ).to.have.been.calledWith( expectRequest );
 
-				expect( commit ).to.have.been.calledOnce;
-				expect( commit ).to.have.been.calledWithExactly(
+				expect( commit.getCall( 0 ) ).to.have.been.calledWithExactly(
+					'SCHEMA_PROMISE', promise
+				);
+
+				await promise;
+
+				expect( commit ).to.have.been.calledTwice;
+				expect( commit.getCall( 1 ) ).to.have.been.calledWithExactly(
 					'onSpecChanged', { spec }
 				);
+
 			} );
 
 			it( 'should log failures', async () => {
 				http.rejects( apiError );
-				await actions.fetchOpenAPISchema( context );
+				const promise = actions.fetchOpenAPISchema( context );
 
 				expect( http ).to.have.been.calledOnce;
-				expect( commit ).to.not.have.been.calledOnce;
+				expect( commit ).to.have.been.calledOnce;
+				expect( commit ).to.have.been.calledWithExactly(
+					'SCHEMA_PROMISE', promise
+				);
+
+				await promise;
 				expect( displayErrorNotification ).to.have.been.called;
 			} );
 
@@ -104,7 +119,7 @@ describe( 'store/api', () => {
 
 		describe( 'getOperationSchema', () => {
 			it( 'should fetch an api operation schema', async () => {
-				expect( state.specLoaded ).to.equal( false );
+				expect( state.schemaPromise ).to.be.null;
 
 				dispatch.onFirstCall().returns(
 					{ then: sinon.stub().yields( spec ) }
@@ -123,7 +138,7 @@ describe( 'store/api', () => {
 			} );
 
 			it( 'should fail on unknown operations', async () => {
-				expect( state.specLoaded ).to.equal( false );
+				expect( state.schemaPromise ).to.be.null;
 
 				dispatch.onFirstCall().returns(
 					{ then: sinon.stub().yields( spec ) }
@@ -147,16 +162,23 @@ describe( 'store/api', () => {
 	} );
 
 	describe( 'mutations', () => {
-		it( 'should store `apispec` and `specloaded`', () => {
+		it( 'should store schemaPromise', () => {
 			const state = {
-				apispec: {},
-				specLoaded: false
+				schemaPromise: null
 			};
-
+			// eslint-disable-next-line no-unused-vars
+			const promise = new Promise( ( resolve, reject ) => {
+				resolve( true );
+			} );
+			mutations.SCHEMA_PROMISE( state, promise );
+			expect( state.schemaPromise ).to.equal( promise );
+		} );
+		it( 'should store apispec', () => {
+			const state = {
+				apispec: null
+			};
 			mutations.onSpecChanged( state, { spec } );
 			expect( state.apispec ).to.equal( spec );
-			expect( state.specLoaded ).to.equal( true );
-
 		} );
 	} );
 

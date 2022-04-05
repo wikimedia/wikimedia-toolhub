@@ -98,7 +98,7 @@ describe( 'store/locale', () => {
 			const commit = sinon.spy();
 			const dispatch = sinon.stub();
 			const state = {};
-			const rootState = { api: { specLoaded: false } };
+			const rootState = { api: { schemaPromise: null } };
 
 			dispatch.onFirstCall().returns( { then: sinon.stub().yields() } );
 			const testLocale = 'en';
@@ -138,7 +138,7 @@ describe( 'store/locale', () => {
 			const commit = sinon.spy();
 			const dispatch = sinon.stub();
 			const state = {};
-			const rootState = { api: { specLoaded: false } };
+			const rootState = { api: { schemaPromise: null } };
 
 			dispatch.onFirstCall().returns( { then: sinon.stub().yields() } );
 			const testLocale = 'ar';

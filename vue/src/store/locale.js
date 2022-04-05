@@ -131,6 +131,7 @@ export const actions = {
 		const locale = sanitizeLocale( payload.locale );
 		const vm = payload.vm;
 		const initial = payload.initial || false;
+		const localeWas = context.state.locale;
 
 		return context.dispatch(
 			'user/setLocale', locale, { root: true }
@@ -151,10 +152,10 @@ export const actions = {
 			}
 
 			// Update our OpenAPI schema using the new locale, but only if the
-			// schema has been fetched previously.
-			if ( context.rootState.api.specLoaded ) {
+			// schema has been fetched previously and the locale has changed.
+			if ( context.rootState.api.schemaPromise && locale !== localeWas ) {
 				context.dispatch(
-					'api/fetchOpenAPISchema', null, { root: true }
+					'api/fetchOpenAPISchema', true, { root: true }
 				);
 			}
 		} );

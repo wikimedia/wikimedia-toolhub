@@ -10,7 +10,7 @@
 		<v-row>
 			<v-col cols="12">
 				<rapi-doc
-					v-if="specLoaded"
+					v-if="apispec"
 					ref="rapidoc"
 					class="no-gutters flex-wrap flex-column fill-height elevation-1 py-6"
 					allow-api-list-style-selection="false"
@@ -48,7 +48,7 @@ export default {
 		return fetchMetaInfo( 'apidocs' );
 	},
 	computed: {
-		...mapState( 'api', [ 'apispec', 'specLoaded' ] ),
+		...mapState( 'api', [ 'apispec' ] ),
 		...mapState( 'user', [ 'user' ] )
 	},
 	methods: {
@@ -74,11 +74,7 @@ export default {
 		}
 	},
 	mounted() {
-		if ( this.specLoaded ) {
-			this.loadSpec( this.apispec );
-		} else {
-			this.fetchOpenAPISchema();
-		}
+		this.fetchOpenAPISchema().then( () => this.loadSpec( this.apispec ) );
 	}
 };
 </script>
