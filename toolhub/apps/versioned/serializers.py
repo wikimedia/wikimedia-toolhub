@@ -15,7 +15,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+import logging
+
 from django.apps import apps
+from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema_field
@@ -30,6 +33,9 @@ from toolhub.permissions import is_oversighter
 from toolhub.serializers import ModelSerializer
 
 from . import schema
+
+
+logger = logging.getLogger(__name__)
 
 
 class RevisionSerializer(ModelSerializer):
@@ -96,9 +102,29 @@ class RevisionSerializer(ModelSerializer):
         if ctx_key in self.context:
             return self.context[ctx_key]
 
-        target = apps.get_model(
-            instance.content_type.app_label, instance.content_type.model
-        ).objects.get(pk=instance.object_id)
+        target_model = apps.get_model(
+            instance.content_type.app_label,
+            instance.content_type.model,
+        )
+        try:
+            if hasattr(target_model, "all_objects"):
+                # This should be the common case. `all_objects` is the manager
+                # on safedelete model subclasses that returns deleted objects
+                # too. Versioned models should typically also be safedelete
+                # models.
+                target = target_model.all_objects.get(pk=instance.object_id)
+            else:
+                target = target_model.objects.get(pk=instance.object_id)
+        except ObjectDoesNotExist:
+            # This really should not happen unless someone starts versioning
+            # models that are not also safedelete models. And why would that
+            # be a good idea?
+            logger.error(
+                "Model <%s: pk=%s> not found",
+                target_model.__class__,
+                instance.object_id,
+            )
+            return []
 
         qs = Version.objects.get_for_object(target)
         qs = qs.order_by("id").values_list("id", flat=True)
@@ -110,7 +136,13 @@ class RevisionSerializer(ModelSerializer):
         """Get the id of the previous and next versions."""
         ids = self._get_revision_ids(instance)
 
-        current_idx = ids.index(instance.id)
+        try:
+            current_idx = ids.index(instance.id)
+        except ValueError:
+            # This should only happen if _get_revision_ids returned an empty
+            # list.
+            return (None, None)
+
         parent_idx = current_idx - 1
         parent_id = ids[parent_idx] if parent_idx >= 0 else None
         child_idx = current_idx + 1
