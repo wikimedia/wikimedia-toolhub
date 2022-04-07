@@ -22,5 +22,5 @@ from django.utils.translation import gettext_lazy as _
 class SearchConfig(AppConfig):
     """Metadata class for app."""
 
-    name = "search"
+    name = "toolhub.apps.search"
     verbose_name = _("Search")

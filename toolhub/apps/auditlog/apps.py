@@ -22,5 +22,5 @@ from django.utils.translation import gettext_lazy as _
 class AuditlogConfig(AppConfig):
     """Metadata class for app."""
 
-    name = "auditlog"
+    name = "toolhub.apps.auditlog"
     verbose_name = _("Audit log")

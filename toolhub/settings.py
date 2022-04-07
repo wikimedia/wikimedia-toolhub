@@ -156,6 +156,7 @@ if env.bool("URLLIB3_DISABLE_WARNINGS", default=False):
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["*"])
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Application definition
 INSTALLED_APPS = [

@@ -22,5 +22,5 @@ from django.utils.translation import gettext_lazy as _
 class CrawlerConfig(AppConfig):
     """Metadata class for app."""
 
-    name = "crawler"
+    name = "toolhub.apps.crawler"
     verbose_name = _("Toolinfo web crawler")

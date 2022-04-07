@@ -22,5 +22,5 @@ from django.utils.translation import gettext_lazy as _
 class OAuth2Config(AppConfig):
     """Metadata class for app."""
 
-    name = "oauth2"
+    name = "toolhub.apps.oauth2"
     verbose_name = _("OAuth 2.0 Authorization server API")

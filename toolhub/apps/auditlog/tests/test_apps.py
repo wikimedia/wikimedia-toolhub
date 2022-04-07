@@ -25,4 +25,4 @@ class AuditlogConfigTest(SimpleTestCase):
 
     def test_apps(self):
         """Assert the app has a name."""
-        self.assertEqual(AuditlogConfig.name, "auditlog")
+        self.assertEqual(AuditlogConfig.name, "toolhub.apps.auditlog")
