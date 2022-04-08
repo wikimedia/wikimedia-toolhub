@@ -18,6 +18,7 @@
 	"addremovetools-nologintext": "Info message for unauthenticated users.",
 	"addremovetools-toolcreationsuccess": "Success message for tool creation. Parameters:\n* $1 - tool name",
 	"agree-terms": "Terms a user must agree to when adding content. Parameters:\n* $1 - Link to Terms of Use.\n* $2 - Link to Code of Conduct.\n* $3 - Link to Creative Commons license.",
+	"annotations": "Label for tool annotations.",
 	"apidocs": "Navigation menu label, links to API page.",
 	"apidocumentation": "Link label, links to the API of a tool.\n\n{{Identical|API}}",
 	"apierror": "Error message for API failure. Parameters:\n* $1 - error details (possibly not localized)",

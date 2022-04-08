@@ -11,6 +11,7 @@
 	"addremovetools-nologintext": "You will need to log in to Toolhub to add or remove tools",
 	"addremovetools-toolcreationsuccess": "Success! '$1' tool created.",
 	"agree-terms": "By saving changes, you agree to the $1, $2, and you irrevocably agree to release your contribution under the $3. You agree that a hyperlink or URL is sufficient attribution under the Creative Commons license.",
+	"annotations": "Annotations",
 	"apidocs": "API docs",
 	"apidocumentation": "API",
 	"apierror": "Oops! An error occurred: $1",
