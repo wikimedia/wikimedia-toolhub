@@ -19,6 +19,8 @@ from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.utils.translation import gettext_lazy as _
 
+from drf_spectacular.utils import extend_schema_field
+
 from rest_framework import serializers
 from rest_framework.exceptions import PermissionDenied
 
@@ -321,7 +323,7 @@ class ToolRevisionSerializer(RevisionSerializer):
 class ToolRevisionDetailSerializer(ToolRevisionSerializer):
     """Tool revision details."""
 
-    toolinfo = ToolSerializer(source="field_dict", many=False)
+    toolinfo = serializers.SerializerMethodField()
 
     def to_representation(self, instance):
         """Generate primative representation of a model instance."""
@@ -329,6 +331,24 @@ class ToolRevisionDetailSerializer(ToolRevisionSerializer):
         if self._should_hide_details(instance):
             ret["toolinfo"] = {}
         return ret
+
+    def _get_historic_data(self, obj):
+        """Get historic data for a given Tool version."""
+        data = obj.field_dict
+
+        data["annotations"] = {}
+        qs = obj.revision.version_set.get_for_model(Annotations)
+        ann = qs.first()
+        if ann is not None:
+            data["annotations"] = ann.field_dict
+
+        return data
+
+    @extend_schema_field(ToolSerializer(many=False))
+    def get_toolinfo(self, obj):
+        """Get historic toolinfo."""
+        serializer = ToolSerializer(self._get_historic_data(obj), many=False)
+        return serializer.data
 
     class Meta(ToolRevisionSerializer.Meta):
         """Configure serializer."""
