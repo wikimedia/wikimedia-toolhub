@@ -99,6 +99,21 @@ class AnnotationsSerializer(ModelSerializer):
         ]
 
 
+@doc(_("Summary of community added information for a tool"))
+class SummaryAnnotationsSerializer(ModelSerializer):
+    """Summary of community added information for a tool."""
+
+    class Meta:
+        """Configure serializer."""
+
+        model = Annotations
+        fields = [
+            # Only include fields also exposed by SummaryToolSerializer
+            "icon",
+            "tool_type",
+        ]
+
+
 @doc(_("""Update annotations"""))
 class UpdateAnnotationsSerializer(ModelSerializer, EditCommentFieldMixin):
     """Update a tool's annotations"""
@@ -198,6 +213,8 @@ class ToolSerializer(ModelSerializer):
 class SummaryToolSerializer(ModelSerializer):
     """Summary of a tool."""
 
+    annotations = SummaryAnnotationsSerializer(many=False)
+
     class Meta:
         """Configure serializer."""
 
@@ -210,6 +227,8 @@ class SummaryToolSerializer(ModelSerializer):
             "keywords",
             "author",
             "icon",
+            "tool_type",
+            "annotations",
         ]
         read_only_fields = fields
 
