@@ -337,6 +337,8 @@ class ListDocument(SearchDocument):
     created_by = build_field_from_serializer(UserSerializer, "created_by")
     modified_by = build_field_from_serializer(UserSerializer, "modified_by")
 
+    x_merged_type = fields.KeywordField(ignore_above=256)
+
     class Index:
         """Configure index."""
 
