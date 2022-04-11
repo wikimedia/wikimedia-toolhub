@@ -3,6 +3,7 @@
 		"authors": [
 			"Ajeje Brazorf",
 			"Beta16",
+			"IrsY",
 			"Lorem Ipsum",
 			"Ricordisamoa",
 			"Sofia Stecchi",
@@ -10,6 +11,7 @@
 		]
 	},
 	"add": "Aggiungi",
+	"annotations": "Annotazioni",
 	"apidocumentation": "API",
 	"auditlogs-apierror": "Errore durante il recupero della pagina $1: $2",
 	"auditlogs-clear": "Pulisci",

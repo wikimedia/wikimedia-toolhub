@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Apzp79",
+			"Ellif",
 			"Gustmd7410",
 			"Ykhwong"
 		]
@@ -10,6 +11,8 @@
 	"addremovetools": "도구 추가 또는 제거",
 	"addremovetools-nologintext": "도구를 추가하거나 제거하려면 툴허브에 로그인해야 합니다",
 	"addremovetools-toolcreationsuccess": "성공했습니다! '$1' 도구가 만들어졌습니다.",
+	"annotations": "주석",
+	"annotationseditingsuccess": "성공: ‘$1’ 도구 주석이 변경됐습니다.",
 	"apidocs": "API 문서",
 	"apidocumentation": "API",
 	"apierror": "이런! 오류가 발생했습니다: $1",
@@ -112,6 +115,7 @@
 	"feature": "기능",
 	"filter": "필터",
 	"forwikis": "위키의 경우",
+	"wikidataqid": "위키데이터 Q번호",
 	"helptranslate": "변역 돕기",
 	"home": "홈",
 	"howtouse": "사용 방법",

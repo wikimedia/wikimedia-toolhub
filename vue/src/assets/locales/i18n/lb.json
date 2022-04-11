@@ -4,6 +4,7 @@
 			"Robby"
 		]
 	},
+	"annotations": "Notizzen",
 	"apidocumentation": "API",
 	"auditlogs-targettype-toollist": "Lëscht",
 	"auditlogs-targettype-version": "Versioun:",
@@ -34,6 +35,7 @@
 	"featured": "Bemierkenswäert",
 	"filter": "Filter",
 	"forwikis": "Fir Wikien",
+	"wikidataqid": "Wikidata-QID",
 	"helptranslate": "Hëlleft iwwersetzen",
 	"hide": "verstoppen",
 	"home": "Haaptsäit",

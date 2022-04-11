@@ -6,6 +6,8 @@
 		]
 	},
 	"add": "చేర్చు",
+	"annotations": "వ్యాఖ్యానాలు",
+	"annotationseditingsuccess": "సాధించారు! '$1' పరికరపు వ్యాఖ్యానాలను సవరించారు.",
 	"recentchanges": "ఇటీవలి మార్పులు",
 	"recentchanges-filter": "వడపోత",
 	"recentchanges-nochangesfoundtext": "ఇటీవలి మార్పులేమీ కనబడలేదు",
@@ -23,6 +25,7 @@
 	"confirmdelete-dialog-title": "రికార్డు తొలగింపు",
 	"developerusername": "డెవలపరు వాడుకరిపేరు",
 	"experimental": "ప్రయోగాత్మకం",
+	"wikidataqid": "వికీడేటా QID",
 	"helptranslate": "అనువదించడానికి తోడ్పడండి",
 	"home": "ముంగిలి",
 	"howtouse": "ఎలా వాడాలి",

@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-03-31 11:14:24+0000\n"
-"X-POT-Import-Date: 2022-03-28 08:06:38+0000\n"
+"PO-Revision-Date: 2022-04-11 11:14:19+0000\n"
+"X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt-BR\n"
@@ -287,12 +287,12 @@ msgid "Tool list revision difference."
 msgstr ""
 
 #: toolhub/apps/lists/serializers.py:306
-#: toolhub/apps/toolinfo/serializers.py:345
+#: toolhub/apps/toolinfo/serializers.py:384
 msgid "Revision to apply changes to."
 msgstr "Revisão para aplicar as alterações."
 
 #: toolhub/apps/lists/serializers.py:310
-#: toolhub/apps/toolinfo/serializers.py:349
+#: toolhub/apps/toolinfo/serializers.py:388
 msgid "Revision after applying changes."
 msgstr "Revisão após aplicar alterações."
 
@@ -747,63 +747,67 @@ msgstr "Origem deste registro de ferramenta."
 msgid "Wikidata item ID for the tool."
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:40
+#: toolhub/apps/toolinfo/serializers.py:42
 msgid "SPDX license information"
 msgstr "Informações de licença SPDX"
 
-#: toolhub/apps/toolinfo/serializers.py:48
+#: toolhub/apps/toolinfo/serializers.py:50
 msgid "SPDX license ID"
 msgstr "ID de licença SPDX"
 
-#: toolhub/apps/toolinfo/serializers.py:53
+#: toolhub/apps/toolinfo/serializers.py:55
 msgid "Full name of this license"
 msgstr "Nome completo desta licença"
 
-#: toolhub/apps/toolinfo/serializers.py:58
+#: toolhub/apps/toolinfo/serializers.py:60
 msgid "Is this license approved as 'open source' by the OSI?"
 msgstr "Esta licença foi aprovada como 'código aberto' pelo OSI?"
 
-#: toolhub/apps/toolinfo/serializers.py:63
+#: toolhub/apps/toolinfo/serializers.py:65
 msgid "Is this license approved as 'free software' by the FSF?"
 msgstr "Esta licença foi aprovada como 'software livre' pela FSF?"
 
-#: toolhub/apps/toolinfo/serializers.py:68
+#: toolhub/apps/toolinfo/serializers.py:70
 msgid "Is this license considered to be outdated?"
 msgstr "Esta licença é considerada desatualizada?"
 
-#: toolhub/apps/toolinfo/serializers.py:72
+#: toolhub/apps/toolinfo/serializers.py:74
 msgid "Community added information for a tool"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:100
+#: toolhub/apps/toolinfo/serializers.py:102
+msgid "Summary of community added information for a tool"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:117
 msgid "Update annotations"
 msgstr ""
 
-#: toolhub/apps/toolinfo/serializers.py:143
+#: toolhub/apps/toolinfo/serializers.py:160
 msgid "Description of a tool"
 msgstr "Descrição de uma ferramenta"
 
-#: toolhub/apps/toolinfo/serializers.py:195
+#: toolhub/apps/toolinfo/serializers.py:212
 msgid "Summary of a tool"
 msgstr "Resumo de uma ferramenta"
 
-#: toolhub/apps/toolinfo/serializers.py:215
+#: toolhub/apps/toolinfo/serializers.py:236
 msgid "Create a tool"
 msgstr "Criar uma ferramenta"
 
-#: toolhub/apps/toolinfo/serializers.py:281
+#: toolhub/apps/toolinfo/serializers.py:302
 msgid "Update a tool"
 msgstr "Atualizar uma ferramenta"
 
-#: toolhub/apps/toolinfo/serializers.py:312
+#: toolhub/apps/toolinfo/serializers.py:333
 msgid "Tool revision."
 msgstr "Revisão da ferramenta."
 
-#: toolhub/apps/toolinfo/serializers.py:320
+#: toolhub/apps/toolinfo/serializers.py:341
 msgid "Tool revision detail."
 msgstr "Detalhe da revisão da ferramenta."
 
-#: toolhub/apps/toolinfo/serializers.py:340
+#: toolhub/apps/toolinfo/serializers.py:379
 msgid "Tool revision difference."
 msgstr "Diferença na revisão da ferramenta."
 
@@ -1036,11 +1040,11 @@ msgstr "Revisão já marcada como patrulhada."
 msgid "Missing content for one or more revisions."
 msgstr "Conteúdo ausente por uma ou mais revisões."
 
-#: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:63
+#: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:69
 msgid "Has this revision been marked as hidden?"
 msgstr "Esta revisão foi marcada como escondida?"
 
-#: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:69
+#: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:75
 msgid "Has this revision been reviewed by a patroller?"
 msgstr "Esta revisão foi revisada por um patrulheiro?"
 
@@ -1080,23 +1084,23 @@ msgstr "O valor a adicionar, substituir ou testar."
 msgid "JSON-Pointer to location within document to move or copy the value from."
 msgstr ""
 
-#: toolhub/apps/versioned/serializers.py:45
+#: toolhub/apps/versioned/serializers.py:51
 msgid "A unique integer value identifying this revision."
 msgstr "Um valor inteiro único que identifica esta revisão."
 
-#: toolhub/apps/versioned/serializers.py:57
+#: toolhub/apps/versioned/serializers.py:63
 msgid "Comment by the user for the revision."
 msgstr "Comentário do usuário para a revisão."
 
-#: toolhub/apps/versioned/serializers.py:75
+#: toolhub/apps/versioned/serializers.py:81
 msgid "Content type of the revision."
 msgstr ""
 
-#: toolhub/apps/versioned/serializers.py:127
+#: toolhub/apps/versioned/serializers.py:157
 msgid "username removed"
 msgstr "Nome de usuário removido"
 
-#: toolhub/apps/versioned/serializers.py:128
+#: toolhub/apps/versioned/serializers.py:158
 msgid "edit summary removed"
 msgstr "resumo da edição suprimido"
 
