@@ -39,7 +39,7 @@ from safedelete.models import SafeDeleteModel
 from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.auditlog.models import LogEntry
 from toolhub.apps.auditlog.signals import registry
-from toolhub.apps.versioned.models import RevisionMetadata
+from toolhub.apps.versioned.context import reversion_context
 from toolhub.fields import BlankAsNullCharField
 from toolhub.fields import BlankAsNullTextField
 from toolhub.fields import JSONSchemaField
@@ -430,11 +430,7 @@ class ToolManager(SafeDeleteManager):
 
         record = self.normalize_toolinfo(record)
 
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(creator)
-            if comment is not None:
-                reversion.set_comment(comment)
+        with reversion_context(creator, comment):
 
             with auditlog_context(creator, comment):
                 tool, created, revived = self.get_create_or_revive(

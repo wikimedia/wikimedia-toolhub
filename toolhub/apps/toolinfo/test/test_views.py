@@ -15,10 +15,9 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-import reversion
 from reversion.models import Version
 
-from toolhub.apps.versioned.models import RevisionMetadata
+from toolhub.apps.versioned.context import reversion_context
 from toolhub.tests import TestCase
 
 from .. import models
@@ -203,10 +202,10 @@ class ToolRevisionViewSetTest(TestCase):
         self.tool, _, _ = models.Tool.objects.from_toolinfo(
             self.toolinfo, self.user, models.Tool.ORIGIN_API
         )
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
-            reversion.set_comment("ToolRevisionViewSetTest::setUpTestData")
+
+        comment = "ToolRevisionViewSetTest::setUpTestData"
+        with reversion_context(self.user, comment):
+
             for key, value in self.annotations.items():
                 setattr(self.tool.annotations, key, value)
             self.tool.annotations.save()
@@ -239,9 +238,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_diff(self):
         """Test diff action."""
         self.client.force_authenticate(user=None)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_diff"
             self.tool.save()
 
@@ -264,9 +261,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_diff_annotations(self):
         """Test diff with annotations changes."""
         self.client.force_authenticate(user=None)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.annotations.wikidata_qid = "Q42"
             self.tool.annotations.save()
             self.tool.modified_by = self.user
@@ -294,9 +289,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_diff_suppressed_anon(self):
         """Test diff with suppressed start/end as anon."""
         self.client.force_authenticate(user=None)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_diff_suppressed_anon"
             self.tool.save()
         bad_faith = self.versions().first()
@@ -320,9 +313,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_diff_suppressed_priv(self):
         """Test diff with suppressed start/end as privledged user."""
         self.client.force_authenticate(user=self.oversighter)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_diff_suppressed_priv"
             self.tool.save()
         bad_faith = self.versions().last()
@@ -362,9 +353,7 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=self.user)
 
         # Make a new revision
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_revert"
             self.tool.save()
 
@@ -385,9 +374,7 @@ class ToolRevisionViewSetTest(TestCase):
         self.client.force_authenticate(user=self.user)
 
         # Make a new revision
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.annotations.wikidata_qid = "Q42"
             self.tool.annotations.save()
             self.tool.modified_by = self.user
@@ -411,9 +398,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_revert_as_oversighter(self):
         """Oversighters can revert any edit."""
         self.client.force_authenticate(user=self.oversighter)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_revert_as_oversighter"
             self.tool.save()
 
@@ -433,9 +418,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_undo_requires_auth(self):
         """Test undo action."""
         self.client.force_authenticate(user=None)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_undo_requires_auth"
             self.tool.save()
         undo_from = self.versions().first().pk
@@ -455,9 +438,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_undo(self):
         """Test undo action."""
         self.client.force_authenticate(user=self.user)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_undo"
             self.tool.save()
         undo_from = self.versions().first().pk
@@ -479,9 +460,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_undo_as_oversighter(self):
         """Oversighters should be able to undo anything."""
         self.client.force_authenticate(user=self.oversighter)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_undo_as_oversighter"
             self.tool.save()
         undo_from = self.versions().first().pk
@@ -503,9 +482,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_undo_invalid(self):
         """Test undo action."""
         self.client.force_authenticate(user=self.user)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.technology_used = []
             self.tool.save()
         # Prepare an undo that tries to empty an already empty array
@@ -526,9 +503,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_hide_requires_auth(self):
         """Test hide action."""
         self.client.force_authenticate(user=None)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_hide_requires_auth"
             self.tool.save()
 
@@ -543,9 +518,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_hide_requires_special_rights(self):
         """Test hide action."""
         self.client.force_authenticate(user=self.user)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_hide_requires_special_rights"
             self.tool.save()
 
@@ -561,9 +534,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_hide(self):
         """Test hide action."""
         self.client.force_authenticate(user=self.oversighter)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_hide"
             self.tool.save()
 
@@ -592,9 +563,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_reveal_requires_auth(self):
         """Test reveal action."""
         self.client.force_authenticate(user=None)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_reveal_requires_auth"
             self.tool.save()
         bad_faith = self.versions().last()
@@ -612,9 +581,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_reveal_requires_special_rights(self):
         """Test reveal action."""
         self.client.force_authenticate(user=self.user)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_reveal_requires_special_rights"
             self.tool.save()
         bad_faith = self.versions().last()
@@ -632,9 +599,7 @@ class ToolRevisionViewSetTest(TestCase):
     def test_reveal(self):
         """Test reveal action."""
         self.client.force_authenticate(user=self.oversighter)
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(self.user)
+        with reversion_context(self.user):
             self.tool.title = "test_reveal"
             self.tool.save()
         bad_faith = self.versions().last()

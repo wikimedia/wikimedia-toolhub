@@ -24,11 +24,9 @@ from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 from rest_framework.exceptions import PermissionDenied
 
-import reversion
-
 from toolhub.apps.auditlog.context import auditlog_context
 from toolhub.apps.user.serializers import UserSerializer
-from toolhub.apps.versioned.models import RevisionMetadata
+from toolhub.apps.versioned.context import reversion_context
 from toolhub.apps.versioned.serializers import JSONPatchField
 from toolhub.apps.versioned.serializers import RevisionSerializer
 from toolhub.decorators import doc
@@ -138,11 +136,7 @@ class UpdateAnnotationsSerializer(ModelSerializer, EditCommentFieldMixin):
                 setattr(instance, key, value)
                 has_changes = True
 
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(user)
-            if comment is not None:
-                reversion.set_comment(comment)
+        with reversion_context(user, comment):
 
             with auditlog_context(user, comment):
                 if has_changes:

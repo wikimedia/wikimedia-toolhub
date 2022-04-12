@@ -15,11 +15,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-import reversion
 from reversion.models import Version
 
 from toolhub.apps.toolinfo.models import Tool
-from toolhub.apps.versioned.models import RevisionMetadata
+from toolhub.apps.versioned.context import reversion_context
 from toolhub.tests import TestCase
 
 from .. import models
@@ -332,9 +331,7 @@ class ToolListRevisionViewSetTest(TestCase):
             cls.toolinfo, cls.user, models.Tool.ORIGIN_API
         )
 
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
-            reversion.set_user(cls.user)
+        with reversion_context(cls.user):
 
             cls.list = models.ToolList.objects.create(
                 title="A test fixture list",
@@ -367,8 +364,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_diff(self):
         """Test diff action."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "Changed"
             self.list.save()
 
@@ -390,8 +386,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_diff_suppressed_anon(self):
         """Test diff with suppressed start/end as anon."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "BAD FAITH"
             self.list.save()
         bad_faith = self.versions().last()
@@ -414,8 +409,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_diff_suppressed_priv(self):
         """Test diff with suppressed start/end as privledged user."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "BAD FAITH"
             self.list.save()
         bad_faith = self.versions().last()
@@ -452,8 +446,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_revert(self):
         """Test revert action."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "Changed"
             self.list.save()
         self.assertEqual(self.list.title, "Changed")
@@ -470,8 +463,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_revert_as_oversighter(self):
         """Test revert action."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "Changed"
             self.list.save()
         self.assertEqual(self.list.title, "Changed")
@@ -499,8 +491,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_undo(self):
         """Test undo action."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "Changed"
             self.list.save()
         self.assertEqual(self.list.title, "Changed")
@@ -522,8 +513,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_undo_as_oversighter(self):
         """Test undo action."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "Changed"
             self.list.save()
         self.assertEqual(self.list.title, "Changed")
@@ -576,8 +566,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_hide(self):
         """Test hide action."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "REVERTED"
             self.list.save()
 
@@ -592,8 +581,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_reveal_requires_auth(self):
         """Test reveal action."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "REVERTED"
             self.list.save()
         bad_faith = self.versions().last()
@@ -610,8 +598,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_reveal_requires_special_rights(self):
         """Test reveal action."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "REVERTED"
             self.list.save()
         bad_faith = self.versions().last()
@@ -628,8 +615,7 @@ class ToolListRevisionViewSetTest(TestCase):
 
     def test_reveal(self):
         """Test reveal action."""
-        with reversion.create_revision():
-            reversion.add_meta(RevisionMetadata)
+        with reversion_context(self.user):
             self.list.title = "REVERTED"
             self.list.save()
         bad_faith = self.versions().last()
