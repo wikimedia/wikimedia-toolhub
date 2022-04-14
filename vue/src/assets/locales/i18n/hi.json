@@ -55,6 +55,7 @@
 	"newtoolsfound": "{{PLURAL:$1|1 टूल|$1 टूल्स}}",
 	"nourlsfounderror": "टूलहब प्रणाली में कोई toolinfo.json फ़ाइल URL नहीं मिला।",
 	"privacypolicy": "गोपनीयता नीति",
+	"back": "पीछे",
 	"removeurl": "URL निकालें",
 	"search": "खोजें",
 	"search-filter-tool-type-other": "अन्य",

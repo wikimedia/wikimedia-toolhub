@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-04-11 11:14:19+0000\n"
+"PO-Revision-Date: 2022-04-14 11:14:16+0000\n"
 "X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1043,9 +1043,8 @@ msgid "Has this revision been reviewed by a patroller?"
 msgstr ""
 
 #: toolhub/apps/versioned/schema.py:21
-#, fuzzy
 msgid "unique identifier of the version"
-msgstr "대상 판을 식별하는 고유 정수값입니다."
+msgstr "대상 판의 고유 식별자"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
