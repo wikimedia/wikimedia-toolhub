@@ -97,7 +97,7 @@ export default {
 		...mapState( 'ui', [
 			'totalTools', 'lastCrawlTime', 'lastCrawlChanged'
 		] ),
-		...mapState( 'lists', [ 'featuredLists' ] )
+		...mapState( 'lists', [ 'featuredLists', 'myLists' ] )
 	},
 	methods: {
 		...mapActions( 'ui', [ 'getHomeData' ] ),
@@ -127,6 +127,9 @@ export default {
 		 */
 		'$route.query.page'( newValue ) {
 			this.page = parseInt( newValue ) || 1;
+			this.getFeaturedLists();
+		},
+		myLists() {
 			this.getFeaturedLists();
 		}
 	},

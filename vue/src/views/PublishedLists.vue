@@ -92,6 +92,7 @@ export default {
 		...mapState( 'search', {
 			response: 'listsResponse'
 		} ),
+		...mapState( 'lists', [ 'myLists' ] ),
 		pageOffset() {
 			return this.queryParams.pageSize * ( this.queryParams.page - 1 );
 		}
@@ -193,6 +194,9 @@ export default {
 				this.findLists();
 			},
 			deep: true
+		},
+		myLists() {
+			this.findLists();
 		}
 	},
 	mounted() {
