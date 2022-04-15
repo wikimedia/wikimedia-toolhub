@@ -191,6 +191,39 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 	word-break: break-word;
 }
 
+.navbar .v-navigation-drawer__content {
+	scrollbar-width: none;
+}
+
+.v-navigation-drawer__content:hover {
+	scrollbar-width: unset;
+}
+
+.navbar .v-navigation-drawer__content::-webkit-scrollbar {
+	width: 0;
+}
+
+.navbar .v-navigation-drawer__content:hover::-webkit-scrollbar {
+	width: 10px;
+}
+
+.navbar .v-navigation-drawer__content::-webkit-scrollbar-corner {
+	background-color: transparent;
+}
+
+.navbar .v-navigation-drawer__content::-webkit-scrollbar-thumb {
+	background-color: transparent;
+	border-radius: 20px;
+}
+
+.navbar .v-navigation-drawer__content:hover::-webkit-scrollbar-thumb {
+	background-color: rgba( 255, 255, 255, 0.24 );
+}
+
+.navbar .v-navigation-drawer__content::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
 .tool-app-bar .v-toolbar__content {
 	padding: 0 !important;
 	flex-wrap: wrap;

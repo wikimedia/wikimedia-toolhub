@@ -19,6 +19,7 @@
 
 		<v-navigation-drawer
 			v-model="drawer"
+			class="navbar"
 			app
 			color="secondary"
 			dark
