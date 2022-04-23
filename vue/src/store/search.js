@@ -73,7 +73,7 @@ export const actions = {
 				const results = {};
 				if ( Array.isArray( response.body ) ) {
 					response.body.forEach( ( tool ) => {
-						results[ tool.name ] = [ tool.name, tool.title ];
+						results[ tool.name ] = [ tool.title, tool.description ];
 					} );
 				}
 				context.commit( 'onToolsAutoCompleteResults', results );

@@ -31,11 +31,13 @@
 			</v-btn>
 		</template>
 		<template #item="data">
-			<v-list-item-content>
+			<v-list-item-content class="autocomplete">
 				<v-list-item-title>
 					<dl class="row ma-0">
-						<dt class="me-1">{{ autoCompleteResults[data.item][0] }}</dt>
-						<dd>({{ autoCompleteResults[data.item][1] }})</dd>
+						<dt class="me-4">{{ autoCompleteResults[data.item][0] }}</dt>
+						<dd class="desc grey--text text--darken-1">
+							{{ autoCompleteResults[data.item][1] }}
+						</dd>
 					</dl>
 				</v-list-item-title>
 			</v-list-item-content>
@@ -144,7 +146,8 @@ export default {
 	} ),
 	computed: {
 		menuProps() {
-			return !this.query ? { value: false } : {};
+			const contentClass = { contentClass: 'autocomplete-menu__content' };
+			return !this.query ? { value: false, ...contentClass } : contentClass;
 		},
 		...mapState( 'search', {
 			autoCompleteResults: function ( state ) {

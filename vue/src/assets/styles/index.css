@@ -238,3 +238,17 @@ div.v-slide-group.compact-arrows > .v-slide-group__prev {
 .diff-value .v-alert__content {
 	overflow-wrap: anywhere !important;
 }
+
+.autocomplete dl {
+	flex-wrap: nowrap;
+}
+
+.autocomplete .desc {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.autocomplete-menu__content {
+	max-width: 65% !important;
+}

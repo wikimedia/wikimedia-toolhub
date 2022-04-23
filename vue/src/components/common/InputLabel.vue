@@ -1,7 +1,7 @@
 <template>
 	<dl class="row ma-0">
 		<dt class="me-1">{{ label }}</dt>
-		<!-- eslint-disable @intlify/vue-i18n/no-raw-text -->
+		<!-- eslint-disable-next-line @intlify/vue-i18n/no-raw-text -->
 		<dd v-if="required">*</dd>
 	</dl>
 </template>

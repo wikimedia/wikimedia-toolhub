@@ -85,11 +85,13 @@
 				<InputLabel :label="ui.label" :required="ui.required" />
 			</template>
 			<template #item="data">
-				<v-list-item-content>
+				<v-list-item-content class="autocomplete">
 					<v-list-item-title>
 						<dl class="row ma-0">
-							<dt class="me-1">{{ toolAutoCompleteResults[data.item][0] }}</dt>
-							<dd>({{ toolAutoCompleteResults[data.item][1] }})</dd>
+							<dt class="me-4">{{ toolAutoCompleteResults[data.item][0] }}</dt>
+							<dd class="desc grey--text text--darken-1">
+								{{ toolAutoCompleteResults[data.item][1] }}
+							</dd>
 						</dl>
 					</v-list-item-title>
 				</v-list-item-content>
@@ -314,7 +316,8 @@ export default {
 			return this.schema.type;
 		},
 		menuProps() {
-			return !this.toolAutoComplete ? { value: false } : {};
+			const contentClass = { contentClass: 'autocomplete-menu__content' };
+			return !this.toolAutoComplete ? { value: false, ...contentClass } : contentClass;
 		},
 		validationRules() {
 			const schema = this.schema;

@@ -85,7 +85,7 @@ class ListDocumentSerializer(AnnotatedDocumentSerializer):
 
 @doc(_("ToolList autocomplete results"))
 class AutoCompleteListDocumentSerializer(AnnotatedDocumentSerializer):
-    """Tool autocomplete results."""
+    """ToolList autocomplete results."""
 
     class Meta:
         """Configure serializer."""
