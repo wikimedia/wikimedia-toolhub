@@ -66,7 +66,7 @@ class AutoCompleteToolDocumentSerializer(AnnotatedDocumentSerializer):
         """Configure serializer."""
 
         document = ToolDocument
-        fields = ["name", "title"]
+        fields = ["name", "title", "description"]
 
 
 @doc(_("Tool search results"))

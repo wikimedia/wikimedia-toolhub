@@ -132,7 +132,7 @@ class AutoCompleteToolDocumentViewSet(BaseDocumentViewSet):
     )
     multi_match_options = {"type": "phrase_prefix"}
 
-    ordering = "name.keyword"
+    ordering = "title.keyword"
 
 
 @extend_schema_view(
