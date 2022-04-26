@@ -41,7 +41,7 @@ export default {
 				case 'lua module':
 					return 'mdi-language-lua';
 				case 'template':
-					return 'mdi-iframe-braces-outline';
+					return 'mdi-application-braces-outline';
 				default:
 					return 'mdi-tools';
 			}
