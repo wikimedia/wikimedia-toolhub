@@ -1,18 +1,18 @@
 <template>
 	<v-container>
 		<EditTool
-			v-if="tool_schema && toolFromVuex && $can( 'change', tool )"
-			v-model="tool"
+			v-if="tool_schema && tool && $can( 'change', tool )"
+			:tool="tool"
 			:tool-schema="tool_schema"
 			:annotations-schema="annotations_schema"
 			:links="links"
 		/>
 		<EditAnnotations
 			v-else-if="annotations_schema &&
-				toolFromVuex &&
+				tool &&
 				!$can( 'change', tool ) &&
 				$can( 'add', 'toolinfo/annotations' )"
-			v-model="tool"
+			:tool="tool"
 			:schema="annotations_schema"
 			:links="links"
 		/>
@@ -30,7 +30,6 @@ import EditTool from '@/components/tools/EditTool';
 import EditAnnotations from '@/components/tools/EditAnnotations';
 import ScrollTop from '@/components/common/ScrollTop';
 import fetchMetaInfo from '@/helpers/metadata';
-import { asTool } from '@/helpers/casl';
 
 export default {
 	name: 'EditToolOrAnnotations',
@@ -55,11 +54,7 @@ export default {
 		return fetchMetaInfo( 'tools-edit', this.name );
 	},
 	computed: {
-		...mapState( 'tools', { toolFromVuex: 'tool' } ),
-		tool() {
-			// Deep clone state from vuex so that we can pass it as a v-model.
-			return asTool( JSON.parse( JSON.stringify( this.toolFromVuex ) ) );
-		}
+		...mapState( 'tools', [ 'tool' ] )
 	},
 	asyncComputed: {
 		tool_schema: {

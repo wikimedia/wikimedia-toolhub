@@ -9,6 +9,7 @@
 			:hint="schema.description"
 			:counter="schema.maxLength"
 			clearable
+			:disabled="ui.disabled"
 			@update:error="emitIsValid"
 		>
 			<template #label>
@@ -26,6 +27,7 @@
 			rows="1"
 			auto-grow
 			clearable
+			:disabled="ui.disabled"
 			@update:error="emitIsValid"
 		>
 			<template #label>
@@ -44,6 +46,7 @@
 			:deletable-chips="ui.multiple || false"
 			:small-chips="ui.multiple || false"
 			:clearable="ui.multiple ? false : true"
+			:disabled="ui.disabled"
 			@update:error="emitIsValid"
 		>
 			<template #label>
@@ -60,6 +63,7 @@
 			no-filter
 			deletable-chips
 			small-chips
+			:disabled="ui.disabled"
 			@update:error="emitIsValid"
 		>
 			<template #label>
@@ -81,6 +85,7 @@
 			no-filter
 			deletable-chips
 			small-chips
+			:disabled="ui.disabled"
 			@update:error="emitIsValid"
 		>
 			<template #label>
@@ -118,6 +123,7 @@
 				multiple
 				no-filter
 				readonly
+				:disabled="ui.disabled"
 				@click:append="showItemDialog( null, null )"
 				@click="showItemDialog( null, null )"
 				@update:error="emitIsValid"
@@ -129,6 +135,7 @@
 					<v-chip
 						class="ma-2"
 						close
+						:disabled="ui.disabled"
 						@click:close="parent.selectItem( item )"
 						@click="showItemDialog( item, index )"
 					>
@@ -151,6 +158,7 @@
 		<v-checkbox
 			v-else-if="widget === 'checkbox'"
 			v-model="model"
+			:disabled="ui.disabled"
 			@update:error="emitIsValid"
 		>
 			<template #label>

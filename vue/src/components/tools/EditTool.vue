@@ -264,6 +264,7 @@
 </template>
 
 <script>
+import { asTool } from '@/helpers/casl';
 import { mapState, mapActions } from 'vuex';
 import _ from 'lodash';
 import InputWidget from '@/components/common/InputWidget';
@@ -276,7 +277,7 @@ export default {
 		CommentDialog
 	},
 	props: {
-		value: {
+		tool: {
 			type: Object,
 			required: true
 		},
@@ -298,6 +299,7 @@ export default {
 			step: 1,
 			minStep: 1,
 			maxStep: 3,
+			value: _.cloneDeep( this.tool ),
 			initialValue: null,
 			commentDialog: false,
 			valid: false,
@@ -633,6 +635,21 @@ export default {
 				} );
 			} );
 
+			Object.keys( newtool ).forEach( ( field ) => {
+				// Overwrite edited toolinfo field with the initial value of
+				// field if the field was copied over from annotations
+				if (
+					_.isEmpty( this.initialValue[ field ] ) &&
+					!_.isEmpty( this.initialValue.annotations[ field ] ) &&
+					_.isEqual(
+						newtool[ field ],
+						this.initialValue.annotations[ field ]
+					)
+				) {
+					newtool[ field ] = this.initialValue[ field ];
+				}
+			} );
+
 			let response = Promise.resolve();
 
 			if ( !_.isEqual( annotations, this.initialValue.annotations ) ) {
@@ -672,7 +689,22 @@ export default {
 		value: {
 			handler( newVal ) {
 				if ( !this.initialValue && newVal.name ) {
-					this.initialValue = JSON.parse( JSON.stringify( newVal ) );
+					this.initialValue = newVal;
+
+					const fields = {};
+
+					Object.keys( newVal ).forEach( ( field ) => {
+						if (
+							_.isEmpty( newVal[ field ] ) &&
+							!_.isEmpty( newVal.annotations[ field ] )
+						) {
+							fields[ field ] = _.cloneDeep(
+								newVal.annotations[ field ]
+							);
+						}
+					} );
+
+					this.value = asTool( { ...this.value, ...fields } );
 				}
 			},
 			deep: true,

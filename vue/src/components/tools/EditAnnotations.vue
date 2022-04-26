@@ -229,7 +229,7 @@ export default {
 		CommentDialog
 	},
 	props: {
-		value: {
+		tool: {
 			type: Object,
 			required: true
 		},
@@ -247,6 +247,7 @@ export default {
 			step: 1,
 			minStep: 1,
 			maxStep: 2,
+			value: _.cloneDeep( this.tool ),
 			initialValue: null,
 			commentDialog: false,
 			valid: false,
@@ -259,19 +260,23 @@ export default {
 			return {
 				api_url: {
 					icon: 'mdi-api',
-					label: this.$t( 'apiurl' )
+					label: this.$t( 'apiurl' ),
+					disabled: !_.isEmpty( this.value.api_url )
 				},
 				repository: {
 					icon: 'mdi-source-branch',
-					label: this.$t( 'repository' )
+					label: this.$t( 'repository' ),
+					disabled: !_.isEmpty( this.value.repository )
 				},
 				translate_url: {
 					icon: 'mdi-translate',
-					label: this.$t( 'translateurl' )
+					label: this.$t( 'translateurl' ),
+					disabled: !_.isEmpty( this.value.translate_url )
 				},
 				bugtracker_url: {
 					icon: 'mdi-bug-outline',
-					label: this.$t( 'bugtrackerurl' )
+					label: this.$t( 'bugtrackerurl' ),
+					disabled: !_.isEmpty( this.value.bugtracker_url )
 				}
 			};
 		},
@@ -282,6 +287,7 @@ export default {
 					icon: 'mdi-file-document-multiple-outline',
 					appendIcon: 'mdi-plus',
 					label: this.$t( 'userdocsurl' ),
+					disabled: !_.isEmpty( this.value.user_docs_url ),
 					items: {
 						url: {
 							icon: 'mdi-file-document-outline',
@@ -302,6 +308,7 @@ export default {
 					icon: 'mdi-code-tags',
 					appendIcon: 'mdi-plus',
 					label: this.$t( 'developerdocsurl' ),
+					disabled: !_.isEmpty( this.value.developer_docs_url ),
 					items: {
 						url: {
 							icon: 'mdi-code-tags',
@@ -322,6 +329,7 @@ export default {
 					icon: 'mdi-comment-processing-outline',
 					appendIcon: 'mdi-plus',
 					label: this.$t( 'feedbackurl' ),
+					disabled: !_.isEmpty( this.value.feedback_url ),
 					items: {
 						url: {
 							icon: 'mdi-comment-processing-outline',
@@ -342,6 +350,7 @@ export default {
 					icon: 'mdi-shield-lock-outline',
 					appendIcon: 'mdi-plus',
 					label: this.$t( 'privacypolicyurl' ),
+					disabled: !_.isEmpty( this.value.privacy_policy_url ),
 					items: {
 						url: {
 							icon: 'mdi-shield-lock-outline',
@@ -363,14 +372,16 @@ export default {
 			return {
 				icon: {
 					icon: 'mdi-tools',
-					label: this.$t( 'icon' )
+					label: this.$t( 'icon' ),
+					disabled: !_.isEmpty( this.value.icon )
 				},
 				tool_type: {
 					select: {
 						items: () => this.schema.properties.tool_type.enum
 					},
 					icon: 'mdi-toolbox-outline',
-					label: this.$t( 'tooltype' )
+					label: this.$t( 'tooltype' ),
+					disabled: !_.isEmpty( this.value.tool_type )
 				},
 				available_ui_languages: {
 					widget: 'select',
@@ -379,12 +390,14 @@ export default {
 					},
 					multiple: true,
 					icon: 'mdi-tablet-dashboard',
-					label: this.$t( 'availableuilanguages' )
+					label: this.$t( 'availableuilanguages' ),
+					disabled: !_.isEmpty( this.value.available_ui_languages )
 				},
 				for_wikis: {
 					widget: 'multi-select',
 					icon: 'mdi-wikipedia',
-					label: this.$t( 'forwikis' )
+					label: this.$t( 'forwikis' ),
+					disabled: !_.isEmpty( this.value.for_wikis )
 				},
 				wikidata_qid: {
 					icon: 'mdi-identifier',
@@ -397,15 +410,18 @@ export default {
 			return {
 				deprecated: {
 					widget: 'checkbox',
-					label: this.$t( 'deprecated' )
+					label: this.$t( 'deprecated' ),
+					disabled: this.value.deprecated
 				},
 				experimental: {
 					widget: 'checkbox',
-					label: this.$t( 'experimental' )
+					label: this.$t( 'experimental' ),
+					disabled: this.value.experimental
 				},
 				replaced_by: {
 					icon: 'mdi-find-replace',
-					label: this.$t( 'replacedby' )
+					label: this.$t( 'replacedby' ),
+					disabled: !_.isEmpty( this.value.replaced_by )
 				}
 			};
 		},
@@ -454,10 +470,6 @@ export default {
 		publishChanges( comment ) {
 			const annotations = { ...this.value.annotations };
 
-			const annotations_changed = !_.isEqual(
-				annotations,
-				this.initialValue.annotations );
-
 			annotations.comment = comment;
 
 			this.links.forEach( ( field ) => {
@@ -467,6 +479,26 @@ export default {
 					} );
 				}
 			} );
+
+			Object.keys( annotations ).forEach( ( field ) => {
+				// overwrite  edited annotations field with the initial value of
+				// the annotations field if the field already exists in core toolinfo record
+				if ( !_.isEmpty( this.initialValue[ field ] ) ) {
+					annotations[ field ] = this.initialValue.annotations[ field ];
+				}
+
+				if (
+					typeof this.initialValue[ field ] === 'boolean' &&
+					this.initialValue[ field ]
+				) {
+					annotations[ field ] = this.initialValue.annotations[ field ];
+				}
+			} );
+
+			const annotations_changed = !_.isEqual(
+				annotations,
+				this.initialValue.annotations
+			);
 
 			// set response to resolved promise so we can always
 			// chain it with .then whether annotations_changed is true or false
@@ -494,7 +526,29 @@ export default {
 		value: {
 			handler( newVal ) {
 				if ( !this.initialValue && newVal.name ) {
-					this.initialValue = JSON.parse( JSON.stringify( newVal ) );
+					newVal = JSON.parse( JSON.stringify( newVal ) );
+					this.initialValue = newVal;
+
+					const annotations = {};
+
+					Object.keys( newVal.annotations ).forEach( ( field ) => {
+
+						if ( !_.isEmpty( newVal[ field ] ) ) {
+							annotations[ field ] = newVal[ field ];
+						}
+
+						if (
+							typeof newVal[ field ] === 'boolean' &&
+							newVal[ field ]
+						) {
+							annotations[ field ] = newVal[ field ];
+						}
+					} );
+
+					this.value.annotations = {
+						...this.value.annotations,
+						...annotations
+					};
 				}
 			},
 			deep: true,
