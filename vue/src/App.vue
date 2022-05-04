@@ -28,15 +28,15 @@
 			:right="$vuetify.rtl"
 		>
 			<v-list-item class="ms-2 mt-1 ps-1">
-				<v-list-item-avatar
-					size="35"
-					class="me-4"
-				>
+				<router-link to="/">
 					<v-img
 						src="/static/img/logo-solid-white.svg"
 						alt="Toolforge logo"
+						max-width="35"
+						height="35"
+						class="me-6"
 					/>
-				</v-list-item-avatar>
+				</router-link>
 
 				<v-list-item-content class="mt-1">
 					<v-list-item-title class="font-weight-bold">

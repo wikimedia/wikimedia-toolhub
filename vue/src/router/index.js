@@ -26,14 +26,6 @@ const ToolView = () => import( /* webpackChunkName: "tools-view" */ '../views/To
 
 export const routes = [
 	{
-		name: 'home',
-		path: '/',
-		component: Home,
-		meta: {
-			icon: 'mdi-home-circle'
-		}
-	},
-	{
 		name: 'addremovetools',
 		path: '/add-or-remove-tools',
 		component: AddRemoveTools,
@@ -88,6 +80,11 @@ export const routes = [
 		meta: {
 			icon: 'mdi-account-group'
 		}
+	},
+	{
+		name: 'home',
+		path: '/',
+		component: Home
 	},
 	{
 		name: 'tools-view',
