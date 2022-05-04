@@ -35,6 +35,7 @@
 
 		<v-row
 			v-if="tool"
+			class="mt-6"
 			dense
 		>
 			<v-col md="7"
@@ -161,27 +162,9 @@
 							</v-chip>
 						</div>
 
-						<v-row>
+						<v-row class="mt-8">
 							<v-btn
-								v-if="tool.repository"
-								class="mt-4 ms-3"
-								color="primary base100--text"
-								dark
-								:href="`${tool.repository}`"
-								target="_blank"
-								:small="$vuetify.breakpoint.smAndDown"
-							>
-								{{ $t( 'sourcecode' ) }}
-								<v-icon
-									dark
-									right
-								>
-									mdi-code-json
-								</v-icon>
-							</v-btn>
-
-							<v-btn
-								class="mt-4 ms-3"
+								class="ms-3"
 								color="primary base100--text"
 								dark
 								:href="`${tool.url}`"
@@ -196,9 +179,25 @@
 									mdi-link-variant
 								</v-icon>
 							</v-btn>
-						</v-row>
 
-						<v-divider class="mt-8" />
+							<v-btn
+								v-if="tool.repository"
+								outlined
+								color="primary base100--text"
+								class="ms-3"
+								:href="`${tool.repository}`"
+								target="_blank"
+								:small="$vuetify.breakpoint.smAndDown"
+							>
+								{{ $t( 'sourcecode' ) }}
+								<v-icon
+									dark
+									right
+								>
+									mdi-code-json
+								</v-icon>
+							</v-btn>
+						</v-row>
 
 						<div
 							v-if="links.length > 0"
@@ -264,6 +263,7 @@
 			<v-col md="5" cols="12">
 				<v-divider
 					v-if="$vuetify.breakpoint.smAndDown"
+					class="mt-4"
 				/>
 
 				<div
