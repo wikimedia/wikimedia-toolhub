@@ -32,7 +32,7 @@
 					<v-img
 						src="/static/img/logo-solid-white.svg"
 						alt="Toolforge logo"
-						max-width="35"
+						width="35"
 						height="35"
 						class="me-6"
 					/>
