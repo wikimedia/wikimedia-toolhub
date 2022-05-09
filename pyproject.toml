@@ -183,30 +183,6 @@ exclude_lines = [
 directory = "docs/htmlcov"
 show_contexts = true
 
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-isolated_build = true
-envlist = py37
-
-[testenv]
-whitelist_externals = poetry
-setenv=
-    PYTHONDONTWRITEBYTECODE=true
-    PYTHONPATH={toxinidir}
-    DJANGO_SECRET_KEY="this is not really a secret"
-commands=
-  poetry check
-  poetry install -v --no-root
-  poetry run flakehell lint
-  poetry run black --check --diff .
-  poetry run coverage erase
-  poetry run coverage run --branch manage.py test
-  poetry run coverage report
-  poetry run coverage html
-  poetry run bandit -ii -r toolhub/
-"""
-
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
