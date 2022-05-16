@@ -147,6 +147,12 @@ class CommonFieldsMixin(models.Model):
             "Select one from the list of options."
         ),
     )
+    repository = BlankAsNullCharField(
+        blank=True,
+        max_length=2047,
+        null=True,
+        help_text=_("A link to the repository where the tool code is hosted."),
+    )
     api_url = BlankAsNullTextField(
         blank=True,
         max_length=2047,
@@ -542,12 +548,6 @@ class Tool(
         default=list,
         help_text=_("The primary tool developers."),
         schema=schema.schema_for("author", oneof=1),
-    )
-    repository = BlankAsNullCharField(
-        blank=True,
-        max_length=2047,
-        null=True,
-        help_text=_("A link to the repository where the tool code is hosted."),
     )
     subtitle = BlankAsNullCharField(
         blank=True,

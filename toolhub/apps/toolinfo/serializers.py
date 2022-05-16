@@ -87,6 +87,7 @@ class AnnotationsSerializer(ModelSerializer):
             "icon",
             "available_ui_languages",
             "tool_type",
+            "repository",
             "api_url",
             "developer_docs_url",
             "user_docs_url",
