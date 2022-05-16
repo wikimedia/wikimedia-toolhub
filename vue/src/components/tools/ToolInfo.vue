@@ -181,11 +181,11 @@
 							</v-btn>
 
 							<v-btn
-								v-if="tool.repository"
+								v-if="tool.repository || tool.annotations.repository"
 								outlined
 								color="primary base100--text"
 								class="ms-3"
-								:href="`${tool.repository}`"
+								:href="tool.repository || tool.annotations.repository"
 								target="_blank"
 								:small="$vuetify.breakpoint.smAndDown"
 							>

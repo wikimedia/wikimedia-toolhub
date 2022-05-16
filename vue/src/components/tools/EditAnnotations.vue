@@ -261,6 +261,10 @@ export default {
 					icon: 'mdi-bug-outline',
 					label: this.$t( 'apiurl' )
 				},
+				repository: {
+					icon: 'mdi-source-branch',
+					label: this.$t( 'repository' )
+				},
 				translate_url: {
 					icon: 'mdi-bug-outline',
 					label: this.$t( 'translateurl' )
