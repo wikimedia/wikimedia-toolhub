@@ -258,7 +258,7 @@ export default {
 		linksLayout() {
 			return {
 				api_url: {
-					icon: 'mdi-bug-outline',
+					icon: 'mdi-api',
 					label: this.$t( 'apiurl' )
 				},
 				repository: {
@@ -266,7 +266,7 @@ export default {
 					label: this.$t( 'repository' )
 				},
 				translate_url: {
-					icon: 'mdi-bug-outline',
+					icon: 'mdi-translate',
 					label: this.$t( 'translateurl' )
 				},
 				bugtracker_url: {

@@ -365,11 +365,11 @@ export default {
 		linksLayout() {
 			return {
 				api_url: {
-					icon: 'mdi-bug-outline',
+					icon: 'mdi-api',
 					label: this.$t( 'apiurl' )
 				},
 				translate_url: {
-					icon: 'mdi-bug-outline',
+					icon: 'mdi-translate',
 					label: this.$t( 'translateurl' )
 				},
 				bugtracker_url: {
