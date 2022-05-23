@@ -37,9 +37,9 @@ django-reversion = "^4.0.0"
 spdx-license-list = "^0.5.2"
 jsonpatch = "^1.28"
 django-reversion-compare = "^0.14.1"
-elasticsearch-dsl = ">=6.0.0,<7.0.0"
-django-elasticsearch-dsl = ">=6.0.0,<7.0.0"
-django-elasticsearch-dsl-drf = "^0.22.1"
+elasticsearch-dsl = ">=7.3.0,<7.4.0"
+django-elasticsearch-dsl = ">=7.0.0,<8.0.0"
+django-elasticsearch-dsl-drf = "^0.22.4"
 django-safedelete = "^1.0.0"
 rules = "^3.0"
 django-csp = "^3.7"
@@ -48,7 +48,7 @@ ecs-logging = "^1.0.1"
 # Pin flake8 to 3.x pending https://github.com/flakehell/flakehell/pull/23
 flake8 = "^3.9.2"
 python-memcached = "^1.59"
-elasticsearch = {git = "https://github.com/bd808/elasticsearch-py.git", rev = "eccf89e"}
+elasticsearch = ">=7.10.0,<7.11.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"
