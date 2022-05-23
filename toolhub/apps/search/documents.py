@@ -121,25 +121,25 @@ gram3_filter = token_filter(
 )
 
 exact_analyzer = analyzer(
-    "exact_analyzer", tokenizer="standard", filter=["standard", "lowercase"]
+    "exact_analyzer", tokenizer="standard", filter=["lowercase"]
 )
 
 en_analyzer = analyzer(
     "en_analyzer",
     tokenizer="standard",
-    filter=["standard", "lowercase", en_stem_filter],
+    filter=["lowercase", en_stem_filter],
 )
 
 gram2_analyzer = analyzer(
     "gram2_analyzer",
     tokenizer="standard",
-    filter=["standard", "lowercase", "stop", gram2_filter],
+    filter=["lowercase", "stop", gram2_filter],
 )
 
 gram3_analyzer = analyzer(
     "gram3_analyzer",
     tokenizer="standard",
-    filter=["standard", "lowercase", "stop", gram3_filter],
+    filter=["lowercase", "stop", gram3_filter],
 )
 
 
