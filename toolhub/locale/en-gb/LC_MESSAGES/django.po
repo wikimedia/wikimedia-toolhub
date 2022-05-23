@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-04-28 11:14:39+0000\n"
+"PO-Revision-Date: 2022-05-23 11:15:23+0000\n"
 "X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -232,7 +232,7 @@ msgstr ""
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
-msgstr ""
+msgstr "If true, this list is a collection of the owning user's 'favourite' tools."
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
@@ -294,7 +294,7 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:314
 msgid "Add a favorite tool."
-msgstr ""
+msgstr "Add a favourite tool."
 
 #: toolhub/apps/lists/serializers.py:319
 msgid "Tool name."
@@ -315,7 +315,7 @@ msgstr[1] ""
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr ""
+msgstr "Tool %(name)s is already favourited."
 
 #: toolhub/apps/lists/views.py:68
 msgid "Only show lists that are featured."
@@ -417,19 +417,19 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:526
 msgid "Add a tool to favorites."
-msgstr ""
+msgstr "Add a tool to favourites."
 
 #: toolhub/apps/lists/views.py:531
 msgid "Check to see if a tool is in favorites."
-msgstr ""
+msgstr "Check to see if a tool is in favourites."
 
 #: toolhub/apps/lists/views.py:537
 msgid "Remove a tool from favorites."
-msgstr ""
+msgstr "Remove a tool from favourites."
 
 #: toolhub/apps/lists/views.py:543
 msgid "Personal favorites."
-msgstr ""
+msgstr "Personal favourites."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
@@ -716,7 +716,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:599
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
-msgstr ""
+msgstr "The software licence the tool code is available under. Use a standard SPDX licence identifier like 'GPL-3.0-or-later'."
 
 #: toolhub/apps/toolinfo/models.py:607
 msgid "Organization(s) that sponsored the tool's development."
@@ -744,27 +744,27 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:42
 msgid "SPDX license information"
-msgstr ""
+msgstr "SPDX licence information"
 
 #: toolhub/apps/toolinfo/serializers.py:50
 msgid "SPDX license ID"
-msgstr ""
+msgstr "SPDX licence ID"
 
 #: toolhub/apps/toolinfo/serializers.py:55
 msgid "Full name of this license"
-msgstr ""
+msgstr "Full name of this licence"
 
 #: toolhub/apps/toolinfo/serializers.py:60
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr ""
+msgstr "Is this licence approved as 'open source' by the OSI?"
 
 #: toolhub/apps/toolinfo/serializers.py:65
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr ""
+msgstr "Is this licence approved as 'free software' by the FSF?"
 
 #: toolhub/apps/toolinfo/serializers.py:70
 msgid "Is this license considered to be outdated?"
-msgstr ""
+msgstr "Is this licence considered to be outdated?"
 
 #: toolhub/apps/toolinfo/serializers.py:74
 msgid "Community added information for a tool"
@@ -809,7 +809,7 @@ msgstr ""
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "%(value)s is not a recognised language code."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
@@ -820,7 +820,7 @@ msgstr ""
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr ""
+msgstr "%(value)s is not a known SPDX licence identifier."
 
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
@@ -869,11 +869,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:494
 msgid "Info for a specific SPDX license."
-msgstr ""
+msgstr "Info for a specific SPDX licence."
 
 #: toolhub/apps/toolinfo/views.py:502
 msgid "List all SPDX licenses."
-msgstr ""
+msgstr "List all SPDX licences."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
@@ -1159,7 +1159,7 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr ""
+msgstr "Authorise %(app_name)s?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
@@ -1171,7 +1171,7 @@ msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
-msgstr ""
+msgstr "Authorise"
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format

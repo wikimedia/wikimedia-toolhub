@@ -9,5 +9,13 @@
 	"authcallbackurl": "Authorisation Callback URL",
 	"authorizedapps": "Authorised apps",
 	"developersettings-noauthorizedappsfoundtext": "You have not authorised any client apps to use your account",
-	"developersettings-pagesubtitle": "View, register, authorise and revoke oauth applications"
+	"developersettings-nologintext": "You will need to log in to Toolhub to view authorised apps",
+	"developersettings-pagesubtitle": "View, register, authorise and revoke oauth applications",
+	"favorite": "Favourite",
+	"favorited": "Favourited",
+	"favorites-pagetitle": "Your favourite tools",
+	"favorites-notoolsfoundtext": "No favourited tools found",
+	"license": "Licence",
+	"metadata-developersettings-description": "Visit this page to view, register, authorise and revoke oauth applications.",
+	"search-filter-license": "Licence"
 }
