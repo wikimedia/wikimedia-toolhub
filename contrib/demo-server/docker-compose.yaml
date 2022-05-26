@@ -65,7 +65,7 @@ services:
       - /dev/log:/dev/log
 
   search:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.14
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
     restart: always
     environment:
       node.name: es01
