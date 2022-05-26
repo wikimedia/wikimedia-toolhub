@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-04-28 11:14:39+0000\n"
+"PO-Revision-Date: 2022-05-26 11:16:10+0000\n"
 "X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -397,7 +397,7 @@ msgstr "Une valeur entière unique identifiant les versions à défaire pour rev
 
 #: toolhub/apps/lists/views.py:255 toolhub/apps/toolinfo/views.py:226
 msgid "Hide revision text and edit summary from users."
-msgstr "Masquer le texte de la révision et le résumé de modification des utilisateurs."
+msgstr "Masquer le texte de la révision et le résumé des modifications des utilisateurs."
 
 #: toolhub/apps/lists/views.py:261 toolhub/apps/toolinfo/views.py:232
 msgid "Reveal a previously hidden revision."
@@ -1139,7 +1139,7 @@ msgstr "Erreur de l’API"
 
 #: toolhub/serializers.py:112
 msgid "Edit summary"
-msgstr "Résumé de modification"
+msgstr "Résumé des modifications"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
