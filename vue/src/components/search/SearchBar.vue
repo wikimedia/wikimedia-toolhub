@@ -8,6 +8,7 @@
 		:menu-props="menuProps"
 		:items="getAutoCompleteResultsArr()"
 		solo
+		no-filter
 		clearable
 		hide-details
 		@keyup.enter="onSearch"

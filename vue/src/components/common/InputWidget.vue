@@ -57,6 +57,7 @@
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
 			multiple
+			no-filter
 			deletable-chips
 			small-chips
 			@update:error="emitIsValid"
@@ -77,6 +78,7 @@
 			:hint="schema.description"
 			hide-selected
 			multiple
+			no-filter
 			deletable-chips
 			small-chips
 			@update:error="emitIsValid"
@@ -114,6 +116,7 @@
 				:prepend-icon="ui.icon"
 				:append-icon="ui.appendIcon"
 				multiple
+				no-filter
 				readonly
 				@click:append="showItemDialog( null, null )"
 				@click="showItemDialog( null, null )"
