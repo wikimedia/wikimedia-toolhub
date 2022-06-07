@@ -143,6 +143,7 @@ class EditToolListSerializer(ModelSerializer, EditCommentFieldMixin):
                         order=idx,
                         added_by=user,
                     )
+            instance.save()
         return instance
 
     @transaction.atomic
