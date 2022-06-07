@@ -11,6 +11,7 @@
 		no-filter
 		clearable
 		hide-details
+		:hide-no-data="hideOnNoData"
 		@keyup.enter="onSearch"
 		@click:clear="onClear"
 		@change="routeToView"
@@ -80,6 +81,12 @@ function getNoDataString() {
 
 function onSearch() {
 	this.$emit( 'search', this.query );
+	this.hideOnNoData = true;
+	if ( this.target === TOOL ) {
+		this.$store.commit( 'search/onToolsAutoCompleteResults', {} );
+	} else if ( this.target === LIST ) {
+		this.$store.commit( 'search/onListsAutoCompleteResults', {} );
+	}
 }
 
 function onClear( e ) {
@@ -143,7 +150,8 @@ export default {
 	},
 	data: () => ( {
 		query: '',
-		autoCompleteLoading: false
+		autoCompleteLoading: false,
+		hideOnNoData: true
 	} ),
 	computed: {
 		menuProps() {
@@ -152,7 +160,11 @@ export default {
 		},
 		...mapState( 'search', {
 			autoCompleteResults: function ( state ) {
-				return state[ `${this.target}AutoCompleteResults` ];
+				if ( this.target === TOOL ) {
+					return state.toolAutoCompleteResults;
+				} else if ( this.target === LIST ) {
+					return state.listAutoCompleteResults;
+				}
 			}
 		} )
 	},
@@ -170,6 +182,9 @@ export default {
 	watch: {
 		query: {
 			handler( val ) {
+				if ( this.hideOnNoData ) {
+					this.hideOnNoData = false;
+				}
 				this.performAutoComplete( val );
 			}
 		}
