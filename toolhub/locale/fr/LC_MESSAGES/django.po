@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-05-26 11:16:10+0000\n"
+"PO-Revision-Date: 2022-06-09 11:17:41+0000\n"
 "X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -523,7 +523,7 @@ msgstr "Classification à facettes"
 
 #: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
 msgid "Search string"
-msgstr "Chaîne de recherche"
+msgstr "Chaîne recherchée"
 
 #: toolhub/apps/search/schema.py:95
 #, python-format
