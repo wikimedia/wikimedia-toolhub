@@ -261,7 +261,7 @@
 	"search-filter-tool-type-template": "תבנית",
 	"search-filter-tool-type-user-script": "סקריפט משתמש",
 	"search-filter-tool-type-web-app": "יישום דפדפן",
-	"search-filter-ui-language": "שפת מנשק המשתמש",
+	"search-filter-ui-language": "שפת ממשק המשתמש",
 	"search-filter-ui-language-value": "{{bidi:$1}} ($2)",
 	"search-filter-wiki": "לאתרי הוויקי האלה",
 	"search-filter-wiki-any": "לכל אתר ויקי שהוא",
