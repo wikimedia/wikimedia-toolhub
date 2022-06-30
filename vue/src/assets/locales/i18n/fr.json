@@ -31,7 +31,7 @@
 	"auditlogs-apierror": "Erreur en récupérant la page $1 : $2",
 	"auditlogs-clear": "Effacer",
 	"auditlog-entry-group-added-to": "$1 a ajouté $2 au groupe $3",
-	"auditlog-entry-group-removed-from": "$1 a supprimé $2 du groupe $3",
+	"auditlog-entry-group-removed-from": "$1 a retiré $2 du groupe $3",
 	"auditlog-entry-tool-created": "$1 a créé l’outil $2",
 	"auditlog-entry-tool-deleted": "$1 a supprimé l’outil $2",
 	"auditlog-entry-tool-updated": "$1 a mis à jour l’outil $2",
