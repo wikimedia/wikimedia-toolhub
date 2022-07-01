@@ -3,20 +3,26 @@
 FROM docker-registry.wikimedia.org/releng/node14 AS prep-nodejs
 USER 0
 ENV HOME="/root"
-RUN (getent group "65533" || groupadd -o -g "65533" -r "somebody") && (getent passwd "65533" || useradd -l -o -m -d "/home/somebody" -r -g "65533" -u "65533" "somebody") && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
-RUN (getent group "900" || groupadd -o -g "900" -r "runuser") && (getent passwd "900" || useradd -l -o -m -d "/home/runuser" -r -g "900" -u "900" "runuser")
-USER 65533
+ARG LIVES_AS="somebody"
+ARG LIVES_UID=65533
+ARG LIVES_GID=65533
+RUN (getent group "$LIVES_GID" || groupadd -o -g "$LIVES_GID" -r "$LIVES_AS") && (getent passwd "$LIVES_UID" || useradd -l -o -m -d "/home/$LIVES_AS" -r -g "$LIVES_GID" -u "$LIVES_UID" "$LIVES_AS") && mkdir -p "/srv/app" && chown "$LIVES_UID":"$LIVES_GID" "/srv/app" && mkdir -p "/opt/lib" && chown "$LIVES_UID":"$LIVES_GID" "/opt/lib"
+ARG RUNS_AS="runuser"
+ARG RUNS_UID=900
+ARG RUNS_GID=900
+RUN (getent group "$RUNS_GID" || groupadd -o -g "$RUNS_GID" -r "$RUNS_AS") && (getent passwd "$RUNS_UID" || useradd -l -o -m -d "/home/$RUNS_AS" -r -g "$RUNS_GID" -u "$RUNS_UID" "$RUNS_AS")
+USER $LIVES_UID
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
 ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
-COPY --chown=65533:65533 ["package.json", "package-lock.json", "./"]
+COPY --chown=$LIVES_UID:$LIVES_GID ["package.json", "package-lock.json", "./"]
 RUN npm install
-COPY --chown=65533:65533 ["vue.config.js", "./"]
-COPY --chown=65533:65533 ["vue/", "vue/"]
-COPY --chown=65533:65533 [".git/", ".git/"]
+COPY --chown=$LIVES_UID:$LIVES_GID ["vue.config.js", "./"]
+COPY --chown=$LIVES_UID:$LIVES_GID ["vue/", "vue/"]
+COPY --chown=$LIVES_UID:$LIVES_GID [".git/", ".git/"]
 RUN /bin/bash "-c" "ls -alh && npm run-script build:vue"
-USER 900
-ENV HOME="/home/runuser"
+USER $RUNS_UID
+ENV HOME="/home/$RUNS_AS"
 ENV NODE_ENV="development"
 ENTRYPOINT ["/usr/bin/env"]
 
@@ -25,44 +31,56 @@ USER 0
 ENV HOME="/root"
 ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "git" "python3-dev" "python3-pip" "python3-venv" && rm -rf /var/lib/apt/lists/*
-RUN python3 "-m" "pip" "install" "-U" "setuptools!=60.9.0" "wheel" "tox" "pip"
+RUN python3 "-m" "pip" "install" "-U" "setuptools!=60.9.0" && python3 "-m" "pip" "install" "-U" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
 RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.7"
-RUN (getent group "65533" || groupadd -o -g "65533" -r "somebody") && (getent passwd "65533" || useradd -l -o -m -d "/home/somebody" -r -g "65533" -u "65533" "somebody") && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
-RUN (getent group "900" || groupadd -o -g "900" -r "runuser") && (getent passwd "900" || useradd -l -o -m -d "/home/runuser" -r -g "900" -u "900" "runuser")
-USER 65533
+ARG LIVES_AS="somebody"
+ARG LIVES_UID=65533
+ARG LIVES_GID=65533
+RUN (getent group "$LIVES_GID" || groupadd -o -g "$LIVES_GID" -r "$LIVES_AS") && (getent passwd "$LIVES_UID" || useradd -l -o -m -d "/home/$LIVES_AS" -r -g "$LIVES_GID" -u "$LIVES_UID" "$LIVES_AS") && mkdir -p "/srv/app" && chown "$LIVES_UID":"$LIVES_GID" "/srv/app" && mkdir -p "/opt/lib" && chown "$LIVES_UID":"$LIVES_GID" "/opt/lib"
+ARG RUNS_AS="runuser"
+ARG RUNS_UID=900
+ARG RUNS_GID=900
+RUN (getent group "$RUNS_GID" || groupadd -o -g "$RUNS_GID" -r "$RUNS_AS") && (getent passwd "$RUNS_UID" || useradd -l -o -m -d "/home/$RUNS_AS" -r -g "$RUNS_GID" -u "$RUNS_UID" "$RUNS_AS")
+USER $LIVES_UID
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
 ENV DJANGO_SECRET_KEY="FAKE_SECRET_FOR_PREP_BUILD" DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1" WIKIMEDIA_OAUTH2_KEY="FAKE_KEY_FOR_PREP_BUILD" WIKIMEDIA_OAUTH2_SECRET="FAKE_TOKEN_FOR_PREP_BUILD"
-COPY --chown=65533:65533 ["pyproject.toml", "poetry.lock", "./"]
+COPY --chown=$LIVES_UID:$LIVES_GID ["pyproject.toml", "poetry.lock", "./"]
 RUN mkdir -p "/opt/lib/poetry"
 RUN poetry "install" "--no-root" "--no-dev"
-COPY --chown=65533:65533 ["./", "./"]
-COPY --chown=65533:65533 --from=prep-nodejs ["/srv/app/vue/dist", "vue/dist/"]
+COPY --chown=$LIVES_UID:$LIVES_GID ["./", "./"]
+COPY --chown=$LIVES_UID:$LIVES_GID --from=prep-nodejs ["/srv/app/vue/dist", "vue/dist/"]
 RUN /bin/bash "-c" "ls -alh && poetry run ./manage.py collectstatic -c --no-input && poetry run python3 -mjson.tool staticfiles/staticfiles.json > /tmp/staticfiles.json && mv /tmp/staticfiles.json staticfiles/staticfiles.json && poetry run ./manage.py compilemessages --exclude qqq"
-USER 900
-ENV HOME="/home/runuser"
+USER $RUNS_UID
+ENV HOME="/home/$RUNS_AS"
 
 FROM docker-registry.wikimedia.org/python3-buster:latest AS demo
 USER 0
 ENV HOME="/root"
 ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "git" "python3-dev" "python3-pip" "python3-venv" && rm -rf /var/lib/apt/lists/*
-RUN python3 "-m" "pip" "install" "-U" "setuptools!=60.9.0" "wheel" "tox" "pip"
+RUN python3 "-m" "pip" "install" "-U" "setuptools!=60.9.0" && python3 "-m" "pip" "install" "-U" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
 RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.7"
-RUN (getent group "65533" || groupadd -o -g "65533" -r "somebody") && (getent passwd "65533" || useradd -l -o -m -d "/home/somebody" -r -g "65533" -u "65533" "somebody") && mkdir -p "/srv/app" && chown "65533":"65533" "/srv/app" && mkdir -p "/opt/lib" && chown "65533":"65533" "/opt/lib"
-RUN (getent group "900" || groupadd -o -g "900" -r "runuser") && (getent passwd "900" || useradd -l -o -m -d "/home/runuser" -r -g "900" -u "900" "runuser")
-USER 65533
+ARG LIVES_AS="somebody"
+ARG LIVES_UID=65533
+ARG LIVES_GID=65533
+RUN (getent group "$LIVES_GID" || groupadd -o -g "$LIVES_GID" -r "$LIVES_AS") && (getent passwd "$LIVES_UID" || useradd -l -o -m -d "/home/$LIVES_AS" -r -g "$LIVES_GID" -u "$LIVES_UID" "$LIVES_AS") && mkdir -p "/srv/app" && chown "$LIVES_UID":"$LIVES_GID" "/srv/app" && mkdir -p "/opt/lib" && chown "$LIVES_UID":"$LIVES_GID" "/opt/lib"
+ARG RUNS_AS="runuser"
+ARG RUNS_UID=900
+ARG RUNS_GID=900
+RUN (getent group "$RUNS_GID" || groupadd -o -g "$RUNS_GID" -r "$RUNS_AS") && (getent passwd "$RUNS_UID" || useradd -l -o -m -d "/home/$RUNS_AS" -r -g "$RUNS_GID" -u "$RUNS_UID" "$RUNS_AS")
+USER $LIVES_UID
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
 ENV DB_NAME="/dev/shm/toolhub.sqlite3" DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
-COPY --chown=65533:65533 ["pyproject.toml", "poetry.lock", "./"]
+COPY --chown=$LIVES_UID:$LIVES_GID ["pyproject.toml", "poetry.lock", "./"]
 RUN mkdir -p "/opt/lib/poetry"
 RUN poetry "install" "--no-root" "--no-dev"
-COPY --chown=65533:65533 --from=prep ["/srv/app", "."]
-USER 900
-ENV HOME="/home/runuser"
+COPY --chown=$LIVES_UID:$LIVES_GID --from=prep ["/srv/app", "."]
+USER $RUNS_UID
+ENV HOME="/home/$RUNS_AS"
 ENTRYPOINT ["/bin/bash", "-c", "poetry run python3 manage.py migrate && poetry run python3 manage.py createinitialrevisions && poetry run python3 manage.py loaddata toolhub/fixtures/demo.yaml && poetry run python3 manage.py crawl && poetry run python3 manage.py runserver --noreload --nostatic 0.0.0.0:8000"]
 
-LABEL blubber.variant="demo" blubber.version="0.9.0+73d3d2c"
+LABEL blubber.variant="demo" blubber.version="0.9.0+6331215"

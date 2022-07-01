@@ -5,6 +5,9 @@ services:
     build:
       context: .
       dockerfile: .pipeline/local-python.Dockerfile
+      args: # T295823: build with local uid/gid to allow Linux mount writes
+        LIVES_UID: $LOCAL_UID
+        LIVES_GID: $LOCAL_GID
     image: "toolhub:dev-python"
     # T295318: run container as local user to allow Linux mount writes
     user: "${LOCAL_UID}:${LOCAL_GID}"
@@ -76,6 +79,9 @@ services:
     build:
       context: .
       dockerfile: .pipeline/dev-nodejs.Dockerfile
+      args: # T295823: build with local uid/gid to allow Linux mount writes
+        LIVES_UID: $LOCAL_UID
+        LIVES_GID: $LOCAL_GID
     image: "toolhub:dev-nodejs"
     # T295318: run container as local user to allow Linux mount writes
     user: "${LOCAL_UID}:${LOCAL_GID}"
