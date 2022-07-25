@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-06-09 11:17:41+0000\n"
+"PO-Revision-Date: 2022-07-25 11:16:46+0000\n"
 "X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -943,7 +943,7 @@ msgstr "Informations concernant la locale actuelle."
 
 #: toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr "Informations de l’utilisateur"
+msgstr "Informations sur l’utilisateur"
 
 #: toolhub/apps/user/serializers.py:123
 msgid "Group information"
