@@ -54,7 +54,7 @@
 	"my-account": "我的帳號",
 	"newtoolsfound": "{{PLURAL:$1|1 個工具|$1 個工具}}",
 	"nourlsfounderror": "在 Toolhub 系統找不到 toolinfo.json 檔案 URL。",
-	"privacypolicy": "隱私方針",
+	"privacypolicy": "隱私權政策",
 	"publishchanges": "發布變更",
 	"back": "返回",
 	"continue": "繼續",

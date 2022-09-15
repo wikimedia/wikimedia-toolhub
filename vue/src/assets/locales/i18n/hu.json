@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hanna Tardos"
+			"Hanna Tardos",
+			"Tacsipacsi"
 		]
 	},
+	"add": "Hozzáadás",
+	"addremovetools": "Eszközök hozzáadása vagy eltávolítása",
+	"addremovetools-nologintext": "Eszközök hozzáadásához vagy eltávolításához be kell jelentkezned a Toolhubba",
+	"addremovetools-toolcreationsuccess": "Siker! A(z) „$1” eszköz létrehozva.",
 	"apierror": "Hoppá! Hiba történt: $1",
 	"appdeleted": "'$1' kliens azonosítóval rendelkező applikáció törölve",
 	"appname": "Applikáció neve",
