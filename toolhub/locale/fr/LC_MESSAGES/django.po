@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-09-08 11:15:24+0000\n"
+"PO-Revision-Date: 2022-09-29 11:15:36+0000\n"
 "X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -78,7 +78,7 @@ msgstr "type de contenu"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr "ID d’objet"
+msgstr "Identifiant d’objet"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
