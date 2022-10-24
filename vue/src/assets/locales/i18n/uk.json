@@ -3,7 +3,8 @@
 		"authors": [
 			"DDPAT",
 			"Ice bulldog",
-			"Kareyac"
+			"Kareyac",
+			"Пан Хаунд"
 		]
 	},
 	"add": "Додати",
@@ -52,6 +53,7 @@
 	"auditlogs-targettype-version": "перегляд",
 	"auditlogs-type": "Тип",
 	"auditlogs-username": "Ім'я користувача",
+	"recentchanges-action": "Дія",
 	"authcallbackurl": "URL-адреса зворотного виклику авторизації",
 	"authorizedapps": "Авторизовані програми",
 	"author": "Автор",
