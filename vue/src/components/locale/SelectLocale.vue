@@ -69,7 +69,7 @@
 			</v-card-text>
 			<v-toolbar>
 				<v-btn
-					class="ma-1 transparent elevation-0 text-capitalize"
+					class="ma-1 transparent elevation-0"
 					href="https://translatewiki.net/w/i.php?title=Special:Translate&group=toolhub"
 				>
 					{{ $t( 'helptranslate' ) }}
