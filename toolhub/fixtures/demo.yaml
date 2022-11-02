@@ -24,7 +24,7 @@
 - model: crawler.url
   pk: 3
   fields:
-    url: https://toolsadmin.wikimedia.org/tools/toolinfo/v1/toolinfo.json
+    url: https://toolsadmin.wikimedia.org/tools/toolinfo/v1.2/toolinfo.json
     created_by:
     - Demo Unicorn
     created_date: 2021-01-01T00:00:00+00:00

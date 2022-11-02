@@ -182,8 +182,8 @@ class Crawler:
             r = requests.get(
                 raw_url,
                 headers={"user-agent": self.user_agent},
-                # T288536: 5s connect, 13s read (time between bytes)
-                timeout=(5, 13),
+                # T288536: 5s connect, 33s read (time between bytes)
+                timeout=(5, 33),
             )
 
             url.status_code = r.status_code
