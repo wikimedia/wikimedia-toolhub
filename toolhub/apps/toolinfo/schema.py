@@ -86,6 +86,28 @@ def schema_for(field, oneof=None):
     return expanded
 
 
+def _flatten_choices(choices):
+    """Flatten a choices list."""
+    flat = []
+    for choice, value in choices:
+        if isinstance(value, (list, tuple)):
+            flat.extend(value)
+        else:
+            flat.append((choice, value))
+    return flat
+
+
+def choices2array(choices, item_type="string"):
+    """Generate a schema based on a sequence of choices."""
+    return {
+        "type": "array",
+        "items": {
+            "type": item_type,
+            "enum": [choice[0] for choice in _flatten_choices(choices)],
+        },
+    }
+
+
 class Fix1(OpenApiSerializerFieldExtension):
     """Generate custom documentation for ForWikiField."""
 

@@ -79,6 +79,10 @@ class AnnotationsSerializer(ModelSerializer):
         model = Annotations
         fields = [
             "wikidata_qid",
+            "audiences",
+            "content_types",
+            "tasks",
+            "subject_domains",
             # Fields from CommonFieldsMixin
             "deprecated",
             "replaced_by",

@@ -708,6 +708,90 @@ class Annotations(
 ):
     """Annotations added to a tool."""
 
+    AUDIENCE_CHOICES = (
+        ("admin", _("Admins")),
+        ("organizer", _("Organizers and program coordinators")),
+        ("editor", _("Editors and content contributors")),
+        ("reader", _("Readers and content consumers")),
+        ("researcher", _("Researchers")),
+        ("developer", _("Developers")),
+    )
+    CONTENT_TYPE_CHOICES = (
+        ("article", _("Articles")),
+        ("audio", _("Audio")),
+        ("book", _("Books")),
+        (
+            _("Data"),
+            (
+                ("data::bibliography", _("Bibliographic data")),
+                ("data::category", _("Categories or labels")),
+                ("data::diff", _("Diffs and revision data")),
+                ("data::event", _("Event data")),
+                ("data::geography", _("Geographic data")),
+                ("data::linguistic", _("Linguistic data")),
+                ("data::page_metadata", _("Page metadata")),
+                ("data::structured", _("Structured data")),
+                ("data::user", _("User data")),
+            ),
+        ),
+        ("discussion", _("Discussions")),
+        ("draft", _("Drafts")),
+        ("email", _("Emails")),
+        ("image", _("Images")),
+        ("link", _("Links")),
+        ("list", _("Lists")),
+        ("log", _("Logs")),
+        ("map", _("Maps")),
+        ("reference", _("References")),
+        ("software", _("Software or code")),
+        ("template", _("Templates")),
+        ("video", _("Videos")),
+        ("watchlist", _("Watchlists")),
+        ("webpage", _("Webpages")),
+        ("wikitext", _("Wikitext")),
+    )
+    TASK_CHOICES = (
+        ("analysis", _("Analysis")),
+        ("annotating", _("Annotating and linking")),
+        ("archiving", _("Archiving and cleanup")),
+        ("categorizing", _("Categorizing and tagging")),
+        ("citing", _("Citing and referencing")),
+        ("communication", _("Communication and supporting users")),
+        ("converting", _("Converting and formatting content")),
+        ("creating", _("Creating content")),
+        ("deleting", _("Deleting and reverting")),
+        ("disambiguation", _("Disambiguation")),
+        ("downloading", _("Downloading or reusing content")),
+        ("editing", _("Editing or updating content")),
+        ("event_planning", _("Event and contest planning")),
+        ("tools", _("Hosting and maintaining tools")),
+        ("policy_violation", _("Identifying policy violations")),
+        ("spam", _("Identifying spam")),
+        ("vandalism", _("Identifying vandalism")),
+        ("ranking", _("Listing and ranking")),
+        ("merging", _("Merging content")),
+        ("migrating", _("Migrating content")),
+        ("patrolling", _("Patrolling recent changes")),
+        ("project_management", _("Project management and reporting")),
+        ("reading", _("Reading")),
+        ("recommending", _("Recommending content")),
+        ("translating", _("Translating and localizing")),
+        ("uploading", _("Uploading or importing")),
+        ("user_management", _("User management")),
+        ("warnings", _("Warning users")),
+    )
+    SUBJECT_DOMAIN_CHOICES = (
+        ("biography", _("Biography")),
+        ("cultural", _("Cultural heritage")),
+        ("education", _("Education")),
+        ("geography", _("Geography and mapping")),
+        ("glam", _("GLAM")),
+        ("history", _("History")),
+        ("language", _("Language and internationalization")),
+        ("outreach", _("Outreach")),
+        ("science", _("Science")),
+    )
+
     tool = models.OneToOneField(
         Tool,
         on_delete=models.CASCADE,
@@ -719,6 +803,35 @@ class Annotations(
         null=True,
         validators=[validators.RegexValidator(regex=r"^Q\d+$")],
         help_text=_("Wikidata item ID for the tool."),
+    )
+    audiences = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_("Who is the intended user of the tool?"),
+        schema=schema.choices2array(AUDIENCE_CHOICES),
+    )
+    content_types = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_(
+            "With what type of content or data does the tool interact?"
+        ),
+        schema=schema.choices2array(CONTENT_TYPE_CHOICES),
+    )
+    tasks = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_("What type of task does the tool help with?"),
+        schema=schema.choices2array(TASK_CHOICES),
+    )
+    subject_domains = JSONSchemaField(
+        blank=True,
+        default=list,
+        help_text=_(
+            "Is the tool targeted at helping in a specific type of "
+            "wiki project or topic area?"
+        ),
+        schema=schema.choices2array(SUBJECT_DOMAIN_CHOICES),
     )
 
     def __str__(self):
