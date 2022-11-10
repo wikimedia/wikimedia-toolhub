@@ -265,6 +265,26 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
             "options": build_term_facet_options("origin"),
             "enabled": True,
         },
+        "audiences": {
+            "field": "annotations.audiences.keyword",
+            "options": build_term_facet_options("audiences", multi=True),
+            "enabled": True,
+        },
+        "content_types": {
+            "field": "annotations.content_types.keyword",
+            "options": build_term_facet_options("content_types", multi=True),
+            "enabled": True,
+        },
+        "tasks": {
+            "field": "annotations.tasks.keyword",
+            "options": build_term_facet_options("tasks", multi=True),
+            "enabled": True,
+        },
+        "subject_domains": {
+            "field": "annotations.subject_domains.keyword",
+            "options": build_term_facet_options("subject_domains", multi=True),
+            "enabled": True,
+        },
     }
 
 
