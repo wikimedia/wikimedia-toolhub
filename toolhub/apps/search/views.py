@@ -82,6 +82,20 @@ class Pagination(pagination.QueryFriendlyPageNumberPagination):
         }
 
 
+def build_term_filter_field(term):
+    """Build filter_fields configuration for a term field.
+
+    :param term: Term field name
+    """
+    return {
+        "field": term,
+        "lookups": [
+            constants.LOOKUP_FILTER_TERM,
+            constants.LOOKUP_QUERY_ISNULL,
+        ],
+    }
+
+
 def build_term_facet_options(term, missing="--", multi=False):
     """Build options for a term facet.
 
@@ -171,55 +185,21 @@ class ToolDocumentViewSet(BaseDocumentViewSet):
             "field": "name",
             "lookups": constants.STRING_LOOKUP_FILTERS,
         },
-        "wiki": {
-            "field": "x_merged_wiki",
-            "lookups": [
-                constants.LOOKUP_FILTER_TERM,
-                constants.LOOKUP_QUERY_ISNULL,
-            ],
-        },
-        "tool_type": {
-            "field": "x_merged_type",
-            "lookups": [
-                constants.LOOKUP_FILTER_TERM,
-                constants.LOOKUP_QUERY_ISNULL,
-            ],
-        },
-        "author": {
-            "field": "author.name.keyword",
-            "lookups": [
-                constants.LOOKUP_FILTER_TERM,
-                constants.LOOKUP_QUERY_ISNULL,
-            ],
-        },
-        "license": {
-            "field": "license.keyword",
-            "lookups": [
-                constants.LOOKUP_FILTER_TERM,
-                constants.LOOKUP_QUERY_ISNULL,
-            ],
-        },
-        "ui_language": {
-            "field": "x_merged_ui_lang",
-            "lookups": [
-                constants.LOOKUP_FILTER_TERM,
-                constants.LOOKUP_QUERY_ISNULL,
-            ],
-        },
-        "keywords": {
-            "field": "keywords.keyword",
-            "lookups": [
-                constants.LOOKUP_FILTER_TERM,
-                constants.LOOKUP_QUERY_ISNULL,
-            ],
-        },
-        "origin": {
-            "field": "origin.keyword",
-            "lookups": [
-                constants.LOOKUP_FILTER_TERM,
-                constants.LOOKUP_QUERY_ISNULL,
-            ],
-        },
+        "wiki": build_term_filter_field("x_merged_wiki"),
+        "tool_type": build_term_filter_field("x_merged_type"),
+        "author": build_term_filter_field("author.name.keyword"),
+        "license": build_term_filter_field("license.keyword"),
+        "ui_language": build_term_filter_field("x_merged_ui_lang"),
+        "keywords": build_term_filter_field("keywords.keyword"),
+        "origin": build_term_filter_field("origin.keyword"),
+        "audiences": build_term_filter_field("annotations.audiences.keyword"),
+        "content_types": build_term_filter_field(
+            "annotations.content_types.keyword"
+        ),
+        "tasks": build_term_filter_field("annotations.tasks.keyword"),
+        "subject_domains": build_term_filter_field(
+            "annotations.subject_domains.keyword"
+        ),
     }
     ordering_fields = {
         "score": "_score",
