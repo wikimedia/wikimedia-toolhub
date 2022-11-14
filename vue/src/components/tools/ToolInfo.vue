@@ -285,25 +285,23 @@
 									:key="item.name"
 								>
 									<td>{{ item.name }}</td>
-									<td>
-										<div
-											v-if="Array.isArray( item.value )"
+									<td
+										v-if="Array.isArray( item.value )"
+									>
+										<v-chip
+											v-for="iv in item.value"
+											:key="iv"
+											:ripple="false"
+											disabled
+											class="ma-1 opacity-1"
 										>
-											<v-chip
-												v-for="iv in item.value"
-												:key="iv"
-												:ripple="false"
-												disabled
-												class="ma-1 opacity-1"
-											>
-												{{ iv }}
-											</v-chip>
-										</div>
-										<div
-											v-else
-										>
-											{{ item.value }}
-										</div>
+											{{ iv }}
+										</v-chip>
+									</td>
+									<td
+										v-else
+									>
+										{{ item.value }}
 									</td>
 								</tr>
 							</tbody>
@@ -472,24 +470,40 @@ export default {
 					value: this.tool.tool_type || this.tool.annotations.tool_type
 				},
 				{
-					name: this.$t( 'license' ),
-					value: this.tool.license
+					name: this.$t( 'forwikis' ),
+					value: this.getArray( this.tool, 'for_wikis' ).map( forWikiLabel )
+				},
+				{
+					name: this.$t( 'audiences' ),
+					value: this.tool.annotations.audiences
+				},
+				{
+					name: this.$t( 'contenttypes' ),
+					value: this.tool.annotations.content_types
+				},
+				{
+					name: this.$t( 'tasks' ),
+					value: this.tool.annotations.tasks
+				},
+				{
+					name: this.$t( 'subjectdomains' ),
+					value: this.tool.annotations.subject_domains
 				},
 				{
 					name: this.$t( 'availableuilanguages' ),
 					value: this.getArray( this.tool, 'available_ui_languages' )
 				},
 				{
-					name: this.$t( 'technologyused' ),
-					value: this.tool.technology_used
+					name: this.$t( 'license' ),
+					value: this.tool.license
 				},
 				{
 					name: this.$t( 'sponsor' ),
 					value: this.tool.sponsor
 				},
 				{
-					name: this.$t( 'forwikis' ),
-					value: this.getArray( this.tool, 'for_wikis' ).map( forWikiLabel )
+					name: this.$t( 'technologyused' ),
+					value: this.tool.technology_used
 				},
 				{
 					name: this.$t( 'wikidataqid' ),
