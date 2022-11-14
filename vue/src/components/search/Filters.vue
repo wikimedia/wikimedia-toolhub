@@ -109,7 +109,8 @@ export const methods = {
 	 */
 	shouldShowFacet( facet ) {
 		return facet.buckets.length > 0 &&
-			!( facet.buckets.length === 1 &&
+			!( // Hide facets that are empty for all results
+				facet.buckets.length === 1 &&
 				facet.buckets[ 0 ].key === facet.missingValue &&
 				facet.selected.length === 0
 			);
@@ -134,10 +135,14 @@ export const methods = {
 	 */
 	getl10nTitleKey( facet ) {
 		switch ( facet.name ) {
+			case 'audiences':
 			case 'author':
+			case 'content_types':
 			case 'keywords':
 			case 'license':
 			case 'origin':
+			case 'subject_domains':
+			case 'tasks':
 			case 'tool_type':
 			case 'ui_language':
 			case 'wiki':

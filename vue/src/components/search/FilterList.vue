@@ -65,26 +65,33 @@ export const methods = {
 		if ( value === this.facet.missingValue ) {
 			return this.$i18n.t( 'search-filter-missing-value' );
 		}
-		if ( this.facet.name === 'ui_language' ) {
-			return this.$i18n.t( 'search-filter-ui-language-value', [
-				this.localeMap[ value ] || value,
-				value
-			] );
+		switch ( this.facet.name ) {
+			case 'audiences':
+			case 'content_types':
+			case 'origin':
+			case 'subject_domains':
+			case 'tasks':
+			case 'tool_type': {
+				const prefix = 'search-filter-' +
+					this.facet.name.replace( /_/g, '-' ) +
+					'-';
+				const cleanValue = value.replace( /(\s|::)/g, '-' );
+				// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
+				return this.$i18n.t( prefix + cleanValue );
+			}
+
+			case 'ui_language':
+				return this.$i18n.t(
+					'search-filter-ui-language-value',
+					[ this.localeMap[ value ] || value, value ]
+				);
+
+			case 'wiki':
+				return forWikiLabel( value );
+
+			default:
+				return value;
 		}
-		if ( this.facet.name === 'wiki' ) {
-			return forWikiLabel( value );
-		}
-		if ( this.facet.name === 'tool_type' ) {
-			// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
-			return this.$i18n.t(
-				'search-filter-tool-type-' + value.replace( /\s/g, '-' )
-			);
-		}
-		if ( this.facet.name === 'origin' ) {
-			// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
-			return this.$i18n.t( 'search-filter-origin-' + value );
-		}
-		return value;
 	},
 
 	/**
