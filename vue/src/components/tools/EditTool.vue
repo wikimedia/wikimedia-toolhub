@@ -52,7 +52,7 @@
 						<v-stepper-step
 							step="1"
 							editable
-							:rules="[ () => stepIsValid.stepOne ]"
+							:rules="[ () => stepIsValid.basic ]"
 						>
 							{{ $t( 'basicinfo' ) }}
 						</v-stepper-step>
@@ -80,11 +80,41 @@
 						<v-stepper-step
 							step="2"
 							editable
-							:rules="[ () => stepIsValid.stepTwo ]"
+							:rules="[ () => stepIsValid.taxonomy ]"
+						>
+							{{ $t( 'taxonomy' ) }}
+						</v-stepper-step>
+						<v-stepper-content step="2">
+							<v-row dense class="my-4">
+								<v-col md="12"
+									cols="12"
+								>
+									<v-row>
+										<v-col
+											v-for="( uischema, id ) in taxonomyLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="value.annotations[ id ]"
+												:schema="annotationsSchema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
+								</v-col>
+							</v-row>
+						</v-stepper-content>
+
+						<v-stepper-step
+							step="3"
+							editable
+							:rules="[ () => stepIsValid.links ]"
 						>
 							{{ $t( 'links' ) }}
 						</v-stepper-step>
-						<v-stepper-content step="2">
+						<v-stepper-content step="3">
 							<v-row dense class="my-4">
 								<v-col cols="12">
 									<v-row class="cols">
@@ -125,13 +155,13 @@
 						</v-stepper-content>
 
 						<v-stepper-step
-							step="3"
+							step="4"
 							editable
-							:rules="[ () => stepIsValid.stepThree ]"
+							:rules="[ () => stepIsValid.moreInfo ]"
 						>
 							{{ $t( 'moreinfo' ) }}
 						</v-stepper-step>
-						<v-stepper-content step="3">
+						<v-stepper-content step="4">
 							<v-row dense class="my-4">
 								<v-col md="12"
 									cols="12"
@@ -364,6 +394,50 @@ export default {
 				}
 			};
 		},
+		taxonomyLayout() {
+			return {
+				audiences: {
+					widget: 'select',
+					select: {
+						// FIXME: localized labels (T319253)
+						items: () => this.annotationsSchema.properties.audiences.items.enum
+					},
+					multiple: true,
+					icon: 'mdi-account-group-outline',
+					label: this.$t( 'audiences' )
+				},
+				content_types: {
+					widget: 'select',
+					select: {
+						// FIXME: localized labels (T319253)
+						items: () => this.annotationsSchema.properties.content_types.items.enum
+					},
+					multiple: true,
+					icon: 'mdi-book-open-page-variant-outline',
+					label: this.$t( 'contenttypes' )
+				},
+				tasks: {
+					widget: 'select',
+					select: {
+						// FIXME: localized labels (T319253)
+						items: () => this.annotationsSchema.properties.tasks.items.enum
+					},
+					multiple: true,
+					icon: 'mdi-checkbox-multiple-marked-outline',
+					label: this.$t( 'tasks' )
+				},
+				subject_domains: {
+					widget: 'select',
+					select: {
+						// FIXME: localized labels (T319253)
+						items: () => this.annotationsSchema.properties.subject_domains.items.enum
+					},
+					multiple: true,
+					icon: 'mdi-domain',
+					label: this.$t( 'subjectdomains' )
+				}
+			};
+		},
 		linksLayout() {
 			return {
 				api_url: {
@@ -558,44 +632,51 @@ export default {
 		},
 		stepIsValid() {
 			const valid = {
-				stepOne: true,
-				stepTwo: true,
-				stepThree: true
+				basic: true,
+				taxonomy: true,
+				links: true,
+				moreInfo: true
 			};
 
 			Object.keys( this.basicInfoLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepOne = false;
+					valid.basic = false;
+				}
+			} );
+
+			Object.keys( this.taxonomyLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.taxonomy = false;
 				}
 			} );
 
 			Object.keys( this.linksLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepTwo = false;
+					valid.links = false;
 				}
 			} );
 
 			Object.keys( this.multiLingualLinksLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepTwo = false;
+					valid.links = false;
 				}
 			} );
 
 			Object.keys( this.moreInfoLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepThree = false;
+					valid.moreInfo = false;
 				}
 			} );
 
 			Object.keys( this.annotationsFieldsLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepThree = false;
+					valid.moreInfo = false;
 				}
 			} );
 
 			Object.keys( this.toolStatusLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepThree = false;
+					valid.moreInfo = false;
 				}
 			} );
 
@@ -689,6 +770,7 @@ export default {
 		value: {
 			handler( newVal ) {
 				if ( !this.initialValue && newVal.name ) {
+					newVal = JSON.parse( JSON.stringify( newVal ) );
 					this.initialValue = newVal;
 
 					const fields = {};

@@ -52,11 +52,41 @@
 						<v-stepper-step
 							step="1"
 							editable
-							:rules="[ () => stepIsValid.stepOne ]"
+							:rules="[ () => stepIsValid.taxonomy ]"
+						>
+							{{ $t( 'taxonomy' ) }}
+						</v-stepper-step>
+						<v-stepper-content step="1">
+							<v-row dense class="my-4">
+								<v-col md="12"
+									cols="12"
+								>
+									<v-row>
+										<v-col
+											v-for="( uischema, id ) in taxonomyLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="value.annotations[ id ]"
+												:schema="schema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
+								</v-col>
+							</v-row>
+						</v-stepper-content>
+
+						<v-stepper-step
+							step="2"
+							editable
+							:rules="[ () => stepIsValid.links ]"
 						>
 							{{ $t( 'links' ) }}
 						</v-stepper-step>
-						<v-stepper-content step="1">
+						<v-stepper-content step="2">
 							<v-row dense class="my-4">
 								<v-col md="12" cols="12">
 									<v-row class="cols">
@@ -96,13 +126,13 @@
 						</v-stepper-content>
 
 						<v-stepper-step
-							step="2"
+							step="3"
 							editable
-							:rules="[ () => stepIsValid.stepTwo ]"
+							:rules="[ () => stepIsValid.moreInfo ]"
 						>
 							{{ $t( 'moreinfo' ) }}
 						</v-stepper-step>
-						<v-stepper-content step="2">
+						<v-stepper-content step="3">
 							<v-row dense class="my-4">
 								<v-col md="12"
 									cols="12"
@@ -141,6 +171,7 @@
 								</v-col>
 							</v-row>
 						</v-stepper-content>
+
 					</v-stepper>
 				</v-form>
 				<v-row class="justify-space-between mt-4">
@@ -246,7 +277,7 @@ export default {
 		return {
 			step: 1,
 			minStep: 1,
-			maxStep: 2,
+			maxStep: 3,
 			value: _.cloneDeep( this.tool ),
 			initialValue: null,
 			commentDialog: false,
@@ -256,6 +287,50 @@ export default {
 	},
 	computed: {
 		...mapState( 'locale', [ 'localeSelect' ] ),
+		taxonomyLayout() {
+			return {
+				audiences: {
+					widget: 'select',
+					select: {
+						// FIXME: localized labels (T319253)
+						items: () => this.schema.properties.audiences.items.enum
+					},
+					multiple: true,
+					icon: 'mdi-account-group-outline',
+					label: this.$t( 'audiences' )
+				},
+				content_types: {
+					widget: 'select',
+					select: {
+						// FIXME: localized labels (T319253)
+						items: () => this.schema.properties.content_types.items.enum
+					},
+					multiple: true,
+					icon: 'mdi-book-open-page-variant-outline',
+					label: this.$t( 'contenttypes' )
+				},
+				tasks: {
+					widget: 'select',
+					select: {
+						// FIXME: localized labels (T319253)
+						items: () => this.schema.properties.tasks.items.enum
+					},
+					multiple: true,
+					icon: 'mdi-checkbox-multiple-marked-outline',
+					label: this.$t( 'tasks' )
+				},
+				subject_domains: {
+					widget: 'select',
+					select: {
+						// FIXME: localized labels (T319253)
+						items: () => this.schema.properties.subject_domains.items.enum
+					},
+					multiple: true,
+					icon: 'mdi-domain',
+					label: this.$t( 'subjectdomains' )
+				}
+			};
+		},
 		linksLayout() {
 			return {
 				api_url: {
@@ -377,6 +452,7 @@ export default {
 				},
 				tool_type: {
 					select: {
+						// FIXME: localized labels (T319253)
 						items: () => this.schema.properties.tool_type.enum
 					},
 					icon: 'mdi-toolbox-outline',
@@ -427,27 +503,33 @@ export default {
 		},
 		stepIsValid() {
 			const valid = {
-				stepOne: true,
-				stepTwo: true
+				taxonomy: true,
+				links: true,
+				moreInfo: true
 			};
+			Object.keys( this.taxonomyLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.taxonomy = false;
+				}
+			} );
 			Object.keys( this.linksLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepOne = false;
+					valid.links = false;
 				}
 			} );
 			Object.keys( this.multiLingualLinksLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepOne = false;
+					valid.links = false;
 				}
 			} );
 			Object.keys( this.moreInfoLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepTwo = false;
+					valid.moreInfo = false;
 				}
 			} );
 			Object.keys( this.toolStatusLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.stepTwo = false;
+					valid.moreInfo = false;
 				}
 			} );
 			return valid;
@@ -462,9 +544,9 @@ export default {
 		},
 		storeValidity( bool, field ) {
 			// validityPerField is dynamically built and therefore not reactive
-			// if the properties are added the usual way i.e a["key"] = value
-			// this syntax does the same thing except that it also makes
-			// the added properties reactive
+			// if the properties are added the usual way i.e a["key"] = value.
+			// This syntax does the same thing except that it also makes
+			// the added properties reactive.
 			this.$set( this.validityPerField, field, !bool );
 		},
 		publishChanges( comment ) {
@@ -475,14 +557,17 @@ export default {
 			this.links.forEach( ( field ) => {
 				if ( annotations[ field ] ) {
 					annotations[ field ] = annotations[ field ].filter( ( u ) => {
-						return u.url !== undefined && u.url !== null && u.url !== '';
+						return u.url !== undefined &&
+							u.url !== null &&
+							u.url !== '';
 					} );
 				}
 			} );
 
 			Object.keys( annotations ).forEach( ( field ) => {
-				// overwrite  edited annotations field with the initial value of
-				// the annotations field if the field already exists in core toolinfo record
+				// Overwrite edited annotations field with the initial value
+				// of the annotations field if the field already exists in
+				// core toolinfo record.
 				if ( !_.isEmpty( this.initialValue[ field ] ) ) {
 					annotations[ field ] = this.initialValue.annotations[ field ];
 				}
@@ -500,13 +585,14 @@ export default {
 				this.initialValue.annotations
 			);
 
-			// set response to resolved promise so we can always
-			// chain it with .then whether annotations_changed is true or false
+			// Set response to resolved promise so we can always chain it
+			// with `.then` whether annotations_changed is true or false.
 			let response = Promise.resolve();
 
 			if ( annotations_changed ) {
 				response = this.$store.dispatch(
-					'tools/editAnnotations', { annotations, name: this.value.name }
+					'tools/editAnnotations',
+					{ annotations, name: this.value.name }
 				);
 			}
 
