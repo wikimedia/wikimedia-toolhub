@@ -38,3 +38,20 @@ export function forWikiLabel( value ) {
 			return value;
 	}
 }
+
+/**
+ * Get a localized label for a given enum field value.
+ *
+ * @param {string} enumName - name of the enum field to localize
+ * @param {string} value - enum value
+ * @return {string} Localized label to show to humans
+ */
+export function localizeEnum( enumName, value ) {
+	if ( !( typeof enumName === 'string' && typeof value === 'string' ) ) {
+		return '';
+	}
+	const prefix = 'search-filter-' + enumName.replace( /_/g, '-' ) + '-';
+	const cleanValue = value.replace( /(\s|::|_)/g, '-' );
+	// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
+	return i18n.t( prefix + cleanValue );
+}

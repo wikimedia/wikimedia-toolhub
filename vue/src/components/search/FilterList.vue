@@ -52,7 +52,7 @@
 <script>
 import { mapState } from 'vuex';
 import { ensureArray } from '@/helpers/array';
-import { forWikiLabel } from '@/helpers/tools';
+import { forWikiLabel, localizeEnum } from '@/helpers/tools';
 
 export const methods = {
 	/**
@@ -71,14 +71,8 @@ export const methods = {
 			case 'origin':
 			case 'subject_domains':
 			case 'tasks':
-			case 'tool_type': {
-				const prefix = 'search-filter-' +
-					this.facet.name.replace( /_/g, '-' ) +
-					'-';
-				const cleanValue = value.replace( /(\s|::)/g, '-' );
-				// eslint-disable-next-line @intlify/vue-i18n/no-dynamic-keys
-				return this.$i18n.t( prefix + cleanValue );
-			}
+			case 'tool_type':
+				return localizeEnum( this.facet.name, value );
 
 			case 'ui_language':
 				return this.$i18n.t(
