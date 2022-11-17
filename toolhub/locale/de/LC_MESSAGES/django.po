@@ -4,13 +4,14 @@
 # Author: Ajeje Brazorf
 # Author: FF-11
 # Author: Gebu
+# Author: Justman10000
 # Author: Lorem Ipsum
 # Author: Wolfdietmann
 # Author: Zauberzunge2000
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-10-27 11:20:11+0000\n"
+"PO-Revision-Date: 2022-11-17 12:14:07+0000\n"
 "X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -543,7 +544,7 @@ msgstr "Tool-Suchergebnisse"
 
 #: toolhub/apps/search/serializers.py:61
 msgid "Tool autocomplete results"
-msgstr ""
+msgstr "Autovervollständigen von Ergebnissen"
 
 #: toolhub/apps/search/serializers.py:86
 msgid "ToolList autocomplete results"
@@ -776,7 +777,7 @@ msgstr "Von der Gemeinschaft hinzugefügte Informationen für ein Werkzeug"
 
 #: toolhub/apps/toolinfo/serializers.py:102
 msgid "Summary of community added information for a tool"
-msgstr ""
+msgstr "Zusammenfassung der von der Gemeinschaft hinzugefügten Informationen für ein Werkzeug"
 
 #: toolhub/apps/toolinfo/serializers.py:117
 msgid "Update annotations"
@@ -1125,7 +1126,7 @@ msgstr "Nur die letzten Änderungen innerhalb dieses Zeitraums anzeigen"
 
 #: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."
-msgstr ""
+msgstr "Erhalte eine paginierte Liste aller Revisionen."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
@@ -1149,11 +1150,11 @@ msgstr "Kommentar, der eine Aktion beschreibt."
 
 #: toolhub/settings.py:456
 msgid "Read scope"
-msgstr ""
+msgstr "Geltungsbereich lesen"
 
 #: toolhub/settings.py:457
 msgid "Write scope"
-msgstr ""
+msgstr "Geltungsbereich schreiben"
 
 #: toolhub/settings.py:486
 #, optional
