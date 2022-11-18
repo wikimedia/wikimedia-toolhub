@@ -33,6 +33,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+
+import { localizeEnum } from '@/helpers/tools';
 import InputWidget from '@/components/common/InputWidget';
 import AgreeTerms from '@/components/common/AgreeTerms';
 
@@ -120,8 +122,16 @@ export default {
 					}
 				},
 				tool_type: {
+					widget: 'select',
 					select: {
-						items: () => this.schema.properties.tool_type.enum
+						items: () => this.schema.properties.tool_type.enum.map(
+							( x ) => {
+								return {
+									text: localizeEnum( 'tool_type', x ),
+									value: x
+								};
+							}
+						)
 					},
 					icon: 'mdi-toolbox-outline',
 					label: this.$t( 'tooltype' )

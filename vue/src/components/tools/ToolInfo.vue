@@ -352,8 +352,10 @@
 </template>
 
 <script>
+import _ from 'lodash';
+
 import { ensureArray } from '@/helpers/array';
-import { forWikiLabel } from '@/helpers/tools';
+import { forWikiLabel, localizeEnum } from '@/helpers/tools';
 import { isValidHttpUrl } from '@/helpers/validation';
 import FavoriteButton from '@/components/tools/FavoriteButton';
 import ScrollTop from '@/components/common/ScrollTop';
@@ -467,7 +469,10 @@ export default {
 			const items = [
 				{
 					name: this.$t( 'tooltype' ),
-					value: this.tool.tool_type || this.tool.annotations.tool_type
+					value: localizeEnum(
+						'tool_type',
+						this.tool.tool_type || this.tool.annotations.tool_type
+					)
 				},
 				{
 					name: this.$t( 'forwikis' ),
@@ -475,19 +480,28 @@ export default {
 				},
 				{
 					name: this.$t( 'audiences' ),
-					value: this.tool.annotations.audiences
+					value: this.tool.annotations.audiences.map(
+						_.partial( localizeEnum, 'audiences' )
+					)
 				},
 				{
 					name: this.$t( 'contenttypes' ),
-					value: this.tool.annotations.content_types
+					value: this.tool.annotations.content_types.map(
+						_.partial( localizeEnum, 'content_types' )
+					)
 				},
 				{
 					name: this.$t( 'tasks' ),
-					value: this.tool.annotations.tasks
+					value: this.tool.annotations.tasks.map(
+						_.partial( localizeEnum, 'tasks' )
+					)
+
 				},
 				{
 					name: this.$t( 'subjectdomains' ),
-					value: this.tool.annotations.subject_domains
+					value: this.tool.annotations.subject_domains.map(
+						_.partial( localizeEnum, 'subject_domains' )
+					)
 				},
 				{
 					name: this.$t( 'availableuilanguages' ),

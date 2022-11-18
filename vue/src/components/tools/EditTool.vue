@@ -294,9 +294,11 @@
 </template>
 
 <script>
-import { asTool } from '@/helpers/casl';
 import { mapState, mapActions } from 'vuex';
 import _ from 'lodash';
+
+import { asTool } from '@/helpers/casl';
+import { localizeEnum } from '@/helpers/tools';
 import InputWidget from '@/components/common/InputWidget';
 import CommentDialog from '@/components/common/CommentDialog';
 
@@ -395,12 +397,17 @@ export default {
 			};
 		},
 		taxonomyLayout() {
+			const props = this.annotationsSchema.properties;
 			return {
 				audiences: {
 					widget: 'select',
 					select: {
-						// FIXME: localized labels (T319253)
-						items: () => this.annotationsSchema.properties.audiences.items.enum
+						items: () => props.audiences.items.enum.map( ( x ) => {
+							return {
+								text: localizeEnum( 'audiences', x ),
+								value: x
+							};
+						} )
 					},
 					multiple: true,
 					icon: 'mdi-account-group-outline',
@@ -409,8 +416,12 @@ export default {
 				content_types: {
 					widget: 'select',
 					select: {
-						// FIXME: localized labels (T319253)
-						items: () => this.annotationsSchema.properties.content_types.items.enum
+						items: () => props.content_types.items.enum.map( ( x ) => {
+							return {
+								text: localizeEnum( 'content_types', x ),
+								value: x
+							};
+						} )
 					},
 					multiple: true,
 					icon: 'mdi-book-open-page-variant-outline',
@@ -419,8 +430,12 @@ export default {
 				tasks: {
 					widget: 'select',
 					select: {
-						// FIXME: localized labels (T319253)
-						items: () => this.annotationsSchema.properties.tasks.items.enum
+						items: () => props.tasks.items.enum.map( ( x ) => {
+							return {
+								text: localizeEnum( 'tasks', x ),
+								value: x
+							};
+						} )
 					},
 					multiple: true,
 					icon: 'mdi-checkbox-multiple-marked-outline',
@@ -429,8 +444,12 @@ export default {
 				subject_domains: {
 					widget: 'select',
 					select: {
-						// FIXME: localized labels (T319253)
-						items: () => this.annotationsSchema.properties.subject_domains.items.enum
+						items: () => props.subject_domains.items.enum.map( ( x ) => {
+							return {
+								text: localizeEnum( 'subject_domains', x ),
+								value: x
+							};
+						} )
 					},
 					multiple: true,
 					icon: 'mdi-domain',
@@ -559,10 +578,16 @@ export default {
 			};
 		},
 		moreInfoLayout() {
+			const props = this.toolSchema.properties;
 			return {
 				tool_type: {
 					select: {
-						items: () => this.toolSchema.properties.tool_type.enum
+						items: () => props.tool_type.enum.map( ( x ) => {
+							return {
+								text: localizeEnum( 'tool_type', x ),
+								value: x
+							};
+						} )
 					},
 					icon: 'mdi-toolbox-outline',
 					label: this.$t( 'tooltype' )
