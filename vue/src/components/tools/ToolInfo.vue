@@ -66,84 +66,11 @@
 						<dl class="tool-info__authors row mx-0 mt-4 text-subtitle-1">
 							<dt class="me-2 my-1">{{ $t( 'authors' ) }}:</dt>
 							<dd
-								v-for="( author, index ) in authors"
-								:key="author.name.value + index"
+								v-for="( author, index ) in tool.author"
+								:key="author.name + index"
 								class="me-2"
 							>
-								<v-menu
-									open-on-hover
-									open-on-click
-									:close-on-content-click="false"
-									min-width="250px"
-								>
-									<template #activator="{ on, attrs }">
-										<v-btn
-											small
-											rounded
-											:ripple="false"
-											v-bind="attrs"
-											class="me-1 my-1"
-											v-on="on"
-										>
-											{{ author.name.value }}
-										</v-btn>
-									</template>
-
-									<v-card
-										class="mx-auto"
-										min-width="auto"
-									>
-										<v-card-text>
-											<dl
-												v-for="key in Object.keys( author )"
-												:key="key"
-												class="row ma-1"
-											>
-												<dt
-													class="me-1 font-weight-bold"
-												>
-													<v-icon>
-														{{ author[key].icon }}
-													</v-icon>
-													{{ author[key].label }}
-												</dt>
-												<dd class="line-clamp">
-													<a
-														v-if="isValidUrl( author[key].value )"
-														:href="author[key].value"
-														target="_blank"
-													>
-														{{ author[key].value }}
-													</a>
-													<template v-else>
-														{{ author[key].value }}
-													</template>
-												</dd>
-											</dl>
-										</v-card-text>
-
-										<v-card-actions>
-											<v-btn
-												block
-												outlined
-												color="primary"
-												class="text-h6"
-												:to="{
-													name: 'search',
-													query: { 'author__term': author.name.value }
-												}"
-											>
-												<v-icon
-													aria-hidden="false"
-													:aria-label="$t( 'search' )"
-												>
-													mdi-magnify
-												</v-icon>
-												{{ $t( "author-menu-search-name" ) }}
-											</v-btn>
-										</v-card-actions>
-									</v-card>
-								</v-menu>
+								<AuthorDetails :author="author" />
 							</dd>
 						</dl>
 
@@ -356,7 +283,8 @@ import _ from 'lodash';
 
 import { ensureArray } from '@/helpers/array';
 import { forWikiLabel, localizeEnum } from '@/helpers/tools';
-import { isValidHttpUrl } from '@/helpers/validation';
+
+import AuthorDetails from '@/components/tools/AuthorDetails';
 import FavoriteButton from '@/components/tools/FavoriteButton';
 import ScrollTop from '@/components/common/ScrollTop';
 import ToolImage from '@/components/tools/ToolImage';
@@ -365,6 +293,7 @@ import ToolMenu from '@/components/tools/ToolMenu';
 export default {
 	name: 'ToolInfo',
 	components: {
+		AuthorDetails,
 		FavoriteButton,
 		ScrollTop,
 		ToolImage,
@@ -423,47 +352,6 @@ export default {
 			} );
 
 			return filteredLinks;
-		},
-		authors() {
-			const authors = this.tool.author || [];
-			return authors.map( ( author ) => (
-				{
-					name: {
-						icon: 'mdi-account-outline',
-						label: this.$t( 'name' ),
-						value: author.name
-					},
-					wiki_username: {
-						icon: 'mdi-card-account-details-outline',
-						label: this.$t( 'wiki-username' ),
-						value: author.wiki_username
-					},
-					developer_username: {
-						icon: 'mdi-card-account-details-outline',
-						label: this.$t( 'developer-username' ),
-						value: author.developer_username
-					},
-					email: {
-						icon: 'mdi-email-outline',
-						label: this.$t( 'email' ),
-						value: author.email
-					},
-					url: {
-						icon: 'mdi-web',
-						label: this.$t( 'url' ),
-						value: author.url
-					}
-				}
-			) ).map( ( author ) => Object.keys( author ).reduce(
-				( acc, key ) => {
-					// remove fields that have no input
-					if ( author[ key ].value ) {
-						acc[ key ] = author[ key ];
-					}
-					return acc;
-				},
-				{}
-			) );
 		},
 		moreInfoItems() {
 			const items = [
@@ -535,9 +423,6 @@ export default {
 		}
 	},
 	methods: {
-		isValidUrl( value ) {
-			return isValidHttpUrl( value );
-		},
 		getArray( tool, key ) {
 			const tool_array = ensureArray( tool[ key ] );
 			const annotations_array = ensureArray( tool.annotations[ key ] );
