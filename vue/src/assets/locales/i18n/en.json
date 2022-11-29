@@ -370,6 +370,7 @@
 	"status": "Status",
 	"subjectdomains": "Subject domains",
 	"submitjsonurl": "Submit a toolinfo.json URL",
+	"subtitle": "Subtitle",
 	"system-user": "System",
 	"tagline-about": "Discover new tools, promote their use in your wiki community, help improve them by contributing data.",
 	"tagline-learnmore": "Learn more about Toolhub on metawiki",

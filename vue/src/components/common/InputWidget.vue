@@ -158,7 +158,10 @@
 		<v-checkbox
 			v-else-if="widget === 'checkbox'"
 			v-model="model"
+			:hint="schema.description"
+			:prepend-icon="ui.icon"
 			:disabled="ui.disabled"
+			persistent-hint
 			@update:error="emitIsValid"
 		>
 			<template #label>

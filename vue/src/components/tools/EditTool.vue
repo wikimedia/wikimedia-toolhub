@@ -67,7 +67,24 @@
 										>
 											<InputWidget
 												v-model="value[ id ]"
-												:schema="toolSchema.properties[ id ]"
+												:schema="schemaFor( id )"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
+									<div class="text-h6">
+										{{ $t( 'thistoolis' ) }}
+									</div>
+									<v-row class="cols">
+										<v-col
+											v-for="( uischema, id ) in toolStatusLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="value[ id ]"
+												:schema="schemaFor( id )"
 												:ui-schema="uischema"
 												@is-valid="storeValidity( $event, id )"
 											/>
@@ -97,7 +114,7 @@
 										>
 											<InputWidget
 												v-model="value.annotations[ id ]"
-												:schema="annotationsSchema.properties[ id ]"
+												:schema="schemaFor( id )"
 												:ui-schema="uischema"
 												@is-valid="storeValidity( $event, id )"
 											/>
@@ -110,44 +127,25 @@
 						<v-stepper-step
 							step="3"
 							editable
-							:rules="[ () => stepIsValid.links ]"
+							:rules="[ () => stepIsValid.usage ]"
 						>
-							{{ $t( 'links' ) }}
+							{{ $t( 'usage' ) }}
 						</v-stepper-step>
 						<v-stepper-content step="3">
 							<v-row dense class="my-4">
 								<v-col cols="12">
 									<v-row class="cols">
 										<v-col
-											v-for="( uischema, id ) in linksLayout"
+											v-for="( uischema, id ) in usageLayout"
 											:key="id"
 											cols="12"
 										>
 											<InputWidget
 												v-model="value[ id ]"
-												:schema="toolSchema.properties[ id ]"
+												:schema="schemaFor( id )"
 												:ui-schema="uischema"
 												@is-valid="storeValidity( $event, id )"
 											/>
-										</v-col>
-									</v-row>
-
-									<v-row>
-										<v-col
-											v-for="( uischema, id ) in multiLingualLinksLayout"
-											:key="id"
-											cols="12"
-										>
-											<v-row>
-												<v-col cols="12">
-													<InputWidget
-														v-model="value[ id ]"
-														:schema="toolSchema.properties[ id ]"
-														:ui-schema="uischema"
-														@is-valid="storeValidity( $event, id )"
-													/>
-												</v-col>
-											</v-row>
 										</v-col>
 									</v-row>
 								</v-col>
@@ -157,11 +155,39 @@
 						<v-stepper-step
 							step="4"
 							editable
+							:rules="[ () => stepIsValid.contributing ]"
+						>
+							{{ $t( 'contributing' ) }}
+						</v-stepper-step>
+						<v-stepper-content step="4">
+							<v-row dense class="my-4">
+								<v-col cols="12">
+									<v-row class="cols">
+										<v-col
+											v-for="( uischema, id ) in contributingLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="value[ id ]"
+												:schema="schemaFor( id )"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
+								</v-col>
+							</v-row>
+						</v-stepper-content>
+
+						<v-stepper-step
+							step="5"
+							editable
 							:rules="[ () => stepIsValid.moreInfo ]"
 						>
 							{{ $t( 'moreinfo' ) }}
 						</v-stepper-step>
-						<v-stepper-content step="4">
+						<v-stepper-content step="5">
 							<v-row dense class="my-4">
 								<v-col md="12"
 									cols="12"
@@ -174,41 +200,7 @@
 										>
 											<InputWidget
 												v-model="value[ id ]"
-												:schema="toolSchema.properties[ id ]"
-												:ui-schema="uischema"
-												@is-valid="storeValidity( $event, id )"
-											/>
-										</v-col>
-									</v-row>
-
-									<v-row>
-										<v-col
-											v-for="( uischema, id ) in annotationsFieldsLayout"
-											:key="id"
-											cols="12"
-										>
-											<InputWidget
-												v-model="value.annotations[ id ]"
-												:schema="annotationsSchema.properties[ id ]"
-												:ui-schema="uischema"
-												@is-valid="storeValidity( $event, id )"
-											/>
-										</v-col>
-									</v-row>
-
-									<div class="text-h5 mt-4">
-										{{ $t( 'thistoolis' ) }}
-									</div>
-
-									<v-row class="ps-3">
-										<v-col
-											v-for="( uischema, id ) in toolStatusLayout"
-											:key="id"
-											cols="12"
-										>
-											<InputWidget
-												v-model="value[ id ]"
-												:schema="toolSchema.properties[ id ]"
+												:schema="schemaFor( id )"
 												:ui-schema="uischema"
 												@is-valid="storeValidity( $event, id )"
 											/>
@@ -330,7 +322,7 @@ export default {
 		return {
 			step: 1,
 			minStep: 1,
-			maxStep: 3,
+			maxStep: 5,
 			value: _.cloneDeep( this.tool ),
 			initialValue: null,
 			commentDialog: false,
@@ -352,10 +344,18 @@ export default {
 					label: this.$t( 'title' ),
 					required: true
 				},
+				subtitle: {
+					icon: 'mdi-subtitles-outline',
+					label: this.$t( 'subtitle' )
+				},
 				description: {
 					icon: 'mdi-note-text-outline',
 					label: this.$t( 'description' ),
 					required: true
+				},
+				url: {
+					icon: 'mdi-link-variant',
+					label: this.$t( 'url' )
 				},
 				author: {
 					widget: 'authors',
@@ -389,16 +389,47 @@ export default {
 				repository: {
 					icon: 'mdi-source-branch',
 					label: this.$t( 'repository' )
+				}
+			};
+		},
+		toolStatusLayout() {
+			return {
+				experimental: {
+					widget: 'checkbox',
+					icon: 'mdi-alert-outline',
+					label: this.$t( 'experimental' )
 				},
-				url: {
-					icon: 'mdi-link-variant',
-					label: this.$t( 'url' )
+				deprecated: {
+					widget: 'checkbox',
+					icon: 'mdi-cancel',
+					label: this.$t( 'deprecated' )
+				},
+				replaced_by: {
+					icon: 'mdi-find-replace',
+					label: this.$t( 'replacedby' )
 				}
 			};
 		},
 		attributesLayout() {
 			const props = this.annotationsSchema.properties;
 			return {
+				tool_type: {
+					select: {
+						items: () => props.tool_type.enum.map( ( x ) => {
+							return {
+								text: localizeEnum( 'tool_type', x ),
+								value: x
+							};
+						} )
+					},
+					icon: 'mdi-toolbox-outline',
+					label: this.$t( 'tooltype' )
+				},
+				for_wikis: {
+					widget: 'multi-select',
+					icon: 'mdi-wikipedia',
+					label: this.$t( 'forwikis' )
+				},
 				audiences: {
 					widget: 'select',
 					select: {
@@ -454,35 +485,28 @@ export default {
 					multiple: true,
 					icon: 'mdi-domain',
 					label: this.$t( 'subjectdomains' )
+				},
+				available_ui_languages: {
+					widget: 'select',
+					select: {
+						items: () => this.localeSelect
+					},
+					multiple: true,
+					icon: 'mdi-tablet-dashboard',
+					label: this.$t( 'availableuilanguages' )
 				}
 			};
 		},
-		linksLayout() {
+		usageLayout() {
 			return {
-				api_url: {
-					icon: 'mdi-api',
-					label: this.$t( 'apiurl' )
-				},
-				translate_url: {
-					icon: 'mdi-translate',
-					label: this.$t( 'translateurl' )
-				},
-				bugtracker_url: {
-					icon: 'mdi-bug-outline',
-					label: this.$t( 'bugtrackerurl' )
-				}
-			};
-		},
-		multiLingualLinksLayout() {
-			return {
-				user_docs_url: {
+				url_alternates: {
 					widget: 'url-multilingual',
-					icon: 'mdi-file-document-multiple-outline',
+					icon: 'mdi-link-variant',
 					appendIcon: 'mdi-plus',
-					label: this.$t( 'userdocsurl' ),
+					label: this.$t( 'urlalternates' ),
 					items: {
 						url: {
-							icon: 'mdi-file-document-outline',
+							icon: 'mdi-link-variant',
 							label: this.$t( 'url' )
 						},
 						language: {
@@ -495,14 +519,18 @@ export default {
 						}
 					}
 				},
-				developer_docs_url: {
+				api_url: {
+					icon: 'mdi-api',
+					label: this.$t( 'apiurl' )
+				},
+				user_docs_url: {
 					widget: 'url-multilingual',
-					icon: 'mdi-code-tags',
+					icon: 'mdi-file-document-multiple-outline',
 					appendIcon: 'mdi-plus',
-					label: this.$t( 'developerdocsurl' ),
+					label: this.$t( 'userdocsurl' ),
 					items: {
 						url: {
-							icon: 'mdi-code-tags',
+							icon: 'mdi-file-document-outline',
 							label: this.$t( 'url' )
 						},
 						language: {
@@ -555,14 +583,44 @@ export default {
 						}
 					}
 				},
-				url_alternates: {
+				bugtracker_url: {
+					icon: 'mdi-bug-outline',
+					label: this.$t( 'bugtrackerurl' )
+				}
+			};
+		},
+		contributingLayout() {
+			return {
+				license: {
+					widget: 'select',
+					select: {
+						items: () => this.spdxLicenses.map( ( x ) => {
+							return {
+								text: `${x.name} (${x.id})`,
+								value: x.id
+							};
+						} )
+					},
+					icon: 'mdi-license',
+					label: this.$t( 'license' )
+				},
+				translate_url: {
+					icon: 'mdi-translate',
+					label: this.$t( 'translateurl' )
+				},
+				technology_used: {
+					widget: 'multi-select',
+					icon: 'mdi-cog-outline',
+					label: this.$t( 'technologyused' )
+				},
+				developer_docs_url: {
 					widget: 'url-multilingual',
-					icon: 'mdi-link-variant',
+					icon: 'mdi-code-tags',
 					appendIcon: 'mdi-plus',
-					label: this.$t( 'urlalternates' ),
+					label: this.$t( 'developerdocsurl' ),
 					items: {
 						url: {
-							icon: 'mdi-link-variant',
+							icon: 'mdi-code-tags',
 							label: this.$t( 'url' )
 						},
 						language: {
@@ -578,80 +636,23 @@ export default {
 			};
 		},
 		moreInfoLayout() {
-			const props = this.toolSchema.properties;
 			return {
-				tool_type: {
-					select: {
-						items: () => props.tool_type.enum.map( ( x ) => {
-							return {
-								text: localizeEnum( 'tool_type', x ),
-								value: x
-							};
-						} )
-					},
-					icon: 'mdi-toolbox-outline',
-					label: this.$t( 'tooltype' )
+				openhub_id: {
+					icon: 'mdi-duck',
+					label: this.$t( 'openhubid' )
 				},
-				license: {
-					widget: 'select',
-					select: {
-						items: () => this.spdxLicenses.map( ( x ) => {
-							return {
-								text: `${x.name} (${x.id})`,
-								value: x.id
-							};
-						} )
-					},
-					icon: 'mdi-license',
-					label: this.$t( 'license' )
-				},
-				available_ui_languages: {
-					widget: 'select',
-					select: {
-						items: () => this.localeSelect
-					},
-					multiple: true,
-					icon: 'mdi-tablet-dashboard',
-					label: this.$t( 'availableuilanguages' )
-				},
-				technology_used: {
-					widget: 'multi-select',
-					icon: 'mdi-cog-outline',
-					label: this.$t( 'technologyused' )
+				bot_username: {
+					icon: 'mdi-robot-outline',
+					label: this.$t( 'botusername' )
 				},
 				sponsor: {
 					widget: 'multi-select',
 					icon: 'mdi-account-group-outline',
 					label: this.$t( 'sponsor' )
 				},
-				for_wikis: {
-					widget: 'multi-select',
-					icon: 'mdi-wikipedia',
-					label: this.$t( 'forwikis' )
-				}
-			};
-		},
-		annotationsFieldsLayout() {
-			return {
 				wikidata_qid: {
 					icon: 'mdi-identifier',
 					label: this.$t( 'wikidataqid' )
-				}
-			};
-		},
-		toolStatusLayout() {
-			return {
-				experimental: {
-					widget: 'checkbox',
-					label: this.$t( 'experimental' )
-				},
-				deprecated: {
-					widget: 'checkbox',
-					label: this.$t( 'deprecated' )
-				},
-				replaced_by: {
-					icon: 'mdi-find-replace',
-					label: this.$t( 'replacedby' )
 				}
 			};
 		},
@@ -659,7 +660,8 @@ export default {
 			const valid = {
 				basic: true,
 				attributes: true,
-				links: true,
+				usage: true,
+				contributing: true,
 				moreInfo: true
 			};
 
@@ -675,31 +677,19 @@ export default {
 				}
 			} );
 
-			Object.keys( this.linksLayout ).forEach( ( field ) => {
+			Object.keys( this.usageLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.links = false;
+					valid.usage = false;
 				}
 			} );
 
-			Object.keys( this.multiLingualLinksLayout ).forEach( ( field ) => {
+			Object.keys( this.contributingLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.links = false;
+					valid.contributing = false;
 				}
 			} );
 
 			Object.keys( this.moreInfoLayout ).forEach( ( field ) => {
-				if ( this.validityPerField[ field ] === false ) {
-					valid.moreInfo = false;
-				}
-			} );
-
-			Object.keys( this.annotationsFieldsLayout ).forEach( ( field ) => {
-				if ( this.validityPerField[ field ] === false ) {
-					valid.moreInfo = false;
-				}
-			} );
-
-			Object.keys( this.toolStatusLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
 					valid.moreInfo = false;
 				}
@@ -716,6 +706,10 @@ export default {
 		stepContinue() {
 			this.step = Math.min( this.step + 1, this.maxStep );
 		},
+		schemaFor( id ) {
+			return this.toolSchema.properties[ id ] ||
+				this.annotationsSchema.properties[ id ];
+		},
 		/**
 		 * Save the current valid status of a field in a reactive manner.
 		 *
@@ -728,6 +722,21 @@ export default {
 			// This syntax does the same thing except that it also makes
 			// the added properties reactive.
 			this.$set( this.validityPerField, field, !isValid );
+		},
+		hasAnnotationOverride( toolinfo, field ) {
+			const coreValue = toolinfo[ field ];
+			const annotationValue = toolinfo.annotations[ field ];
+			return (
+				_.isEmpty( coreValue ) &&
+				!_.isEmpty( annotationValue )
+			) || (
+				// Boolean values are tricker to check. Only override if the
+				// core value is false and the annotation is true.
+				typeof coreValue === 'boolean' &&
+				typeof annotationValue === 'boolean' &&
+				coreValue === false &&
+				annotationValue === true
+			);
 		},
 		publishChanges( comment ) {
 			const annotations = this.value.annotations;
@@ -745,8 +754,7 @@ export default {
 				// Overwrite edited toolinfo field with the initial value of
 				// field if the field was copied over from annotations
 				if (
-					_.isEmpty( this.initialValue[ field ] ) &&
-					!_.isEmpty( this.initialValue.annotations[ field ] ) &&
+					this.hasAnnotationOverride( this.initialValue, field ) &&
 					_.isEqual(
 						newtool[ field ],
 						this.initialValue.annotations[ field ]
@@ -801,10 +809,7 @@ export default {
 					const fields = {};
 
 					Object.keys( newVal ).forEach( ( field ) => {
-						if (
-							_.isEmpty( newVal[ field ] ) &&
-							!_.isEmpty( newVal.annotations[ field ] )
-						) {
+						if ( this.hasAnnotationOverride( newVal, field ) ) {
 							fields[ field ] = _.cloneDeep(
 								newVal.annotations[ field ]
 							);
