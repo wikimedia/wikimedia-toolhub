@@ -80,9 +80,9 @@
 						<v-stepper-step
 							step="2"
 							editable
-							:rules="[ () => stepIsValid.taxonomy ]"
+							:rules="[ () => stepIsValid.attributes ]"
 						>
-							{{ $t( 'taxonomy' ) }}
+							{{ $t( 'attributes' ) }}
 						</v-stepper-step>
 						<v-stepper-content step="2">
 							<v-row dense class="my-4">
@@ -91,7 +91,7 @@
 								>
 									<v-row>
 										<v-col
-											v-for="( uischema, id ) in taxonomyLayout"
+											v-for="( uischema, id ) in attributesLayout"
 											:key="id"
 											cols="12"
 										>
@@ -396,7 +396,7 @@ export default {
 				}
 			};
 		},
-		taxonomyLayout() {
+		attributesLayout() {
 			const props = this.annotationsSchema.properties;
 			return {
 				audiences: {
@@ -658,7 +658,7 @@ export default {
 		stepIsValid() {
 			const valid = {
 				basic: true,
-				taxonomy: true,
+				attributes: true,
 				links: true,
 				moreInfo: true
 			};
@@ -669,9 +669,9 @@ export default {
 				}
 			} );
 
-			Object.keys( this.taxonomyLayout ).forEach( ( field ) => {
+			Object.keys( this.attributesLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.taxonomy = false;
+					valid.attributes = false;
 				}
 			} );
 
