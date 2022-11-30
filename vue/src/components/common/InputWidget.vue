@@ -7,6 +7,7 @@
 			:rules="validationRules"
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
+			:persistent-hint="ui.persistentHint"
 			:counter="schema.maxLength"
 			clearable
 			:disabled="ui.disabled"
@@ -23,6 +24,7 @@
 			:rules="validationRules"
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
+			:persistent-hint="ui.persistentHint"
 			:counter="schema.maxLength"
 			rows="1"
 			auto-grow
@@ -41,6 +43,7 @@
 			:rules="validationRules"
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
+			:persistent-hint="ui.persistentHint"
 			:items="ui.select.items()"
 			:multiple="ui.multiple || false"
 			:deletable-chips="ui.multiple || false"
@@ -59,6 +62,7 @@
 			:rules="validationRules"
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
+			:persistent-hint="ui.persistentHint"
 			multiple
 			no-filter
 			deletable-chips
@@ -80,6 +84,7 @@
 			:rules="validationRules"
 			:prepend-icon="ui.icon"
 			:hint="schema.description"
+			:persistent-hint="ui.persistentHint"
 			hide-selected
 			multiple
 			no-filter
@@ -118,6 +123,7 @@
 			<v-combobox
 				v-model="model"
 				:hint="schema.description"
+				:persistent-hint="ui.persistentHint"
 				:prepend-icon="ui.icon"
 				:append-icon="ui.appendIcon"
 				multiple
@@ -159,9 +165,9 @@
 			v-else-if="widget === 'checkbox'"
 			v-model="model"
 			:hint="schema.description"
+			:persistent-hint="ui.persistentHint"
 			:prepend-icon="ui.icon"
 			:disabled="ui.disabled"
-			persistent-hint
 			@update:error="emitIsValid"
 		>
 			<template #label>

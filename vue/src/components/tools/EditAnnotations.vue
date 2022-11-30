@@ -342,12 +342,14 @@ export default {
 					widget: 'checkbox',
 					icon: 'mdi-alert-outline',
 					label: this.$t( 'experimental' ),
+					persistentHint: true,
 					disabled: this.value.experimental
 				},
 				deprecated: {
 					widget: 'checkbox',
 					icon: 'mdi-cancel',
 					label: this.$t( 'deprecated' ),
+					persistentHint: true,
 					disabled: this.value.experimental
 				},
 				replaced_by: {
