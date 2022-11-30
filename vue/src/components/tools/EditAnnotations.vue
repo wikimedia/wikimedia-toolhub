@@ -52,11 +52,57 @@
 						<v-stepper-step
 							step="1"
 							editable
+							:rules="[ () => stepIsValid.basic ]"
+						>
+							{{ $t( 'basicinfo' ) }}
+						</v-stepper-step>
+						<v-stepper-content step="1">
+							<v-row dense class="my-4">
+								<v-col md="12"
+									cols="12"
+								>
+									<v-row>
+										<v-col
+											v-for="( uischema, id ) in basicInfoLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="value.annotations[ id ]"
+												:schema="schema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
+									<div class="text-h6">
+										{{ $t( 'thistoolis' ) }}
+									</div>
+									<v-row>
+										<v-col
+											v-for="( uischema, id ) in toolStatusLayout"
+											:key="id"
+											cols="12"
+										>
+											<InputWidget
+												v-model="value.annotations[ id ]"
+												:schema="schema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
+										</v-col>
+									</v-row>
+								</v-col>
+							</v-row>
+						</v-stepper-content>
+						<v-stepper-step
+							step="2"
+							editable
 							:rules="[ () => stepIsValid.attributes ]"
 						>
 							{{ $t( 'attributes' ) }}
 						</v-stepper-step>
-						<v-stepper-content step="1">
+						<v-stepper-content step="2">
 							<v-row dense class="my-4">
 								<v-col md="12"
 									cols="12"
@@ -80,18 +126,18 @@
 						</v-stepper-content>
 
 						<v-stepper-step
-							step="2"
+							step="3"
 							editable
-							:rules="[ () => stepIsValid.links ]"
+							:rules="[ () => stepIsValid.usage ]"
 						>
-							{{ $t( 'links' ) }}
+							{{ $t( 'usage' ) }}
 						</v-stepper-step>
-						<v-stepper-content step="2">
+						<v-stepper-content step="3">
 							<v-row dense class="my-4">
 								<v-col md="12" cols="12">
 									<v-row class="cols">
 										<v-col
-											v-for="( uischema, id ) in linksLayout"
+											v-for="( uischema, id ) in usageLayout"
 											:key="id"
 											cols="12"
 										>
@@ -103,22 +149,32 @@
 											/>
 										</v-col>
 									</v-row>
-									<v-row>
+								</v-col>
+							</v-row>
+						</v-stepper-content>
+
+						<v-stepper-step
+							step="4"
+							editable
+							:rules="[ () => stepIsValid.contributing ]"
+						>
+							{{ $t( 'contributing' ) }}
+						</v-stepper-step>
+						<v-stepper-content step="4">
+							<v-row dense class="my-4">
+								<v-col md="12" cols="12">
+									<v-row class="cols">
 										<v-col
-											v-for="( uischema, id ) in multiLingualLinksLayout"
+											v-for="( uischema, id ) in contributingLayout"
 											:key="id"
 											cols="12"
 										>
-											<v-row>
-												<v-col cols="12">
-													<InputWidget
-														v-model="value.annotations[ id ]"
-														:schema="schema.properties[ id ]"
-														:ui-schema="uischema"
-														@is-valid="storeValidity( $event, id )"
-													/>
-												</v-col>
-											</v-row>
+											<InputWidget
+												v-model="value.annotations[ id ]"
+												:schema="schema.properties[ id ]"
+												:ui-schema="uischema"
+												@is-valid="storeValidity( $event, id )"
+											/>
 										</v-col>
 									</v-row>
 								</v-col>
@@ -126,13 +182,13 @@
 						</v-stepper-content>
 
 						<v-stepper-step
-							step="3"
+							step="5"
 							editable
 							:rules="[ () => stepIsValid.moreInfo ]"
 						>
 							{{ $t( 'moreinfo' ) }}
 						</v-stepper-step>
-						<v-stepper-content step="3">
+						<v-stepper-content step="5">
 							<v-row dense class="my-4">
 								<v-col md="12"
 									cols="12"
@@ -151,27 +207,9 @@
 											/>
 										</v-col>
 									</v-row>
-									<div class="text-h5 mt-4">
-										{{ $t( 'thistoolis' ) }}
-									</div>
-									<v-row>
-										<v-col
-											v-for="( uischema, id ) in toolStatusLayout"
-											:key="id"
-											cols="12"
-										>
-											<InputWidget
-												v-model="value.annotations[ id ]"
-												:schema="schema.properties[ id ]"
-												:ui-schema="uischema"
-												@is-valid="storeValidity( $event, id )"
-											/>
-										</v-col>
-									</v-row>
 								</v-col>
 							</v-row>
 						</v-stepper-content>
-
 					</v-stepper>
 				</v-form>
 				<v-row class="justify-space-between mt-4">
@@ -279,7 +317,7 @@ export default {
 		return {
 			step: 1,
 			minStep: 1,
-			maxStep: 3,
+			maxStep: 5,
 			value: _.cloneDeep( this.tool ),
 			initialValue: null,
 			commentDialog: false,
@@ -289,9 +327,58 @@ export default {
 	},
 	computed: {
 		...mapState( 'locale', [ 'localeSelect' ] ),
+		basicInfoLayout() {
+			return {
+				icon: {
+					icon: 'mdi-tools',
+					label: this.$t( 'icon' ),
+					disabled: !_.isEmpty( this.value.icon )
+				}
+			};
+		},
+		toolStatusLayout() {
+			return {
+				experimental: {
+					widget: 'checkbox',
+					icon: 'mdi-alert-outline',
+					label: this.$t( 'experimental' ),
+					disabled: this.value.experimental
+				},
+				deprecated: {
+					widget: 'checkbox',
+					icon: 'mdi-cancel',
+					label: this.$t( 'deprecated' ),
+					disabled: this.value.experimental
+				},
+				replaced_by: {
+					icon: 'mdi-find-replace',
+					label: this.$t( 'replacedby' ),
+					disabled: !_.isEmpty( this.value.replaced_by )
+				}
+			};
+		},
 		attributesLayout() {
 			const props = this.schema.properties;
 			return {
+				tool_type: {
+					select: {
+						items: () => props.tool_type.enum.map( ( x ) => {
+							return {
+								text: localizeEnum( 'tool_type', x ),
+								value: x
+							};
+						} )
+					},
+					icon: 'mdi-toolbox-outline',
+					label: this.$t( 'tooltype' ),
+					disabled: !_.isEmpty( this.value.tool_type )
+				},
+				for_wikis: {
+					widget: 'multi-select',
+					icon: 'mdi-wikipedia',
+					label: this.$t( 'forwikis' ),
+					disabled: !_.isEmpty( this.value.for_wikis )
+				},
 				audiences: {
 					widget: 'select',
 					select: {
@@ -349,41 +436,31 @@ export default {
 					multiple: true,
 					icon: 'mdi-domain',
 					label: this.$t( 'subjectdomains' )
+				},
+				available_ui_languages: {
+					widget: 'select',
+					select: {
+						items: () => this.localeSelect
+					},
+					multiple: true,
+					icon: 'mdi-tablet-dashboard',
+					label: this.$t( 'availableuilanguages' ),
+					disabled: !_.isEmpty( this.value.available_ui_languages )
 				}
 			};
 		},
-		linksLayout() {
+		usageLayout() {
 			return {
 				api_url: {
 					icon: 'mdi-api',
 					label: this.$t( 'apiurl' ),
 					disabled: !_.isEmpty( this.value.api_url )
 				},
-				repository: {
-					icon: 'mdi-source-branch',
-					label: this.$t( 'repository' ),
-					disabled: !_.isEmpty( this.value.repository )
-				},
-				translate_url: {
-					icon: 'mdi-translate',
-					label: this.$t( 'translateurl' ),
-					disabled: !_.isEmpty( this.value.translate_url )
-				},
-				bugtracker_url: {
-					icon: 'mdi-bug-outline',
-					label: this.$t( 'bugtrackerurl' ),
-					disabled: !_.isEmpty( this.value.bugtracker_url )
-				}
-			};
-		},
-		multiLingualLinksLayout() {
-			return {
 				user_docs_url: {
 					widget: 'url-multilingual',
 					icon: 'mdi-file-document-multiple-outline',
 					appendIcon: 'mdi-plus',
 					label: this.$t( 'userdocsurl' ),
-					disabled: !_.isEmpty( this.value.user_docs_url ),
 					items: {
 						url: {
 							icon: 'mdi-file-document-outline',
@@ -397,35 +474,14 @@ export default {
 							icon: 'mdi-web',
 							label: this.$t( 'language' )
 						}
-					}
-				},
-				developer_docs_url: {
-					widget: 'url-multilingual',
-					icon: 'mdi-code-tags',
-					appendIcon: 'mdi-plus',
-					label: this.$t( 'developerdocsurl' ),
-					disabled: !_.isEmpty( this.value.developer_docs_url ),
-					items: {
-						url: {
-							icon: 'mdi-code-tags',
-							label: this.$t( 'url' )
-						},
-						language: {
-							widget: 'select',
-							select: {
-								items: () => this.localeSelect
-							},
-							icon: 'mdi-web',
-							label: this.$t( 'language' )
-						}
-					}
+					},
+					disabled: !_.isEmpty( this.value.user_docs_url )
 				},
 				feedback_url: {
 					widget: 'url-multilingual',
 					icon: 'mdi-comment-processing-outline',
 					appendIcon: 'mdi-plus',
 					label: this.$t( 'feedbackurl' ),
-					disabled: !_.isEmpty( this.value.feedback_url ),
 					items: {
 						url: {
 							icon: 'mdi-comment-processing-outline',
@@ -439,14 +495,14 @@ export default {
 							icon: 'mdi-web',
 							label: this.$t( 'language' )
 						}
-					}
+					},
+					disabled: !_.isEmpty( this.value.feedback_url )
 				},
 				privacy_policy_url: {
 					widget: 'url-multilingual',
 					icon: 'mdi-shield-lock-outline',
 					appendIcon: 'mdi-plus',
 					label: this.$t( 'privacypolicyurl' ),
-					disabled: !_.isEmpty( this.value.privacy_policy_url ),
 					items: {
 						url: {
 							icon: 'mdi-shield-lock-outline',
@@ -460,100 +516,93 @@ export default {
 							icon: 'mdi-web',
 							label: this.$t( 'language' )
 						}
-					}
+					},
+					disabled: !_.isEmpty( this.value.privacy_policy_url )
+				},
+				bugtracker_url: {
+					icon: 'mdi-bug-outline',
+					label: this.$t( 'bugtrackerurl' ),
+					disabled: !_.isEmpty( this.value.bugtracker_url )
+				}
+			};
+		},
+		contributingLayout() {
+			return {
+				translate_url: {
+					icon: 'mdi-translate',
+					label: this.$t( 'translateurl' ),
+					disabled: !_.isEmpty( this.value.translate_url )
+				},
+				developer_docs_url: {
+					widget: 'url-multilingual',
+					icon: 'mdi-code-tags',
+					appendIcon: 'mdi-plus',
+					label: this.$t( 'developerdocsurl' ),
+					items: {
+						url: {
+							icon: 'mdi-code-tags',
+							label: this.$t( 'url' )
+						},
+						language: {
+							widget: 'select',
+							select: {
+								items: () => this.localeSelect
+							},
+							icon: 'mdi-web',
+							label: this.$t( 'language' )
+						}
+					},
+					disabled: !_.isEmpty( this.value.developer_docs_url )
 				}
 			};
 		},
 		moreInfoLayout() {
-			const props = this.schema.properties;
 			return {
-				icon: {
-					icon: 'mdi-tools',
-					label: this.$t( 'icon' ),
-					disabled: !_.isEmpty( this.value.icon )
-				},
-				tool_type: {
-					select: {
-						items: () => props.tool_type.enum.map( ( x ) => {
-							return {
-								text: localizeEnum( 'tool_type', x ),
-								value: x
-							};
-						} )
-					},
-					icon: 'mdi-toolbox-outline',
-					label: this.$t( 'tooltype' ),
-					disabled: !_.isEmpty( this.value.tool_type )
-				},
-				available_ui_languages: {
-					widget: 'select',
-					select: {
-						items: () => this.localeSelect
-					},
-					multiple: true,
-					icon: 'mdi-tablet-dashboard',
-					label: this.$t( 'availableuilanguages' ),
-					disabled: !_.isEmpty( this.value.available_ui_languages )
-				},
-				for_wikis: {
-					widget: 'multi-select',
-					icon: 'mdi-wikipedia',
-					label: this.$t( 'forwikis' ),
-					disabled: !_.isEmpty( this.value.for_wikis )
-				},
 				wikidata_qid: {
 					icon: 'mdi-identifier',
 					label: this.$t( 'wikidataqid' )
-				}
-
-			};
-		},
-		toolStatusLayout() {
-			return {
-				deprecated: {
-					widget: 'checkbox',
-					label: this.$t( 'deprecated' ),
-					disabled: this.value.deprecated
-				},
-				experimental: {
-					widget: 'checkbox',
-					label: this.$t( 'experimental' ),
-					disabled: this.value.experimental
-				},
-				replaced_by: {
-					icon: 'mdi-find-replace',
-					label: this.$t( 'replacedby' ),
-					disabled: !_.isEmpty( this.value.replaced_by )
 				}
 			};
 		},
 		stepIsValid() {
 			const valid = {
+				basic: true,
 				attributes: true,
-				links: true,
+				usage: true,
+				contributing: true,
 				moreInfo: true
 			};
+
+			Object.keys( this.basicInfoLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.basic = false;
+				}
+			} );
+			Object.keys( this.toolStatusLayout ).forEach( ( field ) => {
+				if ( this.validityPerField[ field ] === false ) {
+					valid.basic = false;
+				}
+			} );
+
 			Object.keys( this.attributesLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
 					valid.attributes = false;
 				}
 			} );
-			Object.keys( this.linksLayout ).forEach( ( field ) => {
+
+			Object.keys( this.usageLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.links = false;
+					valid.usage = false;
 				}
 			} );
-			Object.keys( this.multiLingualLinksLayout ).forEach( ( field ) => {
+
+			Object.keys( this.contributingLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
-					valid.links = false;
+					valid.contributing = false;
 				}
 			} );
+
 			Object.keys( this.moreInfoLayout ).forEach( ( field ) => {
-				if ( this.validityPerField[ field ] === false ) {
-					valid.moreInfo = false;
-				}
-			} );
-			Object.keys( this.toolStatusLayout ).forEach( ( field ) => {
 				if ( this.validityPerField[ field ] === false ) {
 					valid.moreInfo = false;
 				}
