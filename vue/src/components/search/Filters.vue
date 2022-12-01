@@ -97,6 +97,8 @@
 </template>
 
 <script>
+import _ from 'lodash';
+
 import { ensureArray } from '@/helpers/array';
 import FilterList from '@/components/search/FilterList';
 
@@ -114,6 +116,46 @@ export const methods = {
 				facet.buckets[ 0 ].key === facet.missingValue &&
 				facet.selected.length === 0
 			);
+	},
+
+	/**
+	 * Order a list of facet descriptions.
+	 *
+	 * @param {Object[]} facets
+	 * @return {Object[]}
+	 */
+	orderFacetList( facets ) {
+		const desiredOrder = [
+			'tool_type',
+			'wiki',
+			'audiences',
+			'content_types',
+			'tasks',
+			'subject_domains',
+			'ui_language',
+			'author',
+			'keywords',
+			'license',
+			'origin'
+		];
+		const unorderedFacets = [ ...facets ];
+		const orderedFacets = [];
+
+		desiredOrder.forEach( ( name ) => {
+			// Pop all matching name from facets array
+			const named = _.remove( unorderedFacets, ( val ) => {
+				return val.name === name;
+			} );
+			if ( named && named.length === 1 ) {
+				orderedFacets.push( named[ 0 ] );
+			}
+		} );
+
+		// Concat any remaining unordered facets to the ordered list.
+		// Finally sort everything by currently selected value length.
+		return [ ...orderedFacets, ...unorderedFacets ].sort( ( a, b ) => {
+			return b.selected.length - a.selected.length;
+		} );
 	},
 
 	/**
@@ -172,12 +214,12 @@ export default {
 	} ),
 	computed: {
 		/**
-		 * Computed list of facets that should be displayed.
+		 * Computed ordered list of facets that should be displayed.
 		 *
 		 * @return {Object[]}
 		 */
 		displayedFacets() {
-			return this.facets.filter(
+			return this.orderFacetList( this.facets ).filter(
 				( facet ) => this.shouldShowFacet( facet )
 			);
 		}
