@@ -118,7 +118,7 @@
 		"skip-full": true,
 		"lines": 85,
 		"functions": 85,
-		"branches": 75,
+		"branches": 85,
 		"statements": 85,
 		"check-coverage": true,
 		"watermarks": {
