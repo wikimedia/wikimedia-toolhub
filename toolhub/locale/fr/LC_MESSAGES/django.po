@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-10-27 11:20:12+0000\n"
+"PO-Revision-Date: 2022-12-01 12:15:32+0000\n"
 "X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -431,7 +431,7 @@ msgstr "Vérifier si un outil est dans les favoris."
 
 #: toolhub/apps/lists/views.py:537
 msgid "Remove a tool from favorites."
-msgstr "Enlever un outil des favoris."
+msgstr "Retirer un outil des favoris."
 
 #: toolhub/apps/lists/views.py:543
 msgid "Personal favorites."
