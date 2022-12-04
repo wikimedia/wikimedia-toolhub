@@ -9,6 +9,7 @@
 		<template #activator="{ on, attrs }">
 			<v-btn
 				class="ma-1 transparent elevation-0"
+				dark
 				v-bind="attrs"
 				v-on="on"
 			>
@@ -18,7 +19,9 @@
 				>
 					mdi-translate
 				</v-icon>
-				{{ localeAutonym }}
+				<span v-if="$vuetify.breakpoint.mdAndUp">
+					{{ localeAutonym }}
+				</span>
 			</v-btn>
 		</template>
 		<v-card>
