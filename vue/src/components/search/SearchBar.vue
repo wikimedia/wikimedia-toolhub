@@ -1,5 +1,6 @@
 <template>
 	<v-combobox
+		ref="combobox"
 		v-model="query"
 		class="searchbar"
 		:label="getLabel()"
@@ -12,7 +13,8 @@
 		clearable
 		hide-details
 		:hide-no-data="hideOnNoData"
-		@keyup.enter="onSearch"
+		@keydown.enter="onEnterKey"
+		@keyup.enter="onEnterKey"
 		@click:clear="onClear"
 		@change="routeToView"
 	>
@@ -60,6 +62,8 @@
 <script>
 import { mapState } from 'vuex';
 
+import { EventBus } from '@/helpers/event-bus';
+
 const LIST = 'list';
 const TOOL = 'tool';
 
@@ -76,6 +80,25 @@ function getNoDataString() {
 		return this.$t( 'tool-not-found', [ this.query ] );
 	} else if ( this.target === LIST ) {
 		return this.$t( 'list-not-found', [ this.query ] );
+	}
+}
+
+/**
+ * Handle enter key keyup & keydown events.
+ *
+ * @param {Object} event - key event
+ */
+function onEnterKey( event ) {
+	const path = this.$route.path;
+	if ( event.type === 'keyup' && path === this.lastEnterPath ) {
+		// Only trigger an actual search if other navigation has not fired
+		// since the matching keydown event. This works around the keyup
+		// event firing after we have already handled an autocomplete result
+		// selection done via keyboard navigation.
+		this.onSearch( event );
+	} else if ( event.type === 'keydown' ) {
+		// Track the page path for comparison when handling the keyup event.
+		this.lastEnterPath = path;
 	}
 }
 
@@ -100,6 +123,10 @@ function setQuery( query ) {
 }
 
 function performAutoComplete( query ) {
+	if ( !query ) {
+		return;
+	}
+	this.hideOnNoData = false;
 	this.autoCompleteLoading = true;
 	const vuexMethod = this.target === TOOL ?
 		'search/autoCompleteTools' :
@@ -125,6 +152,7 @@ function routeToView( id ) {
 		routeName = 'lists-view';
 	}
 
+	this.$refs.combobox.reset();
 	this.$router.push( { name: routeName, params } );
 }
 
@@ -151,7 +179,10 @@ export default {
 	data: () => ( {
 		query: '',
 		autoCompleteLoading: false,
-		hideOnNoData: true
+		hideOnNoData: true,
+		// TODO: find out why eslint is firing this false positive error
+		// eslint-disable-next-line vue/no-unused-properties
+		lastEnterPath: null
 	} ),
 	computed: {
 		menuProps() {
@@ -177,17 +208,21 @@ export default {
 		setQuery,
 		performAutoComplete,
 		getAutoCompleteResultsArr,
-		routeToView
+		routeToView,
+		onEnterKey
 	},
 	watch: {
-		query: {
-			handler( val ) {
-				if ( this.hideOnNoData ) {
-					this.hideOnNoData = false;
-				}
-				this.performAutoComplete( val );
+		query: 'performAutoComplete'
+	},
+	created() {
+		// Register event handlers for Search.vue to use to modify our state
+		EventBus.$on( 'searchQueryChange', setQuery );
+		EventBus.$on( 'searchQueryClear', () => {
+			this.query = '';
+			if ( this.$refs.combobox ) {
+				this.$refs.combobox.reset();
 			}
-		}
+		} );
 	}
 };
 </script>

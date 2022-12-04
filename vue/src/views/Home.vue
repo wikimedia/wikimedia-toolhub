@@ -50,11 +50,29 @@
 			</v-col>
 		</v-row>
 		<v-row>
-			<v-col cols="12" class="pb-8">
-				<SearchBar
-					:target="searchTarget"
-					@search="onSearchBarSearch"
-				/>
+			<v-col
+				md="8"
+				cols="12"
+				class="mx-auto pb-8"
+			>
+				<v-btn
+					color="primary base100--text"
+					block
+					:to="{
+						name: 'search',
+						query: {
+							ordering: '-modified_date'
+						}
+					}"
+				>
+					<v-icon
+						size="20"
+						dark
+					>
+						mdi-tools
+					</v-icon>
+					{{ $t( 'browse-all-tools' ) }}
+				</v-btn>
 			</v-col>
 		</v-row>
 
@@ -76,17 +94,14 @@
 <script>
 import { mapActions, mapState } from 'vuex';
 import '@/assets/styles/index.css';
-import SearchBar from '@/components/search/SearchBar';
 import fetchMetaInfo from '@/helpers/metadata';
 import Lists from '@/components/lists/Lists';
 
 export default {
 	components: {
-		Lists,
-		SearchBar
+		Lists
 	},
 	data: () => ( {
-		searchTarget: 'tool',
 		page: 1,
 		itemsPerPage: 10
 	} ),
@@ -101,12 +116,6 @@ export default {
 	},
 	methods: {
 		...mapActions( 'ui', [ 'getHomeData' ] ),
-		onSearchBarSearch( query ) {
-			this.$router.push( {
-				name: 'search',
-				query: { q: query }
-			} );
-		},
 		getFeaturedLists() {
 			this.$store.dispatch( 'lists/getFeaturedLists', this.page );
 		},

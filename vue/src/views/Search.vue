@@ -1,16 +1,6 @@
 <template>
 	<v-container>
 		<v-row>
-			<v-col cols="12">
-				<SearchBar
-					ref="searchbar"
-					:loading="searching"
-					:target="searchTarget"
-					@search="onSearchBarSearch"
-				/>
-			</v-col>
-		</v-row>
-		<v-row>
 			<v-col cols="6">
 				<p v-if="!searching && response.count">
 					{{ $t( 'search-result-summary', [
@@ -74,23 +64,23 @@
 
 <script>
 import { mapState } from 'vuex';
+
 import { ensureArray } from '@/helpers/array';
+import { EventBus } from '@/helpers/event-bus';
+import { fetchMetaInfo } from '@/helpers/metadata';
+
 import Filters from '@/components/search/Filters';
-import SearchBar from '@/components/search/SearchBar';
 import Sort from '@/components/search/Sort';
 import ToolCard from '@/components/tools/ToolCard';
-import fetchMetaInfo from '@/helpers/metadata';
 
 export default {
 	name: 'Search',
 	components: {
 		Filters,
 		ToolCard,
-		SearchBar,
 		Sort
 	},
 	data: () => ( {
-		searchTarget: 'tool',
 		query: '',
 		page: 1,
 		pageSize: 12,
@@ -160,7 +150,7 @@ export default {
 				switch ( key ) {
 					case 'q':
 						this.query = value;
-						this.$refs.searchbar.setQuery( value );
+						EventBus.$emit( 'searchQueryChange', value );
 						gotQueryData = true;
 						break;
 					case 'page':
@@ -205,8 +195,8 @@ export default {
 		 * @param {URLSearchParams} newParams
 		 * @param {URLSearchParams|null} oldParams
 		 */
-		queryParams( newParams, oldParams ) { // eslint-disable-line no-unused-vars
-			if ( newParams === undefined ) {
+		queryParams( newParams, oldParams ) {
+			if ( newParams === undefined || newParams === null ) {
 				return;
 			}
 			const query = {};
@@ -214,18 +204,26 @@ export default {
 				query[ key ] = newParams.getAll( key );
 			}
 			this.searching = false;
-			this.$router.push( { query } ).catch( () => {} );
+			if ( oldParams === null ) {
+				this.$router.replace( { query } ).catch( () => {} );
+			} else {
+				this.$router.push( { query } ).catch( () => {} );
+			}
 		}
 	},
-	/**
-	 * Watch for the 'mounted' lifecycle event.
-	 */
+	created() {
+		EventBus.$on( 'toolSearch', this.onSearchBarSearch );
+	},
 	mounted() {
 		if ( !this.searching ) {
 			if ( this.loadStateFromQueryString() ) {
 				this.doSearch();
 			}
 		}
+	},
+	beforeDestroy() {
+		this.$store.dispatch( 'search/clearToolsQueryParams' );
+		EventBus.$emit( 'searchQueryClear' );
 	}
 };
 </script>

@@ -91,6 +91,7 @@
 	"botusername": "Label for bot username in diff context",
 	"bugtracker": "Link label, links to bug tracker for a tool.",
 	"bugtrackerurl": "Label for bug tracker URL of tool",
+	"browse-all-tools": "Button label, links to search results for all tools.",
 	"browsetool": "Button label, links to an external tool.",
 	"cancel": "Button label\n{{identical|Cancel}}",
 	"charslimit": "Error message for tool submission request. Parameters:\n* $1 -  character limit",

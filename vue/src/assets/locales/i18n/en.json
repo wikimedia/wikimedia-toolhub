@@ -84,6 +84,7 @@
 	"botusername": "Bot username",
 	"bugtracker": "Bug Tracker",
 	"bugtrackerurl": "Bug tracker URL",
+	"browse-all-tools": "Browse all tools",
 	"browsetool": "Browse tool",
 	"cancel": "Cancel",
 	"charslimit": "Chars must be less than $1 characters",

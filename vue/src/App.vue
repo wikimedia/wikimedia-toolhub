@@ -3,16 +3,20 @@
 		<v-app-bar
 			app
 			color="primary"
-			dark
 			flat
 			tile
 		>
 			<v-app-bar-nav-icon
 				v-if="$vuetify.breakpoint.smAndDown"
+				dark
 				@click.stop="drawer = !drawer"
 			/>
 
 			<v-spacer />
+			<SearchBar
+				target="tool"
+				@search="onSearchBarSearch"
+			/>
 			<SelectLocale />
 			<UserStatus />
 		</v-app-bar>
@@ -146,15 +150,19 @@
 </template>
 
 <script>
-import UserStatus from '@/components/user/Status';
-import SelectLocale from '@/components/locale/SelectLocale';
+import { EventBus } from '@/helpers/event-bus';
+
 import I18nHtml from '@/components/common/I18nHtml';
+import SearchBar from '@/components/search/SearchBar';
+import SelectLocale from '@/components/locale/SelectLocale';
+import UserStatus from '@/components/user/Status';
 
 export default {
 	components: {
-		UserStatus,
+		I18nHtml,
+		SearchBar,
 		SelectLocale,
-		I18nHtml
+		UserStatus
 	},
 	data() {
 		return {
@@ -210,6 +218,20 @@ export default {
 			return JSON.parse(
 				document.getElementById( 'toolhub-config' ).textContent
 			);
+		}
+	},
+	methods: {
+		onSearchBarSearch( query ) {
+			if ( this.$route.name === 'search' ) {
+				// Currently on the search page
+				EventBus.$emit( 'toolSearch', query );
+			} else {
+				// Navigate to the search page
+				this.$router.push( {
+					name: 'search',
+					query: { q: query }
+				} );
+			}
 		}
 	},
 	created() {

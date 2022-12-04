@@ -158,6 +158,15 @@ export const actions = {
 	},
 
 	/**
+	 * Clear the stored query param state for tools searches.
+	 *
+	 * @param {Object} context - Vuex context
+	 */
+	clearToolsQueryParams( context ) {
+		context.commit( 'onClearToolsQueryParams' );
+	},
+
+	/**
 	 * Search for lists.
 	 *
 	 * @param {Object} context - Vuex context
@@ -204,6 +213,14 @@ export const mutations = {
 	onToolsResults( state, { results, qs } ) {
 		state.toolsResponse = results;
 		state.toolsQueryParams = qs;
+	},
+	/**
+	 * Clear toolsQueryParams member.
+	 *
+	 * @param {Object} state - Vuex state tree.
+	 */
+	onClearToolsQueryParams( state ) {
+		state.toolsQueryParams = null;
 	},
 	/**
 	 * Store /api/autocomplete/tools/ results.
