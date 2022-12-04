@@ -53,17 +53,17 @@ export default {
 	components: {
 		ToolInfo
 	},
-	data() {
-		return {
-			name: this.$route.params.name,
-			revId: this.$route.params.revId
-		};
-	},
 	metaInfo() {
 		return fetchMetaInfo( 'tools-view', this.name );
 	},
 	computed: {
-		...mapState( 'tools', [ 'tool', 'toolRevision' ] )
+		...mapState( 'tools', [ 'tool', 'toolRevision' ] ),
+		name() {
+			return this.$route.params.name;
+		},
+		revId() {
+			return this.$route.params.revId;
+		}
 	},
 	methods: {
 		...mapActions( 'tools', [ 'getToolByName', 'getToolRevision' ] ),
@@ -79,6 +79,9 @@ export default {
 			} );
 		},
 		getToolInfo() {
+			// Clear any data from a prior view
+			this.TOOL( null );
+			this.TOOL_REVISION( null );
 			if ( this.revId ) {
 				this.getToolRevision( { name: this.name, revId: this.revId } );
 			} else {
@@ -86,10 +89,10 @@ export default {
 			}
 		}
 	},
+	watch: {
+		$route: 'getToolInfo'
+	},
 	mounted() {
-		// Clear any data from a prior view
-		this.TOOL( null );
-		this.TOOL_REVISION( null );
 		this.getToolInfo();
 	}
 };
