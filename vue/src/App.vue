@@ -5,13 +5,35 @@
 			color="primary"
 			flat
 			tile
+			:clipped-left="$vuetify.breakpoint.mdAndUp && !$vuetify.rtl"
+			:clipped-right="$vuetify.breakpoint.mdAndUp && $vuetify.rtl"
 		>
 			<v-app-bar-nav-icon
 				v-if="$vuetify.breakpoint.smAndDown"
 				dark
 				@click.stop="drawer = !drawer"
 			/>
-
+			<template
+				v-if="$vuetify.breakpoint.mdAndUp"
+			>
+				<router-link to="/">
+					<v-img
+						class="me-2"
+						src="/static/img/logo-solid-white.svg"
+						alt="Toolforge logo"
+						width="35"
+						height="35"
+						contain
+					/>
+				</router-link>
+				<router-link to="/">
+					<v-toolbar-title
+						class="text-h4 white--text"
+					>
+						{{ $t( 'toolhub' ) }}
+					</v-toolbar-title>
+				</router-link>
+			</template>
 			<v-spacer />
 			<template v-if="$vuetify.breakpoint.smAndUp">
 				<SearchBar
@@ -41,38 +63,39 @@
 			color="secondary"
 			dark
 			floating
+			clipped
 			:permanent="$vuetify.breakpoint.mdAndUp"
 			:expand-on-hover="$vuetify.breakpoint.mdAndUp && drawer && !prefersReducedMotion"
 			:right="$vuetify.rtl"
 		>
-			<v-list-item class="ms-2 mt-1 ps-1">
-				<router-link to="/">
-					<v-img
-						src="/static/img/logo-solid-white.svg"
-						alt="Toolforge logo"
-						width="35"
-						height="35"
-						class="me-6"
-					/>
-				</router-link>
-
-				<v-list-item-content class="mt-1">
-					<v-list-item-title class="font-weight-bold">
-						{{ $t( 'toolhub' ) }}
-					</v-list-item-title>
-				</v-list-item-content>
-
-				<v-btn
-					v-if="$vuetify.breakpoint.smAndDown"
-					icon
-					@click.stop="drawer = !drawer"
-				>
-					<v-icon>mdi-chevron-left</v-icon>
-				</v-btn>
-			</v-list-item>
-
-			<v-divider class="mt-2" />
-
+			<template
+				v-if="$vuetify.breakpoint.smAndDown"
+			>
+				<v-list-item class="ms-2 mt-1 ps-1">
+					<router-link to="/">
+						<v-img
+							src="/static/img/logo-solid-white.svg"
+							alt="Toolforge logo"
+							width="35"
+							height="35"
+							class="me-6"
+						/>
+					</router-link>
+					<v-list-item-content class="mt-1">
+						<v-list-item-title class="font-weight-bold">
+							{{ $t( 'toolhub' ) }}
+						</v-list-item-title>
+					</v-list-item-content>
+					<v-btn
+						v-if="$vuetify.breakpoint.smAndDown"
+						icon
+						@click.stop="drawer = !drawer"
+					>
+						<v-icon>mdi-chevron-left</v-icon>
+					</v-btn>
+				</v-list-item>
+				<v-divider class="mt-2" />
+			</template>
 			<v-list
 				dense
 				nav

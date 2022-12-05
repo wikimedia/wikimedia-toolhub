@@ -5,7 +5,7 @@
 	>
 		<template #activator="{ on, attrs }">
 			<v-btn
-				class="ma-1 white-text"
+				class="ma-1 white--text"
 				color="secondary"
 				v-bind="attrs"
 				v-on="on"
@@ -88,7 +88,7 @@
 	</v-menu>
 	<v-btn
 		v-else
-		class="ma-1 white-text"
+		class="ma-1 white--text"
 		color="secondary"
 		:href="loginHref"
 		:disabled="loading"

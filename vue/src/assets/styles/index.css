@@ -1,3 +1,7 @@
+header .v-toolbar__content {
+	padding: 4px 8px;
+}
+
 div.tool-card__card {
 	display: flex;
 	flex-direction: column;
