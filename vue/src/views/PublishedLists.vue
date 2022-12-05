@@ -136,7 +136,7 @@ export default {
 				switch ( key ) {
 					case 'q':
 						this.queryParams.query = value;
-						this.$refs.searchbar.setQuery( value );
+						this.$refs.searchbar.query = value;
 						gotQueryData = true;
 						break;
 					case 'page':
