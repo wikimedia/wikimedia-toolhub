@@ -13,12 +13,25 @@
 			/>
 
 			<v-spacer />
-			<SearchBar
-				target="tool"
-				@search="onSearchBarSearch"
-			/>
+			<template v-if="$vuetify.breakpoint.smAndUp">
+				<SearchBar
+					target="tool"
+					@search="onSearchBarSearch"
+				/>
+				<v-spacer />
+			</template>
 			<SelectLocale />
 			<UserStatus />
+			<template
+				v-if="$vuetify.breakpoint.xs"
+				#extension
+			>
+				<SearchBar
+					class="mb-2"
+					target="tool"
+					@search="onSearchBarSearch"
+				/>
+			</template>
 		</v-app-bar>
 
 		<v-navigation-drawer
