@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-12-01 12:15:32+0000\n"
+"PO-Revision-Date: 2022-12-05 12:14:14+0000\n"
 "X-POT-Import-Date: 2022-04-09 02:30:19+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -754,7 +754,7 @@ msgstr "informations sur la licence SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:50
 msgid "SPDX license ID"
-msgstr "ID de la licence SPDX"
+msgstr "Identifiant de la licence SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:55
 msgid "Full name of this license"

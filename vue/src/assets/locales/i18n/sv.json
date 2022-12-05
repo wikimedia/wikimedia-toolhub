@@ -3,6 +3,7 @@
 		"authors": [
 			"Ainali",
 			"Sabelöga",
+			"Tore",
 			"WikiPhoenix"
 		]
 	},
@@ -167,6 +168,7 @@
 	"search-filter-origin": "Ursprung",
 	"search-filter-origin-api": "API",
 	"search-filter-origin-crawler": "Skrapad URL",
+	"search-filter-tasks-merging": "Sammanfogar innehåll",
 	"search-filter-tool-type": "Verktygstyp",
 	"search-filter-tool-type-bot": "bot",
 	"search-filter-tool-type-coding-framework": "kodningsramverk",
