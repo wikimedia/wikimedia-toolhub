@@ -29,6 +29,7 @@ export default new Vuetify( {
 				/* Additional Wikimedia style guide colors by name */
 				base10: '#202122',
 				base20: '#54595d',
+				base30: '#72777d',
 				base80: '#e0e0e0',
 				base90: '#f8f9fa',
 				base100: '#fff',
@@ -38,7 +39,12 @@ export default new Vuetify( {
 				green50: '#00af89',
 				yellow30: '#ac6600',
 				yellow50: '#fc3',
-				yellow90: '#fef6e7'
+				yellow90: '#fef6e7',
+
+				/* Colors from Toolhub logo */
+				logoblue: '#069',
+				logogreen: '#396',
+				logored: '#900'
 			}
 		}
 	}

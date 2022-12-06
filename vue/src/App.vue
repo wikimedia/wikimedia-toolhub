@@ -2,7 +2,7 @@
 	<v-app>
 		<v-app-bar
 			app
-			color="primary"
+			color="logoblue"
 			flat
 			tile
 			:clipped-left="$vuetify.breakpoint.mdAndUp && !$vuetify.rtl"
@@ -16,7 +16,10 @@
 			<template
 				v-if="$vuetify.breakpoint.mdAndUp"
 			>
-				<router-link to="/">
+				<router-link
+					class="text-decoration-none"
+					to="/"
+				>
 					<v-img
 						class="me-2"
 						src="/static/img/logo-solid-white.svg"
@@ -26,7 +29,10 @@
 						contain
 					/>
 				</router-link>
-				<router-link to="/">
+				<router-link
+					class="text-decoration-none"
+					to="/"
+				>
 					<v-toolbar-title
 						class="text-h4 white--text"
 					>
