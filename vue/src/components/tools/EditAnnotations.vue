@@ -2,9 +2,9 @@
 	<!-- eslint-disable vue/no-mutating-props -- events handled locally -->
 	<v-container>
 		<v-row>
-			<v-col md="6" cols="12">
+			<v-col md="7" cols="12">
 				<h2 class="text-h4">
-					{{ $t( 'tools-edit' ) }}
+					{{ $t( 'tools-edit-annotations-title', [ value.name ] ) }}
 				</h2>
 			</v-col>
 
@@ -21,8 +21,7 @@
 					{{ $t( 'cancel' ) }}
 				</v-btn>
 			</v-col>
-
-			<v-col md="4" cols="12">
+			<v-col md="3" cols="12">
 				<v-btn
 					color="primary base100--text"
 					block

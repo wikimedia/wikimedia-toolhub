@@ -8,17 +8,7 @@
 			class="tool-app-bar"
 			:class="{ 'tool-app-bar-xs': $vuetify.breakpoint.xs }"
 		>
-			<v-btn
-				v-if="$can( 'change', 'toolinfo/annotations' )"
-				:to="{ name: 'tools-edit', params: { name: tool.name } }"
-				color="primary base100--text my-1 mx-2"
-				:small="$vuetify.breakpoint.smAndDown"
-			>
-				<v-icon class="me-2">
-					mdi-pencil
-				</v-icon>
-				{{ $t( 'tools-edit' ) }}
-			</v-btn>
+			<ToolEditButton :tool="tool"/>
 			<FavoriteButton :tool="tool" />
 			<v-btn
 				:to="{ name: 'tools-history', params: { name: tool.name } }"
@@ -196,9 +186,10 @@ import { forWikiLabel, localizeEnum } from '@/helpers/tools';
 
 import AuthorDetails from '@/components/tools/AuthorDetails';
 import FavoriteButton from '@/components/tools/FavoriteButton';
-import ToolInfoSection from '@/components/tools/ToolInfoSection';
 import ScrollTop from '@/components/common/ScrollTop';
+import ToolEditButton from '@/components/tools/ToolEditButton';
 import ToolImage from '@/components/tools/ToolImage';
+import ToolInfoSection from '@/components/tools/ToolInfoSection';
 import ToolMenu from '@/components/tools/ToolMenu';
 
 export default {
@@ -206,6 +197,7 @@ export default {
 	components: {
 		AuthorDetails,
 		FavoriteButton,
+		ToolEditButton,
 		ToolInfoSection,
 		ScrollTop,
 		ToolImage,

@@ -1,16 +1,19 @@
 <template>
 	<v-container>
 		<EditTool
-			v-if="tool_schema && tool && $can( 'change', tool )"
+			v-if="editToolinfo &&
+				tool_schema &&
+				tool &&
+				$can( 'change', tool )"
 			:tool="tool"
 			:tool-schema="tool_schema"
 			:annotations-schema="annotations_schema"
 			:links="links"
 		/>
 		<EditAnnotations
-			v-else-if="annotations_schema &&
+			v-else-if="editAnnotations &&
+				annotations_schema &&
 				tool &&
-				!$can( 'change', tool ) &&
 				$can( 'add', 'toolinfo/annotations' )"
 			:tool="tool"
 			:schema="annotations_schema"
@@ -26,10 +29,15 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import EditTool from '@/components/tools/EditTool';
-import EditAnnotations from '@/components/tools/EditAnnotations';
-import ScrollTop from '@/components/common/ScrollTop';
+
 import fetchMetaInfo from '@/helpers/metadata';
+
+import EditAnnotations from '@/components/tools/EditAnnotations';
+import EditTool from '@/components/tools/EditTool';
+import ScrollTop from '@/components/common/ScrollTop';
+
+const EDIT_TOOL = 'edit';
+const EDIT_ANNOTATIONS = 'edit-annotations';
 
 export default {
 	name: 'EditToolOrAnnotations',
@@ -40,7 +48,6 @@ export default {
 	},
 	data() {
 		return {
-			name: this.$route.params.name,
 			links: [
 				'user_docs_url',
 				'developer_docs_url',
@@ -54,7 +61,19 @@ export default {
 		return fetchMetaInfo( 'tools-edit', this.name );
 	},
 	computed: {
-		...mapState( 'tools', [ 'tool' ] )
+		...mapState( 'tools', [ 'tool' ] ),
+		name() {
+			return this.$route.params.name;
+		},
+		editType() {
+			return this.$route.path.split( '/' ).pop();
+		},
+		editToolinfo() {
+			return this.editType === EDIT_TOOL;
+		},
+		editAnnotations() {
+			return this.editType === EDIT_ANNOTATIONS;
+		}
 	},
 	asyncComputed: {
 		tool_schema: {

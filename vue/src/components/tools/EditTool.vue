@@ -4,7 +4,7 @@
 		<v-row>
 			<v-col md="6" cols="12">
 				<h2 class="text-h4">
-					{{ $t( 'tools-edit' ) }}
+					{{ $t( 'tools-edit-core-title', [ value.name ] ) }}
 				</h2>
 			</v-col>
 

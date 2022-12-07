@@ -97,6 +97,11 @@ export const routes = [
 		component: EditToolOrAnnotations
 	},
 	{
+		name: 'tools-edit-annotations',
+		path: '/tools/:name([\\w%-]{1,255})/edit-annotations',
+		component: EditToolOrAnnotations
+	},
+	{
 		name: 'tools-history',
 		path: '/tools/:name([\\w%-]{1,255})/history',
 		component: ToolHistory
