@@ -254,7 +254,7 @@
 	"replacedby": "Label for link to a replacement tool",
 	"repository": "Label for source repository of tool",
 	"reveal": "Link label for tool history reveal operation",
-	"revert": "Link label for tool history revert operation\n{{identical|Revert}}",
+	"revert": "Link label for tool history revert operation",
 	"scrolltotop": "Button label",
 	"search": "Form button label or alternate text.\n{{Identical|Search}}",
 	"search-filter-audiences": "Search filter title string.",

@@ -247,7 +247,7 @@
 	"replacedby": "Replaced by",
 	"repository": "Source repository",
 	"reveal": "reveal",
-	"revert": "revert",
+	"revert": "restore this version",
 	"scrolltotop": "Scroll to top",
 	"search": "Search",
 	"search-filter-audiences": "Audience",

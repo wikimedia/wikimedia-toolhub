@@ -126,11 +126,17 @@
 			</dd>
 
 			<template v-if="$can( 'change', rev )">
-				<dd class="me-1 mt-1">
+				<dd
+					v-if="!!rev.parent_id"
+					class="me-1 mt-1"
+				>
 					[<a @click="undoChangesBetweenRevisions( rev )">{{ $t( 'undo' ) }}</a>]
 				</dd>
 
-				<dd class="me-1 mt-1">
+				<dd
+					v-if="!!rev.child_id"
+					class="me-1 mt-1"
+				>
 					[<a @click="restoreToRevision( rev )">{{ $t( 'revert' ) }}</a>]
 				</dd>
 			</template>
@@ -140,7 +146,7 @@
 					<template v-if="rev.suppressed">
 						[<a @click="suppress( rev, 'reveal' )">{{ $t( 'reveal' ) }}</a>]
 					</template>
-					<template v-else>
+					<template v-else-if="!!rev.child_id">
 						[<a @click="suppress( rev, 'hide' )">{{ $t( 'hide' ) }}</a>]
 					</template>
 				</dd>
