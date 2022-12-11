@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "git" "python3-dev" "python3-pip" "python3-venv" && rm -rf /var/lib/apt/lists/*
 RUN python3 "-m" "pip" "install" "-U" "setuptools!=60.9.0" && python3 "-m" "pip" "install" "-U" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
-RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.7"
+RUN python3 "-m" "pip" "install" "-U" "poetry==1.3.1"
 ARG LIVES_AS="somebody"
 ARG LIVES_UID=65533
 ARG LIVES_GID=65533

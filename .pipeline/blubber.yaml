@@ -28,7 +28,7 @@ variants:
     python:
       version: python3
       poetry:
-        version: ==1.1.7
+        version: ==1.3.1
       requirements:
         - pyproject.toml
         - poetry.lock

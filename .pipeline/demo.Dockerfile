@@ -33,7 +33,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "git" "python3-dev" "python3-pip" "python3-venv" && rm -rf /var/lib/apt/lists/*
 RUN python3 "-m" "pip" "install" "-U" "setuptools!=60.9.0" && python3 "-m" "pip" "install" "-U" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
-RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.7"
+RUN python3 "-m" "pip" "install" "-U" "poetry==1.3.1"
 ARG LIVES_AS="somebody"
 ARG LIVES_UID=65533
 ARG LIVES_GID=65533
@@ -62,7 +62,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get install -y "build-essential" "default-libmysqlclient-dev" "gettext" "git" "python3-dev" "python3-pip" "python3-venv" && rm -rf /var/lib/apt/lists/*
 RUN python3 "-m" "pip" "install" "-U" "setuptools!=60.9.0" && python3 "-m" "pip" "install" "-U" "wheel" "tox" "pip"
 ENV POETRY_VIRTUALENVS_PATH="/opt/lib/poetry"
-RUN python3 "-m" "pip" "install" "-U" "poetry==1.1.7"
+RUN python3 "-m" "pip" "install" "-U" "poetry==1.3.1"
 ARG LIVES_AS="somebody"
 ARG LIVES_UID=65533
 ARG LIVES_GID=65533
@@ -83,4 +83,4 @@ USER $RUNS_UID
 ENV HOME="/home/$RUNS_AS"
 ENTRYPOINT ["/bin/bash", "-c", "poetry run python3 manage.py migrate && poetry run python3 manage.py createinitialrevisions && poetry run python3 manage.py loaddata toolhub/fixtures/demo.yaml && poetry run python3 manage.py crawl && poetry run python3 manage.py runserver --noreload --nostatic 0.0.0.0:8000"]
 
-LABEL blubber.variant="demo" blubber.version="0.9.0+6331215"
+LABEL blubber.variant="demo" blubber.version="0.9.0+2638669"
