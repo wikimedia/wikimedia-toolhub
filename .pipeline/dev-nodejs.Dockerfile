@@ -22,4 +22,4 @@ COPY --chown=$LIVES_UID:$LIVES_GID [".git/", "./.git/"]
 ENV NODE_ENV="development"
 ENTRYPOINT ["/usr/bin/env"]
 
-LABEL blubber.variant="dev-nodejs" blubber.version="0.9.0+6331215"
+LABEL blubber.variant="dev-nodejs" blubber.version="0.9.0+2638669"

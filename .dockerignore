@@ -2,6 +2,7 @@
 *
 
 # Conditionally include things we know we want in the container
+!.flake8
 # Copy .git/refs/heads/* into the container
 !.git
 .git/*

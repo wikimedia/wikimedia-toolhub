@@ -28,4 +28,4 @@ USER $RUNS_UID
 ENV HOME="/home/$RUNS_AS"
 ENTRYPOINT ["/bin/bash", "-c", "poetry run python3 -m flask run --host 0.0.0.0 --port 8000"]
 
-LABEL blubber.variant="oauth-client" blubber.version="0.9.0+6331215"
+LABEL blubber.variant="oauth-client" blubber.version="0.9.0+2638669"

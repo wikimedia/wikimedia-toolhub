@@ -59,7 +59,7 @@ variants:
       - -c
       - >-
         poetry check &&
-        poetry run flakehell lint &&
+        poetry run flake8 &&
         poetry run black --check --diff . &&
         poetry run bandit -ii -r toolhub/
 

@@ -131,7 +131,7 @@ test-python-lint:  ## Run linter checks for Python code
 	docker-compose exec web sh -c " \
 		export HOME=/tmp/runtime-home; \
 		poetry check \
-		&& poetry run flakehell lint \
+		&& poetry run flake8 \
 		&& poetry run black --check --diff . \
 		&& poetry run bandit -ii -r toolhub/ \
 	"

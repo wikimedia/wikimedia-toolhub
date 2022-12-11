@@ -45,23 +45,22 @@ rules = "^3.0"
 django-csp = "^3.7"
 django-prometheus = "2.1.0"
 ecs-logging = "^1.0.1"
-# Pin flake8 to 3.x pending https://github.com/flakehell/flakehell/pull/23
-flake8 = "^3.9.2"
 python-memcached = "^1.59"
 elasticsearch = ">=7.10.0,<7.11.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"
-flakehell = "^0.9.0"
 black = "^22.3.0"
+flake8 = "^3.9.2"
 flake8-blind-except = "^0.2.0"
 flake8-bugbear = "^21.4.3"
 flake8-builtins = "^1.5.3"
+flake8-comprehensions = "^3.2.3"
 flake8-docstrings = "^1.5.0"
 flake8-import-order = "^0.18.1"
+flake8-import-single = "^0.1.5"
 flake8-logging-format = "^0.6.0"
 flake8-rst-docstrings = "^0.2.3"
-flake8-comprehensions = "^3.2.3"
 pytest-cov = "^2.10.1"
 django-coverage-plugin = "^2.0.0"
 bandit = "^1.6.2"
@@ -78,50 +77,6 @@ requests-mock = "^1.8.0"
 Flask = "^2.0.1"  # contrib/oauth-client-example
 envparse = "^0.2.0"  # contrib/oauth-client-example
 Authlib = "^0.15.4"  # contrib/oauth-client-example
-flake8-import-single = "^0.1.5"
-
-[tool.flakehell]
-exclude = [
-    ".git",
-    "__pycache__",
-    "docs",
-    "manage.py",
-    "migrations",
-    "node_modules",
-]
-format = "grouped"
-max_line_length = 79
-show_source = true
-extended_default_ignore=[]  # https://github.com/flakehell/flakehell/issues/10
-
-[tool.flakehell.plugins]
-"flake8-*" = ["+*"]
-flake8-docstrings = [
-    "+*",
-    "-D100",  # missing-docstring-in-public-module
-    "-D105",  # missing-docstring-in-magic-method
-    "-D400",  # first-line-should-end-with-period
-    "-D401",  # first-line-should-be-in-imperative-mood
-]
-pycodestyle = [
-    "+*",
-    "-E501",  # line-too-long
-    "-W503",  # line-break-before-binary-operator
-    "-W504",  # line-break-after-binary-operator
-]
-pyflakes = ["+*"]
-pylint = [
-    "+*",
-    "-C*",     # disable all "convention" rules
-    "-E1101",  # no-member
-    "-R0201",  # could-be-function
-    "-R0901",  # too-many-ancestors
-    "-R0903",  # too-few-public-methods
-    "-R0911",  # too-many-return-statements
-    "-R0913",  # too-many-arguments
-    "-W0235",  # useless-super-delegation
-    "-W0511",  # fixme
-]
 
 [tool.pylint]
 
