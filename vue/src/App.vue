@@ -83,7 +83,12 @@
 					</router-link>
 					<v-list-item-content class="mt-1">
 						<v-list-item-title class="font-weight-bold">
-							{{ $t( 'toolhub' ) }}
+							<router-link
+								to="/"
+								class="white--text text-decoration-none"
+							>
+								{{ $t( 'toolhub' ) }}
+							</router-link>
 						</v-list-item-title>
 					</v-list-item-content>
 					<v-btn
