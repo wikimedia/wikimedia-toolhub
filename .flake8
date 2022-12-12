@@ -9,12 +9,14 @@ exclude =
     manage.py,
     migrations,
     node_modules
-format = grouped
+format = pylint
 max-line-length = 79
 show-source = true
 flake8-import-order = appnexus
 select = E,F,W,C90,D,R,B,B9
 extend-ignore =
+    # needs python >=3.10; `zip()` without an explicit `strict=` parameter.
+    B905,
     # disable all "convention" rules
     C*,
     # missing-docstring-in-public-module
@@ -50,3 +52,5 @@ extend-ignore =
 per-file-ignores =
     # missing docstring in public package
    __init__.py:  D104
+   # line too long
+   settings.py: B950

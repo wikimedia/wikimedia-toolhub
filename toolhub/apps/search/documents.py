@@ -206,12 +206,12 @@ def build_field_from_serializer_field(name, field):
         if name in COPY_TO_FIELDS:
             field.copy_to = COPY_TO_FIELDS[name]
         return field
-    except KeyError:
+    except KeyError as ex:
         raise RuntimeError(
             "Unknown field type {} for {}".format(
                 field.__class__.__name__, name
             )
-        )
+        ) from ex
 
 
 def build_field_from_serializer(serializer, attr):
