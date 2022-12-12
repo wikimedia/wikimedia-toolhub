@@ -89,6 +89,7 @@
 	"botusername": "Nom d’utilisateur du robot",
 	"bugtracker": "Suivi des anomalies",
 	"bugtrackerurl": "URL de l’outil de suivi des anomalies",
+	"browse-all-tools": "Parcourir tous les outils",
 	"browsetool": "Outil d’exploration",
 	"cancel": "Annuler",
 	"charslimit": "Il doit y avoir moins de $1 caractères",

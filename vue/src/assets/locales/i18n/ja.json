@@ -7,11 +7,13 @@
 			"LaMagiaaa",
 			"MathXplore",
 			"RYU N",
-			"Tamaki Wakita"
+			"Tamaki Wakita",
+			"バレロン"
 		]
 	},
 	"add": "追加",
 	"apidocumentation": "API",
+	"attributes": "属性",
 	"auditlogs-targettype-toollist": "一覧",
 	"recentchanges": "最近の変更",
 	"recentchanges-filter": "フィルター",
@@ -25,7 +27,9 @@
 	"recentchanges-username": "利用者名",
 	"backtolisthistory": "リストの履歴に戻る",
 	"botusername": "ボットの利用者名",
+	"browse-all-tools": "全てのツールを見る",
 	"confirmdelete-dialog-title": "記録を削除",
+	"contributing": "貢献",
 	"delete": "削除",
 	"developer-username": "開発者の利用者名",
 	"developerusername": "開発者の利用者名",
@@ -120,6 +124,7 @@
 	"tool-not-found": "ツールネーム$1は見つかりませんでした",
 	"tools-search-label": "Toolhubを検索",
 	"unpatrolled": "未巡回",
+	"usage": "使い方",
 	"welcomemessage": "Toolhubは、コミュニティが作成したウィキメディアツールのカタログです。",
 	"wiki-username": "Wikiの利用者名",
 	"wikiusername": "Wikiの利用者名"
