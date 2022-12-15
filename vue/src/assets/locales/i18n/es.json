@@ -202,7 +202,6 @@
 	"title": "Título",
 	"tool": "Herramienta",
 	"toollist": "Lista",
-	"tools-edit": "Editar Herramienta",
 	"toolhub": "Toolhub",
 	"tools": "Herramientas",
 	"toolsfound": "{{PLURAL:$1|1 herramienta encontrada|$1 herramientas encontradas}}",

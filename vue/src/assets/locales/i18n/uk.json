@@ -271,7 +271,6 @@
 	"title": "Назва:",
 	"toolcreationcomment": "Інструмент із заголовком «$1» створено",
 	"tooleditingsuccess": "Успіх! Інструмент «$1» відредаговано.",
-	"tools-edit": "Редагувати інструмент",
 	"toolurlregistrationsuccess": "URL-адресу інструмента зареєстровано",
 	"toolurlunregistrationsuccess": "URL-адресу інструмента скасовано",
 	"tools-history": "Історія інструменту",

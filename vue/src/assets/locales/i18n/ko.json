@@ -253,7 +253,6 @@
 	"toolcreationcomment": "'$1' 제목의 도구가 만들어졌습니다",
 	"tooleditingsuccess": "성공했습니다! '$1' 도구가 편집되었습니다.",
 	"toollist": "목록",
-	"tools-edit": "도구 편집",
 	"toolurlregistrationsuccess": "도구 URL이 등록되었습니다",
 	"toolurlunregistrationsuccess": "도구 URL의 등록이 해제되었습니다",
 	"tools-history": "도구 역사",
