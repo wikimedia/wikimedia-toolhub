@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-12-15 12:16:24+0000\n"
+"PO-Revision-Date: 2022-12-19 12:15:04+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -742,283 +742,283 @@ msgstr "מקור רשומת הכלי הזה."
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr ""
+msgstr "מפעילים"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
-msgstr ""
+msgstr "מארגנים ורכזי תוכניות"
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr ""
+msgstr "עורכים ותורמי תוכן"
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
-msgstr ""
+msgstr "קוראים וצרכני תוכן"
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
-msgstr ""
+msgstr "חוקרים"
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr ""
+msgstr "מפתחים"
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr ""
+msgstr "ערכים"
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
-msgstr ""
+msgstr "שמע"
 
 #: toolhub/apps/toolinfo/models.py:722
 msgid "Books"
-msgstr ""
+msgstr "ספרים"
 
 #: toolhub/apps/toolinfo/models.py:724
 msgid "Data"
-msgstr ""
+msgstr "נתונים"
 
 #: toolhub/apps/toolinfo/models.py:726
 msgid "Bibliographic data"
-msgstr ""
+msgstr "נתונים ביבליוגרפיים"
 
 #: toolhub/apps/toolinfo/models.py:727
 msgid "Categories or labels"
-msgstr ""
+msgstr "קטגוריות או תוויות"
 
 #: toolhub/apps/toolinfo/models.py:728
 msgid "Diffs and revision data"
-msgstr ""
+msgstr "הבדלים ונתוני גרסאות"
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
-msgstr ""
+msgstr "נתוני אירועים"
 
 #: toolhub/apps/toolinfo/models.py:730
 msgid "Geographic data"
-msgstr ""
+msgstr "נתונים גיאוגרפיים"
 
 #: toolhub/apps/toolinfo/models.py:731
 msgid "Linguistic data"
-msgstr ""
+msgstr "נתונים לשוניים"
 
 #: toolhub/apps/toolinfo/models.py:732
 msgid "Page metadata"
-msgstr ""
+msgstr "מטא־נתונים של דפים"
 
 #: toolhub/apps/toolinfo/models.py:733
 msgid "Structured data"
-msgstr ""
+msgstr "נתונים מובְנים"
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
-msgstr ""
+msgstr "נתוני משתמש"
 
 #: toolhub/apps/toolinfo/models.py:737
 msgid "Discussions"
-msgstr ""
+msgstr "דיונים"
 
 #: toolhub/apps/toolinfo/models.py:738
 msgid "Drafts"
-msgstr ""
+msgstr "טיוטות"
 
 #: toolhub/apps/toolinfo/models.py:739
 msgid "Emails"
-msgstr ""
+msgstr "דואר אלקטרוני"
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
-msgstr ""
+msgstr "תמונות"
 
 #: toolhub/apps/toolinfo/models.py:741
 msgid "Links"
-msgstr ""
+msgstr "קישורים"
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
-msgstr ""
+msgstr "יומנים"
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
-msgstr ""
+msgstr "מפות"
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
-msgstr ""
+msgstr "מקורות"
 
 #: toolhub/apps/toolinfo/models.py:746
 msgid "Software or code"
-msgstr ""
+msgstr "תוכנה או קוד"
 
 #: toolhub/apps/toolinfo/models.py:747
 msgid "Templates"
-msgstr ""
+msgstr "תבניות"
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
-msgstr ""
+msgstr "וידאו"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
-msgstr ""
+msgstr "רשימות מעקב"
 
 #: toolhub/apps/toolinfo/models.py:750
 msgid "Webpages"
-msgstr ""
+msgstr "דפי וב"
 
 #: toolhub/apps/toolinfo/models.py:751
 msgid "Wikitext"
-msgstr ""
+msgstr "קוד ויקי"
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
-msgstr ""
+msgstr "ניתוח"
 
 #: toolhub/apps/toolinfo/models.py:755
 msgid "Annotating and linking"
-msgstr ""
+msgstr "ביאור וקישור"
 
 #: toolhub/apps/toolinfo/models.py:756
 msgid "Archiving and cleanup"
-msgstr ""
+msgstr "ארכוב וניקיון"
 
 #: toolhub/apps/toolinfo/models.py:757
 msgid "Categorizing and tagging"
-msgstr ""
+msgstr "קטגוריזציה ותיוג"
 
 #: toolhub/apps/toolinfo/models.py:758
 msgid "Citing and referencing"
-msgstr ""
+msgstr "ציטוטים ומקורות"
 
 #: toolhub/apps/toolinfo/models.py:759
 msgid "Communication and supporting users"
-msgstr ""
+msgstr "תקשורת ותמיכה במשתמשים"
 
 #: toolhub/apps/toolinfo/models.py:760
 msgid "Converting and formatting content"
-msgstr ""
+msgstr "המרה ועיצוב תוכן"
 
 #: toolhub/apps/toolinfo/models.py:761
 msgid "Creating content"
-msgstr ""
+msgstr "יצירת תוכן"
 
 #: toolhub/apps/toolinfo/models.py:762
 msgid "Deleting and reverting"
-msgstr ""
+msgstr "מחיקה והחזרה"
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr ""
+msgstr "פירושונים"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr ""
+msgstr "הורדה או שימוש חוזר בתוכן"
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
-msgstr ""
+msgstr "עריכה או עדכון של תוכן"
 
 #: toolhub/apps/toolinfo/models.py:766
 msgid "Event and contest planning"
-msgstr ""
+msgstr "תכנון אירועים ותחרויות"
 
 #: toolhub/apps/toolinfo/models.py:767
 msgid "Hosting and maintaining tools"
-msgstr ""
+msgstr "אחסון ותחזוקת כלים"
 
 #: toolhub/apps/toolinfo/models.py:768
 msgid "Identifying policy violations"
-msgstr ""
+msgstr "זיהוי הפרות מדיניות"
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
-msgstr ""
+msgstr "זיהוי דואר זבל"
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr ""
+msgstr "זיהוי השחתה"
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
-msgstr ""
+msgstr "רישום ודירוג"
 
 #: toolhub/apps/toolinfo/models.py:772
 msgid "Merging content"
-msgstr ""
+msgstr "מיזוג תוכן"
 
 #: toolhub/apps/toolinfo/models.py:773
 msgid "Migrating content"
-msgstr ""
+msgstr "העברת תוכן"
 
 #: toolhub/apps/toolinfo/models.py:774
 msgid "Patrolling recent changes"
-msgstr ""
+msgstr "ניטור שינויים אחרונים"
 
 #: toolhub/apps/toolinfo/models.py:775
 msgid "Project management and reporting"
-msgstr ""
+msgstr "ניהול פרויקטים ודיווח"
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr ""
+msgstr "קריאה"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr ""
+msgstr "המלצה על תוכן"
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"
-msgstr ""
+msgstr "תרגום ולוקליזציה"
 
 #: toolhub/apps/toolinfo/models.py:779
 msgid "Uploading or importing"
-msgstr ""
+msgstr "העלטה או יבוא"
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
-msgstr ""
+msgstr "ניהול משתמשים"
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr ""
+msgstr "אזהרה למשתמשים"
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
-msgstr ""
+msgstr "ביוגרפיה"
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr ""
+msgstr "מורשת תרבותית"
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
-msgstr ""
+msgstr "חינוך"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr ""
+msgstr "גאוגרפיה ומיפוי"
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
-msgstr ""
+msgstr "גלא\"ם"
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
-msgstr ""
+msgstr "היסטוריה"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
-msgstr ""
+msgstr "שפה ותרגום"
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "יישוג"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
-msgstr ""
+msgstr "מדע"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
@@ -1026,19 +1026,19 @@ msgstr "מזהה ויקינתונים של הכלי."
 
 #: toolhub/apps/toolinfo/models.py:810
 msgid "Who is the intended user of the tool?"
-msgstr ""
+msgstr "מי המשתמש המיועד של הכלי?"
 
 #: toolhub/apps/toolinfo/models.py:817
 msgid "With what type of content or data does the tool interact?"
-msgstr ""
+msgstr "עם איזה סוג של תוכן או נתונים הכלי מתקשר?"
 
 #: toolhub/apps/toolinfo/models.py:824
 msgid "What type of task does the tool help with?"
-msgstr ""
+msgstr "באיזה סוג משימה הכלי עוזר?"
 
 #: toolhub/apps/toolinfo/models.py:831
 msgid "Is the tool targeted at helping in a specific type of wiki project or topic area?"
-msgstr ""
+msgstr "האם הכלי מכוון לעזור בסוג מסוים של מיזם ויקי או נושא?"
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"

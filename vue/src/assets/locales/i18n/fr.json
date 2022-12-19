@@ -390,7 +390,7 @@
 	"tooleditingsuccess": "Succès ! L’outil « $1 » a été modifié.",
 	"toollist": "Liste",
 	"tools-edit-button": "Modifier",
-	"tools-edit-core": "Modifier l’information de l’outil principal",
+	"tools-edit-core": "Modifier les informations de base de l’outil",
 	"tools-edit-core-title": "Modification de $1",
 	"tools-edit-annotations": "Modifier les annotations de la communauté",
 	"tools-edit-annotations-title": "Modification de $1 (annotations)",
