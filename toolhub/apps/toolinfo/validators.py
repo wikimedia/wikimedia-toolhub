@@ -19,9 +19,8 @@ from django.core import validators
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-import spdx_license_list
-
 from .utils import language_data
+from .spdx import SPDX_LICENSES
 
 
 url_validator = validators.URLValidator(schemes=["http", "https"])
@@ -51,7 +50,7 @@ def validate_language_code_list(value):
 
 def validate_spdx(value):
     """Raise ValidationError if value is not an SPDX license identifier."""
-    if value not in spdx_license_list.LICENSES:
+    if value not in SPDX_LICENSES:
         raise ValidationError(
             _("%(value)s is not a known SPDX license identifier."),
             code="invalid_spdx",

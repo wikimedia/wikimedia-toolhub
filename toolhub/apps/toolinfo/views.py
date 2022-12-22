@@ -35,8 +35,6 @@ from rest_framework.decorators import action
 
 from reversion.models import Version
 
-import spdx_license_list
-
 from toolhub.apps.auditlog.models import LogEntry
 from toolhub.apps.versioned.exceptions import ConflictingState
 from toolhub.apps.versioned.exceptions import CurrentRevision
@@ -58,6 +56,7 @@ from .serializers import ToolRevisionSerializer
 from .serializers import ToolSerializer
 from .serializers import UpdateAnnotationsSerializer
 from .serializers import UpdateToolSerializer
+from .spdx import SPDX_LICENSES
 
 
 logger = logging.getLogger(__name__)
@@ -532,7 +531,7 @@ class SpdxViewSet(viewsets.ViewSet):
 
     def list(self, request):  # noqa: A003
         """Get a list of license objects."""
-        licenses = spdx_license_list.LICENSES
+        licenses = SPDX_LICENSES
         licenses = self._filter_bool(
             request, licenses, "osi_approved", "isOsiApproved"
         )
@@ -548,7 +547,7 @@ class SpdxViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pk=None):
         """Get a single license object."""
-        licenses = spdx_license_list.LICENSES
+        licenses = SPDX_LICENSES
         try:
             serializer = SpdxLicenseSerializer(licenses[pk])
             return response.Response(serializer.data)

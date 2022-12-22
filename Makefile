@@ -207,6 +207,15 @@ format-code:  ## Reformat Python and JS files
 	docker-compose exec nodejs npm run-script format
 .PHONY: format-code
 
+generate-spdx:  ## Generate a new SPDX data file
+	docker-compose exec web sh -c " \
+		poetry run python3 toolhub/apps/toolinfo/generate_spdx.py > \
+			toolhub/apps/toolinfo/spdx.py && \
+		poetry run black toolhub/apps/toolinfo/spdx.py && \
+		cat toolhub/apps/toolinfo/spdx.py \
+	"
+.PHONY: generate-spdx
+
 clean:  ## Clean up Docker images and containers
 	yes | docker image prune
 	yes | docker container prune
