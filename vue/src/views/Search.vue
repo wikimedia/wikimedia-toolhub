@@ -16,6 +16,7 @@
 			<v-col cols="6">
 				<Sort
 					ref="sort"
+					:order="ordering"
 					@change="onSortChange"
 				/>
 			</v-col>

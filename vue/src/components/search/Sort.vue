@@ -43,31 +43,39 @@ export const methods = {
 
 export default {
 	name: 'Sort',
-	data: () => ( {
-		items: [
-			{
-				label: 'search-sort-score',
-				value: '-score'
-			},
-			{
-				label: 'search-sort-created-asc',
-				value: 'created_date'
-			},
-			{
-				label: 'search-sort-created-desc',
-				value: '-created_date'
-			},
-			{
-				label: 'search-sort-modified-asc',
-				value: 'modified_date'
-			},
-			{
-				label: 'search-sort-modified-desc',
-				value: '-modified_date'
-			}
-		],
-		select: '-score'
-	} ),
+	props: {
+		order: {
+			type: String,
+			default: '-score'
+		}
+	},
+	data() {
+		return {
+			items: [
+				{
+					label: 'search-sort-score',
+					value: '-score'
+				},
+				{
+					label: 'search-sort-created-asc',
+					value: 'created_date'
+				},
+				{
+					label: 'search-sort-created-desc',
+					value: '-created_date'
+				},
+				{
+					label: 'search-sort-modified-asc',
+					value: 'modified_date'
+				},
+				{
+					label: 'search-sort-modified-desc',
+					value: '-modified_date'
+				}
+			],
+			select: this.order
+		};
+	},
 	methods
 };
 </script>

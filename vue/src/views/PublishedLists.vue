@@ -39,6 +39,7 @@
 			</v-col>
 			<v-col cols="6">
 				<Sort
+					:order="queryParams.ordering"
 					@change="onSortChange"
 				/>
 			</v-col>
@@ -81,7 +82,7 @@ export default {
 				query: '',
 				page: 1,
 				pageSize: 10,
-				ordering: '-score'
+				ordering: '-modified_date'
 			}
 		};
 	},
