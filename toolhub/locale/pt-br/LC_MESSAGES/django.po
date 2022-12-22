@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-12-15 12:16:24+0000\n"
+"PO-Revision-Date: 2022-12-22 12:15:59+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -745,7 +745,7 @@ msgstr "Origem deste registro de ferramenta."
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr ""
+msgstr "Administradores"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
@@ -773,7 +773,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
-msgstr ""
+msgstr "Áudio"
 
 #: toolhub/apps/toolinfo/models.py:722
 msgid "Books"
@@ -781,7 +781,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:724
 msgid "Data"
-msgstr ""
+msgstr "Dados"
 
 #: toolhub/apps/toolinfo/models.py:726
 msgid "Bibliographic data"
@@ -813,7 +813,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:733
 msgid "Structured data"
-msgstr ""
+msgstr "Dados estruturados"
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
@@ -821,15 +821,15 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:737
 msgid "Discussions"
-msgstr ""
+msgstr "Discussões"
 
 #: toolhub/apps/toolinfo/models.py:738
 msgid "Drafts"
-msgstr ""
+msgstr "Rascunhos"
 
 #: toolhub/apps/toolinfo/models.py:739
 msgid "Emails"
-msgstr ""
+msgstr "E-mails"
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
@@ -841,7 +841,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
-msgstr ""
+msgstr "Registros"
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
@@ -849,7 +849,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
-msgstr ""
+msgstr "Referências"
 
 #: toolhub/apps/toolinfo/models.py:746
 msgid "Software or code"
@@ -861,7 +861,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
-msgstr ""
+msgstr "Vídeos"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
@@ -873,11 +873,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:751
 msgid "Wikitext"
-msgstr ""
+msgstr "Wikitexto"
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
-msgstr ""
+msgstr "Análise"
 
 #: toolhub/apps/toolinfo/models.py:755
 msgid "Annotating and linking"
@@ -965,7 +965,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr ""
+msgstr "Leitura"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
@@ -997,7 +997,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
-msgstr ""
+msgstr "Educação"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
@@ -1021,7 +1021,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
-msgstr ""
+msgstr "Ciência"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
