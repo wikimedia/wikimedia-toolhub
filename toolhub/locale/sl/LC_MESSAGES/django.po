@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-12-15 12:16:24+0000\n"
+"PO-Revision-Date: 2022-12-26 12:18:35+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,67 +15,67 @@ msgstr ""
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr ""
+msgstr "Revizijski dnevnik"
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "created"
-msgstr ""
+msgstr "ustvarjeno"
 
 #: toolhub/apps/auditlog/models.py:95
 msgid "updated"
-msgstr ""
+msgstr "posodobljeno"
 
 #: toolhub/apps/auditlog/models.py:96
 msgid "deleted"
-msgstr ""
+msgstr "izbrisano"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr ""
+msgstr "dodano"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr ""
+msgstr "odstranjeno od"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr ""
+msgstr "skrito"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr ""
+msgstr "razkrito"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr ""
+msgstr "pregledano"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr ""
+msgstr "izbrano"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "odizbrano"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
-msgstr ""
+msgstr "čas"
 
 #: toolhub/apps/auditlog/models.py:116
 msgid "user"
-msgstr ""
+msgstr "uporabnik"
 
 #: toolhub/apps/auditlog/models.py:124
 msgid "content type"
-msgstr ""
+msgstr "vrsta vsebine"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr ""
+msgstr "ID predmeta"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
-msgstr ""
+msgstr "PK predmeta"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
@@ -83,83 +83,83 @@ msgstr "dejanje"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr ""
+msgstr "zapis v revizijskem dnevniku"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
-msgstr ""
+msgstr "zapisi v revizijskem dnevniku"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "Parametri dogodka"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr ""
+msgstr "Redakcija, ustvarjena z dejanjem urejanja"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr ""
+msgstr "Ali je bila redakcija označena kot skrita?"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Ali je redakcijo pregledal pregledovalec?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr ""
+msgstr "Ime orodja, povezanega s spremembo"
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr ""
+msgstr "Identiteta uporabnika, povezanega s spremembo"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr ""
+msgstr "Seznam orodij, povezanih s spremembo"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
-msgstr ""
+msgstr "Dejanje dogodka"
 
 #: toolhub/apps/auditlog/serializers.py:51
 msgid "Event target"
-msgstr ""
+msgstr "Cilj dogodka"
 
 #: toolhub/apps/auditlog/serializers.py:102
 msgid "Audit log entry"
-msgstr ""
+msgstr "Zapis v revizijskem dnevniku"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr ""
+msgstr "Prikaži samo dnevniške zapise za določene vrste dejanj."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr ""
+msgstr "Prikaži samo dnevniške zapise za določeno vrsto cilja."
 
 #: toolhub/apps/auditlog/views.py:73
 msgid "Only show logs occurring before the given date and time."
-msgstr ""
+msgstr "Prikaži samo dnevniške zapise pred določenim datumom in časom."
 
 #: toolhub/apps/auditlog/views.py:79
 msgid "Only show logs occurring after the given date and time."
-msgstr ""
+msgstr "Prikaži samo dnevniške zapise po določenem datumu in času."
 
 #: toolhub/apps/auditlog/views.py:84
 msgid "Only show logs for the given user."
-msgstr ""
+msgstr "Prikaži samo dnevniške zapise za določenega uporabnika."
 
 #: toolhub/apps/auditlog/views.py:90
 msgid "List all log entries."
-msgstr ""
+msgstr "Seznam vseh dnevniških zapisov."
 
 #: toolhub/apps/auditlog/views.py:93
 msgid "Info for a specific log entry."
-msgstr ""
+msgstr "Informacije za določen dnevniški zapis."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr ""
+msgstr "Spletni pajek Toolinfo"
 
 #: toolhub/apps/crawler/serializers.py:31
 msgid "A URL that has been registered for crawling"
@@ -171,11 +171,11 @@ msgstr "URL za prečesanje"
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
-msgstr ""
+msgstr "Informacije o posameznem URL-ju, obdelane med delovanjem pajka"
 
 #: toolhub/apps/crawler/serializers.py:78
 msgid "Summary of a single run of the crawler."
-msgstr ""
+msgstr "Povzetek posameznega delovanja pajka."
 
 #: toolhub/apps/crawler/views.py:42
 msgid "Register a new URL for crawling."
@@ -187,7 +187,7 @@ msgstr "Podatki o posameznem prečesanem URL-ju."
 
 #: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
-msgstr ""
+msgstr "Odregistriraj URL."
 
 #: toolhub/apps/crawler/views.py:58
 msgid "List all crawled URLs."
@@ -195,15 +195,15 @@ msgstr "Seznam vseh prečesanih URL-jev."
 
 #: toolhub/apps/crawler/views.py:85
 msgid "Get URLs created by the current user."
-msgstr ""
+msgstr "Pridobi URL-je, ki jih je ustvaril trenutni uporabnik."
 
 #: toolhub/apps/crawler/views.py:104
 msgid "List all historic crawler runs."
-msgstr ""
+msgstr "Seznam vseh prejšnjih delovanj pajka."
 
 #: toolhub/apps/crawler/views.py:107
 msgid "Info for a specific crawler run."
-msgstr ""
+msgstr "Informacije za posamezno delovanje pajka"
 
 #: toolhub/apps/crawler/views.py:136
 msgid "List all urls crawled in a run."
@@ -219,222 +219,222 @@ msgstr "Seznami"
 
 #: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
-msgstr ""
+msgstr "Naslov tega seznama"
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
-msgstr ""
+msgstr "Opis teme ali vsebine seznama"
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
-msgstr ""
+msgstr "Povezava na opisno stran datoteke v Wikimedijini zbirki za ikono, ki prikazuje seznam."
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
-msgstr ""
+msgstr "Če je to »true«, je ta seznam zbirka »priljubljenih« orodij lastnika."
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
-msgstr ""
+msgstr "Če je to »true«, je ta seznam viden vsakomur."
 
 #: toolhub/apps/lists/models.py:78
 msgid "If true, this list has been marked as featured."
-msgstr ""
+msgstr "Če je to »true«, je bil ta seznam označen kot izbrani."
 
 #: toolhub/apps/lists/models.py:90
 msgid "List of the names of the tools in this list."
-msgstr ""
+msgstr "Seznam imen orodij na tem seznamu."
 
 #: toolhub/apps/lists/models.py:169
 msgid "Position of this tool in the list."
-msgstr ""
+msgstr "Položaj tega orodja na seznamu."
 
 #: toolhub/apps/lists/serializers.py:49
 msgid "List of tools metadata."
-msgstr ""
+msgstr "Seznam metapodatkov orodij."
 
 #: toolhub/apps/lists/serializers.py:92
 msgid "Create or update a list."
-msgstr ""
+msgstr "Ustvarite ali posodobite seznam."
 
 #: toolhub/apps/lists/serializers.py:100 toolhub/apps/lists/serializers.py:210
 msgid "List of tool names."
-msgstr ""
+msgstr "Seznam imen orodij."
 
 #: toolhub/apps/lists/serializers.py:202
 msgid "Historic revision of a list for generating diffs."
-msgstr ""
+msgstr "Zgodovinska redakcija seznama za prikaz primerjav."
 
 #: toolhub/apps/lists/serializers.py:231
 msgid "Historic revision of a list."
-msgstr ""
+msgstr "Zgodovinska redakcija seznama."
 
 #: toolhub/apps/lists/serializers.py:266
 msgid "Tool list revision."
-msgstr ""
+msgstr "Redakcija seznama orodij."
 
 #: toolhub/apps/lists/serializers.py:274
 msgid "Tool list revision detail."
-msgstr ""
+msgstr "Podatke redakcije seznama orodij."
 
 #: toolhub/apps/lists/serializers.py:296
 msgid "Tool list revision difference."
-msgstr ""
+msgstr "Razlika redakcije seznama orodij."
 
 #: toolhub/apps/lists/serializers.py:301
 #: toolhub/apps/toolinfo/serializers.py:383
 msgid "Revision to apply changes to."
-msgstr ""
+msgstr "Redakcija za uporabo sprememb."
 
 #: toolhub/apps/lists/serializers.py:305
 #: toolhub/apps/toolinfo/serializers.py:387
 msgid "Revision after applying changes."
-msgstr ""
+msgstr "Redakcija po uporabi sprememb."
 
 #: toolhub/apps/lists/serializers.py:309
 msgid "Add a favorite tool."
-msgstr ""
+msgstr "Dodajte priljubljeno orodje."
 
 #: toolhub/apps/lists/serializers.py:314
 msgid "Tool name."
-msgstr ""
+msgstr "Ime orodja."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr ""
+msgstr "Podvojene vrednosti na seznamu: %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "one=Neznano orodje: %(names)s"
+msgstr[1] "two=Neznani orodji: %(names)s"
+msgstr[2] "few=Neznana orodja: %(names)"
+msgstr[3] "Neznana orodja: %(names)s"
 
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr ""
+msgstr "Orodje %(name)s je že priljubljeno."
 
 #: toolhub/apps/lists/views.py:68
 msgid "Only show lists that are featured."
-msgstr ""
+msgstr "Pokaži samo izbrane sezname."
 
 #: toolhub/apps/lists/views.py:73
 msgid "Only show lists that are published."
-msgstr ""
+msgstr "Pokaži samo objavljene sezname."
 
 #: toolhub/apps/lists/views.py:78
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "Pokaži samo sezname, ki jih je ustvaril določen uporabnik."
 
 #: toolhub/apps/lists/views.py:84
 msgid "Create a new list of tools."
-msgstr ""
+msgstr "Ustvari nov seznam orodij."
 
 #: toolhub/apps/lists/views.py:89
 msgid "Details of a specific list of tools."
-msgstr ""
+msgstr "Podrobnosti o določenem seznamu orodij."
 
 #: toolhub/apps/lists/views.py:93
 msgid "Update a list of tools."
-msgstr ""
+msgstr "Posodobi seznam orodij."
 
 #: toolhub/apps/lists/views.py:101
 msgid "Delete a list of tools."
-msgstr ""
+msgstr "Izbriši seznam orodij."
 
 #: toolhub/apps/lists/views.py:104
 msgid "List all lists of tools."
-msgstr ""
+msgstr "Seznam vseh seznamov orodij."
 
 #: toolhub/apps/lists/views.py:140
 msgid "Mark a list as featured."
-msgstr ""
+msgstr "Označi seznam kot izbrani."
 
 #: toolhub/apps/lists/views.py:168
 msgid "Remove featured flag from a list."
-msgstr ""
+msgstr "S seznama odstrani oznako izbranega seznama."
 
 #: toolhub/apps/lists/views.py:200
 msgid "A unique integer value identifying this toollist."
-msgstr ""
+msgstr "Enolična celoštevilska vrednost, ki označuje ta seznam orodij."
 
 #: toolhub/apps/lists/views.py:206 toolhub/apps/toolinfo/views.py:175
 msgid "Get revision information."
-msgstr ""
+msgstr "Pridobi podatke o redakciji."
 
 #: toolhub/apps/lists/views.py:211 toolhub/apps/toolinfo/views.py:180
 msgid "List revisions."
-msgstr ""
+msgstr "Navedi redakcije."
 
 #: toolhub/apps/lists/views.py:216 toolhub/apps/toolinfo/views.py:185
 msgid "Compare two revisions to find difference."
-msgstr ""
+msgstr "Primerjaj dve redakciji in poišči razlike."
 
 #: toolhub/apps/lists/views.py:224 toolhub/apps/toolinfo/views.py:193
 msgid "A unique integer value identifying version to diff against."
-msgstr ""
+msgstr "Enolična celoštevilska vrednost, ki označuje različico za primerjavo."
 
 #: toolhub/apps/lists/views.py:232
 msgid "Restore the list to this revision."
-msgstr ""
+msgstr "Obnovi seznam na to redakcijo."
 
 #: toolhub/apps/lists/views.py:239 toolhub/apps/toolinfo/views.py:209
 msgid "Undo all changes made between two revisions."
-msgstr ""
+msgstr "Razveljavi vse spremembe med dvema redakcijama."
 
 #: toolhub/apps/lists/views.py:247 toolhub/apps/toolinfo/views.py:217
 msgid "A unique integer value identifying version to undo until."
-msgstr ""
+msgstr "Enolična celoštevilska vrednost, ki označuje različico, na katero naj se razveljavi."
 
 #: toolhub/apps/lists/views.py:255 toolhub/apps/toolinfo/views.py:226
 msgid "Hide revision text and edit summary from users."
-msgstr ""
+msgstr "Skrij besedilo redakcije in povzetek urejanja pred uporabniki."
 
 #: toolhub/apps/lists/views.py:261 toolhub/apps/toolinfo/views.py:232
 msgid "Reveal a previously hidden revision."
-msgstr ""
+msgstr "Razkrij prej skrito redakcijo."
 
 #: toolhub/apps/lists/views.py:267 toolhub/apps/toolinfo/views.py:238
 msgid "Mark a revision as patrolled."
-msgstr ""
+msgstr "Označi redakcijo kot pregledano."
 
 #: toolhub/apps/lists/views.py:369 toolhub/apps/toolinfo/views.py:364
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
-msgstr ""
+msgstr "Vrni na redakcijo %(rev_id)s z datumom %(datetime)s avtorja %(user)s"
 
 #: toolhub/apps/lists/views.py:410 toolhub/apps/toolinfo/views.py:398
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
-msgstr ""
+msgstr "Razveljavi redakcije od %(first_id)s do %(last_id)s"
 
 #: toolhub/apps/lists/views.py:520 toolhub/apps/toolinfo/views.py:169
 msgid "Unique identifier for this tool."
-msgstr ""
+msgstr "Enolični identifikator tega orodja."
 
 #: toolhub/apps/lists/views.py:526
 msgid "Add a tool to favorites."
-msgstr ""
+msgstr "Dodaj orodje med priljubljena."
 
 #: toolhub/apps/lists/views.py:531
 msgid "Check to see if a tool is in favorites."
-msgstr ""
+msgstr "Preveri, ali je orodje med priljubljenimi."
 
 #: toolhub/apps/lists/views.py:537
 msgid "Remove a tool from favorites."
-msgstr ""
+msgstr "Odstrani orodje iz priljubljenih."
 
 #: toolhub/apps/lists/views.py:543
 msgid "Personal favorites."
-msgstr ""
+msgstr "Osebna priljubljena."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
-msgstr ""
+msgstr "API avtorizacijskega strežnika OAuth 2.0"
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
@@ -454,11 +454,11 @@ msgstr "Povratni URL pooblastitve"
 
 #: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
 msgid "The application's callback URL."
-msgstr ""
+msgstr "URL povratnega klica aplikacije."
 
 #: toolhub/apps/oauth2/serializers.py:49
 msgid "Public identifier for this application"
-msgstr ""
+msgstr "Javni identifikator za to aplikacijo"
 
 #: toolhub/apps/oauth2/serializers.py:66
 msgid "OAuth Client application registration."
@@ -466,7 +466,7 @@ msgstr "Registracija odjemalca aplikacije OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:74
 msgid "Secret known only to the application and the authorization server"
-msgstr ""
+msgstr "Skrivnost, znana samo aplikaciji in avtorizacijskemu strežniku"
 
 #: toolhub/apps/oauth2/serializers.py:92
 msgid "OAuth Client application update."
@@ -474,56 +474,56 @@ msgstr "Posodobitev odjemalca aplikacije OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:117
 msgid "Authorized OAuth client application."
-msgstr ""
+msgstr "Avtorizirana odjemalska aplikacija OAuth."
 
 #: toolhub/apps/oauth2/views.py:39
 msgid "List all client applications."
-msgstr ""
+msgstr "Navedi vse odjemalske aplikacije."
 
 #: toolhub/apps/oauth2/views.py:42
 msgid "Info for a client application."
-msgstr ""
+msgstr "Informacije za odjemalsko aplikacijo."
 
 #: toolhub/apps/oauth2/views.py:45
 msgid "Register a new client application."
-msgstr ""
+msgstr "Registriraj novo odjemalsko aplikacijo."
 
 #: toolhub/apps/oauth2/views.py:53
 msgid "Update a client application."
-msgstr ""
+msgstr "Posodobi odjemalsko aplikacijo."
 
 #: toolhub/apps/oauth2/views.py:57
 msgid "Delete a client application."
-msgstr ""
+msgstr "Izbriši odjemalsko aplikacijo."
 
 #: toolhub/apps/oauth2/views.py:91
 msgid "List applications authorized by the current user."
-msgstr ""
+msgstr "Naštej aplikacije, ki jih je avtoriziral trenutni uporabnik."
 
 #: toolhub/apps/oauth2/views.py:94
 msgid "Info for an authorized application."
-msgstr ""
+msgstr "Informacije za avtorizirano aplikacijo."
 
 #: toolhub/apps/oauth2/views.py:106
 msgid "Revoke an application authorization."
-msgstr ""
+msgstr "Prekliči avtorizacijo aplikacije."
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr ""
+msgstr "Išči"
 
 #: toolhub/apps/search/schema.py:28
 msgid "Faceted classification"
-msgstr ""
+msgstr "Fasetna klasifikacija"
 
 #: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
 msgid "Search string"
-msgstr ""
+msgstr "Poišči niz"
 
 #: toolhub/apps/search/schema.py:95
 #, python-format
 msgid "Search in %(fields)s"
-msgstr ""
+msgstr "Išči v %(fields)s"
 
 #: toolhub/apps/search/schema.py:97
 #, optional
@@ -532,23 +532,23 @@ msgstr ""
 
 #: toolhub/apps/search/schema.py:182
 msgid "Field to use when ordering results."
-msgstr ""
+msgstr "Polje za uporabo pri razvrščanju zadetkov."
 
 #: toolhub/apps/search/serializers.py:47 toolhub/apps/search/serializers.py:72
 msgid "Tool search results"
-msgstr ""
+msgstr "Iskalni zadetki orodja"
 
 #: toolhub/apps/search/serializers.py:61
 msgid "Tool autocomplete results"
-msgstr ""
+msgstr "Samodejno dokončanje zadetkov orodja"
 
 #: toolhub/apps/search/serializers.py:86
 msgid "ToolList autocomplete results"
-msgstr ""
+msgstr "Zadetki samodejnega dokončanja ToolList"
 
 #: toolhub/apps/search/views.py:123
 msgid "Autocomplete for tools."
-msgstr ""
+msgstr "Samodejno dokončanje za orodja."
 
 #: toolhub/apps/search/views.py:157
 msgid "Faceted search for tools."
@@ -556,47 +556,47 @@ msgstr "Fasetno iskanje za orodja."
 
 #: toolhub/apps/search/views.py:276
 msgid "Autocomplete for toollists."
-msgstr ""
+msgstr "Samodejno dokončanje za sezname orodij."
 
 #: toolhub/apps/search/views.py:316
 msgid "Full text search for toollists."
-msgstr ""
+msgstr "Iskanje po celotnem besedilu za sezname orodij."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr ""
+msgstr "Toolinfo"
 
 #: toolhub/apps/toolinfo/models.py:67
 msgid "web app"
-msgstr ""
+msgstr "spletna aplikacija"
 
 #: toolhub/apps/toolinfo/models.py:68
 msgid "desktop app"
-msgstr ""
+msgstr "namizna aplikacija"
 
 #: toolhub/apps/toolinfo/models.py:69
 msgid "bot"
-msgstr ""
+msgstr "bot"
 
 #: toolhub/apps/toolinfo/models.py:70
 msgid "gadget"
-msgstr ""
+msgstr "pripomoček"
 
 #: toolhub/apps/toolinfo/models.py:71
 msgid "user script"
-msgstr ""
+msgstr "uporabniški skript"
 
 #: toolhub/apps/toolinfo/models.py:72
 msgid "command line tool"
-msgstr ""
+msgstr "orodje z ukazno vrstico"
 
 #: toolhub/apps/toolinfo/models.py:73
 msgid "coding framework"
-msgstr ""
+msgstr "programersko ogrodje"
 
 #: toolhub/apps/toolinfo/models.py:74
 msgid "lua module"
-msgstr ""
+msgstr "modul Lua"
 
 #: toolhub/apps/toolinfo/models.py:75
 msgid "template"
@@ -604,140 +604,140 @@ msgstr "predloga"
 
 #: toolhub/apps/toolinfo/models.py:76
 msgid "other"
-msgstr ""
+msgstr "drugo"
 
 #: toolhub/apps/toolinfo/models.py:82
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
-msgstr ""
+msgstr "Če je to »true«, je uporaba tega orodja uradno odsvetovana. Za opredelitev zamenjave se lahko uporabi parameter »replaced_by«."
 
 #: toolhub/apps/toolinfo/models.py:92
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
-msgstr ""
+msgstr "Če je to orodje opuščeno, je treba ta parameter uporabiti za povezavo na nadomestno orodje."
 
 #: toolhub/apps/toolinfo/models.py:99
 msgid "If true, this tool is unstable and can change or go offline at any time."
-msgstr ""
+msgstr "Če je to »true«, je to orodje nestabilno in se lahko kadar koli spremeni ali je odstranjeno."
 
 #: toolhub/apps/toolinfo/models.py:107
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
-msgstr ""
+msgstr "Niz ali matrika nizov, ki opisujejo vikije, v katerih se lahko uporablja to orodje. Uporabite imena gostiteljev, kot je »zh.wiktionary.org«. Uporabite zvezdice kot nadomestne znake. Na primer, »*.wikisource.org« pomeni »to orodje deluje v vseh vikijih Wikivir.« »*« pomeni »to deluje v vseh vikijih, vključno z vikiji Wikimedie.«"
 
 #: toolhub/apps/toolinfo/models.py:125
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
-msgstr ""
+msgstr "Povezava na opisno stran datoteke v Wikimedijini zbirki za ikono, ki prikazuje orodje."
 
 #: toolhub/apps/toolinfo/models.py:133
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
-msgstr ""
+msgstr "Jezik(i), v katerega (katere) je bil preveden vmesnik orodja. Uporabite jezikovne oznake, kot sta »zh« in »scn«. Če ni opredeljeno, se predpostavlja, da je orodje na voljo samo v angleščini."
 
 #: toolhub/apps/toolinfo/models.py:146
 msgid "The manner in which the tool is used. Select one from the list of options."
-msgstr ""
+msgstr "Način uporabe orodja. Izberite eno od možnosti s seznama."
 
 #: toolhub/apps/toolinfo/models.py:154
 msgid "A link to the repository where the tool code is hosted."
-msgstr ""
+msgstr "Povezava na shrambo, kjer gostuje koda orodja."
 
 #: toolhub/apps/toolinfo/models.py:161
 msgid "A link to the tool's API, if available."
-msgstr ""
+msgstr "Povezava na API orodja, če je na voljo."
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "A link to the tool's developer documentation, if available."
-msgstr ""
+msgstr "Povezava na razvijalsko dokumentacijo orodja, če je na voljo."
 
 #: toolhub/apps/toolinfo/models.py:175
 msgid "A link to the tool's user documentation, if available."
-msgstr ""
+msgstr "Povezava na uporabniško dokumentacijo orodja, če je na voljo."
 
 #: toolhub/apps/toolinfo/models.py:183
 msgid "A link to location where the tool's user can leave feedback."
-msgstr ""
+msgstr "Povezava na mesto, kjer lahko uporabnik pusti povratno informacijo."
 
 #: toolhub/apps/toolinfo/models.py:191
 msgid "A link to the tool's privacy policy, if available."
-msgstr ""
+msgstr "Povezava na pravilnik orodja o zasebnosti, če je na voljo."
 
 #: toolhub/apps/toolinfo/models.py:200
 msgid "A link to the tool's translation interface."
-msgstr ""
+msgstr "Povezava na prevajalski vmesnik orodja"
 
 #: toolhub/apps/toolinfo/models.py:208
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
-msgstr ""
+msgstr "Povezava na sledilnik hroščev orodja na GitHubu, Bitbucketu, Phabricatorju idr."
 
 #: toolhub/apps/toolinfo/models.py:464
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
-msgstr ""
+msgstr "Sprememba %(key)s po začetni ustvaritvi objekta ni dovoljena"
 
 #: toolhub/apps/toolinfo/models.py:504
 msgid "crawler"
-msgstr ""
+msgstr "pajek"
 
 #: toolhub/apps/toolinfo/models.py:505
 msgid "api"
-msgstr ""
+msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:513
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
-msgstr ""
+msgstr "Enolični identifikator za to orodje. Za vsako orodje mora biti edinstven. Priporočljivo je, da imenom orodij dodate predpono, da zmanjšate tveganje za navzkrižje."
 
 #: toolhub/apps/toolinfo/models.py:521
 msgid "Human readable tool name. Recommended limit of 25 characters."
-msgstr ""
+msgstr "Človeško berljivo ime orodja. Priporočena omejitev je 25 znakov."
 
 #: toolhub/apps/toolinfo/models.py:527
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr ""
+msgstr "Daljši opis orodja. Priporočena dolžina opisa je od 3 do 5 povedi."
 
 #: toolhub/apps/toolinfo/models.py:535
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
-msgstr ""
+msgstr "Neposredna povezava do orodja ali do navodil za uporabo ali namestitev orodja."
 
 #: toolhub/apps/toolinfo/models.py:549
 msgid "The primary tool developers."
-msgstr ""
+msgstr "Glavni razvijalci orodij."
 
 #: toolhub/apps/toolinfo/models.py:557
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
-msgstr ""
+msgstr "Daljši od celotnega naslova, vendar krajši od opisa. Naslovu mora dodati nekaj dodatnega konteksta."
 
 #: toolhub/apps/toolinfo/models.py:566
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
-msgstr ""
+msgstr "ID projekta na OpenHubu. Glede na URL https://openhub.net/p/foo je ID projekta »foo«."
 
 #: toolhub/apps/toolinfo/models.py:575
 msgid "Alternate links to the tool or install documentation in different natural languages."
-msgstr ""
+msgstr "Alternativne povezave na orodje ali namestitveno dokumentacijo v različnih naravnih jezikih."
 
 #: toolhub/apps/toolinfo/models.py:586
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
-msgstr ""
+msgstr "Če je orodje bot, uporabniško ime bota v projektih Wikimedie. Ne vključite »Uporabnik:« ali podobnih predponih."
 
 #: toolhub/apps/toolinfo/models.py:595
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
-msgstr ""
+msgstr "Licenca programske opreme, pod katero je orodje na voljo. Uporabite standardni identifikator licence, npr. »GLP-3.0-or-later«."
 
 #: toolhub/apps/toolinfo/models.py:603
 msgid "Organization(s) that sponsored the tool's development."
-msgstr ""
+msgstr "Organizacija(e), ki so sponzorirale razvoj orodja."
 
 #: toolhub/apps/toolinfo/models.py:610
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
-msgstr ""
+msgstr "Niz ali matrika nizov s seznamom tehnologij (programski jeziki, razvojna ogrodja idr.), uporabljenih pri ustvarjanju orodja."
 
 #: toolhub/apps/toolinfo/models.py:621
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
-msgstr ""
+msgstr "URI, ki identificira shemo JSON za ta zapis toolinfo.json. To mora biti kratek URI, ki vsebuje samo ime in redakcijo na koncu poti URI."
 
 #: toolhub/apps/toolinfo/models.py:632
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
-msgstr ""
+msgstr "Jezik, v katerem je napisan ta zapis toolinfo. Če ni nastavljeno, je privzeta vrednost angleščina. Uporabite jezikovne oznake ISO 639."
 
 #: toolhub/apps/toolinfo/models.py:642
 msgid "Origin of this tool record."
-msgstr ""
+msgstr "Izbvor tega zapisa o orodju."
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
@@ -1021,7 +1021,7 @@ msgstr "Znanost"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
-msgstr ""
+msgstr "ID predmeta orodja v Wikipodatkih."
 
 #: toolhub/apps/toolinfo/models.py:810
 msgid "Who is the intended user of the tool?"
@@ -1041,412 +1041,412 @@ msgstr "Ali je orodje namenjeno pomoči pri določeni vrsti vikiprojekta ali tem
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"
-msgstr ""
+msgstr "Informacije o licenci SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:48
 msgid "SPDX license ID"
-msgstr ""
+msgstr "ID licence SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:53
 msgid "Full name of this license"
-msgstr ""
+msgstr "Celotno ime te licence"
 
 #: toolhub/apps/toolinfo/serializers.py:58
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr ""
+msgstr "Ali je to licenco odobrila kot »open source« (odprti vir) OSI?"
 
 #: toolhub/apps/toolinfo/serializers.py:63
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr ""
+msgstr "Ali je to licenco odobrila kot »free software« (prosto programje) FSF?"
 
 #: toolhub/apps/toolinfo/serializers.py:68
 msgid "Is this license considered to be outdated?"
-msgstr ""
+msgstr "Ali se ta licenca šteje za zastarelo?"
 
 #: toolhub/apps/toolinfo/serializers.py:72
 msgid "Community added information for a tool"
-msgstr ""
+msgstr "Informacije, ki jih je o orodju dodala skupnost"
 
 #: toolhub/apps/toolinfo/serializers.py:105
 msgid "Summary of community added information for a tool"
-msgstr ""
+msgstr "Povzetek informacij, ki jih je o orodju dodala skupnost"
 
 #: toolhub/apps/toolinfo/serializers.py:120
 msgid "Update annotations"
-msgstr ""
+msgstr "Posodobitev označitev"
 
 #: toolhub/apps/toolinfo/serializers.py:159
 msgid "Description of a tool"
-msgstr ""
+msgstr "Opis orodja"
 
 #: toolhub/apps/toolinfo/serializers.py:211
 msgid "Summary of a tool"
-msgstr ""
+msgstr "Povzetek orodja"
 
 #: toolhub/apps/toolinfo/serializers.py:235
 msgid "Create a tool"
-msgstr ""
+msgstr "Ustvari orodje"
 
 #: toolhub/apps/toolinfo/serializers.py:301
 msgid "Update a tool"
-msgstr ""
+msgstr "Posodobi orodje"
 
 #: toolhub/apps/toolinfo/serializers.py:332
 msgid "Tool revision."
-msgstr ""
+msgstr "Redakcija orodja."
 
 #: toolhub/apps/toolinfo/serializers.py:340
 msgid "Tool revision detail."
-msgstr ""
+msgstr "Podrobnosti o redakciji orodja."
 
 #: toolhub/apps/toolinfo/serializers.py:378
 msgid "Tool revision difference."
-msgstr ""
+msgstr "Primerjava redakcij orodja."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "%(value)s ni prepoznana oznaka jezika."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
 #, python-format
 msgid "Expected a list of language codes but found %(type)s"
-msgstr ""
+msgstr "Pričakovan je bil seznam oznak jezika, najdeno pa je bilo: %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr ""
+msgstr "%(value)s ni znan sPDX-identifikator licence."
 
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
 msgid "Expected a url_multilingual dict but found %(type)s"
-msgstr ""
+msgstr "Pričakovan je bil url_multilingual, najdeno pa: %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
-msgstr ""
+msgstr "Url_multilingual manjka lastnost »jezik«."
 
 #: toolhub/apps/toolinfo/validators.py:79
 msgid "Url_multilingual missing 'url' property."
-msgstr ""
+msgstr "Url_multilingual manjka lastnost »URL«."
 
 #: toolhub/apps/toolinfo/views.py:68
 msgid "Create a new tool."
-msgstr ""
+msgstr "Ustvari novo orodje."
 
 #: toolhub/apps/toolinfo/views.py:73
 msgid "Info for a specific tool."
-msgstr ""
+msgstr "Informacije za določeno orodje."
 
 #: toolhub/apps/toolinfo/views.py:76
 msgid "Update info for a specific tool."
-msgstr ""
+msgstr "Posodobi informacije za določeno orodje."
 
 #: toolhub/apps/toolinfo/views.py:84
 msgid "Delete a tool."
-msgstr ""
+msgstr "Izbriši orodje."
 
 #: toolhub/apps/toolinfo/views.py:87
 msgid "List all tools."
-msgstr ""
+msgstr "Navedi vsa orodja."
 
 #: toolhub/apps/toolinfo/views.py:129
 msgid "Additional information for a tool."
-msgstr ""
+msgstr "Dodatne informacije za orodje."
 
 #: toolhub/apps/toolinfo/views.py:143
 msgid "Update annotations for a specific tool."
-msgstr ""
+msgstr "Posodobi označitve za posamezno orodje."
 
 #: toolhub/apps/toolinfo/views.py:201
 msgid "Restore the tool to this revision."
-msgstr ""
+msgstr "Obnovi orodje na to redakcijo."
 
 #: toolhub/apps/toolinfo/views.py:494
 msgid "Info for a specific SPDX license."
-msgstr ""
+msgstr "Informacije za določeno licenco SPDX."
 
 #: toolhub/apps/toolinfo/views.py:502
 msgid "List all SPDX licenses."
-msgstr ""
+msgstr "Navedi vse licence SPDX."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
-msgstr ""
+msgstr "Osebne informacije"
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr ""
+msgstr "Dovoljenja"
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
-msgstr ""
+msgstr "Pomembni datumi"
 
 #: toolhub/apps/user/apps.py:26
 msgid "Toolhub user"
-msgstr ""
+msgstr "Uporabnik Toolhuba"
 
 #: toolhub/apps/user/models.py:36
 msgid "username"
-msgstr ""
+msgstr "uporabniško ime"
 
 #: toolhub/apps/user/models.py:39
 msgid "Required. 255 characters or fewer."
-msgstr ""
+msgstr "Obvezno. 255 znakov ali manj."
 
 #: toolhub/apps/user/models.py:42
 msgid "A user with that username already exists."
-msgstr ""
+msgstr "Uporabnik s tem uporabniškim imenom že obstaja."
 
 #: toolhub/apps/user/serializers.py:41
 msgid "Action that the user can take"
-msgstr ""
+msgstr "Dejanje, ki ga lahko izvede uporabnik"
 
 #: toolhub/apps/user/serializers.py:46
 msgid "Subject type to check user action on"
-msgstr ""
+msgstr "Vrsta subjekta za preverjanje uporabnikovih dejanj"
 
 #: toolhub/apps/user/serializers.py:51
 msgid "Criteria which restricts user action"
-msgstr ""
+msgstr "Merila, ki omejujejo dejanja uporabnika"
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
-msgstr ""
+msgstr "Informacije o trenutnem uporabniku"
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
-msgstr ""
+msgstr "Števčni ID uporabnika"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
-msgstr ""
+msgstr "Žeton za preprečevanje ponarejanja zahtevkov med spletnimi mesti"
 
 #: toolhub/apps/user/serializers.py:82
 msgid "CASL access control rules"
-msgstr ""
+msgstr "Pravila nadzora dostopa CASL"
 
 #: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
-msgstr ""
+msgstr "Informacije o trenutni območni nastavitvi."
 
 #: toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr ""
+msgstr "Informacije o uporabniku"
 
 #: toolhub/apps/user/serializers.py:123
 msgid "Group information"
-msgstr ""
+msgstr "Informacije o skupini"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr ""
+msgstr "Družbene avtentikacijske informacije za uporabnika."
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
-msgstr ""
+msgstr "Podrobne informacije o uporabniku"
 
 #: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
-msgstr ""
+msgstr "Podrobne informacije o skupini"
 
 #: toolhub/apps/user/serializers.py:198
 msgid "Owner-only API Token"
-msgstr ""
+msgstr "Žeton API za lastno uporabo"
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
-msgstr ""
+msgstr "Avtentikacijski žeton"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
-msgstr ""
+msgstr "Vnesite veljavno uporabniško ime. Znaka »@« in »:« nista dovoljena."
 
 #: toolhub/apps/user/views.py:60
 msgid "Get information about the currently logged in user."
-msgstr ""
+msgstr "Pridobi informacije o trenutno prijavljenem uporabniku."
 
 #: toolhub/apps/user/views.py:88
 msgid "Get current locale."
-msgstr ""
+msgstr "Pridobi trenutno območno nastavitev."
 
 #: toolhub/apps/user/views.py:99
 msgid "Set locale."
-msgstr ""
+msgstr "Nastavi območno nastavitev."
 
 #: toolhub/apps/user/views.py:117
 msgid "List all active users."
-msgstr ""
+msgstr "Navedi vse aktivne uporabnike."
 
 #: toolhub/apps/user/views.py:120
 msgid "Info for a specific user."
-msgstr ""
+msgstr "Informacije za določenega uporabnika."
 
 #: toolhub/apps/user/views.py:141
 msgid "List all user groups."
-msgstr ""
+msgstr "Navedi vse uporabniške skupine."
 
 #: toolhub/apps/user/views.py:144
 msgid "Info for a user group."
-msgstr ""
+msgstr "Informacije za uporabniško skupino."
 
 #: toolhub/apps/user/views.py:166
 msgid "Add a user to this group."
-msgstr ""
+msgstr "Dodaj uporabnika v to skupino."
 
 #: toolhub/apps/user/views.py:177
 msgid "Remove a user from this group."
-msgstr ""
+msgstr "Odstrani uporabnika iz te skupine."
 
 #: toolhub/apps/user/views.py:222
 msgid "Get authentication token."
-msgstr ""
+msgstr "Pridobi avtentikacijski žeton."
 
 #: toolhub/apps/user/views.py:225
 msgid "Create authentication token."
-msgstr ""
+msgstr "Ustvari avtentikacijski žeton."
 
 #: toolhub/apps/user/views.py:228
 msgid "Delete authentication token."
-msgstr ""
+msgstr "Izbriši avtentikacijski žeton."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr ""
+msgstr "Pod nadzorom različic"
 
 #: toolhub/apps/versioned/exceptions.py:28
 msgid "Failed to apply patch."
-msgstr ""
+msgstr "Popravka ni bilo mogoče uporabiti."
 
 #: toolhub/apps/versioned/exceptions.py:35
 msgid "Current revision cannot be hidden."
-msgstr ""
+msgstr "Trenutne redakcije ni mogoče skriti."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr ""
+msgstr "Redakcija je že označena kot pregledana."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
-msgstr ""
+msgstr "Manjka vsebina za eno ali več redakcij."
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:69
 msgid "Has this revision been marked as hidden?"
-msgstr ""
+msgstr "Je bila ta redakcija označena kot skrita?"
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:75
 msgid "Has this revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Je to redakcijo pregledal pregledovalec?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the version"
-msgstr ""
+msgstr "enolični identifikator različice"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
-msgstr ""
+msgstr "enolični identifikator vsebine pod nadzorom različic"
 
 #: toolhub/apps/versioned/schema.py:31
 msgid "title describing the content being versioned"
-msgstr ""
+msgstr "naslov, ki opisuje vsebino pod nadzorom različic"
 
 #: toolhub/apps/versioned/schema.py:36
 msgid "RFC 6902 application/json-patch+json data"
-msgstr ""
+msgstr "podatki »application/json-patch+json« RFC 6902"
 
 #: toolhub/apps/versioned/schema.py:39
 msgid "RFC 6902 JSON patch operation"
-msgstr ""
+msgstr "operacija krpanja JSON RFC 6902"
 
 #: toolhub/apps/versioned/schema.py:44
 msgid "The operation to be performed"
-msgstr ""
+msgstr "Operacija za izvedbo"
 
 #: toolhub/apps/versioned/schema.py:50
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "Kazalec JSON na mesto v dokumentu, kjer se izvaja operacija."
 
 #: toolhub/apps/versioned/schema.py:56
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "Vrednost, ki jo želite dodati, zamenjati ali preizkusiti."
 
 #: toolhub/apps/versioned/schema.py:62
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "Kazalec JSON na mesto v dokumentu, s katerega želite premakniti ali kopirati vrednost."
 
 #: toolhub/apps/versioned/serializers.py:51
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "Enolična celoštevilska vrednost, ki označuje to redakcijo."
 
 #: toolhub/apps/versioned/serializers.py:63
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "Komentar uporabnika za redakcijo."
 
 #: toolhub/apps/versioned/serializers.py:81
 msgid "Content type of the revision."
-msgstr ""
+msgstr "Vrsta vsebine redakcije."
 
 #: toolhub/apps/versioned/serializers.py:157
 msgid "username removed"
-msgstr ""
+msgstr "uporabniško ime odstranjeno"
 
 #: toolhub/apps/versioned/serializers.py:158
 msgid "edit summary removed"
-msgstr ""
+msgstr "povzetek urejanja odstranjen"
 
 #: toolhub/apps/versioned/views.py:40
 msgid "Only show recent changes by the given user."
-msgstr ""
+msgstr "Prikaži samo zadnje spremembe navedenega uporabnika."
 
 #: toolhub/apps/versioned/views.py:45
 msgid "Only show recent changes for the given target type."
-msgstr ""
+msgstr "Prikaži samo zadnje spremembe navedene vrste cilja."
 
 #: toolhub/apps/versioned/views.py:50
 msgid "Only show recent changes where suppressed field is either true or false"
-msgstr ""
+msgstr "Prikaži samo zadnje spremembe, pri čemer je ukinjeno polje »true« (res) ali »false« (ni res)."
 
 #: toolhub/apps/versioned/views.py:57
 msgid "Only show recent changes where patrolled field is either true or false"
-msgstr ""
+msgstr "Prikaži samo zadnje spremembe, pri katerih je pregledovano polje bodisi »true« (res) bodisi »false« (ni res)"
 
 #: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
-msgstr ""
+msgstr "Prikaži samo zadnje spremembe v tem časovnem obdobju"
 
 #: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."
-msgstr ""
+msgstr "Pridobi paginiran seznam vseh redakcij."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr ""
+msgstr "Vnesite veljavno vrednost, ki je skladna s shemo JSON."
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr ""
+msgstr "Napaka API"
 
 #: toolhub/serializers.py:112
 msgid "Edit summary"
-msgstr ""
+msgstr "Povzetek urejanja"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
-msgstr ""
+msgstr "Opis sprememb, ki jih boste opravili."
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
-msgstr ""
+msgstr "Komentar, ki opisuje dejanje."
 
 #: toolhub/settings.py:458
 msgid "Read scope"
-msgstr ""
+msgstr "Obseg branja"
 
 #: toolhub/settings.py:459
 msgid "Write scope"
-msgstr ""
+msgstr "Obseg pisanja"
 
 #: toolhub/settings.py:488
 #, optional
@@ -1456,11 +1456,11 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr ""
+msgstr "Avtorziram %(app_name)s?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
-msgstr ""
+msgstr "Aplikacija zahteva naslednja dovoljenja"
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
@@ -1468,7 +1468,7 @@ msgstr "Prekliči"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
-msgstr ""
+msgstr "Avtoriziraj"
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
@@ -1482,29 +1482,29 @@ msgstr ""
 
 #: vue/serializers.py:26
 msgid "Information used on the Toolhub Home view."
-msgstr ""
+msgstr "Informacije, uporabljene v pogledu Toolhub Home."
 
 #: vue/serializers.py:32
 msgid "Count of tools known to Toolhub."
-msgstr ""
+msgstr "Število orodij, ki jih pozna Toolhub."
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
-msgstr ""
+msgstr "Datum in čas zadnjega delovanja pajka."
 
 #: vue/serializers.py:41
 msgid "Number of tools added or updated in the most recent crawler run."
-msgstr ""
+msgstr "Število orodij, dodanih ali posodobljenih pri zadenjem delovanju pajka."
 
 #: vue/templates/vue/base.html:21
 msgid "Toolhub's user interface requires JavaScript to be enabled."
-msgstr ""
+msgstr "Uporabniški vmesnik Toolhuba zahteva, da je omogočen JavaScript."
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
-msgstr ""
+msgstr "NALAGANJE"
 
 #: vue/views.py:47
 msgid "Get information used on the Toolhub Home view."
-msgstr ""
+msgstr "Pridobi informacije, uporabljene v pogledu Toolhub Home."
 
