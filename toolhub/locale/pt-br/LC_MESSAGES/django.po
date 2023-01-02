@@ -3,6 +3,7 @@
 #
 # Author: Eduardo Addad de Oliveira
 # Author: Eduardoaddad
+# Author: Fúlvio
 # Author: Mariagarbin
 # Author: Svjatysberega
 # Author: Wiiformii
@@ -10,7 +11,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-12-22 12:15:59+0000\n"
+"PO-Revision-Date: 2023-01-02 12:16:22+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -769,7 +770,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr ""
+msgstr "Artigos"
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
@@ -777,7 +778,7 @@ msgstr "Áudio"
 
 #: toolhub/apps/toolinfo/models.py:722
 msgid "Books"
-msgstr ""
+msgstr "Livros"
 
 #: toolhub/apps/toolinfo/models.py:724
 msgid "Data"
@@ -801,7 +802,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:730
 msgid "Geographic data"
-msgstr ""
+msgstr "Dados geográficos"
 
 #: toolhub/apps/toolinfo/models.py:731
 msgid "Linguistic data"
@@ -817,7 +818,7 @@ msgstr "Dados estruturados"
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
-msgstr ""
+msgstr "Dados do usuário"
 
 #: toolhub/apps/toolinfo/models.py:737
 msgid "Discussions"
@@ -913,7 +914,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr ""
+msgstr "Desambiguação"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
@@ -969,7 +970,7 @@ msgstr "Leitura"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr ""
+msgstr "Conteúdo recomendado"
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"

@@ -3,6 +3,7 @@
 		"authors": [
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
+			"Fúlvio",
 			"Mariagarbin",
 			"Svjatysberega",
 			"YuriNikolai"
@@ -249,6 +250,9 @@
 	"toolcreationcomment": "Ferramenta com título '$1' criada",
 	"tooleditingsuccess": "Sucesso! Ferramenta '$1' editada.",
 	"toollist": "Lista",
+	"tools-edit-button": "Editar",
+	"tools-edit-core-title": "Editando $1",
+	"tools-edit-annotations-title": "Editando $1 (anotações)",
 	"tools-history": "História da ferramenta",
 	"toolhistory-pagesubtitle": "Ver histórico para esta ferramenta",
 	"toolhub": "Toolhub",

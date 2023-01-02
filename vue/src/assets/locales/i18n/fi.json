@@ -9,7 +9,8 @@
 			"Nike",
 			"Pyscowicz",
 			"Rönttönen",
-			"Stryn"
+			"Stryn",
+			"Yupik"
 		]
 	},
 	"add": "Lisää",
@@ -145,6 +146,7 @@
 	"talk": "keskustelu",
 	"technologyused": "Käytetty tekniikka",
 	"thistoolis": "Tämä työkalu on:",
+	"tools-edit-button": "Muokkaa",
 	"tools-history": "Työkalun historia",
 	"toolhistory-pagesubtitle": "Katso tämän työkalun historia",
 	"tools": "työkalut",
