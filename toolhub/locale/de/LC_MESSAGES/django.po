@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2022-12-15 12:16:23+0000\n"
+"PO-Revision-Date: 2023-01-16 12:15:12+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -745,283 +745,283 @@ msgstr "Ursprung dieses Werkzeugsatzes."
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr ""
+msgstr "Administratoren"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
-msgstr ""
+msgstr "Organisatoren und Programmkoordinatoren"
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr ""
+msgstr "Bearbeiter und Mitwirkende"
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
-msgstr ""
+msgstr "LeserInnen und KonsumentInnen von Inhalten"
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
-msgstr ""
+msgstr "Forscher"
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr ""
+msgstr "Entwickler"
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr ""
+msgstr "Artikel"
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: toolhub/apps/toolinfo/models.py:722
 msgid "Books"
-msgstr ""
+msgstr "Bücher"
 
 #: toolhub/apps/toolinfo/models.py:724
 msgid "Data"
-msgstr ""
+msgstr "Daten"
 
 #: toolhub/apps/toolinfo/models.py:726
 msgid "Bibliographic data"
-msgstr ""
+msgstr "Bibliographische Daten"
 
 #: toolhub/apps/toolinfo/models.py:727
 msgid "Categories or labels"
-msgstr ""
+msgstr "Kategorien oder Labels"
 
 #: toolhub/apps/toolinfo/models.py:728
 msgid "Diffs and revision data"
-msgstr ""
+msgstr "Diffs und Revisionsdaten"
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
-msgstr ""
+msgstr "Ereignisdatum"
 
 #: toolhub/apps/toolinfo/models.py:730
 msgid "Geographic data"
-msgstr ""
+msgstr "Geografische Daten"
 
 #: toolhub/apps/toolinfo/models.py:731
 msgid "Linguistic data"
-msgstr ""
+msgstr "Sprachliche Daten"
 
 #: toolhub/apps/toolinfo/models.py:732
 msgid "Page metadata"
-msgstr ""
+msgstr "Metadaten der Seite"
 
 #: toolhub/apps/toolinfo/models.py:733
 msgid "Structured data"
-msgstr ""
+msgstr "Strukturierte Daten"
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
-msgstr ""
+msgstr "Benutzerdaten"
 
 #: toolhub/apps/toolinfo/models.py:737
 msgid "Discussions"
-msgstr ""
+msgstr "Diskussionen"
 
 #: toolhub/apps/toolinfo/models.py:738
 msgid "Drafts"
-msgstr ""
+msgstr "Entwürfe"
 
 #: toolhub/apps/toolinfo/models.py:739
 msgid "Emails"
-msgstr ""
+msgstr "E-Mails"
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
-msgstr ""
+msgstr "Bilder"
 
 #: toolhub/apps/toolinfo/models.py:741
 msgid "Links"
-msgstr ""
+msgstr "Links"
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
-msgstr ""
+msgstr "Logbücher"
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
-msgstr ""
+msgstr "Karten"
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
-msgstr ""
+msgstr "Einzelnachweise"
 
 #: toolhub/apps/toolinfo/models.py:746
 msgid "Software or code"
-msgstr ""
+msgstr "Software oder Code"
 
 #: toolhub/apps/toolinfo/models.py:747
 msgid "Templates"
-msgstr ""
+msgstr "Vorlagen"
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
-msgstr ""
+msgstr "Videos"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
-msgstr ""
+msgstr "Beobachtungslisten"
 
 #: toolhub/apps/toolinfo/models.py:750
 msgid "Webpages"
-msgstr ""
+msgstr "Webseiten"
 
 #: toolhub/apps/toolinfo/models.py:751
 msgid "Wikitext"
-msgstr ""
+msgstr "Wikitext"
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
-msgstr ""
+msgstr "Analyse"
 
 #: toolhub/apps/toolinfo/models.py:755
 msgid "Annotating and linking"
-msgstr ""
+msgstr "Kommentieren und verlinken"
 
 #: toolhub/apps/toolinfo/models.py:756
 msgid "Archiving and cleanup"
-msgstr ""
+msgstr "Archivierung und Bereinigung"
 
 #: toolhub/apps/toolinfo/models.py:757
 msgid "Categorizing and tagging"
-msgstr ""
+msgstr "Kategorisieren und markieren"
 
 #: toolhub/apps/toolinfo/models.py:758
 msgid "Citing and referencing"
-msgstr ""
+msgstr "Zitieren und Referenzieren"
 
 #: toolhub/apps/toolinfo/models.py:759
 msgid "Communication and supporting users"
-msgstr ""
+msgstr "Kommunikation und Unterstützung der Benutzer"
 
 #: toolhub/apps/toolinfo/models.py:760
 msgid "Converting and formatting content"
-msgstr ""
+msgstr "Konvertieren und Formatieren von Inhalten"
 
 #: toolhub/apps/toolinfo/models.py:761
 msgid "Creating content"
-msgstr ""
+msgstr "Inhalte erstellen"
 
 #: toolhub/apps/toolinfo/models.py:762
 msgid "Deleting and reverting"
-msgstr ""
+msgstr "Löschen und zurücksetzen"
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr ""
+msgstr "Begriffsklärung"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr ""
+msgstr "Herunterladen oder Wiederverwenden von Inhalten"
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
-msgstr ""
+msgstr "Bearbeiten oder Aktualisieren von Inhalten"
 
 #: toolhub/apps/toolinfo/models.py:766
 msgid "Event and contest planning"
-msgstr ""
+msgstr "Veranstaltungs- und Wettbewerbsplanung"
 
 #: toolhub/apps/toolinfo/models.py:767
 msgid "Hosting and maintaining tools"
-msgstr ""
+msgstr "Hosting und Wartung von Tools"
 
 #: toolhub/apps/toolinfo/models.py:768
 msgid "Identifying policy violations"
-msgstr ""
+msgstr "Identifizieren von Richtlinienverstößen"
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
-msgstr ""
+msgstr "Spam erkennen"
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr ""
+msgstr "Vandalismus erkennen"
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
-msgstr ""
+msgstr "Auflistung und Ranking"
 
 #: toolhub/apps/toolinfo/models.py:772
 msgid "Merging content"
-msgstr ""
+msgstr "Inhalte zusammenführen"
 
 #: toolhub/apps/toolinfo/models.py:773
 msgid "Migrating content"
-msgstr ""
+msgstr "Migrieren von Inhalten"
 
 #: toolhub/apps/toolinfo/models.py:774
 msgid "Patrolling recent changes"
-msgstr ""
+msgstr "Kontrolle der letzten Änderungen"
 
 #: toolhub/apps/toolinfo/models.py:775
 msgid "Project management and reporting"
-msgstr ""
+msgstr "Projektmanagement und Berichterstattung"
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr ""
+msgstr "Lesen"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr ""
+msgstr "Inhalte empfehlen"
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"
-msgstr ""
+msgstr "Übersetzen und Lokalisieren"
 
 #: toolhub/apps/toolinfo/models.py:779
 msgid "Uploading or importing"
-msgstr ""
+msgstr "Hochladen oder Importieren"
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
-msgstr ""
+msgstr "Benutzerverwaltung"
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr ""
+msgstr "Benutzer warnen"
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
-msgstr ""
+msgstr "Biographie"
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr ""
+msgstr "Kulturelles Erbe"
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
-msgstr ""
+msgstr "Bildung"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr ""
+msgstr "Geographie und Kartierung"
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
-msgstr ""
+msgstr "GLAM"
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
-msgstr ""
+msgstr "Versionsgeschichte"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
-msgstr ""
+msgstr "Sprache und Internationalisierung"
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "Outreach"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
-msgstr ""
+msgstr "Wissenschaft"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
@@ -1029,19 +1029,19 @@ msgstr "Wikidata-ID für das Werkzeug."
 
 #: toolhub/apps/toolinfo/models.py:810
 msgid "Who is the intended user of the tool?"
-msgstr ""
+msgstr "Wer ist der beabsichtigte Benutzer des Tools?"
 
 #: toolhub/apps/toolinfo/models.py:817
 msgid "With what type of content or data does the tool interact?"
-msgstr ""
+msgstr "Mit welcher Art von Inhalten oder Daten interagiert das Tool?"
 
 #: toolhub/apps/toolinfo/models.py:824
 msgid "What type of task does the tool help with?"
-msgstr ""
+msgstr "Bei welcher Art von Aufgabe hilft das Tool?"
 
 #: toolhub/apps/toolinfo/models.py:831
 msgid "Is the tool targeted at helping in a specific type of wiki project or topic area?"
-msgstr ""
+msgstr "Ist das Tool darauf ausgerichtet, bei einer bestimmten Art von Wiki-Projekt oder Themenbereich zu helfen?"
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"
