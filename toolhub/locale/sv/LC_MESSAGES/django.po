@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2023-02-02 12:16:44+0000\n"
+"PO-Revision-Date: 2023-02-09 12:15:24+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1206,11 +1206,11 @@ msgstr "Åtgärd som användaren kan vidta"
 
 #: toolhub/apps/user/serializers.py:46
 msgid "Subject type to check user action on"
-msgstr ""
+msgstr "Ämnestyp att kontrollera användaråtgärd på"
 
 #: toolhub/apps/user/serializers.py:51
 msgid "Criteria which restricts user action"
-msgstr ""
+msgstr "Kriterium som begränsar användaråtgärd"
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
@@ -1218,7 +1218,7 @@ msgstr "Information om den nuvarande användaren."
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
-msgstr ""
+msgstr "Numeriskt användar-id"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
@@ -1464,7 +1464,7 @@ msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
@@ -1482,11 +1482,11 @@ msgstr ""
 
 #: vue/serializers.py:26
 msgid "Information used on the Toolhub Home view."
-msgstr ""
+msgstr "Information som användes i vyn Toolhub Home."
 
 #: vue/serializers.py:32
 msgid "Count of tools known to Toolhub."
-msgstr ""
+msgstr "Antal verktyg kända för Toolhub."
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
@@ -1498,7 +1498,7 @@ msgstr "Antalet verktyg som lagts till eller uppdaterats i den senaste skrapkör
 
 #: vue/templates/vue/base.html:21
 msgid "Toolhub's user interface requires JavaScript to be enabled."
-msgstr ""
+msgstr "Toolhubs användargränssnitt kräver att JavaScript är aktiverat."
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
@@ -1506,5 +1506,5 @@ msgstr "LADDAR"
 
 #: vue/views.py:47
 msgid "Get information used on the Toolhub Home view."
-msgstr ""
+msgstr "Hämta information som användes i vyn Toolhub Home."
 
