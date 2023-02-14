@@ -8,7 +8,7 @@
 			class="tool-app-bar"
 			:class="{ 'tool-app-bar-xs': $vuetify.breakpoint.xs }"
 		>
-			<ToolEditButton :tool="tool"/>
+			<ToolEditButton :tool="tool" />
 			<FavoriteButton :tool="tool" />
 			<v-btn
 				:to="{ name: 'tools-history', params: { name: tool.name } }"
