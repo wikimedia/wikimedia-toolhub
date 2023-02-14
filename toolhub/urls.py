@@ -24,8 +24,7 @@ from django.views.generic.base import RedirectView
 
 from drf_spectacular.views import SpectacularAPIView
 
-from oauth2_provider.urls import base_urlpatterns as oauth2_patterns
-
+from toolhub.apps.oauth2.urls import urlpatterns as oauth2_patterns
 from toolhub.apps.user.views import AuthTokenView
 from toolhub.apps.user.views import CurrentUserView
 from toolhub.apps.user.views import LocaleView

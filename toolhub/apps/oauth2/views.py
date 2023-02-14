@@ -15,13 +15,17 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+import urllib.parse
+
 from django.utils.translation import gettext_lazy as _
 
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import extend_schema_view
 
+from oauth2_provider.exceptions import OAuthToolkitError
 from oauth2_provider.models import AccessToken
 from oauth2_provider.models import Application
+from oauth2_provider.views import AuthorizationView
 
 from rest_framework import viewsets
 
@@ -117,3 +121,29 @@ class AuthorizationViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         """Filter qs by current user."""
         return AccessToken.objects.filter(user=self.request.user)
+
+
+class AuthzView(AuthorizationView):
+    """Extend upstream AuthorizationView to override CSP values."""
+
+    def get(self, request, *args, **kwargs):
+        """Handle GET requests."""
+        resp = super().get(request, *args, **kwargs)
+
+        try:
+            # T329563: decorate the response with _csp_update
+            # Add the configured redirect target as a form-action source.
+            scopes, credentials = self.validate_authorization_request(request)
+            uri, headers, body, status = self.create_authorization_response(
+                request=self.request,
+                scopes=" ".join(scopes),
+                credentials=credentials,
+                allow=True,
+            )
+            parsed_redirect = urllib.parse.urlparse(uri)
+            resp._csp_update = {"form-action": parsed_redirect.netloc}
+        except OAuthToolkitError:
+            # Should only happen if the super().get() caught the same error
+            return resp
+
+        return resp
