@@ -310,7 +310,7 @@ msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
 msgstr[0] "one=Neznano orodje: %(names)s"
 msgstr[1] "two=Neznani orodji: %(names)s"
-msgstr[2] "few=Neznana orodja: %(names)"
+msgstr[2] "few=Neznana orodja: %(names)s"
 msgstr[3] "Neznana orodja: %(names)s"
 
 #: toolhub/apps/lists/validators.py:74
