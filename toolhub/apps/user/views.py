@@ -15,6 +15,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
+import urllib.parse
+
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.models import Group
 from django.middleware.csrf import get_token
@@ -266,9 +268,9 @@ class AuthTokenView(generics.GenericAPIView):
 def login(request):  # noqa: W0613 unused argument
     """Start the login process."""
     return redirect(
-        "{}?next={}".format(
+        "{}?{}".format(
             reverse("social:begin", kwargs={"backend": "wikimedia"}),
-            request.GET.get("next", "/"),
+            urllib.parse.urlencode({"next": request.GET.get("next", "/")}),
         )
     )
 
