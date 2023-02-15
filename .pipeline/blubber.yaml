@@ -60,7 +60,8 @@ variants:
         poetry check &&
         poetry run flake8 &&
         poetry run black --check --diff . &&
-        poetry run bandit -ii -r toolhub/
+        poetry run bandit -ii -r toolhub/ &&
+        poetry run ./manage.py compilemessages --exclude qqq
 
   test-python:
     # CI container: runs unit and integration tests on Python code
