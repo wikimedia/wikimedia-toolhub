@@ -1,11 +1,12 @@
 # Translation of Toolhub - Backend to Slovenian (slovenščina)
 # Exported from translatewiki.net
 #
+# Author: BryanDavis
 # Author: Eleassar
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2023-01-26 12:19:30+0000\n"
+"PO-Revision-Date: 2023-02-16 12:16:36+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -620,7 +621,7 @@ msgstr "Če je to »true«, je to orodje nestabilno in se lahko kadar koli sprem
 
 #: toolhub/apps/toolinfo/models.py:107
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
-msgstr "Niz ali matrika nizov, ki opisujejo vikije, v katerih se lahko uporablja to orodje. Uporabite imena gostiteljev, kot je »zh.wiktionary.org«. Uporabite zvezdice kot nadomestne znake. Na primer, »*.wikisource.org« pomeni »to orodje deluje v vseh vikijih Wikivir.« »*« pomeni »to deluje v vseh vikijih, vključno z vikiji Wikimedie.«"
+msgstr "Niz ali matrika nizov, ki opisujejo vikije, v katerih se lahko uporablja to orodje. Uporabite imena gostiteljev, kot je »zh.wiktionary.org«. Kot nadomestne znake uporabite zvezdice. Na primer, »*.wikisource.org« pomeni »to orodje deluje v vseh vikijih Wikivir.« »*« pomeni »to deluje v vseh vikijih, vključno z vikiji Wikimedie.«"
 
 #: toolhub/apps/toolinfo/models.py:125
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
@@ -725,7 +726,7 @@ msgstr "Organizacija(e), ki so sponzorirale razvoj orodja."
 
 #: toolhub/apps/toolinfo/models.py:610
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
-msgstr "Niz ali matrika nizov s seznamom tehnologij (programski jeziki, razvojna ogrodja idr.), uporabljenih pri ustvarjanju orodja."
+msgstr "Niz ali matrika nizov, ki navajajo tehnologije (programski jeziki, razvojna ogrodja idr.), uporabljene pri ustvarjanju orodja."
 
 #: toolhub/apps/toolinfo/models.py:621
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
@@ -1358,7 +1359,7 @@ msgstr "podatki »application/json-patch+json« RFC 6902"
 
 #: toolhub/apps/versioned/schema.py:39
 msgid "RFC 6902 JSON patch operation"
-msgstr "operacija krpanja JSON RFC 6902"
+msgstr "operacija poprave JSON RFC 6902"
 
 #: toolhub/apps/versioned/schema.py:44
 msgid "The operation to be performed"

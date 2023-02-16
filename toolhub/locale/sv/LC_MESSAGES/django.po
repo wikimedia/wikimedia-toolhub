@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2023-02-09 12:15:24+0000\n"
+"PO-Revision-Date: 2023-02-16 12:16:36+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1222,11 +1222,11 @@ msgstr "Numeriskt användar-id"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
-msgstr ""
+msgstr "Token för förebyggande av förfalskning av av begäran över flera webbsidor"
 
 #: toolhub/apps/user/serializers.py:82
 msgid "CASL access control rules"
-msgstr ""
+msgstr "Regler för CASL-åtkomstkontroll"
 
 #: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
@@ -1242,39 +1242,39 @@ msgstr "Gruppinformation"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr ""
+msgstr "En användares sociala autentiseringsinformation"
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
-msgstr ""
+msgstr "Detaljerad användarinformation"
 
 #: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
-msgstr ""
+msgstr "Detaljerad gruppinformation"
 
 #: toolhub/apps/user/serializers.py:198
 msgid "Owner-only API Token"
-msgstr ""
+msgstr "API-token endast för ägare"
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
-msgstr ""
+msgstr "Autentiseringstoken"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
-msgstr ""
+msgstr "Ange ett giltigt användarnamn. Tecknen \"@\" och \":\" är inte tillåtna."
 
 #: toolhub/apps/user/views.py:60
 msgid "Get information about the currently logged in user."
-msgstr ""
+msgstr "Hämta information om den aktuella inloggade användaren."
 
 #: toolhub/apps/user/views.py:88
 msgid "Get current locale."
-msgstr ""
+msgstr "Hämta aktuell lokal."
 
 #: toolhub/apps/user/views.py:99
 msgid "Set locale."
-msgstr ""
+msgstr "Ange lokal."
 
 #: toolhub/apps/user/views.py:117
 msgid "List all active users."
@@ -1282,7 +1282,7 @@ msgstr "Lista alla aktiva användare."
 
 #: toolhub/apps/user/views.py:120
 msgid "Info for a specific user."
-msgstr ""
+msgstr "Information om en angiven användare."
 
 #: toolhub/apps/user/views.py:141
 msgid "List all user groups."
@@ -1290,35 +1290,35 @@ msgstr "Lista alla användargrupper."
 
 #: toolhub/apps/user/views.py:144
 msgid "Info for a user group."
-msgstr ""
+msgstr "Information om en användargrupp."
 
 #: toolhub/apps/user/views.py:166
 msgid "Add a user to this group."
-msgstr ""
+msgstr "Lägg till en användare i den här gruppen."
 
 #: toolhub/apps/user/views.py:177
 msgid "Remove a user from this group."
-msgstr ""
+msgstr "Ta bort en användare från den här gruppen."
 
 #: toolhub/apps/user/views.py:222
 msgid "Get authentication token."
-msgstr ""
+msgstr "Hämta autentiseringstoken."
 
 #: toolhub/apps/user/views.py:225
 msgid "Create authentication token."
-msgstr ""
+msgstr "Skapa autentiseringstoken."
 
 #: toolhub/apps/user/views.py:228
 msgid "Delete authentication token."
-msgstr ""
+msgstr "Radera autentiseringstoken."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr ""
+msgstr "Versionerad"
 
 #: toolhub/apps/versioned/exceptions.py:28
 msgid "Failed to apply patch."
-msgstr ""
+msgstr "Kunde inte applicera patch."
 
 #: toolhub/apps/versioned/exceptions.py:35
 msgid "Current revision cannot be hidden."
