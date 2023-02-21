@@ -12,6 +12,9 @@ services:
       - SECRET_KEY
       - TOOLHUB_CLIENT_ID
       - TOOLHUB_CLIENT_SECRET
+      - TOOLHUB_ACCESS_TOKEN_URL
+      - TOOLHUB_AUTHORIZE_URL
+      - TOOLHUB_API_BASE_URL
     ports:
       - "${TOOLHUB_CLIENT_PORT:-8002}:8000"
     volumes:

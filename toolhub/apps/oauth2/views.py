@@ -141,9 +141,14 @@ class AuthzView(AuthorizationView):
                 allow=True,
             )
             parsed_redirect = urllib.parse.urlparse(uri)
-            resp._csp_update = {"form-action": parsed_redirect.netloc}
+            resp._csp_update = {
+                "form-action": "{}://{}".format(
+                    parsed_redirect.scheme,
+                    parsed_redirect.netloc,
+                )
+            }
         except OAuthToolkitError:
-            # Should only happen if the super().get() caught the same error
+            # Should only happen if super().get(...) caught the same error
             return resp
 
         return resp
