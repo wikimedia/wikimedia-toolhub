@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2023-02-16 12:16:36+0000\n"
+"PO-Revision-Date: 2023-02-23 12:16:05+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1322,23 +1322,23 @@ msgstr "Kunde inte applicera patch."
 
 #: toolhub/apps/versioned/exceptions.py:35
 msgid "Current revision cannot be hidden."
-msgstr ""
+msgstr "Nuvarande sidversion kan inte döljas."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr ""
+msgstr "Sidversion har redan markerats som patrullerad."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
-msgstr ""
+msgstr "Innehåll som saknas för en eller fler sidversioner."
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:69
 msgid "Has this revision been marked as hidden?"
-msgstr ""
+msgstr "Har denna sidversion markerats som dold?"
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:75
 msgid "Has this revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Har denna sidversion granskats av en patrullör?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the version"
