@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2023-02-23 12:16:05+0000\n"
+"PO-Revision-Date: 2023-02-27 12:14:24+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1342,75 +1342,75 @@ msgstr "Har denna sidversion granskats av en patrullör?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the version"
-msgstr ""
+msgstr "versionens unika identifierare"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
-msgstr ""
+msgstr "unik identifierare för innehållet som versioneras"
 
 #: toolhub/apps/versioned/schema.py:31
 msgid "title describing the content being versioned"
-msgstr ""
+msgstr "titel som beskriver innehåll som versioneras"
 
 #: toolhub/apps/versioned/schema.py:36
 msgid "RFC 6902 application/json-patch+json data"
-msgstr ""
+msgstr "RFC 6902-applikation/json-patch+json-data"
 
 #: toolhub/apps/versioned/schema.py:39
 msgid "RFC 6902 JSON patch operation"
-msgstr ""
+msgstr "RFC 6902 JSON-patchoperation"
 
 #: toolhub/apps/versioned/schema.py:44
 msgid "The operation to be performed"
-msgstr ""
+msgstr "Operationen som ska utföras"
 
 #: toolhub/apps/versioned/schema.py:50
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "JSON-pekare till punkten inom dokumentet där operationen utförs."
 
 #: toolhub/apps/versioned/schema.py:56
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "Värdet som ska läggas till, ersättas eller testas."
 
 #: toolhub/apps/versioned/schema.py:62
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "JSON-pekare till punkten inom dokumentet som värdet ska flyttas eller kopieras ifrån."
 
 #: toolhub/apps/versioned/serializers.py:51
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "Unikt heltalsvärde som identifierar denna version."
 
 #: toolhub/apps/versioned/serializers.py:63
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "Kommentar från användaren för versionen."
 
 #: toolhub/apps/versioned/serializers.py:81
 msgid "Content type of the revision."
-msgstr ""
+msgstr "Versionens innehållstyp."
 
 #: toolhub/apps/versioned/serializers.py:157
 msgid "username removed"
-msgstr ""
+msgstr "användarnamn borttaget"
 
 #: toolhub/apps/versioned/serializers.py:158
 msgid "edit summary removed"
-msgstr ""
+msgstr "redigeringssammanfattning borttagen"
 
 #: toolhub/apps/versioned/views.py:40
 msgid "Only show recent changes by the given user."
-msgstr ""
+msgstr "Visa endast senaste ändringar från den angivna användaren."
 
 #: toolhub/apps/versioned/views.py:45
 msgid "Only show recent changes for the given target type."
-msgstr ""
+msgstr "Visa endast senaste ändringar från den angivna måltypen."
 
 #: toolhub/apps/versioned/views.py:50
 msgid "Only show recent changes where suppressed field is either true or false"
-msgstr ""
+msgstr "Visa endast senaste ändringar där undertryckte fält antingen är true eller false."
 
 #: toolhub/apps/versioned/views.py:57
 msgid "Only show recent changes where patrolled field is either true or false"
-msgstr ""
+msgstr "Visa endast senaste ändringar där patrullerade fält antingen är true eller false."
 
 #: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
@@ -1422,7 +1422,7 @@ msgstr "Hämta en sidnumrerad lista över alla versioner."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr ""
+msgstr "Ange ett giltigt värd som överensstämmer med JSON-schemat."
 
 #: toolhub/openapi.py:36
 msgid "API error"
@@ -1434,19 +1434,19 @@ msgstr "Redigeringssammanfattning"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
-msgstr ""
+msgstr "Beskrivning av dina ändringar."
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
-msgstr ""
+msgstr "Kommentar som beskriver en åtgärd."
 
 #: toolhub/settings.py:458
 msgid "Read scope"
-msgstr ""
+msgstr "Läs omfattning"
 
 #: toolhub/settings.py:459
 msgid "Write scope"
-msgstr ""
+msgstr "Skriv omfattning"
 
 #: toolhub/settings.py:488
 #, optional
@@ -1460,7 +1460,7 @@ msgstr "Auktorisera %(app_name)s?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
-msgstr ""
+msgstr "Applikationen kräver följande behörigheter"
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
