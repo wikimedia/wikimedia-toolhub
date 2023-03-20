@@ -129,7 +129,7 @@
 	"registeroauthapp": "Rekisteröi uusi oauth-sovellus",
 	"removeurl": "Poista URL",
 	"required-field": "Tämä kenttä on pakollinen.",
-	"revert": "palauta",
+	"revert": "palauta tähän versioon",
 	"search": "Hae",
 	"search-filter-keywords": "Avainsanat",
 	"search-filter-license": "Lisenssi",
@@ -149,7 +149,7 @@
 	"tools-edit-button": "Muokkaa",
 	"tools-history": "Työkalun historia",
 	"toolhistory-pagesubtitle": "Katso tämän työkalun historia",
-	"tools": "työkalut",
+	"tools": "Työkalut",
 	"toolsfound": "{{PLURAL:$1|1 työkalu|$1 työkalua}} löydetty",
 	"totaltools": "Työkaluja yhteensä",
 	"tools-view": "Työkalu",
@@ -169,5 +169,5 @@
 	"valid": "pätevä",
 	"viewhistory": "Näytä historia",
 	"viewmore": "Katso lisää",
-	"welcomemessage": "Tervetuloa Toolhubiin"
+	"welcomemessage": "Toolhub on yhteisön laatima Wikimedia-työkalujen luettelo."
 }
