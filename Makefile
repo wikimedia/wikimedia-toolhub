@@ -25,10 +25,16 @@ DOCKERFILES := $(PIPELINE_DIR)/local-python.Dockerfile $(PIPELINE_DIR)/dev-nodej
 VOLUMES := toolhub_dbdata toolhub_esdata
 ALL_TESTS := test-python test-nodejs
 
+# Read envvars file if present
+-include $(PROJECT_DIR)/.env
+
+# Set defaults for variables potentially initialized by envvars file
+DOCS_HTTP_PORT ?= 8080
+
 help:
 	@echo "Make targets:"
 	@echo "============="
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(firstword $(MAKEFILE_LIST)) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "%-20s %s\n", $$1, $$2}'
 .PHONY: help
 
@@ -192,11 +198,11 @@ docs:  ## Build sphinx docs
 .PHONY: docs
 
 serve-docs:  ## Live-serve sphinx docs
+	@echo "View sphinx docs at http://localhost:${DOCS_HTTP_PORT}/"
 	docker-compose exec web sh -c " \
 		poetry run sphinx-autobuild -b \
 		html --host 0.0.0.0 --port 8080 docs docs/_build/html \
 	"
-
 .PHONY: serve-docs
 
 artifacts: schemas messages docs  ## Generate code & doc artifacts
