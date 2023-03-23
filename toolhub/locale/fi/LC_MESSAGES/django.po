@@ -5,10 +5,11 @@
 # Author: Maantietäjä
 # Author: Majavah
 # Author: Nike
+# Author: Pyscowicz
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2023-03-16 12:16:52+0000\n"
+"PO-Revision-Date: 2023-03-23 12:21:09+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -742,7 +743,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr ""
+msgstr "Ylläpitäjät"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
@@ -766,15 +767,15 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr ""
+msgstr "Artikkelit"
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
-msgstr ""
+msgstr "Ääni"
 
 #: toolhub/apps/toolinfo/models.py:722
 msgid "Books"
-msgstr ""
+msgstr "Kirjat"
 
 #: toolhub/apps/toolinfo/models.py:724
 msgid "Data"
@@ -826,23 +827,23 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:739
 msgid "Emails"
-msgstr ""
+msgstr "Sähköpostit"
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
-msgstr ""
+msgstr "Kuvat"
 
 #: toolhub/apps/toolinfo/models.py:741
 msgid "Links"
-msgstr ""
+msgstr "Linkit"
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
-msgstr ""
+msgstr "Lokit"
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
-msgstr ""
+msgstr "Kartat"
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
@@ -850,27 +851,27 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:746
 msgid "Software or code"
-msgstr ""
+msgstr "Ohjelmisto tai koodi"
 
 #: toolhub/apps/toolinfo/models.py:747
 msgid "Templates"
-msgstr ""
+msgstr "Mallineet"
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
-msgstr ""
+msgstr "Videot"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
-msgstr ""
+msgstr "Tarkkailulistat"
 
 #: toolhub/apps/toolinfo/models.py:750
 msgid "Webpages"
-msgstr ""
+msgstr "Verkkosivut"
 
 #: toolhub/apps/toolinfo/models.py:751
 msgid "Wikitext"
-msgstr ""
+msgstr "Wikiteksti"
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
@@ -1006,7 +1007,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
@@ -1018,7 +1019,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
-msgstr ""
+msgstr "Tiede"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
@@ -1311,7 +1312,7 @@ msgstr ""
 
 #: toolhub/apps/user/views.py:228
 msgid "Delete authentication token."
-msgstr ""
+msgstr "Poista tunnistumispoletti."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
