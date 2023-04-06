@@ -16,7 +16,7 @@ RUN (getent group "$RUNS_GID" || groupadd -o -g "$RUNS_GID" -r "$RUNS_AS") && (g
 USER $LIVES_UID
 ENV HOME="/home/somebody"
 WORKDIR "/srv/dockerize/bin"
-ENV DJANGO_SETTINGS_MODULE="toolhub.settings" DOCKERIZE_VERSION="v0.6.1" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
+ENV DJANGO_SETTINGS_MODULE="toolhub.settings" DOCKERIZE_VERSION="v0.6.1" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONDONTWRITEBYTECODE="1" PYTHONUNBUFFERED="1"
 RUN /bin/bash "-c" "wget --no-verbose https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz && tar -C /srv/dockerize/bin -xzvf dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz && rm dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz"
 USER $RUNS_UID
 ENV HOME="/home/$RUNS_AS"
@@ -40,7 +40,7 @@ RUN (getent group "$RUNS_GID" || groupadd -o -g "$RUNS_GID" -r "$RUNS_AS") && (g
 USER $LIVES_UID
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
-ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
+ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONDONTWRITEBYTECODE="1" PYTHONUNBUFFERED="1"
 COPY --chown=$LIVES_UID:$LIVES_GID ["pyproject.toml", "poetry.lock", "./"]
 RUN mkdir -p "/opt/lib/poetry"
 RUN poetry "install" "--no-root"

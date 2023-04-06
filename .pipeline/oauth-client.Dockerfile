@@ -19,7 +19,7 @@ RUN (getent group "$RUNS_GID" || groupadd -o -g "$RUNS_GID" -r "$RUNS_AS") && (g
 USER $LIVES_UID
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
-ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
+ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONDONTWRITEBYTECODE="1" PYTHONUNBUFFERED="1"
 COPY --chown=$LIVES_UID:$LIVES_GID ["contrib/oauth-client-example/pyproject.toml", "contrib/oauth-client-example/poetry.lock", "./"]
 RUN mkdir -p "/opt/lib/poetry"
 RUN poetry "install" "--no-root" "--no-dev"

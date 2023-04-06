@@ -14,7 +14,7 @@ RUN (getent group "$RUNS_GID" || groupadd -o -g "$RUNS_GID" -r "$RUNS_AS") && (g
 USER $LIVES_UID
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
-ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
+ENV DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONDONTWRITEBYTECODE="1" PYTHONUNBUFFERED="1"
 COPY --chown=$LIVES_UID:$LIVES_GID ["package.json", "package-lock.json", "./"]
 RUN npm install
 COPY --chown=$LIVES_UID:$LIVES_GID ["vue.config.js", "./"]
@@ -45,7 +45,7 @@ RUN (getent group "$RUNS_GID" || groupadd -o -g "$RUNS_GID" -r "$RUNS_AS") && (g
 USER $LIVES_UID
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
-ENV DJANGO_SECRET_KEY="FAKE_SECRET_FOR_PREP_BUILD" DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1" WIKIMEDIA_OAUTH2_KEY="FAKE_KEY_FOR_PREP_BUILD" WIKIMEDIA_OAUTH2_SECRET="FAKE_TOKEN_FOR_PREP_BUILD"
+ENV DJANGO_SECRET_KEY="FAKE_SECRET_FOR_PREP_BUILD" DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONDONTWRITEBYTECODE="1" PYTHONUNBUFFERED="1" WIKIMEDIA_OAUTH2_KEY="FAKE_KEY_FOR_PREP_BUILD" WIKIMEDIA_OAUTH2_SECRET="FAKE_TOKEN_FOR_PREP_BUILD"
 COPY --chown=$LIVES_UID:$LIVES_GID ["pyproject.toml", "poetry.lock", "./"]
 RUN mkdir -p "/opt/lib/poetry"
 RUN poetry "install" "--no-root" "--no-dev"
@@ -74,7 +74,7 @@ RUN (getent group "$RUNS_GID" || groupadd -o -g "$RUNS_GID" -r "$RUNS_AS") && (g
 USER $LIVES_UID
 ENV HOME="/home/somebody"
 WORKDIR "/srv/app"
-ENV DB_NAME="/dev/shm/toolhub.sqlite3" DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONBUFFERED="1" PYTHONDONTWRITEBYTECODE="1"
+ENV DB_NAME="/dev/shm/toolhub.sqlite3" DJANGO_SETTINGS_MODULE="toolhub.settings" PIP_DISABLE_PIP_VERSION_CHECK="on" PIP_NO_CACHE_DIR="off" PYTHONDONTWRITEBYTECODE="1" PYTHONUNBUFFERED="1"
 COPY --chown=$LIVES_UID:$LIVES_GID ["pyproject.toml", "poetry.lock", "./"]
 RUN mkdir -p "/opt/lib/poetry"
 RUN poetry "install" "--no-root" "--no-dev"
