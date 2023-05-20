@@ -103,7 +103,7 @@
 					</template>
 
 					<template #[`item.url.created_by.username`]="{ item }">
-						<a :href="`http://meta.wikimedia.org/wiki/User:${item.url.created_by.username}`"
+						<a :href="`https://meta.wikimedia.org/wiki/User:${item.url.created_by.username}`"
 							target="_blank"
 						>{{ item.url.created_by.username }}</a>
 					</template>

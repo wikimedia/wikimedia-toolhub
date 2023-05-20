@@ -103,13 +103,13 @@
 			<template v-if="$can( 'view', rev )">
 				<dd class="me-1 mt-1 rev-user">
 					<a
-						:href="`http://meta.wikimedia.org/wiki/User:${rev.user.username}`"
+						:href="`https://meta.wikimedia.org/wiki/User:${rev.user.username}`"
 						target="_blank"
 					>{{ rev.user.username }}</a>
 				</dd>
 				<dd class="me-1 mt-1 rev-user-talk">
 					(<a
-						:href="`http://meta.wikimedia.org/wiki/User_talk:${rev.user.username}`"
+						:href="`https://meta.wikimedia.org/wiki/User_talk:${rev.user.username}`"
 						target="_blank"
 					>{{ $t( 'talk' ) }}</a>)
 				</dd>

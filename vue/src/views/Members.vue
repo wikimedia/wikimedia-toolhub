@@ -92,7 +92,7 @@
 					:loading="usersLoading"
 				>
 					<template #[`item.username`]="{ item }">
-						<a :href="`http://meta.wikimedia.org/wiki/User:${item.username}`" target="_blank">{{ item.username
+						<a :href="`https://meta.wikimedia.org/wiki/User:${item.username}`" target="_blank">{{ item.username
 						}}</a>
 					</template>
 					<template #[`item.date_joined`]="{ item }">
