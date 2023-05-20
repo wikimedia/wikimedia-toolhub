@@ -59,7 +59,7 @@
 		"eslint-config-wikimedia": "^0.22.1",
 		"eslint-plugin-vue": "^8.5.0",
 		"eslint-plugin-vuetify": "^1.1.0",
-		"grunt-banana-checker": "^0.9.0",
+		"grunt-banana-checker": "0.10.0",
 		"mocha": "^9.2.1",
 		"nyc": "^15.1.0",
 		"rapidoc": "^9.1.3",
