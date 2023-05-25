@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Les Meloures",
 			"Robby"
 		]
 	},
@@ -71,7 +72,7 @@
 	"ok": "OK",
 	"patrolled": "nogekuckt",
 	"privacypolicy": "Dateschutz",
-	"back": "Zréck",
+	"back": "Zeréck",
 	"continue": "Virufueren",
 	"removeurl": "URL ewechhuelen",
 	"replacedby": "Ersat duerch",
