@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2023-04-27 11:18:30+0000\n"
+"PO-Revision-Date: 2023-06-01 11:20:04+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1432,7 +1432,7 @@ msgstr "編輯摘要"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
-msgstr "您在進行更改的描述。"
+msgstr "您在更改的描述。"
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
