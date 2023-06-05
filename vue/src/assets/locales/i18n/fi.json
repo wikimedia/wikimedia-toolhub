@@ -41,6 +41,7 @@
 	"auditlogs-targettype-version": "versio",
 	"auditlogs-type": "Tyyppi",
 	"auditlogs-username": "Käyttäjänimi",
+	"recentchanges-username": "Käyttäjänimi",
 	"authorizedapps": "Valtuutetut sovellukset",
 	"authors": "Tekijä(t)",
 	"authtoken": "Tunnistumispoletti",

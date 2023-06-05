@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2023-04-27 11:18:28+0000\n"
+"PO-Revision-Date: 2023-06-05 11:14:11+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -763,7 +763,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr ""
+msgstr "Kehittäjät"
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
@@ -991,7 +991,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr ""
+msgstr "Kulttuuriperintö"
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
