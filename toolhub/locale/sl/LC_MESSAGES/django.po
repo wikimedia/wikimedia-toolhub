@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2023-04-27 11:18:29+0000\n"
+"PO-Revision-Date: 2023-06-12 11:25:36+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -665,7 +665,7 @@ msgstr "Povezava na prevajalski vmesnik orodja"
 
 #: toolhub/apps/toolinfo/models.py:208
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
-msgstr "Povezava na sledilnik hroščev orodja na GitHubu, Bitbucketu, Phabricatorju idr."
+msgstr "Povezava na sledilnik hroščev orodja v GitHubu, Bitbucketu, Phabricatorju idr."
 
 #: toolhub/apps/toolinfo/models.py:464
 #, python-format
