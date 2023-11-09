@@ -76,8 +76,23 @@
 					</template>
 				</dd>
 			</template>
+			<dd v-if="aggregate" class="me-1 mt-1">
+				<template v-if="getDiffRouterObject( rev )">
+					(<router-link :to="getDiffRouterObject( rev )">
+						<span>{{ $t( 'diff' ) }}</span>
+					</router-link>
+				</template>
+				<template v-else>
+					({{ $t( 'diff' ) }}
+				</template>
+				{{ $t( 'pipe-separator' ) }}
+				<router-link
+					:to="getHistoryRouterObject( rev )">
+					<span>{{ $t( 'hist' ) }}</span>
+				</router-link>)
+			</dd>
 
-			<dd class="me-2 mt-1 rev-timestamp">
+			<dd v-else class="me-2 mt-1 rev-timestamp">
 				<router-link
 					v-if="$can( 'view', rev )"
 					:to="getRevisionRouterObject( rev )"
@@ -216,6 +231,17 @@ export default {
 				}
 			} );
 		},
+		getHistoryRouterObject( rev ) {
+			const routeName = rev.content_type === 'tool' ? 'tools-history' : 'lists-history';
+
+			return ( {
+				name: routeName,
+				params: {
+					...this.getUniqueIdentifier( rev ),
+					revId: rev.id
+				}
+			} );
+		},
 		getDetailRouterObject( rev ) {
 			let routeName;
 			if ( rev.content_type === TOOL ) {
@@ -230,29 +256,34 @@ export default {
 				}
 			} );
 		},
-		getDiffRouterObject() {
-			if ( this.selectedRevisions.length !== 2 ) {
+		getDiffRouterObject( rev = null ) {
+			if ( !this.aggregate && this.selectedRevisions.length !== 2 ) {
 				return {};
-			} else {
-
-				const content_type = this.selectedRev.content_type;
-				let routeName;
-
-				if ( content_type === TOOL ) {
-					routeName = 'tools-diff';
-				} else if ( content_type === LIST ) {
-					routeName = 'lists-diff';
-				}
-
-				return ( {
-					name: routeName,
-					params: {
-						...this.getUniqueIdentifier( this.selectedRev ),
-						revId: this.selectedRev.id,
-						otherRevId: this.otherSelectedRev.id
-					}
-				} );
 			}
+			let revId, otherRevId;
+
+			if ( !rev ) {
+				rev = this.selectedRev;
+				revId = this.selectedRev.id;
+				otherRevId = this.otherSelectedRev.id;
+			} else {
+				if ( !rev.parent_id ) {
+					return null;
+				}
+				revId = rev.parent_id;
+				otherRevId = rev.id;
+			}
+
+			const routeName = rev.content_type === 'tool' ? 'tools-diff' : 'lists-diff';
+
+			return {
+				name: routeName,
+				params: {
+					...this.getUniqueIdentifier( rev ),
+					revId,
+					otherRevId
+				}
+			};
 		},
 		undoChangesBetweenRevisions( rev ) {
 			let vuexMethod;
