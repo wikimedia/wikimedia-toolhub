@@ -223,7 +223,6 @@
 	"metadata-search-description": "Visiter cette page pour voir les résultats de recherche pour la requête",
 	"metadata-sitename": "Toolhub",
 	"metadata-title-long": "$1 : {{bidi:$2}} | Toolhub",
-	"metadata-title-short": "$1 | Toolhub",
 	"metadata-tools-view-description": "Visiter cette page pour afficher des informations supplémentaires sur l’outil : type d’outil, wikis pour lesquels il est disponible, technologie utilisée, etc.",
 	"metadata-tools-diff-description": "Visiter cette page pour voir les différences entre les révisions de l’outil",
 	"metadata-tools-edit-description": "Visiter cette page pour modifier l’outil",

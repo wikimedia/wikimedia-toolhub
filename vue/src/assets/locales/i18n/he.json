@@ -3,6 +3,7 @@
 		"authors": [
 			"Amire80",
 			"YaronSh",
+			"אקסיומה",
 			"ישראל קלר"
 		]
 	},
@@ -85,7 +86,7 @@
 	"bugtracker": "כלי מעקב תקלות",
 	"bugtrackerurl": "כתובת URL לכלי מעקב באגים",
 	"browse-all-tools": "עיין בכל הכלים",
-	"browsetool": "עיון בכלי",
+	"browsetool": "מעבר אל הכלי",
 	"cancel": "ביטול",
 	"charslimit": "התווים צריכים להיות באורך של פחות מ־$1 תווים",
 	"charsrange": "התווים צריכים להיות בטווח: $1",
@@ -215,6 +216,8 @@
 	"metadata-publishedlists-description": "אפשר לבקר בדף הזה כדי לצפות ברשימות שנוצרו על־ידי משתמשים ושזמינים לציבור",
 	"metadata-recentchanges-description": "אפשר לבקר בדף הזה כדי לצפות בכל הגרסאות ולנטר אותן",
 	"metadata-search-description": "הדף הזה מאפשר לצפות בתוצאות חיפוש של שאילתה",
+	"metadata-sitename": "כלים",
+	"metadata-title-long": "$1 : {{bidi:$2}} |כלים",
 	"metadata-tools-view-description": "הדף הזה מאפשר מציג מידע נוסף על הכלי: סוג הכלי, באילו אתרי ויקי הוא זמין, באיזו טכנולוגיה הוא משתמש, וכו׳.",
 	"metadata-tools-diff-description": "הדף הזה מאפשר לצפות בהבדלים בין גרסאות הכלי",
 	"metadata-tools-edit-description": "הדף הזה מאפשר את עריכת הכלי",
