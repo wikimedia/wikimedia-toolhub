@@ -87,7 +87,7 @@
 				</template>
 				{{ $t( 'pipe-separator' ) }}
 				<router-link
-					:to="getHistoryRouterObject( rev )">
+					:to="getRouterObject( rev, 'history' )">
 					<span>{{ $t( 'hist' ) }}</span>
 				</router-link>)
 			</dd>
@@ -95,7 +95,7 @@
 			<dd v-else class="me-2 mt-1 rev-timestamp">
 				<router-link
 					v-if="$can( 'view', rev )"
-					:to="getRevisionRouterObject( rev )"
+					:to="getRouterObject( rev, 'revision' )"
 				>
 					{{ rev.timestamp | moment( "utc", "LT ll" ) }}
 				</router-link>
@@ -109,7 +109,7 @@
 				class="me-2 mt-1 rev-title"
 			>
 				<router-link
-					:to="getDetailRouterObject( rev )"
+					:to="getRouterObject( rev, 'view' )"
 				>
 					{{ rev.content_title }}
 				</router-link>
@@ -145,24 +145,31 @@
 					v-if="!!rev.parent_id"
 					class="me-1 mt-1"
 				>
-					[<a @click="undoChangesBetweenRevisions( rev )">{{ $t( 'undo' ) }}</a>]
+					[<a @click="performRevisionAction(
+						rev,
+						'undo',
+						{ prevRevId: rev.parent_id } )"
+					>{{ $t( 'undo' ) }}</a>]
 				</dd>
 
 				<dd
 					v-if="!!rev.child_id"
 					class="me-1 mt-1"
 				>
-					[<a @click="restoreToRevision( rev )">{{ $t( 'revert' ) }}</a>]
+					[<a @click="performRevisionAction( rev, 'restore' );
+					">{{ $t( 'revert' ) }}</a>]
 				</dd>
 			</template>
 
 			<template v-if="$can( 'change', 'reversion/version' )">
 				<dd class="me-1 mt-1">
 					<template v-if="rev.suppressed">
-						[<a @click="suppress( rev, 'reveal' )">{{ $t( 'reveal' ) }}</a>]
+						[<a @click="performRevisionAction( rev, 'suppress', { action: 'reveal' } );"
+						>{{ $t( 'reveal' ) }}</a>]
 					</template>
 					<template v-else-if="!!rev.child_id">
-						[<a @click="suppress( rev, 'hide' )">{{ $t( 'hide' ) }}</a>]
+						[<a @click="performRevisionAction( rev, 'suppress', { action: 'hide' } )"
+						>{{ $t( 'hide' ) }}</a>]
 					</template>
 				</dd>
 			</template>
@@ -170,7 +177,8 @@
 			<template v-if="$can( 'patrol', 'reversion/version' )">
 				<dd class="me-1 mt-1">
 					<template v-if="!rev.patrolled">
-						[<a @click="patrol( rev )">{{ $t( 'markaspatrolled' ) }}</a>]
+						[<a @click="performRevisionAction( rev, 'patrol' )"
+						>{{ $t( 'markaspatrolled' ) }}</a>]
 					</template>
 					<template v-else>
 						[<span>{{ $t( 'patrolled' ) }}</span>]
@@ -216,45 +224,31 @@ export default {
 		updateRevisions() {
 			this.$emit( 'update-revisions' );
 		},
-		getRevisionRouterObject( rev ) {
+		getRouterObject( rev, routeType ) {
 			let routeName;
-			if ( rev.content_type === TOOL ) {
-				routeName = 'tools-revision';
-			} else if ( rev.content_type === LIST ) {
-				routeName = 'lists-revision';
-			}
-			return ( {
-				name: routeName,
-				params: {
-					...this.getUniqueIdentifier( rev ),
-					revId: rev.id
-				}
-			} );
-		},
-		getHistoryRouterObject( rev ) {
-			const routeName = rev.content_type === 'tool' ? 'tools-history' : 'lists-history';
+			const baseRoute = rev.content_type === 'tool' ? 'tools' : 'lists';
+			const params = { ...this.getUniqueIdentifier( rev ) };
 
-			return ( {
-				name: routeName,
-				params: {
-					...this.getUniqueIdentifier( rev ),
-					revId: rev.id
-				}
-			} );
-		},
-		getDetailRouterObject( rev ) {
-			let routeName;
-			if ( rev.content_type === TOOL ) {
-				routeName = 'tools-view';
-			} else if ( rev.content_type === LIST ) {
-				routeName = 'lists-view';
+			switch ( routeType ) {
+				case 'revision':
+					routeName = `${baseRoute}-revision`;
+					params.revId = rev.id;
+					break;
+				case 'history':
+					routeName = `${baseRoute}-history`;
+					params.revId = rev.id;
+					break;
+				case 'view':
+					routeName = `${baseRoute}-view`;
+					break;
+				default:
+					return {};
 			}
-			return ( {
+
+			return {
 				name: routeName,
-				params: {
-					...this.getUniqueIdentifier( rev )
-				}
-			} );
+				params: params
+			};
 		},
 		getDiffRouterObject( rev = null ) {
 			if ( !this.aggregate && this.selectedRevisions.length !== 2 ) {
@@ -285,61 +279,34 @@ export default {
 				}
 			};
 		},
-		undoChangesBetweenRevisions( rev ) {
-			let vuexMethod;
+		performRevisionAction( rev, actionType, additionalParams = {} ) {
+			const vuexMethodMap = {
+				undo: {
+					[ TOOL ]: 'tools/undoChangesBetweenRevisions',
+					[ LIST ]: 'lists/undoChangesBetweenRevisions'
+				},
+				restore: {
+					[ TOOL ]: 'tools/restoreToolToRevision',
+					[ LIST ]: 'lists/restoreListToRevision'
+				},
+				suppress: {
+					[ TOOL ]: 'tools/hideRevealRevision',
+					[ LIST ]: 'lists/hideRevealRevision'
+				},
+				patrol: {
+					[ TOOL ]: 'tools/markRevisionAsPatrolled',
+					[ LIST ]: 'lists/markRevisionAsPatrolled'
+				}
+			};
 
-			if ( rev.content_type === TOOL ) {
-				vuexMethod = 'tools/undoChangesBetweenRevisions';
-			} else if ( rev.content_type === LIST ) {
-				vuexMethod = 'lists/undoChangesBetweenRevisions';
-			}
-
-			this.$store.dispatch( vuexMethod, {
+			const vuexMethod = vuexMethodMap[ actionType ][ rev.content_type ];
+			const params = {
 				...this.getUniqueIdentifier( rev ),
 				revId: rev.id,
-				prevRevId: rev.parent_id
-			} ).then( this.updateRevisions );
+				...additionalParams
+			};
 
-		},
-		restoreToRevision( rev ) {
-			let vuexMethod;
-			if ( rev.content_type === TOOL ) {
-				vuexMethod = 'tools/restoreToolToRevision';
-			} else if ( rev.content_type === LIST ) {
-				vuexMethod = 'lists/restoreListToRevision';
-			}
-
-			this.$store.dispatch( vuexMethod, {
-				...this.getUniqueIdentifier( rev ),
-				revId: rev.id
-			} ).then( this.updateRevisions );
-		},
-		suppress( rev, action ) {
-			let vuexMethod;
-			if ( rev.content_type === TOOL ) {
-				vuexMethod = 'tools/hideRevealRevision';
-			} else if ( rev.content_type === LIST ) {
-				vuexMethod = 'lists/hideRevealRevision';
-			}
-
-			this.$store.dispatch( vuexMethod, {
-				...this.getUniqueIdentifier( rev ),
-				revId: rev.id,
-				action: action
-			} ).then( this.updateRevisions );
-		},
-		patrol( rev ) {
-			let vuexMethod;
-			if ( rev.content_type === TOOL ) {
-				vuexMethod = 'tools/markRevisionAsPatrolled';
-			} else if ( rev.content_type === LIST ) {
-				vuexMethod = 'lists/markRevisionAsPatrolled';
-			}
-
-			this.$store.dispatch( vuexMethod, {
-				...this.getUniqueIdentifier( rev ),
-				revId: rev.id
-			} ).then( this.updateRevisions );
+			this.$store.dispatch( vuexMethod, params ).then( this.updateRevisions );
 		},
 		/**
 		 * Selects Two revisions of the same type for comparison.
@@ -368,9 +335,9 @@ export default {
 
 		},
 		getUniqueIdentifier( rev ) {
-			if ( rev.content_type === 'tool' ) {
+			if ( rev.content_type === TOOL ) {
 				return { name: rev.content_id };
-			} else if ( rev.content_type === 'toollist' ) {
+			} else if ( rev.content_type === LIST ) {
 				return { id: rev.content_id };
 			}
 		}
