@@ -9,7 +9,8 @@
 			"Paraboule",
 			"Pols12",
 			"Thibaut120094",
-			"Verdy p"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"add": "Ajouter",
@@ -91,7 +92,7 @@
 	"bugtracker": "Suivi des anomalies",
 	"bugtrackerurl": "URL de l’outil de suivi des anomalies",
 	"browse-all-tools": "Parcourir tous les outils",
-	"browsetool": "Outil d’exploration",
+	"browsetool": "Aller à l'outil",
 	"cancel": "Annuler",
 	"charslimit": "Il doit y avoir moins de $1 caractères",
 	"charsrange": "Les caractères doivent être dans la plage : $1",
@@ -133,6 +134,7 @@
 	"developersettings-nologintext": "Vous devrez vous connecter à Toolhub pour afficher les applications autorisées",
 	"developersettings-pagesubtitle": "Afficher, enregistrer, autoriser et révoquer les applications OAuth",
 	"developerusername": "Nom d’utilisateur du développeur",
+	"diff": "diff",
 	"editsummary": "Modifier le résumé",
 	"email": "Courriel",
 	"experimental": "Expérimental",
@@ -149,6 +151,7 @@
 	"wikidataqid": "QID de Wikidata",
 	"helptranslate": "Aider à traduire",
 	"hide": "masquer",
+	"hist": "historique",
 	"home": "Accueil",
 	"howtouse": "Mode d’emploi",
 	"icon": "Icône",
@@ -237,6 +240,7 @@
 	"ok": "OK",
 	"openhubid": "Identifiant de projet sur OpenHub",
 	"patrolled": "patrouillé",
+	"pipe-separator": "|",
 	"privacypolicy": "Politique de confidentialité",
 	"privacypolicyurl": "URL de la politique de confidentialité",
 	"publishchanges": "Publier les modifications",
