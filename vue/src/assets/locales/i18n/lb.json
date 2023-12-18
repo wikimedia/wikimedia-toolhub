@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Les Meloures",
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"annotations": "Notizzen",
@@ -50,7 +51,7 @@
 	"link-coc": "Verhalenskodex",
 	"link-docs": "Dokumentatioun",
 	"link-issues": "Problemer",
-	"link-privacy-policy": "Dateschutz",
+	"link-privacy-policy": "Dateschutzrichtlinnen",
 	"link-tou": "Benotzungs-Bedingungen",
 	"link-vcs": "Quellcode",
 	"lists-editlist": "Lëscht änneren",
@@ -71,7 +72,7 @@
 	"name": "Numm",
 	"ok": "OK",
 	"patrolled": "nogekuckt",
-	"privacypolicy": "Dateschutz",
+	"privacypolicy": "Dateschutzrichtlinnen",
 	"back": "Zeréck",
 	"continue": "Virufueren",
 	"removeurl": "URL ewechhuelen",
