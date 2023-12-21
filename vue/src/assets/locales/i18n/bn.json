@@ -300,7 +300,6 @@
 	"urlinvalid": "ইউআরএল অবশ্যই বৈধ হতে হবে",
 	"urlrequired": "ইউআরএল প্রয়োজন",
 	"valid": "বৈধ",
-	"version-number": "v$1-$2",
 	"viewhistory": "ইতিহাস দেখুন",
 	"viewlistrevisionsdiff": "তালিকা $1 \"{{bidi:$2}}\"-এর সংশোধনগুলির মধ্যে পার্থক্য দেখুন",
 	"viewtoolrevisionsdiff": "$1 সরঞ্জামের সংশোধনগুলোর মধ্যে পার্থক্য দেখুন",
