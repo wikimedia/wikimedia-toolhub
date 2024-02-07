@@ -4,7 +4,8 @@ services:
   oauth-client:
     build:
       context: .
-      dockerfile: .pipeline/oauth-client.Dockerfile
+      dockerfile: .pipeline/blubber.yaml
+      target: oauth-client
     image: "toolhub:oauth-client"
     environment:
       - FLASK_DEBUG=1

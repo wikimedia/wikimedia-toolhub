@@ -4,7 +4,8 @@ services:
   web:
     build:
       context: .
-      dockerfile: .pipeline/local-python.Dockerfile
+      dockerfile: .pipeline/blubber.yaml
+      target: local-python
       args: # T295823: build with local uid/gid to allow Linux mount writes
         LIVES_UID: $LOCAL_UID
         LIVES_GID: $LOCAL_GID
@@ -78,7 +79,8 @@ services:
   nodejs:
     build:
       context: .
-      dockerfile: .pipeline/dev-nodejs.Dockerfile
+      dockerfile: .pipeline/blubber.yaml
+      target: dev-nodejs
       args: # T295823: build with local uid/gid to allow Linux mount writes
         LIVES_UID: $LOCAL_UID
         LIVES_GID: $LOCAL_GID
