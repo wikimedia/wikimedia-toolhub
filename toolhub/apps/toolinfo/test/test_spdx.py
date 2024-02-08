@@ -41,18 +41,6 @@ class SPDXTest(SimpleTestCase):
             self.assertEqual(type(entry["licenseId"]), str)
             self.assertEqual(type(entry["name"]), str)
 
-    def test_int_values(self):
-        """Assert type of int fields."""
-        for entry in SPDX_LICENSES.values():
-            self.assertEqual(type(entry["referenceNumber"]), int)
-
-    def test_referenceNumber_unique(self):
-        """Assert that each referenceNumber is unique."""
-        seen = set()
-        for entry in SPDX_LICENSES.values():
-            self.assertNotIn(entry["referenceNumber"], seen)
-            seen.add(entry["referenceNumber"])
-
     def test_name_unique(self):
         """Assert that each name is unique."""
         seen = set()

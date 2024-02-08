@@ -78,12 +78,12 @@ def main():
     for entry in r.json()["licenses"]:
         del entry["detailsUrl"]
         del entry["reference"]
+        del entry["referenceNumber"]
         del entry["seeAlso"]
         if "isOsiApproved" not in entry:
             entry["isOsiApproved"] = False
         if "isFsfLibre" not in entry:
             entry["isFsfLibre"] = False
-        entry["referenceNumber"] = int(entry["referenceNumber"])
         licenses[entry["licenseId"]] = entry
 
     raw = TEMPLATE.format(
