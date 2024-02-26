@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-01-25 12:22:02+0000\n"
+"PO-Revision-Date: 2024-02-26 12:19:44+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -75,11 +75,11 @@ msgstr "vrsta vsebine"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr "ID predmeta"
+msgstr "ID objekta"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
-msgstr "PK predmeta"
+msgstr "PK objekta"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
@@ -438,7 +438,7 @@ msgstr "Osebna priljubljena."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
-msgstr "API avtorizacijskega strežnika OAuth 2.0"
+msgstr "API pooblastitvenega strežnika OAuth 2.0"
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
@@ -470,7 +470,7 @@ msgstr "Registracija odjemalca aplikacije OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:74
 msgid "Secret known only to the application and the authorization server"
-msgstr "Skrivnost, znana samo aplikaciji in avtorizacijskemu strežniku"
+msgstr "Skrivnost, znana samo aplikaciji in pooblastitvenemu strežniku"
 
 #: toolhub/apps/oauth2/serializers.py:92
 msgid "OAuth Client application update."
@@ -478,7 +478,7 @@ msgstr "Posodobitev odjemalca aplikacije OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:117
 msgid "Authorized OAuth client application."
-msgstr "Avtorizirana odjemalska aplikacija OAuth."
+msgstr "Pooblaščena odjemalska aplikacija OAuth."
 
 #: toolhub/apps/oauth2/views.py:39
 msgid "List all client applications."
@@ -502,15 +502,15 @@ msgstr "Izbriši odjemalsko aplikacijo."
 
 #: toolhub/apps/oauth2/views.py:91
 msgid "List applications authorized by the current user."
-msgstr "Naštej aplikacije, ki jih je avtoriziral trenutni uporabnik."
+msgstr "Navedi aplikacije, ki jih je pooblastil trenutni uporabnik."
 
 #: toolhub/apps/oauth2/views.py:94
 msgid "Info for an authorized application."
-msgstr "Informacije za avtorizirano aplikacijo."
+msgstr "Informacije za pooblaščeno aplikacijo."
 
 #: toolhub/apps/oauth2/views.py:106
 msgid "Revoke an application authorization."
-msgstr "Prekliči avtorizacijo aplikacije."
+msgstr "Preklic pooblastitve aplikacije."
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
