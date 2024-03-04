@@ -121,7 +121,7 @@
 	"developersettings-appregistersuccesstext": "Uspelo! Ap »$1« je registriran. Zdaj skopirajte tudi skrivnost odjemalca. Pozneje je ne boste mogli več videti.",
 	"developersettings-appupdateerror": "Pri posodabljanju apa z ID odjemalca »$1« je prišlo do napake",
 	"developersettings-appupdatesuccess": "Ap z oznako odjemalca »$1« je posodobljen!",
-	"developersettings-noauthorizedappsfoundtext": "Za uporabo svojega računa niste pooblastili nobenega apa odjemalca",
+	"developersettings-noauthorizedappsfoundtext": "Za uporabo svojega računa niste pooblastili nobene odjemalske aplikacije",
 	"developersettings-noclientappsfoundtext": "Ni najdenih apov odjemalca",
 	"developersettings-nologintext": "Za ogled pooblaščenih apov se boste morali prijaviti v Toolhub",
 	"developersettings-pagesubtitle": "Pregledujte, registrirajte, pooblaščajte in preklicujte aplikacije oauth",
