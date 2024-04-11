@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-01-25 12:22:01+0000\n"
+"PO-Revision-Date: 2024-04-11 12:21:35+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: mk\n"
-"X-Generator: MediaWiki 1.42.0-alpha; Translate 2024-01-22\n"
+"X-Generator: MediaWiki 1.43.0-alpha; Translate 2024-01-22\n"
 "Plural-Forms: nplurals=2; plural=(n == 1 || n%10 == 1) ? 0 : 1;\n"
 "Project-Id-Version: Toolhub - Backend\n"
 "Report-Msgid-Bugs-To: translatewiki.net\n"
@@ -34,31 +34,31 @@ msgstr "избришано"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr ""
+msgstr "додадено во"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr ""
+msgstr "отстрането од"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr ""
+msgstr "скриено"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr ""
+msgstr "откриено"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr ""
+msgstr "патролирано"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr ""
+msgstr "избрано"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "тргнато од избрани"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
@@ -94,7 +94,7 @@ msgstr "ставки во дневникот на проверки"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "Параметри за настан"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
