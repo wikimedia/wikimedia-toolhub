@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Joquliina",
+			"Kimberli Mäkäräinen (WMNO)",
 			"MITO",
 			"Maantietäjä",
 			"Majavah",
@@ -133,7 +134,7 @@
 	"newtoolsfound": "{{PLURAL:$1|1 työkalu|$1 työkalua}}",
 	"nourlsfounderror": "Toolhub-järjestelmästä ei löytynyt toolinfo.json-tiedoston URL-osoitteita!",
 	"ok": "Ok",
-	"patrolled": "partioitu",
+	"patrolled": "tarkastettu",
 	"privacypolicy": "Tietosuojakäytäntö",
 	"publishchanges": "Julkaise muutokset",
 	"publishedlists": "Luettelot",
@@ -178,7 +179,7 @@
 	"tools-lastupdated": "Päivitetty viimeksi $1.",
 	"tools-search-label": "Hae Toolhubista",
 	"undo": "kumoa",
-	"unpatrolled": "partioimaton",
+	"unpatrolled": "ei ole tarkastettu",
 	"update": "Päivitä",
 	"url": "URL",
 	"urlinvalid": "URL-osoitteen on oltava kelvollinen",

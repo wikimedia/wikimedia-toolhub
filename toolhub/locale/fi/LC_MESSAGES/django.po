@@ -1,6 +1,7 @@
 # Translation of Toolhub - Backend to Finnish (suomi)
 # Exported from translatewiki.net
 #
+# Author: Kimberli Mäkäräinen (WMNO)
 # Author: MITO
 # Author: Maantietäjä
 # Author: Majavah
@@ -9,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-04-11 12:21:34+0000\n"
+"PO-Revision-Date: 2024-04-22 12:19:08+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,7 +55,7 @@ msgstr "palautettu"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr "partioitu"
+msgstr "tarkastettu"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"

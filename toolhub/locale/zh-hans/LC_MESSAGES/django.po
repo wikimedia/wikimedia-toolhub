@@ -13,10 +13,11 @@
 # Author: Yfdyh000
 # Author: Zhang8569
 # Author: ZhuofanWu
+# Author: 沈澄心
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-04-11 12:21:36+0000\n"
+"PO-Revision-Date: 2024-04-22 12:19:11+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -45,11 +46,11 @@ msgstr "已删除"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr ""
+msgstr "已添加到"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr ""
+msgstr "已移除从"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
