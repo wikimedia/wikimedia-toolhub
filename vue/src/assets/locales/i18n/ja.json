@@ -3,6 +3,7 @@
 		"authors": [
 			"A2y4",
 			"Ajeje Brazorf",
+			"Chqaz",
 			"Kkairri",
 			"LaMagiaaa",
 			"MathXplore",
@@ -15,6 +16,7 @@
 	"add": "追加",
 	"apidocumentation": "API",
 	"attributes": "属性",
+	"auditlogs-targettype-group": "グループ",
 	"auditlogs-targettype-toollist": "一覧",
 	"recentchanges": "最近の変更",
 	"recentchanges-filter": "フィルター",
