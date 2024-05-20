@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-05-16 12:20:17+0000\n"
+"PO-Revision-Date: 2024-05-20 12:17:07+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,7 +44,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr ""
+msgstr "숨겨진"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr ""
+msgstr "점검됨"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
@@ -76,7 +76,7 @@ msgstr "콘텐츠 유형"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr ""
+msgstr "객체 아이디"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
