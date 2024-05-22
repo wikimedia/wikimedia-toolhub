@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
 
-SPDX_GIT_TAG = "v3.23"
+SPDX_GIT_TAG = "v3.24.0"
 
 SPDX_LICENSES = {
     "0BSD": {
@@ -25,6 +25,13 @@ SPDX_LICENSES = {
         "isOsiApproved": True,
         "licenseId": "0BSD",
         "name": "BSD Zero Clause License",
+    },
+    "3D-Slicer-1.0": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "3D-Slicer-1.0",
+        "name": "3D Slicer License v1.0",
     },
     "AAL": {
         "isDeprecatedLicenseId": False,
@@ -116,6 +123,13 @@ SPDX_LICENSES = {
         "isOsiApproved": True,
         "licenseId": "AGPL-3.0-or-later",
         "name": "GNU Affero General Public License v3.0 or " "later",
+    },
+    "AMD-newlib": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "AMD-newlib",
+        "name": "AMD newlib License",
     },
     "AMDPLPA": {
         "isDeprecatedLicenseId": False,
@@ -382,6 +396,13 @@ SPDX_LICENSES = {
         "isOsiApproved": False,
         "licenseId": "BSD-2-Clause-Views",
         "name": "BSD 2-Clause with views sentence",
+    },
+    "BSD-2-Clause-first-lines": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "BSD-2-Clause-first-lines",
+        "name": "BSD 2-Clause - first lines requirement",
     },
     "BSD-3-Clause": {
         "isDeprecatedLicenseId": False,
@@ -1311,6 +1332,13 @@ SPDX_LICENSES = {
         "licenseId": "Caldera-no-preamble",
         "name": "Caldera License (without preamble)",
     },
+    "Catharon": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "Catharon",
+        "name": "Catharon License",
+    },
     "ClArtistic": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": True,
@@ -1982,6 +2010,13 @@ SPDX_LICENSES = {
         "licenseId": "Graphics-Gems",
         "name": "Graphics Gems License",
     },
+    "Gutmann": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "Gutmann",
+        "name": "Gutmann License",
+    },
     "HP-1986": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": False,
@@ -2027,6 +2062,14 @@ SPDX_LICENSES = {
         "name": "Historical Permission Notice and Disclaimer    - "
         "INRIA-IMAG variant",
     },
+    "HPND-Intel": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "HPND-Intel",
+        "name": "Historical Permission Notice and Disclaimer - Intel "
+        "variant",
+    },
     "HPND-Kevlin-Henney": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": False,
@@ -2067,6 +2110,14 @@ SPDX_LICENSES = {
         "name": "Historical Permission Notice and Disclaimer - University "
         "of California variant",
     },
+    "HPND-UC-export-US": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "HPND-UC-export-US",
+        "name": "Historical Permission Notice and Disclaimer - "
+        "University of California, US export warning",
+    },
     "HPND-doc": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": False,
@@ -2090,6 +2141,15 @@ SPDX_LICENSES = {
         "licenseId": "HPND-export-US",
         "name": "HPND with US Government export control warning",
     },
+    "HPND-export-US-acknowledgement": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "HPND-export-US-acknowledgement",
+        "name": "HPND with US Government export "
+        "control warning and "
+        "acknowledgment",
+    },
     "HPND-export-US-modify": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": False,
@@ -2097,6 +2157,22 @@ SPDX_LICENSES = {
         "licenseId": "HPND-export-US-modify",
         "name": "HPND with US Government export control "
         "warning and modification rqmt",
+    },
+    "HPND-export2-US": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "HPND-export2-US",
+        "name": "HPND with US Government export control and 2 " "disclaimers",
+    },
+    "HPND-merchantability-variant": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "HPND-merchantability-variant",
+        "name": "Historical Permission Notice and "
+        "Disclaimer - merchantability "
+        "variant",
     },
     "HPND-sell-MIT-disclaimer-xserver": {
         "isDeprecatedLicenseId": False,
@@ -2129,6 +2205,13 @@ SPDX_LICENSES = {
         "isOsiApproved": False,
         "licenseId": "HPND-sell-variant-MIT-disclaimer",
         "name": "HPND sell variant with MIT " "disclaimer",
+    },
+    "HPND-sell-variant-MIT-disclaimer-rev": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "HPND-sell-variant-MIT-disclaimer-rev",
+        "name": "HPND sell variant with MIT " "disclaimer - reverse",
     },
     "HTMLTIDY": {
         "isDeprecatedLicenseId": False,
@@ -2620,6 +2703,13 @@ SPDX_LICENSES = {
         "licenseId": "MIT-Festival",
         "name": "MIT Festival Variant",
     },
+    "MIT-Khronos-old": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "MIT-Khronos-old",
+        "name": "MIT Khronos - old variant",
+    },
     "MIT-Modern-Variant": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": False,
@@ -2851,12 +2941,26 @@ SPDX_LICENSES = {
         "licenseId": "NBPL-1.0",
         "name": "Net Boolean Public License v1",
     },
+    "NCBI-PD": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "NCBI-PD",
+        "name": "NCBI Public Domain Notice",
+    },
     "NCGL-UK-2.0": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": False,
         "isOsiApproved": False,
         "licenseId": "NCGL-UK-2.0",
         "name": "Non-Commercial Government Licence",
+    },
+    "NCL": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "NCL",
+        "name": "NCL Source Code License",
     },
     "NCSA": {
         "isDeprecatedLicenseId": False,
@@ -3025,6 +3129,13 @@ SPDX_LICENSES = {
         "isOsiApproved": False,
         "licenseId": "O-UDA-1.0",
         "name": "Open Use of Data Agreement v1.0",
+    },
+    "OAR": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "OAR",
+        "name": "OAR License",
     },
     "OCCT-PL": {
         "isDeprecatedLicenseId": False,
@@ -3396,6 +3507,13 @@ SPDX_LICENSES = {
         "isOsiApproved": True,
         "licenseId": "PHP-3.01",
         "name": "PHP License v3.01",
+    },
+    "PPL": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "PPL",
+        "name": "Peer Production License",
     },
     "PSF-2.0": {
         "isDeprecatedLicenseId": False,
@@ -3788,6 +3906,13 @@ SPDX_LICENSES = {
         "isOsiApproved": False,
         "licenseId": "Sun-PPP",
         "name": "Sun PPP License",
+    },
+    "Sun-PPP-2000": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "Sun-PPP-2000",
+        "name": "Sun PPP License (2000)",
     },
     "SunPro": {
         "isDeprecatedLicenseId": False,
@@ -4183,6 +4308,13 @@ SPDX_LICENSES = {
         "licenseId": "Zlib",
         "name": "zlib License",
     },
+    "any-OSI": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "any-OSI",
+        "name": "Any OSI License",
+    },
     "bcrypt-Solar-Designer": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": False,
@@ -4245,6 +4377,13 @@ SPDX_LICENSES = {
         "isOsiApproved": False,
         "licenseId": "curl",
         "name": "curl License",
+    },
+    "cve-tou": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "cve-tou",
+        "name": "Common Vulnerability Enumeration ToU License",
     },
     "diffmark": {
         "isDeprecatedLicenseId": False,
@@ -4407,6 +4546,13 @@ SPDX_LICENSES = {
         "licenseId": "mplus",
         "name": "mplus Font License",
     },
+    "pkgconf": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "pkgconf",
+        "name": "pkgconf License",
+    },
     "pnmstitch": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": False,
@@ -4470,6 +4616,13 @@ SPDX_LICENSES = {
         "licenseId": "swrule",
         "name": "swrule License",
     },
+    "threeparttable": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "threeparttable",
+        "name": "threeparttable License",
+    },
     "ulem": {
         "isDeprecatedLicenseId": False,
         "isFsfLibre": False,
@@ -4518,6 +4671,13 @@ SPDX_LICENSES = {
         "isOsiApproved": False,
         "licenseId": "xpp",
         "name": "XPP License",
+    },
+    "xzoom": {
+        "isDeprecatedLicenseId": False,
+        "isFsfLibre": False,
+        "isOsiApproved": False,
+        "licenseId": "xzoom",
+        "name": "xzoom License",
     },
     "zlib-acknowledgement": {
         "isDeprecatedLicenseId": False,
