@@ -1,5 +1,4 @@
 ---
-version: "3.2"
 services:
   prometheus:
     image: prom/prometheus:v2.0.0
