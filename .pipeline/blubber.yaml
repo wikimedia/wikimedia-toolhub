@@ -235,7 +235,7 @@ variants:
         source: /srv/app
         destination: .
     entrypoint:
-      - /usr/local/bin/poetry
+      - poetry
       - run
       - python3
       - manage.py
