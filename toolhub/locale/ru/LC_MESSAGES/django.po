@@ -1,0 +1,1515 @@
+# Translation of Toolhub - Backend to Russian (русский)
+# Exported from translatewiki.net
+#
+# Author: Dimitri Nakashidze
+# Author: Kareyac
+# Author: Okras
+# Author: Tanzun
+msgid ""
+msgstr ""
+""
+"PO-Revision-Date: 2024-05-30 12:26:35+0000\n"
+"X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Project-Id-Version: Toolhub - Backend\n"
+"Report-Msgid-Bugs-To: translatewiki.net\n"
+"X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
+"X-Generator: MediaWiki 1.43.0-alpha; Translate 2024-04-24\n"
+"Plural-Forms: nplurals=3; plural=(n%10 == 1 && n%100 != 11) ? 0 : ( (n%10 >= 2 && n%10 <= 4 && (n%100 < 10 || n%100 >= 20)) ? 1 : 2 );\n"
+
+#: toolhub/apps/auditlog/apps.py:26
+msgid "Audit log"
+msgstr "Журнал аудита"
+
+#: toolhub/apps/auditlog/models.py:94
+msgid "created"
+msgstr "создано"
+
+#: toolhub/apps/auditlog/models.py:95
+msgid "updated"
+msgstr "обновлено"
+
+#: toolhub/apps/auditlog/models.py:96
+msgid "deleted"
+msgstr "удалено"
+
+#: toolhub/apps/auditlog/models.py:97
+msgid "added to"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:98
+msgid "removed from"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:99
+msgid "hid"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:100
+msgid "revealed"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:101
+msgid "patrolled"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:102
+msgid "featured"
+msgstr "Избранные"
+
+#: toolhub/apps/auditlog/models.py:103
+msgid "unfeatured"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:108
+msgid "timestamp"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:116
+msgid "user"
+msgstr "участник"
+
+#: toolhub/apps/auditlog/models.py:124
+msgid "content type"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:130
+msgid "object id"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:137
+msgid "object pk"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:142
+msgid "action"
+msgstr "действие"
+
+#: toolhub/apps/auditlog/models.py:156
+msgid "auditlog entry"
+msgstr ""
+
+#: toolhub/apps/auditlog/models.py:157
+msgid "auditlog entries"
+msgstr ""
+
+#: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
+msgid "Event parameters"
+msgstr "Параметры события"
+
+#: toolhub/apps/auditlog/schema.py:26
+msgid "Revision created by edit action"
+msgstr ""
+
+#: toolhub/apps/auditlog/schema.py:31
+msgid "Has the revision been marked as hidden?"
+msgstr ""
+
+#: toolhub/apps/auditlog/schema.py:36
+msgid "Has the revision been reviewed by a patroller?"
+msgstr ""
+
+#: toolhub/apps/auditlog/schema.py:41
+msgid "Name of tool related to the change"
+msgstr "Название инструмента, связанного с изменением"
+
+#: toolhub/apps/auditlog/schema.py:46
+msgid "Identity of user related to the change"
+msgstr ""
+
+#: toolhub/apps/auditlog/schema.py:59
+msgid "Tool list related to the change"
+msgstr ""
+
+#: toolhub/apps/auditlog/serializers.py:35
+msgid "Event action"
+msgstr ""
+
+#: toolhub/apps/auditlog/serializers.py:51
+msgid "Event target"
+msgstr ""
+
+#: toolhub/apps/auditlog/serializers.py:102
+msgid "Audit log entry"
+msgstr ""
+
+#: toolhub/apps/auditlog/views.py:57
+msgid "Only show logs for the given action types."
+msgstr ""
+
+#: toolhub/apps/auditlog/views.py:67
+msgid "Only show logs for the given target type."
+msgstr ""
+
+#: toolhub/apps/auditlog/views.py:73
+msgid "Only show logs occurring before the given date and time."
+msgstr ""
+
+#: toolhub/apps/auditlog/views.py:79
+msgid "Only show logs occurring after the given date and time."
+msgstr ""
+
+#: toolhub/apps/auditlog/views.py:84
+msgid "Only show logs for the given user."
+msgstr ""
+
+#: toolhub/apps/auditlog/views.py:90
+msgid "List all log entries."
+msgstr ""
+
+#: toolhub/apps/auditlog/views.py:93
+msgid "Info for a specific log entry."
+msgstr ""
+
+#: toolhub/apps/crawler/apps.py:26
+msgid "Toolinfo web crawler"
+msgstr ""
+
+#: toolhub/apps/crawler/serializers.py:31
+msgid "A URL that has been registered for crawling"
+msgstr ""
+
+#: toolhub/apps/crawler/serializers.py:44
+msgid "A URL to crawl"
+msgstr ""
+
+#: toolhub/apps/crawler/serializers.py:55
+msgid "Information about a single URL processed during a crawler run"
+msgstr ""
+
+#: toolhub/apps/crawler/serializers.py:78
+msgid "Summary of a single run of the crawler."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:42
+msgid "Register a new URL for crawling."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:46
+msgid "Information about a specific crawled URL."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:55
+msgid "Unregister a URL."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:58
+msgid "List all crawled URLs."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:85
+msgid "Get URLs created by the current user."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:104
+msgid "List all historic crawler runs."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:107
+msgid "Info for a specific crawler run."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:136
+msgid "List all urls crawled in a run."
+msgstr ""
+
+#: toolhub/apps/crawler/views.py:139
+msgid "Info for a specific url crawled in a run."
+msgstr ""
+
+#: toolhub/apps/lists/apps.py:26 toolhub/apps/toolinfo/models.py:742
+msgid "Lists"
+msgstr "Списки"
+
+#: toolhub/apps/lists/models.py:43
+msgid "Title of this list"
+msgstr "Название этого списка"
+
+#: toolhub/apps/lists/models.py:49
+msgid "Description of the list's theme or contents."
+msgstr "Описание темы или содержания списка."
+
+#: toolhub/apps/lists/models.py:61
+msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
+msgstr "Ссылка на страницу описания файла Wikimedia Commons для значка, изображающего список."
+
+#: toolhub/apps/lists/models.py:68
+msgid "If true, this list is a collection of the owning user's 'favorite' tools."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:74
+msgid "If true, this list is visible to everyone."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:78
+msgid "If true, this list has been marked as featured."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:90
+msgid "List of the names of the tools in this list."
+msgstr ""
+
+#: toolhub/apps/lists/models.py:169
+msgid "Position of this tool in the list."
+msgstr "Положение этого инструмента в списке."
+
+#: toolhub/apps/lists/serializers.py:49
+msgid "List of tools metadata."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:92
+msgid "Create or update a list."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:100 toolhub/apps/lists/serializers.py:210
+msgid "List of tool names."
+msgstr "Список названий инструментов."
+
+#: toolhub/apps/lists/serializers.py:202
+msgid "Historic revision of a list for generating diffs."
+msgstr "Историческая редакция списка для генерирования различий."
+
+#: toolhub/apps/lists/serializers.py:231
+msgid "Historic revision of a list."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:266
+msgid "Tool list revision."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:274
+msgid "Tool list revision detail."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:296
+msgid "Tool list revision difference."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:301
+#: toolhub/apps/toolinfo/serializers.py:383
+msgid "Revision to apply changes to."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:305
+#: toolhub/apps/toolinfo/serializers.py:387
+msgid "Revision after applying changes."
+msgstr ""
+
+#: toolhub/apps/lists/serializers.py:309
+msgid "Add a favorite tool."
+msgstr "Добавьте любимый инструмент."
+
+#: toolhub/apps/lists/serializers.py:314
+msgid "Tool name."
+msgstr "Название инструмента."
+
+#: toolhub/apps/lists/validators.py:36
+#, python-format
+msgid "Duplicate values in list: %(duplicates)s"
+msgstr "Повторяющиеся значения в списке: %(duplicates)s"
+
+#: toolhub/apps/lists/validators.py:55
+#, python-format
+msgid "Unknown tool: %(names)s"
+msgid_plural "Unknown tools: %(names)s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: toolhub/apps/lists/validators.py:74
+#, python-format
+msgid "Tool %(name)s is already favorited."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:68
+msgid "Only show lists that are featured."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:73
+msgid "Only show lists that are published."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:78
+msgid "Only show lists created by the given user."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:84
+msgid "Create a new list of tools."
+msgstr "Создайте новый список инструментов."
+
+#: toolhub/apps/lists/views.py:89
+msgid "Details of a specific list of tools."
+msgstr "Подробная информация о конкретном списке инструментов."
+
+#: toolhub/apps/lists/views.py:93
+msgid "Update a list of tools."
+msgstr "Обновить список инструментов."
+
+#: toolhub/apps/lists/views.py:101
+msgid "Delete a list of tools."
+msgstr "Удалить список инструментов."
+
+#: toolhub/apps/lists/views.py:104
+msgid "List all lists of tools."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:140
+msgid "Mark a list as featured."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:168
+msgid "Remove featured flag from a list."
+msgstr "Убрать отметку \"Избранные\" из списка."
+
+#: toolhub/apps/lists/views.py:200
+msgid "A unique integer value identifying this toollist."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:206 toolhub/apps/toolinfo/views.py:175
+msgid "Get revision information."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:211 toolhub/apps/toolinfo/views.py:180
+msgid "List revisions."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:216 toolhub/apps/toolinfo/views.py:185
+msgid "Compare two revisions to find difference."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:224 toolhub/apps/toolinfo/views.py:193
+msgid "A unique integer value identifying version to diff against."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:232
+msgid "Restore the list to this revision."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:239 toolhub/apps/toolinfo/views.py:209
+msgid "Undo all changes made between two revisions."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:247 toolhub/apps/toolinfo/views.py:217
+msgid "A unique integer value identifying version to undo until."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:255 toolhub/apps/toolinfo/views.py:226
+msgid "Hide revision text and edit summary from users."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:261 toolhub/apps/toolinfo/views.py:232
+msgid "Reveal a previously hidden revision."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:267 toolhub/apps/toolinfo/views.py:238
+msgid "Mark a revision as patrolled."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:369 toolhub/apps/toolinfo/views.py:364
+#, python-format
+msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
+msgstr ""
+
+#: toolhub/apps/lists/views.py:410 toolhub/apps/toolinfo/views.py:398
+#, python-format
+msgid "Undo revisions from %(first_id)s to %(last_id)s"
+msgstr ""
+
+#: toolhub/apps/lists/views.py:520 toolhub/apps/toolinfo/views.py:169
+msgid "Unique identifier for this tool."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:526
+msgid "Add a tool to favorites."
+msgstr "Добавить инструмент в избранное."
+
+#: toolhub/apps/lists/views.py:531
+msgid "Check to see if a tool is in favorites."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:537
+msgid "Remove a tool from favorites."
+msgstr ""
+
+#: toolhub/apps/lists/views.py:543
+msgid "Personal favorites."
+msgstr ""
+
+#: toolhub/apps/oauth2/apps.py:26
+msgid "OAuth 2.0 Authorization server API"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:30
+msgid "OAuth Client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:37
+msgid "Application name"
+msgstr "Название приложения"
+
+#: toolhub/apps/oauth2/serializers.py:38
+msgid "Something users will recognize and trust"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
+msgid "Authorization callback URL"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
+msgid "The application's callback URL."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:49
+msgid "Public identifier for this application"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:66
+msgid "OAuth Client application registration."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:74
+msgid "Secret known only to the application and the authorization server"
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:92
+msgid "OAuth Client application update."
+msgstr ""
+
+#: toolhub/apps/oauth2/serializers.py:117
+msgid "Authorized OAuth client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:39
+msgid "List all client applications."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:42
+msgid "Info for a client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:45
+msgid "Register a new client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:53
+msgid "Update a client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:57
+msgid "Delete a client application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:91
+msgid "List applications authorized by the current user."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:94
+msgid "Info for an authorized application."
+msgstr ""
+
+#: toolhub/apps/oauth2/views.py:106
+msgid "Revoke an application authorization."
+msgstr ""
+
+#: toolhub/apps/search/apps.py:26
+msgid "Search"
+msgstr "Поиск"
+
+#: toolhub/apps/search/schema.py:28
+msgid "Faceted classification"
+msgstr ""
+
+#: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
+msgid "Search string"
+msgstr ""
+
+#: toolhub/apps/search/schema.py:95
+#, python-format
+msgid "Search in %(fields)s"
+msgstr ""
+
+#: toolhub/apps/search/schema.py:97
+#, optional
+msgid ", "
+msgstr ""
+
+#: toolhub/apps/search/schema.py:182
+msgid "Field to use when ordering results."
+msgstr ""
+
+#: toolhub/apps/search/serializers.py:47 toolhub/apps/search/serializers.py:72
+msgid "Tool search results"
+msgstr ""
+
+#: toolhub/apps/search/serializers.py:61
+msgid "Tool autocomplete results"
+msgstr ""
+
+#: toolhub/apps/search/serializers.py:86
+msgid "ToolList autocomplete results"
+msgstr ""
+
+#: toolhub/apps/search/views.py:123
+msgid "Autocomplete for tools."
+msgstr ""
+
+#: toolhub/apps/search/views.py:157
+msgid "Faceted search for tools."
+msgstr ""
+
+#: toolhub/apps/search/views.py:276
+msgid "Autocomplete for toollists."
+msgstr ""
+
+#: toolhub/apps/search/views.py:316
+msgid "Full text search for toollists."
+msgstr ""
+
+#: toolhub/apps/toolinfo/apps.py:26
+msgid "Toolinfo"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:67
+msgid "web app"
+msgstr "веб-приложение"
+
+#: toolhub/apps/toolinfo/models.py:68
+msgid "desktop app"
+msgstr "настольное приложение"
+
+#: toolhub/apps/toolinfo/models.py:69
+msgid "bot"
+msgstr "бот"
+
+#: toolhub/apps/toolinfo/models.py:70
+msgid "gadget"
+msgstr "гаджет"
+
+#: toolhub/apps/toolinfo/models.py:71
+msgid "user script"
+msgstr "пользовательский скрипт"
+
+#: toolhub/apps/toolinfo/models.py:72
+msgid "command line tool"
+msgstr "инструмент командной строки"
+
+#: toolhub/apps/toolinfo/models.py:73
+msgid "coding framework"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:74
+msgid "lua module"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:75
+msgid "template"
+msgstr "шаблон"
+
+#: toolhub/apps/toolinfo/models.py:76
+msgid "other"
+msgstr "другое"
+
+#: toolhub/apps/toolinfo/models.py:82
+msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:92
+msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:99
+msgid "If true, this tool is unstable and can change or go offline at any time."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:107
+msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:125
+msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:133
+msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:146
+msgid "The manner in which the tool is used. Select one from the list of options."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:154
+msgid "A link to the repository where the tool code is hosted."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:161
+msgid "A link to the tool's API, if available."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:167
+msgid "A link to the tool's developer documentation, if available."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:175
+msgid "A link to the tool's user documentation, if available."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:183
+msgid "A link to location where the tool's user can leave feedback."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:191
+msgid "A link to the tool's privacy policy, if available."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:200
+msgid "A link to the tool's translation interface."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:208
+msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:464
+#, python-format
+msgid "Changing %(key)s after initial object creation is not allowed"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:504
+msgid "crawler"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:505
+msgid "api"
+msgstr "api"
+
+#: toolhub/apps/toolinfo/models.py:513
+msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:521
+msgid "Human readable tool name. Recommended limit of 25 characters."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:527
+msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:535
+msgid "A direct link to the tool or to instructions on how to use or install the tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:549
+msgid "The primary tool developers."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:557
+msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:566
+msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:575
+msgid "Alternate links to the tool or install documentation in different natural languages."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:586
+msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:595
+msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:603
+msgid "Organization(s) that sponsored the tool's development."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:610
+msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:621
+msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:632
+msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:642
+msgid "Origin of this tool record."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:712
+msgid "Admins"
+msgstr "Админы"
+
+#: toolhub/apps/toolinfo/models.py:713
+msgid "Organizers and program coordinators"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:714
+msgid "Editors and content contributors"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:715
+msgid "Readers and content consumers"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:716
+msgid "Researchers"
+msgstr "Исследователи"
+
+#: toolhub/apps/toolinfo/models.py:717
+msgid "Developers"
+msgstr "Разработчики"
+
+#: toolhub/apps/toolinfo/models.py:720
+msgid "Articles"
+msgstr "Статьи"
+
+#: toolhub/apps/toolinfo/models.py:721
+msgid "Audio"
+msgstr "Аудио"
+
+#: toolhub/apps/toolinfo/models.py:722
+msgid "Books"
+msgstr "Книги"
+
+#: toolhub/apps/toolinfo/models.py:724
+msgid "Data"
+msgstr "Данные"
+
+#: toolhub/apps/toolinfo/models.py:726
+msgid "Bibliographic data"
+msgstr "Библиографические данные"
+
+#: toolhub/apps/toolinfo/models.py:727
+msgid "Categories or labels"
+msgstr "Категории или ярлыки"
+
+#: toolhub/apps/toolinfo/models.py:728
+msgid "Diffs and revision data"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:729
+msgid "Event data"
+msgstr "Данные о событиях"
+
+#: toolhub/apps/toolinfo/models.py:730
+msgid "Geographic data"
+msgstr "Географические данные"
+
+#: toolhub/apps/toolinfo/models.py:731
+msgid "Linguistic data"
+msgstr "Языковые данные"
+
+#: toolhub/apps/toolinfo/models.py:732
+msgid "Page metadata"
+msgstr "Метаданные страницы"
+
+#: toolhub/apps/toolinfo/models.py:733
+msgid "Structured data"
+msgstr "Структурированные данные"
+
+#: toolhub/apps/toolinfo/models.py:734
+msgid "User data"
+msgstr "Пользовательские данные"
+
+#: toolhub/apps/toolinfo/models.py:737
+msgid "Discussions"
+msgstr "Обсуждения"
+
+#: toolhub/apps/toolinfo/models.py:738
+msgid "Drafts"
+msgstr "Черновики"
+
+#: toolhub/apps/toolinfo/models.py:739
+msgid "Emails"
+msgstr "Эл. почта"
+
+#: toolhub/apps/toolinfo/models.py:740
+msgid "Images"
+msgstr "Изображения"
+
+#: toolhub/apps/toolinfo/models.py:741
+msgid "Links"
+msgstr "Ссылки"
+
+#: toolhub/apps/toolinfo/models.py:743
+msgid "Logs"
+msgstr "Журналы"
+
+#: toolhub/apps/toolinfo/models.py:744
+msgid "Maps"
+msgstr "Карты"
+
+#: toolhub/apps/toolinfo/models.py:745
+msgid "References"
+msgstr "Примечания"
+
+#: toolhub/apps/toolinfo/models.py:746
+msgid "Software or code"
+msgstr "Программное обеспечение или код"
+
+#: toolhub/apps/toolinfo/models.py:747
+msgid "Templates"
+msgstr "Шаблоны"
+
+#: toolhub/apps/toolinfo/models.py:748
+msgid "Videos"
+msgstr "Видео"
+
+#: toolhub/apps/toolinfo/models.py:749
+msgid "Watchlists"
+msgstr "Списки наблюдения"
+
+#: toolhub/apps/toolinfo/models.py:750
+msgid "Webpages"
+msgstr "Веб-страницы"
+
+#: toolhub/apps/toolinfo/models.py:751
+msgid "Wikitext"
+msgstr "Вики-текст"
+
+#: toolhub/apps/toolinfo/models.py:754
+msgid "Analysis"
+msgstr "Анализ"
+
+#: toolhub/apps/toolinfo/models.py:755
+msgid "Annotating and linking"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:756
+msgid "Archiving and cleanup"
+msgstr "Архивирование и очистка"
+
+#: toolhub/apps/toolinfo/models.py:757
+msgid "Categorizing and tagging"
+msgstr "Категоризация и теги"
+
+#: toolhub/apps/toolinfo/models.py:758
+msgid "Citing and referencing"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:759
+msgid "Communication and supporting users"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:760
+msgid "Converting and formatting content"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:761
+msgid "Creating content"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:762
+msgid "Deleting and reverting"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:763
+msgid "Disambiguation"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:764
+msgid "Downloading or reusing content"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:765
+msgid "Editing or updating content"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:766
+msgid "Event and contest planning"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:767
+msgid "Hosting and maintaining tools"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:768
+msgid "Identifying policy violations"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:769
+msgid "Identifying spam"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:770
+msgid "Identifying vandalism"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:771
+msgid "Listing and ranking"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:772
+msgid "Merging content"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:773
+msgid "Migrating content"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:774
+msgid "Patrolling recent changes"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:775
+msgid "Project management and reporting"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:776
+msgid "Reading"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:777
+msgid "Recommending content"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:778
+msgid "Translating and localizing"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:779
+msgid "Uploading or importing"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:780
+msgid "User management"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:781
+msgid "Warning users"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:784
+msgid "Biography"
+msgstr "Биография"
+
+#: toolhub/apps/toolinfo/models.py:785
+msgid "Cultural heritage"
+msgstr "Культурное наследие"
+
+#: toolhub/apps/toolinfo/models.py:786
+msgid "Education"
+msgstr "Образование"
+
+#: toolhub/apps/toolinfo/models.py:787
+msgid "Geography and mapping"
+msgstr "География и картография"
+
+#: toolhub/apps/toolinfo/models.py:788
+msgid "GLAM"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:789
+msgid "History"
+msgstr "История"
+
+#: toolhub/apps/toolinfo/models.py:790
+msgid "Language and internationalization"
+msgstr "Язык и интернационализация"
+
+#: toolhub/apps/toolinfo/models.py:791
+msgid "Outreach"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:792
+msgid "Science"
+msgstr "Наука"
+
+#: toolhub/apps/toolinfo/models.py:805
+msgid "Wikidata item ID for the tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:810
+msgid "Who is the intended user of the tool?"
+msgstr "Кто является предполагаемым пользователем инструмента?"
+
+#: toolhub/apps/toolinfo/models.py:817
+msgid "With what type of content or data does the tool interact?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:824
+msgid "What type of task does the tool help with?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/models.py:831
+msgid "Is the tool targeted at helping in a specific type of wiki project or topic area?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:40
+msgid "SPDX license information"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:48
+msgid "SPDX license ID"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:53
+msgid "Full name of this license"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:58
+msgid "Is this license approved as 'open source' by the OSI?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:63
+msgid "Is this license approved as 'free software' by the FSF?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:68
+msgid "Is this license considered to be outdated?"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:72
+msgid "Community added information for a tool"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:105
+msgid "Summary of community added information for a tool"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:120
+msgid "Update annotations"
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:159
+msgid "Description of a tool"
+msgstr "Описание инструмента"
+
+#: toolhub/apps/toolinfo/serializers.py:211
+msgid "Summary of a tool"
+msgstr "Описание инструмента"
+
+#: toolhub/apps/toolinfo/serializers.py:235
+msgid "Create a tool"
+msgstr "Создать инструмент"
+
+#: toolhub/apps/toolinfo/serializers.py:301
+msgid "Update a tool"
+msgstr "Обновить инструмент"
+
+#: toolhub/apps/toolinfo/serializers.py:332
+msgid "Tool revision."
+msgstr "Версия инструмента."
+
+#: toolhub/apps/toolinfo/serializers.py:340
+msgid "Tool revision detail."
+msgstr ""
+
+#: toolhub/apps/toolinfo/serializers.py:378
+msgid "Tool revision difference."
+msgstr ""
+
+#: toolhub/apps/toolinfo/validators.py:34
+#, python-format
+msgid "%(value)s is not a recognized language code."
+msgstr ""
+
+#: toolhub/apps/toolinfo/validators.py:44
+#: toolhub/apps/toolinfo/validators.py:89
+#, python-format
+msgid "Expected a list of language codes but found %(type)s"
+msgstr ""
+
+#: toolhub/apps/toolinfo/validators.py:56
+#, python-format
+msgid "%(value)s is not a known SPDX license identifier."
+msgstr ""
+
+#: toolhub/apps/toolinfo/validators.py:66
+#, python-format
+msgid "Expected a url_multilingual dict but found %(type)s"
+msgstr ""
+
+#: toolhub/apps/toolinfo/validators.py:72
+msgid "Url_multilingual missing 'language' property."
+msgstr ""
+
+#: toolhub/apps/toolinfo/validators.py:79
+msgid "Url_multilingual missing 'url' property."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:68
+msgid "Create a new tool."
+msgstr "Создать новый инструмент."
+
+#: toolhub/apps/toolinfo/views.py:73
+msgid "Info for a specific tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:76
+msgid "Update info for a specific tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:84
+msgid "Delete a tool."
+msgstr "Удалить инструмент."
+
+#: toolhub/apps/toolinfo/views.py:87
+msgid "List all tools."
+msgstr "Список инструментов."
+
+#: toolhub/apps/toolinfo/views.py:129
+msgid "Additional information for a tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:143
+msgid "Update annotations for a specific tool."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:201
+msgid "Restore the tool to this revision."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:494
+msgid "Info for a specific SPDX license."
+msgstr ""
+
+#: toolhub/apps/toolinfo/views.py:502
+msgid "List all SPDX licenses."
+msgstr ""
+
+#: toolhub/apps/user/admin.py:37
+msgid "Personal info"
+msgstr "Личная информация"
+
+#: toolhub/apps/user/admin.py:39
+msgid "Permissions"
+msgstr "Разрешения"
+
+#: toolhub/apps/user/admin.py:50
+msgid "Important dates"
+msgstr "Важные даты"
+
+#: toolhub/apps/user/apps.py:26
+msgid "Toolhub user"
+msgstr "Участник Toolhub"
+
+#: toolhub/apps/user/models.py:36
+msgid "username"
+msgstr "имя участника"
+
+#: toolhub/apps/user/models.py:39
+msgid "Required. 255 characters or fewer."
+msgstr "Обязательно. 255 символов или меньше."
+
+#: toolhub/apps/user/models.py:42
+msgid "A user with that username already exists."
+msgstr "Участник с таким именем уже существует."
+
+#: toolhub/apps/user/serializers.py:41
+msgid "Action that the user can take"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:46
+msgid "Subject type to check user action on"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:51
+msgid "Criteria which restricts user action"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:63
+msgid "Information about the current user"
+msgstr "Информация о текущем участнике"
+
+#: toolhub/apps/user/serializers.py:69
+msgid "Numeric user id"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:77
+msgid "Cross-site request forgery prevention token"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:82
+msgid "CASL access control rules"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:94
+msgid "Information about the current locale"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:111
+msgid "User information"
+msgstr "Информация об участнике"
+
+#: toolhub/apps/user/serializers.py:123
+msgid "Group information"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:135
+msgid "Social authentication information for a user"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:165
+msgid "Detailed user information"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:180
+msgid "Detailed group information"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:198
+msgid "Owner-only API Token"
+msgstr ""
+
+#: toolhub/apps/user/serializers.py:205
+msgid "Authentication token"
+msgstr ""
+
+#: toolhub/apps/user/validators.py:29
+msgid "Enter a valid username. The characters `@` and `:` are not permitted."
+msgstr ""
+
+#: toolhub/apps/user/views.py:60
+msgid "Get information about the currently logged in user."
+msgstr ""
+
+#: toolhub/apps/user/views.py:88
+msgid "Get current locale."
+msgstr ""
+
+#: toolhub/apps/user/views.py:99
+msgid "Set locale."
+msgstr ""
+
+#: toolhub/apps/user/views.py:117
+msgid "List all active users."
+msgstr ""
+
+#: toolhub/apps/user/views.py:120
+msgid "Info for a specific user."
+msgstr ""
+
+#: toolhub/apps/user/views.py:141
+msgid "List all user groups."
+msgstr ""
+
+#: toolhub/apps/user/views.py:144
+msgid "Info for a user group."
+msgstr ""
+
+#: toolhub/apps/user/views.py:166
+msgid "Add a user to this group."
+msgstr ""
+
+#: toolhub/apps/user/views.py:177
+msgid "Remove a user from this group."
+msgstr ""
+
+#: toolhub/apps/user/views.py:222
+msgid "Get authentication token."
+msgstr ""
+
+#: toolhub/apps/user/views.py:225
+msgid "Create authentication token."
+msgstr ""
+
+#: toolhub/apps/user/views.py:228
+msgid "Delete authentication token."
+msgstr ""
+
+#: toolhub/apps/versioned/apps.py:26
+msgid "Versioned"
+msgstr ""
+
+#: toolhub/apps/versioned/exceptions.py:28
+msgid "Failed to apply patch."
+msgstr ""
+
+#: toolhub/apps/versioned/exceptions.py:35
+msgid "Current revision cannot be hidden."
+msgstr ""
+
+#: toolhub/apps/versioned/exceptions.py:43
+msgid "Revision is already marked as patrolled."
+msgstr ""
+
+#: toolhub/apps/versioned/exceptions.py:51
+msgid "Missing content for one or more revisions."
+msgstr ""
+
+#: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:69
+msgid "Has this revision been marked as hidden?"
+msgstr ""
+
+#: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:75
+msgid "Has this revision been reviewed by a patroller?"
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:21
+msgid "unique identifier of the version"
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:26
+msgid "unique identifier of the content being versioned"
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:31
+msgid "title describing the content being versioned"
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:36
+msgid "RFC 6902 application/json-patch+json data"
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:39
+msgid "RFC 6902 JSON patch operation"
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:44
+msgid "The operation to be performed"
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:50
+msgid "JSON-Pointer to location within document where operation is performed."
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:56
+msgid "The value to add, replace, or test."
+msgstr ""
+
+#: toolhub/apps/versioned/schema.py:62
+msgid "JSON-Pointer to location within document to move or copy the value from."
+msgstr ""
+
+#: toolhub/apps/versioned/serializers.py:51
+msgid "A unique integer value identifying this revision."
+msgstr ""
+
+#: toolhub/apps/versioned/serializers.py:63
+msgid "Comment by the user for the revision."
+msgstr ""
+
+#: toolhub/apps/versioned/serializers.py:81
+msgid "Content type of the revision."
+msgstr ""
+
+#: toolhub/apps/versioned/serializers.py:157
+msgid "username removed"
+msgstr ""
+
+#: toolhub/apps/versioned/serializers.py:158
+msgid "edit summary removed"
+msgstr ""
+
+#: toolhub/apps/versioned/views.py:40
+msgid "Only show recent changes by the given user."
+msgstr ""
+
+#: toolhub/apps/versioned/views.py:45
+msgid "Only show recent changes for the given target type."
+msgstr ""
+
+#: toolhub/apps/versioned/views.py:50
+msgid "Only show recent changes where suppressed field is either true or false"
+msgstr ""
+
+#: toolhub/apps/versioned/views.py:57
+msgid "Only show recent changes where patrolled field is either true or false"
+msgstr ""
+
+#: toolhub/apps/versioned/views.py:63
+msgid "Only show recent changes within this time range"
+msgstr ""
+
+#: toolhub/apps/versioned/views.py:68
+msgid "Get a paginated list of all revisions."
+msgstr ""
+
+#: toolhub/fields.py:40
+msgid "Enter a valid value conforming to the JSON Schema."
+msgstr ""
+
+#: toolhub/openapi.py:36
+msgid "API error"
+msgstr "Ошибка API"
+
+#: toolhub/serializers.py:112
+msgid "Edit summary"
+msgstr "Описание изменений"
+
+#: toolhub/serializers.py:113
+msgid "Description of the changes you are making."
+msgstr "Описание вносимых вами изменений."
+
+#: toolhub/serializers.py:124
+msgid "Comment describing an action."
+msgstr ""
+
+#: toolhub/settings.py:458
+msgid "Read scope"
+msgstr ""
+
+#: toolhub/settings.py:459
+msgid "Write scope"
+msgstr ""
+
+#: toolhub/settings.py:488
+#, optional
+msgid "Toolhub API"
+msgstr "API Toolhub"
+
+#: toolhub/templates/oauth2_provider/authorize.html:8
+#, python-format
+msgid "Authorize %(app_name)s?"
+msgstr ""
+
+#: toolhub/templates/oauth2_provider/authorize.html:15
+msgid "Application requires the following permissions"
+msgstr ""
+
+#: toolhub/templates/oauth2_provider/authorize.html:25
+msgid "Cancel"
+msgstr "Отмена"
+
+#: toolhub/templates/oauth2_provider/authorize.html:26
+msgid "Authorize"
+msgstr "Авторизовать"
+
+#: toolhub/templates/oauth2_provider/authorize.html:32
+#, python-format
+msgid "Error: %(message)s"
+msgstr "Ошибка: %(message)s"
+
+#: toolhub/templates/oauth2_provider/base.html:22
+#, optional
+msgid "Toolhub"
+msgstr ""
+
+#: vue/serializers.py:26
+msgid "Information used on the Toolhub Home view."
+msgstr ""
+
+#: vue/serializers.py:32
+msgid "Count of tools known to Toolhub."
+msgstr "Количество инструментов, известных Toolhub."
+
+#: vue/serializers.py:36
+msgid "Date and time of most recent crawler run."
+msgstr ""
+
+#: vue/serializers.py:41
+msgid "Number of tools added or updated in the most recent crawler run."
+msgstr ""
+
+#: vue/templates/vue/base.html:21
+msgid "Toolhub's user interface requires JavaScript to be enabled."
+msgstr ""
+
+#: vue/templates/vue/main.html:9
+msgid "LOADING"
+msgstr "ЗАГРУЗКА"
+
+#: vue/views.py:47
+msgid "Get information used on the Toolhub Home view."
+msgstr ""
+
