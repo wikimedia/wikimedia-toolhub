@@ -27,4 +27,4 @@ kill_envoy() {
 }
 trap 'kill_envoy' EXIT
 
-/usr/local/bin/poetry run python3 /srv/app/manage.py crawl --quiet
+poetry run python3 /srv/app/manage.py crawl --quiet
