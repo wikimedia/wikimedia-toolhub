@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hakimi97",
 			"Tofeiku"
 		]
 	},
@@ -10,6 +11,7 @@
 	"apidocumentation": "Pendokumenan API",
 	"apiurl": "URL API",
 	"auditlogs": "Log audit",
+	"author": "Pengarang",
 	"authors": "Pengarang",
 	"basicinfo": "Maklumat asas",
 	"bugtracker": "Penjejak Pepijat",
@@ -44,6 +46,7 @@
 	"publishchanges": "Terbit Perubahan",
 	"removeurl": "Buang URL",
 	"replacedby": "Diganti oleh",
+	"search-filter-author": "Pengarang",
 	"search-filter-content-types-book": "Buku",
 	"search-filter-content-types-data-event": "Data acara",
 	"search-filter-content-types-draft": "Draf",
