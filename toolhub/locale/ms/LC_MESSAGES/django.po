@@ -1,11 +1,12 @@
 # Translation of Toolhub - Backend to Malay (Bahasa Melayu)
 # Exported from translatewiki.net
 #
+# Author: Hakimi97
 # Author: Tofeiku
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-04-25 12:20:14+0000\n"
+"PO-Revision-Date: 2024-06-24 12:20:06+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1013,7 +1014,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "Capaian"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
