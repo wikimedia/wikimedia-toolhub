@@ -11,6 +11,7 @@
 	"apidocumentation": "Pendokumenan API",
 	"apiurl": "URL API",
 	"auditlogs": "Log audit",
+	"auditlogs-targettype-user": "pengguna",
 	"author": "Pengarang",
 	"authors": "Pengarang",
 	"basicinfo": "Maklumat asas",
