@@ -108,6 +108,7 @@
 	"search-filter-subject-domains-science": "Wëssenschaft",
 	"search-filter-tool-type-bot": "Bot",
 	"search-filter-tool-type-gadget": "Gadget",
+	"search-filter-tool-type-lua-module": "Lua-Modul",
 	"search-filter-ui-language": "UI Sprooch",
 	"search-filter-wiki-commons": "Wikimedia Commons",
 	"search-filter-wiki-mediawiki": "MediaWiki Wiki",
