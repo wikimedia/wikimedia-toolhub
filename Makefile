@@ -27,6 +27,8 @@ ALL_TESTS := test-python test-nodejs
 
 # Set defaults for variables potentially initialized by envvars file
 DOCS_HTTP_PORT ?= 8080
+# Prefer Compose v2, but allow override on hosts that only have v1
+COMPOSE ?= docker compose
 
 help:
 	@echo "Make targets:"
@@ -36,86 +38,86 @@ help:
 .PHONY: help
 
 start: .env  ## Start the docker-compose stack
-	docker-compose up --build --detach
+	$(COMPOSE) up --build --detach
 .PHONY: start
 
 stop:  ## Stop the docker-compose stack
-	docker-compose stop
+	$(COMPOSE) stop
 .PHONY: stop
 
 restart: stop start  ## Restart the docker-compose stack
 .PHONY: restart
 
 status:  ## Show status of the docker-compose stack
-	docker-compose ps
+	$(COMPOSE) ps
 .PHONY: status
 
 web-shell:  ## Get an interactive shell inside the web container
-	docker-compose exec web bash
+	$(COMPOSE) exec web bash
 .PHONY: web-shell
 
 nodejs-shell:  ## Get an interactive shell inside the nodejs container
-	docker-compose exec nodejs bash
+	$(COMPOSE) exec nodejs bash
 .PHONY: nodejs-shell
 
 db-shell:  ## Get an interactive shell inside the db container
 	grep DOCKER_DB_MYSQL_ROOT_PASSWORD .env
-	docker-compose exec db bash
+	$(COMPOSE) exec db bash
 .PHONY: db-shell
 
 search-shell:  ## Get an interactive shell inside the search container
-	docker-compose exec search bash
+	$(COMPOSE) exec search bash
 .PHONY: search-shell
 
 oauth-client: .env  ## Start the oauth-client app container in the foreground
-	docker-compose \
+	$(COMPOSE) \
 		--file docker-compose.yaml \
 		--file contrib/oauth-client-example/docker-compose.oauth.yaml \
 		up --build oauth-client
 .PHONY: oauth-client
 
 prometheus:  ## Start the prometheus monitoring container
-	docker-compose \
+	$(COMPOSE) \
 		--file docker-compose.yaml \
 		--file contrib/prometheus/docker-compose.prometheus.yaml \
 		up --detach prometheus
 .PHONY: prometheus
 
 prometheus-shell: prometheus  ## Get an interactive shell inside the prometheus container
-	docker-compose \
+	$(COMPOSE) \
 		--file docker-compose.yaml \
 		--file contrib/prometheus/docker-compose.prometheus.yaml \
 		exec prometheus sh
 .PHONY: prometheus-shell
 
 tail:  ## Tail logs from the docker-compose stack
-	docker-compose logs --follow
+	$(COMPOSE) logs --follow
 .PHONY: tail
 
 migrate: ## Run `manage.py migrate`
-	docker-compose exec web $(DOCKERIZE) -wait tcp://db:3306 \
+	$(COMPOSE) exec web $(DOCKERIZE) -wait tcp://db:3306 \
 		poetry run python3 manage.py migrate
 .PHONY: migrate
 
 createinitialrevisions: ## Run `manage.py createinitialrevisions`
-	docker-compose exec web $(DOCKERIZE) -wait tcp://db:3306 \
+	$(COMPOSE) exec web $(DOCKERIZE) -wait tcp://db:3306 \
 		poetry run python3 manage.py createinitialrevisions
 .PHONY: createinitialrevisions
 
 index: ## Create and populate search index
-	docker-compose exec web $(DOCKERIZE) \
+	$(COMPOSE) exec web $(DOCKERIZE) \
 		-wait tcp://db:3306 -wait tcp://search:9200 \
 		poetry run python3 manage.py search_index --rebuild -f
 .PHONY: index
 
 crawl: ## Run crawler
-	docker-compose exec web $(DOCKERIZE) \
+	$(COMPOSE) exec web $(DOCKERIZE) \
 		-wait tcp://db:3306 -wait tcp://search:9200 \
 		poetry run python3 manage.py crawl --quiet
 .PHONY: crawl
 
 make-admin-user:
-	docker-compose exec web  $(DOCKERIZE) -wait tcp://db:3306 sh -c " \
+	$(COMPOSE) exec web  $(DOCKERIZE) -wait tcp://db:3306 sh -c " \
 		poetry run python3 manage.py shell -c \"import os; from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'admin@localhost', os.environ['DJANGO_SUPERUSER_PASSWORD']);\" \
 	"
 .PHONY: make-admin-user
@@ -131,7 +133,7 @@ test-python: test-python-lint test-python-unit
 
 test-python-lint:  ## Run linter checks for Python code
 	@echo "== Lint Python =="
-	docker-compose exec web sh -c " \
+	$(COMPOSE) exec web sh -c " \
 		export HOME=/tmp/runtime-home; \
 		poetry check \
 		&& poetry run flake8 \
@@ -142,7 +144,7 @@ test-python-lint:  ## Run linter checks for Python code
 
 test-python-unit:  ## Run unit tests for Python code
 	@echo "== Test Python =="
-	docker-compose exec web sh -c " \
+	$(COMPOSE) exec web sh -c " \
 		export HOME=/tmp/runtime-home; \
 		export DJANGO_SECRET_KEY='this is not really a secret'; \
 		export DB_ENGINE='django.db.backends.sqlite3'; \
@@ -160,7 +162,7 @@ test-nodejs: test-nodejs-lint test-nodejs-unit
 
 test-nodejs-lint:  ## Run linter checks for nodejs code
 	@echo "== Lint Nodejs =="
-	docker-compose exec nodejs sh -c " \
+	$(COMPOSE) exec nodejs sh -c " \
 		export HOME=/tmp/runtime-home; \
 		npm run-script lint \
 	"
@@ -168,26 +170,26 @@ test-nodejs-lint:  ## Run linter checks for nodejs code
 
 test-nodejs-unit:  ## Run unit tests for nodejs code
 	@echo "== Test Nodejs =="
-	docker-compose exec nodejs sh -c " \
+	$(COMPOSE) exec nodejs sh -c " \
 		export HOME=/tmp/runtime-home; \
 		npm run-script unit \
 	"
 .PHONY: test-nodejs-unit
 
 schemas:  ## Create/update versioned json schema documents
-	docker-compose exec nodejs npm run-script schemas:generate
+	$(COMPOSE) exec nodejs npm run-script schemas:generate
 .PHONY: schemas
 
 messages:  ## Create/update translatable messages
 	@echo "== Make messages =="
-	docker-compose exec web sh -c " \
+	$(COMPOSE) exec web sh -c " \
 		poetry run ./manage.py makemessages -l en -i node_modules \
 		&& poetry run ./manage.py compilemessages --exclude qqq \
 	"
 .PHONY: messages
 
 docs:  ## Build sphinx docs
-	docker-compose exec web sh -c " \
+	$(COMPOSE) exec web sh -c " \
 		poetry run sphinx-apidoc -f -o docs/source toolhub \
 		&& rm docs/source/modules.rst \
 		&& poetry run sphinx-build -b html docs/ docs/_build/html \
@@ -196,7 +198,7 @@ docs:  ## Build sphinx docs
 
 serve-docs:  ## Live-serve sphinx docs
 	@echo "View sphinx docs at http://localhost:${DOCS_HTTP_PORT}/"
-	docker-compose exec web sh -c " \
+	$(COMPOSE) exec web sh -c " \
 		poetry run sphinx-autobuild -b \
 		html --host 0.0.0.0 --port 8080 docs docs/_build/html \
 	"
@@ -206,12 +208,12 @@ artifacts: schemas messages docs  ## Generate code & doc artifacts
 .PHONY: artifacts
 
 format-code:  ## Reformat Python and JS files
-	docker-compose exec web poetry run black .
-	docker-compose exec nodejs npm run-script format
+	$(COMPOSE) exec web poetry run black .
+	$(COMPOSE) exec nodejs npm run-script format
 .PHONY: format-code
 
 generate-spdx:  ## Generate a new SPDX data file
-	docker-compose exec web sh -c " \
+	$(COMPOSE) exec web sh -c " \
 		poetry run python3 toolhub/apps/toolinfo/generate_spdx.py > \
 			toolhub/apps/toolinfo/spdx.py && \
 		poetry run black toolhub/apps/toolinfo/spdx.py && \
