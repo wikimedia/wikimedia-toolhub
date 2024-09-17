@@ -597,14 +597,14 @@ tests = ["jinja2 (>=2.9.6)", "mock (==1.0.1)", "pep8 (==1.4.6)", "pytest (<4.0)"
 
 [[package]]
 name = "django-elasticsearch-dsl"
-version = "7.2.2"
+version = "7.4"
 description = "Wrapper around elasticsearch-dsl-py for django models"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "django-elasticsearch-dsl-7.2.2.tar.gz", hash = "sha256:811d3909b3387fd55c19d9bbcf0e9a9b234f085df3f8422d59e7519a5f733e0e"},
-    {file = "django_elasticsearch_dsl-7.2.2-py2.py3-none-any.whl", hash = "sha256:3c58a254a6318b169eb904d41d802924b99ea8e53ddc2c596ebba90506cf47fa"},
+    {file = "django-elasticsearch-dsl-7.4.tar.gz", hash = "sha256:81c5cd72dcc7424ff4e372db56672863c70c5373624cd6ec2a4e40c83265c6d6"},
+    {file = "django_elasticsearch_dsl-7.4-py2.py3-none-any.whl", hash = "sha256:5296f1c69bc86846fc7962d2997fb90a59480dc90766ab6db4da583bd0d62e19"},
 ]
 
 [package.dependencies]
