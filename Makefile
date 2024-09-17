@@ -38,7 +38,7 @@ help:
 .PHONY: help
 
 start: .env  ## Start the docker-compose stack
-	$(COMPOSE) up --build --detach
+	DOCKER_DEFAULT_PLATFORM=linux/amd64 $(COMPOSE) up --build --detach
 .PHONY: start
 
 stop:  ## Stop the docker-compose stack
