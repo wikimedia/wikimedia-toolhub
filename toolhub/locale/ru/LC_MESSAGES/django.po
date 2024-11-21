@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-10-24 12:20:16+0000\n"
+"PO-Revision-Date: 2024-11-21 12:17:28+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -523,7 +523,7 @@ msgstr ""
 
 #: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
 msgid "Search string"
-msgstr ""
+msgstr "Поисковый запрос"
 
 #: toolhub/apps/search/schema.py:95
 #, python-format
@@ -569,7 +569,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr ""
+msgstr "Toolinfo"
 
 #: toolhub/apps/toolinfo/models.py:67
 msgid "web app"
@@ -601,7 +601,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:74
 msgid "lua module"
-msgstr ""
+msgstr "модуль lua"
 
 #: toolhub/apps/toolinfo/models.py:75
 msgid "template"
@@ -750,15 +750,15 @@ msgstr "Админы"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
-msgstr ""
+msgstr "Организаторы и координаторы программ"
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr ""
+msgstr "Редакторы и авторы контента"
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
-msgstr ""
+msgstr "Читатели и потребители контента"
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
@@ -794,7 +794,7 @@ msgstr "Категории или ярлыки"
 
 #: toolhub/apps/toolinfo/models.py:728
 msgid "Diffs and revision data"
-msgstr ""
+msgstr "Различия и данные версий"
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
@@ -894,7 +894,7 @@ msgstr "Категоризация и теги"
 
 #: toolhub/apps/toolinfo/models.py:758
 msgid "Citing and referencing"
-msgstr ""
+msgstr "Цитирование и ссылки"
 
 #: toolhub/apps/toolinfo/models.py:759
 msgid "Communication and supporting users"
@@ -914,11 +914,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr ""
+msgstr "Неоднозначность"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr ""
+msgstr "Загрузка или повторное использование контента"
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
@@ -938,11 +938,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
-msgstr ""
+msgstr "Выявление спама"
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr ""
+msgstr "Выявление вандализма"
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
@@ -986,7 +986,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr ""
+msgstr "Предупреждение участников"
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
@@ -1263,7 +1263,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
-msgstr ""
+msgstr "Токен аутентификации"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"GianAntonucci"
 		]
 	},
 	"add": "Agghiunci",
@@ -21,7 +22,7 @@
 	"delete": "Cancella",
 	"description": "Discrizzioni",
 	"hide": "ammuccia",
-	"home": "Pàggina principali",
+	"home": "Pàggina mastra",
 	"icon": "Cona",
 	"invalid": "nun vàliddu",
 	"language": "Lingua",

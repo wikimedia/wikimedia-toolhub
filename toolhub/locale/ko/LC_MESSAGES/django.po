@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-10-24 12:20:15+0000\n"
+"PO-Revision-Date: 2024-11-21 12:17:27+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1466,7 +1466,7 @@ msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
