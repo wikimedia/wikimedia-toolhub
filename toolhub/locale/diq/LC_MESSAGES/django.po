@@ -2,11 +2,12 @@
 # Exported from translatewiki.net
 #
 # Author: 1917 Ekim Devrimi
+# Author: GolyatGeri
 # Author: Mirzali
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-10-24 12:20:13+0000\n"
+"PO-Revision-Date: 2024-11-28 12:16:40+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,31 +36,31 @@ msgstr "Esteriya"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr ""
+msgstr "Hetê ra debiya"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr ""
+msgstr "Ra wedariya"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr ""
+msgstr "nımıte"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr ""
+msgstr "Kerd sey veri"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr ""
+msgstr "Çımerziyaye"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr ""
+msgstr "Verçıme"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "Peygoş"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
@@ -95,7 +96,7 @@ msgstr "dekerdekanê auditlog"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "Parametrey şeniye"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
@@ -223,7 +224,7 @@ msgstr "Listeyi"
 
 #: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
-msgstr ""
+msgstr "Sernamey na lista"
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
