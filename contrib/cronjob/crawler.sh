@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2021 Wikimedia Foundation and contributors.
+# Copyright (c) 2025 Wikimedia Foundation and contributors.
 # All Rights Reserved.
 #
 # This file is part of Toolhub.
@@ -19,12 +19,4 @@
 
 set -Eeuo pipefail
 
-# Send shutdown signal to envoy process running at 127.0.0.1:1666
-# https://envoyproxy.io/docs/envoy/latest/operations/admin#post--quitquitquit
-# Bug: T292861
-kill_envoy() {
-    printf "POST /quitquitquit HTTP/1.0\r\n\r\n" >/dev/tcp/127.0.0.1/1666
-}
-trap 'kill_envoy' EXIT
-
-poetry run python3 /srv/app/manage.py crawl --quiet
+exec poetry run python3 /srv/app/manage.py crawl --quiet
