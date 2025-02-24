@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2024-10-24 12:20:16+0000\n"
+"PO-Revision-Date: 2025-02-24 12:17:59+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -107,7 +107,7 @@ msgstr "Ali je bila redakcija označena kot skrita?"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr "Ali je redakcijo pregledal pregledovalec?"
+msgstr "Ali je redakcijo pregledal patruljnik?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
@@ -1342,7 +1342,7 @@ msgstr "Je bila ta redakcija označena kot skrita?"
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:75
 msgid "Has this revision been reviewed by a patroller?"
-msgstr "Je to redakcijo pregledal pregledovalec?"
+msgstr "Je to redakcijo pregledal patruljnik?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the version"
