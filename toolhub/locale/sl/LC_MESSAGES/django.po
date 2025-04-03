@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-03-13 12:18:43+0000\n"
+"PO-Revision-Date: 2025-04-03 12:17:55+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -865,7 +865,7 @@ msgstr "Videoposnetki"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
-msgstr "Spiski nadzorov"
+msgstr "Nadzorni seznami"
 
 #: toolhub/apps/toolinfo/models.py:750
 msgid "Webpages"
