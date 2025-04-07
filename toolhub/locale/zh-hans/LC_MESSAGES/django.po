@@ -3,6 +3,7 @@
 #
 # Author: )8
 # Author: 500000000006城
+# Author: Chimes
 # Author: Colathewikian
 # Author: GuoPC
 # Author: Interestinghe
@@ -17,7 +18,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-03-13 12:18:44+0000\n"
+"PO-Revision-Date: 2025-04-07 12:19:34+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -70,7 +71,7 @@ msgstr "典范"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "未收录"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
@@ -90,7 +91,7 @@ msgstr "对象id"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
-msgstr ""
+msgstr "对象 pk"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
@@ -98,7 +99,7 @@ msgstr "操作"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr ""
+msgstr "审计日志项目"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
