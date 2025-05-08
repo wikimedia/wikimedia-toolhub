@@ -11,12 +11,12 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-03-13 12:18:43+0000\n"
+"PO-Revision-Date: 2025-05-08 12:21:41+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt-BR\n"
-"X-Generator: MediaWiki 1.44.0-alpha; Translate 2025-03-15\n"
+"X-Generator: MediaWiki 1.45.0-alpha; Translate 2025-03-15\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Project-Id-Version: Toolhub - Backend\n"
 "Report-Msgid-Bugs-To: translatewiki.net\n"
@@ -765,11 +765,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
-msgstr ""
+msgstr "Pesquisadores"
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr ""
+msgstr "Desenvolvedores"
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
@@ -837,11 +837,11 @@ msgstr "E-mails"
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
-msgstr ""
+msgstr "Imagens"
 
 #: toolhub/apps/toolinfo/models.py:741
 msgid "Links"
-msgstr ""
+msgstr "Links"
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
@@ -849,7 +849,7 @@ msgstr "Registros"
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
-msgstr ""
+msgstr "Mapas"
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
@@ -861,7 +861,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:747
 msgid "Templates"
-msgstr ""
+msgstr "Predefinições"
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
@@ -869,7 +869,7 @@ msgstr "Vídeos"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
-msgstr ""
+msgstr "Páginas vigiadas"
 
 #: toolhub/apps/toolinfo/models.py:750
 msgid "Webpages"
@@ -993,7 +993,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
-msgstr ""
+msgstr "Biografia"
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
@@ -1009,11 +1009,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
-msgstr ""
+msgstr "GLAM"
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
-msgstr ""
+msgstr "Histórico"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
@@ -1021,7 +1021,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "Crescimento"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
