@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-05-08 12:21:40+0000\n"
+"PO-Revision-Date: 2025-05-22 12:25:08+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -323,7 +323,7 @@ msgstr[0] ""
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr "ツール%(name)sはすでにお気に入りになっています。"
+msgstr "ツール%(name)sは既にお気に入りになっています。"
 
 #: toolhub/apps/lists/views.py:68
 msgid "Only show lists that are featured."
