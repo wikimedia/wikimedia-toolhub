@@ -3,6 +3,7 @@
 #
 # Author: Buehl
 # Author: Buntschann
+# Author: Foomin10
 # Author: Hzy980512
 # Author: LaMagiaaa
 # Author: MathXplore
@@ -12,7 +13,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-05-22 12:25:08+0000\n"
+"PO-Revision-Date: 2025-05-26 12:21:51+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -607,7 +608,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:75
 msgid "template"
-msgstr ""
+msgstr "テンプレート"
 
 #: toolhub/apps/toolinfo/models.py:76
 msgid "other"
@@ -996,7 +997,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr ""
+msgstr "文化遺産"
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
@@ -1004,11 +1005,11 @@ msgstr "教育"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr ""
+msgstr "地理とマッピング"
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
-msgstr ""
+msgstr "GLAM"
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
@@ -1016,11 +1017,11 @@ msgstr "履歴"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
-msgstr ""
+msgstr "言語と国際化"
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "アウトリーチ活動"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
