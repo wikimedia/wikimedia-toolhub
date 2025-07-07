@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-06-19 12:19:27+0000\n"
+"PO-Revision-Date: 2025-07-07 12:20:34+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -431,7 +431,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:537
 msgid "Remove a tool from favorites."
-msgstr ""
+msgstr "Удалить инструмент из избранного."
 
 #: toolhub/apps/lists/views.py:543
 msgid "Personal favorites."
@@ -966,7 +966,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr ""
+msgstr "Чтение"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
