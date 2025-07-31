@@ -10,10 +10,11 @@
 # Author: MarcoAurelio
 # Author: Rodney Araujo
 # Author: Superzerocool
+# Author: Yupik
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-05-08 12:21:39+0000\n"
+"PO-Revision-Date: 2025-07-31 12:26:36+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1199,7 +1200,7 @@ msgstr "Usuario de Toolhub"
 
 #: toolhub/apps/user/models.py:36
 msgid "username"
-msgstr "mombre de usuario"
+msgstr "nombre de usuario"
 
 #: toolhub/apps/user/models.py:39
 msgid "Required. 255 characters or fewer."

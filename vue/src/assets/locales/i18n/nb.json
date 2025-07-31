@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jon Harald Søby",
-			"Premeditated"
+			"Premeditated",
+			"Yupik"
 		]
 	},
 	"add": "Legg til",
@@ -60,6 +61,7 @@
 	"recentchanges-type": "Type",
 	"recentchanges-action": "Handling",
 	"recentchanges-action-unpatrolled": "Upatruljert",
+	"recentchanges-username": "Brukernavn",
 	"authorizedapps": "Autoriserte apper",
 	"author": "Opphavsperson",
 	"authors": "Opphavsperson(er)",
