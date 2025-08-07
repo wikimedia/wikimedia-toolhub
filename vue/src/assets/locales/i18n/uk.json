@@ -4,6 +4,7 @@
 			"DDPAT",
 			"Ice bulldog",
 			"Kareyac",
+			"Ата",
 			"Пан Хаунд"
 		]
 	},
@@ -218,6 +219,7 @@
 	"search": "Пошук",
 	"search-filter-author": "Автор",
 	"search-filter-clear-selected": "Очистити все",
+	"search-filter-content-types-data-event": "Дата події",
 	"search-filter-keywords": "Ключові слова",
 	"search-filter-license": "Ліцензія",
 	"search-filter-missing-value": "(відсутній)",

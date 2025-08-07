@@ -1,10 +1,7 @@
-# Translation of Toolhub - Backend to Russian (русский)
+# Translation of Toolhub - Backend to Pashto (پښتو)
 # Exported from translatewiki.net
 #
-# Author: Dimitri Nakashidze
-# Author: Kareyac
-# Author: Okras
-# Author: Tanzun
+# Author: شاه زمان پټان
 msgid ""
 msgstr ""
 ""
@@ -12,96 +9,96 @@ msgstr ""
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
+"Language: ps\n"
 "Project-Id-Version: Toolhub - Backend\n"
 "Report-Msgid-Bugs-To: translatewiki.net\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Generator: MediaWiki 1.45.0-alpha; Translate 2025-07-31\n"
-"Plural-Forms: nplurals=3; plural=(n%10 == 1 && n%100 != 11) ? 0 : ( (n%10 >= 2 && n%10 <= 4 && (n%100 < 10 || n%100 >= 20)) ? 1 : 2 );\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr "Журнал аудита"
+msgstr ""
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "created"
-msgstr "создано"
+msgstr "جوړشوی"
 
 #: toolhub/apps/auditlog/models.py:95
 msgid "updated"
-msgstr "обновлено"
+msgstr "هم‌مهاله‌شوی"
 
 #: toolhub/apps/auditlog/models.py:96
 msgid "deleted"
-msgstr "удалено"
+msgstr "ړنگ‌شوی"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr "добавлено в"
+msgstr "ته ورگډشوی"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr "удалено из"
+msgstr "لرې‌شوی له"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr ""
+msgstr "پټ"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr ""
+msgstr "رابرسېره"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr ""
+msgstr "لمېسل‌څار"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr "Избранные"
+msgstr "ټاکلی"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "ناټاکلی"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
-msgstr ""
+msgstr "وخت‌ټاپه"
 
 #: toolhub/apps/auditlog/models.py:116
 msgid "user"
-msgstr "участник"
+msgstr "کارن"
 
 #: toolhub/apps/auditlog/models.py:124
 msgid "content type"
-msgstr ""
+msgstr "منځپانگې ډول"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr ""
+msgstr "څيز پېژند"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
-msgstr ""
+msgstr "څيز لومړنۍ کونجي"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
-msgstr "действие"
+msgstr "چاره"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr ""
+msgstr "پلټنې‌يادښت ننوتنه"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
-msgstr ""
+msgstr "پلټنې‌يادښت ننوتنې"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr "Параметры события"
+msgstr "پېښې پاراميترونه"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr ""
+msgstr "بياکتنه د سمون چارې له خوا رامنځته شوه"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
@@ -113,7 +110,7 @@ msgstr ""
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr "Название инструмента, связанного с изменением"
+msgstr ""
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
@@ -125,11 +122,11 @@ msgstr ""
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
-msgstr ""
+msgstr "پېښې چاره"
 
 #: toolhub/apps/auditlog/serializers.py:51
 msgid "Event target"
-msgstr ""
+msgstr "پېښې موخه"
 
 #: toolhub/apps/auditlog/serializers.py:102
 msgid "Audit log entry"
@@ -221,19 +218,19 @@ msgstr ""
 
 #: toolhub/apps/lists/apps.py:26 toolhub/apps/toolinfo/models.py:742
 msgid "Lists"
-msgstr "Списки"
+msgstr "ليکلړونه"
 
 #: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
-msgstr "Название этого списка"
+msgstr ""
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
-msgstr "Описание темы или содержания списка."
+msgstr ""
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
-msgstr "Ссылка на страницу описания файла Wikimedia Commons для значка, изображающего список."
+msgstr ""
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
@@ -253,7 +250,7 @@ msgstr ""
 
 #: toolhub/apps/lists/models.py:169
 msgid "Position of this tool in the list."
-msgstr "Положение этого инструмента в списке."
+msgstr ""
 
 #: toolhub/apps/lists/serializers.py:49
 msgid "List of tools metadata."
@@ -265,11 +262,11 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:100 toolhub/apps/lists/serializers.py:210
 msgid "List of tool names."
-msgstr "Список названий инструментов."
+msgstr ""
 
 #: toolhub/apps/lists/serializers.py:202
 msgid "Historic revision of a list for generating diffs."
-msgstr "Историческая редакция списка для генерирования различий."
+msgstr ""
 
 #: toolhub/apps/lists/serializers.py:231
 msgid "Historic revision of a list."
@@ -299,16 +296,16 @@ msgstr ""
 
 #: toolhub/apps/lists/serializers.py:309
 msgid "Add a favorite tool."
-msgstr "Добавьте любимый инструмент."
+msgstr ""
 
 #: toolhub/apps/lists/serializers.py:314
 msgid "Tool name."
-msgstr "Название инструмента."
+msgstr "توکي نوم."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr "Повторяющиеся значения в списке: %(duplicates)s"
+msgstr ""
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
@@ -316,7 +313,6 @@ msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #: toolhub/apps/lists/validators.py:74
 #, python-format
@@ -337,19 +333,19 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:84
 msgid "Create a new list of tools."
-msgstr "Создайте новый список инструментов."
+msgstr ""
 
 #: toolhub/apps/lists/views.py:89
 msgid "Details of a specific list of tools."
-msgstr "Подробная информация о конкретном списке инструментов."
+msgstr ""
 
 #: toolhub/apps/lists/views.py:93
 msgid "Update a list of tools."
-msgstr "Обновить список инструментов."
+msgstr ""
 
 #: toolhub/apps/lists/views.py:101
 msgid "Delete a list of tools."
-msgstr "Удалить список инструментов."
+msgstr ""
 
 #: toolhub/apps/lists/views.py:104
 msgid "List all lists of tools."
@@ -361,7 +357,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:168
 msgid "Remove featured flag from a list."
-msgstr "Убрать отметку \"Избранные\" из списка."
+msgstr ""
 
 #: toolhub/apps/lists/views.py:200
 msgid "A unique integer value identifying this toollist."
@@ -423,7 +419,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:526
 msgid "Add a tool to favorites."
-msgstr "Добавить инструмент в избранное."
+msgstr "توکی خواپورو ته ورگډول."
 
 #: toolhub/apps/lists/views.py:531
 msgid "Check to see if a tool is in favorites."
@@ -431,7 +427,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:537
 msgid "Remove a tool from favorites."
-msgstr "Удалить инструмент из избранного."
+msgstr ""
 
 #: toolhub/apps/lists/views.py:543
 msgid "Personal favorites."
@@ -447,7 +443,7 @@ msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:37
 msgid "Application name"
-msgstr "Название приложения"
+msgstr ""
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
@@ -515,7 +511,7 @@ msgstr ""
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr "Поиск"
+msgstr "پلټل"
 
 #: toolhub/apps/search/schema.py:28
 msgid "Faceted classification"
@@ -523,7 +519,7 @@ msgstr ""
 
 #: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
 msgid "Search string"
-msgstr "Поисковый запрос"
+msgstr ""
 
 #: toolhub/apps/search/schema.py:95
 #, python-format
@@ -541,7 +537,7 @@ msgstr ""
 
 #: toolhub/apps/search/serializers.py:47 toolhub/apps/search/serializers.py:72
 msgid "Tool search results"
-msgstr ""
+msgstr "توک پلټلو پايلې"
 
 #: toolhub/apps/search/serializers.py:61
 msgid "Tool autocomplete results"
@@ -561,39 +557,39 @@ msgstr ""
 
 #: toolhub/apps/search/views.py:276
 msgid "Autocomplete for toollists."
-msgstr ""
+msgstr "توک‌لړونو لپاره خپلکاره‌بښپړېدل."
 
 #: toolhub/apps/search/views.py:316
 msgid "Full text search for toollists."
-msgstr ""
+msgstr "توک‌لړونو لپاره بشپړ ليک پلټل."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr "Toolinfo"
+msgstr "توک‌مالومات"
 
 #: toolhub/apps/toolinfo/models.py:67
 msgid "web app"
-msgstr "веб-приложение"
+msgstr "وېب کاريال"
 
 #: toolhub/apps/toolinfo/models.py:68
 msgid "desktop app"
-msgstr "настольное приложение"
+msgstr "ډیسکټاپ کاريال"
 
 #: toolhub/apps/toolinfo/models.py:69
 msgid "bot"
-msgstr "бот"
+msgstr "روباټ"
 
 #: toolhub/apps/toolinfo/models.py:70
 msgid "gadget"
-msgstr "гаджет"
+msgstr "ويښيارتوکی"
 
 #: toolhub/apps/toolinfo/models.py:71
 msgid "user script"
-msgstr "пользовательский скрипт"
+msgstr "کارن سکريپټ"
 
 #: toolhub/apps/toolinfo/models.py:72
 msgid "command line tool"
-msgstr "инструмент командной строки"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:73
 msgid "coding framework"
@@ -601,15 +597,15 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:74
 msgid "lua module"
-msgstr "модуль lua"
+msgstr "بيا چلنوال"
 
 #: toolhub/apps/toolinfo/models.py:75
 msgid "template"
-msgstr "шаблон"
+msgstr "کينډۍ"
 
 #: toolhub/apps/toolinfo/models.py:76
 msgid "other"
-msgstr "другое"
+msgstr "نور"
 
 #: toolhub/apps/toolinfo/models.py:82
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
@@ -682,7 +678,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:505
 msgid "api"
-msgstr "api"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:513
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
@@ -746,139 +742,139 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr "Админы"
+msgstr "پازوالان"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
-msgstr "Организаторы и координаторы программ"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr "Редакторы и авторы контента"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
-msgstr "Читатели и потребители контента"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
-msgstr "Исследователи"
+msgstr "څېړونکي"
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr "Разработчики"
+msgstr "پراختيا ورکوونکي"
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr "Статьи"
+msgstr "ليکنې"
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
-msgstr "Аудио"
+msgstr "غږيز"
 
 #: toolhub/apps/toolinfo/models.py:722
 msgid "Books"
-msgstr "Книги"
+msgstr "کتابونه"
 
 #: toolhub/apps/toolinfo/models.py:724
 msgid "Data"
-msgstr "Данные"
+msgstr "اومتوک"
 
 #: toolhub/apps/toolinfo/models.py:726
 msgid "Bibliographic data"
-msgstr "Библиографические данные"
+msgstr "کتابي اومتوکي"
 
 #: toolhub/apps/toolinfo/models.py:727
 msgid "Categories or labels"
-msgstr "Категории или ярлыки"
+msgstr "وېشنيزې يا نښکې"
 
 #: toolhub/apps/toolinfo/models.py:728
 msgid "Diffs and revision data"
-msgstr "Различия и данные версий"
+msgstr "توپيرونه او بياکتنې اومتوکي"
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
-msgstr "Данные о событиях"
+msgstr "پېښې اومتوکي"
 
 #: toolhub/apps/toolinfo/models.py:730
 msgid "Geographic data"
-msgstr "Географические данные"
+msgstr "ځمکپوهنيزه اومتوکي"
 
 #: toolhub/apps/toolinfo/models.py:731
 msgid "Linguistic data"
-msgstr "Языковые данные"
+msgstr "ژبنيزه اومتوکي"
 
 #: toolhub/apps/toolinfo/models.py:732
 msgid "Page metadata"
-msgstr "Метаданные страницы"
+msgstr "مخ مېټااومتوک"
 
 #: toolhub/apps/toolinfo/models.py:733
 msgid "Structured data"
-msgstr "Структурированные данные"
+msgstr "جوړښتي اومتوکي"
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
-msgstr "Пользовательские данные"
+msgstr "کارن اومتوکي"
 
 #: toolhub/apps/toolinfo/models.py:737
 msgid "Discussions"
-msgstr "Обсуждения"
+msgstr "شننې"
 
 #: toolhub/apps/toolinfo/models.py:738
 msgid "Drafts"
-msgstr "Черновики"
+msgstr "گارليکونه"
 
 #: toolhub/apps/toolinfo/models.py:739
 msgid "Emails"
-msgstr "Эл. почта"
+msgstr "بړېښليکونه"
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
-msgstr "Изображения"
+msgstr "انځورونه"
 
 #: toolhub/apps/toolinfo/models.py:741
 msgid "Links"
-msgstr "Ссылки"
+msgstr "تړوني"
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
-msgstr "Журналы"
+msgstr "يادښتونه"
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
-msgstr "Карты"
+msgstr "نخچې"
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
-msgstr "Примечания"
+msgstr "سرچينې"
 
 #: toolhub/apps/toolinfo/models.py:746
 msgid "Software or code"
-msgstr "Программное обеспечение или код"
+msgstr "پوستغالي يا کوډ"
 
 #: toolhub/apps/toolinfo/models.py:747
 msgid "Templates"
-msgstr "Шаблоны"
+msgstr "کينډۍ"
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
-msgstr "Видео"
+msgstr "ويډيوگانې"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
-msgstr "Списки наблюдения"
+msgstr "کتنلړونه"
 
 #: toolhub/apps/toolinfo/models.py:750
 msgid "Webpages"
-msgstr "Веб-страницы"
+msgstr "وېب‌مخونه"
 
 #: toolhub/apps/toolinfo/models.py:751
 msgid "Wikitext"
-msgstr "Вики-текст"
+msgstr "ويکي‌ليک"
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
-msgstr "Анализ"
+msgstr "ارزول"
 
 #: toolhub/apps/toolinfo/models.py:755
 msgid "Annotating and linking"
@@ -886,39 +882,39 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:756
 msgid "Archiving and cleanup"
-msgstr "Архивирование и очистка"
+msgstr "خونديځول او سپاکول"
 
 #: toolhub/apps/toolinfo/models.py:757
 msgid "Categorizing and tagging"
-msgstr "Категоризация и теги"
+msgstr "ډلبندي‌کول او نښلنول"
 
 #: toolhub/apps/toolinfo/models.py:758
 msgid "Citing and referencing"
-msgstr "Цитирование и ссылки"
+msgstr "اخځ‌ورکول او سرچينه ورکول"
 
 #: toolhub/apps/toolinfo/models.py:759
 msgid "Communication and supporting users"
-msgstr ""
+msgstr "څرگندتياوې او ملاتړي کارنان"
 
 #: toolhub/apps/toolinfo/models.py:760
 msgid "Converting and formatting content"
-msgstr ""
+msgstr "اړوونکې او بڼونکې منځپانگه"
 
 #: toolhub/apps/toolinfo/models.py:761
 msgid "Creating content"
-msgstr ""
+msgstr "منځپانگه جوړول"
 
 #: toolhub/apps/toolinfo/models.py:762
 msgid "Deleting and reverting"
-msgstr ""
+msgstr "ړنگول او په څټ‌گرځول"
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr "Неоднозначность"
+msgstr "څومانيز"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr "Загрузка или повторное использование контента"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
@@ -938,11 +934,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
-msgstr "Выявление спама"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr "Выявление вандализма"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
@@ -950,11 +946,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:772
 msgid "Merging content"
-msgstr "Объединение содержания"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:773
 msgid "Migrating content"
-msgstr "Перенос содержания"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:774
 msgid "Patrolling recent changes"
@@ -966,19 +962,19 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr "Чтение"
+msgstr "لوستل"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr ""
+msgstr "منځپانگې سپارښتنه"
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"
-msgstr "Перевод и локализация"
+msgstr "ژباړل او ځايي‌کول"
 
 #: toolhub/apps/toolinfo/models.py:779
 msgid "Uploading or importing"
-msgstr "Загрузка или импорт"
+msgstr "راپورته‌کټل او رالېږدول"
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
@@ -986,23 +982,23 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr "Предупреждение участников"
+msgstr "کارنان گواښنه"
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
-msgstr "Биография"
+msgstr "ژونليک"
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr "Культурное наследие"
+msgstr "کلتوري ميراث"
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
-msgstr "Образование"
+msgstr "زده کړه"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr "География и картография"
+msgstr "ځمکپوهنه او نخشه‌کښنه"
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
@@ -1010,27 +1006,27 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
-msgstr "История"
+msgstr "پېښليک"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
-msgstr "Язык и интернационализация"
+msgstr "ژبه او نړيوالتوب"
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "لاسرسی"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
-msgstr "Наука"
+msgstr "ساينس"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
-msgstr ""
+msgstr "د توکي لپاره ويکي‌اومتوک پېژند."
 
 #: toolhub/apps/toolinfo/models.py:810
 msgid "Who is the intended user of the tool?"
-msgstr "Кто является предполагаемым пользователем инструмента?"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:817
 msgid "With what type of content or data does the tool interact?"
@@ -1082,31 +1078,31 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:159
 msgid "Description of a tool"
-msgstr "Описание инструмента"
+msgstr "د يو توکي څرگنداوی"
 
 #: toolhub/apps/toolinfo/serializers.py:211
 msgid "Summary of a tool"
-msgstr "Описание инструмента"
+msgstr "د توکي لنډيز"
 
 #: toolhub/apps/toolinfo/serializers.py:235
 msgid "Create a tool"
-msgstr "Создать инструмент"
+msgstr "يو توکی جوړول"
 
 #: toolhub/apps/toolinfo/serializers.py:301
 msgid "Update a tool"
-msgstr "Обновить инструмент"
+msgstr "توکی هم‌مهالول"
 
 #: toolhub/apps/toolinfo/serializers.py:332
 msgid "Tool revision."
-msgstr "Версия инструмента."
+msgstr "توکي بياکتنه."
 
 #: toolhub/apps/toolinfo/serializers.py:340
 msgid "Tool revision detail."
-msgstr ""
+msgstr "د توکي بياکتنې سپيناوي."
 
 #: toolhub/apps/toolinfo/serializers.py:378
 msgid "Tool revision difference."
-msgstr ""
+msgstr "د توکي بياکتنې توپير."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
@@ -1139,7 +1135,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:68
 msgid "Create a new tool."
-msgstr "Создать новый инструмент."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:73
 msgid "Info for a specific tool."
@@ -1151,11 +1147,11 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:84
 msgid "Delete a tool."
-msgstr "Удалить инструмент."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:87
 msgid "List all tools."
-msgstr "Список инструментов."
+msgstr ""
 
 #: toolhub/apps/toolinfo/views.py:129
 msgid "Additional information for a tool."
@@ -1179,31 +1175,31 @@ msgstr ""
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
-msgstr "Личная информация"
+msgstr "ځاني مالومات"
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr "Разрешения"
+msgstr "پرېښوونې"
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
-msgstr "Важные даты"
+msgstr "ارزښتمنې نېټې"
 
 #: toolhub/apps/user/apps.py:26
 msgid "Toolhub user"
-msgstr "Участник Toolhub"
+msgstr ""
 
 #: toolhub/apps/user/models.py:36
 msgid "username"
-msgstr "имя участника"
+msgstr "کارن‌نوم"
 
 #: toolhub/apps/user/models.py:39
 msgid "Required. 255 characters or fewer."
-msgstr "Обязательно. 255 символов или меньше."
+msgstr ""
 
 #: toolhub/apps/user/models.py:42
 msgid "A user with that username already exists."
-msgstr "Участник с таким именем уже существует."
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:41
 msgid "Action that the user can take"
@@ -1219,7 +1215,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
-msgstr "Информация о текущем участнике"
+msgstr ""
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
@@ -1239,15 +1235,15 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr "Информация об участнике"
+msgstr "کارن مالومات"
 
 #: toolhub/apps/user/serializers.py:123
 msgid "Group information"
-msgstr ""
+msgstr "ډلگي مالومات"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr ""
+msgstr "د يو کارن د ټولنيز تاييد مالومات"
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
@@ -1263,7 +1259,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
-msgstr "Токен аутентификации"
+msgstr ""
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
@@ -1431,15 +1427,15 @@ msgstr ""
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr "Ошибка API"
+msgstr ""
 
 #: toolhub/serializers.py:112
 msgid "Edit summary"
-msgstr "Описание изменений"
+msgstr ""
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
-msgstr "Описание вносимых вами изменений."
+msgstr ""
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
@@ -1456,7 +1452,7 @@ msgstr ""
 #: toolhub/settings.py:488
 #, optional
 msgid "Toolhub API"
-msgstr "API Toolhub"
+msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
@@ -1469,16 +1465,16 @@ msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
-msgstr "Отмена"
+msgstr "ناگارل"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
-msgstr "Авторизовать"
+msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr "Ошибка: %(message)s"
+msgstr ""
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
@@ -1491,7 +1487,7 @@ msgstr ""
 
 #: vue/serializers.py:32
 msgid "Count of tools known to Toolhub."
-msgstr "Количество инструментов, известных Toolhub."
+msgstr ""
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
@@ -1507,7 +1503,7 @@ msgstr ""
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
-msgstr "ЗАГРУЗКА"
+msgstr "باریږي"
 
 #: vue/views.py:47
 msgid "Get information used on the Toolhub Home view."
