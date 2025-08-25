@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Albertoleoncio",
 			"Caiofernandes",
 			"Mansil alfalb"
 		]
@@ -135,7 +136,7 @@
 	"members-userslist-header-membersince": "Membro desde",
 	"members-userslist-header-username": "Nome de utilizador",
 	"message-close": "Fechar mensagem",
-	"metadata-home-description": "ToolHub é um catálogo autoritário e bem promovido das ferramentas da Wikimédia. Saiba mais sobre mais de 500 ferramentas atualmente disponíveis.",
+	"metadata-home-description": "ToolHub é um catálogo autoritário e bem promovido das ferramentas da Wikimedia. Saiba mais sobre mais de 500 ferramentas atualmente disponíveis.",
 	"modifieddate": "Data de modificação",
 	"moreinfo": "Mais informação",
 	"my-account": "Minha Conta",
@@ -234,10 +235,10 @@
 	"search-filter-wiki-mediawiki": "Wiki do MediaWiki",
 	"search-filter-wiki-species": "Wikiespécies",
 	"search-filter-wiki-wikibooks": "Qualquer Wikilivros",
-	"search-filter-wiki-wikidata": "Wikidados",
+	"search-filter-wiki-wikidata": "Wikidata",
 	"search-filter-wiki-wikinews": "Qualquer Wikinotícias",
 	"search-filter-wiki-wikipedia": "Qualquer Wikipédia",
-	"search-filter-wiki-wikiquote": "Qualquer Wikicitações",
+	"search-filter-wiki-wikiquote": "Qualquer Wikiquote",
 	"search-filter-wiki-wikisource": "Qualquer Wikisource",
 	"search-filter-wiki-wikiversity": "Qualquer Wikiversidade",
 	"search-filter-wiki-wikivoyage": "Qualquer Wikiviagens",
@@ -295,7 +296,7 @@
 	"viewlistrevisionsdiff": "Ver diferença entre as revisões da lista $1 \"{{bidi:$2}}\"",
 	"viewtoolrevisionsdiff": "Ver diferença entre as revisões da ferramenta $1",
 	"viewmore": "Ver Mais",
-	"welcomemessage": "ToolHub é um catálogo de autoria da comunidade das ferramentas da Wikimédia.",
+	"welcomemessage": "ToolHub é um catálogo de autoria da comunidade das ferramentas da Wikimedia.",
 	"wiki-username": "Nome de Utilizador da Wiki",
 	"wikiusername": "Nome de utilizador da Wiki"
 }
