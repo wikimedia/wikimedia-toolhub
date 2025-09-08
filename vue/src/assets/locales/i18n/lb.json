@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"GilPe",
 			"Les Meloures",
 			"Robby",
 			"Volvox"
@@ -45,7 +46,7 @@
 	"developersettings": "Entwécklerastellungen",
 	"developerusername": "Benotzernumm vum Entwécklung",
 	"diff": "Ënnerscheed",
-	"editsummary": "Resumé vun der Ännerung",
+	"editsummary": "Resümmee vun der Ännerung",
 	"email": "E-Mail",
 	"experimental": "Experimentell",
 	"favorite": "Favorit",
