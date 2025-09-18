@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-09-08 12:16:16+0000\n"
+"PO-Revision-Date: 2025-09-18 12:26:06+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -747,83 +747,83 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr "quản trị viên"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
-msgstr "Ban tổ chức và điều phối viên chương trình"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr "Biên tập viên và cộng tác viên nội dung"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
-msgstr "Người đọc và người tiêu dùng nội dung"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
-msgstr "Các nhà nghiên cứu"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr "Nhà phát triển"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr "Bài viết"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
-msgstr "âm thanh"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:722
 msgid "Books"
-msgstr "Sách"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:724
 msgid "Data"
-msgstr "Dữ liệu"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:726
 msgid "Bibliographic data"
-msgstr "dữ liệu thư mục"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:727
 msgid "Categories or labels"
-msgstr "Danh mục hoặc nhãn"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:728
 msgid "Diffs and revision data"
-msgstr "Khác biệt và dữ liệu sửa đổi"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
-msgstr "Dữ liệu sự kiện"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:730
 msgid "Geographic data"
-msgstr "dữ liệu địa lý"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:731
 msgid "Linguistic data"
-msgstr "dữ liệu ngôn ngữ"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:732
 msgid "Page metadata"
-msgstr "siêu dữ liệu trang"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:733
 msgid "Structured data"
-msgstr "Dữ liệu có cấu trúc"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
-msgstr "Dữ liệu người dùng"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:737
 msgid "Discussions"
-msgstr "thảo luận"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:738
 msgid "Drafts"
@@ -831,111 +831,111 @@ msgstr "bản thảo"
 
 #: toolhub/apps/toolinfo/models.py:739
 msgid "Emails"
-msgstr "email"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
-msgstr "Hình ảnh"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:741
 msgid "Links"
-msgstr "liên kết"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
-msgstr "Nhật ký"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
-msgstr "bản đồ"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
-msgstr "Người giới thiệu"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:746
 msgid "Software or code"
-msgstr "Phần mềm hoặc mã"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:747
 msgid "Templates"
-msgstr "mẫu"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
-msgstr "Video"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
-msgstr "danh sách theo dõi"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:750
 msgid "Webpages"
-msgstr "Trang web"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:751
 msgid "Wikitext"
-msgstr "văn bản Wiki"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
-msgstr "Phân tích"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:755
 msgid "Annotating and linking"
-msgstr "Chú thích và liên kết"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:756
 msgid "Archiving and cleanup"
-msgstr "Lưu trữ và dọn dẹp"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:757
 msgid "Categorizing and tagging"
-msgstr "Phân loại và gắn thẻ"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:758
 msgid "Citing and referencing"
-msgstr "Trích dẫn và tham khảo"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:759
 msgid "Communication and supporting users"
-msgstr "Truyền thông và hỗ trợ người dùng"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:760
 msgid "Converting and formatting content"
-msgstr "Chuyển đổi và định dạng nội dung"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:761
 msgid "Creating content"
-msgstr "Tạo nội dung"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:762
 msgid "Deleting and reverting"
-msgstr "Xóa và hoàn nguyên"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr "định hướng"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr "Tải xuống hoặc sử dụng lại nội dung"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
-msgstr "Chỉnh sửa hoặc cập nhật nội dung"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:766
 msgid "Event and contest planning"
-msgstr "Lập kế hoạch sự kiện và cuộc thi"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:767
 msgid "Hosting and maintaining tools"
-msgstr "Công cụ lưu trữ và bảo trì"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:768
 msgid "Identifying policy violations"
-msgstr "Xác định vi phạm chính sách"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
@@ -943,87 +943,87 @@ msgstr "Xác định spam"
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr "Xác định phá hoại"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
-msgstr "Liệt kê và xếp hạng"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:772
 msgid "Merging content"
-msgstr "Hợp nhất nội dung"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:773
 msgid "Migrating content"
-msgstr "Di chuyển nội dung"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:774
 msgid "Patrolling recent changes"
-msgstr "Tuần tra những thay đổi gần đây"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:775
 msgid "Project management and reporting"
-msgstr "Quản lý và báo cáo dự án"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr "Đọc"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr "Đề xuất nội dung"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"
-msgstr "Biên dịch và bản địa hóa"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:779
 msgid "Uploading or importing"
-msgstr "Tải lên hoặc nhập"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
-msgstr "quản lý người dùng"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr "Cảnh báo người dùng"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
-msgstr "Tiểu sử"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr "Di sản văn hóa"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
-msgstr "Giáo dục"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr "Địa lý và bản đồ"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
-msgstr "GLAM"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
-msgstr "Môn lịch sử"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
-msgstr "Ngôn ngữ và quốc tế hóa"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr "tiếp cận cộng đồng"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
-msgstr "Khoa học"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
@@ -1031,19 +1031,19 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:810
 msgid "Who is the intended user of the tool?"
-msgstr "Ai là người sử dụng dự định của công cụ?"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:817
 msgid "With what type of content or data does the tool interact?"
-msgstr "Công cụ tương tác với loại nội dung hoặc dữ liệu nào?"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:824
 msgid "What type of task does the tool help with?"
-msgstr "Loại nhiệm vụ nào công cụ trợ giúp với?"
+msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:831
 msgid "Is the tool targeted at helping in a specific type of wiki project or topic area?"
-msgstr "Công cụ có nhắm mục tiêu trợ giúp trong một loại dự án wiki hoặc lĩnh vực chủ đề cụ thể không?"
+msgstr ""
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"
