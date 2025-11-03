@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-10-30 12:33:40+0000\n"
+"PO-Revision-Date: 2025-11-03 12:35:27+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -89,79 +89,79 @@ msgstr "handeling"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr ""
+msgstr "auditlogboekmelding"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
-msgstr ""
+msgstr "auditlogboekmeldingen"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "Gebeurtenisparameters"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr ""
+msgstr "Versie gemaakt door bewerkingsactie"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr ""
+msgstr "Is de versie gemarkeerd als verborgen?"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Is de versie door een controleur beoordeeld?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr ""
+msgstr "Naam van het hulpmiddel dat betrekking heeft op de wijziging"
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr ""
+msgstr "Identiteit van de gebruiker met betrekking tot de wijziging"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr ""
+msgstr "Hulpmiddel met betrekking tot de wijziging"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
-msgstr ""
+msgstr "Gebeurtenisactie"
 
 #: toolhub/apps/auditlog/serializers.py:51
 msgid "Event target"
-msgstr ""
+msgstr "Doel van het evenement"
 
 #: toolhub/apps/auditlog/serializers.py:102
 msgid "Audit log entry"
-msgstr ""
+msgstr "Auditlogboekmelding"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr ""
+msgstr "Alleen logboekmeldingen weergeven voor de opgegeven handelingstypen."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr ""
+msgstr "Alleen logboekmeldingen weergeven voor het opgegeven doeltype."
 
 #: toolhub/apps/auditlog/views.py:73
 msgid "Only show logs occurring before the given date and time."
-msgstr ""
+msgstr "Alleen logboekmeldingen weergeven die vóór de opgegeven datum en tijd hebben plaatsgevonden."
 
 #: toolhub/apps/auditlog/views.py:79
 msgid "Only show logs occurring after the given date and time."
-msgstr ""
+msgstr "Alleen logboekmeldingen weergeven die na de opgegeven datum en tijd zijn gemaakt."
 
 #: toolhub/apps/auditlog/views.py:84
 msgid "Only show logs for the given user."
-msgstr ""
+msgstr "Alleen logboekmeldingen weergeven voor de opgegeven gebruiker."
 
 #: toolhub/apps/auditlog/views.py:90
 msgid "List all log entries."
-msgstr ""
+msgstr "Alle logboekvermeldingen weergeven."
 
 #: toolhub/apps/auditlog/views.py:93
 msgid "Info for a specific log entry."
-msgstr ""
+msgstr "Informatie over een specifieke logboekmelding."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
