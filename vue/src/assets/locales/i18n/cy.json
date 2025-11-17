@@ -117,7 +117,7 @@
 	"search-filter-tool-type-bot": "bot",
 	"search-filter-tool-type-lua-module": "modiwl lua",
 	"search-filter-tool-type-other": "arall",
-	"search-filter-tool-type-template": "nodyn",
+	"search-filter-tool-type-template": "templed",
 	"search-filter-ui-language": "Iaith UI",
 	"search-filter-ui-language-value": "{{bidi:$1}} ($2)",
 	"search-filter-wiki": "Ar gyfer wiciau",
