@@ -5,15 +5,17 @@
 		"authors": [
 			"Abijeet Patro",
 			"AnupamM",
-			"Srishti Sethi"
+			"Srishti Sethi",
+			"YeBoy371"
 		]
 	},
 	"add": "जोड़ो",
 	"addremovetools": "टूल्स जोड़ें या निकालें",
 	"addremovetools-nologintext": "उपकरण जोड़ने या हटाने के लिए आपको टूलहब में लॉग इन करना होगा",
 	"apidocs": "API डॉक्स",
-	"apidocumentation": "API दस्तावेज़",
+	"apidocumentation": "API",
 	"apierror": "उह ओह! कुछ गलत हो गया।",
+	"apiurl": "API URL",
 	"auditlogs": "ऑडिट लॉग",
 	"auditlogs-pagetitle": "यह पृष्ठ सभी ऑडिट लॉग को सूचीबद्ध करता है",
 	"auditlogs-targettype-group": "समूह",
@@ -74,7 +76,7 @@
 	"tool": "उपकरण",
 	"toollist": "सूची",
 	"tools-edit-button": "सम्पादन",
-	"tools": "टूल्स",
+	"tools": "उपकरण",
 	"tooltype": "टूल का प्रकार",
 	"tool-deprecated-error": "इइस उपकरण का उपयोग करने की अनुशंसा नहीं की जाती है",
 	"tool-experimental-error": "यह उपकरण प्रायोगिक है! यह अस्थिर है और किसी भी समय परिवर्तन या अनुपलब्ध हो सकता है।",
