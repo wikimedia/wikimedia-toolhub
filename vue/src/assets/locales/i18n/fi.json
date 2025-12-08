@@ -145,6 +145,7 @@
 	"revert": "palauta tähän versioon",
 	"search": "Hae",
 	"search-filter-audiences-admin": "Ylläpitäjät",
+	"search-filter-content-types-log": "Lokit",
 	"search-filter-keywords": "Avainsanat",
 	"search-filter-license": "Lisenssi",
 	"search-filter-missing-value": "(puuttuu)",
