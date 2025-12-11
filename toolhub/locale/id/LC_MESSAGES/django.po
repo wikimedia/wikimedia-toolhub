@@ -3,11 +3,12 @@
 #
 # Author: AJBot2
 # Author: Agam Riyandana
+# Author: Penyuwangi
 # Author: Veracious
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-10-30 12:33:39+0000\n"
+"PO-Revision-Date: 2025-12-11 12:22:54+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -959,7 +960,7 @@ msgstr "Patroli perubahan terbaru"
 
 #: toolhub/apps/toolinfo/models.py:775
 msgid "Project management and reporting"
-msgstr "Manajemen proyek dan pelaporan"
+msgstr "Pengelolaan proyek dan pelaporan"
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
@@ -979,7 +980,7 @@ msgstr "Mengunggah atau mengimpor"
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
-msgstr "Manajemen pengguna"
+msgstr "Pengelolaan pengguna"
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
