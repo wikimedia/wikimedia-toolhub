@@ -3,6 +3,7 @@
 		"authors": [
 			"Ainali",
 			"Sabelöga",
+			"Stefan2255",
 			"Tore",
 			"WikiPhoenix"
 		]
@@ -86,7 +87,7 @@
 	"bugtracker": "Felsökare",
 	"bugtrackerurl": "Felsökarwebbadress",
 	"browse-all-tools": "Bläddra bland alla verktyg",
-	"browsetool": "Utforska verktyget",
+	"browsetool": "Gå till verktyget",
 	"cancel": "Avbryt",
 	"charslimit": "Antalet tecken måste vara färre än $1",
 	"charsrange": "Tecken måste vara inom intervallen: $1",
@@ -128,6 +129,7 @@
 	"developersettings-nologintext": "Du behöver logga in på Toolhub för att visa auktoriserade appar",
 	"developersettings-pagesubtitle": "Visa, registrera, auktorisera och återkalla oauth-applikationer",
 	"developerusername": "Utvecklaranvändarnamn",
+	"diff": "skillnad",
 	"editsummary": "Redigeringssammanfattning",
 	"email": "E-post",
 	"experimental": "Experimentell",
@@ -144,6 +146,7 @@
 	"wikidataqid": "Wikidata-QID",
 	"helptranslate": "Hjälp till att översätta",
 	"hide": "dölj",
+	"hist": "hist",
 	"home": "Hem",
 	"howtouse": "Hur man använder",
 	"icon": "Ikon",
