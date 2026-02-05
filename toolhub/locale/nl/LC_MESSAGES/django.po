@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-11-03 12:35:27+0000\n"
+"PO-Revision-Date: 2026-02-05 12:20:30+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -404,7 +404,7 @@ msgstr ""
 
 #: toolhub/apps/lists/views.py:267 toolhub/apps/toolinfo/views.py:238
 msgid "Mark a revision as patrolled."
-msgstr "Markeer een revisie als gecontroleerd."
+msgstr "Een versie als gecontroleerd markeren."
 
 #: toolhub/apps/lists/views.py:369 toolhub/apps/toolinfo/views.py:364
 #, python-format
