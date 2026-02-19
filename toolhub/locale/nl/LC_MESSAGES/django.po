@@ -2,13 +2,14 @@
 # Exported from translatewiki.net
 #
 # Author: Asarta
+# Author: HanV
 # Author: Mitsjol
 # Author: Siebrand
 # Author: Vistaus
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-02-05 12:20:30+0000\n"
+"PO-Revision-Date: 2026-02-19 12:20:05+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -165,31 +166,31 @@ msgstr "Informatie over een specifieke logboekmelding."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr ""
+msgstr "Toolinfo webcrawler"
 
 #: toolhub/apps/crawler/serializers.py:31
 msgid "A URL that has been registered for crawling"
-msgstr ""
+msgstr "Een URL die geregistreerd is voor het crawlen."
 
 #: toolhub/apps/crawler/serializers.py:44
 msgid "A URL to crawl"
-msgstr ""
+msgstr "Een URL om te crawlen"
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
-msgstr ""
+msgstr "Informatie over één URL die tijdens een crawler-run is verwerkt."
 
 #: toolhub/apps/crawler/serializers.py:78
 msgid "Summary of a single run of the crawler."
-msgstr ""
+msgstr "Samenvatting van één run van de crawler."
 
 #: toolhub/apps/crawler/views.py:42
 msgid "Register a new URL for crawling."
-msgstr ""
+msgstr "Een nieuwe URL voor het crawlen registreren."
 
 #: toolhub/apps/crawler/views.py:46
 msgid "Information about a specific crawled URL."
-msgstr ""
+msgstr "Informatie over een specifieke gecrawlde URL."
 
 #: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
@@ -205,11 +206,11 @@ msgstr ""
 
 #: toolhub/apps/crawler/views.py:104
 msgid "List all historic crawler runs."
-msgstr ""
+msgstr "Een lijst van alle historische crawler-runs."
 
 #: toolhub/apps/crawler/views.py:107
 msgid "Info for a specific crawler run."
-msgstr ""
+msgstr "Informatie van een specifieke crawler-run."
 
 #: toolhub/apps/crawler/views.py:136
 msgid "List all urls crawled in a run."
@@ -677,7 +678,7 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:504
 msgid "crawler"
-msgstr ""
+msgstr "crawler"
 
 #: toolhub/apps/toolinfo/models.py:505
 msgid "api"
@@ -1494,11 +1495,11 @@ msgstr ""
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
-msgstr ""
+msgstr "Datum en tijd van de meest recente crawler-run."
 
 #: vue/serializers.py:41
 msgid "Number of tools added or updated in the most recent crawler run."
-msgstr ""
+msgstr "Aantal hulpmiddelen dat is toegevoegd of bijgewerkt tijdens de meest recente crawler-run."
 
 #: vue/templates/vue/base.html:21
 msgid "Toolhub's user interface requires JavaScript to be enabled."
