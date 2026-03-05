@@ -7,13 +7,14 @@
 # Author: Hzy980512
 # Author: LaMagiaaa
 # Author: MathXplore
+# Author: RhAnish
 # Author: Shirayuki
 # Author: Tamaki Wakita
 # Author: Tmv
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2025-10-30 12:33:39+0000\n"
+"PO-Revision-Date: 2026-03-05 12:20:12+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1186,7 +1187,7 @@ msgstr ""
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr ""
+msgstr "権限"
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
@@ -1198,7 +1199,7 @@ msgstr ""
 
 #: toolhub/apps/user/models.py:36
 msgid "username"
-msgstr ""
+msgstr "利用者名"
 
 #: toolhub/apps/user/models.py:39
 msgid "Required. 255 characters or fewer."
