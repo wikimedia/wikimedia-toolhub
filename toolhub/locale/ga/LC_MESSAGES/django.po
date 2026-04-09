@@ -1,534 +1,533 @@
-# Translation of Toolhub - Backend to Dutch (Nederlands)
+# Translation of Toolhub - Backend to Irish (Gaeilge)
 # Exported from translatewiki.net
 #
-# Author: Asarta
-# Author: HanV
-# Author: Mitsjol
-# Author: Siebrand
-# Author: Vistaus
+# Author: Aindriu80
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-04-09 12:21:12+0000\n"
+"PO-Revision-Date: 2026-04-09 12:21:11+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
+"Language: ga\n"
 "Project-Id-Version: Toolhub - Backend\n"
 "Report-Msgid-Bugs-To: translatewiki.net\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "X-Generator: MediaWiki 1.46.0-alpha; Translate 2025-07-31\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=5; plural=(n == 1) ? 0 : ( (n == 2) ? 1 : ( (n < 7) ? 2 : ( (n < 11) ? 3 : 4 ) ) );\n"
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr "Controlelogboek"
+msgstr "Log iniúchta"
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "created"
-msgstr "aangemaakt"
+msgstr "cruthaithe"
 
 #: toolhub/apps/auditlog/models.py:95
 msgid "updated"
-msgstr "bijgewerkt"
+msgstr "nuashonraithe"
 
 #: toolhub/apps/auditlog/models.py:96
 msgid "deleted"
-msgstr "verwijderd"
+msgstr "scriosta"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr "toegevoegd aan"
+msgstr "curtha leis"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr "verwijderd uit"
+msgstr "bainte as"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr "verborgen"
+msgstr "i bhfolach"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr "onthuld"
+msgstr "nochtaithe"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr "gecontroleerd"
+msgstr "patrólaithe"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr "Uitgelicht"
+msgstr "le feiceáil"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr "niet aanbevolen"
+msgstr "gan ghnéithe"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
-msgstr "Tijdstip"
+msgstr "stampa ama"
 
 #: toolhub/apps/auditlog/models.py:116
 msgid "user"
-msgstr "gebruiker"
+msgstr "úsáideoir"
 
 #: toolhub/apps/auditlog/models.py:124
 msgid "content type"
-msgstr "inhoudstype"
+msgstr "cineál ábhair"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr "object-id"
+msgstr "aitheantas réada"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
-msgstr "object-pk"
+msgstr "pk réada"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
-msgstr "handeling"
+msgstr "gníomh"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr "auditlogboekmelding"
+msgstr "iontráil loga iniúchta"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
-msgstr "auditlogboekmeldingen"
+msgstr "iontrálacha loga iniúchta"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr "Gebeurtenisparameters"
+msgstr "Paraiméadair imeachta"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr "Versie gemaakt door bewerkingsactie"
+msgstr "Athbhreithniú cruthaithe ag gníomh eagarthóireachta"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr "Is de versie gemarkeerd als verborgen?"
+msgstr "An bhfuil an t-athbhreithniú marcáilte mar fholaithe?"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr "Is de versie door een controleur beoordeeld?"
+msgstr "An ndearna patrólóir athbhreithniú ar an athbhreithniú?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr "Naam van het hulpmiddel dat betrekking heeft op de wijziging"
+msgstr "Ainm an uirlis a bhaineann leis an athrú"
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr "Identiteit van de gebruiker met betrekking tot de wijziging"
+msgstr "Céannacht an úsáideora a bhaineann leis an athrú"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr "Hulpmiddel met betrekking tot de wijziging"
+msgstr "Liosta uirlisí a bhaineann leis an athrú"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
-msgstr "Gebeurtenisactie"
+msgstr "Gníomh imeachta"
 
 #: toolhub/apps/auditlog/serializers.py:51
 msgid "Event target"
-msgstr "Doel van het evenement"
+msgstr "Sprioc imeachta"
 
 #: toolhub/apps/auditlog/serializers.py:102
 msgid "Audit log entry"
-msgstr "Auditlogboekmelding"
+msgstr "Iontráil loga iniúchta"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr "Alleen logboekmeldingen weergeven voor de opgegeven handelingstypen."
+msgstr "Taispeáin logaí do na cineálacha gníomhaíochta tugtha amháin."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr "Alleen logboekmeldingen weergeven voor het opgegeven doeltype."
+msgstr "Taispeáin logaí don chineál sprice tugtha amháin."
 
 #: toolhub/apps/auditlog/views.py:73
 msgid "Only show logs occurring before the given date and time."
-msgstr "Alleen logboekmeldingen weergeven die vóór de opgegeven datum en tijd hebben plaatsgevonden."
+msgstr "Taispeáin logaí a tharla roimh an dáta agus an am tugtha amháin."
 
 #: toolhub/apps/auditlog/views.py:79
 msgid "Only show logs occurring after the given date and time."
-msgstr "Alleen logboekmeldingen weergeven die na de opgegeven datum en tijd zijn gemaakt."
+msgstr "Taispeáin logaí a tharlaíonn tar éis an dáta agus an ama tugtha amháin."
 
 #: toolhub/apps/auditlog/views.py:84
 msgid "Only show logs for the given user."
-msgstr "Alleen logboekmeldingen weergeven voor de opgegeven gebruiker."
+msgstr "Taispeáin logaí don úsáideoir áirithe amháin."
 
 #: toolhub/apps/auditlog/views.py:90
 msgid "List all log entries."
-msgstr "Alle logboekvermeldingen weergeven."
+msgstr "Liostaigh na hiontrálacha loga go léir."
 
 #: toolhub/apps/auditlog/views.py:93
 msgid "Info for a specific log entry."
-msgstr "Informatie over een specifieke logboekmelding."
+msgstr "Eolas le haghaidh iontráil loga ar leith."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr "Toolinfo webcrawler"
+msgstr "Ransaitheoir gréasáin Toolinfo"
 
 #: toolhub/apps/crawler/serializers.py:31
 msgid "A URL that has been registered for crawling"
-msgstr "Een URL die geregistreerd is voor het crawlen."
+msgstr "URL atá cláraithe le haghaidh crawlála"
 
 #: toolhub/apps/crawler/serializers.py:44
 msgid "A URL to crawl"
-msgstr "Een URL om te crawlen"
+msgstr "URL le crawláil"
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
-msgstr "Informatie over één URL die tijdens een crawler-run is verwerkt."
+msgstr "Faisnéis faoi URL aonair a phróiseáiltear le linn rith ransaitheoir"
 
 #: toolhub/apps/crawler/serializers.py:78
 msgid "Summary of a single run of the crawler."
-msgstr "Samenvatting van één run van de crawler."
+msgstr "Achoimre ar rith aonair den ransaitheoir."
 
 #: toolhub/apps/crawler/views.py:42
 msgid "Register a new URL for crawling."
-msgstr "Een nieuwe URL voor het crawlen registreren."
+msgstr "Cláraigh URL nua le haghaidh crawlála."
 
 #: toolhub/apps/crawler/views.py:46
 msgid "Information about a specific crawled URL."
-msgstr "Informatie over een specifieke gecrawlde URL."
+msgstr "Faisnéis faoi URL crawláilte ar leith."
 
 #: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
-msgstr "Een URL deactiveren."
+msgstr "Díchláraigh URL."
 
 #: toolhub/apps/crawler/views.py:58
 msgid "List all crawled URLs."
-msgstr "Alle geïndexeerde URL's weergeven."
+msgstr "Liostaigh na URLanna uile a ndearnadh crawláil orthu."
 
 #: toolhub/apps/crawler/views.py:85
 msgid "Get URLs created by the current user."
-msgstr "URL's ophalen p die door de huidige gebruiker zijn aangemaakt."
+msgstr "Faigh URLanna a chruthaigh an t-úsáideoir reatha."
 
 #: toolhub/apps/crawler/views.py:104
 msgid "List all historic crawler runs."
-msgstr "Een lijst van alle historische crawler-runs."
+msgstr "Liostaigh na ritheanna ransaitheoir stairiúla go léir."
 
 #: toolhub/apps/crawler/views.py:107
 msgid "Info for a specific crawler run."
-msgstr "Informatie van een specifieke crawler-run."
+msgstr "Eolas le haghaidh rith ransaitheoir ar leith."
 
 #: toolhub/apps/crawler/views.py:136
 msgid "List all urls crawled in a run."
-msgstr "Alle URL's weergeven die tijdens een run zijn gevonden."
+msgstr "Liostaigh na URLanna uile a crawláladh i rith."
 
 #: toolhub/apps/crawler/views.py:139
 msgid "Info for a specific url crawled in a run."
-msgstr "Informatie voor een specifieke URL die tijdens een run is gevonden."
+msgstr "Eolas le haghaidh url ar leith a crawláladh i rith."
 
 #: toolhub/apps/lists/apps.py:26 toolhub/apps/toolinfo/models.py:742
 msgid "Lists"
-msgstr "Lijsten"
+msgstr "Liostaí"
 
 #: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
-msgstr "Naam van deze lijst"
+msgstr "Teideal an liosta seo"
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
-msgstr "Beschrijving van het thema of de inhoud van de lijst."
+msgstr "Cur síos ar théama nó ar ábhar an liosta."
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
-msgstr "Een koppeling naar een beschrijvingspagina op Wikimedia Commons voor een pictogram dat de lijst weergeeft."
+msgstr "Nasc chuig leathanach cur síos comhaid Wikimedia Commons le haghaidh deilbhín a léiríonn an liosta."
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
-msgstr "Indien dit klopt, is deze lijst een verzameling van de 'favoriete' hulpmiddelen van de eigenaar."
+msgstr "Más fíor, is bailiúchán de na huirlisí is fearr leis an úsáideoir atá sa liosta seo."
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
-msgstr "Indien dit waar is, is deze lijst voor iedereen zichtbaar."
+msgstr "Más fíor é, beidh an liosta seo le feiceáil ag gach duine."
 
 #: toolhub/apps/lists/models.py:78
 msgid "If true, this list has been marked as featured."
-msgstr "Indien dit waar, is deze lijst gemarkeerd als aanbevolen."
+msgstr "Más fíor, tá an liosta seo marcáilte mar le feiceáil."
 
 #: toolhub/apps/lists/models.py:90
 msgid "List of the names of the tools in this list."
-msgstr "Lijst met de namen van de hulpmiddelen in deze lijst."
+msgstr "Liosta d'ainmneacha na n-uirlisí sa liosta seo."
 
 #: toolhub/apps/lists/models.py:169
 msgid "Position of this tool in the list."
-msgstr "Positie van dit hulpmiddel in de lijst."
+msgstr "Seasamh an uirlis seo sa liosta."
 
 #: toolhub/apps/lists/serializers.py:49
 msgid "List of tools metadata."
-msgstr "Lijst met metadata van hulpmiddelen."
+msgstr "Liosta meiteashonraí uirlisí."
 
 #: toolhub/apps/lists/serializers.py:92
 msgid "Create or update a list."
-msgstr "Een lijst aanmaken of bijwerken."
+msgstr "Cruthaigh nó nuashonraigh liosta."
 
 #: toolhub/apps/lists/serializers.py:100 toolhub/apps/lists/serializers.py:210
 msgid "List of tool names."
-msgstr "Lijst met namen van hulpmiddelen."
+msgstr "Liosta ainmneacha uirlisí."
 
 #: toolhub/apps/lists/serializers.py:202
 msgid "Historic revision of a list for generating diffs."
-msgstr "Historische versie van een lijst voor het weergeven van verschillen."
+msgstr "Athbhreithniú stairiúil ar liosta chun difríochtaí a ghiniúint."
 
 #: toolhub/apps/lists/serializers.py:231
 msgid "Historic revision of a list."
-msgstr "Historische versie van een lijst."
+msgstr "Athbhreithniú stairiúil ar liosta."
 
 #: toolhub/apps/lists/serializers.py:266
 msgid "Tool list revision."
-msgstr "Versie van de lijst met hulpmiddelen."
+msgstr "Athbhreithniú ar liosta uirlisí."
 
 #: toolhub/apps/lists/serializers.py:274
 msgid "Tool list revision detail."
-msgstr "Details van een versie van de lijst met hulpmiddelen."
+msgstr "Sonraí athbhreithnithe liosta uirlisí."
 
 #: toolhub/apps/lists/serializers.py:296
 msgid "Tool list revision difference."
-msgstr "Verschillen voor een versie van de lijst met hulpmiddelen."
+msgstr "Difríocht athbhreithnithe liosta uirlisí."
 
 #: toolhub/apps/lists/serializers.py:301
 #: toolhub/apps/toolinfo/serializers.py:383
 msgid "Revision to apply changes to."
-msgstr "Versie om wijzigingen op toe te passen."
+msgstr "Athbhreithniú le hathruithe a chur i bhfeidhm air."
 
 #: toolhub/apps/lists/serializers.py:305
 #: toolhub/apps/toolinfo/serializers.py:387
 msgid "Revision after applying changes."
-msgstr "Versie na het doorvoeren van wijzigingen."
+msgstr "Athbhreithniú tar éis athruithe a chur i bhfeidhm."
 
 #: toolhub/apps/lists/serializers.py:309
 msgid "Add a favorite tool."
-msgstr "Voeg een favoriet hulpmiddel toe."
+msgstr "Cuir uirlis is fearr leat leis."
 
 #: toolhub/apps/lists/serializers.py:314
 msgid "Tool name."
-msgstr "De naam van het hulpmiddel."
+msgstr "Ainm uirlis."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr "Dubbele waarden in de lijst: %(duplicates)s"
+msgstr "Luachanna dúblacha sa liosta: %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
-msgstr[0] "Onbekend hulpmiddel: %(names)s"
-msgstr[1] "Onbekende hulpmiddelen: %(names)s"
+msgstr[0] "one=Uirlis anaithnid: %(names)s"
+msgstr[1] "two=Uirlisí anaithnid: %(names)s"
+msgstr[2] "few=Uirlisí anaithnid: %(names)s"
+msgstr[3] "many=Uirlisí anaithnid: %(names)s"
+msgstr[4] "other=Uirlisí anaithnid: %(names)s"
 
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr "Hulpmiddel %(name)s is al toegevoegd aan de favorieten."
+msgstr "Tá uirlis %(name)s curtha i do rogha cheana féin."
 
 #: toolhub/apps/lists/views.py:68
 msgid "Only show lists that are featured."
-msgstr "Alleen lijsten weergeven die zijn uitgelicht."
+msgstr "Taispeáin liostaí atá le feiceáil amháin."
 
 #: toolhub/apps/lists/views.py:73
 msgid "Only show lists that are published."
-msgstr "Alleen lijsten weergeven die zijn gepubliceerd."
+msgstr "Taispeáin liostaí atá foilsithe amháin."
 
 #: toolhub/apps/lists/views.py:78
 msgid "Only show lists created by the given user."
-msgstr "Alleen lijsten weergeven die door de opgegeven gebruiker zijn gemaakt."
+msgstr "Taispeáin liostaí a chruthaigh an t-úsáideoir tugtha amháin."
 
 #: toolhub/apps/lists/views.py:84
 msgid "Create a new list of tools."
-msgstr "Nieuwe lijst met hulpmiddelen maken."
+msgstr "Cruthaigh liosta nua uirlisí."
 
 #: toolhub/apps/lists/views.py:89
 msgid "Details of a specific list of tools."
-msgstr "Details van een specifieke lijst met hulpmiddelen."
+msgstr "Sonraí faoi liosta uirlisí ar leith."
 
 #: toolhub/apps/lists/views.py:93
 msgid "Update a list of tools."
-msgstr "Een lijst met hulpmiddelen bijwerken."
+msgstr "Nuashonraigh liosta uirlisí."
 
 #: toolhub/apps/lists/views.py:101
 msgid "Delete a list of tools."
-msgstr "Een lijst met hulpmiddelen verwijderen."
+msgstr "Scrios liosta uirlisí."
 
 #: toolhub/apps/lists/views.py:104
 msgid "List all lists of tools."
-msgstr "Alle lijsten met hulpmiddelen weergeven."
+msgstr "Liostaigh gach liosta uirlisí."
 
 #: toolhub/apps/lists/views.py:140
 msgid "Mark a list as featured."
-msgstr "Een lijst als uitgelicht markeren."
+msgstr "Marcáil liosta mar rud le feiceáil."
 
 #: toolhub/apps/lists/views.py:168
 msgid "Remove featured flag from a list."
-msgstr "Een lijst niet langer als uitgelicht markeren."
+msgstr "Bain bratach le feiceáil den liosta."
 
 #: toolhub/apps/lists/views.py:200
 msgid "A unique integer value identifying this toollist."
-msgstr "Een unieke integerwaarde die deze hulpmiddelenlijst identificeert."
+msgstr "Slánuach uathúil a shainaithníonn an liosta uirlisí seo."
 
 #: toolhub/apps/lists/views.py:206 toolhub/apps/toolinfo/views.py:175
 msgid "Get revision information."
-msgstr "Versiegegevens opvragen."
+msgstr "Faigh faisnéis athbhreithnithe."
 
 #: toolhub/apps/lists/views.py:211 toolhub/apps/toolinfo/views.py:180
 msgid "List revisions."
-msgstr "Versies weergeven."
+msgstr "Liostaigh athbhreithnithe."
 
 #: toolhub/apps/lists/views.py:216 toolhub/apps/toolinfo/views.py:185
 msgid "Compare two revisions to find difference."
-msgstr "Twee versies vergelijken om verschillen te vinden."
+msgstr "Déan comparáid idir dhá athbhreithniú chun an difríocht a aimsiú."
 
 #: toolhub/apps/lists/views.py:224 toolhub/apps/toolinfo/views.py:193
 msgid "A unique integer value identifying version to diff against."
-msgstr "Een unieke integerwaarde die de versie identificeert waarmee de vergelijking moet worden gemaakt."
+msgstr "Luach slánuimhir uathúil a shainaithníonn leagan le difríocht a dhéanamh ina choinne."
 
 #: toolhub/apps/lists/views.py:232
 msgid "Restore the list to this revision."
-msgstr "De lijst herstellen naar deze versie."
+msgstr "Athchóirigh an liosta go dtí an t-athbhreithniú seo."
 
 #: toolhub/apps/lists/views.py:239 toolhub/apps/toolinfo/views.py:209
 msgid "Undo all changes made between two revisions."
-msgstr "Alle wijzigingen ongedaan maken die tussen twee revisies zijn aangebracht."
+msgstr "Cealaigh gach athrú a rinneadh idir dhá athbhreithniú."
 
 #: toolhub/apps/lists/views.py:247 toolhub/apps/toolinfo/views.py:217
 msgid "A unique integer value identifying version to undo until."
-msgstr "Een unieke integerwaarde die de versie identificeert tot wanneer de handelingen ongedaan gemaakt moeten worden."
+msgstr "Luach slánuimhir uathúil a shainaithníonn leagan le cealú go dtí."
 
 #: toolhub/apps/lists/views.py:255 toolhub/apps/toolinfo/views.py:226
 msgid "Hide revision text and edit summary from users."
-msgstr "De versietekst en bewerkingssamenvatting verbergen voor gebruikers."
+msgstr "Folaigh téacs an athbhreithnithe agus achoimre an eagarthóireachta ó úsáideoirí."
 
 #: toolhub/apps/lists/views.py:261 toolhub/apps/toolinfo/views.py:232
 msgid "Reveal a previously hidden revision."
-msgstr "Een eerder verborgen versie zichtbaar maken."
+msgstr "Nocht athbhreithniú a bhí i bhfolach roimhe seo."
 
 #: toolhub/apps/lists/views.py:267 toolhub/apps/toolinfo/views.py:238
 msgid "Mark a revision as patrolled."
-msgstr "Een versie als gecontroleerd markeren."
+msgstr "Marcáil athbhreithniú mar phatróilithe."
 
 #: toolhub/apps/lists/views.py:369 toolhub/apps/toolinfo/views.py:364
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
-msgstr "Versie %(rev_id)s van %(datetime)s door %(user)s terugzetten"
+msgstr "Fill ar athbhreithniú %(rev_id)s dar dáta %(datetime)s le %(user)s"
 
 #: toolhub/apps/lists/views.py:410 toolhub/apps/toolinfo/views.py:398
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
-msgstr "Versies %(first_id)s tot %(last_id)s ongedaan maken"
+msgstr "Cealaigh athbhreithnithe ó %(first_id)s go %(last_id)s"
 
 #: toolhub/apps/lists/views.py:520 toolhub/apps/toolinfo/views.py:169
 msgid "Unique identifier for this tool."
-msgstr "Unieke identificatiecode voor dit hulpmiddel."
+msgstr "Aitheantóir uathúil don uirlis seo."
 
 #: toolhub/apps/lists/views.py:526
 msgid "Add a tool to favorites."
-msgstr "Een hulpmiddel toevoegen aan favorieten."
+msgstr "Cuir uirlis le ceanáin."
 
 #: toolhub/apps/lists/views.py:531
 msgid "Check to see if a tool is in favorites."
-msgstr "Controleren of een hulpmiddel in de favorieten staat."
+msgstr "Seiceáil an bhfuil uirlis i ceanáin."
 
 #: toolhub/apps/lists/views.py:537
 msgid "Remove a tool from favorites."
-msgstr "Een hulpmiddel uit de favorieten verwijderen."
+msgstr "Bain uirlis ó cheanáin."
 
 #: toolhub/apps/lists/views.py:543
 msgid "Personal favorites."
-msgstr "Persoonlijke favorieten."
+msgstr "Cinn is ansa leat pearsanta."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
-msgstr "OAuth 2.0-autorisatieserver-API"
+msgstr "API freastalaí Údaraithe OAuth 2.0"
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
-msgstr "OAuth-clientapplicatie."
+msgstr "Feidhmchlár Cliant OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:37
 msgid "Application name"
-msgstr "Programmanaam"
+msgstr "Ainm an fheidhmchláir"
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
-msgstr "Iets wat gebruikers herkennen en vertrouwen."
+msgstr "Rud a aithneoidh úsáideoirí agus a mbeidh muinín acu as"
 
 #: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
 msgid "Authorization callback URL"
-msgstr "Autorisatie-callback-URL"
+msgstr "URL údaraithe athghlaoite"
 
 #: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
 msgid "The application's callback URL."
-msgstr "De callback-URL van de toepassing."
+msgstr "URL athghlaoite an fheidhmchláir."
 
 #: toolhub/apps/oauth2/serializers.py:49
 msgid "Public identifier for this application"
-msgstr "Openbare identificatiecode voor deze toepassing"
+msgstr "Aitheantóir poiblí don fheidhmchlár seo"
 
 #: toolhub/apps/oauth2/serializers.py:66
 msgid "OAuth Client application registration."
-msgstr "Registratie van een OAuth-clienttoepassing."
+msgstr "Clárú feidhmchláir Cliant OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:74
 msgid "Secret known only to the application and the authorization server"
-msgstr "Geheim dat alleen bekend is bij de toepassing en de autorisatieserver."
+msgstr "Rún nach bhfuil ar eolas ach ag an bhfeidhmchlár agus ag an bhfreastalaí údaraithe"
 
 #: toolhub/apps/oauth2/serializers.py:92
 msgid "OAuth Client application update."
-msgstr "Update van de OAuth-clienttoepassing."
+msgstr "Nuashonrú ar fheidhmchlár Cliant OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:117
 msgid "Authorized OAuth client application."
-msgstr "Geautoriseerde OAuth-clienttoepassing."
+msgstr "Feidhmchlár cliant OAuth údaraithe."
 
 #: toolhub/apps/oauth2/views.py:39
 msgid "List all client applications."
-msgstr "Een overzicht geven van alle clienttoepassingen."
+msgstr "Liostaigh gach feidhmchlár cliant."
 
 #: toolhub/apps/oauth2/views.py:42
 msgid "Info for a client application."
-msgstr "Informatie voor een clienttoepassing."
+msgstr "Eolas le haghaidh feidhmchlár cliaint."
 
 #: toolhub/apps/oauth2/views.py:45
 msgid "Register a new client application."
-msgstr "Een nieuwe clienttoepassing registreren."
+msgstr "Cláraigh iarratas cliant nua."
 
 #: toolhub/apps/oauth2/views.py:53
 msgid "Update a client application."
-msgstr "Een clienttoepassing bijwerken."
+msgstr "Nuashonraigh feidhmchlár cliaint."
 
 #: toolhub/apps/oauth2/views.py:57
 msgid "Delete a client application."
-msgstr "Een clienttoepassing verwijderen."
+msgstr "Scrios feidhmchlár cliaint."
 
 #: toolhub/apps/oauth2/views.py:91
 msgid "List applications authorized by the current user."
-msgstr "Een lijst met toepassingen die door de huidige gebruiker zijn geautoriseerd."
+msgstr "Liostaigh feidhmchláir atá údaraithe ag an úsáideoir reatha."
 
 #: toolhub/apps/oauth2/views.py:94
 msgid "Info for an authorized application."
-msgstr "Informatie voor een geautoriseerde toepassing."
+msgstr "Eolas le haghaidh iarratais údaraithe."
 
 #: toolhub/apps/oauth2/views.py:106
 msgid "Revoke an application authorization."
-msgstr "Een toepassingsautorisatie intrekken."
+msgstr "Údarú iarratais a chúlghairm."
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr "Zoeken"
+msgstr "Cuardaigh"
 
 #: toolhub/apps/search/schema.py:28
 msgid "Faceted classification"
-msgstr "Gefacetteerde classificatie"
+msgstr "Aicmiú ilghnéitheach"
 
 #: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
 msgid "Search string"
-msgstr "Zoekopdracht"
+msgstr "Teaghrán cuardaigh"
 
 #: toolhub/apps/search/schema.py:95
 #, python-format
 msgid "Search in %(fields)s"
-msgstr "%(fields)s doorzoeken"
+msgstr "Cuardaigh i %(fields)s"
 
 #: toolhub/apps/search/schema.py:97
 #, optional
@@ -537,148 +536,148 @@ msgstr ""
 
 #: toolhub/apps/search/schema.py:182
 msgid "Field to use when ordering results."
-msgstr "Te gebruiken veld voor het sorteren van resultaten."
+msgstr "Réimse le húsáid agus torthaí á n-ordú."
 
 #: toolhub/apps/search/serializers.py:47 toolhub/apps/search/serializers.py:72
 msgid "Tool search results"
-msgstr "Zoekresultaten"
+msgstr "Torthaí cuardaigh uirlisí"
 
 #: toolhub/apps/search/serializers.py:61
 msgid "Tool autocomplete results"
-msgstr "Automatische aanvullingen"
+msgstr "Torthaí uathchríochnaithe uirlise"
 
 #: toolhub/apps/search/serializers.py:86
 msgid "ToolList autocomplete results"
-msgstr ""
+msgstr "Torthaí uathchríochnaithe ToolList"
 
 #: toolhub/apps/search/views.py:123
 msgid "Autocomplete for tools."
-msgstr ""
+msgstr "Uathchríochnú le haghaidh uirlisí."
 
 #: toolhub/apps/search/views.py:157
 msgid "Faceted search for tools."
-msgstr ""
+msgstr "Cuardach ilghnéitheach le haghaidh uirlisí."
 
 #: toolhub/apps/search/views.py:276
 msgid "Autocomplete for toollists."
-msgstr ""
+msgstr "Uathchríochnú le haghaidh liostaí uirlisí."
 
 #: toolhub/apps/search/views.py:316
 msgid "Full text search for toollists."
-msgstr ""
+msgstr "Cuardach téacs iomlán le haghaidh liostaí uirlisí."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr ""
+msgstr "Eolas Uirlisí"
 
 #: toolhub/apps/toolinfo/models.py:67
 msgid "web app"
-msgstr "webapp"
+msgstr "aip ghréasáin"
 
 #: toolhub/apps/toolinfo/models.py:68
 msgid "desktop app"
-msgstr "computerprogramma"
+msgstr "aip deisce"
 
 #: toolhub/apps/toolinfo/models.py:69
 msgid "bot"
-msgstr "bot"
+msgstr "bota"
 
 #: toolhub/apps/toolinfo/models.py:70
 msgid "gadget"
-msgstr "gadget"
+msgstr "giuirléid"
 
 #: toolhub/apps/toolinfo/models.py:71
 msgid "user script"
-msgstr "gebruikersscript"
+msgstr "script úsáideora"
 
 #: toolhub/apps/toolinfo/models.py:72
 msgid "command line tool"
-msgstr "opdrachtregelprogramma"
+msgstr "uirlis líne ordaithe"
 
 #: toolhub/apps/toolinfo/models.py:73
 msgid "coding framework"
-msgstr "programmeerframework"
+msgstr "creat códaithe"
 
 #: toolhub/apps/toolinfo/models.py:74
 msgid "lua module"
-msgstr "lua-module"
+msgstr "modúl lua"
 
 #: toolhub/apps/toolinfo/models.py:75
 msgid "template"
-msgstr "sjabloon"
+msgstr "teimpléad"
 
 #: toolhub/apps/toolinfo/models.py:76
 msgid "other"
-msgstr "overig"
+msgstr "eile"
 
 #: toolhub/apps/toolinfo/models.py:82
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
-msgstr ""
+msgstr "Más fíor é, moltar go hoifigiúil úsáid na huirlise seo. Is féidir an paraiméadar `replaced_by` a úsáid chun athsholáthar a shainiú."
 
 #: toolhub/apps/toolinfo/models.py:92
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
-msgstr ""
+msgstr "Más rud é go bhfuil an uirlis seo imithe as feidhm, ba cheart an paraiméadar seo a úsáid chun nascadh leis an uirlis athsholáthair."
 
 #: toolhub/apps/toolinfo/models.py:99
 msgid "If true, this tool is unstable and can change or go offline at any time."
-msgstr ""
+msgstr "Más fíor é, tá an uirlis seo éagobhsaí agus féadfaidh sí athrú nó dul as líne ag am ar bith."
 
 #: toolhub/apps/toolinfo/models.py:107
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
-msgstr ""
+msgstr "Teaghrán nó eagar teaghrán a chuireann síos ar an vicí/na vicí ar féidir an uirlis seo a úsáid orthu. Bain úsáid as ainmneacha óstacha ar nós `zh.wiktionary.org`. Bain úsáid as réaltaí mar fhiáine. Mar shampla, ciallaíonn `*.wikisource.org` 'oibríonn an uirlis seo ar gach vicí Vicífhoinse.' Ciallaíonn `*` 'oibríonn sé seo ar gach vicí, lena n-áirítear vicí Wikimedia.'"
 
 #: toolhub/apps/toolinfo/models.py:125
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
-msgstr ""
+msgstr "Nasc chuig leathanach cur síos comhaid Wikimedia Commons le haghaidh deilbhín a léiríonn an uirlis."
 
 #: toolhub/apps/toolinfo/models.py:133
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
-msgstr ""
+msgstr "Tá an teanga/na teangacha ina bhfuil comhéadan na huirlise aistrithe chucu. Bain úsáid as cóid teanga ISO 639 ar nós `zh` agus `scn`. Mura bhfuil sé sainmhínithe, glactar leis nach bhfuil an uirlis ar fáil ach i mBéarla."
 
 #: toolhub/apps/toolinfo/models.py:146
 msgid "The manner in which the tool is used. Select one from the list of options."
-msgstr ""
+msgstr "An chaoi a n-úsáidtear an uirlis. Roghnaigh ceann amháin ón liosta roghanna."
 
 #: toolhub/apps/toolinfo/models.py:154
 msgid "A link to the repository where the tool code is hosted."
-msgstr ""
+msgstr "Nasc chuig an stórlann ina bhfuil cód an uirlis á óstáil."
 
 #: toolhub/apps/toolinfo/models.py:161
 msgid "A link to the tool's API, if available."
-msgstr ""
+msgstr "Nasc chuig API na huirlise, más féidir."
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "A link to the tool's developer documentation, if available."
-msgstr ""
+msgstr "Nasc chuig doiciméadacht forbróra an uirlis, más ann dó."
 
 #: toolhub/apps/toolinfo/models.py:175
 msgid "A link to the tool's user documentation, if available."
-msgstr ""
+msgstr "Nasc chuig doiciméadacht úsáideora an uirlis, más ann dó."
 
 #: toolhub/apps/toolinfo/models.py:183
 msgid "A link to location where the tool's user can leave feedback."
-msgstr ""
+msgstr "Nasc chuig an áit inar féidir le húsáideoir na huirlise aiseolas a fhágáil."
 
 #: toolhub/apps/toolinfo/models.py:191
 msgid "A link to the tool's privacy policy, if available."
-msgstr ""
+msgstr "Nasc chuig polasaí príobháideachta an uirlis, más ann dó."
 
 #: toolhub/apps/toolinfo/models.py:200
 msgid "A link to the tool's translation interface."
-msgstr ""
+msgstr "Nasc chuig comhéadan aistriúcháin an uirlis."
 
 #: toolhub/apps/toolinfo/models.py:208
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
-msgstr ""
+msgstr "Nasc chuig rianaitheoir fabhtanna an uirlis ar GitHub, Bitbucket, Phabricator, srl."
 
 #: toolhub/apps/toolinfo/models.py:464
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
-msgstr ""
+msgstr "Ní cheadaítear %(key)s a athrú tar éis an chéad chruthú réada"
 
 #: toolhub/apps/toolinfo/models.py:504
 msgid "crawler"
-msgstr "crawler"
+msgstr "ransaitheoir"
 
 #: toolhub/apps/toolinfo/models.py:505
 msgid "api"
@@ -686,772 +685,772 @@ msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:513
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
-msgstr ""
+msgstr "Aitheantóir uathúil don uirlis seo. Ní mór é a bheith uathúil do gach uirlis. Moltar duit réimír a chur le hainmneacha d’uirlisí chun an baol coimhlinte a laghdú."
 
 #: toolhub/apps/toolinfo/models.py:521
 msgid "Human readable tool name. Recommended limit of 25 characters."
-msgstr ""
+msgstr "Ainm uirlis atá inléite ag an duine. Teorainn molta de 25 carachtar."
 
 #: toolhub/apps/toolinfo/models.py:527
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr ""
+msgstr "Cur síos níos faide ar an uirlis. Is é 3-5 abairt an fad molta le haghaidh cur síos."
 
 #: toolhub/apps/toolinfo/models.py:535
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
-msgstr ""
+msgstr "Nasc díreach chuig an uirlis nó chuig treoracha maidir le conas an uirlis a úsáid nó a shuiteáil."
 
 #: toolhub/apps/toolinfo/models.py:549
 msgid "The primary tool developers."
-msgstr ""
+msgstr "Na príomhfhorbróirí uirlisí."
 
 #: toolhub/apps/toolinfo/models.py:557
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
-msgstr ""
+msgstr "Níos faide ná an teideal iomlán ach níos giorra ná an cur síos. Ba chóir go gcuirfeadh sé comhthéacs breise leis an teideal."
 
 #: toolhub/apps/toolinfo/models.py:566
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
-msgstr ""
+msgstr "ID an tionscadail ar OpenHub. Má thugtar URL de https://openhub.net/p/foo, is é `foo` ID an tionscadail."
 
 #: toolhub/apps/toolinfo/models.py:575
 msgid "Alternate links to the tool or install documentation in different natural languages."
-msgstr ""
+msgstr "Naisc mhalartacha chuig an uirlis nó suiteáil doiciméadacht i dteangacha nádúrtha éagsúla."
 
 #: toolhub/apps/toolinfo/models.py:586
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
-msgstr ""
+msgstr "Más bota an uirlis, ainm úsáideora Wikimedia an bhota. Ná cuir 'Úsáideoir:' ná réimíreanna comhchosúla san áireamh."
 
 #: toolhub/apps/toolinfo/models.py:595
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
-msgstr ""
+msgstr "An ceadúnas bogearraí faoina bhfuil an cód uirlis ar fáil. Bain úsáid as aitheantóir ceadúnais SPDX caighdeánach ar nós 'GPL-3.0-nó níos déanaí'."
 
 #: toolhub/apps/toolinfo/models.py:603
 msgid "Organization(s) that sponsored the tool's development."
-msgstr ""
+msgstr "Eagraíocht(aí) a rinne urraíocht ar fhorbairt na huirlise."
 
 #: toolhub/apps/toolinfo/models.py:610
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
-msgstr ""
+msgstr "Teaghrán nó eagar teaghrán ina liostaítear teicneolaíochtaí (teangacha ríomhchlárúcháin, creatlacha forbartha, srl.) a úsáidtear chun an uirlis a chruthú."
 
 #: toolhub/apps/toolinfo/models.py:621
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
-msgstr ""
+msgstr "URI a shainaithníonn an jsonschema don taifead toolinfo.json seo. Ba chóir gur uri gearr é seo ina bhfuil an t-ainm agus an t-athbhreithniú amháin ag deireadh chonair an URI."
 
 #: toolhub/apps/toolinfo/models.py:632
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
-msgstr ""
+msgstr "An teanga ina scríobhtar an taifead toolinfo seo. Mura socraítear é, is é an Béarla an luach réamhshocraithe. Bain úsáid as cóid teanga ISO 639."
 
 #: toolhub/apps/toolinfo/models.py:642
 msgid "Origin of this tool record."
-msgstr ""
+msgstr "Bunús an taifid uirlisí seo."
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr "Beheerders"
+msgstr "Riarthóirí"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
-msgstr "Organisatoren en programmacoördinatoren"
+msgstr "Eagraithe agus comhordaitheoirí clár"
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr "Redacteuren en inhoudsbijdragers"
+msgstr "Eagarthóirí agus rannpháirtithe ábhair"
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
-msgstr "Lezers en consumenten"
+msgstr "Léitheoirí agus tomhaltóirí ábhair"
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
-msgstr "Onderzoekers"
+msgstr "Taighdeoirí"
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr "Ontwikkelaars"
+msgstr "Forbróirí"
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr "Pagina's"
+msgstr "Airteagail"
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
-msgstr "Audio"
+msgstr "Fuaim"
 
 #: toolhub/apps/toolinfo/models.py:722
 msgid "Books"
-msgstr "Boeken"
+msgstr "Leabhair"
 
 #: toolhub/apps/toolinfo/models.py:724
 msgid "Data"
-msgstr "Gegevens"
+msgstr "Sonraí"
 
 #: toolhub/apps/toolinfo/models.py:726
 msgid "Bibliographic data"
-msgstr "Bibliografische gegevens"
+msgstr "Sonraí leabharliosta"
 
 #: toolhub/apps/toolinfo/models.py:727
 msgid "Categories or labels"
-msgstr "Categorieën of labels"
+msgstr "Catagóirí nó lipéid"
 
 #: toolhub/apps/toolinfo/models.py:728
 msgid "Diffs and revision data"
-msgstr "Verschillen en revisiegegevens"
+msgstr "Sonraí difríochta agus athbhreithnithe"
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
-msgstr ""
+msgstr "Sonraí imeachta"
 
 #: toolhub/apps/toolinfo/models.py:730
 msgid "Geographic data"
-msgstr "Geografische gegevens"
+msgstr "Sonraí geografacha"
 
 #: toolhub/apps/toolinfo/models.py:731
 msgid "Linguistic data"
-msgstr "Taalkundige gegevens"
+msgstr "Sonraí teangeolaíocha"
 
 #: toolhub/apps/toolinfo/models.py:732
 msgid "Page metadata"
-msgstr "Pagina-metagegevens"
+msgstr "Meiteashonraí leathanaigh"
 
 #: toolhub/apps/toolinfo/models.py:733
 msgid "Structured data"
-msgstr "Gestructureerde gegevens"
+msgstr "Sonraí struchtúrtha"
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
-msgstr "Gebruikersgegevens"
+msgstr "Sonraí úsáideora"
 
 #: toolhub/apps/toolinfo/models.py:737
 msgid "Discussions"
-msgstr "Discussies"
+msgstr "Pléanna"
 
 #: toolhub/apps/toolinfo/models.py:738
 msgid "Drafts"
-msgstr "Concepten"
+msgstr "Dréachtaí"
 
 #: toolhub/apps/toolinfo/models.py:739
 msgid "Emails"
-msgstr "E-mails"
+msgstr "Ríomhphoist"
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
-msgstr "Afbeeldingen"
+msgstr "Íomhánna"
 
 #: toolhub/apps/toolinfo/models.py:741
 msgid "Links"
-msgstr "Koppelingen"
+msgstr "Naisc"
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
-msgstr "Logboeken"
+msgstr "Logaí"
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
-msgstr "Kaarten"
+msgstr "Léarscáileanna"
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
-msgstr "Referenties"
+msgstr "Tagairtí"
 
 #: toolhub/apps/toolinfo/models.py:746
 msgid "Software or code"
-msgstr "Software of code"
+msgstr "Bogearraí nó cód"
 
 #: toolhub/apps/toolinfo/models.py:747
 msgid "Templates"
-msgstr "Sjablonen"
+msgstr "Teimpléid"
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
-msgstr "Video's"
+msgstr "Físeáin"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
-msgstr "Volglijsten"
+msgstr "Liostaí faire"
 
 #: toolhub/apps/toolinfo/models.py:750
 msgid "Webpages"
-msgstr "Webpagina's"
+msgstr "Leathanaigh ghréasáin"
 
 #: toolhub/apps/toolinfo/models.py:751
 msgid "Wikitext"
-msgstr "Wikitekst"
+msgstr "Vicíthéacs"
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
-msgstr "Analyse"
+msgstr "Anailís"
 
 #: toolhub/apps/toolinfo/models.py:755
 msgid "Annotating and linking"
-msgstr "Aantekeningen maken en koppelen"
+msgstr "Anótáil agus nascadh"
 
 #: toolhub/apps/toolinfo/models.py:756
 msgid "Archiving and cleanup"
-msgstr "Archiveren en opruimen"
+msgstr "Cartlannú agus glanadh"
 
 #: toolhub/apps/toolinfo/models.py:757
 msgid "Categorizing and tagging"
-msgstr "Categoriseren en labelen"
+msgstr "Catagóiriú agus clibeáil"
 
 #: toolhub/apps/toolinfo/models.py:758
 msgid "Citing and referencing"
-msgstr "Citeren en referenties"
+msgstr "Ag lua agus ag tagairt"
 
 #: toolhub/apps/toolinfo/models.py:759
 msgid "Communication and supporting users"
-msgstr "Communicatie en ondersteuning van gebruikers"
+msgstr "Cumarsáid agus tacaíocht a thabhairt d’úsáideoirí"
 
 #: toolhub/apps/toolinfo/models.py:760
 msgid "Converting and formatting content"
-msgstr "Inhoud converteren en opmaken"
+msgstr "Ábhar a thiontú agus a fhormáidiú"
 
 #: toolhub/apps/toolinfo/models.py:761
 msgid "Creating content"
-msgstr "Inhoud creëren"
+msgstr "Ábhar a chruthú"
 
 #: toolhub/apps/toolinfo/models.py:762
 msgid "Deleting and reverting"
-msgstr "Verwijderen en terugdraaien"
+msgstr "Scriosadh agus aisiompú"
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr "Doorverwijzing"
+msgstr "Díbhríocht"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr ""
+msgstr "Ábhar a íoslódáil nó a athúsáid"
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
-msgstr ""
+msgstr "Ábhar a chur in eagar nó a nuashonrú"
 
 #: toolhub/apps/toolinfo/models.py:766
 msgid "Event and contest planning"
-msgstr ""
+msgstr "Pleanáil imeachtaí agus comórtais"
 
 #: toolhub/apps/toolinfo/models.py:767
 msgid "Hosting and maintaining tools"
-msgstr ""
+msgstr "Uirlisí a óstáil agus a chothabháil"
 
 #: toolhub/apps/toolinfo/models.py:768
 msgid "Identifying policy violations"
-msgstr ""
+msgstr "Sáruithe beartais a aithint"
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
-msgstr "Spam identificeren"
+msgstr "Ag aithint turscair"
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr ""
+msgstr "Aithint loitiméireachta"
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
-msgstr ""
+msgstr "Liostáil agus rangú"
 
 #: toolhub/apps/toolinfo/models.py:772
 msgid "Merging content"
-msgstr "Inhoud samenvoegen"
+msgstr "Ábhar á chumasc"
 
 #: toolhub/apps/toolinfo/models.py:773
 msgid "Migrating content"
-msgstr ""
+msgstr "Ábhar á aistriú"
 
 #: toolhub/apps/toolinfo/models.py:774
 msgid "Patrolling recent changes"
-msgstr ""
+msgstr "Ag patról athruithe le déanaí"
 
 #: toolhub/apps/toolinfo/models.py:775
 msgid "Project management and reporting"
-msgstr ""
+msgstr "Bainistíocht tionscadail agus tuairisciú"
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr ""
+msgstr "Léitheoireacht"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr ""
+msgstr "Ábhar a mholadh"
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"
-msgstr ""
+msgstr "Aistriúchán agus logánú"
 
 #: toolhub/apps/toolinfo/models.py:779
 msgid "Uploading or importing"
-msgstr ""
+msgstr "Ag uaslódáil nó ag allmhairiú"
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
-msgstr ""
+msgstr "Bainistíocht úsáideoirí"
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr ""
+msgstr "Rabhadh d'úsáideoirí"
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
-msgstr "Biografie"
+msgstr "Beathaisnéis"
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr "Cultureel erfgoed"
+msgstr "Oidhreacht chultúrtha"
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
-msgstr "Onderwijs"
+msgstr "Oideachas"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr ""
+msgstr "Tíreolaíocht agus mapáil"
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
-msgstr ""
+msgstr "GLAM"
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
-msgstr "Geschiedenis"
+msgstr "Stair"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
-msgstr ""
+msgstr "Teanga agus idirnáisiúnú"
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "For-rochtain"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
-msgstr "Wetenschap"
+msgstr "Eolaíocht"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
-msgstr ""
+msgstr "ID míre Wikidata don uirlis."
 
 #: toolhub/apps/toolinfo/models.py:810
 msgid "Who is the intended user of the tool?"
-msgstr ""
+msgstr "Cé hé an t-úsáideoir beartaithe don uirlis?"
 
 #: toolhub/apps/toolinfo/models.py:817
 msgid "With what type of content or data does the tool interact?"
-msgstr ""
+msgstr "Cén cineál ábhair nó sonraí a mbíonn an uirlis ag idirghníomhú leis?"
 
 #: toolhub/apps/toolinfo/models.py:824
 msgid "What type of task does the tool help with?"
-msgstr ""
+msgstr "Cén cineál tasc a chabhraíonn an uirlis leis?"
 
 #: toolhub/apps/toolinfo/models.py:831
 msgid "Is the tool targeted at helping in a specific type of wiki project or topic area?"
-msgstr ""
+msgstr "An bhfuil an uirlis dírithe ar chabhrú le cineál tionscadail nó topaice vicí ar leith?"
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"
-msgstr ""
+msgstr "Faisnéis cheadúnais SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:48
 msgid "SPDX license ID"
-msgstr ""
+msgstr "Aitheantas ceadúnais SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:53
 msgid "Full name of this license"
-msgstr ""
+msgstr "Ainm iomlán an cheadúnais seo"
 
 #: toolhub/apps/toolinfo/serializers.py:58
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr ""
+msgstr "An bhfuil an ceadúnas seo ceadaithe mar 'fhoinse oscailte' ag an OSI?"
 
 #: toolhub/apps/toolinfo/serializers.py:63
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr ""
+msgstr "An bhfuil an ceadúnas seo ceadaithe mar 'bhogearraí saor in aisce' ag an FSF?"
 
 #: toolhub/apps/toolinfo/serializers.py:68
 msgid "Is this license considered to be outdated?"
-msgstr ""
+msgstr "An meastar go bhfuil an ceadúnas seo as dáta?"
 
 #: toolhub/apps/toolinfo/serializers.py:72
 msgid "Community added information for a tool"
-msgstr ""
+msgstr "Faisnéis bhreise curtha leis ag an bpobal le haghaidh uirlis"
 
 #: toolhub/apps/toolinfo/serializers.py:105
 msgid "Summary of community added information for a tool"
-msgstr ""
+msgstr "Achoimre ar fhaisnéis bhreise ón bpobal le haghaidh uirlis"
 
 #: toolhub/apps/toolinfo/serializers.py:120
 msgid "Update annotations"
-msgstr ""
+msgstr "Nuashonraigh anótálacha"
 
 #: toolhub/apps/toolinfo/serializers.py:159
 msgid "Description of a tool"
-msgstr "Beschrijving van een hulpmiddel"
+msgstr "Cur síos ar uirlis"
 
 #: toolhub/apps/toolinfo/serializers.py:211
 msgid "Summary of a tool"
-msgstr "Samenvatting van een hulpmiddel"
+msgstr "Achoimre ar uirlis"
 
 #: toolhub/apps/toolinfo/serializers.py:235
 msgid "Create a tool"
-msgstr "Hulpmiddel maken"
+msgstr "Cruthaigh uirlis"
 
 #: toolhub/apps/toolinfo/serializers.py:301
 msgid "Update a tool"
-msgstr "Hulpmiddel bijwerken"
+msgstr "Nuashonraigh uirlis"
 
 #: toolhub/apps/toolinfo/serializers.py:332
 msgid "Tool revision."
-msgstr "Hulpmiddelrevisie."
+msgstr "Athbhreithniú uirlisí."
 
 #: toolhub/apps/toolinfo/serializers.py:340
 msgid "Tool revision detail."
-msgstr ""
+msgstr "Sonraí athbhreithnithe uirlisí."
 
 #: toolhub/apps/toolinfo/serializers.py:378
 msgid "Tool revision difference."
-msgstr ""
+msgstr "Difríocht athbhreithnithe uirlisí."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "Ní cód teanga aitheanta é %(value)s."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
 #, python-format
 msgid "Expected a list of language codes but found %(type)s"
-msgstr ""
+msgstr "Bhíothas ag súil le liosta cóid teanga ach fuarthas %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr ""
+msgstr "Ní aitheantóir ceadúnais SPDX aitheanta é %(value)s."
 
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
 msgid "Expected a url_multilingual dict but found %(type)s"
-msgstr ""
+msgstr "Bhíothas ag súil le ráiteas url_multilingual ach fuarthas %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
-msgstr ""
+msgstr "Tá an airí 'teanga' ar iarraidh in Url_multilingual."
 
 #: toolhub/apps/toolinfo/validators.py:79
 msgid "Url_multilingual missing 'url' property."
-msgstr ""
+msgstr "Tá an airí 'url' ar iarraidh in Url_multilingual."
 
 #: toolhub/apps/toolinfo/views.py:68
 msgid "Create a new tool."
-msgstr ""
+msgstr "Cruthaigh uirlis nua."
 
 #: toolhub/apps/toolinfo/views.py:73
 msgid "Info for a specific tool."
-msgstr ""
+msgstr "Eolas le haghaidh uirlis shonrach."
 
 #: toolhub/apps/toolinfo/views.py:76
 msgid "Update info for a specific tool."
-msgstr ""
+msgstr "Nuashonraigh faisnéis le haghaidh uirlis shonrach."
 
 #: toolhub/apps/toolinfo/views.py:84
 msgid "Delete a tool."
-msgstr ""
+msgstr "Scrios uirlis."
 
 #: toolhub/apps/toolinfo/views.py:87
 msgid "List all tools."
-msgstr ""
+msgstr "Liostaigh na huirlisí go léir."
 
 #: toolhub/apps/toolinfo/views.py:129
 msgid "Additional information for a tool."
-msgstr ""
+msgstr "Faisnéis bhreise le haghaidh uirlis."
 
 #: toolhub/apps/toolinfo/views.py:143
 msgid "Update annotations for a specific tool."
-msgstr ""
+msgstr "Nuashonraigh nótaí le haghaidh uirlis shonrach."
 
 #: toolhub/apps/toolinfo/views.py:201
 msgid "Restore the tool to this revision."
-msgstr ""
+msgstr "Athchóirigh an uirlis go dtí an leagan seo."
 
 #: toolhub/apps/toolinfo/views.py:494
 msgid "Info for a specific SPDX license."
-msgstr ""
+msgstr "Eolas le haghaidh ceadúnas SPDX ar leith."
 
 #: toolhub/apps/toolinfo/views.py:502
 msgid "List all SPDX licenses."
-msgstr ""
+msgstr "Liostaigh gach ceadúnas SPDX."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
-msgstr "Privégegevens"
+msgstr "Eolas pearsanta"
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr "Rechten"
+msgstr "Ceadanna"
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
-msgstr "Belangrijke data"
+msgstr "Dátaí tábhachtacha"
 
 #: toolhub/apps/user/apps.py:26
 msgid "Toolhub user"
-msgstr "Toolhub-gebruiker"
+msgstr "Úsáideoir Toolhub"
 
 #: toolhub/apps/user/models.py:36
 msgid "username"
-msgstr "gebruikersnaam"
+msgstr "ainm úsáideora"
 
 #: toolhub/apps/user/models.py:39
 msgid "Required. 255 characters or fewer."
-msgstr "Vereist - 255 tekens of minder."
+msgstr "Riachtanach. 255 carachtar nó níos lú."
 
 #: toolhub/apps/user/models.py:42
 msgid "A user with that username already exists."
-msgstr "Er is al een gebruiker met deze gebruikersnaam."
+msgstr "Tá úsáideoir leis an ainm úsáideora sin ann cheana féin."
 
 #: toolhub/apps/user/serializers.py:41
 msgid "Action that the user can take"
-msgstr "Handeling die de gebruiker kan ondernemen"
+msgstr "Gníomh is féidir leis an úsáideoir a dhéanamh"
 
 #: toolhub/apps/user/serializers.py:46
 msgid "Subject type to check user action on"
-msgstr ""
+msgstr "Cineál ábhair le seiceáil ar ghníomh an úsáideora air"
 
 #: toolhub/apps/user/serializers.py:51
 msgid "Criteria which restricts user action"
-msgstr ""
+msgstr "Critéir a chuireann srian ar ghníomhaíocht úsáideora"
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
-msgstr ""
+msgstr "Faisnéis faoin úsáideoir reatha"
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
-msgstr "Numerieke gebruikers-ID"
+msgstr "Aitheantas úsáideora uimhriúil"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
-msgstr ""
+msgstr "Comhartha cosc ​​​​ar ghóchumadh iarratais tras-láithreáin"
 
 #: toolhub/apps/user/serializers.py:82
 msgid "CASL access control rules"
-msgstr ""
+msgstr "Rialacha rialaithe rochtana CASL"
 
 #: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
-msgstr ""
+msgstr "Eolas faoin suíomh reatha"
 
 #: toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr "Gebruikersgegevens"
+msgstr "Faisnéis úsáideora"
 
 #: toolhub/apps/user/serializers.py:123
 msgid "Group information"
-msgstr "Groepsinformatie"
+msgstr "Eolas grúpa"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr ""
+msgstr "Faisnéis fíordheimhnithe shóisialta d'úsáideoir"
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
-msgstr ""
+msgstr "Faisnéis mhionsonraithe úsáideora"
 
 #: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
-msgstr "Gedetailleerde groepsinformatie"
+msgstr "Faisnéis mhionsonraithe faoin ngrúpa"
 
 #: toolhub/apps/user/serializers.py:198
 msgid "Owner-only API Token"
-msgstr ""
+msgstr "Comhartha API Úinéara Amháin"
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
-msgstr "Authenticatietoken"
+msgstr "Comhartha fíordheimhnithe"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
-msgstr ""
+msgstr "Cuir isteach ainm úsáideora bailí. Ní cheadaítear na carachtair `@` agus `:`."
 
 #: toolhub/apps/user/views.py:60
 msgid "Get information about the currently logged in user."
-msgstr ""
+msgstr "Faigh eolas faoin úsáideoir atá logáilte isteach faoi láthair."
 
 #: toolhub/apps/user/views.py:88
 msgid "Get current locale."
-msgstr ""
+msgstr "Faigh an suíomh reatha."
 
 #: toolhub/apps/user/views.py:99
 msgid "Set locale."
-msgstr ""
+msgstr "Socraigh logán."
 
 #: toolhub/apps/user/views.py:117
 msgid "List all active users."
-msgstr ""
+msgstr "Liostaigh na húsáideoirí gníomhacha go léir."
 
 #: toolhub/apps/user/views.py:120
 msgid "Info for a specific user."
-msgstr ""
+msgstr "Eolas d'úsáideoir ar leith."
 
 #: toolhub/apps/user/views.py:141
 msgid "List all user groups."
-msgstr ""
+msgstr "Liostaigh na grúpaí úsáideoirí uile."
 
 #: toolhub/apps/user/views.py:144
 msgid "Info for a user group."
-msgstr ""
+msgstr "Eolas do ghrúpa úsáideoirí."
 
 #: toolhub/apps/user/views.py:166
 msgid "Add a user to this group."
-msgstr ""
+msgstr "Cuir úsáideoir leis an ngrúpa seo."
 
 #: toolhub/apps/user/views.py:177
 msgid "Remove a user from this group."
-msgstr ""
+msgstr "Bain úsáideoir as an ngrúpa seo."
 
 #: toolhub/apps/user/views.py:222
 msgid "Get authentication token."
-msgstr ""
+msgstr "Faigh comhartha fíordheimhnithe."
 
 #: toolhub/apps/user/views.py:225
 msgid "Create authentication token."
-msgstr ""
+msgstr "Cruthaigh comhartha fíordheimhnithe."
 
 #: toolhub/apps/user/views.py:228
 msgid "Delete authentication token."
-msgstr ""
+msgstr "Scrios an comhartha fíordheimhnithe."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr ""
+msgstr "Leaganaithe"
 
 #: toolhub/apps/versioned/exceptions.py:28
 msgid "Failed to apply patch."
-msgstr ""
+msgstr "Theip ar an paiste a chur i bhfeidhm."
 
 #: toolhub/apps/versioned/exceptions.py:35
 msgid "Current revision cannot be hidden."
-msgstr ""
+msgstr "Ní féidir an t-athbhreithniú reatha a cheilt."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr ""
+msgstr "Tá an t-athbhreithniú marcáilte mar phatróilithe cheana féin."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
-msgstr ""
+msgstr "Ábhar ar iarraidh le haghaidh athbhreithniú amháin nó níos mó."
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:69
 msgid "Has this revision been marked as hidden?"
-msgstr ""
+msgstr "An bhfuil an t-athbhreithniú seo marcáilte mar fholaithe?"
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:75
 msgid "Has this revision been reviewed by a patroller?"
-msgstr ""
+msgstr "An ndearna patrólóir athbhreithniú ar an athbhreithniú seo?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the version"
-msgstr ""
+msgstr "aitheantóir uathúil an leagain"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
-msgstr ""
+msgstr "aitheantóir uathúil an ábhair atá á leaganú"
 
 #: toolhub/apps/versioned/schema.py:31
 msgid "title describing the content being versioned"
-msgstr ""
+msgstr "teideal a chuireann síos ar an ábhar atá á leagan"
 
 #: toolhub/apps/versioned/schema.py:36
 msgid "RFC 6902 application/json-patch+json data"
-msgstr ""
+msgstr "RFC 6902 application/json-patch+json sonraí"
 
 #: toolhub/apps/versioned/schema.py:39
 msgid "RFC 6902 JSON patch operation"
-msgstr ""
+msgstr "Oibríocht paiste JSON RFC 6902"
 
 #: toolhub/apps/versioned/schema.py:44
 msgid "The operation to be performed"
-msgstr ""
+msgstr "An oibríocht atá le déanamh"
 
 #: toolhub/apps/versioned/schema.py:50
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "Pointeoir JSON chuig an suíomh laistigh den doiciméad ina ndéantar an oibríocht."
 
 #: toolhub/apps/versioned/schema.py:56
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "An luach le cur leis, le hathsholáthar, nó le tástáil."
 
 #: toolhub/apps/versioned/schema.py:62
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "Pointeoir JSON chuig suíomh laistigh den doiciméad chun an luach a bhogadh nó a chóipeáil uaidh."
 
 #: toolhub/apps/versioned/serializers.py:51
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "Luach slánuimhir uathúil a shainaithníonn an t-athbhreithniú seo."
 
 #: toolhub/apps/versioned/serializers.py:63
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "Trácht ón úsáideoir ar an athbhreithniú."
 
 #: toolhub/apps/versioned/serializers.py:81
 msgid "Content type of the revision."
-msgstr ""
+msgstr "Cineál ábhair an athbhreithnithe."
 
 #: toolhub/apps/versioned/serializers.py:157
 msgid "username removed"
-msgstr ""
+msgstr "ainm úsáideora bainte"
 
 #: toolhub/apps/versioned/serializers.py:158
 msgid "edit summary removed"
-msgstr ""
+msgstr "achoimre eagarthóireachta bainte"
 
 #: toolhub/apps/versioned/views.py:40
 msgid "Only show recent changes by the given user."
-msgstr ""
+msgstr "Taispeáin athruithe le déanaí ón úsáideoir áirithe amháin."
 
 #: toolhub/apps/versioned/views.py:45
 msgid "Only show recent changes for the given target type."
-msgstr ""
+msgstr "Taispeáin athruithe le déanaí amháin don chineál sprice tugtha."
 
 #: toolhub/apps/versioned/views.py:50
 msgid "Only show recent changes where suppressed field is either true or false"
-msgstr ""
+msgstr "Taispeáin athruithe le déanaí amháin i gcás ina bhfuil an réimse faoi chois fíor nó bréagach"
 
 #: toolhub/apps/versioned/views.py:57
 msgid "Only show recent changes where patrolled field is either true or false"
-msgstr ""
+msgstr "Taispeáin athruithe le déanaí amháin i gcás ina bhfuil an réimse patróil fíor nó bréagach"
 
 #: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
-msgstr ""
+msgstr "Taispeáin athruithe le déanaí laistigh den raon ama seo amháin"
 
 #: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."
-msgstr ""
+msgstr "Faigh liosta leathanaigh de na hathbhreithnithe go léir."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr ""
+msgstr "Cuir isteach luach bailí atá i gcomhréir leis an Scéim JSON."
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr ""
+msgstr "Earráid API"
 
 #: toolhub/serializers.py:112
 msgid "Edit summary"
-msgstr "Bewerkingssamenvatting"
+msgstr "Achoimre a chur in eagar"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
-msgstr ""
+msgstr "Cur síos ar na hathruithe atá á ndéanamh agat."
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
-msgstr ""
+msgstr "Trácht ina gcuirtear síos ar ghníomh."
 
 #: toolhub/settings.py:458
 msgid "Read scope"
-msgstr ""
+msgstr "Léigh raon feidhme"
 
 #: toolhub/settings.py:459
 msgid "Write scope"
-msgstr ""
+msgstr "Scríobh raon feidhme"
 
 #: toolhub/settings.py:488
 #, optional
@@ -1461,24 +1460,24 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr ""
+msgstr "Údarú a thabhairt do %(app_name)s?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
-msgstr ""
+msgstr "Éilíonn an feidhmchlár na ceadanna seo a leanas"
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Cealaigh"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
-msgstr "Autoriseren"
+msgstr "Údarú"
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr ""
+msgstr "Earráid: %(message)s"
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
@@ -1487,29 +1486,29 @@ msgstr ""
 
 #: vue/serializers.py:26
 msgid "Information used on the Toolhub Home view."
-msgstr ""
+msgstr "Faisnéis a úsáidtear ar radharc Baile Toolhub."
 
 #: vue/serializers.py:32
 msgid "Count of tools known to Toolhub."
-msgstr ""
+msgstr "Líon na n-uirlisí atá ar eolas ag Toolhub."
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
-msgstr "Datum en tijd van de meest recente crawler-run."
+msgstr "Dáta agus am an rith ransaitheoir is déanaí."
 
 #: vue/serializers.py:41
 msgid "Number of tools added or updated in the most recent crawler run."
-msgstr "Aantal hulpmiddelen dat is toegevoegd of bijgewerkt tijdens de meest recente crawler-run."
+msgstr "Líon na n-uirlisí a cuireadh leis nó a nuashonraíodh sa rith ransaitheoir is déanaí."
 
 #: vue/templates/vue/base.html:21
 msgid "Toolhub's user interface requires JavaScript to be enabled."
-msgstr ""
+msgstr "Éilíonn comhéadan úsáideora Toolhub go mbeidh JavaScript cumasaithe."
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
-msgstr "BEZIG MET LADEN"
+msgstr "AG LÓDÁIL"
 
 #: vue/views.py:47
 msgid "Get information used on the Toolhub Home view."
-msgstr ""
+msgstr "Faigh faisnéis a úsáidtear ar radharc Baile Toolhub."
 
