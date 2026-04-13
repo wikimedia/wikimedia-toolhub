@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-04-09 12:21:12+0000\n"
+"PO-Revision-Date: 2026-04-13 12:21:46+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -549,27 +549,27 @@ msgstr "Automatische aanvullingen"
 
 #: toolhub/apps/search/serializers.py:86
 msgid "ToolList autocomplete results"
-msgstr ""
+msgstr "Resultaten voor automatisch aanvullen van ToolList"
 
 #: toolhub/apps/search/views.py:123
 msgid "Autocomplete for tools."
-msgstr ""
+msgstr "Automatische aanvulling voor hulpmiddelen."
 
 #: toolhub/apps/search/views.py:157
 msgid "Faceted search for tools."
-msgstr ""
+msgstr "Gefacetteerd zoeken naar hulpmiddelen."
 
 #: toolhub/apps/search/views.py:276
 msgid "Autocomplete for toollists."
-msgstr ""
+msgstr "Automatische aanvulling voor hulpmiddelenlijsten."
 
 #: toolhub/apps/search/views.py:316
 msgid "Full text search for toollists."
-msgstr ""
+msgstr "Zoeken in de volledige tekst voor hulpmiddelenlijsten."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr ""
+msgstr "Hulpmiddeleninfo"
 
 #: toolhub/apps/toolinfo/models.py:67
 msgid "web app"
@@ -613,68 +613,68 @@ msgstr "overig"
 
 #: toolhub/apps/toolinfo/models.py:82
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
-msgstr ""
+msgstr "Indien dit waar is, wordt het gebruik van dit hulpmiddel officieel afgeraden. De parameter `replaced_by` kan worden gebruikt om een vervanging te definiëren."
 
 #: toolhub/apps/toolinfo/models.py:92
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
-msgstr ""
+msgstr "Als dit hulpmiddel niet meer wordt ondersteund, moet deze parameter worden gebruikt om naar het vervangende hulpmiddel te verwijzen."
 
 #: toolhub/apps/toolinfo/models.py:99
 msgid "If true, this tool is unstable and can change or go offline at any time."
-msgstr ""
+msgstr "Indien dit waar is, is dit hulpmiddel instabiel en kan deze op elk moment wijzigen of offline gaan."
 
 #: toolhub/apps/toolinfo/models.py:107
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
-msgstr ""
+msgstr "Een tekenreeks of een reeks tekenreeksen die de wiki('s) beschrijven waarop dit hulpmiddel gebruikt kan worden. Gebruik hostnamen zoals `zh.wiktionary.org`. Gebruik sterretjes als jokertekens. Bijvoorbeeld: `*.wikisource.org` betekent 'dit hulpmiddel werkt op alle Wikisource-wiki's'. `*` betekent 'dit hulpmiddel werkt op alle wiki's, inclusief Wikimedia-wiki's'."
 
 #: toolhub/apps/toolinfo/models.py:125
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
-msgstr ""
+msgstr "Een koppeling naar een beschrijvingspagina op Wikimedia Commons voor een pictogram dat het gereedschap afbeeldt."
 
 #: toolhub/apps/toolinfo/models.py:133
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
-msgstr ""
+msgstr "De taal/talen waarin de interface van het hulpmiddel is vertaald. Gebruik ISO 639-taalcodes zoals `zh` en `scn`. Indien niet gespecificeerd, wordt aangenomen dat het hulpmiddel alleen in het Engels beschikbaar is."
 
 #: toolhub/apps/toolinfo/models.py:146
 msgid "The manner in which the tool is used. Select one from the list of options."
-msgstr ""
+msgstr "De manier waarop het hulpmiddel wordt gebruikt. Selecteer een optie uit de lijst."
 
 #: toolhub/apps/toolinfo/models.py:154
 msgid "A link to the repository where the tool code is hosted."
-msgstr ""
+msgstr "Een koppeling naar de repository waar de hulpmiddelcode wordt gehost."
 
 #: toolhub/apps/toolinfo/models.py:161
 msgid "A link to the tool's API, if available."
-msgstr ""
+msgstr "Een koppeling naar de API van het hulpmiddel, indien beschikbaar."
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "A link to the tool's developer documentation, if available."
-msgstr ""
+msgstr "Een koppeling naar de ontwikkelaarsdocumentatie van het hulpmiddel, indien beschikbaar."
 
 #: toolhub/apps/toolinfo/models.py:175
 msgid "A link to the tool's user documentation, if available."
-msgstr ""
+msgstr "Een koppeling naar de gebruikersdocumentatie van het hulpmiddel, indien beschikbaar."
 
 #: toolhub/apps/toolinfo/models.py:183
 msgid "A link to location where the tool's user can leave feedback."
-msgstr ""
+msgstr "Een koppeling naar een plek waar gebruikers van het hulpmiddel terugkoppeling kunnen achterlaten."
 
 #: toolhub/apps/toolinfo/models.py:191
 msgid "A link to the tool's privacy policy, if available."
-msgstr ""
+msgstr "Een koppeling naar het privacybeleid van het hulpmiddel, indien beschikbaar."
 
 #: toolhub/apps/toolinfo/models.py:200
 msgid "A link to the tool's translation interface."
-msgstr ""
+msgstr "Een koppeling naar de vertaalinterface van het hulpmiddel."
 
 #: toolhub/apps/toolinfo/models.py:208
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
-msgstr ""
+msgstr "Een koppeling naar de bugtracker van het hulpmiddel op GitHub, Bitbucket, Phabricator, enz."
 
 #: toolhub/apps/toolinfo/models.py:464
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
-msgstr ""
+msgstr "Het is niet toegestaan om %(key)s te wijzigen na de initiële aanmaak van een object."
 
 #: toolhub/apps/toolinfo/models.py:504
 msgid "crawler"
@@ -686,63 +686,63 @@ msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:513
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
-msgstr ""
+msgstr "Unieke identificatiecode voor dit hulpmiddel. Moet uniek zijn voor elk hulpmiddel. Het is aan te raden om uw hulpmiddelnamen van een voorvoegsel te voorzien om het risico op conflicten te verkleinen."
 
 #: toolhub/apps/toolinfo/models.py:521
 msgid "Human readable tool name. Recommended limit of 25 characters."
-msgstr ""
+msgstr "Gebruiksvriendelijke hulpmiddelnaam. Aanbevolen lengte: maximaal 25 tekens."
 
 #: toolhub/apps/toolinfo/models.py:527
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr ""
+msgstr "Een uitgebreidere beschrijving van het hulpmiddel. De aanbevolen lengte voor een beschrijving is 3-5 zinnen."
 
 #: toolhub/apps/toolinfo/models.py:535
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
-msgstr ""
+msgstr "Een directe koppeling naar het hulpmiddel of naar instructies voor het gebruik of de installatie ervan."
 
 #: toolhub/apps/toolinfo/models.py:549
 msgid "The primary tool developers."
-msgstr ""
+msgstr "De belangrijkste ontwikkelaars van het hulpmiddel."
 
 #: toolhub/apps/toolinfo/models.py:557
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
-msgstr ""
+msgstr "Langer dan de volledige titel, maar korter dan de beschrijving. Het moet extra context aan de titel toevoegen."
 
 #: toolhub/apps/toolinfo/models.py:566
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
-msgstr ""
+msgstr "De project-ID op OpenHub. Bij een URL van https://openhub.net/p/foo is de project-ID `foo`."
 
 #: toolhub/apps/toolinfo/models.py:575
 msgid "Alternate links to the tool or install documentation in different natural languages."
-msgstr ""
+msgstr "Alternatieve koppelingen naar het hulpmiddel of installatiedocumentatie in verschillende natuurlijke talen."
 
 #: toolhub/apps/toolinfo/models.py:586
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
-msgstr ""
+msgstr "Als het hulpmiddel een robot is, gebruik dan de Wikimedia-gebruikersnaam van de robot. Voeg geen 'Gebruiker:' of vergelijkbare voorvoegsels toe."
 
 #: toolhub/apps/toolinfo/models.py:595
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
-msgstr ""
+msgstr "De softwarelicentie waaronder de hulpmiddelcode beschikbaar is. Gebruik een standaard SPDX-licentie-identificatie zoals 'GPL-3.0-or-later'."
 
 #: toolhub/apps/toolinfo/models.py:603
 msgid "Organization(s) that sponsored the tool's development."
-msgstr ""
+msgstr "Organisatie(s) die de ontwikkeling van het hulpmiddel hebben gesponsord."
 
 #: toolhub/apps/toolinfo/models.py:610
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
-msgstr ""
+msgstr "Een tekenreeks of een reeks tekenreeksen met een lijst van technologieën (programmeertalen, ontwikkelomgevingen, enz.) die zijn gebruikt bij het maken van het hulpmiddel."
 
 #: toolhub/apps/toolinfo/models.py:621
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
-msgstr ""
+msgstr "Een URI die het jsonschema voor dit toolinfo.json-record identificeert. Dit moet een korte URI zijn die alleen de naam en revisie aan het einde van het URI-pad bevat."
 
 #: toolhub/apps/toolinfo/models.py:632
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
-msgstr ""
+msgstr "De taal waarin dit toolinfo-record is geschreven. Indien niet ingesteld, is de standaardwaarde Engels. Gebruik ISO 639-taalcodes."
 
 #: toolhub/apps/toolinfo/models.py:642
 msgid "Origin of this tool record."
-msgstr ""
+msgstr "Oorsprong van dit hulpmiddelrecord."
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
@@ -798,7 +798,7 @@ msgstr "Verschillen en revisiegegevens"
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
-msgstr ""
+msgstr "Gegevens van evenementen"
 
 #: toolhub/apps/toolinfo/models.py:730
 msgid "Geographic data"
@@ -918,23 +918,23 @@ msgstr "Doorverwijzing"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr ""
+msgstr "Downloaden of hergebruiken van inhoud"
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
-msgstr ""
+msgstr "Inhoud bewerken of updaten"
 
 #: toolhub/apps/toolinfo/models.py:766
 msgid "Event and contest planning"
-msgstr ""
+msgstr "Evenementen- en wedstrijdplanning"
 
 #: toolhub/apps/toolinfo/models.py:767
 msgid "Hosting and maintaining tools"
-msgstr ""
+msgstr "Hosting- en onderhoud hulpmiddelen"
 
 #: toolhub/apps/toolinfo/models.py:768
 msgid "Identifying policy violations"
-msgstr ""
+msgstr "Beleidsovertredingen identificeren"
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
@@ -942,11 +942,11 @@ msgstr "Spam identificeren"
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr ""
+msgstr "Vandalisme identificeren"
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
-msgstr ""
+msgstr "Lijsten en rangschikking"
 
 #: toolhub/apps/toolinfo/models.py:772
 msgid "Merging content"
@@ -954,39 +954,39 @@ msgstr "Inhoud samenvoegen"
 
 #: toolhub/apps/toolinfo/models.py:773
 msgid "Migrating content"
-msgstr ""
+msgstr "Inhoud verplaatsen"
 
 #: toolhub/apps/toolinfo/models.py:774
 msgid "Patrolling recent changes"
-msgstr ""
+msgstr "Controleren recente wijzigingen"
 
 #: toolhub/apps/toolinfo/models.py:775
 msgid "Project management and reporting"
-msgstr ""
+msgstr "Projectmanagement en rapportage"
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr ""
+msgstr "Lezen"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr ""
+msgstr "Aanbevolen inhoud"
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"
-msgstr ""
+msgstr "Vertalen en lokaliseren"
 
 #: toolhub/apps/toolinfo/models.py:779
 msgid "Uploading or importing"
-msgstr ""
+msgstr "Uploaden of importeren"
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
-msgstr ""
+msgstr "Gebruikersbeheer"
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr ""
+msgstr "Gebruikers waarschuwen"
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
@@ -1002,11 +1002,11 @@ msgstr "Onderwijs"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr ""
+msgstr "Geografie en cartografie"
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
-msgstr ""
+msgstr "GLAM"
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
@@ -1014,11 +1014,11 @@ msgstr "Geschiedenis"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
-msgstr ""
+msgstr "Taal en internationalisering"
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "Voorlichting"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
@@ -1026,59 +1026,59 @@ msgstr "Wetenschap"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
-msgstr ""
+msgstr "Wikidata-item-ID voor het hulpmiddel."
 
 #: toolhub/apps/toolinfo/models.py:810
 msgid "Who is the intended user of the tool?"
-msgstr ""
+msgstr "Wie is de beoogde gebruiker van het hulpmiddel?"
 
 #: toolhub/apps/toolinfo/models.py:817
 msgid "With what type of content or data does the tool interact?"
-msgstr ""
+msgstr "Met welk type inhoud of gegevens interacteert het hulpmiddel?"
 
 #: toolhub/apps/toolinfo/models.py:824
 msgid "What type of task does the tool help with?"
-msgstr ""
+msgstr "Voor welk type taak is het hulpmiddel bedoeld?"
 
 #: toolhub/apps/toolinfo/models.py:831
 msgid "Is the tool targeted at helping in a specific type of wiki project or topic area?"
-msgstr ""
+msgstr "Is het hulpmiddel specifiek bedoeld om te helpen bij een bepaald type wiki-project of onderwerp?"
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"
-msgstr ""
+msgstr "SPDX-licentie-informatie"
 
 #: toolhub/apps/toolinfo/serializers.py:48
 msgid "SPDX license ID"
-msgstr ""
+msgstr "SPDX-licentie-ID"
 
 #: toolhub/apps/toolinfo/serializers.py:53
 msgid "Full name of this license"
-msgstr ""
+msgstr "Volledige naam van deze licentie"
 
 #: toolhub/apps/toolinfo/serializers.py:58
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr ""
+msgstr "Is deze licentie door het OSI goedgekeurd als 'open source'?"
 
 #: toolhub/apps/toolinfo/serializers.py:63
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr ""
+msgstr "Is deze licentie door de FSF goedgekeurd als 'vrije software'?"
 
 #: toolhub/apps/toolinfo/serializers.py:68
 msgid "Is this license considered to be outdated?"
-msgstr ""
+msgstr "Wordt deze licentie als verouderd beschouwd?"
 
 #: toolhub/apps/toolinfo/serializers.py:72
 msgid "Community added information for a tool"
-msgstr ""
+msgstr "De gemeenschap heeft informatie toegevoegd voor een hulpmiddel."
 
 #: toolhub/apps/toolinfo/serializers.py:105
 msgid "Summary of community added information for a tool"
-msgstr ""
+msgstr "Samenvatting van door de gemeenschap toegevoegde informatie voor een hulpmiddel"
 
 #: toolhub/apps/toolinfo/serializers.py:120
 msgid "Update annotations"
-msgstr ""
+msgstr "Annotaties bijwerken"
 
 #: toolhub/apps/toolinfo/serializers.py:159
 msgid "Description of a tool"
@@ -1102,80 +1102,80 @@ msgstr "Hulpmiddelrevisie."
 
 #: toolhub/apps/toolinfo/serializers.py:340
 msgid "Tool revision detail."
-msgstr ""
+msgstr "Details van de hulpmiddelversie."
 
 #: toolhub/apps/toolinfo/serializers.py:378
 msgid "Tool revision difference."
-msgstr ""
+msgstr "Verschillen tussen hulpmiddelversies."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr ""
+msgstr "%(value)s is geen erkende taalcode."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
 #, python-format
 msgid "Expected a list of language codes but found %(type)s"
-msgstr ""
+msgstr "Er werd een lijst met taalcodes verwacht en er is opgegeven:%(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr ""
+msgstr "%(value)s is geen bekende SPDX-licentie-identificatiecode."
 
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
 msgid "Expected a url_multilingual dict but found %(type)s"
-msgstr ""
+msgstr "Er werd een url_multilingual dictionary verwacht en er is opgegeven: %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
-msgstr ""
+msgstr "Url_multilingual mist de eigenschap 'language'."
 
 #: toolhub/apps/toolinfo/validators.py:79
 msgid "Url_multilingual missing 'url' property."
-msgstr ""
+msgstr "Url_multilingual mist de eigenschap 'url'."
 
 #: toolhub/apps/toolinfo/views.py:68
 msgid "Create a new tool."
-msgstr ""
+msgstr "Nieuw hulpmiddel toevoegen."
 
 #: toolhub/apps/toolinfo/views.py:73
 msgid "Info for a specific tool."
-msgstr ""
+msgstr "Gegevens voor een specifiek hulpmiddel."
 
 #: toolhub/apps/toolinfo/views.py:76
 msgid "Update info for a specific tool."
-msgstr ""
+msgstr "Update de gegevens voor een specifiek hulpmiddel."
 
 #: toolhub/apps/toolinfo/views.py:84
 msgid "Delete a tool."
-msgstr ""
+msgstr "Een hulpmiddel verwijderen."
 
 #: toolhub/apps/toolinfo/views.py:87
 msgid "List all tools."
-msgstr ""
+msgstr "Maak een lijst van alle hulpmiddellen."
 
 #: toolhub/apps/toolinfo/views.py:129
 msgid "Additional information for a tool."
-msgstr ""
+msgstr "Aanvullende gegevens voor een hulpmiddel."
 
 #: toolhub/apps/toolinfo/views.py:143
 msgid "Update annotations for a specific tool."
-msgstr ""
+msgstr "Werk de annotaties voor een specifiek hulpmiddel bij."
 
 #: toolhub/apps/toolinfo/views.py:201
 msgid "Restore the tool to this revision."
-msgstr ""
+msgstr "Het hulpmiddel herstellen naar deze versie."
 
 #: toolhub/apps/toolinfo/views.py:494
 msgid "Info for a specific SPDX license."
-msgstr ""
+msgstr "Gegevens voor een specifieke SPDX-licentie."
 
 #: toolhub/apps/toolinfo/views.py:502
 msgid "List all SPDX licenses."
-msgstr ""
+msgstr "Een lijst met alle SPDX-licenties."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
@@ -1211,15 +1211,15 @@ msgstr "Handeling die de gebruiker kan ondernemen"
 
 #: toolhub/apps/user/serializers.py:46
 msgid "Subject type to check user action on"
-msgstr ""
+msgstr "Onderwerptype om gebruikershandeling te controleren"
 
 #: toolhub/apps/user/serializers.py:51
 msgid "Criteria which restricts user action"
-msgstr ""
+msgstr "Criteria die de handelingen van de gebruiker beperken"
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
-msgstr ""
+msgstr "Informatie over de huidige gebruiker"
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
@@ -1227,15 +1227,15 @@ msgstr "Numerieke gebruikers-ID"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
-msgstr ""
+msgstr "\"Cross-site request forgery prevention\"-token"
 
 #: toolhub/apps/user/serializers.py:82
 msgid "CASL access control rules"
-msgstr ""
+msgstr "CASL-toegangsregels"
 
 #: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
-msgstr ""
+msgstr "Informatie over de huidige locatie"
 
 #: toolhub/apps/user/serializers.py:111
 msgid "User information"
@@ -1247,11 +1247,11 @@ msgstr "Groepsinformatie"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr ""
+msgstr "Sociale authenticatiegegevens voor een gebruiker"
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
-msgstr ""
+msgstr "Gedetailleerde gebruikersinformatie"
 
 #: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
@@ -1259,7 +1259,7 @@ msgstr "Gedetailleerde groepsinformatie"
 
 #: toolhub/apps/user/serializers.py:198
 msgid "Owner-only API Token"
-msgstr ""
+msgstr "API-token alleen voor de eigenaar"
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
@@ -1267,171 +1267,171 @@ msgstr "Authenticatietoken"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
-msgstr ""
+msgstr "Voer een geldige gebruikersnaam in. De tekens `@` en `:` zijn niet toegestaan."
 
 #: toolhub/apps/user/views.py:60
 msgid "Get information about the currently logged in user."
-msgstr ""
+msgstr "Gegevens opvragen over de momenteel aangemelde gebruiker."
 
 #: toolhub/apps/user/views.py:88
 msgid "Get current locale."
-msgstr ""
+msgstr "De huidige locale ophalen."
 
 #: toolhub/apps/user/views.py:99
 msgid "Set locale."
-msgstr ""
+msgstr "Locale instellen."
 
 #: toolhub/apps/user/views.py:117
 msgid "List all active users."
-msgstr ""
+msgstr "Alle actieve gebruikers weergeven."
 
 #: toolhub/apps/user/views.py:120
 msgid "Info for a specific user."
-msgstr ""
+msgstr "Gegevens voor een specifieke gebruiker."
 
 #: toolhub/apps/user/views.py:141
 msgid "List all user groups."
-msgstr ""
+msgstr "Alle gebruikersgroepen weergeven."
 
 #: toolhub/apps/user/views.py:144
 msgid "Info for a user group."
-msgstr ""
+msgstr "Gegevens over een gebruikersgroep."
 
 #: toolhub/apps/user/views.py:166
 msgid "Add a user to this group."
-msgstr ""
+msgstr "Een gebruiker toevoegen aan deze groep."
 
 #: toolhub/apps/user/views.py:177
 msgid "Remove a user from this group."
-msgstr ""
+msgstr "Een gebruiker verwijderen uit deze groep."
 
 #: toolhub/apps/user/views.py:222
 msgid "Get authentication token."
-msgstr ""
+msgstr "Authenticatietoken aanvragen."
 
 #: toolhub/apps/user/views.py:225
 msgid "Create authentication token."
-msgstr ""
+msgstr "Authenticatietoken aanmaken."
 
 #: toolhub/apps/user/views.py:228
 msgid "Delete authentication token."
-msgstr ""
+msgstr "Authenticatietoken verwijderen."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr ""
+msgstr "Heeft versies"
 
 #: toolhub/apps/versioned/exceptions.py:28
 msgid "Failed to apply patch."
-msgstr ""
+msgstr "Het toepassen van de patch is mislukt."
 
 #: toolhub/apps/versioned/exceptions.py:35
 msgid "Current revision cannot be hidden."
-msgstr ""
+msgstr "De huidige versie kan niet worden verborgen."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr ""
+msgstr "De versie is al gemarkeerd als gecontroleerd."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
-msgstr ""
+msgstr "Ontbrekende inhoud voor een of meer versies."
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:69
 msgid "Has this revision been marked as hidden?"
-msgstr ""
+msgstr "Is de versie gemarkeerd als verborgen?"
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:75
 msgid "Has this revision been reviewed by a patroller?"
-msgstr ""
+msgstr "Is de versie door een controleur beoordeeld?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the version"
-msgstr ""
+msgstr "unieke identificatie van de versie"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
-msgstr ""
+msgstr "unieke identificatie van de inhoud waar een versie van wordt gemaakt"
 
 #: toolhub/apps/versioned/schema.py:31
 msgid "title describing the content being versioned"
-msgstr ""
+msgstr "titel die de inhoud beschrijft waar een versie van wordt gemaakt"
 
 #: toolhub/apps/versioned/schema.py:36
 msgid "RFC 6902 application/json-patch+json data"
-msgstr ""
+msgstr "RFC 6902 applicatie/json-patch+json-gegevens"
 
 #: toolhub/apps/versioned/schema.py:39
 msgid "RFC 6902 JSON patch operation"
-msgstr ""
+msgstr "RFC 6902 JSON-patchhandeling"
 
 #: toolhub/apps/versioned/schema.py:44
 msgid "The operation to be performed"
-msgstr ""
+msgstr "De uit te voeren bewerking"
 
 #: toolhub/apps/versioned/schema.py:50
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr ""
+msgstr "JSON-pointer naar de locatie binnen het document waar de bewerking wordt uitgevoerd."
 
 #: toolhub/apps/versioned/schema.py:56
 msgid "The value to add, replace, or test."
-msgstr ""
+msgstr "De waarde die moet worden toegevoegd, vervangen of getest."
 
 #: toolhub/apps/versioned/schema.py:62
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr ""
+msgstr "JSON-pointer naar een locatie binnen het document waar de waarde naartoe moet worden verplaatst of gekopieerd."
 
 #: toolhub/apps/versioned/serializers.py:51
 msgid "A unique integer value identifying this revision."
-msgstr ""
+msgstr "Een unieke integerwaarde die deze versie identificeert."
 
 #: toolhub/apps/versioned/serializers.py:63
 msgid "Comment by the user for the revision."
-msgstr ""
+msgstr "Opmerking van de gebruiker voor de versie."
 
 #: toolhub/apps/versioned/serializers.py:81
 msgid "Content type of the revision."
-msgstr ""
+msgstr "Inhoudstype van de versie."
 
 #: toolhub/apps/versioned/serializers.py:157
 msgid "username removed"
-msgstr ""
+msgstr "gebruikersnaam verwijderd"
 
 #: toolhub/apps/versioned/serializers.py:158
 msgid "edit summary removed"
-msgstr ""
+msgstr "bewerkingssamenvatting verwijderd"
 
 #: toolhub/apps/versioned/views.py:40
 msgid "Only show recent changes by the given user."
-msgstr ""
+msgstr "Alleen recente wijzigingen weergeven van de betreffende gebruiker."
 
 #: toolhub/apps/versioned/views.py:45
 msgid "Only show recent changes for the given target type."
-msgstr ""
+msgstr "Alleen recente wijzigingen weergeven voor het opgegeven doeltype."
 
 #: toolhub/apps/versioned/views.py:50
 msgid "Only show recent changes where suppressed field is either true or false"
-msgstr ""
+msgstr "Alleen recente wijzigingen weergeven waarbij het onderdrukte veld waar of onwaar is"
 
 #: toolhub/apps/versioned/views.py:57
 msgid "Only show recent changes where patrolled field is either true or false"
-msgstr ""
+msgstr "Alleen recente wijzigingen weergeven waarbij het gecontroleerde veld waar of onwaar is"
 
 #: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
-msgstr ""
+msgstr "Alleen recente wijzigingen weergeven binnen dit tijdsbereik"
 
 #: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."
-msgstr ""
+msgstr "Een gepagineerde lijst maken van alle versies."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr ""
+msgstr "Voer een geldige waarde in die voldoet aan het JSON-schema."
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr ""
+msgstr "API-fout"
 
 #: toolhub/serializers.py:112
 msgid "Edit summary"
@@ -1439,19 +1439,19 @@ msgstr "Bewerkingssamenvatting"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
-msgstr ""
+msgstr "Beschrijving van de wijzigingen die u aanbrengt."
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
-msgstr ""
+msgstr "Een opmerking waarin een handeling wordt beschreven."
 
 #: toolhub/settings.py:458
 msgid "Read scope"
-msgstr ""
+msgstr "Leestoegang"
 
 #: toolhub/settings.py:459
 msgid "Write scope"
-msgstr ""
+msgstr "Schrijftoegang"
 
 #: toolhub/settings.py:488
 #, optional
@@ -1461,11 +1461,11 @@ msgstr ""
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr ""
+msgstr "%(app_name)s autoriseren?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
-msgstr ""
+msgstr "De toepassing vereist de volgende machtigingen"
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
@@ -1478,7 +1478,7 @@ msgstr "Autoriseren"
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr ""
+msgstr "Fout: %(message)s"
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
@@ -1487,11 +1487,11 @@ msgstr ""
 
 #: vue/serializers.py:26
 msgid "Information used on the Toolhub Home view."
-msgstr ""
+msgstr "Gegevens die wordt gebruikt in de Toolhub-startpagina."
 
 #: vue/serializers.py:32
 msgid "Count of tools known to Toolhub."
-msgstr ""
+msgstr "Aantal hulpmiddleen dat bekend is bij Toolhub."
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
@@ -1503,7 +1503,7 @@ msgstr "Aantal hulpmiddelen dat is toegevoegd of bijgewerkt tijdens de meest rec
 
 #: vue/templates/vue/base.html:21
 msgid "Toolhub's user interface requires JavaScript to be enabled."
-msgstr ""
+msgstr "De gebruikersinterface van Toolhub vereist dat JavaScript is ingeschakeld."
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
@@ -1511,5 +1511,5 @@ msgstr "BEZIG MET LADEN"
 
 #: vue/views.py:47
 msgid "Get information used on the Toolhub Home view."
-msgstr ""
+msgstr "Gegevens opvragen die worden gebruikt op de Toolhub-startpagina."
 
