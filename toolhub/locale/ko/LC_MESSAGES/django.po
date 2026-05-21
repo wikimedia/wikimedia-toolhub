@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-05-18 12:48:37+0000\n"
+"PO-Revision-Date: 2026-05-21 12:15:24+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,7 +86,7 @@ msgstr "객체 PK"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
-msgstr ""
+msgstr "작업"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
