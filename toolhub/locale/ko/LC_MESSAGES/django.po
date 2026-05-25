@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-05-21 12:15:24+0000\n"
+"PO-Revision-Date: 2026-05-25 12:19:07+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,7 +42,7 @@ msgstr "추가"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr ""
+msgstr "다음에서 제거됨:"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
@@ -50,7 +50,7 @@ msgstr "숨겨진"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr ""
+msgstr "보여짐"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
@@ -58,11 +58,11 @@ msgstr "점검됨"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr ""
+msgstr "알참으로 지정됨"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr ""
+msgstr "알참에서 해제됨"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
@@ -90,39 +90,39 @@ msgstr "작업"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr ""
+msgstr "감사 로그 항목"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
-msgstr ""
+msgstr "감사 로그 항목"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr ""
+msgstr "이벤트 매개변수"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr ""
+msgstr "편집 작업으로 인해 판 생성됨"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr ""
+msgstr "판이 숨김으로 표시되었는지"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr ""
+msgstr "판이 점검자에게 검토되었는지"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr ""
+msgstr "변경과 관련된 도구의 이름"
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr ""
+msgstr "변경과 관련된 사용자의 신분"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr ""
+msgstr "변경 관련 도구 목록"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
@@ -138,23 +138,23 @@ msgstr "감사 기록 항목"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr ""
+msgstr "지정된 작업 유형에 대한 로그만 표시합니다."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr ""
+msgstr "지정된 대상 유형에 대한 로그만 표시합니다."
 
 #: toolhub/apps/auditlog/views.py:73
 msgid "Only show logs occurring before the given date and time."
-msgstr ""
+msgstr "지정된 날짜 및 시간 이전에 발생한 로그만 표시합니다."
 
 #: toolhub/apps/auditlog/views.py:79
 msgid "Only show logs occurring after the given date and time."
-msgstr ""
+msgstr "지정된 날짜 및 시간 이후에 발생한 로그만 표시합니다."
 
 #: toolhub/apps/auditlog/views.py:84
 msgid "Only show logs for the given user."
-msgstr ""
+msgstr "지정된 사용자의 로그만 표시합니다."
 
 #: toolhub/apps/auditlog/views.py:90
 msgid "List all log entries."
@@ -162,7 +162,7 @@ msgstr "모든 기록 항목을 표시합니다."
 
 #: toolhub/apps/auditlog/views.py:93
 msgid "Info for a specific log entry."
-msgstr ""
+msgstr "특정 로그 항목에 대한 정보입니다."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
@@ -178,11 +178,11 @@ msgstr "크롤링할 URL"
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
-msgstr ""
+msgstr "크롤러 실행 중에 처리된 단일 URL에 대한 정보입니다"
 
 #: toolhub/apps/crawler/serializers.py:78
 msgid "Summary of a single run of the crawler."
-msgstr ""
+msgstr "크롤러 단일 실행 결과의 요약입니다."
 
 #: toolhub/apps/crawler/views.py:42
 msgid "Register a new URL for crawling."
@@ -206,19 +206,19 @@ msgstr "현재 사용자가 만든 URL을 가져옵니다."
 
 #: toolhub/apps/crawler/views.py:104
 msgid "List all historic crawler runs."
-msgstr ""
+msgstr "모든 과거 크롤러 실행 목록을 나열합니다."
 
 #: toolhub/apps/crawler/views.py:107
 msgid "Info for a specific crawler run."
-msgstr ""
+msgstr "특정 크롤러 실행에 대한 정보입니다."
 
 #: toolhub/apps/crawler/views.py:136
 msgid "List all urls crawled in a run."
-msgstr ""
+msgstr "실행 중에 크롤링된 모든 url을 나열합니다."
 
 #: toolhub/apps/crawler/views.py:139
 msgid "Info for a specific url crawled in a run."
-msgstr ""
+msgstr "실행 중에 크롤링된 특정 URL에 대한 정보입니다."
 
 #: toolhub/apps/lists/apps.py:26 toolhub/apps/toolinfo/models.py:742
 msgid "Lists"
@@ -230,7 +230,7 @@ msgstr "이 목록의 제목"
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
-msgstr ""
+msgstr "목록의 주제 또는 내용에 대한 설명입니다."
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
@@ -242,19 +242,19 @@ msgstr ""
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
-msgstr ""
+msgstr "true인 경우, 이 목록은 모든 사람이 볼 수 있습니다."
 
 #: toolhub/apps/lists/models.py:78
 msgid "If true, this list has been marked as featured."
-msgstr ""
+msgstr "true인 경우, 이 목록은 알참으로 표시된 것입니다."
 
 #: toolhub/apps/lists/models.py:90
 msgid "List of the names of the tools in this list."
-msgstr ""
+msgstr "이 목록에 있는 도구들의 이름 목록입니다."
 
 #: toolhub/apps/lists/models.py:169
 msgid "Position of this tool in the list."
-msgstr ""
+msgstr "목록에서 이 도구의 위치입니다."
 
 #: toolhub/apps/lists/serializers.py:49
 msgid "List of tools metadata."
@@ -270,11 +270,11 @@ msgstr "도구 이름 목록입니다."
 
 #: toolhub/apps/lists/serializers.py:202
 msgid "Historic revision of a list for generating diffs."
-msgstr ""
+msgstr "차이를 생성하기 위한 목록의 과거 판입니다."
 
 #: toolhub/apps/lists/serializers.py:231
 msgid "Historic revision of a list."
-msgstr ""
+msgstr "목록의 과거 판입니다."
 
 #: toolhub/apps/lists/serializers.py:266
 msgid "Tool list revision."
@@ -745,31 +745,31 @@ msgstr ""
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr ""
+msgstr "관리자"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
-msgstr ""
+msgstr "주최자 및 프로그램 관리자"
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr ""
+msgstr "편집자 및 콘텐츠 기여자"
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
-msgstr ""
+msgstr "독자와 콘텐츠 소비자"
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
-msgstr ""
+msgstr "연구자"
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr ""
+msgstr "개발자"
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr ""
+msgstr "문서"
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
@@ -785,15 +785,15 @@ msgstr "데이터"
 
 #: toolhub/apps/toolinfo/models.py:726
 msgid "Bibliographic data"
-msgstr ""
+msgstr "서지 데이터"
 
 #: toolhub/apps/toolinfo/models.py:727
 msgid "Categories or labels"
-msgstr "분류 또는 라벨"
+msgstr "분류 또는 레이블 달기"
 
 #: toolhub/apps/toolinfo/models.py:728
 msgid "Diffs and revision data"
-msgstr ""
+msgstr "차이 및 판 데이터"
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
@@ -809,11 +809,11 @@ msgstr "언어학적 데이터"
 
 #: toolhub/apps/toolinfo/models.py:732
 msgid "Page metadata"
-msgstr ""
+msgstr "페이지 메타데이터"
 
 #: toolhub/apps/toolinfo/models.py:733
 msgid "Structured data"
-msgstr ""
+msgstr "구조화된 데이터"
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
@@ -877,11 +877,11 @@ msgstr "위키텍스트"
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
-msgstr ""
+msgstr "분석"
 
 #: toolhub/apps/toolinfo/models.py:755
 msgid "Annotating and linking"
-msgstr ""
+msgstr "주석 및 링크 달기"
 
 #: toolhub/apps/toolinfo/models.py:756
 msgid "Archiving and cleanup"
@@ -889,119 +889,119 @@ msgstr "보존과 정리"
 
 #: toolhub/apps/toolinfo/models.py:757
 msgid "Categorizing and tagging"
-msgstr ""
+msgstr "분류 및 태그 달기"
 
 #: toolhub/apps/toolinfo/models.py:758
 msgid "Citing and referencing"
-msgstr ""
+msgstr "인용 및 참조 달기"
 
 #: toolhub/apps/toolinfo/models.py:759
 msgid "Communication and supporting users"
-msgstr ""
+msgstr "소통 및 사용자 지원"
 
 #: toolhub/apps/toolinfo/models.py:760
 msgid "Converting and formatting content"
-msgstr ""
+msgstr "컨텐츠 변환 및 서식 지정"
 
 #: toolhub/apps/toolinfo/models.py:761
 msgid "Creating content"
-msgstr ""
+msgstr "콘텐츠 만들기"
 
 #: toolhub/apps/toolinfo/models.py:762
 msgid "Deleting and reverting"
-msgstr ""
+msgstr "삭제 및 되돌리기"
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr ""
+msgstr "동음이의 구분"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr ""
+msgstr "콘텐츠 다운로드 또는 재사용"
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
-msgstr ""
+msgstr "콘텐츠 편집 또는 업데이트"
 
 #: toolhub/apps/toolinfo/models.py:766
 msgid "Event and contest planning"
-msgstr ""
+msgstr "이벤트 및 대회 기획"
 
 #: toolhub/apps/toolinfo/models.py:767
 msgid "Hosting and maintaining tools"
-msgstr ""
+msgstr "호스팅 및 유지 관리 도구"
 
 #: toolhub/apps/toolinfo/models.py:768
 msgid "Identifying policy violations"
-msgstr ""
+msgstr "정책 위반 사항 식별"
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
-msgstr ""
+msgstr "스팸 식별"
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr ""
+msgstr "문서 훼손 식별"
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
-msgstr ""
+msgstr "목록 및 등급 만들기"
 
 #: toolhub/apps/toolinfo/models.py:772
 msgid "Merging content"
-msgstr ""
+msgstr "콘텐츠 병합하기"
 
 #: toolhub/apps/toolinfo/models.py:773
 msgid "Migrating content"
-msgstr ""
+msgstr "콘텐츠 옮기기"
 
 #: toolhub/apps/toolinfo/models.py:774
 msgid "Patrolling recent changes"
-msgstr ""
+msgstr "최근 변경 사항 검토"
 
 #: toolhub/apps/toolinfo/models.py:775
 msgid "Project management and reporting"
-msgstr ""
+msgstr "프로젝트 관리 및 보고"
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr ""
+msgstr "읽기"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr ""
+msgstr "콘텐츠 추천하기"
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"
-msgstr ""
+msgstr "번역 및 현지화"
 
 #: toolhub/apps/toolinfo/models.py:779
 msgid "Uploading or importing"
-msgstr ""
+msgstr "업로드 또는 가져오기"
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
-msgstr ""
+msgstr "사용자 관리"
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr ""
+msgstr "사용자 경고"
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
-msgstr ""
+msgstr "전기"
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr ""
+msgstr "문화유산"
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
-msgstr ""
+msgstr "교육"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr ""
+msgstr "지리 및 지도"
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
@@ -1017,7 +1017,7 @@ msgstr "언어와 국제화"
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "아웃리치"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
@@ -1214,7 +1214,7 @@ msgstr ""
 
 #: toolhub/apps/user/serializers.py:51
 msgid "Criteria which restricts user action"
-msgstr ""
+msgstr "사용자 작업을 제한하는 기준입니다"
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
@@ -1222,15 +1222,15 @@ msgstr "현재 사용자에 관한 정보"
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
-msgstr ""
+msgstr "사용자 ID (숫자)"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
-msgstr ""
+msgstr "사이트 간 요청 위조 방지 토큰"
 
 #: toolhub/apps/user/serializers.py:82
 msgid "CASL access control rules"
-msgstr ""
+msgstr "CASL 접근 제어 규칙"
 
 #: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
@@ -1246,7 +1246,7 @@ msgstr "그룹 정보"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr ""
+msgstr "사용자의 소셜 인증 정보"
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-05-18 12:48:38+0000\n"
+"PO-Revision-Date: 2026-05-25 12:19:08+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,11 +35,11 @@ msgstr "dihapuskan"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr ""
+msgstr "ditambah kepada"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr ""
+msgstr "dikeluarkan daripada"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
