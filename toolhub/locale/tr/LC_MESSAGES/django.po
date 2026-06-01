@@ -3,6 +3,7 @@
 #
 # Author: Agaafd
 # Author: Can
+# Author: HakanIST
 # Author: Hedda
 # Author: Joseph
 # Author: Leo
@@ -13,7 +14,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-05-18 12:48:39+0000\n"
+"PO-Revision-Date: 2026-06-01 12:31:39+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,7 +55,7 @@ msgstr "gizli"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr ""
+msgstr "gösterildi"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
@@ -106,7 +107,7 @@ msgstr "Etkinlik parametreleri"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr ""
+msgstr "Düzenleme eylemiyle oluşturulan revizyon"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
@@ -118,15 +119,15 @@ msgstr "Revizyon bir denetçi tarafından incelendi mi?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr ""
+msgstr "Değişiklikle ilgili aracın adı"
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr ""
+msgstr "Değişiklikle ilgili kullanıcının kimliği"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr ""
+msgstr "Değişiklikle ilgili araç listesi"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
@@ -238,11 +239,11 @@ msgstr "Listenin teması veya içeriklerinin açıklaması."
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
-msgstr ""
+msgstr "Listeyi tasvir eden bir simge için Wikimedia Commons dosya açıklama sayfasına bağlantı."
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
-msgstr ""
+msgstr "Doğruysa, bu liste sahibi kullanıcının 'favori' araçlarının bir koleksiyonudur."
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
@@ -250,19 +251,19 @@ msgstr "Doğruysa, bu liste herkese görünür olacak."
 
 #: toolhub/apps/lists/models.py:78
 msgid "If true, this list has been marked as featured."
-msgstr ""
+msgstr "Doğruysa, bu liste öne çıkan olarak işaretlenmiştir."
 
 #: toolhub/apps/lists/models.py:90
 msgid "List of the names of the tools in this list."
-msgstr ""
+msgstr "Bu listedeki araçların adlarının listesi."
 
 #: toolhub/apps/lists/models.py:169
 msgid "Position of this tool in the list."
-msgstr ""
+msgstr "Bu aracın listedeki konumu."
 
 #: toolhub/apps/lists/serializers.py:49
 msgid "List of tools metadata."
-msgstr ""
+msgstr "Araç üst verileri listesi."
 
 #: toolhub/apps/lists/serializers.py:92
 msgid "Create or update a list."
@@ -274,7 +275,7 @@ msgstr "Araç adlarının listesi."
 
 #: toolhub/apps/lists/serializers.py:202
 msgid "Historic revision of a list for generating diffs."
-msgstr ""
+msgstr "Fark oluşturmak için bir listenin geçmiş revizyonu."
 
 #: toolhub/apps/lists/serializers.py:231
 msgid "Historic revision of a list."
@@ -282,15 +283,15 @@ msgstr "Bir listenin geçmiş revizyonu."
 
 #: toolhub/apps/lists/serializers.py:266
 msgid "Tool list revision."
-msgstr ""
+msgstr "Araç listesi revizyonu."
 
 #: toolhub/apps/lists/serializers.py:274
 msgid "Tool list revision detail."
-msgstr ""
+msgstr "Araç listesi revizyon ayrıntısı."
 
 #: toolhub/apps/lists/serializers.py:296
 msgid "Tool list revision difference."
-msgstr ""
+msgstr "Araç listesi revizyon farkı."
 
 #: toolhub/apps/lists/serializers.py:301
 #: toolhub/apps/toolinfo/serializers.py:383
@@ -313,18 +314,18 @@ msgstr "Araç adı."
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr ""
+msgstr "Listede yinelenen değerler: %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
-msgstr[0] ""
+msgstr[0] "Bilinmeyen araç: %(names)s"
 
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr ""
+msgstr "%(name)s aracı zaten favorilere eklenmiş."
 
 #: toolhub/apps/lists/views.py:68
 msgid "Only show lists that are featured."
@@ -336,7 +337,7 @@ msgstr "Sadece yayımlanmış listeleri göster."
 
 #: toolhub/apps/lists/views.py:78
 msgid "Only show lists created by the given user."
-msgstr ""
+msgstr "Yalnızca belirtilen kullanıcı tarafından oluşturulan listeleri göster."
 
 #: toolhub/apps/lists/views.py:84
 msgid "Create a new list of tools."
@@ -344,15 +345,15 @@ msgstr "Yeni araçlar listesi oluştur."
 
 #: toolhub/apps/lists/views.py:89
 msgid "Details of a specific list of tools."
-msgstr ""
+msgstr "Belirli bir araç listesinin ayrıntıları."
 
 #: toolhub/apps/lists/views.py:93
 msgid "Update a list of tools."
-msgstr ""
+msgstr "Bir araç listesini güncelle."
 
 #: toolhub/apps/lists/views.py:101
 msgid "Delete a list of tools."
-msgstr ""
+msgstr "Bir araç listesini sil."
 
 #: toolhub/apps/lists/views.py:104
 msgid "List all lists of tools."
@@ -360,15 +361,15 @@ msgstr "Tüm araçların listelerini listele."
 
 #: toolhub/apps/lists/views.py:140
 msgid "Mark a list as featured."
-msgstr ""
+msgstr "Bir listeyi öne çıkan olarak işaretle."
 
 #: toolhub/apps/lists/views.py:168
 msgid "Remove featured flag from a list."
-msgstr ""
+msgstr "Bir listeden öne çıkan işaretini kaldır."
 
 #: toolhub/apps/lists/views.py:200
 msgid "A unique integer value identifying this toollist."
-msgstr ""
+msgstr "Bu araç listesini tanımlayan benzersiz bir tamsayı değeri."
 
 #: toolhub/apps/lists/views.py:206 toolhub/apps/toolinfo/views.py:175
 msgid "Get revision information."
@@ -388,7 +389,7 @@ msgstr "Farkın çıkarılacağı sürümü tanımlayan benzersiz bir tamsayı d
 
 #: toolhub/apps/lists/views.py:232
 msgid "Restore the list to this revision."
-msgstr ""
+msgstr "Listeyi bu revizyona geri yükle."
 
 #: toolhub/apps/lists/views.py:239 toolhub/apps/toolinfo/views.py:209
 msgid "Undo all changes made between two revisions."
@@ -400,15 +401,15 @@ msgstr "Geri alınacak sürümü tanımlayan benzersiz bir tamsayı değeri."
 
 #: toolhub/apps/lists/views.py:255 toolhub/apps/toolinfo/views.py:226
 msgid "Hide revision text and edit summary from users."
-msgstr ""
+msgstr "Revizyon metnini ve düzenleme özetini kullanıcılardan gizle."
 
 #: toolhub/apps/lists/views.py:261 toolhub/apps/toolinfo/views.py:232
 msgid "Reveal a previously hidden revision."
-msgstr ""
+msgstr "Daha önce gizlenmiş bir revizyonu göster."
 
 #: toolhub/apps/lists/views.py:267 toolhub/apps/toolinfo/views.py:238
 msgid "Mark a revision as patrolled."
-msgstr ""
+msgstr "Bir revizyonu devriye edildi olarak işaretle."
 
 #: toolhub/apps/lists/views.py:369 toolhub/apps/toolinfo/views.py:364
 #, python-format
@@ -426,15 +427,15 @@ msgstr "Bu araç için benzersiz tanımlayıcı."
 
 #: toolhub/apps/lists/views.py:526
 msgid "Add a tool to favorites."
-msgstr ""
+msgstr "Favorilere bir araç ekle."
 
 #: toolhub/apps/lists/views.py:531
 msgid "Check to see if a tool is in favorites."
-msgstr ""
+msgstr "Bir aracın favorilerde olup olmadığını kontrol et."
 
 #: toolhub/apps/lists/views.py:537
 msgid "Remove a tool from favorites."
-msgstr ""
+msgstr "Favorilerden bir aracı kaldır."
 
 #: toolhub/apps/lists/views.py:543
 msgid "Personal favorites."
@@ -548,15 +549,15 @@ msgstr "Araç araması sonuçları"
 
 #: toolhub/apps/search/serializers.py:61
 msgid "Tool autocomplete results"
-msgstr ""
+msgstr "Araç otomatik tamamlama sonuçları"
 
 #: toolhub/apps/search/serializers.py:86
 msgid "ToolList autocomplete results"
-msgstr ""
+msgstr "Araç listesi otomatik tamamlama sonuçları"
 
 #: toolhub/apps/search/views.py:123
 msgid "Autocomplete for tools."
-msgstr ""
+msgstr "Araçlar için otomatik tamamlama."
 
 #: toolhub/apps/search/views.py:157
 msgid "Faceted search for tools."
@@ -564,11 +565,11 @@ msgstr "Araçlar için çok boyutlu arama."
 
 #: toolhub/apps/search/views.py:276
 msgid "Autocomplete for toollists."
-msgstr ""
+msgstr "Araç listeleri için otomatik tamamlama."
 
 #: toolhub/apps/search/views.py:316
 msgid "Full text search for toollists."
-msgstr ""
+msgstr "Araç listeleri için tam metin araması."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
@@ -749,31 +750,31 @@ msgstr "Bu araç kaydının kökeni."
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr ""
+msgstr "Yöneticiler"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
-msgstr ""
+msgstr "Organizatörler ve program koordinatörleri"
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr ""
+msgstr "Editörler ve içerik katkıda bulunanlar"
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
-msgstr ""
+msgstr "Okuyucular ve içerik tüketicileri"
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
-msgstr ""
+msgstr "Araştırmacılar"
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr ""
+msgstr "Geliştiriciler"
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr ""
+msgstr "Maddeler"
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
@@ -789,35 +790,35 @@ msgstr "Veri"
 
 #: toolhub/apps/toolinfo/models.py:726
 msgid "Bibliographic data"
-msgstr ""
+msgstr "Bibliyografik veriler"
 
 #: toolhub/apps/toolinfo/models.py:727
 msgid "Categories or labels"
-msgstr ""
+msgstr "Kategoriler veya etiketler"
 
 #: toolhub/apps/toolinfo/models.py:728
 msgid "Diffs and revision data"
-msgstr ""
+msgstr "Farklar ve revizyon verileri"
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
-msgstr ""
+msgstr "Etkinlik verileri"
 
 #: toolhub/apps/toolinfo/models.py:730
 msgid "Geographic data"
-msgstr ""
+msgstr "Coğrafi veriler"
 
 #: toolhub/apps/toolinfo/models.py:731
 msgid "Linguistic data"
-msgstr ""
+msgstr "Dilbilimsel veriler"
 
 #: toolhub/apps/toolinfo/models.py:732
 msgid "Page metadata"
-msgstr ""
+msgstr "Sayfa üst verileri"
 
 #: toolhub/apps/toolinfo/models.py:733
 msgid "Structured data"
-msgstr ""
+msgstr "Yapılandırılmış veriler"
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
@@ -825,15 +826,15 @@ msgstr "Kullanıcı verileri"
 
 #: toolhub/apps/toolinfo/models.py:737
 msgid "Discussions"
-msgstr ""
+msgstr "Tartışmalar"
 
 #: toolhub/apps/toolinfo/models.py:738
 msgid "Drafts"
-msgstr ""
+msgstr "Taslaklar"
 
 #: toolhub/apps/toolinfo/models.py:739
 msgid "Emails"
-msgstr ""
+msgstr "E-postalar"
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
@@ -845,7 +846,7 @@ msgstr "Bağlantılar"
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
-msgstr ""
+msgstr "Günlükler"
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
@@ -853,19 +854,19 @@ msgstr "Haritalar"
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
-msgstr ""
+msgstr "Kaynakça"
 
 #: toolhub/apps/toolinfo/models.py:746
 msgid "Software or code"
-msgstr ""
+msgstr "Yazılım veya kod"
 
 #: toolhub/apps/toolinfo/models.py:747
 msgid "Templates"
-msgstr ""
+msgstr "Şablonlar"
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
-msgstr ""
+msgstr "Videolar"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
@@ -877,175 +878,175 @@ msgstr "Web sayfaları"
 
 #: toolhub/apps/toolinfo/models.py:751
 msgid "Wikitext"
-msgstr ""
+msgstr "Vikimetin"
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
-msgstr ""
+msgstr "Analiz"
 
 #: toolhub/apps/toolinfo/models.py:755
 msgid "Annotating and linking"
-msgstr ""
+msgstr "Ek açıklama ve bağlantı oluşturma"
 
 #: toolhub/apps/toolinfo/models.py:756
 msgid "Archiving and cleanup"
-msgstr ""
+msgstr "Arşivleme ve temizlik"
 
 #: toolhub/apps/toolinfo/models.py:757
 msgid "Categorizing and tagging"
-msgstr ""
+msgstr "Kategorileme ve etiketleme"
 
 #: toolhub/apps/toolinfo/models.py:758
 msgid "Citing and referencing"
-msgstr ""
+msgstr "Alıntı ve kaynak gösterme"
 
 #: toolhub/apps/toolinfo/models.py:759
 msgid "Communication and supporting users"
-msgstr ""
+msgstr "İletişim ve kullanıcı desteği"
 
 #: toolhub/apps/toolinfo/models.py:760
 msgid "Converting and formatting content"
-msgstr ""
+msgstr "İçerik dönüştürme ve biçimlendirme"
 
 #: toolhub/apps/toolinfo/models.py:761
 msgid "Creating content"
-msgstr ""
+msgstr "İçerik oluşturma"
 
 #: toolhub/apps/toolinfo/models.py:762
 msgid "Deleting and reverting"
-msgstr ""
+msgstr "Silme ve geri alma"
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr ""
+msgstr "Anlam ayrımı"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr ""
+msgstr "İçerik indirme veya yeniden kullanma"
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
-msgstr ""
+msgstr "İçerik düzenleme veya güncelleme"
 
 #: toolhub/apps/toolinfo/models.py:766
 msgid "Event and contest planning"
-msgstr ""
+msgstr "Etkinlik ve yarışma planlama"
 
 #: toolhub/apps/toolinfo/models.py:767
 msgid "Hosting and maintaining tools"
-msgstr ""
+msgstr "Araçları barındırma ve bakım"
 
 #: toolhub/apps/toolinfo/models.py:768
 msgid "Identifying policy violations"
-msgstr ""
+msgstr "Politika ihlallerini belirleme"
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
-msgstr ""
+msgstr "Spam belirleme"
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr ""
+msgstr "Vandalizm belirleme"
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
-msgstr ""
+msgstr "Listeleme ve sıralama"
 
 #: toolhub/apps/toolinfo/models.py:772
 msgid "Merging content"
-msgstr ""
+msgstr "İçerik birleştirme"
 
 #: toolhub/apps/toolinfo/models.py:773
 msgid "Migrating content"
-msgstr ""
+msgstr "İçerik taşıma"
 
 #: toolhub/apps/toolinfo/models.py:774
 msgid "Patrolling recent changes"
-msgstr ""
+msgstr "Son değişiklikleri devriye etme"
 
 #: toolhub/apps/toolinfo/models.py:775
 msgid "Project management and reporting"
-msgstr ""
+msgstr "Proje yönetimi ve raporlama"
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr ""
+msgstr "Okuma"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr ""
+msgstr "İçerik önerme"
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"
-msgstr ""
+msgstr "Çeviri ve yerelleştirme"
 
 #: toolhub/apps/toolinfo/models.py:779
 msgid "Uploading or importing"
-msgstr ""
+msgstr "Yükleme veya içe aktarma"
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
-msgstr ""
+msgstr "Kullanıcı yönetimi"
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr ""
+msgstr "Kullanıcıları uyarma"
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
-msgstr ""
+msgstr "Biyografi"
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr ""
+msgstr "Kültürel miras"
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
-msgstr ""
+msgstr "Eğitim"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr ""
+msgstr "Coğrafya ve haritalama"
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
-msgstr ""
+msgstr "GLAM"
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
-msgstr ""
+msgstr "Tarih"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
-msgstr ""
+msgstr "Dil ve uluslararasılaştırma"
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr ""
+msgstr "Erişim"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
-msgstr ""
+msgstr "Bilim"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
-msgstr ""
+msgstr "Aracın Vikiveri öğe kimliği."
 
 #: toolhub/apps/toolinfo/models.py:810
 msgid "Who is the intended user of the tool?"
-msgstr ""
+msgstr "Aracın hedef kullanıcısı kimdir?"
 
 #: toolhub/apps/toolinfo/models.py:817
 msgid "With what type of content or data does the tool interact?"
-msgstr ""
+msgstr "Araç hangi tür içerik veya veriyle etkileşime girer?"
 
 #: toolhub/apps/toolinfo/models.py:824
 msgid "What type of task does the tool help with?"
-msgstr ""
+msgstr "Araç ne tür bir göreve yardımcı olur?"
 
 #: toolhub/apps/toolinfo/models.py:831
 msgid "Is the tool targeted at helping in a specific type of wiki project or topic area?"
-msgstr ""
+msgstr "Araç belirli bir viki projesi veya konu alanına yardım etmeye mi yöneliktir?"
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"
@@ -1073,15 +1074,15 @@ msgstr "Bu lisans eskimiş olarak değerlendirilebilir mi?"
 
 #: toolhub/apps/toolinfo/serializers.py:72
 msgid "Community added information for a tool"
-msgstr ""
+msgstr "Bir araç için topluluk tarafından eklenen bilgiler"
 
 #: toolhub/apps/toolinfo/serializers.py:105
 msgid "Summary of community added information for a tool"
-msgstr ""
+msgstr "Bir araç için topluluk tarafından eklenen bilgilerin özeti"
 
 #: toolhub/apps/toolinfo/serializers.py:120
 msgid "Update annotations"
-msgstr ""
+msgstr "Ek açıklamaları güncelle"
 
 #: toolhub/apps/toolinfo/serializers.py:159
 msgid "Description of a tool"
@@ -1162,11 +1163,11 @@ msgstr "Tüm araçları listeleyin."
 
 #: toolhub/apps/toolinfo/views.py:129
 msgid "Additional information for a tool."
-msgstr ""
+msgstr "Bir araç için ek bilgiler."
 
 #: toolhub/apps/toolinfo/views.py:143
 msgid "Update annotations for a specific tool."
-msgstr ""
+msgstr "Belirli bir araç için ek açıklamaları güncelle."
 
 #: toolhub/apps/toolinfo/views.py:201
 msgid "Restore the tool to this revision."
@@ -1210,15 +1211,15 @@ msgstr "Bir kullanıcı bu adı zaten kulanıyor."
 
 #: toolhub/apps/user/serializers.py:41
 msgid "Action that the user can take"
-msgstr ""
+msgstr "Kullanıcının gerçekleştirebileceği eylem"
 
 #: toolhub/apps/user/serializers.py:46
 msgid "Subject type to check user action on"
-msgstr ""
+msgstr "Kullanıcı eyleminin kontrol edileceği konu türü"
 
 #: toolhub/apps/user/serializers.py:51
 msgid "Criteria which restricts user action"
-msgstr ""
+msgstr "Kullanıcı eylemini kısıtlayan kriter"
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
@@ -1226,15 +1227,15 @@ msgstr "Mevcut kullanıcı hakkında bilgiler"
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
-msgstr ""
+msgstr "Sayısal kullanıcı kimliği"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
-msgstr ""
+msgstr "Siteler arası istek sahteciliği önleme jetonu"
 
 #: toolhub/apps/user/serializers.py:82
 msgid "CASL access control rules"
-msgstr ""
+msgstr "CASL erişim kontrol kuralları"
 
 #: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
@@ -1262,7 +1263,7 @@ msgstr "Ayrıntılı grup bilgileri"
 
 #: toolhub/apps/user/serializers.py:198
 msgid "Owner-only API Token"
-msgstr ""
+msgstr "Yalnızca sahip API Jetonu"
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
@@ -1322,7 +1323,7 @@ msgstr "Doğrulama tokenini sil."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr ""
+msgstr "Sürümlenmiş"
 
 #: toolhub/apps/versioned/exceptions.py:28
 msgid "Failed to apply patch."
@@ -1334,11 +1335,11 @@ msgstr "Mevcut revizyon gizlenemez."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr ""
+msgstr "Revizyon zaten devriye edildi olarak işaretlenmiş."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
-msgstr ""
+msgstr "Bir veya daha fazla revizyon için içerik eksik."
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:69
 msgid "Has this revision been marked as hidden?"
@@ -1350,15 +1351,15 @@ msgstr "Bu revizyon bir denetçi tarafından incelendi mi?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the version"
-msgstr ""
+msgstr "sürümün benzersiz tanımlayıcısı"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
-msgstr ""
+msgstr "sürümlenen içeriğin benzersiz tanımlayıcısı"
 
 #: toolhub/apps/versioned/schema.py:31
 msgid "title describing the content being versioned"
-msgstr ""
+msgstr "sürümlenen içeriği açıklayan başlık"
 
 #: toolhub/apps/versioned/schema.py:36
 msgid "RFC 6902 application/json-patch+json data"
@@ -1394,7 +1395,7 @@ msgstr "Sürüm için kullanıcı yorumu."
 
 #: toolhub/apps/versioned/serializers.py:81
 msgid "Content type of the revision."
-msgstr ""
+msgstr "Revizyonun içerik türü."
 
 #: toolhub/apps/versioned/serializers.py:157
 msgid "username removed"
@@ -1402,31 +1403,31 @@ msgstr "kullanıcı adı kaldırıldı"
 
 #: toolhub/apps/versioned/serializers.py:158
 msgid "edit summary removed"
-msgstr ""
+msgstr "düzenleme özeti kaldırıldı"
 
 #: toolhub/apps/versioned/views.py:40
 msgid "Only show recent changes by the given user."
-msgstr ""
+msgstr "Yalnızca belirtilen kullanıcının son değişikliklerini göster."
 
 #: toolhub/apps/versioned/views.py:45
 msgid "Only show recent changes for the given target type."
-msgstr ""
+msgstr "Yalnızca belirtilen hedef türü için son değişiklikleri göster."
 
 #: toolhub/apps/versioned/views.py:50
 msgid "Only show recent changes where suppressed field is either true or false"
-msgstr ""
+msgstr "Yalnızca gizlenmiş alanının doğru veya yanlış olduğu son değişiklikleri göster"
 
 #: toolhub/apps/versioned/views.py:57
 msgid "Only show recent changes where patrolled field is either true or false"
-msgstr ""
+msgstr "Yalnızca devriye edilmiş alanının doğru veya yanlış olduğu son değişiklikleri göster"
 
 #: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
-msgstr ""
+msgstr "Yalnızca bu zaman aralığındaki son değişiklikleri göster"
 
 #: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."
-msgstr ""
+msgstr "Tüm revizyonların sayfalanmış listesini al."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
@@ -1446,7 +1447,7 @@ msgstr "Yapmakta olduğunuz değişikliklerin açıklaması."
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
-msgstr ""
+msgstr "Bir eylemi açıklayan yorum."
 
 #: toolhub/settings.py:458
 msgid "Read scope"
@@ -1464,7 +1465,7 @@ msgstr "Toolhub API'si"
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr ""
+msgstr "%(app_name)s yetkilendirilsin mi?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
@@ -1490,19 +1491,19 @@ msgstr ""
 
 #: vue/serializers.py:26
 msgid "Information used on the Toolhub Home view."
-msgstr ""
+msgstr "Toolhub Ana Sayfa görünümünde kullanılan bilgiler."
 
 #: vue/serializers.py:32
 msgid "Count of tools known to Toolhub."
-msgstr ""
+msgstr "Toolhub'un bildiği araç sayısı."
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
-msgstr ""
+msgstr "En son tarayıcı çalıştırmasının tarihi ve saati."
 
 #: vue/serializers.py:41
 msgid "Number of tools added or updated in the most recent crawler run."
-msgstr ""
+msgstr "En son tarayıcı çalıştırmasında eklenen veya güncellenen araç sayısı."
 
 #: vue/templates/vue/base.html:21
 msgid "Toolhub's user interface requires JavaScript to be enabled."
@@ -1514,5 +1515,5 @@ msgstr "YÜKLENİYOR"
 
 #: vue/views.py:47
 msgid "Get information used on the Toolhub Home view."
-msgstr ""
+msgstr "Toolhub Ana Sayfa görünümünde kullanılan bilgileri al."
 
