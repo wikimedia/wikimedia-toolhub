@@ -403,7 +403,7 @@
 	"toolicon-pattern-regex": "Het hulpmiddelpictogram moet een koppeling zijn naar een beschrijvingspagina van een bestand op Wikimedia Commons.",
 	"tooltitle-pattern-regex": "De hulpmiddeltitel mag alleen letters, cijfers en streepjes bevatten.",
 	"tooluilangs-pattern-regex": "De taal moet gebruikmaken van ISO 639-codes zoals `zh` en `scn`",
-	"toolforwikis-pattern-regex": "Gebruik hostnamen zoals `zh.wiktionary.org`. Gebruik sterretjes als jokertekens. Bijvoorbeeld: '*.wikisource.org' betekent 'deze tool werkt op alle Wikisource-wiki's'.",
+	"toolforwikis-pattern-regex": "Gebruik hostnamen zoals `zh.wiktionary.org`. Gebruik sterretjes als jokertekens. Bijvoorbeeld: '*.wikisource.org' betekent 'dit hulpmiddel werkt op alle Wikisource-wiki's'.",
 	"totaltools": "Aantal hulpmiddelen",
 	"tools-view": "Hulpmiddel",
 	"tooltype": "Hulpmiddeltype",
