@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-05-18 12:48:38+0000\n"
+"PO-Revision-Date: 2026-06-08 12:20:08+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -259,7 +259,7 @@ msgstr "Positie van dit hulpmiddel in de lijst."
 
 #: toolhub/apps/lists/serializers.py:49
 msgid "List of tools metadata."
-msgstr "Lijst met metadata van hulpmiddelen."
+msgstr "Lijst met metagegevens van hulpmiddelen."
 
 #: toolhub/apps/lists/serializers.py:92
 msgid "Create or update a list."
@@ -582,7 +582,7 @@ msgstr "computerprogramma"
 
 #: toolhub/apps/toolinfo/models.py:69
 msgid "bot"
-msgstr "bot"
+msgstr "robot"
 
 #: toolhub/apps/toolinfo/models.py:70
 msgid "gadget"
