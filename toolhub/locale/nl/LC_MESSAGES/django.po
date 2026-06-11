@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-06-08 12:20:08+0000\n"
+"PO-Revision-Date: 2026-06-11 12:20:45+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -195,7 +195,7 @@ msgstr "Informatie over een specifieke gecrawlde URL."
 
 #: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
-msgstr "Een URL deactiveren."
+msgstr "Een url deactiveren."
 
 #: toolhub/apps/crawler/views.py:58
 msgid "List all crawled URLs."
@@ -456,7 +456,7 @@ msgstr "Iets wat gebruikers herkennen en vertrouwen."
 
 #: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
 msgid "Authorization callback URL"
-msgstr "Autorisatie-callback-URL"
+msgstr "Autorisatie-callback-url"
 
 #: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
 msgid "The application's callback URL."
@@ -755,7 +755,7 @@ msgstr "Organisatoren en programmacoördinatoren"
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr "Redacteuren en inhoudsbijdragers"
+msgstr "Bewerkers en inhoudsbijdragers"
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
