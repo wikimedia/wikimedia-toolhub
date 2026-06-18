@@ -1,7 +1,7 @@
-# syntax=docker-registry.wikimedia.org/repos/releng/blubber/buildkit:v0.23.0
+# syntax=docker-registry.wikimedia.org/repos/releng/blubber/buildkit:v1
 version: v4
 
-base: docker-registry.wikimedia.org/python3-bullseye:latest
+base: docker-registry.wikimedia.org/python3-bookworm:latest
 
 runs:
   environment:

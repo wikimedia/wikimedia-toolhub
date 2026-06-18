@@ -15,7 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Toolhub.  If not, see <http://www.gnu.org/licenses/>.
-import collections
+import collections.abc
 import functools
 import json
 import urllib.parse
@@ -50,7 +50,7 @@ def resolve_ref(document, ref):
     _, fragment = urllib.parse.urldefrag(ref)
     parts = urllib.parse.unquote(fragment.lstrip("/")).split("/")
     for part in parts:
-        if isinstance(document, collections.Sequence):
+        if isinstance(document, collections.abc.Sequence):
             try:
                 part = int(part)
             except ValueError:  # pragma: no cover
@@ -61,14 +61,16 @@ def resolve_ref(document, ref):
 
 def expand_refs(obj, source):
     """Expand $ref pointers in the given sub-schema."""
-    if isinstance(obj, collections.Mapping) and "$ref" in obj:
+    if isinstance(obj, collections.abc.Mapping) and "$ref" in obj:
         ref = resolve_ref(source, obj["$ref"])
         del obj["$ref"]
         obj.update(ref)
 
-    if isinstance(obj, collections.Mapping):
+    if isinstance(obj, collections.abc.Mapping):
         obj = type(obj)((k, expand_refs(v, source)) for k, v in obj.items())
-    elif isinstance(obj, collections.Sequence) and not isinstance(obj, str):
+    elif isinstance(obj, collections.abc.Sequence) and not isinstance(
+        obj, str
+    ):
         obj = type(obj)(expand_refs(v, source) for i, v in enumerate(obj))
     return obj
 

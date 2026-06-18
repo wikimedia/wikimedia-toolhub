@@ -14,7 +14,7 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.11"
 Django = "^3.2.13"
 django-environ = "^0.7.0"
 django-log-request-id = "^1.6.0"
@@ -22,7 +22,7 @@ mysqlclient = "^2.0.1"
 social-auth-app-django = "^5.0.0"
 django-webpack-loader = "^0.7.0"
 djangorestframework = "^3.12.1"
-PyYAML = "^5.3.1"
+PyYAML = "^6.0"
 uritemplate = "^3.0.1"
 django-filter = "^21.1"
 jsonfield = "^3.1.0"
