@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-05-28 12:16:44+0000\n"
+"PO-Revision-Date: 2026-06-29 12:24:50+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -901,7 +901,7 @@ msgstr "소통 및 사용자 지원"
 
 #: toolhub/apps/toolinfo/models.py:760
 msgid "Converting and formatting content"
-msgstr "컨텐츠 변환 및 서식 지정"
+msgstr "콘텐츠 변환 및 서식 지정"
 
 #: toolhub/apps/toolinfo/models.py:761
 msgid "Creating content"
