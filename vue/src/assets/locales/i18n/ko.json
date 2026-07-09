@@ -208,7 +208,7 @@
 	"message-close": "메시지 닫기",
 	"metadata-addremovetools-description": "인터페이스 또는 JSON 파일 url을 통해 도구를 직접 추가하거나 제거하려면 이 문서를 방문하십시오.",
 	"metadata-apidocs-description": "툴허브 API에 대한 정보와 다양한 종단점를 사용하여 지원되는 기능에 접근하는 방법을 알아보려면 이 문서를 방문하십시오.",
-	"metadata-auditlogs-description": "최근 변경 사항(사용자 가입, 도구 추가/삭제 등)을 보려면 이 문서를 방문하십시오.",
+	"metadata-auditlogs-description": "최근 변경 사항(사용자 가입, 도구 추가/제거 등)을 보려면 이 문서를 방문하십시오.",
 	"metadata-crawlerhistory-description": "툴허브에서 크롤링한 URL과 추가한 도구에 대한 분석 정보 등의 크롤링 기록을 보려면 이 문서를 방문하십시오",
 	"metadata-developersettings-description": "OAuth 애플리케이션을 보고, 등록하고, 인가하고, 취소하려면 이 문서를 방문하십시오.",
 	"metadata-home-description": "툴허브는 위키미디어 도구에 대한 권위 있고 널리 알려진 카탈로그입니다. 현재 이용 가능한 500개 이상의 도구에 대해 자세히 알아보세요.",

@@ -1,533 +1,533 @@
-# Translation of Toolhub - Backend to Korean (한국어)
+# Translation of Toolhub - Backend to Slovak (slovenčina)
 # Exported from translatewiki.net
 #
-# Author: Gustmd7410
-# Author: Suleiman the Magnificent Television
-# Author: Tensama0415
-# Author: YeBoy371
-# Author: Ykhwong
+# Author: Username1233219128
+# Author: Wizzard
+# Author: Yardom78
 msgid ""
 msgstr ""
 ""
-"PO-Revision-Date: 2026-07-09 12:20:08+0000\n"
+"PO-Revision-Date: 2026-07-09 12:20:09+0000\n"
 "X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ko\n"
-"X-Generator: MediaWiki 1.47.0-alpha; Translate 2025-07-31\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: sk\n"
 "Project-Id-Version: Toolhub - Backend\n"
 "Report-Msgid-Bugs-To: translatewiki.net\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
+"X-Generator: MediaWiki 1.47.0-alpha; Translate 2025-07-31\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ( (n >= 2 && n <= 4) ? 1 : 2 );\n"
 
 #: toolhub/apps/auditlog/apps.py:26
 msgid "Audit log"
-msgstr "감사 기록"
+msgstr "Denník auditu"
 
 #: toolhub/apps/auditlog/models.py:94
 msgid "created"
-msgstr "만들어짐"
+msgstr "vytvorené"
 
 #: toolhub/apps/auditlog/models.py:95
 msgid "updated"
-msgstr "수정됨"
+msgstr "aktualizované"
 
 #: toolhub/apps/auditlog/models.py:96
 msgid "deleted"
-msgstr "삭제됨"
+msgstr "zmazané"
 
 #: toolhub/apps/auditlog/models.py:97
 msgid "added to"
-msgstr "추가"
+msgstr "pridané k"
 
 #: toolhub/apps/auditlog/models.py:98
 msgid "removed from"
-msgstr "다음에서 제거됨:"
+msgstr "odstránené z"
 
 #: toolhub/apps/auditlog/models.py:99
 msgid "hid"
-msgstr "숨겨진"
+msgstr "schované"
 
 #: toolhub/apps/auditlog/models.py:100
 msgid "revealed"
-msgstr "보여짐"
+msgstr "ukázané"
 
 #: toolhub/apps/auditlog/models.py:101
 msgid "patrolled"
-msgstr "점검됨"
+msgstr "kontrolované"
 
 #: toolhub/apps/auditlog/models.py:102
 msgid "featured"
-msgstr "알참으로 지정됨"
+msgstr "odporúčané"
 
 #: toolhub/apps/auditlog/models.py:103
 msgid "unfeatured"
-msgstr "알참에서 해제됨"
+msgstr "zrušené odporúčané"
 
 #: toolhub/apps/auditlog/models.py:108
 msgid "timestamp"
-msgstr "타임스탬프"
+msgstr "časová značka"
 
 #: toolhub/apps/auditlog/models.py:116
 msgid "user"
-msgstr "사용자"
+msgstr "používateľ"
 
 #: toolhub/apps/auditlog/models.py:124
 msgid "content type"
-msgstr "콘텐츠 유형"
+msgstr "typ obsahu"
 
 #: toolhub/apps/auditlog/models.py:130
 msgid "object id"
-msgstr "객체 ID"
+msgstr "id predmetu"
 
 #: toolhub/apps/auditlog/models.py:137
 msgid "object pk"
-msgstr "객체 PK"
+msgstr "hlavná značka predmetu"
 
 #: toolhub/apps/auditlog/models.py:142
 msgid "action"
-msgstr "작업"
+msgstr "akcia"
 
 #: toolhub/apps/auditlog/models.py:156
 msgid "auditlog entry"
-msgstr "감사 로그 항목"
+msgstr "záznam denníka auditu"
 
 #: toolhub/apps/auditlog/models.py:157
 msgid "auditlog entries"
-msgstr "감사 로그 항목"
+msgstr "záznamy denníka auditu"
 
 #: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
 msgid "Event parameters"
-msgstr "이벤트 매개변수"
+msgstr "Parametre udalosti"
 
 #: toolhub/apps/auditlog/schema.py:26
 msgid "Revision created by edit action"
-msgstr "편집 작업으로 인해 판 생성됨"
+msgstr "Revízia vytvorená upravovaním"
 
 #: toolhub/apps/auditlog/schema.py:31
 msgid "Has the revision been marked as hidden?"
-msgstr "판이 숨김으로 표시되었는지"
+msgstr "Bola revízia označená ako schovaná?"
 
 #: toolhub/apps/auditlog/schema.py:36
 msgid "Has the revision been reviewed by a patroller?"
-msgstr "판이 점검자에게 검토되었는지"
+msgstr "Bola revízia skontrolovaná hliadkou?"
 
 #: toolhub/apps/auditlog/schema.py:41
 msgid "Name of tool related to the change"
-msgstr "변경과 관련된 도구의 이름"
+msgstr "Názov nástroja súvisiaceho so zmenou"
 
 #: toolhub/apps/auditlog/schema.py:46
 msgid "Identity of user related to the change"
-msgstr "변경과 관련된 사용자의 신분"
+msgstr "Identita používateľa súvisiaceho so zmenou"
 
 #: toolhub/apps/auditlog/schema.py:59
 msgid "Tool list related to the change"
-msgstr "변경 관련 도구 목록"
+msgstr "Zoznam nástrojov súvisiaci so zmenou"
 
 #: toolhub/apps/auditlog/serializers.py:35
 msgid "Event action"
-msgstr "이벤트 활동"
+msgstr "Akcia udalosti"
 
 #: toolhub/apps/auditlog/serializers.py:51
 msgid "Event target"
-msgstr "이벤트 대상"
+msgstr "Cieľ udalosti"
 
 #: toolhub/apps/auditlog/serializers.py:102
 msgid "Audit log entry"
-msgstr "감사 기록 항목"
+msgstr "Záznam auditu"
 
 #: toolhub/apps/auditlog/views.py:57
 msgid "Only show logs for the given action types."
-msgstr "지정된 작업 유형에 대한 로그만 표시합니다."
+msgstr "Zobraziť iba denníky pre dané typy akcií."
 
 #: toolhub/apps/auditlog/views.py:67
 msgid "Only show logs for the given target type."
-msgstr "지정된 대상 유형에 대한 로그만 표시합니다."
+msgstr "Zobraziť iba denníky pre daný typ cieľa."
 
 #: toolhub/apps/auditlog/views.py:73
 msgid "Only show logs occurring before the given date and time."
-msgstr "지정된 날짜 및 시간 이전에 발생한 로그만 표시합니다."
+msgstr "Zobraziť iba denníky vyskytujúce sa pred daným dátumom a časom."
 
 #: toolhub/apps/auditlog/views.py:79
 msgid "Only show logs occurring after the given date and time."
-msgstr "지정된 날짜 및 시간 이후에 발생한 로그만 표시합니다."
+msgstr "Zobraziť iba denníky vyskytujúce sa po danom dátume a čase."
 
 #: toolhub/apps/auditlog/views.py:84
 msgid "Only show logs for the given user."
-msgstr "지정된 사용자의 로그만 표시합니다."
+msgstr "Zobraziť iba denníky pre daného používateľa."
 
 #: toolhub/apps/auditlog/views.py:90
 msgid "List all log entries."
-msgstr "모든 기록 항목을 표시합니다."
+msgstr "Zoznam všetkých záznamov denníka."
 
 #: toolhub/apps/auditlog/views.py:93
 msgid "Info for a specific log entry."
-msgstr "특정 로그 항목에 대한 정보입니다."
+msgstr "Informácie o konkrétnom zázname denníka."
 
 #: toolhub/apps/crawler/apps.py:26
 msgid "Toolinfo web crawler"
-msgstr "툴인포 웹 크롤러"
+msgstr "Webový prehľadávač toolinfo"
 
 #: toolhub/apps/crawler/serializers.py:31
 msgid "A URL that has been registered for crawling"
-msgstr "크롤링을 위해 등록된 URL"
+msgstr "URL, ktorá bola zaregistrovaná na prechádzanie"
 
 #: toolhub/apps/crawler/serializers.py:44
 msgid "A URL to crawl"
-msgstr "크롤링할 URL"
+msgstr "URL na prechádzanie"
 
 #: toolhub/apps/crawler/serializers.py:55
 msgid "Information about a single URL processed during a crawler run"
-msgstr "크롤러 실행 중에 처리된 단일 URL에 대한 정보입니다"
+msgstr "Informácie o jednej URL spracovanej počas prechodu"
 
 #: toolhub/apps/crawler/serializers.py:78
 msgid "Summary of a single run of the crawler."
-msgstr "크롤러 단일 실행 결과의 요약입니다."
+msgstr "Zhrnutie jedného prechodu."
 
 #: toolhub/apps/crawler/views.py:42
 msgid "Register a new URL for crawling."
-msgstr "크롤링을 위해 새 URL을 등록합니다."
+msgstr "Zaregistrovať novú URL na prechádzanie."
 
 #: toolhub/apps/crawler/views.py:46
 msgid "Information about a specific crawled URL."
-msgstr "크롤링되는 특정 URL에 관한 정보입니다."
+msgstr "Informácie o konkrétnej prejdenej URL."
 
 #: toolhub/apps/crawler/views.py:55
 msgid "Unregister a URL."
-msgstr "URL의 등록을 해제합니다."
+msgstr "Odregistrovať URL."
 
 #: toolhub/apps/crawler/views.py:58
 msgid "List all crawled URLs."
-msgstr "크롤한 모든 URL을 나열합니다."
+msgstr "Zoznam všetkých prejdených URL."
 
 #: toolhub/apps/crawler/views.py:85
 msgid "Get URLs created by the current user."
-msgstr "현재 사용자가 만든 URL을 가져옵니다."
+msgstr "Získať URL vytvorené aktuálnym používateľom."
 
 #: toolhub/apps/crawler/views.py:104
 msgid "List all historic crawler runs."
-msgstr "모든 과거 크롤러 실행 목록을 나열합니다."
+msgstr "Zoznam všetkých historických prechodov."
 
 #: toolhub/apps/crawler/views.py:107
 msgid "Info for a specific crawler run."
-msgstr "특정 크롤러 실행에 대한 정보입니다."
+msgstr "Informácie o konkrétnom prechode."
 
 #: toolhub/apps/crawler/views.py:136
 msgid "List all urls crawled in a run."
-msgstr "실행 중에 크롤링된 모든 url을 나열합니다."
+msgstr "Zoznam všetkých URL prejdených pri prechode."
 
 #: toolhub/apps/crawler/views.py:139
 msgid "Info for a specific url crawled in a run."
-msgstr "실행 중에 크롤링된 특정 URL에 대한 정보입니다."
+msgstr "Informácie o konkrétnej URL prejdenej pri prechode."
 
 #: toolhub/apps/lists/apps.py:26 toolhub/apps/toolinfo/models.py:742
 msgid "Lists"
-msgstr "목록"
+msgstr "Zoznamy"
 
 #: toolhub/apps/lists/models.py:43
 msgid "Title of this list"
-msgstr "이 목록의 제목"
+msgstr "Názov tohto zoznamu"
 
 #: toolhub/apps/lists/models.py:49
 msgid "Description of the list's theme or contents."
-msgstr "목록의 주제 또는 내용에 대한 설명입니다."
+msgstr "Popis témy alebo obsahu zoznamu."
 
 #: toolhub/apps/lists/models.py:61
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
-msgstr "목록을 나타내는 아이콘에 대한 위키미디어 공용 파일 설명 페이지 링크입니다."
+msgstr "Odkaz na stránku s popisom súboru na Wikimedia Commons pre ikonu, ktorá zobrazuje zoznam."
 
 #: toolhub/apps/lists/models.py:68
 msgid "If true, this list is a collection of the owning user's 'favorite' tools."
-msgstr "true일 경우, 이 목록은 소유자의 '즐겨찾기' 도구 모음집입니다."
+msgstr "Ak je pravda, tento zoznam je kolekciou „obľúbených“ nástrojov vlastniaceho používateľa."
 
 #: toolhub/apps/lists/models.py:74
 msgid "If true, this list is visible to everyone."
-msgstr "true인 경우, 이 목록은 모든 사람이 볼 수 있습니다."
+msgstr "Ak je pravda, tento zoznam je viditeľný pre všetkých."
 
 #: toolhub/apps/lists/models.py:78
 msgid "If true, this list has been marked as featured."
-msgstr "true인 경우, 이 목록은 알참으로 표시된 것입니다."
+msgstr "Ak je pravda, tento zoznam bol označený ako odporúčaný."
 
 #: toolhub/apps/lists/models.py:90
 msgid "List of the names of the tools in this list."
-msgstr "이 목록에 있는 도구들의 이름 목록입니다."
+msgstr "Zoznam názvov nástrojov v tomto zozname."
 
 #: toolhub/apps/lists/models.py:169
 msgid "Position of this tool in the list."
-msgstr "목록에서 이 도구의 위치입니다."
+msgstr "Pozícia tohto nástroja v zozname."
 
 #: toolhub/apps/lists/serializers.py:49
 msgid "List of tools metadata."
-msgstr "도구 메타데이터 목록입니다."
+msgstr "Metadáta zoznamu nástrojov."
 
 #: toolhub/apps/lists/serializers.py:92
 msgid "Create or update a list."
-msgstr "목록을 만들거나 업데이트합니다."
+msgstr "Vytvoriť alebo aktualizovať zoznam."
 
 #: toolhub/apps/lists/serializers.py:100 toolhub/apps/lists/serializers.py:210
 msgid "List of tool names."
-msgstr "도구 이름 목록입니다."
+msgstr "Zoznam názvov nástrojov."
 
 #: toolhub/apps/lists/serializers.py:202
 msgid "Historic revision of a list for generating diffs."
-msgstr "차이를 생성하기 위한 목록의 과거 판입니다."
+msgstr "Historická revízia zoznamu na generovanie rozdielov."
 
 #: toolhub/apps/lists/serializers.py:231
 msgid "Historic revision of a list."
-msgstr "목록의 과거 판입니다."
+msgstr "Historická revízia zoznamu."
 
 #: toolhub/apps/lists/serializers.py:266
 msgid "Tool list revision."
-msgstr "도구 목록의 판."
+msgstr "Revízia zoznamu nástrojov."
 
 #: toolhub/apps/lists/serializers.py:274
 msgid "Tool list revision detail."
-msgstr "도구 목록 판 세부 정보입니다."
+msgstr "Podrobnosti revízie zoznamu nástrojov."
 
 #: toolhub/apps/lists/serializers.py:296
 msgid "Tool list revision difference."
-msgstr "도구 목록 판 차이입니다."
+msgstr "Rozdiel revízií zoznamu nástrojov."
 
 #: toolhub/apps/lists/serializers.py:301
 #: toolhub/apps/toolinfo/serializers.py:383
 msgid "Revision to apply changes to."
-msgstr "변경을 적용할 판입니다."
+msgstr "Revízia, na ktorú sa majú aplikovať zmeny."
 
 #: toolhub/apps/lists/serializers.py:305
 #: toolhub/apps/toolinfo/serializers.py:387
 msgid "Revision after applying changes."
-msgstr "변경사항 적용 후의 판입니다."
+msgstr "Revízia po aplikovaní zmien."
 
 #: toolhub/apps/lists/serializers.py:309
 msgid "Add a favorite tool."
-msgstr "즐겨찾는 도구를 추가합니다."
+msgstr "Pridať obľúbený nástroj."
 
 #: toolhub/apps/lists/serializers.py:314
 msgid "Tool name."
-msgstr "도구 이름."
+msgstr "Názov nástroja."
 
 #: toolhub/apps/lists/validators.py:36
 #, python-format
 msgid "Duplicate values in list: %(duplicates)s"
-msgstr "목록에 중복된 값: %(duplicates)s"
+msgstr "Duplicitné hodnoty v zozname: %(duplicates)s"
 
 #: toolhub/apps/lists/validators.py:55
 #, python-format
 msgid "Unknown tool: %(names)s"
 msgid_plural "Unknown tools: %(names)s"
-msgstr[0] "알 수 없는 도구: %(names)s"
+msgstr[0] "Neznámy nástroj: %(names)s"
+msgstr[1] "Neznáme nástroje: %(names)s"
+msgstr[2] "Neznámych nástrojov: %(names)s"
 
 #: toolhub/apps/lists/validators.py:74
 #, python-format
 msgid "Tool %(name)s is already favorited."
-msgstr "%(name)s 도구는 이미 즐겨찾기에 추가되었습니다."
+msgstr "Nástroj %(name)s je už v obľúbených."
 
 #: toolhub/apps/lists/views.py:68
 msgid "Only show lists that are featured."
-msgstr "알찬 목록만 표시합니다."
+msgstr "Zobraziť iba odporúčané zoznamy."
 
 #: toolhub/apps/lists/views.py:73
 msgid "Only show lists that are published."
-msgstr "게시된 목록만 표시합니다."
+msgstr "Zobraziť iba publikované zoznamy."
 
 #: toolhub/apps/lists/views.py:78
 msgid "Only show lists created by the given user."
-msgstr "지정된 사용자가 만든 목록만 표시합니다."
+msgstr "Zobraziť iba zoznamy vytvorené daným používateľom."
 
 #: toolhub/apps/lists/views.py:84
 msgid "Create a new list of tools."
-msgstr "새 도구 목록을 만듭니다."
+msgstr "Vytvoriť nový zoznam nástrojov."
 
 #: toolhub/apps/lists/views.py:89
 msgid "Details of a specific list of tools."
-msgstr "특정 도구 목록에 대한 세부 정보입니다."
+msgstr "Podrobnosti konkrétneho zoznamu nástrojov."
 
 #: toolhub/apps/lists/views.py:93
 msgid "Update a list of tools."
-msgstr "도구 목록을 업데이트합니다."
+msgstr "Aktualizovať zoznam nástrojov."
 
 #: toolhub/apps/lists/views.py:101
 msgid "Delete a list of tools."
-msgstr "도구 목록을 삭제합니다."
+msgstr "Odstrániť zoznam nástrojov."
 
 #: toolhub/apps/lists/views.py:104
 msgid "List all lists of tools."
-msgstr "모든 도구 목록을 나열합니다."
+msgstr "Zoznam všetkých zoznamov nástrojov."
 
 #: toolhub/apps/lists/views.py:140
 msgid "Mark a list as featured."
-msgstr "목록을 추천 목록으로 표시합니다."
+msgstr "Označiť zoznam ako odporúčaný."
 
 #: toolhub/apps/lists/views.py:168
 msgid "Remove featured flag from a list."
-msgstr "추천됨 플래그를 목록에서 제거합니다."
+msgstr "Odstrániť príznak odporúčania zo zoznamu."
 
 #: toolhub/apps/lists/views.py:200
 msgid "A unique integer value identifying this toollist."
-msgstr "이 도구 목록을 식별하는 고유 정수값입니다."
+msgstr "Jedinečná celočíselná hodnota identifikujúca tento zoznam nástrojov."
 
 #: toolhub/apps/lists/views.py:206 toolhub/apps/toolinfo/views.py:175
 msgid "Get revision information."
-msgstr "판 정보를 가져옵니다."
+msgstr "Získať informácie o revízii."
 
 #: toolhub/apps/lists/views.py:211 toolhub/apps/toolinfo/views.py:180
 msgid "List revisions."
-msgstr "판을 나열합니다."
+msgstr "Revízie zoznamu."
 
 #: toolhub/apps/lists/views.py:216 toolhub/apps/toolinfo/views.py:185
 msgid "Compare two revisions to find difference."
-msgstr "차이 확인을 위해 두 판을 비교합니다."
+msgstr "Porovnať dve revízie a nájsť rozdiely."
 
 #: toolhub/apps/lists/views.py:224 toolhub/apps/toolinfo/views.py:193
 msgid "A unique integer value identifying version to diff against."
-msgstr "차이를 볼 버전을 식별하는 고유한 정수 값입니다."
+msgstr "Jedinečná celočíselná hodnota identifikujúca verziu na porovnanie."
 
 #: toolhub/apps/lists/views.py:232
 msgid "Restore the list to this revision."
-msgstr "목록을 이 판으로 복원합니다."
+msgstr "Obnoviť zoznam do tejto revízie."
 
 #: toolhub/apps/lists/views.py:239 toolhub/apps/toolinfo/views.py:209
 msgid "Undo all changes made between two revisions."
-msgstr "두 판 사이의 모든 변경사항을 취소합니다."
+msgstr "Vrátiť späť všetky zmeny vykonané medzi dvoma revíziami."
 
 #: toolhub/apps/lists/views.py:247 toolhub/apps/toolinfo/views.py:217
 msgid "A unique integer value identifying version to undo until."
-msgstr "되돌릴 버전을 식별하는 고유한 정수 값입니다."
+msgstr "Jedinečná celočíselná hodnota identifikujúca verziu, do ktorej sa má vrátiť späť."
 
 #: toolhub/apps/lists/views.py:255 toolhub/apps/toolinfo/views.py:226
 msgid "Hide revision text and edit summary from users."
-msgstr "판 텍스트와 편집 요약을 사용자에게 숨깁니다."
+msgstr "Skryť text revízie a zhrnutie úprav pred používateľmi."
 
 #: toolhub/apps/lists/views.py:261 toolhub/apps/toolinfo/views.py:232
 msgid "Reveal a previously hidden revision."
-msgstr "이전에 숨겨져 있던 판을 표시합니다."
+msgstr "Odhaliť predtým skrytú revíziu."
 
 #: toolhub/apps/lists/views.py:267 toolhub/apps/toolinfo/views.py:238
 msgid "Mark a revision as patrolled."
-msgstr "판을 점검됨으로 표시합니다."
+msgstr "Označiť revíziu ako skontrolovanú."
 
 #: toolhub/apps/lists/views.py:369 toolhub/apps/toolinfo/views.py:364
 #, python-format
 msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
-msgstr "판을 %(user)s님이 %(datetime)s에 작성한 %(rev_id)s 버전으로 되돌립니다"
+msgstr "Vrátiť na revíziu %(rev_id)s z %(datetime)s od %(user)s"
 
 #: toolhub/apps/lists/views.py:410 toolhub/apps/toolinfo/views.py:398
 #, python-format
 msgid "Undo revisions from %(first_id)s to %(last_id)s"
-msgstr "%(first_id)s 판에서 %(last_id)s 판으로 편집 취소"
+msgstr "Vrátiť späť revízie od %(first_id)s do %(last_id)s"
 
 #: toolhub/apps/lists/views.py:520 toolhub/apps/toolinfo/views.py:169
 msgid "Unique identifier for this tool."
-msgstr "이 도구의 고유 식별자입니다."
+msgstr "Jedinečný identifikátor tohto nástroja."
 
 #: toolhub/apps/lists/views.py:526
 msgid "Add a tool to favorites."
-msgstr "도구를 즐겨찾기에 추가합니다."
+msgstr "Pridať nástroj do obľúbených."
 
 #: toolhub/apps/lists/views.py:531
 msgid "Check to see if a tool is in favorites."
-msgstr "해당 도구가 즐겨찾기에 있는지 확인합니다."
+msgstr "Skontrolovať, či je nástroj v obľúbených."
 
 #: toolhub/apps/lists/views.py:537
 msgid "Remove a tool from favorites."
-msgstr "즐겨찾기에서 도구를 제거합니다."
+msgstr "Odstrániť nástroj z obľúbených."
 
 #: toolhub/apps/lists/views.py:543
 msgid "Personal favorites."
-msgstr "개인 즐겨찾기입니다."
+msgstr "Osobné obľúbené."
 
 #: toolhub/apps/oauth2/apps.py:26
 msgid "OAuth 2.0 Authorization server API"
-msgstr "OAuth 2.0 인가 서버 API"
+msgstr "API autorizačného servera OAuth 2.0"
 
 #: toolhub/apps/oauth2/serializers.py:30
 msgid "OAuth Client application."
-msgstr "OAuth 클라이언트 애플리케이션입니다."
+msgstr "Klientska aplikácia OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:37
 msgid "Application name"
-msgstr "애플리케이션 이름"
+msgstr "Názov aplikácie"
 
 #: toolhub/apps/oauth2/serializers.py:38
 msgid "Something users will recognize and trust"
-msgstr "사용자들이 알아보고 신뢰할 수 있는 것"
+msgstr "Niečo, čo používatelia spoznajú a čomu budú dôverovať"
 
 #: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
 msgid "Authorization callback URL"
-msgstr "인가 콜백 URL"
+msgstr "URL spätného volania autorizácie"
 
 #: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
 msgid "The application's callback URL."
-msgstr "애플리케이션의 콜백 URL"
+msgstr "URL spätného volania aplikácie."
 
 #: toolhub/apps/oauth2/serializers.py:49
 msgid "Public identifier for this application"
-msgstr "이 애플리케이션의 공개 식별자"
+msgstr "Verejný identifikátor tejto aplikácie"
 
 #: toolhub/apps/oauth2/serializers.py:66
 msgid "OAuth Client application registration."
-msgstr "OAuth 클라이언트 애플리케이션 등록입니다."
+msgstr "Registrácia klientskej aplikácie OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:74
 msgid "Secret known only to the application and the authorization server"
-msgstr "애플리케이션과 인증 서버만 알고 있는 비밀 키"
+msgstr "Tajomstvo známe len aplikácii a autorizačnému serveru"
 
 #: toolhub/apps/oauth2/serializers.py:92
 msgid "OAuth Client application update."
-msgstr "OAuth 클라이언트 애플리케이션 업데이트입니다."
+msgstr "Aktualizácia klientskej aplikácie OAuth."
 
 #: toolhub/apps/oauth2/serializers.py:117
 msgid "Authorized OAuth client application."
-msgstr "인가된 OAuth 클라이언트 애플리케이션입니다."
+msgstr "Autorizovaná klientska aplikácia OAuth."
 
 #: toolhub/apps/oauth2/views.py:39
 msgid "List all client applications."
-msgstr "모든 클라이언트 애플리케이션을 나열합니다."
+msgstr "Zoznam všetkých klientskych aplikácií."
 
 #: toolhub/apps/oauth2/views.py:42
 msgid "Info for a client application."
-msgstr "클라이언트 애플리케이션의 정보입니다."
+msgstr "Informácie o klientskej aplikácii."
 
 #: toolhub/apps/oauth2/views.py:45
 msgid "Register a new client application."
-msgstr "새 클라이언트 애플리케이션을 등록합니다."
+msgstr "Zaregistrovať novú klientsku aplikáciu."
 
 #: toolhub/apps/oauth2/views.py:53
 msgid "Update a client application."
-msgstr "클라이언트 애플리케이션을 업데이트합니다."
+msgstr "Aktualizovať klientsku aplikáciu."
 
 #: toolhub/apps/oauth2/views.py:57
 msgid "Delete a client application."
-msgstr "클라이언트 애플리케이션을 삭제합니다."
+msgstr "Odstrániť klientsku aplikáciu."
 
 #: toolhub/apps/oauth2/views.py:91
 msgid "List applications authorized by the current user."
-msgstr "현재 사용자가 인가한 애플리케이션을 나열합니다."
+msgstr "Zoznam aplikácií autorizovaných aktuálnym používateľom."
 
 #: toolhub/apps/oauth2/views.py:94
 msgid "Info for an authorized application."
-msgstr "인가된 애플리케이션의 정보입니다."
+msgstr "Informácie o autorizovanej aplikácii."
 
 #: toolhub/apps/oauth2/views.py:106
 msgid "Revoke an application authorization."
-msgstr "애플리케이션 인가를 철회합니다."
+msgstr "Odvolať autorizáciu aplikácie."
 
 #: toolhub/apps/search/apps.py:26
 msgid "Search"
-msgstr "검색"
+msgstr "Hľadať"
 
 #: toolhub/apps/search/schema.py:28
 msgid "Faceted classification"
-msgstr "패싯 분류"
+msgstr "Fazetová klasifikácia"
 
 #: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
 msgid "Search string"
-msgstr "문자열 검색"
+msgstr "Vyhľadávací reťazec"
 
 #: toolhub/apps/search/schema.py:95
 #, python-format
 msgid "Search in %(fields)s"
-msgstr "%(fields)s에서 검색"
+msgstr "Hľadať v %(fields)s"
 
 #: toolhub/apps/search/schema.py:97
 #, optional
@@ -536,148 +536,148 @@ msgstr ""
 
 #: toolhub/apps/search/schema.py:182
 msgid "Field to use when ordering results."
-msgstr "검색 결과를 정렬할 때 사용할 필드입니다."
+msgstr "Pole na usporiadanie výsledkov."
 
 #: toolhub/apps/search/serializers.py:47 toolhub/apps/search/serializers.py:72
 msgid "Tool search results"
-msgstr "도구 검색 결과"
+msgstr "Výsledky vyhľadávania nástrojov"
 
 #: toolhub/apps/search/serializers.py:61
 msgid "Tool autocomplete results"
-msgstr "도구 자동 완성 결과"
+msgstr "Výsledky automatického dopĺňania nástrojov"
 
 #: toolhub/apps/search/serializers.py:86
 msgid "ToolList autocomplete results"
-msgstr "도구 자동 완성 결과"
+msgstr "Výsledky automatického dopĺňania zoznamov nástrojov"
 
 #: toolhub/apps/search/views.py:123
 msgid "Autocomplete for tools."
-msgstr "도구를 위한 자동 완성입니다."
+msgstr "Automatické dopĺňanie pre nástroje."
 
 #: toolhub/apps/search/views.py:157
 msgid "Faceted search for tools."
-msgstr "도구에 대한 패싯 검색입니다."
+msgstr "Fazetové vyhľadávanie nástrojov."
 
 #: toolhub/apps/search/views.py:276
 msgid "Autocomplete for toollists."
-msgstr "도구 목록을 위한 자동 완성입니다."
+msgstr "Automatické dopĺňanie pre zoznamy nástrojov."
 
 #: toolhub/apps/search/views.py:316
 msgid "Full text search for toollists."
-msgstr "도구목록에 대한 전문 검색입니다."
+msgstr "Fulltextové vyhľadávanie zoznamov nástrojov."
 
 #: toolhub/apps/toolinfo/apps.py:26
 msgid "Toolinfo"
-msgstr "툴인포"
+msgstr "Toolinfo"
 
 #: toolhub/apps/toolinfo/models.py:67
 msgid "web app"
-msgstr "웹 앱"
+msgstr "webová aplikácia"
 
 #: toolhub/apps/toolinfo/models.py:68
 msgid "desktop app"
-msgstr "데스크톱 앱"
+msgstr "desktopová aplikácia"
 
 #: toolhub/apps/toolinfo/models.py:69
 msgid "bot"
-msgstr "봇"
+msgstr "bot"
 
 #: toolhub/apps/toolinfo/models.py:70
 msgid "gadget"
-msgstr "소도구"
+msgstr "gadget"
 
 #: toolhub/apps/toolinfo/models.py:71
 msgid "user script"
-msgstr "사용자 스크립트"
+msgstr "používateľský skript"
 
 #: toolhub/apps/toolinfo/models.py:72
 msgid "command line tool"
-msgstr "명령 줄 도구"
+msgstr "nástroj príkazového riadka"
 
 #: toolhub/apps/toolinfo/models.py:73
 msgid "coding framework"
-msgstr "코딩 프레임워크"
+msgstr "vývojový rámec"
 
 #: toolhub/apps/toolinfo/models.py:74
 msgid "lua module"
-msgstr "루아 모듈"
+msgstr "lua modul"
 
 #: toolhub/apps/toolinfo/models.py:75
 msgid "template"
-msgstr "틀"
+msgstr "šablóna"
 
 #: toolhub/apps/toolinfo/models.py:76
 msgid "other"
-msgstr "기타"
+msgstr "iné"
 
 #: toolhub/apps/toolinfo/models.py:82
 msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
-msgstr "참인 경우 이 도구의 사용은 공식적으로 권고되지 않습니다. `replaced_by` 매개변수를 사용하여 대안이 되는 도구를 정의할 수 있습니다."
+msgstr "Ak je pravda, používanie tohto nástroja sa oficiálne neodporúča. Parameter `replaced_by` možno použiť na definovanie náhrady."
 
 #: toolhub/apps/toolinfo/models.py:92
 msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
-msgstr "이 도구가 구식인 경우 이 매개변수는 대체 도구를 링크하기 위해 사용하는 것이 좋습니다."
+msgstr "Ak je tento nástroj zastaraný, tento parameter by sa mal použiť na odkaz na náhradný nástroj."
 
 #: toolhub/apps/toolinfo/models.py:99
 msgid "If true, this tool is unstable and can change or go offline at any time."
-msgstr "참인 경우, 이 도구는 불안정하며 언제든지 변경되거나 작동이 중단될 수 있습니다."
+msgstr "Ak je pravda, tento nástroj je nestabilný a môže sa kedykoľvek zmeniť alebo prejsť do offline režimu."
 
 #: toolhub/apps/toolinfo/models.py:107
 msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
-msgstr "이 도구를 사용할 수 있는 위키를 설명하는 문자열 또는 문자열 배열입니다. `zh.wiktionary.org`와 같은 호스트 이름을 사용하세요. 별표를 와일드카드로 사용할 수 있습니다. 예를 들어, `*.wikisource.org`는 '이 도구는 모든 위키소스 위키에서 작동합니다.'를 의미하고, `*`는 '이 도구는 위키미디어 위키를 포함한 모든 위키에서 작동합니다.'를 의미합니다."
+msgstr "Reťazec alebo pole reťazcov popisujúcich wiki, na ktorých možno tento nástroj používať. Použite názvy hostiteľov ako `zh.wiktionary.org`. Použite hviezdičky ako zástupné znaky. Napríklad `*.wikisource.org` znamená „tento nástroj funguje na všetkých wiki Wikisource.“ `*` znamená „funguje na všetkých wiki vrátane wiki Wikimedia.“"
 
 #: toolhub/apps/toolinfo/models.py:125
 msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
-msgstr "도구를 나타내는 아이콘에 대한 위키미디어 공용 파일 설명 페이지 링크입니다."
+msgstr "Odkaz na stránku s popisom súboru na Wikimedia Commons pre ikonu, ktorá zobrazuje nástroj."
 
 #: toolhub/apps/toolinfo/models.py:133
 msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
-msgstr "이 도구의 인터페이스가 번역된 언어입니다. `zh` 및 `scn`과 같은 ISO 639 언어 코드를 사용하세요. 지정되지 않은 경우 이 도구는 영어로만 제공되는 것으로 간주됩니다."
+msgstr "Jazyky, do ktorých bolo rozhranie nástroja preložené. Použite kódy jazykov ISO 639 ako `zh` a `scn`. Ak nie je definované, predpokladá sa, že nástroj je dostupný len v angličtine."
 
 #: toolhub/apps/toolinfo/models.py:146
 msgid "The manner in which the tool is used. Select one from the list of options."
-msgstr "도구가 사용되는 방식입니다. 옵션 목록에서 하나를 선택하십시오."
+msgstr "Spôsob, akým sa nástroj používa. Vyberte jednu možnosť zo zoznamu."
 
 #: toolhub/apps/toolinfo/models.py:154
 msgid "A link to the repository where the tool code is hosted."
-msgstr "해당 도구의 코드를 호스트팅하는 코드 저장소 링크입니다."
+msgstr "Odkaz na repozitár, kde je hosťovaný kód nástroja."
 
 #: toolhub/apps/toolinfo/models.py:161
 msgid "A link to the tool's API, if available."
-msgstr "도구의 API 링크입니다. (사용 가능한 경우)"
+msgstr "Odkaz na API nástroja, ak je k dispozícii."
 
 #: toolhub/apps/toolinfo/models.py:167
 msgid "A link to the tool's developer documentation, if available."
-msgstr "해당 도구의 개발자 문서 링크입니다 (가능한 경우)."
+msgstr "Odkaz na vývojársku dokumentáciu nástroja, ak je k dispozícii."
 
 #: toolhub/apps/toolinfo/models.py:175
 msgid "A link to the tool's user documentation, if available."
-msgstr "해당 도구의 사용자 문서 링크입니다 (가능한 경우)."
+msgstr "Odkaz na používateľskú dokumentáciu nástroja, ak je k dispozícii."
 
 #: toolhub/apps/toolinfo/models.py:183
 msgid "A link to location where the tool's user can leave feedback."
-msgstr "해당 도구의 사용자가 피드백을 남길 수 있는 위치로의 링크입니다."
+msgstr "Odkaz na miesto, kde môže používateľ nástroja zanechať spätnú väzbu."
 
 #: toolhub/apps/toolinfo/models.py:191
 msgid "A link to the tool's privacy policy, if available."
-msgstr "해당 도구의 개인정보처리방침 링크입니다 (가능한 경우)."
+msgstr "Odkaz na zásady ochrany súkromia nástroja, ak sú k dispozícii."
 
 #: toolhub/apps/toolinfo/models.py:200
 msgid "A link to the tool's translation interface."
-msgstr "해당 도구의 번역 인터페이스 링크입니다 (가능한 경우)."
+msgstr "Odkaz na prekladové rozhranie nástroja."
 
 #: toolhub/apps/toolinfo/models.py:208
 msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
-msgstr "해당 도구의 깃허브, Bitbucket, 파브리케이터 등으로의 버그 트래커로의 링크입니다."
+msgstr "Odkaz na sledovač chýb nástroja na GitHub, Bitbucket, Phabricator atď."
 
 #: toolhub/apps/toolinfo/models.py:464
 #, python-format
 msgid "Changing %(key)s after initial object creation is not allowed"
-msgstr "최초 객체가 만들어진 후에 %(key)s 값을 변경하는 것은 허용되지 않습니다"
+msgstr "Zmena %(key)s po počiatočnom vytvorení objektu nie je povolená"
 
 #: toolhub/apps/toolinfo/models.py:504
 msgid "crawler"
-msgstr "크롤러"
+msgstr "prehľadávač"
 
 #: toolhub/apps/toolinfo/models.py:505
 msgid "api"
@@ -685,323 +685,323 @@ msgstr "api"
 
 #: toolhub/apps/toolinfo/models.py:513
 msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
-msgstr "이 도구에 대한 고유 식별자입니다. 모든 도구마다 고유해야 합니다. 충돌 위험을 줄이려면 도구 이름에 접두사를 붙이는 것이 좋습니다."
+msgstr "Jedinečný identifikátor tohto nástroja. Musí byť jedinečný pre každý nástroj. Odporúča sa používať predpony názvov nástrojov na zníženie rizika kolízií."
 
 #: toolhub/apps/toolinfo/models.py:521
 msgid "Human readable tool name. Recommended limit of 25 characters."
-msgstr "사람이 읽기 쉬운 도구 이름입니다. 권장 글자 수는 25자입니다."
+msgstr "Ľudsky čitateľný názov nástroja. Odporúčaný limit 25 znakov."
 
 #: toolhub/apps/toolinfo/models.py:527
 msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
-msgstr "도구에 대한 장문의 설명입니다. 설명을 위해 권장되는 길이는 3~5개 문장입니다."
+msgstr "Dlhší popis nástroja. Odporúčaná dĺžka popisu je 3-5 viet."
 
 #: toolhub/apps/toolinfo/models.py:535
 msgid "A direct link to the tool or to instructions on how to use or install the tool."
-msgstr "해당 도구에 대한 직접 링크 또는 도구 사용 및 설치 방법에 대한 지침 링크입니다."
+msgstr "Priamy odkaz na nástroj alebo na inštrukcie, ako nástroj používať alebo nainštalovať."
 
 #: toolhub/apps/toolinfo/models.py:549
 msgid "The primary tool developers."
-msgstr "주 도구 개발자입니다."
+msgstr "Primárni vývojári nástroja."
 
 #: toolhub/apps/toolinfo/models.py:557
 msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
-msgstr "전체 제목보다는 길지만 설명보다는 짧습니다. 제목에 추가적인 맥락을 제공해야 합니다."
+msgstr "Dlhšie ako celý názov, ale kratšie ako popis. Mal by pridať nejaký dodatočný kontext k názvu."
 
 #: toolhub/apps/toolinfo/models.py:566
 msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
-msgstr "OpenHub의 프로젝트 ID입니다. 예를 들어 URL이 https://openhub.net/p/foo인 경우 프로젝트 ID는 `foo`입니다."
+msgstr "ID projektu na OpenHub. Pri URL https://openhub.net/p/foo je ID projektu `foo`."
 
 #: toolhub/apps/toolinfo/models.py:575
 msgid "Alternate links to the tool or install documentation in different natural languages."
-msgstr "해당 도구 또는 설치 문서에 대한 대체 링크를 다른 자연어로 제공합니다."
+msgstr "Alternatívne odkazy na nástroj alebo inštalačnú dokumentáciu v rôznych prirodzených jazykoch."
 
 #: toolhub/apps/toolinfo/models.py:586
 msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
-msgstr "해당 도구가 봇인 경우, 봇의 위키미디어 사용자 이름을 입력하세요. 'User:' 또는 이와 유사한 접두어를 포함하지 마세요."
+msgstr "Ak je nástroj bot, používateľské meno bota na Wikimedia. Nezahŕňajte predpony ako 'User:'."
 
 #: toolhub/apps/toolinfo/models.py:595
 msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
-msgstr "툴 코드에 적용된 소프트웨어 라이선스를 확인하세요. 'GPL-3.0-or-later'와 같은 표준 SPDX 라이선스 식별자를 사용하세요."
+msgstr "Softvérová licencia, pod ktorou je kód nástroja k dispozícii. Použite štandardný identifikátor licencie SPDX, napríklad 'GPL-3.0-or-later'."
 
 #: toolhub/apps/toolinfo/models.py:603
 msgid "Organization(s) that sponsored the tool's development."
-msgstr "해당 도구 개발을 후원한 기관(들)입니다."
+msgstr "Organizácie, ktoré sponzorovali vývoj nástroja."
 
 #: toolhub/apps/toolinfo/models.py:610
 msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
-msgstr "해당 도구를 만드는 데 사용된 기술(프로그래밍 언어, 개발 프레임워크 등)을 나열하는 문자열 또는 문자열 배열입니다."
+msgstr "Reťazec alebo pole reťazcov uvádzajúcich technológie (programovacie jazyky, vývojové rámce atď.) použité pri vytváraní nástroja."
 
 #: toolhub/apps/toolinfo/models.py:621
 msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
-msgstr "이 toolinfo.json 레코드의 jsonschema를 식별하는 URI입니다. URI 경로 끝에 이름과 개정 번호만 포함된 짧은 URI여야 합니다."
+msgstr "URI identifikujúce jsonschema pre tento záznam toolinfo.json. Malo by ísť o krátke URI obsahujúce len názov a revíziu na konci cesty URI."
 
 #: toolhub/apps/toolinfo/models.py:632
 msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
-msgstr "이 도구 정보 레코드가 작성되는 언어입니다. 설정하지 않으면 기본값은 영어입니다. ISO 639 언어 코드를 사용하세요."
+msgstr "Jazyk, v ktorom je tento záznam toolinfo napísaný. Ak nie je nastavený, predvolená hodnota je angličtina. Použite kódy jazykov ISO 639."
 
 #: toolhub/apps/toolinfo/models.py:642
 msgid "Origin of this tool record."
-msgstr "이 도구 기록의 출처입니다."
+msgstr "Pôvod tohto záznamu nástroja."
 
 #: toolhub/apps/toolinfo/models.py:712
 msgid "Admins"
-msgstr "관리자"
+msgstr "Správcovia"
 
 #: toolhub/apps/toolinfo/models.py:713
 msgid "Organizers and program coordinators"
-msgstr "주최자 및 프로그램 관리자"
+msgstr "Organizátori a koordinátori programov"
 
 #: toolhub/apps/toolinfo/models.py:714
 msgid "Editors and content contributors"
-msgstr "편집자 및 콘텐츠 기여자"
+msgstr "Redaktori a prispievatelia obsahu"
 
 #: toolhub/apps/toolinfo/models.py:715
 msgid "Readers and content consumers"
-msgstr "독자와 콘텐츠 소비자"
+msgstr "Čitatelia a konzumenti obsahu"
 
 #: toolhub/apps/toolinfo/models.py:716
 msgid "Researchers"
-msgstr "연구자"
+msgstr "Výskumníci"
 
 #: toolhub/apps/toolinfo/models.py:717
 msgid "Developers"
-msgstr "개발자"
+msgstr "Vývojári"
 
 #: toolhub/apps/toolinfo/models.py:720
 msgid "Articles"
-msgstr "문서"
+msgstr "Články"
 
 #: toolhub/apps/toolinfo/models.py:721
 msgid "Audio"
-msgstr "오디오"
+msgstr "Audio"
 
 #: toolhub/apps/toolinfo/models.py:722
 msgid "Books"
-msgstr "책"
+msgstr "Knihy"
 
 #: toolhub/apps/toolinfo/models.py:724
 msgid "Data"
-msgstr "데이터"
+msgstr "Údaje"
 
 #: toolhub/apps/toolinfo/models.py:726
 msgid "Bibliographic data"
-msgstr "서지 데이터"
+msgstr "Bibliografické údaje"
 
 #: toolhub/apps/toolinfo/models.py:727
 msgid "Categories or labels"
-msgstr "분류 또는 레이블 달기"
+msgstr "Kategórie alebo štítky"
 
 #: toolhub/apps/toolinfo/models.py:728
 msgid "Diffs and revision data"
-msgstr "차이 및 판 데이터"
+msgstr "Rozdiely a údaje o revíziách"
 
 #: toolhub/apps/toolinfo/models.py:729
 msgid "Event data"
-msgstr "이벤트 데이터"
+msgstr "Údaje udalosti"
 
 #: toolhub/apps/toolinfo/models.py:730
 msgid "Geographic data"
-msgstr "지리학적 데이터"
+msgstr "Geografické údaje"
 
 #: toolhub/apps/toolinfo/models.py:731
 msgid "Linguistic data"
-msgstr "언어학적 데이터"
+msgstr "Jazykové údaje"
 
 #: toolhub/apps/toolinfo/models.py:732
 msgid "Page metadata"
-msgstr "페이지 메타데이터"
+msgstr "Metadáta stránky"
 
 #: toolhub/apps/toolinfo/models.py:733
 msgid "Structured data"
-msgstr "구조화된 데이터"
+msgstr "Štruktúrované údaje"
 
 #: toolhub/apps/toolinfo/models.py:734
 msgid "User data"
-msgstr "사용자 데이터"
+msgstr "Používateľské údaje"
 
 #: toolhub/apps/toolinfo/models.py:737
 msgid "Discussions"
-msgstr "토론"
+msgstr "Diskusie"
 
 #: toolhub/apps/toolinfo/models.py:738
 msgid "Drafts"
-msgstr "초안"
+msgstr "Koncepty"
 
 #: toolhub/apps/toolinfo/models.py:739
 msgid "Emails"
-msgstr "이메일"
+msgstr "E-maily"
 
 #: toolhub/apps/toolinfo/models.py:740
 msgid "Images"
-msgstr "이미지"
+msgstr "Obrázky"
 
 #: toolhub/apps/toolinfo/models.py:741
 msgid "Links"
-msgstr "링크"
+msgstr "Odkazy"
 
 #: toolhub/apps/toolinfo/models.py:743
 msgid "Logs"
-msgstr "기록"
+msgstr "Denníky"
 
 #: toolhub/apps/toolinfo/models.py:744
 msgid "Maps"
-msgstr "지도"
+msgstr "Mapy"
 
 #: toolhub/apps/toolinfo/models.py:745
 msgid "References"
-msgstr "각주"
+msgstr "Referencie"
 
 #: toolhub/apps/toolinfo/models.py:746
 msgid "Software or code"
-msgstr "소프트웨어 또는 코드"
+msgstr "Softvér alebo kód"
 
 #: toolhub/apps/toolinfo/models.py:747
 msgid "Templates"
-msgstr "틀"
+msgstr "Šablóny"
 
 #: toolhub/apps/toolinfo/models.py:748
 msgid "Videos"
-msgstr "비디오"
+msgstr "Videá"
 
 #: toolhub/apps/toolinfo/models.py:749
 msgid "Watchlists"
-msgstr "주시문서 목록"
+msgstr "Zoznamy sledovania"
 
 #: toolhub/apps/toolinfo/models.py:750
 msgid "Webpages"
-msgstr "웹 페이지"
+msgstr "Webové stránky"
 
 #: toolhub/apps/toolinfo/models.py:751
 msgid "Wikitext"
-msgstr "위키텍스트"
+msgstr "Wikitext"
 
 #: toolhub/apps/toolinfo/models.py:754
 msgid "Analysis"
-msgstr "분석"
+msgstr "Analýza"
 
 #: toolhub/apps/toolinfo/models.py:755
 msgid "Annotating and linking"
-msgstr "주석 및 링크 달기"
+msgstr "Anotovanie a prepojovanie"
 
 #: toolhub/apps/toolinfo/models.py:756
 msgid "Archiving and cleanup"
-msgstr "보존과 정리"
+msgstr "Archivácia a čistenie"
 
 #: toolhub/apps/toolinfo/models.py:757
 msgid "Categorizing and tagging"
-msgstr "분류 및 태그 달기"
+msgstr "Kategorizácia a označovanie"
 
 #: toolhub/apps/toolinfo/models.py:758
 msgid "Citing and referencing"
-msgstr "인용 및 참조 달기"
+msgstr "Citovanie a odkazovanie"
 
 #: toolhub/apps/toolinfo/models.py:759
 msgid "Communication and supporting users"
-msgstr "소통 및 사용자 지원"
+msgstr "Komunikácia a podpora používateľov"
 
 #: toolhub/apps/toolinfo/models.py:760
 msgid "Converting and formatting content"
-msgstr "콘텐츠 변환 및 서식 지정"
+msgstr "Konverzia a formátovanie obsahu"
 
 #: toolhub/apps/toolinfo/models.py:761
 msgid "Creating content"
-msgstr "콘텐츠 만들기"
+msgstr "Vytváranie obsahu"
 
 #: toolhub/apps/toolinfo/models.py:762
 msgid "Deleting and reverting"
-msgstr "삭제 및 되돌리기"
+msgstr "Odstraňovanie a vracanie späť"
 
 #: toolhub/apps/toolinfo/models.py:763
 msgid "Disambiguation"
-msgstr "동음이의 구분"
+msgstr "Rozlišovacia stránka"
 
 #: toolhub/apps/toolinfo/models.py:764
 msgid "Downloading or reusing content"
-msgstr "콘텐츠 다운로드 또는 재사용"
+msgstr "Sťahovanie alebo opätovné použitie obsahu"
 
 #: toolhub/apps/toolinfo/models.py:765
 msgid "Editing or updating content"
-msgstr "콘텐츠 편집 또는 업데이트"
+msgstr "Úprava alebo aktualizácia obsahu"
 
 #: toolhub/apps/toolinfo/models.py:766
 msgid "Event and contest planning"
-msgstr "이벤트 및 대회 기획"
+msgstr "Plánovanie udalostí a súťaží"
 
 #: toolhub/apps/toolinfo/models.py:767
 msgid "Hosting and maintaining tools"
-msgstr "호스팅 및 유지 관리 도구"
+msgstr "Hosťovanie a údržba nástrojov"
 
 #: toolhub/apps/toolinfo/models.py:768
 msgid "Identifying policy violations"
-msgstr "정책 위반 사항 식별"
+msgstr "Identifikácia porušení pravidiel"
 
 #: toolhub/apps/toolinfo/models.py:769
 msgid "Identifying spam"
-msgstr "스팸 식별"
+msgstr "Identifikácia spamu"
 
 #: toolhub/apps/toolinfo/models.py:770
 msgid "Identifying vandalism"
-msgstr "문서 훼손 식별"
+msgstr "Identifikácia vandalizmu"
 
 #: toolhub/apps/toolinfo/models.py:771
 msgid "Listing and ranking"
-msgstr "목록 및 등급 만들기"
+msgstr "Zoznamy a hodnotenie"
 
 #: toolhub/apps/toolinfo/models.py:772
 msgid "Merging content"
-msgstr "콘텐츠 병합하기"
+msgstr "Spájanie obsahu"
 
 #: toolhub/apps/toolinfo/models.py:773
 msgid "Migrating content"
-msgstr "콘텐츠 옮기기"
+msgstr "Migrácia obsahu"
 
 #: toolhub/apps/toolinfo/models.py:774
 msgid "Patrolling recent changes"
-msgstr "최근 변경 사항 검토"
+msgstr "Kontrolovanie nedávnych zmien"
 
 #: toolhub/apps/toolinfo/models.py:775
 msgid "Project management and reporting"
-msgstr "프로젝트 관리 및 보고"
+msgstr "Riadenie projektov a výkazníctvo"
 
 #: toolhub/apps/toolinfo/models.py:776
 msgid "Reading"
-msgstr "읽기"
+msgstr "Čítanie"
 
 #: toolhub/apps/toolinfo/models.py:777
 msgid "Recommending content"
-msgstr "콘텐츠 추천하기"
+msgstr "Odporúčanie obsahu"
 
 #: toolhub/apps/toolinfo/models.py:778
 msgid "Translating and localizing"
-msgstr "번역 및 현지화"
+msgstr "Preklad a lokalizácia"
 
 #: toolhub/apps/toolinfo/models.py:779
 msgid "Uploading or importing"
-msgstr "업로드 또는 가져오기"
+msgstr "Nahrávanie alebo import"
 
 #: toolhub/apps/toolinfo/models.py:780
 msgid "User management"
-msgstr "사용자 관리"
+msgstr "Správa používateľov"
 
 #: toolhub/apps/toolinfo/models.py:781
 msgid "Warning users"
-msgstr "사용자 경고"
+msgstr "Upozorňovanie používateľov"
 
 #: toolhub/apps/toolinfo/models.py:784
 msgid "Biography"
-msgstr "전기"
+msgstr "Biografia"
 
 #: toolhub/apps/toolinfo/models.py:785
 msgid "Cultural heritage"
-msgstr "문화유산"
+msgstr "Kultúrne dedičstvo"
 
 #: toolhub/apps/toolinfo/models.py:786
 msgid "Education"
-msgstr "교육"
+msgstr "Vzdelávanie"
 
 #: toolhub/apps/toolinfo/models.py:787
 msgid "Geography and mapping"
-msgstr "지리 및 지도"
+msgstr "Geografia a mapovanie"
 
 #: toolhub/apps/toolinfo/models.py:788
 msgid "GLAM"
@@ -1009,475 +1009,475 @@ msgstr "GLAM"
 
 #: toolhub/apps/toolinfo/models.py:789
 msgid "History"
-msgstr "역사"
+msgstr "História"
 
 #: toolhub/apps/toolinfo/models.py:790
 msgid "Language and internationalization"
-msgstr "언어와 국제화"
+msgstr "Jazyk a internacionalizácia"
 
 #: toolhub/apps/toolinfo/models.py:791
 msgid "Outreach"
-msgstr "아웃리치"
+msgstr "Dosah"
 
 #: toolhub/apps/toolinfo/models.py:792
 msgid "Science"
-msgstr "과학"
+msgstr "Veda"
 
 #: toolhub/apps/toolinfo/models.py:805
 msgid "Wikidata item ID for the tool."
-msgstr "도구의 위키데이터 항목 ID입니다."
+msgstr "ID položky Wikidata pre nástroj."
 
 #: toolhub/apps/toolinfo/models.py:810
 msgid "Who is the intended user of the tool?"
-msgstr "이 도구의 대상 사용자는 누구입니까?"
+msgstr "Kto je zamýšľaný používateľ nástroja?"
 
 #: toolhub/apps/toolinfo/models.py:817
 msgid "With what type of content or data does the tool interact?"
-msgstr "이 도구는 어떤 유형의 콘텐츠 또는 데이터와 상호 작용합니까?"
+msgstr "S akým typom obsahu alebo údajov nástroj pracuje?"
 
 #: toolhub/apps/toolinfo/models.py:824
 msgid "What type of task does the tool help with?"
-msgstr "이 도구는 어떤 유형의 작업에 도움이 됩니까?"
+msgstr "S akým typom úlohy nástroj pomáha?"
 
 #: toolhub/apps/toolinfo/models.py:831
 msgid "Is the tool targeted at helping in a specific type of wiki project or topic area?"
-msgstr "특정 유형의 위키 프로젝트 또는 주제 영역을 지원하도록 설계되었습니까?"
+msgstr "Je nástroj zameraný na pomoc v konkrétnom type wiki projektu alebo tematickej oblasti?"
 
 #: toolhub/apps/toolinfo/serializers.py:40
 msgid "SPDX license information"
-msgstr "SPDX 라이선스 정보"
+msgstr "Informácie o licencii SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:48
 msgid "SPDX license ID"
-msgstr "SPDX 라이선스 ID"
+msgstr "ID licencie SPDX"
 
 #: toolhub/apps/toolinfo/serializers.py:53
 msgid "Full name of this license"
-msgstr "이 라이선스의 정식 명칭"
+msgstr "Celý názov tejto licencie"
 
 #: toolhub/apps/toolinfo/serializers.py:58
 msgid "Is this license approved as 'open source' by the OSI?"
-msgstr "이 라이선스가 OSI에 의해 '오픈 소스'로 승인된 것입니까?"
+msgstr "Je táto licencia schválená ako „open source“ organizáciou OSI?"
 
 #: toolhub/apps/toolinfo/serializers.py:63
 msgid "Is this license approved as 'free software' by the FSF?"
-msgstr "이 라이선스가 FSF에 의해 '자유 소프트웨어'로 승인된 것입니까?"
+msgstr "Je táto licencia schválená ako „slobodný softvér“ nadáciou FSF?"
 
 #: toolhub/apps/toolinfo/serializers.py:68
 msgid "Is this license considered to be outdated?"
-msgstr "이 라이선스의 기간이 만료된 것으로 간주됩니까?"
+msgstr "Je táto licencia považovaná za zastaranú?"
 
 #: toolhub/apps/toolinfo/serializers.py:72
 msgid "Community added information for a tool"
-msgstr "커뮤니티가 도구에 대한 정보를 추가함"
+msgstr "Informácie pridané komunitou pre nástroj"
 
 #: toolhub/apps/toolinfo/serializers.py:105
 msgid "Summary of community added information for a tool"
-msgstr "도구에 대해 커뮤니티에서 추가한 정보 요약"
+msgstr "Zhrnutie informácií pridaných komunitou pre nástroj"
 
 #: toolhub/apps/toolinfo/serializers.py:120
 msgid "Update annotations"
-msgstr "주석 업데이트"
+msgstr "Aktualizovať anotácie"
 
 #: toolhub/apps/toolinfo/serializers.py:159
 msgid "Description of a tool"
-msgstr "도구 설명"
+msgstr "Popis nástroja"
 
 #: toolhub/apps/toolinfo/serializers.py:211
 msgid "Summary of a tool"
-msgstr "도구 요약"
+msgstr "Zhrnutie nástroja"
 
 #: toolhub/apps/toolinfo/serializers.py:235
 msgid "Create a tool"
-msgstr "도구 만들기"
+msgstr "Vytvoriť nástroj"
 
 #: toolhub/apps/toolinfo/serializers.py:301
 msgid "Update a tool"
-msgstr "도구 업데이트"
+msgstr "Aktualizovať nástroj"
 
 #: toolhub/apps/toolinfo/serializers.py:332
 msgid "Tool revision."
-msgstr "도구 버전입니다."
+msgstr "Revízia nástroja."
 
 #: toolhub/apps/toolinfo/serializers.py:340
 msgid "Tool revision detail."
-msgstr "도구 판 세부 정보입니다."
+msgstr "Podrobnosti revízie nástroja."
 
 #: toolhub/apps/toolinfo/serializers.py:378
 msgid "Tool revision difference."
-msgstr "도구 판 차이입니다."
+msgstr "Rozdiel revízií nástroja."
 
 #: toolhub/apps/toolinfo/validators.py:34
 #, python-format
 msgid "%(value)s is not a recognized language code."
-msgstr "%(value)s는 인식되지 않는 언어 코드입니다."
+msgstr "%(value)s nie je rozpoznaný kód jazyka."
 
 #: toolhub/apps/toolinfo/validators.py:44
 #: toolhub/apps/toolinfo/validators.py:89
 #, python-format
 msgid "Expected a list of language codes but found %(type)s"
-msgstr "언어 코드 목록을 예상했지만 %(type)s이(가) 발견되었습니다."
+msgstr "Očakával sa zoznam kódov jazykov, ale nájdené %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr "%(value)s 값은(는) 알려진 SPDX 라이선스 식별자가 아닙니다."
+msgstr "%(value)s nie je známy identifikátor licencie SPDX."
 
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format
 msgid "Expected a url_multilingual dict but found %(type)s"
-msgstr "url_multilingual dict을 예상했지만 %(type)s이(가) 발견되었습니다."
+msgstr "Očakával sa slovník url_multilingual, ale nájdené %(type)s"
 
 #: toolhub/apps/toolinfo/validators.py:72
 msgid "Url_multilingual missing 'language' property."
-msgstr "Url_multilingual에 '언어' 속성이 없습니다."
+msgstr "Url_multilingual chýba vlastnosť 'language'."
 
 #: toolhub/apps/toolinfo/validators.py:79
 msgid "Url_multilingual missing 'url' property."
-msgstr "Url_multilingual에 'url' 속성이 없습니다."
+msgstr "Url_multilingual chýba vlastnosť 'url'."
 
 #: toolhub/apps/toolinfo/views.py:68
 msgid "Create a new tool."
-msgstr "새 도구를 만듭니다."
+msgstr "Vytvoriť nový nástroj."
 
 #: toolhub/apps/toolinfo/views.py:73
 msgid "Info for a specific tool."
-msgstr "특정 도구의 정보입니다."
+msgstr "Informácie o konkrétnom nástroji."
 
 #: toolhub/apps/toolinfo/views.py:76
 msgid "Update info for a specific tool."
-msgstr "특정 도구의 정보를 업데이트합니다."
+msgstr "Aktualizovať informácie pre konkrétny nástroj."
 
 #: toolhub/apps/toolinfo/views.py:84
 msgid "Delete a tool."
-msgstr "도구를 삭제합니다."
+msgstr "Odstrániť nástroj."
 
 #: toolhub/apps/toolinfo/views.py:87
 msgid "List all tools."
-msgstr "모든 도구를 나열합니다."
+msgstr "Zoznam všetkých nástrojov."
 
 #: toolhub/apps/toolinfo/views.py:129
 msgid "Additional information for a tool."
-msgstr "도구의 추가 정보입니다."
+msgstr "Dodatočné informácie pre nástroj."
 
 #: toolhub/apps/toolinfo/views.py:143
 msgid "Update annotations for a specific tool."
-msgstr "특정 도구의 주석을 업데이트합니다."
+msgstr "Aktualizovať anotácie pre konkrétny nástroj."
 
 #: toolhub/apps/toolinfo/views.py:201
 msgid "Restore the tool to this revision."
-msgstr "도구를 이 판으로 복원합니다."
+msgstr "Obnoviť nástroj do tejto revízie."
 
 #: toolhub/apps/toolinfo/views.py:494
 msgid "Info for a specific SPDX license."
-msgstr "특정 SPDX 라이선스의 정보입니다."
+msgstr "Informácie o konkrétnej licencii SPDX."
 
 #: toolhub/apps/toolinfo/views.py:502
 msgid "List all SPDX licenses."
-msgstr "모든 SPDX 라이선스를 나열합니다."
+msgstr "Zoznam všetkých licencií SPDX."
 
 #: toolhub/apps/user/admin.py:37
 msgid "Personal info"
-msgstr "개인 정보"
+msgstr "Osobné údaje"
 
 #: toolhub/apps/user/admin.py:39
 msgid "Permissions"
-msgstr "권한"
+msgstr "Oprávnenia"
 
 #: toolhub/apps/user/admin.py:50
 msgid "Important dates"
-msgstr "중요 날짜"
+msgstr "Dôležité dátumy"
 
 #: toolhub/apps/user/apps.py:26
 msgid "Toolhub user"
-msgstr "툴허브 사용자"
+msgstr "Používateľ Toolhubu"
 
 #: toolhub/apps/user/models.py:36
 msgid "username"
-msgstr "사용자 이름"
+msgstr "používateľské meno"
 
 #: toolhub/apps/user/models.py:39
 msgid "Required. 255 characters or fewer."
-msgstr "필수입니다. 255자 이하."
+msgstr "Povinné. 255 znakov alebo menej."
 
 #: toolhub/apps/user/models.py:42
 msgid "A user with that username already exists."
-msgstr "해당 사용자 이름의 사용자가 이미 존재합니다."
+msgstr "Používateľ s týmto používateľským menom už existuje."
 
 #: toolhub/apps/user/serializers.py:41
 msgid "Action that the user can take"
-msgstr "사용자가 취할 수 있는 작업"
+msgstr "Akcia, ktorú môže používateľ vykonať"
 
 #: toolhub/apps/user/serializers.py:46
 msgid "Subject type to check user action on"
-msgstr "사용자 작업을 확인할 주제 유형"
+msgstr "Typ objektu na kontrolu akcie používateľa"
 
 #: toolhub/apps/user/serializers.py:51
 msgid "Criteria which restricts user action"
-msgstr "사용자 작업을 제한하는 기준입니다"
+msgstr "Kritériá, ktoré obmedzujú akciu používateľa"
 
 #: toolhub/apps/user/serializers.py:63
 msgid "Information about the current user"
-msgstr "현재 사용자에 관한 정보"
+msgstr "Informácie o aktuálnom používateľovi"
 
 #: toolhub/apps/user/serializers.py:69
 msgid "Numeric user id"
-msgstr "사용자 ID (숫자)"
+msgstr "Číselné ID používateľa"
 
 #: toolhub/apps/user/serializers.py:77
 msgid "Cross-site request forgery prevention token"
-msgstr "사이트 간 요청 위조 방지 토큰"
+msgstr "Token na prevenciu falšovania medzistránkových požiadaviek"
 
 #: toolhub/apps/user/serializers.py:82
 msgid "CASL access control rules"
-msgstr "CASL 접근 제어 규칙"
+msgstr "Pravidlá riadenia prístupu CASL"
 
 #: toolhub/apps/user/serializers.py:94
 msgid "Information about the current locale"
-msgstr "현재 로케일에 관한 정보"
+msgstr "Informácie o aktuálnom miestnom nastavení"
 
 #: toolhub/apps/user/serializers.py:111
 msgid "User information"
-msgstr "사용자 정보"
+msgstr "Informácie o používateľovi"
 
 #: toolhub/apps/user/serializers.py:123
 msgid "Group information"
-msgstr "그룹 정보"
+msgstr "Informácie o skupine"
 
 #: toolhub/apps/user/serializers.py:135
 msgid "Social authentication information for a user"
-msgstr "사용자의 소셜 인증 정보"
+msgstr "Informácie o sociálnej autentifikácii pre používateľa"
 
 #: toolhub/apps/user/serializers.py:165
 msgid "Detailed user information"
-msgstr "상세 사용자 정보"
+msgstr "Podrobné informácie o používateľovi"
 
 #: toolhub/apps/user/serializers.py:180
 msgid "Detailed group information"
-msgstr "상세 그룹 정보"
+msgstr "Podrobné informácie o skupine"
 
 #: toolhub/apps/user/serializers.py:198
 msgid "Owner-only API Token"
-msgstr "소유자 전용 API 토큰"
+msgstr "API token len pre vlastníka"
 
 #: toolhub/apps/user/serializers.py:205
 msgid "Authentication token"
-msgstr "인증 토큰"
+msgstr "Autentifikačný token"
 
 #: toolhub/apps/user/validators.py:29
 msgid "Enter a valid username. The characters `@` and `:` are not permitted."
-msgstr "유효한 사용자 이름을 입력하세요. `@`와 `:`과 같은 문자는 허용되지 않습니다."
+msgstr "Zadajte platné používateľské meno. Znaky `@` a `:` nie sú povolené."
 
 #: toolhub/apps/user/views.py:60
 msgid "Get information about the currently logged in user."
-msgstr "현재 로그인한 사용자에 관한 정보를 가져옵니다."
+msgstr "Získať informácie o aktuálne prihlásenom používateľovi."
 
 #: toolhub/apps/user/views.py:88
 msgid "Get current locale."
-msgstr "현재 로케일을 가져옵니다."
+msgstr "Získať aktuálne miestne nastavenie."
 
 #: toolhub/apps/user/views.py:99
 msgid "Set locale."
-msgstr "로케일을 설정합니다."
+msgstr "Nastaviť miestne nastavenie."
 
 #: toolhub/apps/user/views.py:117
 msgid "List all active users."
-msgstr "활동 중인 모든 사용자를 나열합니다."
+msgstr "Zoznam všetkých aktívnych používateľov."
 
 #: toolhub/apps/user/views.py:120
 msgid "Info for a specific user."
-msgstr "특정 사용자의 정보입니다."
+msgstr "Informácie o konkrétnom používateľovi."
 
 #: toolhub/apps/user/views.py:141
 msgid "List all user groups."
-msgstr "모든 사용자 그룹을 나열합니다."
+msgstr "Zoznam všetkých skupín používateľov."
 
 #: toolhub/apps/user/views.py:144
 msgid "Info for a user group."
-msgstr "사용자 그룹의 정보입니다."
+msgstr "Informácie o skupine používateľov."
 
 #: toolhub/apps/user/views.py:166
 msgid "Add a user to this group."
-msgstr "이 그룹에 사용자를 추가합니다."
+msgstr "Pridať používateľa do tejto skupiny."
 
 #: toolhub/apps/user/views.py:177
 msgid "Remove a user from this group."
-msgstr "이 그룹에서 사용자를 제거합니다."
+msgstr "Odstrániť používateľa z tejto skupiny."
 
 #: toolhub/apps/user/views.py:222
 msgid "Get authentication token."
-msgstr "인증 토큰을 가져옵니다."
+msgstr "Získať autentifikačný token."
 
 #: toolhub/apps/user/views.py:225
 msgid "Create authentication token."
-msgstr "인증 토큰을 만듭니다."
+msgstr "Vytvoriť autentifikačný token."
 
 #: toolhub/apps/user/views.py:228
 msgid "Delete authentication token."
-msgstr "인증 토큰을 삭제합니다."
+msgstr "Odstrániť autentifikačný token."
 
 #: toolhub/apps/versioned/apps.py:26
 msgid "Versioned"
-msgstr "버전 관리됨"
+msgstr "Verziované"
 
 #: toolhub/apps/versioned/exceptions.py:28
 msgid "Failed to apply patch."
-msgstr "패치 적용을 실패했습니다."
+msgstr "Nepodarilo sa aplikovať patch."
 
 #: toolhub/apps/versioned/exceptions.py:35
 msgid "Current revision cannot be hidden."
-msgstr "현재 판을 숨길 수 없습니다."
+msgstr "Aktuálnu revíziu nie je možné skryť."
 
 #: toolhub/apps/versioned/exceptions.py:43
 msgid "Revision is already marked as patrolled."
-msgstr "판이 이미 점검한 것으로 표시되어 있습니다."
+msgstr "Revízia je už označená ako skontrolovaná."
 
 #: toolhub/apps/versioned/exceptions.py:51
 msgid "Missing content for one or more revisions."
-msgstr "하나 이상의 판에서 콘텐츠가 누락되었습니다."
+msgstr "Chýbajúci obsah pre jednu alebo viac revízií."
 
 #: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:69
 msgid "Has this revision been marked as hidden?"
-msgstr "판이 숨김으로 표시되었는지"
+msgstr "Bola táto revízia označená ako skrytá?"
 
 #: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:75
 msgid "Has this revision been reviewed by a patroller?"
-msgstr "판이 점검자에게 검토되었는지"
+msgstr "Bola táto revízia skontrolovaná kontrolórom?"
 
 #: toolhub/apps/versioned/schema.py:21
 msgid "unique identifier of the version"
-msgstr "대상 판의 고유 식별자"
+msgstr "jedinečný identifikátor verzie"
 
 #: toolhub/apps/versioned/schema.py:26
 msgid "unique identifier of the content being versioned"
-msgstr "버전이 관리되는 콘텐츠의 고유 식별자"
+msgstr "jedinečný identifikátor verziovaného obsahu"
 
 #: toolhub/apps/versioned/schema.py:31
 msgid "title describing the content being versioned"
-msgstr "버전이 관리되는 콘텐츠를 설명하는 제목"
+msgstr "názov popisujúci verziovaný obsah"
 
 #: toolhub/apps/versioned/schema.py:36
 msgid "RFC 6902 application/json-patch+json data"
-msgstr "RFC 6902 application/json-patch+json 데이터"
+msgstr "Údaje RFC 6902 application/json-patch+json"
 
 #: toolhub/apps/versioned/schema.py:39
 msgid "RFC 6902 JSON patch operation"
-msgstr "RFC 6902 JSON 패치 작업"
+msgstr "Operácia JSON patch RFC 6902"
 
 #: toolhub/apps/versioned/schema.py:44
 msgid "The operation to be performed"
-msgstr "수행될 작업"
+msgstr "Operácia, ktorá sa má vykonať"
 
 #: toolhub/apps/versioned/schema.py:50
 msgid "JSON-Pointer to location within document where operation is performed."
-msgstr "문서 내에서 작업이 수행되는 위치를 가리키는 JSON-포인터입니다."
+msgstr "JSON-Pointer na umiestnenie v dokumente, kde sa operácia vykonáva."
 
 #: toolhub/apps/versioned/schema.py:56
 msgid "The value to add, replace, or test."
-msgstr "추가, 치환, 테스트할 값입니다."
+msgstr "Hodnota na pridanie, nahradenie alebo testovanie."
 
 #: toolhub/apps/versioned/schema.py:62
 msgid "JSON-Pointer to location within document to move or copy the value from."
-msgstr "문서 내에서 값을 이동하거나 복사할 위치를 가리키는 JSON-포인터입니다."
+msgstr "JSON-Pointer na umiestnenie v dokumente, odkiaľ sa má hodnota presunúť alebo skopírovať."
 
 #: toolhub/apps/versioned/serializers.py:51
 msgid "A unique integer value identifying this revision."
-msgstr "이 판을 식별하는 고유 정수값입니다."
+msgstr "Jedinečná celočíselná hodnota identifikujúca túto revíziu."
 
 #: toolhub/apps/versioned/serializers.py:63
 msgid "Comment by the user for the revision."
-msgstr "판에 대한 사용자의 의견입니다."
+msgstr "Komentár používateľa k revízii."
 
 #: toolhub/apps/versioned/serializers.py:81
 msgid "Content type of the revision."
-msgstr "판의 콘텐츠 유형입니다."
+msgstr "Typ obsahu revízie."
 
 #: toolhub/apps/versioned/serializers.py:157
 msgid "username removed"
-msgstr "사용자 이름 제거됨"
+msgstr "používateľské meno odstránené"
 
 #: toolhub/apps/versioned/serializers.py:158
 msgid "edit summary removed"
-msgstr "편집 요약 제거됨"
+msgstr "zhrnutie úprav odstránené"
 
 #: toolhub/apps/versioned/views.py:40
 msgid "Only show recent changes by the given user."
-msgstr "지정된 사용자의 최근 바뀜만 표시합니다."
+msgstr "Zobraziť iba nedávne zmeny od daného používateľa."
 
 #: toolhub/apps/versioned/views.py:45
 msgid "Only show recent changes for the given target type."
-msgstr "지정된 대상 유형의 최근 바뀜만 표시합니다."
+msgstr "Zobraziť iba nedávne zmeny pre daný typ cieľa."
 
 #: toolhub/apps/versioned/views.py:50
 msgid "Only show recent changes where suppressed field is either true or false"
-msgstr "숨겨진 필드가 참이거나 거짓인 경우에만 최근 변경 사항을 표시"
+msgstr "Zobraziť iba nedávne zmeny, kde pole skryté je pravda alebo nepravda"
 
 #: toolhub/apps/versioned/views.py:57
 msgid "Only show recent changes where patrolled field is either true or false"
-msgstr "점검된 필드가 참이거나 거짓인 경우에만 최근 변경 사항을 표시"
+msgstr "Zobraziť iba nedávne zmeny, kde pole skontrolované je pravda alebo nepravda"
 
 #: toolhub/apps/versioned/views.py:63
 msgid "Only show recent changes within this time range"
-msgstr "이 시간대의 최근 바뀜만 표시합니다"
+msgstr "Zobraziť iba nedávne zmeny v tomto časovom rozsahu"
 
 #: toolhub/apps/versioned/views.py:68
 msgid "Get a paginated list of all revisions."
-msgstr "모든 판의 목록을 페이지별로 가져옵니다."
+msgstr "Získať stránkovaný zoznam všetkých revízií."
 
 #: toolhub/fields.py:40
 msgid "Enter a valid value conforming to the JSON Schema."
-msgstr "JSON 스키마를 준수하는 유효한 값을 입력하십시오."
+msgstr "Zadajte platnú hodnotu v súlade so JSON Schema."
 
 #: toolhub/openapi.py:36
 msgid "API error"
-msgstr "API 오류"
+msgstr "Chyba API"
 
 #: toolhub/serializers.py:112
 msgid "Edit summary"
-msgstr "편집 요약"
+msgstr "Zhrnutie úprav"
 
 #: toolhub/serializers.py:113
 msgid "Description of the changes you are making."
-msgstr "현재 변경중인 사항에 대한 설명입니다."
+msgstr "Popis zmien, ktoré vykonávate."
 
 #: toolhub/serializers.py:124
 msgid "Comment describing an action."
-msgstr "작업을 설명하는 의견입니다."
+msgstr "Komentár popisujúci akciu."
 
 #: toolhub/settings.py:458
 msgid "Read scope"
-msgstr "읽기 범위"
+msgstr "Rozsah čítania"
 
 #: toolhub/settings.py:459
 msgid "Write scope"
-msgstr "쓰기 범위"
+msgstr "Rozsah zápisu"
 
 #: toolhub/settings.py:488
 #, optional
 msgid "Toolhub API"
-msgstr "툴허브 API"
+msgstr ""
 
 #: toolhub/templates/oauth2_provider/authorize.html:8
 #, python-format
 msgid "Authorize %(app_name)s?"
-msgstr "%(app_name)s을(를) 인가합니까?"
+msgstr "Autorizovať %(app_name)s?"
 
 #: toolhub/templates/oauth2_provider/authorize.html:15
 msgid "Application requires the following permissions"
-msgstr "이 애플리케이션을 사용하려면 다음 권한이 필요합니다"
+msgstr "Aplikácia vyžaduje nasledujúce oprávnenia"
 
 #: toolhub/templates/oauth2_provider/authorize.html:25
 msgid "Cancel"
-msgstr "취소"
+msgstr "Zrušiť"
 
 #: toolhub/templates/oauth2_provider/authorize.html:26
 msgid "Authorize"
-msgstr "인가"
+msgstr "Autorizovať"
 
 #: toolhub/templates/oauth2_provider/authorize.html:32
 #, python-format
 msgid "Error: %(message)s"
-msgstr "오류: %(message)s"
+msgstr "Chyba: %(message)s"
 
 #: toolhub/templates/oauth2_provider/base.html:22
 #, optional
@@ -1486,29 +1486,29 @@ msgstr ""
 
 #: vue/serializers.py:26
 msgid "Information used on the Toolhub Home view."
-msgstr "툴허브 홈 화면에 사용되는 정보입니다."
+msgstr "Informácie použité na domovskej stránke Toolhubu."
 
 #: vue/serializers.py:32
 msgid "Count of tools known to Toolhub."
-msgstr "툴허브에 알려진 도구의 개수입니다."
+msgstr "Počet nástrojov známych Toolhubu."
 
 #: vue/serializers.py:36
 msgid "Date and time of most recent crawler run."
-msgstr "가장 최근에 크롤링이 실행된 날짜 및 시간입니다."
+msgstr "Dátum a čas najnovšieho prechodu."
 
 #: vue/serializers.py:41
 msgid "Number of tools added or updated in the most recent crawler run."
-msgstr "최근 크롤링 실행에서 추가되거나 업데이트된 도구의 수입니다."
+msgstr "Počet nástrojov pridaných alebo aktualizovaných v najnovšom prechode."
 
 #: vue/templates/vue/base.html:21
 msgid "Toolhub's user interface requires JavaScript to be enabled."
-msgstr "툴허브의 사용자 인터페이스를 사용하려면 자바스크립트를 활성화해야 합니다."
+msgstr "Používateľské rozhranie Toolhubu vyžaduje povolený JavaScript."
 
 #: vue/templates/vue/main.html:9
 msgid "LOADING"
-msgstr "불러오는 중"
+msgstr "NAČÍTAVA SA"
 
 #: vue/views.py:47
 msgid "Get information used on the Toolhub Home view."
-msgstr "툴허브 홈 화면에서 사용되는 정보를 가져옵니다."
+msgstr "Získať informácie použité na domovskej stránke Toolhubu."
 

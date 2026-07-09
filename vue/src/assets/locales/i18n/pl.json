@@ -4,6 +4,7 @@
 			"Chrumps",
 			"Kareyac",
 			"Luku123",
+			"PanWor",
 			"Woytecr"
 		]
 	},
@@ -138,7 +139,7 @@
 	"filter": "Filtruj",
 	"footer-content-license": "Wszystkie dane strukturyzowane są dostępne na licencji $1; mogą obowiązywać dodatkowe warunki.",
 	"forwikis": "Dla wiki",
-	"wikidataqid": "Wikidata QID",
+	"wikidataqid": "Identyfikator Q w Wikidanych",
 	"helptranslate": "Pomóż w tłumaczeniu",
 	"hide": "ukryj",
 	"hist": "hist",
