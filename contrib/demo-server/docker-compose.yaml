@@ -36,6 +36,7 @@ services:
       - WIKIMEDIA_OAUTH2_KEY
       - WIKIMEDIA_OAUTH2_SECRET
       - ES_HOSTS
+      - "TOGGLE_EVOLVED_BANNER"
     ports:
       - "8000:8000"
     volumes:

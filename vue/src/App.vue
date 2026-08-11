@@ -176,6 +176,24 @@
 				>
 					{{ $t( 'demo-server-notice' ) }}
 				</v-alert>
+				<v-alert
+					v-if="config.showEvolvedBanner"
+					dismissible
+					text
+					type="info"
+					color="primary"
+				>
+					<I18nHtml msg="experiment-notice">
+						<a
+							href="https://toolhub-evolved.toolforge.org/"
+							target="_blank"
+						>{{ $t( 'toolhub-evolved' ) }}</a>
+						<a
+							href="https://meta.wikimedia.org/wiki/Toolhub/Toolhub_evolved"
+							target="_blank"
+						>{{ $t( 'learnmore' ) }}</a>
+					</I18nHtml>
+				</v-alert>
 				<router-view />
 			</v-container>
 			<Notifications />

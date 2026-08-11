@@ -44,6 +44,7 @@ services:
       - WIKIMEDIA_OAUTH2_SECRET
       - "ES_HOSTS=${ES_HOSTS:-search:9200}"
       - "FIREFOX_DEVTOOL_HACK=${FIREFOX_DEVTOOL_HACK:-false}"
+      - "TOGGLE_EVOLVED_BANNER"
     volumes:
       - type: bind
         source: .

@@ -35,6 +35,7 @@ def main(request, **kwargs):  # noqa: W0613
     ctx = {
         "config": {
             "isDemo": settings.DEBUG,
+            "showEvolvedBanner": settings.TOGGLE_EVOLVED_BANNER,
         },
     }
     return shortcuts.render(request, "vue/main.html", context=ctx)
