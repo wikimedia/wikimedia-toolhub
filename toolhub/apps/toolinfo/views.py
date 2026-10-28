@@ -300,6 +300,11 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         """Update our toolinfo record."""
         ctx = {"request": request}
         instance = get_object_or_404(Tool, name=self.kwargs["tool_name"])
+        # Revert and undo are POST actions on a Version, so the permission
+        # class only checks "reversion.add_version". Make sure that the user
+        # is allowed to edit the tool itself.
+        if not request.user.has_perm("toolinfo.change_tool", instance):
+            self.permission_denied(request)
 
         # Separate out annotations
         ann_data = data.pop("annotations", {})
@@ -358,6 +363,9 @@ class ToolRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         rev_id = kwargs["pk"]
         qs = self.get_queryset()
         rev = get_object_or_404(qs, pk=rev_id)
+        if rev.revision.meta.suppressed:
+            # Restoring would make the hidden content visible again.
+            raise SuppressedRevision()
         data = self._get_historic_data(rev)
         data["comment"] = _(
             "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"

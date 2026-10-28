@@ -324,6 +324,7 @@ class ToolListRevisionViewSetTest(TestCase):
         cls.user = cls._user("user")
         cls.oversighter = cls._user("oversighter", group="Oversighters")
         cls.patroller = cls._user("patroller", group="Patrollers")
+        cls.other_user = cls._user("other")
 
         cls.toolinfo = cls._load_json("toolinfo_fixture.json")
 
@@ -359,6 +360,43 @@ class ToolListRevisionViewSetTest(TestCase):
             list_pk=self.list.pk,
             id=self.versions().first().pk,
         )
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_unpublished_list_hidden(self):
+        """History of an unpublished list is hidden from other users."""
+        with reversion_context(self.user):
+            private = models.ToolList.objects.create(
+                title="A private list",
+                published=False,
+                created_by=self.user,
+            )
+        rev_id = self.versions(private).first().pk
+
+        for user in [None, self.other_user]:
+            self.client.force_authenticate(user=user)
+            url = "/api/lists/{list_pk}/revisions/".format(list_pk=private.pk)
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, 404)
+
+            url = "/api/lists/{list_pk}/revisions/{id}/".format(
+                list_pk=private.pk,
+                id=rev_id,
+            )
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, 404)
+
+    def test_unpublished_list_visible_to_creator(self):
+        """The creator can see the history of their unpublished list."""
+        with reversion_context(self.user):
+            private = models.ToolList.objects.create(
+                title="A private list",
+                published=False,
+                created_by=self.user,
+            )
+
+        self.client.force_authenticate(user=self.user)
+        url = "/api/lists/{list_pk}/revisions/".format(list_pk=private.pk)
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
@@ -478,6 +516,44 @@ class ToolListRevisionViewSetTest(TestCase):
         self.assertIn("title", response.data)
         self.assertNotEqual(response.data["title"], "Changed")
 
+    def test_revert_requires_change_perm(self):
+        """Users who cannot edit the list cannot revert it."""
+        with reversion_context(self.user):
+            self.list.title = "Changed"
+            self.list.save()
+
+        self.client.force_authenticate(user=self.other_user)
+        url = "/api/lists/{list_pk}/revisions/{id}/revert/".format(
+            list_pk=self.list.pk,
+            id=self.versions().last().pk,
+        )
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 403)
+        self.list.refresh_from_db()
+        self.assertEqual(self.list.title, "Changed")
+
+    def test_revert_rejects_suppressed(self):
+        """Suppressed revisions cannot be restored, even by the creator."""
+        with reversion_context(self.user):
+            self.list.title = "BAD FAITH"
+            self.list.save()
+        with reversion_context(self.user):
+            self.list.title = "Changed"
+            self.list.save()
+        bad_faith = self.versions()[1]
+        bad_faith.revision.meta.suppressed = True
+        bad_faith.revision.meta.save()
+
+        self.client.force_authenticate(user=self.user)
+        url = "/api/lists/{list_pk}/revisions/{id}/revert/".format(
+            list_pk=self.list.pk,
+            id=bad_faith.pk,
+        )
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 403)
+        self.list.refresh_from_db()
+        self.assertEqual(self.list.title, "Changed")
+
     def test_undo_requires_auth(self):
         """Test undo action."""
         self.client.force_authenticate(user=None)
@@ -532,6 +608,23 @@ class ToolListRevisionViewSetTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("title", response.data)
         self.assertNotEqual(response.data["title"], "Changed")
+
+    def test_undo_requires_change_perm(self):
+        """Users who cannot edit the list cannot undo changes to it."""
+        with reversion_context(self.user):
+            self.list.title = "Changed"
+            self.list.save()
+
+        self.client.force_authenticate(user=self.other_user)
+        url = "/api/lists/{list_pk}/revisions/{id}/undo/{other_id}/".format(
+            list_pk=self.list.pk,
+            id=self.versions().first().pk,
+            other_id=self.versions().last().pk,
+        )
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 403)
+        self.list.refresh_from_db()
+        self.assertEqual(self.list.title, "Changed")
 
     def test_hide_requires_auth(self):
         """Test hide action."""

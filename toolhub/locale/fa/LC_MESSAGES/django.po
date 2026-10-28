@@ -1123,7 +1123,7 @@ msgstr "فهرستی از کدهای زبان انتظار می‌رفت، ام�
 #: toolhub/apps/toolinfo/validators.py:56
 #, python-format
 msgid "%(value)s is not a known SPDX license identifier."
-msgstr "٪ (value) s شناسه مجوز SPDX شناخته شده نیست."
+msgstr "%(value)s شناسه مجوز SPDX شناخته شده نیست."
 
 #: toolhub/apps/toolinfo/validators.py:66
 #, python-format

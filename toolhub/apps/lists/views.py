@@ -279,7 +279,16 @@ class ToolListRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
     def _get_list(self):
         """Get the list to act upon."""
-        return get_object_or_404(ToolList, pk=self.kwargs["list_pk"])
+        # Apply the same visibility rules as ToolListViewSet.get_queryset so
+        # that the history of a list is not shown to users who cannot see
+        # the list itself.
+        qs = ToolList.objects.filter(favorites=False)
+        if self.request.method in permissions.SAFE_METHODS:
+            user = self.request.user
+            if not user.is_authenticated:
+                user = None
+            qs = qs.filter(Q(published=True) | Q(created_by=user))
+        return get_object_or_404(qs, pk=self.kwargs["list_pk"])
 
     def get_queryset(self):
         """Filter queryset by ToolList using path param."""
@@ -317,7 +326,12 @@ class ToolListRevisionViewSet(viewsets.ReadOnlyModelViewSet):
 
     def _update_list(self, data, request):
         """Update our list record."""
-        instance = get_object_or_404(ToolList, pk=self.kwargs["list_pk"])
+        instance = self._get_list()
+        # Revert and undo are POST actions on a Version, so the permission
+        # class only checks "reversion.add_version". Make sure that the user
+        # is allowed to edit the list itself.
+        if not request.user.has_perm("lists.change_toollist", instance):
+            self.permission_denied(request)
         # Move the `tool_names` member to `tools` to match
         # EditToolListSerializer expectations for well formed input.
         data["tools"] = data.pop("tool_names", [])
@@ -364,6 +378,9 @@ class ToolListRevisionViewSet(viewsets.ReadOnlyModelViewSet):
         rev_id = kwargs["pk"]
         qs = self.get_queryset()
         rev = get_object_or_404(qs, pk=rev_id)
+        if rev.revision.meta.suppressed:
+            # Restoring would make the hidden content visible again.
+            raise SuppressedRevision()
         data = rev.field_dict
         data["comment"] = _(
             "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"

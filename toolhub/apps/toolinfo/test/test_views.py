@@ -193,6 +193,7 @@ class ToolRevisionViewSetTest(TestCase):
         cls.administrator = cls._user("admin", group="Administrators")
         cls.oversighter = cls._user("oversighter", group="Oversighters")
         cls.patroller = cls._user("patroller", group="Patrollers")
+        cls.other_user = cls._user("other")
 
         cls.toolinfo = cls._load_json("toolinfo_fixture.json")
         cls.annotations = cls._load_json("view_annotations.json")
@@ -415,6 +416,46 @@ class ToolRevisionViewSetTest(TestCase):
             response.data["title"], "test_revert_as_oversighter"
         )
 
+    def test_revert_requires_change_perm(self):
+        """Users who cannot edit the tool cannot revert it."""
+        self.client.force_authenticate(user=self.other_user)
+        with reversion_context(self.user):
+            self.tool.title = "test_revert_requires_change_perm"
+            self.tool.save()
+
+        url = "/api/tools/{name}/revisions/{id}/revert/".format(
+            name=self.tool.name,
+            id=self.versions().last().pk,
+        )
+        response = self.client.post(url)
+
+        self.assertEqual(response.status_code, 403)
+        self.tool.refresh_from_db()
+        self.assertEqual(self.tool.title, "test_revert_requires_change_perm")
+
+    def test_revert_rejects_suppressed(self):
+        """Suppressed revisions cannot be restored, even by the creator."""
+        self.client.force_authenticate(user=self.user)
+        with reversion_context(self.user):
+            self.tool.title = "BAD FAITH"
+            self.tool.save()
+        with reversion_context(self.user):
+            self.tool.title = "test_revert_rejects_suppressed"
+            self.tool.save()
+        bad_faith = self.versions()[1]
+        bad_faith.revision.meta.suppressed = True
+        bad_faith.revision.meta.save()
+
+        url = "/api/tools/{name}/revisions/{id}/revert/".format(
+            name=self.tool.name,
+            id=bad_faith.pk,
+        )
+        response = self.client.post(url)
+
+        self.assertEqual(response.status_code, 403)
+        self.tool.refresh_from_db()
+        self.assertEqual(self.tool.title, "test_revert_rejects_suppressed")
+
     def test_undo_requires_auth(self):
         """Test undo action."""
         self.client.force_authenticate(user=None)
@@ -478,6 +519,26 @@ class ToolRevisionViewSetTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("title", response.data)
         self.assertNotEqual(response.data["title"], "test_undo_as_oversighter")
+
+    def test_undo_requires_change_perm(self):
+        """Users who cannot edit the tool cannot undo changes to it."""
+        self.client.force_authenticate(user=self.other_user)
+        with reversion_context(self.user):
+            self.tool.title = "test_undo_requires_change_perm"
+            self.tool.save()
+        undo_from = self.versions().first().pk
+        undo_to = self.versions().last().pk
+
+        url = "/api/tools/{name}/revisions/{id}/undo/{other_id}/".format(
+            name=self.tool.name,
+            id=undo_from,
+            other_id=undo_to,
+        )
+        response = self.client.post(url)
+
+        self.assertEqual(response.status_code, 403)
+        self.tool.refresh_from_db()
+        self.assertEqual(self.tool.title, "test_undo_requires_change_perm")
 
     def test_undo_invalid(self):
         """Test undo action."""
