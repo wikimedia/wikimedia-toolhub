@@ -18,6 +18,7 @@ variants:
     apt:
       packages:
         - build-essential
+        - ca-certificates
         - default-libmysqlclient-dev
         - gettext
         - git
@@ -78,7 +79,7 @@ variants:
   base-nodejs:
     # Provides the basic foundation for all other nodejs runtime containers
     # needed to develop and test Toolhub.
-    base: docker-registry.wikimedia.org/releng/node14
+    base: docker-registry.wikimedia.org/releng/node24
     node:
       requirements:
         - package.json
