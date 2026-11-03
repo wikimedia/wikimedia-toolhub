@@ -404,7 +404,12 @@ SECURE_BROWSER_XSS_FILTER = True
 # https://django-csp.readthedocs.io/en/latest/configuration.html
 CSP_DEFAULT_SRC = ["'none'"]  # Use an allowlist approach for all rules
 CSP_SCRIPT_SRC = ["'self'", "'report-sample'"]
-CSP_IMG_SRC = ["'self'", "data:", "https://upload.wikimedia.org"]
+CSP_IMG_SRC = [
+    "'self'",
+    "data:",
+    "https://thumb.wikimedia.org",
+    "https://upload.wikimedia.org",
+]
 CSP_OBJECT_SRC = ["'none'"]
 CSP_PREFETCH_SRC = ["'none'"]
 CSP_MEDIA_SRC = ["'none'"]
