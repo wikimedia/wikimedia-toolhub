@@ -1,0 +1,1516 @@
+# Translation of Toolhub - Backend to Persian (فارسی)
+# Exported from translatewiki.net
+#
+# Author: Beginneruser
+# Author: Darafsh
+# Author: Jeeputer
+# Author: LProfo
+# Author: Mojtabakd
+# Author: NimaBagheriWP
+# Author: Reza koulivand
+msgid ""
+msgstr ""
+""
+"PO-Revision-Date: 2026-11-16 12:04:41+0000\n"
+"X-POT-Import-Date: 2022-12-13 23:30:22+0000\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
+"Project-Id-Version: Toolhub - Backend\n"
+"Report-Msgid-Bugs-To: translatewiki.net\n"
+"X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
+"X-Generator: MediaWiki 1.48.0-alpha; Translate 2026-09-08\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: toolhub/apps/auditlog/apps.py:26
+msgid "Audit log"
+msgstr "سیاههٔ ممیزی"
+
+#: toolhub/apps/auditlog/models.py:94
+msgid "created"
+msgstr "ایجاد کرد"
+
+#: toolhub/apps/auditlog/models.py:95
+msgid "updated"
+msgstr "به‌روز کرد"
+
+#: toolhub/apps/auditlog/models.py:96
+msgid "deleted"
+msgstr "حذف کرد"
+
+#: toolhub/apps/auditlog/models.py:97
+msgid "added to"
+msgstr "افزود به"
+
+#: toolhub/apps/auditlog/models.py:98
+msgid "removed from"
+msgstr "حذف کرد از"
+
+#: toolhub/apps/auditlog/models.py:99
+msgid "hid"
+msgstr "پنهان کرد"
+
+#: toolhub/apps/auditlog/models.py:100
+msgid "revealed"
+msgstr "آشکار کرد"
+
+#: toolhub/apps/auditlog/models.py:101
+msgid "patrolled"
+msgstr "گشت‌خورده"
+
+#: toolhub/apps/auditlog/models.py:102
+msgid "featured"
+msgstr "برگزیده"
+
+#: toolhub/apps/auditlog/models.py:103
+msgid "unfeatured"
+msgstr "از حالت برگزیده خارج‌شده"
+
+#: toolhub/apps/auditlog/models.py:108
+msgid "timestamp"
+msgstr "برچسب زمانی"
+
+#: toolhub/apps/auditlog/models.py:116
+msgid "user"
+msgstr "کاربر"
+
+#: toolhub/apps/auditlog/models.py:124
+msgid "content type"
+msgstr "نوع محتوا"
+
+#: toolhub/apps/auditlog/models.py:130
+msgid "object id"
+msgstr "شناسهٔ شیء"
+
+#: toolhub/apps/auditlog/models.py:137
+msgid "object pk"
+msgstr "کلید اصلی شیء"
+
+#: toolhub/apps/auditlog/models.py:142
+msgid "action"
+msgstr "کنش"
+
+#: toolhub/apps/auditlog/models.py:156
+msgid "auditlog entry"
+msgstr "مدخل سیاههٔ ممیزی"
+
+#: toolhub/apps/auditlog/models.py:157
+msgid "auditlog entries"
+msgstr "مدخل‌های سیاههٔ ممیزی"
+
+#: toolhub/apps/auditlog/schema.py:22 toolhub/apps/auditlog/serializers.py:83
+msgid "Event parameters"
+msgstr "پارامترهای رویداد"
+
+#: toolhub/apps/auditlog/schema.py:26
+msgid "Revision created by edit action"
+msgstr "نسخهٔ ایجادشده با کنش ویرایش"
+
+#: toolhub/apps/auditlog/schema.py:31
+msgid "Has the revision been marked as hidden?"
+msgstr "آیا نسخه به‌عنوان پنهان علامت خورده است؟"
+
+#: toolhub/apps/auditlog/schema.py:36
+msgid "Has the revision been reviewed by a patroller?"
+msgstr "آیا نسخه به‌دست گشت‌زن بازبینی شده است؟"
+
+#: toolhub/apps/auditlog/schema.py:41
+msgid "Name of tool related to the change"
+msgstr "نام ابزار مرتبط با تغییر"
+
+#: toolhub/apps/auditlog/schema.py:46
+msgid "Identity of user related to the change"
+msgstr "هویت کاربر مرتبط با تغییر"
+
+#: toolhub/apps/auditlog/schema.py:59
+msgid "Tool list related to the change"
+msgstr "فهرست ابزارهای مرتبط با تغییر"
+
+#: toolhub/apps/auditlog/serializers.py:35
+msgid "Event action"
+msgstr "کنش رویداد"
+
+#: toolhub/apps/auditlog/serializers.py:51
+msgid "Event target"
+msgstr "هدف رویداد"
+
+#: toolhub/apps/auditlog/serializers.py:102
+msgid "Audit log entry"
+msgstr "مدخل سیاههٔ ممیزی"
+
+#: toolhub/apps/auditlog/views.py:57
+msgid "Only show logs for the given action types."
+msgstr "فقط سیاهه‌های مربوط به انواع کنش مشخص‌شده نمایش داده شوند."
+
+#: toolhub/apps/auditlog/views.py:67
+msgid "Only show logs for the given target type."
+msgstr "فقط سیاهه‌های مربوط به نوع هدف مشخص‌شده نمایش داده شوند."
+
+#: toolhub/apps/auditlog/views.py:73
+msgid "Only show logs occurring before the given date and time."
+msgstr "فقط سیاهه‌های ثبت‌شده پیش از تاریخ و ساعت مشخص‌شده نمایش داده شوند."
+
+#: toolhub/apps/auditlog/views.py:79
+msgid "Only show logs occurring after the given date and time."
+msgstr "فقط سیاهه‌های ثبت‌شده پس از تاریخ و ساعت مشخص‌شده نمایش داده شوند."
+
+#: toolhub/apps/auditlog/views.py:84
+msgid "Only show logs for the given user."
+msgstr "تنها نمایش سیاهه‌های کاربر مشخص‌شده"
+
+#: toolhub/apps/auditlog/views.py:90
+msgid "List all log entries."
+msgstr "فهرست همهٔ مدخل‌های سیاهه."
+
+#: toolhub/apps/auditlog/views.py:93
+msgid "Info for a specific log entry."
+msgstr "اطلاعات یک مدخل مشخص سیاهه."
+
+#: toolhub/apps/crawler/apps.py:26
+msgid "Toolinfo web crawler"
+msgstr "خزندهٔ وب Toolinfo"
+
+#: toolhub/apps/crawler/serializers.py:31
+msgid "A URL that has been registered for crawling"
+msgstr "نشانی ثبت‌شده برای خزش"
+
+#: toolhub/apps/crawler/serializers.py:44
+msgid "A URL to crawl"
+msgstr "نشانی برای خزش"
+
+#: toolhub/apps/crawler/serializers.py:55
+msgid "Information about a single URL processed during a crawler run"
+msgstr "اطلاعات یک نشانی پردازش‌شده در یک اجرای خزنده"
+
+#: toolhub/apps/crawler/serializers.py:78
+msgid "Summary of a single run of the crawler."
+msgstr "خلاصهٔ یک اجرای خزنده."
+
+#: toolhub/apps/crawler/views.py:42
+msgid "Register a new URL for crawling."
+msgstr "ثبت نشانی تازه برای خزش."
+
+#: toolhub/apps/crawler/views.py:46
+msgid "Information about a specific crawled URL."
+msgstr "اطلاعات یک نشانی خزش‌شدهٔ مشخص."
+
+#: toolhub/apps/crawler/views.py:55
+msgid "Unregister a URL."
+msgstr "لغو ثبت نشانی."
+
+#: toolhub/apps/crawler/views.py:58
+msgid "List all crawled URLs."
+msgstr "فهرست همهٔ نشانی‌های خزش‌شده."
+
+#: toolhub/apps/crawler/views.py:85
+msgid "Get URLs created by the current user."
+msgstr "دریافت نشانی‌های ایجادشده به‌دست کاربر کنونی."
+
+#: toolhub/apps/crawler/views.py:104
+msgid "List all historic crawler runs."
+msgstr "فهرست همهٔ اجراهای پیشین خزنده."
+
+#: toolhub/apps/crawler/views.py:107
+msgid "Info for a specific crawler run."
+msgstr "اطلاعات یک اجرای مشخص خزنده."
+
+#: toolhub/apps/crawler/views.py:136
+msgid "List all urls crawled in a run."
+msgstr "فهرست همهٔ نشانی‌های خزش‌شده در یک اجرا."
+
+#: toolhub/apps/crawler/views.py:139
+msgid "Info for a specific url crawled in a run."
+msgstr "اطلاعات یک نشانی مشخص خزش‌شده در یک اجرا."
+
+#: toolhub/apps/lists/apps.py:26 toolhub/apps/toolinfo/models.py:742
+msgid "Lists"
+msgstr "فهرست‌ها"
+
+#: toolhub/apps/lists/models.py:43
+msgid "Title of this list"
+msgstr "عنوان این فهرست"
+
+#: toolhub/apps/lists/models.py:49
+msgid "Description of the list's theme or contents."
+msgstr "توضیح موضوع یا محتوای فهرست."
+
+#: toolhub/apps/lists/models.py:61
+msgid "A link to a Wikimedia Commons file description page for an icon that depicts the list."
+msgstr "پیوندی به صفحهٔ توضیحات یک پرونده در ویکی‌انبار برای نمادی که نمایانگر فهرست است."
+
+#: toolhub/apps/lists/models.py:68
+msgid "If true, this list is a collection of the owning user's 'favorite' tools."
+msgstr "اگر مقدار درست باشد، این فهرست مجموعه‌ای از ابزارهای موردعلاقهٔ کاربر مالک آن است."
+
+#: toolhub/apps/lists/models.py:74
+msgid "If true, this list is visible to everyone."
+msgstr "اگر مقدار درست باشد، این فهرست برای همه قابل مشاهده است."
+
+#: toolhub/apps/lists/models.py:78
+msgid "If true, this list has been marked as featured."
+msgstr "اگر مقدار درست باشد، این فهرست به‌عنوان برگزیده علامت خورده است."
+
+#: toolhub/apps/lists/models.py:90
+msgid "List of the names of the tools in this list."
+msgstr "فهرست نام ابزارهای این فهرست."
+
+#: toolhub/apps/lists/models.py:169
+msgid "Position of this tool in the list."
+msgstr "جایگاه این ابزار در فهرست."
+
+#: toolhub/apps/lists/serializers.py:49
+msgid "List of tools metadata."
+msgstr "فراداده‌های فهرست ابزارها."
+
+#: toolhub/apps/lists/serializers.py:92
+msgid "Create or update a list."
+msgstr "ایجاد یا به‌روزرسانی فهرست."
+
+#: toolhub/apps/lists/serializers.py:100 toolhub/apps/lists/serializers.py:210
+msgid "List of tool names."
+msgstr "فهرست نام ابزارها."
+
+#: toolhub/apps/lists/serializers.py:202
+msgid "Historic revision of a list for generating diffs."
+msgstr "نسخهٔ پیشین فهرست برای ایجاد تفاوت‌ها."
+
+#: toolhub/apps/lists/serializers.py:231
+msgid "Historic revision of a list."
+msgstr "نسخهٔ پیشین فهرست."
+
+#: toolhub/apps/lists/serializers.py:266
+msgid "Tool list revision."
+msgstr "نسخهٔ فهرست ابزارها."
+
+#: toolhub/apps/lists/serializers.py:274
+msgid "Tool list revision detail."
+msgstr "جزئیات نسخهٔ فهرست ابزارها."
+
+#: toolhub/apps/lists/serializers.py:296
+msgid "Tool list revision difference."
+msgstr "تفاوت نسخه‌های فهرست ابزارها."
+
+#: toolhub/apps/lists/serializers.py:301
+#: toolhub/apps/toolinfo/serializers.py:383
+msgid "Revision to apply changes to."
+msgstr "نسخه‌ای که تغییرات روی آن اعمال می‌شود."
+
+#: toolhub/apps/lists/serializers.py:305
+#: toolhub/apps/toolinfo/serializers.py:387
+msgid "Revision after applying changes."
+msgstr "نسخه پس از اعمال تغییرات."
+
+#: toolhub/apps/lists/serializers.py:309
+msgid "Add a favorite tool."
+msgstr "افزودن یک ابزار مورد علاقه"
+
+#: toolhub/apps/lists/serializers.py:314
+msgid "Tool name."
+msgstr "نام ابزار."
+
+#: toolhub/apps/lists/validators.py:36
+#, python-format
+msgid "Duplicate values in list: %(duplicates)s"
+msgstr "مقدارهای تکراری در فهرست: %(duplicates)s"
+
+#: toolhub/apps/lists/validators.py:55
+#, python-format
+msgid "Unknown tool: %(names)s"
+msgid_plural "Unknown tools: %(names)s"
+msgstr[0] "ابزار ناشناخته: %(names)s"
+
+#: toolhub/apps/lists/validators.py:74
+#, python-format
+msgid "Tool %(name)s is already favorited."
+msgstr "ابزار %(name)s از پیش در علاقه‌مندی‌ها قرار دارد."
+
+#: toolhub/apps/lists/views.py:68
+msgid "Only show lists that are featured."
+msgstr "تنها نمایش فهرست‌های برگزیده."
+
+#: toolhub/apps/lists/views.py:73
+msgid "Only show lists that are published."
+msgstr "تنها نمایش فهرست‌های منتشرشده."
+
+#: toolhub/apps/lists/views.py:78
+msgid "Only show lists created by the given user."
+msgstr "تنها نمایش فهرست‌های ایجادشده توسط یک کاربر خاص."
+
+#: toolhub/apps/lists/views.py:84
+msgid "Create a new list of tools."
+msgstr "ایجاد فهرستی تازه از ابزارها."
+
+#: toolhub/apps/lists/views.py:89
+msgid "Details of a specific list of tools."
+msgstr "جزئیات یک فهرست مشخص از ابزارها."
+
+#: toolhub/apps/lists/views.py:93
+msgid "Update a list of tools."
+msgstr "به‌روزرسانی فهرست ابزارها."
+
+#: toolhub/apps/lists/views.py:101
+msgid "Delete a list of tools."
+msgstr "حذف فهرست ابزارها."
+
+#: toolhub/apps/lists/views.py:104
+msgid "List all lists of tools."
+msgstr "فهرست همهٔ فهرست‌های ابزارها."
+
+#: toolhub/apps/lists/views.py:140
+msgid "Mark a list as featured."
+msgstr "علامت زدن فهرست به‌عنوان برگزیده."
+
+#: toolhub/apps/lists/views.py:168
+msgid "Remove featured flag from a list."
+msgstr "برداشتن نشان برگزیده از فهرست."
+
+#: toolhub/apps/lists/views.py:200
+msgid "A unique integer value identifying this toollist."
+msgstr "عدد صحیح یکتایی که این فهرست ابزارها را مشخص می‌کند."
+
+#: toolhub/apps/lists/views.py:206 toolhub/apps/toolinfo/views.py:175
+msgid "Get revision information."
+msgstr "دریافت اطلاعات نسخه."
+
+#: toolhub/apps/lists/views.py:211 toolhub/apps/toolinfo/views.py:180
+msgid "List revisions."
+msgstr "فهرست نسخه‌ها."
+
+#: toolhub/apps/lists/views.py:216 toolhub/apps/toolinfo/views.py:185
+msgid "Compare two revisions to find difference."
+msgstr "مقایسهٔ دو نسخه برای یافتن تفاوت."
+
+#: toolhub/apps/lists/views.py:224 toolhub/apps/toolinfo/views.py:193
+msgid "A unique integer value identifying version to diff against."
+msgstr "عدد صحیح یکتایی که نسخهٔ مبنای مقایسه را مشخص می‌کند."
+
+#: toolhub/apps/lists/views.py:232
+msgid "Restore the list to this revision."
+msgstr "بازیابی فهرست به این نسخه."
+
+#: toolhub/apps/lists/views.py:239 toolhub/apps/toolinfo/views.py:209
+msgid "Undo all changes made between two revisions."
+msgstr "خنثی کردن همهٔ تغییرات میان دو نسخه."
+
+#: toolhub/apps/lists/views.py:247 toolhub/apps/toolinfo/views.py:217
+msgid "A unique integer value identifying version to undo until."
+msgstr "عدد صحیح یکتایی که نسخهٔ پایانی خنثی‌سازی را مشخص می‌کند."
+
+#: toolhub/apps/lists/views.py:255 toolhub/apps/toolinfo/views.py:226
+msgid "Hide revision text and edit summary from users."
+msgstr "پنهان کردن متن نسخه و خلاصهٔ ویرایش از کاربران."
+
+#: toolhub/apps/lists/views.py:261 toolhub/apps/toolinfo/views.py:232
+msgid "Reveal a previously hidden revision."
+msgstr "آشکار کردن نسخه‌ای که پیش‌تر پنهان شده است."
+
+#: toolhub/apps/lists/views.py:267 toolhub/apps/toolinfo/views.py:238
+msgid "Mark a revision as patrolled."
+msgstr "علامت زدن نسخه به‌عنوان گشت‌خورده."
+
+#: toolhub/apps/lists/views.py:369 toolhub/apps/toolinfo/views.py:364
+#, python-format
+msgid "Revert to revision %(rev_id)s dated %(datetime)s by %(user)s"
+msgstr "بازگردانی به نسخهٔ %(rev_id)s به تاریخ %(datetime)s به‌دست %(user)s"
+
+#: toolhub/apps/lists/views.py:410 toolhub/apps/toolinfo/views.py:398
+#, python-format
+msgid "Undo revisions from %(first_id)s to %(last_id)s"
+msgstr "خنثی‌سازی نسخه‌های %(first_id)s تا %(last_id)s"
+
+#: toolhub/apps/lists/views.py:520 toolhub/apps/toolinfo/views.py:169
+msgid "Unique identifier for this tool."
+msgstr "شناسهٔ یکتای این ابزار."
+
+#: toolhub/apps/lists/views.py:526
+msgid "Add a tool to favorites."
+msgstr "افزودن یک ابزار به علاقه‌مندی‌ها"
+
+#: toolhub/apps/lists/views.py:531
+msgid "Check to see if a tool is in favorites."
+msgstr "وجود یک ابزار در علاقه‌مندی‌ها را بررسی کنید."
+
+#: toolhub/apps/lists/views.py:537
+msgid "Remove a tool from favorites."
+msgstr "حذب یک ابزار از علاقه‌مندی‌ها"
+
+#: toolhub/apps/lists/views.py:543
+msgid "Personal favorites."
+msgstr "علاقه‌مندی‌های شخصی."
+
+#: toolhub/apps/oauth2/apps.py:26
+msgid "OAuth 2.0 Authorization server API"
+msgstr "API سرور اعطای مجوز OAuth 2.0"
+
+#: toolhub/apps/oauth2/serializers.py:30
+msgid "OAuth Client application."
+msgstr "برنامهٔ کارخواه OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:37
+msgid "Application name"
+msgstr "نام برنامه"
+
+#: toolhub/apps/oauth2/serializers.py:38
+msgid "Something users will recognize and trust"
+msgstr "چیزی که کاربران بشناسند و به آن اعتماد کنند"
+
+#: toolhub/apps/oauth2/serializers.py:43 toolhub/apps/oauth2/serializers.py:99
+msgid "Authorization callback URL"
+msgstr "نشانی بازگشت پس از اعطای مجوز"
+
+#: toolhub/apps/oauth2/serializers.py:44 toolhub/apps/oauth2/serializers.py:100
+msgid "The application's callback URL."
+msgstr "نشانی بازگشت برنامه."
+
+#: toolhub/apps/oauth2/serializers.py:49
+msgid "Public identifier for this application"
+msgstr "شناسهٔ عمومی این برنامه"
+
+#: toolhub/apps/oauth2/serializers.py:66
+msgid "OAuth Client application registration."
+msgstr "ثبت برنامهٔ کارخواه OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:74
+msgid "Secret known only to the application and the authorization server"
+msgstr "رازی که فقط برنامه و سرور اعطای مجوز آن را می‌دانند"
+
+#: toolhub/apps/oauth2/serializers.py:92
+msgid "OAuth Client application update."
+msgstr "به‌روزرسانی برنامهٔ کارخواه OAuth."
+
+#: toolhub/apps/oauth2/serializers.py:117
+msgid "Authorized OAuth client application."
+msgstr "برنامهٔ کارخواه مجاز OAuth."
+
+#: toolhub/apps/oauth2/views.py:39
+msgid "List all client applications."
+msgstr "فهرست همهٔ برنامه‌های کارخواه."
+
+#: toolhub/apps/oauth2/views.py:42
+msgid "Info for a client application."
+msgstr "اطلاعات یک برنامهٔ کارخواه."
+
+#: toolhub/apps/oauth2/views.py:45
+msgid "Register a new client application."
+msgstr "ثبت برنامهٔ کارخواه تازه."
+
+#: toolhub/apps/oauth2/views.py:53
+msgid "Update a client application."
+msgstr "به‌روزرسانی برنامهٔ کارخواه."
+
+#: toolhub/apps/oauth2/views.py:57
+msgid "Delete a client application."
+msgstr "حذف برنامهٔ کارخواه."
+
+#: toolhub/apps/oauth2/views.py:91
+msgid "List applications authorized by the current user."
+msgstr "فهرست برنامه‌هایی که کاربر کنونی به آن‌ها مجوز داده است."
+
+#: toolhub/apps/oauth2/views.py:94
+msgid "Info for an authorized application."
+msgstr "اطلاعات یک برنامهٔ مجاز."
+
+#: toolhub/apps/oauth2/views.py:106
+msgid "Revoke an application authorization."
+msgstr "لغو مجوز برنامه."
+
+#: toolhub/apps/search/apps.py:26
+msgid "Search"
+msgstr "جستجو"
+
+#: toolhub/apps/search/schema.py:28
+msgid "Faceted classification"
+msgstr "رده‌بندی چندوجهی"
+
+#: toolhub/apps/search/schema.py:70 toolhub/apps/search/views.py:62
+msgid "Search string"
+msgstr "رشتهٔ جستجو"
+
+#: toolhub/apps/search/schema.py:95
+#, python-format
+msgid "Search in %(fields)s"
+msgstr "جستجو در %(fields)s"
+
+#: toolhub/apps/search/schema.py:97
+#, optional
+msgid ", "
+msgstr ""
+
+#: toolhub/apps/search/schema.py:182
+msgid "Field to use when ordering results."
+msgstr "فیلد مورد استفاده برای مرتب‌سازی نتایج."
+
+#: toolhub/apps/search/serializers.py:47 toolhub/apps/search/serializers.py:72
+msgid "Tool search results"
+msgstr "نتایج جستجوی ابزار"
+
+#: toolhub/apps/search/serializers.py:61
+msgid "Tool autocomplete results"
+msgstr "نتایج تکمیل خودکار ابزار"
+
+#: toolhub/apps/search/serializers.py:86
+msgid "ToolList autocomplete results"
+msgstr "نتایج تکمیل خودکار فهرست ابزارها"
+
+#: toolhub/apps/search/views.py:123
+msgid "Autocomplete for tools."
+msgstr "تکمیل خودکار ابزارها."
+
+#: toolhub/apps/search/views.py:157
+msgid "Faceted search for tools."
+msgstr "جستجوی چندوجهی ابزارها."
+
+#: toolhub/apps/search/views.py:276
+msgid "Autocomplete for toollists."
+msgstr "تکمیل خودکار فهرست‌های ابزارها."
+
+#: toolhub/apps/search/views.py:316
+msgid "Full text search for toollists."
+msgstr "جستجوی تمام‌متن فهرست‌های ابزارها."
+
+#: toolhub/apps/toolinfo/apps.py:26
+msgid "Toolinfo"
+msgstr "اطلاعات ابزار"
+
+#: toolhub/apps/toolinfo/models.py:67
+msgid "web app"
+msgstr "برنامهٔ وب"
+
+#: toolhub/apps/toolinfo/models.py:68
+msgid "desktop app"
+msgstr "برنامهٔ رومیزی"
+
+#: toolhub/apps/toolinfo/models.py:69
+msgid "bot"
+msgstr "ربات"
+
+#: toolhub/apps/toolinfo/models.py:70
+msgid "gadget"
+msgstr "ابزارک"
+
+#: toolhub/apps/toolinfo/models.py:71
+msgid "user script"
+msgstr "اسکریپت کاربری"
+
+#: toolhub/apps/toolinfo/models.py:72
+msgid "command line tool"
+msgstr "ابزار خط فرمان"
+
+#: toolhub/apps/toolinfo/models.py:73
+msgid "coding framework"
+msgstr "چارچوب برنامه‌نویسی"
+
+#: toolhub/apps/toolinfo/models.py:74
+msgid "lua module"
+msgstr "پودمان لوا"
+
+#: toolhub/apps/toolinfo/models.py:75
+msgid "template"
+msgstr "الگو"
+
+#: toolhub/apps/toolinfo/models.py:76
+msgid "other"
+msgstr "سایر"
+
+#: toolhub/apps/toolinfo/models.py:82
+msgid "If true, the use of this tool is officially discouraged. The `replaced_by` parameter can be used to define a replacement."
+msgstr "اگر مقدار درست باشد، استفاده از این ابزار رسماً توصیه نمی‌شود. می‌توان از پارامتر `replaced_by` برای تعیین جایگزین استفاده کرد."
+
+#: toolhub/apps/toolinfo/models.py:92
+msgid "If this tool is deprecated, this parameter should be used to link to the replacement tool."
+msgstr "اگر این ابزار منسوخ شده است، باید از این پارامتر برای پیوند دادن به ابزار جایگزین استفاده شود."
+
+#: toolhub/apps/toolinfo/models.py:99
+msgid "If true, this tool is unstable and can change or go offline at any time."
+msgstr "اگر مقدار درست باشد، این ابزار ناپایدار است و ممکن است هر زمان تغییر کند یا از دسترس خارج شود."
+
+#: toolhub/apps/toolinfo/models.py:107
+msgid "A string or array of strings describing the wiki(s) this tool can be used on. Use hostnames such as `zh.wiktionary.org`. Use asterisks as wildcards. For example, `*.wikisource.org` means 'this tool works on all Wikisource wikis.' `*` means 'this works on all wikis, including Wikimedia wikis.'"
+msgstr "رشته یا آرایه‌ای از رشته‌ها که ویکی‌های قابل استفاده با این ابزار را مشخص می‌کند. از نام میزبان‌هایی مانند `zh.wiktionary.org` استفاده کنید. از ستاره به‌عنوان نویسهٔ عام استفاده کنید. برای نمونه، `*.wikisource.org` یعنی «این ابزار در همهٔ ویکی‌های ویکی‌نبشته کار می‌کند». `*` یعنی «این ابزار در همهٔ ویکی‌ها، از جمله ویکی‌های ویکی‌مدیا، کار می‌کند»."
+
+#: toolhub/apps/toolinfo/models.py:125
+msgid "A link to a Wikimedia Commons file description page for an icon that depicts the tool."
+msgstr "پیوندی به صفحهٔ توضیحات یک پرونده در ویکی‌انبار برای نمادی که نمایانگر ابزار است."
+
+#: toolhub/apps/toolinfo/models.py:133
+msgid "The language(s) the tool's interface has been translated into. Use ISO 639 language codes like `zh` and `scn`. If not defined it is assumed the tool is only available in English."
+msgstr "زبان‌هایی که رابط ابزار به آن‌ها ترجمه شده است. از کدهای زبان ISO 639 مانند `zh` و `scn` استفاده کنید. اگر مشخص نشود، فرض می‌شود ابزار فقط به انگلیسی در دسترس است."
+
+#: toolhub/apps/toolinfo/models.py:146
+msgid "The manner in which the tool is used. Select one from the list of options."
+msgstr "شیوهٔ استفاده از ابزار. یکی از گزینه‌های فهرست را انتخاب کنید."
+
+#: toolhub/apps/toolinfo/models.py:154
+msgid "A link to the repository where the tool code is hosted."
+msgstr "پیوندی به مخزن میزبان کد ابزار."
+
+#: toolhub/apps/toolinfo/models.py:161
+msgid "A link to the tool's API, if available."
+msgstr "پیوندی به API ابزار، در صورت وجود."
+
+#: toolhub/apps/toolinfo/models.py:167
+msgid "A link to the tool's developer documentation, if available."
+msgstr "پیوندی به مستندات توسعه‌دهندهٔ ابزار، در صورت وجود."
+
+#: toolhub/apps/toolinfo/models.py:175
+msgid "A link to the tool's user documentation, if available."
+msgstr "پیوندی به مستندات کاربر ابزار، در صورت وجود."
+
+#: toolhub/apps/toolinfo/models.py:183
+msgid "A link to location where the tool's user can leave feedback."
+msgstr "پیوندی به جایی که کاربر ابزار می‌تواند بازخورد بگذارد."
+
+#: toolhub/apps/toolinfo/models.py:191
+msgid "A link to the tool's privacy policy, if available."
+msgstr "پیوندی به سیاست حفظ حریم خصوصی ابزار، در صورت وجود."
+
+#: toolhub/apps/toolinfo/models.py:200
+msgid "A link to the tool's translation interface."
+msgstr "پیوندی به رابط ترجمهٔ ابزار."
+
+#: toolhub/apps/toolinfo/models.py:208
+msgid "A link to the tool's bug tracker on GitHub, Bitbucket, Phabricator, etc."
+msgstr "پیوندی به سامانهٔ پیگیری اشکال ابزار در گیت‌هاب، بیت‌باکت، فبریکیتور و مانند آن."
+
+#: toolhub/apps/toolinfo/models.py:464
+#, python-format
+msgid "Changing %(key)s after initial object creation is not allowed"
+msgstr "تغییر %(key)s پس از ایجاد اولیهٔ شیء مجاز نیست"
+
+#: toolhub/apps/toolinfo/models.py:504
+msgid "crawler"
+msgstr "خزنده"
+
+#: toolhub/apps/toolinfo/models.py:505
+msgid "api"
+msgstr "API"
+
+#: toolhub/apps/toolinfo/models.py:513
+msgid "Unique identifier for this tool. Must be unique for every tool. It is recommended you prefix your tool names to reduce the risk of clashes."
+msgstr "شناسهٔ یکتای این ابزار. باید برای هر ابزار یکتا باشد. پیشنهاد می‌شود برای نام ابزارهایتان پیشوند بگذارید تا خطر تداخل کاهش یابد."
+
+#: toolhub/apps/toolinfo/models.py:521
+msgid "Human readable tool name. Recommended limit of 25 characters."
+msgstr "نام خوانای ابزار برای انسان. حداکثر طول پیشنهادی ۲۵ نویسه است."
+
+#: toolhub/apps/toolinfo/models.py:527
+msgid "A longer description of the tool. The recommended length for a description is 3-5 sentences."
+msgstr "توضیح مفصل‌تر ابزار. طول پیشنهادی توضیحات ۳ تا ۵ جمله است."
+
+#: toolhub/apps/toolinfo/models.py:535
+msgid "A direct link to the tool or to instructions on how to use or install the tool."
+msgstr "پیوندی مستقیم به ابزار یا راهنمای استفاده یا نصب آن."
+
+#: toolhub/apps/toolinfo/models.py:549
+msgid "The primary tool developers."
+msgstr "توسعه‌دهندگان ابزار اولیه"
+
+#: toolhub/apps/toolinfo/models.py:557
+msgid "Longer than the full title but shorter than the description. It should add some additional context to the title."
+msgstr "طولانی‌تر از عنوان کامل و کوتاه‌تر از توضیحات است. باید اطلاعات زمینه‌ای بیشتری به عنوان بیفزاید."
+
+#: toolhub/apps/toolinfo/models.py:566
+msgid "The project ID on OpenHub. Given a URL of https://openhub.net/p/foo, the project ID is `foo`."
+msgstr "شناسهٔ پروژه در OpenHub. برای نشانی https://openhub.net/p/foo، شناسهٔ پروژه `foo` است."
+
+#: toolhub/apps/toolinfo/models.py:575
+msgid "Alternate links to the tool or install documentation in different natural languages."
+msgstr "پیوندهای جایگزین به ابزار یا مستندات نصب به زبان‌های طبیعی گوناگون."
+
+#: toolhub/apps/toolinfo/models.py:586
+msgid "If the tool is a bot, the Wikimedia username of the bot. Do not include 'User:' or similar prefixes."
+msgstr "اگر ابزار ربات است، نام کاربری ویکی‌مدیای ربات. پیشوندهایی مانند 'User:' را وارد نکنید."
+
+#: toolhub/apps/toolinfo/models.py:595
+msgid "The software license the tool code is available under. Use a standard SPDX license identifier like 'GPL-3.0-or-later'."
+msgstr "مجوز نرم‌افزاری انتشار کد ابزار. از شناسهٔ استاندارد مجوز SPDX مانند 'GPL-3.0-or-later' استفاده کنید."
+
+#: toolhub/apps/toolinfo/models.py:603
+msgid "Organization(s) that sponsored the tool's development."
+msgstr "سازمان‌هایی که حامی مالی توسعهٔ ابزار بوده‌اند."
+
+#: toolhub/apps/toolinfo/models.py:610
+msgid "A string or array of strings listing technologies (programming languages, development frameworks, etc.) used in creating the tool."
+msgstr "رشته یا آرایه‌ای از رشته‌ها که فناوری‌های به‌کاررفته در ساخت ابزار، مانند زبان‌های برنامه‌نویسی و چارچوب‌های توسعه، را فهرست می‌کند."
+
+#: toolhub/apps/toolinfo/models.py:621
+msgid "A URI identifying the jsonschema for this toolinfo.json record. This should be a short uri containing only the name and revision at the end of the URI path."
+msgstr "شناسهٔ URI مشخص‌کنندهٔ jsonschema این رکورد toolinfo.json. این شناسه باید کوتاه باشد و در انتهای مسیر URI فقط نام و نسخه را داشته باشد."
+
+#: toolhub/apps/toolinfo/models.py:632
+msgid "The language in which this toolinfo record is written. If not set, the default value is English. Use ISO 639 language codes."
+msgstr "زبانی که این رکورد toolinfo به آن نوشته شده است. اگر مشخص نشود، مقدار پیش‌فرض انگلیسی است. از کدهای زبان ISO 639 استفاده کنید."
+
+#: toolhub/apps/toolinfo/models.py:642
+msgid "Origin of this tool record."
+msgstr "منشأ این رکورد ابزار."
+
+#: toolhub/apps/toolinfo/models.py:712
+msgid "Admins"
+msgstr "مدیران"
+
+#: toolhub/apps/toolinfo/models.py:713
+msgid "Organizers and program coordinators"
+msgstr "برگزارکنندگان و هماهنگ‌کنندگان برنامه‌ها"
+
+#: toolhub/apps/toolinfo/models.py:714
+msgid "Editors and content contributors"
+msgstr "ویرایشگران و مشارکت‌کنندگان محتوا"
+
+#: toolhub/apps/toolinfo/models.py:715
+msgid "Readers and content consumers"
+msgstr "خوانندگان و استفاده‌کنندگان محتوا"
+
+#: toolhub/apps/toolinfo/models.py:716
+msgid "Researchers"
+msgstr "پژوهشگران"
+
+#: toolhub/apps/toolinfo/models.py:717
+msgid "Developers"
+msgstr "توسعه‌دهندگان"
+
+#: toolhub/apps/toolinfo/models.py:720
+msgid "Articles"
+msgstr "مقاله‌ها"
+
+#: toolhub/apps/toolinfo/models.py:721
+msgid "Audio"
+msgstr "صدا"
+
+#: toolhub/apps/toolinfo/models.py:722
+msgid "Books"
+msgstr "کتاب‌ها"
+
+#: toolhub/apps/toolinfo/models.py:724
+msgid "Data"
+msgstr "داده‌ها"
+
+#: toolhub/apps/toolinfo/models.py:726
+msgid "Bibliographic data"
+msgstr "داده‌های کتاب‌شناختی"
+
+#: toolhub/apps/toolinfo/models.py:727
+msgid "Categories or labels"
+msgstr "رده‌ها یا برچسب‌ها"
+
+#: toolhub/apps/toolinfo/models.py:728
+msgid "Diffs and revision data"
+msgstr "تفاوت‌ها و داده‌های نسخه‌ها"
+
+#: toolhub/apps/toolinfo/models.py:729
+msgid "Event data"
+msgstr "داده‌های رویداد"
+
+#: toolhub/apps/toolinfo/models.py:730
+msgid "Geographic data"
+msgstr "داده‌های جغرافیایی"
+
+#: toolhub/apps/toolinfo/models.py:731
+msgid "Linguistic data"
+msgstr "داده‌های زبان‌شناختی"
+
+#: toolhub/apps/toolinfo/models.py:732
+msgid "Page metadata"
+msgstr "فراداده‌های صفحه"
+
+#: toolhub/apps/toolinfo/models.py:733
+msgid "Structured data"
+msgstr "داده‌های ساختاریافته"
+
+#: toolhub/apps/toolinfo/models.py:734
+msgid "User data"
+msgstr "داده‌های کاربران"
+
+#: toolhub/apps/toolinfo/models.py:737
+msgid "Discussions"
+msgstr "بحث‌ها"
+
+#: toolhub/apps/toolinfo/models.py:738
+msgid "Drafts"
+msgstr "پیش‌نویس‌ها"
+
+#: toolhub/apps/toolinfo/models.py:739
+msgid "Emails"
+msgstr "رایانامه‌ها"
+
+#: toolhub/apps/toolinfo/models.py:740
+msgid "Images"
+msgstr "تصاویر"
+
+#: toolhub/apps/toolinfo/models.py:741
+msgid "Links"
+msgstr "پیوندها"
+
+#: toolhub/apps/toolinfo/models.py:743
+msgid "Logs"
+msgstr "سیاهه‌ها"
+
+#: toolhub/apps/toolinfo/models.py:744
+msgid "Maps"
+msgstr "نقشه‌ها"
+
+#: toolhub/apps/toolinfo/models.py:745
+msgid "References"
+msgstr "منابع"
+
+#: toolhub/apps/toolinfo/models.py:746
+msgid "Software or code"
+msgstr "نرم‌افزار یا کد"
+
+#: toolhub/apps/toolinfo/models.py:747
+msgid "Templates"
+msgstr "الگوها"
+
+#: toolhub/apps/toolinfo/models.py:748
+msgid "Videos"
+msgstr "ویدئوها"
+
+#: toolhub/apps/toolinfo/models.py:749
+msgid "Watchlists"
+msgstr "فهرست‌های پیگیری"
+
+#: toolhub/apps/toolinfo/models.py:750
+msgid "Webpages"
+msgstr "صفحه‌های وب"
+
+#: toolhub/apps/toolinfo/models.py:751
+msgid "Wikitext"
+msgstr "ویکی‌متن"
+
+#: toolhub/apps/toolinfo/models.py:754
+msgid "Analysis"
+msgstr "تحلیل"
+
+#: toolhub/apps/toolinfo/models.py:755
+msgid "Annotating and linking"
+msgstr "یادداشت‌گذاری و پیونددهی"
+
+#: toolhub/apps/toolinfo/models.py:756
+msgid "Archiving and cleanup"
+msgstr "بایگانی و پاک‌سازی"
+
+#: toolhub/apps/toolinfo/models.py:757
+msgid "Categorizing and tagging"
+msgstr "رده‌بندی و برچسب‌گذاری"
+
+#: toolhub/apps/toolinfo/models.py:758
+msgid "Citing and referencing"
+msgstr "یادکرد و ارجاع‌دهی"
+
+#: toolhub/apps/toolinfo/models.py:759
+msgid "Communication and supporting users"
+msgstr "ارتباط و پشتیبانی از کاربران"
+
+#: toolhub/apps/toolinfo/models.py:760
+msgid "Converting and formatting content"
+msgstr "تبدیل و قالب‌بندی محتوا"
+
+#: toolhub/apps/toolinfo/models.py:761
+msgid "Creating content"
+msgstr "ایجاد محتوا"
+
+#: toolhub/apps/toolinfo/models.py:762
+msgid "Deleting and reverting"
+msgstr "حذف و واگردانی"
+
+#: toolhub/apps/toolinfo/models.py:763
+msgid "Disambiguation"
+msgstr "ابهام‌زدایی"
+
+#: toolhub/apps/toolinfo/models.py:764
+msgid "Downloading or reusing content"
+msgstr "دریافت یا استفادهٔ دوباره از محتوا"
+
+#: toolhub/apps/toolinfo/models.py:765
+msgid "Editing or updating content"
+msgstr "ویرایش یا به‌روزرسانی محتوا"
+
+#: toolhub/apps/toolinfo/models.py:766
+msgid "Event and contest planning"
+msgstr "برنامه‌ریزی رویداد و مسابقه"
+
+#: toolhub/apps/toolinfo/models.py:767
+msgid "Hosting and maintaining tools"
+msgstr "میزبانی و نگهداری ابزارها"
+
+#: toolhub/apps/toolinfo/models.py:768
+msgid "Identifying policy violations"
+msgstr "شناسایی نقض سیاست‌ها"
+
+#: toolhub/apps/toolinfo/models.py:769
+msgid "Identifying spam"
+msgstr "شناسایی هرزنامه"
+
+#: toolhub/apps/toolinfo/models.py:770
+msgid "Identifying vandalism"
+msgstr "شناسایی خرابکاری"
+
+#: toolhub/apps/toolinfo/models.py:771
+msgid "Listing and ranking"
+msgstr "فهرست‌سازی و رتبه‌بندی"
+
+#: toolhub/apps/toolinfo/models.py:772
+msgid "Merging content"
+msgstr "ادغام محتوا"
+
+#: toolhub/apps/toolinfo/models.py:773
+msgid "Migrating content"
+msgstr "انتقال محتوا"
+
+#: toolhub/apps/toolinfo/models.py:774
+msgid "Patrolling recent changes"
+msgstr "گشت‌زنی تغییرات اخیر"
+
+#: toolhub/apps/toolinfo/models.py:775
+msgid "Project management and reporting"
+msgstr "مدیریت پروژه و گزارش‌دهی"
+
+#: toolhub/apps/toolinfo/models.py:776
+msgid "Reading"
+msgstr "خواندن"
+
+#: toolhub/apps/toolinfo/models.py:777
+msgid "Recommending content"
+msgstr "پیشنهاد محتوا"
+
+#: toolhub/apps/toolinfo/models.py:778
+msgid "Translating and localizing"
+msgstr "ترجمه و بومی‌سازی"
+
+#: toolhub/apps/toolinfo/models.py:779
+msgid "Uploading or importing"
+msgstr "بارگذاری یا درون‌ریزی"
+
+#: toolhub/apps/toolinfo/models.py:780
+msgid "User management"
+msgstr "مدیریت کاربران"
+
+#: toolhub/apps/toolinfo/models.py:781
+msgid "Warning users"
+msgstr "هشدار به کاربران"
+
+#: toolhub/apps/toolinfo/models.py:784
+msgid "Biography"
+msgstr "زندگی‌نامه"
+
+#: toolhub/apps/toolinfo/models.py:785
+msgid "Cultural heritage"
+msgstr "میراث فرهنگی"
+
+#: toolhub/apps/toolinfo/models.py:786
+msgid "Education"
+msgstr "آموزش"
+
+#: toolhub/apps/toolinfo/models.py:787
+msgid "Geography and mapping"
+msgstr "جغرافیا و نقشه‌نگاری"
+
+#: toolhub/apps/toolinfo/models.py:788
+msgid "GLAM"
+msgstr "گالری‌ها، کتابخانه‌ها، بایگانی‌ها و موزه‌ها"
+
+#: toolhub/apps/toolinfo/models.py:789
+msgid "History"
+msgstr "تاریخ"
+
+#: toolhub/apps/toolinfo/models.py:790
+msgid "Language and internationalization"
+msgstr "زبان و بین‌المللی‌سازی"
+
+#: toolhub/apps/toolinfo/models.py:791
+msgid "Outreach"
+msgstr "ترویج"
+
+#: toolhub/apps/toolinfo/models.py:792
+msgid "Science"
+msgstr "علم"
+
+#: toolhub/apps/toolinfo/models.py:805
+msgid "Wikidata item ID for the tool."
+msgstr "شناسهٔ آیتم ویکی‌دادهٔ ابزار."
+
+#: toolhub/apps/toolinfo/models.py:810
+msgid "Who is the intended user of the tool?"
+msgstr "کاربر موردنظر ابزار چه کسی است؟"
+
+#: toolhub/apps/toolinfo/models.py:817
+msgid "With what type of content or data does the tool interact?"
+msgstr "ابزار با چه نوع محتوا یا داده‌ای کار می‌کند؟"
+
+#: toolhub/apps/toolinfo/models.py:824
+msgid "What type of task does the tool help with?"
+msgstr "ابزار در انجام چه نوع کاری کمک می‌کند؟"
+
+#: toolhub/apps/toolinfo/models.py:831
+msgid "Is the tool targeted at helping in a specific type of wiki project or topic area?"
+msgstr "آیا ابزار برای کمک به نوع مشخصی از پروژهٔ ویکی یا حوزهٔ موضوعی طراحی شده است؟"
+
+#: toolhub/apps/toolinfo/serializers.py:40
+msgid "SPDX license information"
+msgstr "اطلاعات مجوز SPDX"
+
+#: toolhub/apps/toolinfo/serializers.py:48
+msgid "SPDX license ID"
+msgstr "شناسه مجوز SPDX"
+
+#: toolhub/apps/toolinfo/serializers.py:53
+msgid "Full name of this license"
+msgstr "نام کامل این مجوز"
+
+#: toolhub/apps/toolinfo/serializers.py:58
+msgid "Is this license approved as 'open source' by the OSI?"
+msgstr "آیا این مجوز توسط OSI به عنوان \"منبع آزاد\" تأیید شده است؟"
+
+#: toolhub/apps/toolinfo/serializers.py:63
+msgid "Is this license approved as 'free software' by the FSF?"
+msgstr "آیا این مجوز توسط FSF به عنوان \"نرم افزار رایگان\" تأیید شده است؟"
+
+#: toolhub/apps/toolinfo/serializers.py:68
+msgid "Is this license considered to be outdated?"
+msgstr "آیا این مجوز منسوخ در نظر گرفته شده است؟"
+
+#: toolhub/apps/toolinfo/serializers.py:72
+msgid "Community added information for a tool"
+msgstr "اطلاعات افزوده‌شده به‌دست اجتماع برای یک ابزار"
+
+#: toolhub/apps/toolinfo/serializers.py:105
+msgid "Summary of community added information for a tool"
+msgstr "خلاصهٔ اطلاعات افزوده‌شده به‌دست اجتماع برای یک ابزار"
+
+#: toolhub/apps/toolinfo/serializers.py:120
+msgid "Update annotations"
+msgstr "به‌روزرسانی یادداشت‌ها"
+
+#: toolhub/apps/toolinfo/serializers.py:159
+msgid "Description of a tool"
+msgstr "توضیحات یک ابزار"
+
+#: toolhub/apps/toolinfo/serializers.py:211
+msgid "Summary of a tool"
+msgstr "خلاصهٔ یک ابزار"
+
+#: toolhub/apps/toolinfo/serializers.py:235
+msgid "Create a tool"
+msgstr "ایجاد ابزار"
+
+#: toolhub/apps/toolinfo/serializers.py:301
+msgid "Update a tool"
+msgstr "به‌روزرسانی ابزار"
+
+#: toolhub/apps/toolinfo/serializers.py:332
+msgid "Tool revision."
+msgstr "نسخهٔ ابزار."
+
+#: toolhub/apps/toolinfo/serializers.py:340
+msgid "Tool revision detail."
+msgstr "جزئیات نسخهٔ ابزار."
+
+#: toolhub/apps/toolinfo/serializers.py:378
+msgid "Tool revision difference."
+msgstr "تفاوت نسخه‌های ابزار."
+
+#: toolhub/apps/toolinfo/validators.py:34
+#, python-format
+msgid "%(value)s is not a recognized language code."
+msgstr "%(value)s کد زبان شناخته‌شده‌ای نیست."
+
+#: toolhub/apps/toolinfo/validators.py:44
+#: toolhub/apps/toolinfo/validators.py:89
+#, python-format
+msgid "Expected a list of language codes but found %(type)s"
+msgstr "فهرستی از کدهای زبان انتظار می‌رفت، اما %(type)s دریافت شد"
+
+#: toolhub/apps/toolinfo/validators.py:56
+#, python-format
+msgid "%(value)s is not a known SPDX license identifier."
+msgstr "٪ (value) s شناسه مجوز SPDX شناخته شده نیست."
+
+#: toolhub/apps/toolinfo/validators.py:66
+#, python-format
+msgid "Expected a url_multilingual dict but found %(type)s"
+msgstr "دیکشنری url_multilingual انتظار می‌رفت، اما %(type)s دریافت شد"
+
+#: toolhub/apps/toolinfo/validators.py:72
+msgid "Url_multilingual missing 'language' property."
+msgstr "ویژگی 'language' در Url_multilingual موجود نیست."
+
+#: toolhub/apps/toolinfo/validators.py:79
+msgid "Url_multilingual missing 'url' property."
+msgstr "ویژگی 'url' در Url_multilingual موجود نیست."
+
+#: toolhub/apps/toolinfo/views.py:68
+msgid "Create a new tool."
+msgstr "ایجاد ابزار تازه."
+
+#: toolhub/apps/toolinfo/views.py:73
+msgid "Info for a specific tool."
+msgstr "اطلاعات یک ابزار مشخص."
+
+#: toolhub/apps/toolinfo/views.py:76
+msgid "Update info for a specific tool."
+msgstr "به‌روزرسانی اطلاعات یک ابزار مشخص."
+
+#: toolhub/apps/toolinfo/views.py:84
+msgid "Delete a tool."
+msgstr "حذف ابزار."
+
+#: toolhub/apps/toolinfo/views.py:87
+msgid "List all tools."
+msgstr "فهرست همهٔ ابزارها."
+
+#: toolhub/apps/toolinfo/views.py:129
+msgid "Additional information for a tool."
+msgstr "توضیحات اختیاری برای یک ابزار"
+
+#: toolhub/apps/toolinfo/views.py:143
+msgid "Update annotations for a specific tool."
+msgstr "به‌روزرسانی یادداشت‌های یک ابزار مشخص."
+
+#: toolhub/apps/toolinfo/views.py:201
+msgid "Restore the tool to this revision."
+msgstr "بازیابی ابزار به این نسخه."
+
+#: toolhub/apps/toolinfo/views.py:494
+msgid "Info for a specific SPDX license."
+msgstr "اطلاعات مربوط به مجوز خاص SPDX."
+
+#: toolhub/apps/toolinfo/views.py:502
+msgid "List all SPDX licenses."
+msgstr "همه مجوزهای SPDX را لیست کنید."
+
+#: toolhub/apps/user/admin.py:37
+msgid "Personal info"
+msgstr "اطلاعات شخصی"
+
+#: toolhub/apps/user/admin.py:39
+msgid "Permissions"
+msgstr "دسترسی‌ها"
+
+#: toolhub/apps/user/admin.py:50
+msgid "Important dates"
+msgstr "تاریخ‌های مهم"
+
+#: toolhub/apps/user/apps.py:26
+msgid "Toolhub user"
+msgstr "کاربر تول‌هاب"
+
+#: toolhub/apps/user/models.py:36
+msgid "username"
+msgstr "نام کاربری"
+
+#: toolhub/apps/user/models.py:39
+msgid "Required. 255 characters or fewer."
+msgstr "الزامی است. حداکثر ۲۵۵ نویسه."
+
+#: toolhub/apps/user/models.py:42
+msgid "A user with that username already exists."
+msgstr "کاربری با این نام کاربری از قبل وجود دارد."
+
+#: toolhub/apps/user/serializers.py:41
+msgid "Action that the user can take"
+msgstr "کنشی که کاربر می‌تواند انجام دهد"
+
+#: toolhub/apps/user/serializers.py:46
+msgid "Subject type to check user action on"
+msgstr "نوع موضوعی که کنش کاربر روی آن بررسی می‌شود"
+
+#: toolhub/apps/user/serializers.py:51
+msgid "Criteria which restricts user action"
+msgstr "معیارهای محدودکنندهٔ کنش کاربر"
+
+#: toolhub/apps/user/serializers.py:63
+msgid "Information about the current user"
+msgstr "اطلاعات کاربر کنونی"
+
+#: toolhub/apps/user/serializers.py:69
+msgid "Numeric user id"
+msgstr "شناسهٔ عددی کاربر"
+
+#: toolhub/apps/user/serializers.py:77
+msgid "Cross-site request forgery prevention token"
+msgstr "توکن جلوگیری از جعل درخواست میان‌وبگاهی"
+
+#: toolhub/apps/user/serializers.py:82
+msgid "CASL access control rules"
+msgstr "قواعد کنترل دسترسی CASL"
+
+#: toolhub/apps/user/serializers.py:94
+msgid "Information about the current locale"
+msgstr "اطلاعات تنظیمات محلی کنونی"
+
+#: toolhub/apps/user/serializers.py:111
+msgid "User information"
+msgstr "اطلاعات کاربر"
+
+#: toolhub/apps/user/serializers.py:123
+msgid "Group information"
+msgstr "اطلاعات گروه"
+
+#: toolhub/apps/user/serializers.py:135
+msgid "Social authentication information for a user"
+msgstr "اطلاعات احراز هویت اجتماعی کاربر"
+
+#: toolhub/apps/user/serializers.py:165
+msgid "Detailed user information"
+msgstr "اطلاعات تفصیلی کاربر"
+
+#: toolhub/apps/user/serializers.py:180
+msgid "Detailed group information"
+msgstr "اطلاعات تفصیلی گروه"
+
+#: toolhub/apps/user/serializers.py:198
+msgid "Owner-only API Token"
+msgstr "توکن API ویژهٔ مالک"
+
+#: toolhub/apps/user/serializers.py:205
+msgid "Authentication token"
+msgstr "توکن احراز هویت"
+
+#: toolhub/apps/user/validators.py:29
+msgid "Enter a valid username. The characters `@` and `:` are not permitted."
+msgstr "نام کاربری معتبری وارد کنید. نویسه‌های `@` و `:` مجاز نیستند."
+
+#: toolhub/apps/user/views.py:60
+msgid "Get information about the currently logged in user."
+msgstr "دریافت اطلاعات کاربری که اکنون وارد شده است."
+
+#: toolhub/apps/user/views.py:88
+msgid "Get current locale."
+msgstr "دریافت تنظیمات محلی کنونی."
+
+#: toolhub/apps/user/views.py:99
+msgid "Set locale."
+msgstr "تعیین تنظیمات محلی."
+
+#: toolhub/apps/user/views.py:117
+msgid "List all active users."
+msgstr "فهرست همهٔ کاربران فعال."
+
+#: toolhub/apps/user/views.py:120
+msgid "Info for a specific user."
+msgstr "اطلاعات یک کاربر مشخص."
+
+#: toolhub/apps/user/views.py:141
+msgid "List all user groups."
+msgstr "فهرست همهٔ گروه‌های کاربری."
+
+#: toolhub/apps/user/views.py:144
+msgid "Info for a user group."
+msgstr "اطلاعات یک گروه کاربری."
+
+#: toolhub/apps/user/views.py:166
+msgid "Add a user to this group."
+msgstr "افزودن کاربر به این گروه."
+
+#: toolhub/apps/user/views.py:177
+msgid "Remove a user from this group."
+msgstr "حذف کاربر از این گروه."
+
+#: toolhub/apps/user/views.py:222
+msgid "Get authentication token."
+msgstr "دریافت توکن اصالت‌سنجی."
+
+#: toolhub/apps/user/views.py:225
+msgid "Create authentication token."
+msgstr "ایجاد توکن اصالت‌سنجی."
+
+#: toolhub/apps/user/views.py:228
+msgid "Delete authentication token."
+msgstr "حذف توکن اصالت‌سنجی."
+
+#: toolhub/apps/versioned/apps.py:26
+msgid "Versioned"
+msgstr "دارای نسخه‌بندی"
+
+#: toolhub/apps/versioned/exceptions.py:28
+msgid "Failed to apply patch."
+msgstr "اعمال وصله ناموفق بود."
+
+#: toolhub/apps/versioned/exceptions.py:35
+msgid "Current revision cannot be hidden."
+msgstr "نسخهٔ کنونی را نمی‌توان پنهان کرد."
+
+#: toolhub/apps/versioned/exceptions.py:43
+msgid "Revision is already marked as patrolled."
+msgstr "نسخه از قبل به‌عنوان گشت‌خورده علامت خورده است."
+
+#: toolhub/apps/versioned/exceptions.py:51
+msgid "Missing content for one or more revisions."
+msgstr "محتوای یک یا چند نسخه موجود نیست."
+
+#: toolhub/apps/versioned/models.py:42 toolhub/apps/versioned/serializers.py:69
+msgid "Has this revision been marked as hidden?"
+msgstr "آیا این نسخه به‌عنوان پنهان علامت خورده است؟"
+
+#: toolhub/apps/versioned/models.py:47 toolhub/apps/versioned/serializers.py:75
+msgid "Has this revision been reviewed by a patroller?"
+msgstr "آیا این نسخه به‌دست گشت‌زن بازبینی شده است؟"
+
+#: toolhub/apps/versioned/schema.py:21
+msgid "unique identifier of the version"
+msgstr "شناسه منحصر بفرد نسخه"
+
+#: toolhub/apps/versioned/schema.py:26
+msgid "unique identifier of the content being versioned"
+msgstr "شناسهٔ یکتای محتوای در حال نسخه‌بندی"
+
+#: toolhub/apps/versioned/schema.py:31
+msgid "title describing the content being versioned"
+msgstr "عنوان توصیف‌کنندهٔ محتوای در حال نسخه‌بندی"
+
+#: toolhub/apps/versioned/schema.py:36
+msgid "RFC 6902 application/json-patch+json data"
+msgstr "داده‌های application/json-patch+json مطابق RFC 6902"
+
+#: toolhub/apps/versioned/schema.py:39
+msgid "RFC 6902 JSON patch operation"
+msgstr "عملیات وصلهٔ JSON مطابق RFC 6902"
+
+#: toolhub/apps/versioned/schema.py:44
+msgid "The operation to be performed"
+msgstr "عملیاتی که باید انجام شود"
+
+#: toolhub/apps/versioned/schema.py:50
+msgid "JSON-Pointer to location within document where operation is performed."
+msgstr "اشاره‌گر JSON-Pointer به محل انجام عملیات در سند."
+
+#: toolhub/apps/versioned/schema.py:56
+msgid "The value to add, replace, or test."
+msgstr "مقداری که باید افزوده، جایگزین یا آزمایش شود."
+
+#: toolhub/apps/versioned/schema.py:62
+msgid "JSON-Pointer to location within document to move or copy the value from."
+msgstr "اشاره‌گر JSON-Pointer به محلی در سند که مقدار از آن منتقل یا کپی می‌شود."
+
+#: toolhub/apps/versioned/serializers.py:51
+msgid "A unique integer value identifying this revision."
+msgstr "عدد صحیح یکتایی که این نسخه را مشخص می‌کند."
+
+#: toolhub/apps/versioned/serializers.py:63
+msgid "Comment by the user for the revision."
+msgstr "توضیح کاربر برای نسخه."
+
+#: toolhub/apps/versioned/serializers.py:81
+msgid "Content type of the revision."
+msgstr "نوع محتوای نسخه."
+
+#: toolhub/apps/versioned/serializers.py:157
+msgid "username removed"
+msgstr "نام کاربری حذف شد"
+
+#: toolhub/apps/versioned/serializers.py:158
+msgid "edit summary removed"
+msgstr "خلاصهٔ ویرایش حذف شد"
+
+#: toolhub/apps/versioned/views.py:40
+msgid "Only show recent changes by the given user."
+msgstr "فقط تغییرات اخیر کاربر مشخص‌شده نمایش داده شوند."
+
+#: toolhub/apps/versioned/views.py:45
+msgid "Only show recent changes for the given target type."
+msgstr "فقط تغییرات اخیر مربوط به نوع هدف مشخص‌شده نمایش داده شوند."
+
+#: toolhub/apps/versioned/views.py:50
+msgid "Only show recent changes where suppressed field is either true or false"
+msgstr "فقط تغییرات اخیری نمایش داده شوند که مقدار فیلد suppressed آن‌ها درست یا نادرست است"
+
+#: toolhub/apps/versioned/views.py:57
+msgid "Only show recent changes where patrolled field is either true or false"
+msgstr "فقط تغییرات اخیری نمایش داده شوند که مقدار فیلد patrolled آن‌ها درست یا نادرست است"
+
+#: toolhub/apps/versioned/views.py:63
+msgid "Only show recent changes within this time range"
+msgstr "تنها تغییرات اخیر را در این بازه زمانی نشان بده"
+
+#: toolhub/apps/versioned/views.py:68
+msgid "Get a paginated list of all revisions."
+msgstr "دریافت فهرست صفحه‌بندی‌شدهٔ همهٔ نسخه‌ها."
+
+#: toolhub/fields.py:40
+msgid "Enter a valid value conforming to the JSON Schema."
+msgstr "مقدار معتبری مطابق با JSON Schema وارد کنید."
+
+#: toolhub/openapi.py:36
+msgid "API error"
+msgstr "خطای API"
+
+#: toolhub/serializers.py:112
+msgid "Edit summary"
+msgstr "خلاصهٔ ویرایش"
+
+#: toolhub/serializers.py:113
+msgid "Description of the changes you are making."
+msgstr "توضیح تغییراتی که انجام می‌دهید."
+
+#: toolhub/serializers.py:124
+msgid "Comment describing an action."
+msgstr "توضیحی دربارهٔ یک کنش."
+
+#: toolhub/settings.py:458
+msgid "Read scope"
+msgstr "دامنهٔ دسترسی خواندن"
+
+#: toolhub/settings.py:459
+msgid "Write scope"
+msgstr "دامنهٔ دسترسی نوشتن"
+
+#: toolhub/settings.py:488
+#, optional
+msgid "Toolhub API"
+msgstr ""
+
+#: toolhub/templates/oauth2_provider/authorize.html:8
+#, python-format
+msgid "Authorize %(app_name)s?"
+msgstr "به %(app_name)s مجوز داده شود؟"
+
+#: toolhub/templates/oauth2_provider/authorize.html:15
+msgid "Application requires the following permissions"
+msgstr "نرم‌افزار نیازمند مجوزهای زیر است"
+
+#: toolhub/templates/oauth2_provider/authorize.html:25
+msgid "Cancel"
+msgstr "لغو"
+
+#: toolhub/templates/oauth2_provider/authorize.html:26
+msgid "Authorize"
+msgstr "مجاز"
+
+#: toolhub/templates/oauth2_provider/authorize.html:32
+#, python-format
+msgid "Error: %(message)s"
+msgstr "خطا: %(message)s"
+
+#: toolhub/templates/oauth2_provider/base.html:22
+#, optional
+msgid "Toolhub"
+msgstr "تول‌هاب"
+
+#: vue/serializers.py:26
+msgid "Information used on the Toolhub Home view."
+msgstr "اطلاعات مورد استفاده در نمای خانهٔ تول‌هاب."
+
+#: vue/serializers.py:32
+msgid "Count of tools known to Toolhub."
+msgstr "تعداد ابزارهای شناخته‌شده برای تول‌هاب."
+
+#: vue/serializers.py:36
+msgid "Date and time of most recent crawler run."
+msgstr "تاریخ و ساعت آخرین اجرای خزنده."
+
+#: vue/serializers.py:41
+msgid "Number of tools added or updated in the most recent crawler run."
+msgstr "تعداد ابزارهای افزوده‌شده یا به‌روزشده در آخرین اجرای خزنده."
+
+#: vue/templates/vue/base.html:21
+msgid "Toolhub's user interface requires JavaScript to be enabled."
+msgstr "برای استفاده از رابط کاربری تول‌هاب باید جاوااسکریپت فعال باشد."
+
+#: vue/templates/vue/main.html:9
+msgid "LOADING"
+msgstr "در حال بارگیری"
+
+#: vue/views.py:47
+msgid "Get information used on the Toolhub Home view."
+msgstr "دریافت اطلاعات مورد استفاده در نمای خانهٔ تول‌هاب."
+
